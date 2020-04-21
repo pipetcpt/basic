@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13) | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
+  <meta name="description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13) | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/yihui/bookdown/" />
+  <meta property="og:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta property="og:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="github-repo" content="rstudio/bookdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13) | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
+
+
+<meta name="date" content="2020-04-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"/>
+<link rel="next" href="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Authoring Books with R Markdown</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#소개-introduction"><i class="fa fa-check"></i><b>1.1</b> 소개 Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#참고문헌"><i class="fa fa-check"></i><b>1.3</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 2.1 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> 2.1.1 $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> 2.1.2 $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> 2.1.3 $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> 2.2 PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 2.3 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 2.4 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 2.5 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#id"><i class="fa fa-check"></i><b>2.5.1</b> 2.5.1 ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> 2.5.2 DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> 2.5.3 MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> 2.5.4 EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#time"><i class="fa fa-check"></i><b>2.5.5</b> 2.5.5 TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> 2.5.6 AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> 2.5.7 RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> 2.5.8 ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> 2.5.9 SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> 2.5.10 CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> 2.5.11 Covariates</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#참고문헌-1"><i class="fa fa-check"></i><b>2.6</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html"><i class="fa fa-check"></i><b>3</b> 모델 유형 별 NONMEM 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#소개"><i class="fa fa-check"></i><b>3.1</b> 3.1. 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 3.2. 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> 3.3. PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문에-쓰이는-레코드"><i class="fa fa-check"></i><b>3.4</b> 3.4. 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> 3.4.1. $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> 3.4.2. $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> 3.4.3. $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> 3.4.4. $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> 3.4.5. $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#모델-유형-별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 3.5 모델 유형 별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 3.5.1. 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 3.5.2. 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> 3.5.3. PRED 모델</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#참고문헌-2"><i class="fa fa-check"></i><b>3.6</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><a href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><i class="fa fa-check"></i><b>4</b> Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs</a></li>
+<li class="chapter" data-level="5" data-path="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><a href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><i class="fa fa-check"></i><b>5</b> Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs</a></li>
+<li class="chapter" data-level="6" data-path="chapter-06-기타-advan-newer-advans-advan-9-13.html"><a href="chapter-06-기타-advan-newer-advans-advan-9-13.html"><i class="fa fa-check"></i><b>6</b> Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13)</a></li>
+<li class="chapter" data-level="7" data-path="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html"><a href="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html"><i class="fa fa-check"></i><b>7</b> Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs</a></li>
+<li class="chapter" data-level="8" data-path="chapter-08-초기추정값-initial-estimate.html"><a href="chapter-08-초기추정값-initial-estimate.html"><i class="fa fa-check"></i><b>8</b> Chapter 08 초기추정값 Initial estimate</a></li>
+<li class="chapter" data-level="9" data-path="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><a href="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><i class="fa fa-check"></i><b>9</b> Chapter 09 파라미터 추정 방법 및 세팅 Estimation Methods &amp; Settings</a></li>
+<li class="chapter" data-level="10" data-path="chapter-10-nonmem-실행결과-해석-및-xpose4-사용법-requesting-nonmem-output-files-and-the-use-of-xpose4.html"><a href="chapter-10-nonmem-실행결과-해석-및-xpose4-사용법-requesting-nonmem-output-files-and-the-use-of-xpose4.html"><i class="fa fa-check"></i><b>10</b> Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 Requesting NONMEM output files and the use of Xpose4</a></li>
+<li class="chapter" data-level="11" data-path="chapter-11-공변량-분석-covariate-analysis.html"><a href="chapter-11-공변량-분석-covariate-analysis.html"><i class="fa fa-check"></i><b>11</b> Chapter 11 공변량 분석 Covariate Analysis</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-06-기타-advan-newer-advans-advan-9-13" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13)</h1>
+<p>임 동 석
+6.1 ADVAN9
+- General Nonlinear Model with Equilibrium Compartments
+ADVAN9는 ADVAN6와 같은 상황에서 쓸 수 있는 또 다른 ADVAN으로 ADVAN6보다 좀
+더 robust 한 방법으로 주장되고 있으나 이는 상황 별로 달라서 어떤 것이 낫다고 할 수는 없다.
+Holford가 제안한 하나의 방법은 $EST 에서 MAXEVAL=0로 한 후 ADVAN6와 9을 각기 돌려보
+고 둘 중 소요시간이 짧은 것을 선택하여 쓰는 것이다. [1]
+6.2 ADVAN10
+- One Compartment Model with Michaelis-Menten Elimination
+1분획 모델로서 정맥주입하는 약물의 Michaelis-Menten 제거 모델을 사용할 경우 ADVAN10
+을 쓰면 되는데, 실제 모델링에서 쓰이는 사례는 매우 드물다. Michaelis-Menten 과 같은 제거 모
+델이 필요할 경우 ADVAN6에서 수식으로 구현하는 것이 다른 제거모델과의 비교나 분포분획의
+숫자,흡수 모델 등에 있어서 훨씬 유연한 방법이기 때문이다.
+6.3 ADVAN11과 12 - Three Compartment Linear Model
+(IV and First Order Absorption)56 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+ADVAN1~4의 경우와 같이 ADVAN11과 12는 3분획으로 분포하며 정맥주사와 1차 경구흡수되
+는 모델들이다 (그림 1). ADVAN1~4만큼 자주 쓰이지 않으나 투여 간격이 매우 길다거나 마지막
+용량 투여 후 오랜 시간 동안 지속적으로 농도를 측정한다든지 하여 3개의 기울기가 존재하는 것
+이 의심되는 상황 등에서 시도해 볼 수 있다.
+ADVAN11의 예를 들면 앞의 장들에서 소개된 것과 마찬가지로 TRANS 옵션을 선택해야 하는
+데TRANS1을 쓰면 Vd를 제외한 약동학 파라미터들을 micro constant(K, K12, K21, K13, K31)들
+을 써서 표현하며, TRANS4를 쓰면 CL, Q2, Q3를 쓰되 이들과 micro constant들과의 관계식을
+함께 써 주어야 한다. TRANS6를 쓸 경우 시간에 따른 농도변화를 지수함수 형태로 나타낼 수 있
+으며, 역시 지수함수의 파라미터들과 micro constant들과의 관계식을 써 주어야 한다. 이들 중
+TRANS4를 사용하여 CL, Q로써 모델링하는 것이 가장 흔히 쓰이는 방법이고, TRANS1이 간혹
+쓰이며, TRANS6를 사용하는 경우는 드물다.
+그림 1 ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들참고문헌 · 기타 ADVAN 57
+6.4 ADVAN13 - General Nonlinear Model using LSODA
+NONMEM 7.12 버전에 추가된 SUBROUTINE으로서 LSODA라는 기법을 사용하여 stiff, nonstiff 미분방정식을 풀어준다. 보통의 ESTIMATION 방식에서는 별 이점이 없으나 좀 더 많은 계산
+을 필요로 하는 방식들(MCMC, BAYESIAN, IMP MAP)을 쓸 때 속도가 빨라진다고 알려져 있다.
+참고문헌
+1. <a href="http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf58" class="uri">http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf58</a> PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/06.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub", "bookdown.mobi"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
