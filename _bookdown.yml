@@ -1,12 +1,12 @@
-book_filename: bookdown
+book_filename: book-basic-1
 repo: https://github.com/pipetcpt/book-basic-1/
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
 language:
   label:
-    fig: "FIGURE "
-    tab: "TABLE "
+    fig: "그림 "
+    tab: "표 "
   ui:
     edit: "Edit"
     chapter_name: "Chapter "

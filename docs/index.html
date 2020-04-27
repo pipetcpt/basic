@@ -10,8 +10,8 @@
 
   <meta property="og:title" content="PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bookdown.org/yihui/bookdown/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta property="og:url" content="https://pipetcpt.github.io/book-basic-1" />
+  <meta property="og:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
   <meta property="og:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="github-repo" content="rstudio/bookdown" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   
   <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
 
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
 
@@ -53,69 +53,6 @@
 
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="css\style.css" type="text/css" />
 </head>
@@ -133,13 +70,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Authoring Books with R Markdown</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-read-this-book"><i class="fa fa-check"></i>Why read this book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#software-information-and-conventions"><i class="fa fa-check"></i>Software information and conventions</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#소개-introduction"><i class="fa fa-check"></i><b>1.1</b> 소개 Introduction</a></li>
@@ -148,7 +79,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.1" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
 <li class="chapter" data-level="1.2.2" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="계량약리학과-관련-개념들.html"><a href="계량약리학과-관련-개념들.html#참고문헌"><i class="fa fa-check"></i><b>1.3</b> 참고문헌</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
 <ul>
@@ -175,7 +105,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.10" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> 2.5.10 CMT</a></li>
 <li class="chapter" data-level="2.5.11" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> 2.5.11 Covariates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#참고문헌-1"><i class="fa fa-check"></i><b>2.6</b> 참고문헌</a></li>
+<li class="chapter" data-level="2.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#참고문헌"><i class="fa fa-check"></i><b>2.6</b> 참고문헌</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html"><i class="fa fa-check"></i><b>3</b> 모델 유형 별 NONMEM 제어구문 소개</a>
 <ul>
@@ -196,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 3.5.2. 일반 비선형 모델</a></li>
 <li class="chapter" data-level="3.5.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> 3.5.3. PRED 모델</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#참고문헌-2"><i class="fa fa-check"></i><b>3.6</b> 참고문헌</a></li>
+<li class="chapter" data-level="3.6" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#참고문헌-1"><i class="fa fa-check"></i><b>3.6</b> 참고문헌</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><a href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><i class="fa fa-check"></i><b>4</b> Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs</a></li>
 <li class="chapter" data-level="5" data-path="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><a href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><i class="fa fa-check"></i><b>5</b> Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs</a></li>
@@ -205,7 +135,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="chapter-08-초기추정값-initial-estimate.html"><a href="chapter-08-초기추정값-initial-estimate.html"><i class="fa fa-check"></i><b>8</b> Chapter 08 초기추정값 Initial estimate</a></li>
 <li class="chapter" data-level="9" data-path="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><a href="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><i class="fa fa-check"></i><b>9</b> Chapter 09 파라미터 추정 방법 및 세팅 Estimation Methods &amp; Settings</a></li>
 <li class="chapter" data-level="10" data-path="chapter-10-nonmem-실행결과-해석-및-xpose4-사용법-requesting-nonmem-output-files-and-the-use-of-xpose4.html"><a href="chapter-10-nonmem-실행결과-해석-및-xpose4-사용법-requesting-nonmem-output-files-and-the-use-of-xpose4.html"><i class="fa fa-check"></i><b>10</b> Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 Requesting NONMEM output files and the use of Xpose4</a></li>
-<li class="chapter" data-level="11" data-path="chapter-11-공변량-분석-covariate-analysis.html"><a href="chapter-11-공변량-분석-covariate-analysis.html"><i class="fa fa-check"></i><b>11</b> Chapter 11 공변량 분석 Covariate Analysis</a></li>
+<li class="chapter" data-level="11" data-path="chapter-11-공변량-분석-covariate-analysis.html"><a href="chapter-11-공변량-분석-covariate-analysis.html"><i class="fa fa-check"></i><b>11</b> Chapter 11 공변량 분석 Covariate Analysis</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter-11-공변량-분석-covariate-analysis.html"><a href="chapter-11-공변량-분석-covariate-analysis.html#서론"><i class="fa fa-check"></i><b>11.1</b> 11.1 서론</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -233,93 +166,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="preface" class="section level1 unnumbered" number="">
 <h1>Preface</h1>
-<p><a href="https://www.crcpress.com/product/isbn/9781138700109" target="_blank"><img src="images/cover.jpg" style="display: block; margin: auto;" /></a></p>
+<p><a href="https://www.crcpress.com/product/isbn/9781138700109" target="_blank"><img src="images/cover.jpg" width="100%" style="display: block; margin: auto;" /></a></p>
 <p>PIPET / Q-fitter Pharmacometrics Course</p>
 <p>Basic-1 모델 구축의 기초</p>
 <ul>
-<li>Chapter 01 계량약리학과 관련 개념들 007</li>
-<li>Chapter 02 NONMEM 데이터셋 015</li>
-<li>Chapter 03 모델 유형 별 NONMEM 제어구문 소개 026</li>
-<li>Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 042</li>
-<li>Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 048</li>
-<li>Chapter 06 기타 ADVAN 055</li>
-<li>Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 058</li>
-<li>Chapter 08 초기추정값 061</li>
-<li>Chapter 09 파라미터 추정 방법 및 세팅 071</li>
-<li>Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 078</li>
-<li>Chapter 11 공변량 분석 087</li>
+<li>Chapter 01 계량약리학과 관련 개념들</li>
+<li>Chapter 02 NONMEM 데이터셋</li>
+<li>Chapter 03 모델 유형 별 NONMEM 제어구문 소개</li>
+<li>Chapter 04 특수 ADVAN을 이용한 control stream의 코딩</li>
+<li>Chapter 05 일반 ADVAN을 이용한 control stream의 코딩</li>
+<li>Chapter 06 기타 ADVAN</li>
+<li>Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩</li>
+<li>Chapter 08 초기추정값</li>
+<li>Chapter 09 파라미터 추정 방법 및 세팅</li>
+<li>Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법</li>
+<li>Chapter 11 공변량 분석</li>
 </ul>
-<p>This short book introduces an R package, <strong>bookdown</strong>, to change your workflow of writing books. It should be technically easy to write a book, visually pleasant to view the book, fun to interact with the book, convenient to navigate through the book, straightforward for readers to contribute or leave feedback to the book author(s), and more importantly, authors should not always be distracted by typesetting details.</p>
-<p>The <strong>bookdown</strong> package is built on top of R Markdown (<a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>), and inherits the simplicity of the Markdown syntax (you can learn the basics in five minutes; see Section <a href="#markdown-syntax"><strong>??</strong></a>), as well as the possibility of multiple types of output formats (PDF/HTML/Word/…). It has also added features like multi-page HTML output, numbering and cross-referencing figures/tables/sections/equations, inserting parts/appendices, and imported the GitBook style (<a href="https://www.gitbook.com" class="uri">https://www.gitbook.com</a>) to create elegant and appealing HTML book pages. This book itself is an example of how you can produce a book from a series of R Markdown documents, and both the printed version and the online version can look professional. You can find more examples at <a href="https://bookdown.org" class="uri">https://bookdown.org</a>.</p>
-<p><a href="https://github.com/rstudio/bookdown" target="_blank"><img src="images/logo.png" style="display: block; margin: auto;" /></a></p>
-<p>Despite the package name containing the word “book”, <strong>bookdown</strong> is not only for books. The “book” can be anything that consists of multiple R Markdown documents meant to be read in a linear sequence, such as course handouts, study notes, a software manual, a thesis, or even a diary. In fact, many <strong>bookdown</strong> features apply to single R Markdown documents as well (see Section <a href="#a-single-document"><strong>??</strong></a>).</p>
-<p><img src="images/by-nc-sa.png" alt="Creative Commons License" /><br />
-The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. You can purchase a hardcopy from <a href="https://www.crcpress.com/product/isbn/9781138700109">Chapman &amp; Hall</a> or Amazon.</p>
-<div id="why-read-this-book" class="section level2 unnumbered" number="">
-<h2>Why read this book</h2>
-<p>Can we write a book in one source format, and generate the output to multiple formats? Traditionally books are often written with LaTeX or Microsoft Word. Either of these tools will make writing books a one-way trip and you cannot turn back: if you choose LaTeX, you typically end up only with a PDF document; if you work with Word, you are likely to have to stay in Word forever, and may also miss the many useful features and beautiful PDF output from LaTeX.</p>
-<p>Can we focus on writing the content without worrying too much about typesetting? There seems a natural contradiction between content and appearance, and we always have to balance our time spent on these two aspects. No one can have a cake and eat it too, but it does not mean we cannot have a half and eat a half. We want our book to look reasonably pretty, and we also want to focus on the content. One possibility is to give up PDF temporarily, and what you may have in return is a pretty preview of your book as HTML web pages. LaTeX is an excellent typesetting tool, but you can be easily buried in the numerous LaTeX commands and typesetting details while you are working on the book. It is just so hard to refrain from previewing the book in PDF, and unfortunately also so common to find certain words exceed the page margin, certain figures float to a random page, five or six stray words at the very end of a chapter proudly take up a whole new page, and so on. If the book is to be printed, we will have to deal with these issues eventually, but it is not worth being distracted over and over again while you are writing the content of the book. The fact that the Markdown syntax is simpler and has fewer features than LaTeX also helps you focus on the content. Do you really have to define a new command like <code>\myprecious{}</code> that applies <code>\textbf{\textit{\textsf{}}}</code> to your text? Does the letter “R” have to be enclosed in <code>\proglang{}</code> when readers can easily figure out it stands for the R language? It does not make much difference whether everything, or nothing, needs the reader’s attention.</p>
-<p>Can readers interact with examples in our book as they read it? The answer is certainly no if the book is printed on paper, but it is possible if your book has an HTML version that contains live examples, such as Shiny applications (<a href="https://shiny.rstudio.com" class="uri">https://shiny.rstudio.com</a>) or HTML widgets (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>). For example, readers may immediately know what happens if they change certain parameters of a statistical model.</p>
-<p>Can we get feedback and even contributions from readers as we develop the book? Traditionally the editor will find a small number of anonymous reviewers to review your book. Reviewers are often helpful, but you may still miss the wisdom of more representative readers. It is too late after the first edition is printed, and readers may need to wait for a few years before the second edition is ready. There are some web platforms that make it easy for people to provide feedback and contribute to your projects. GitHub (<a href="https://github.com" class="uri">https://github.com</a>) is one prominent example. If anyone finds a typo in your book, he/she can simply correct it online and submit the change back to you for your approval. It is a matter of clicking a button to merge the change, with no questions asked or emails back and forth. To be able to use these platforms, you need to learn the basics of version control tools like GIT, and your book source files should be in plain text.</p>
-<p>The combination of R (<a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>), Markdown, and Pandoc (<a href="http://pandoc.org" class="uri">http://pandoc.org</a>) makes it possible to go from one simple source format (R Markdown) to multiple possible output formats (PDF, HTML, EPUB, and Word, etc.). The <strong>bookdown</strong> package is based on R Markdown, and provides output formats for books and long-form articles, including the GitBook format, which is a multi-page HTML output format with a useful and beautiful user interface. It is much easier to typeset in HTML than LaTeX, so you can always preview your book in HTML, and work on PDF after the content is mostly done. Live examples can be easily embedded in HTML, which can make the book more attractive and useful. R Markdown is a plain-text format, so you can also enjoy the benefits of version control, such as collaborating on GitHub. We have also tried hard to port some important features from LaTeX to HTML and other output formats, such as figure/table numbering and cross-references.</p>
-<p>In short, you just prepare a few R Markdown book chapters, and <strong>bookdown</strong> can help you turn them into a beautiful book.</p>
-</div>
-<div id="structure-of-the-book" class="section level2 unnumbered" number="">
-<h2>Structure of the book</h2>
-<p>Chapters <a href="#introduction"><strong>??</strong></a> and <a href="#components"><strong>??</strong></a> introduce the basic usage and syntax, which should be sufficient to get most readers started in writing a book. Chapters <a href="#output-formats"><strong>??</strong></a> and <a href="#customization"><strong>??</strong></a> are for those who want to fine-tune the appearance of their books. They may look very technical if you are not familiar with HTML/CSS and LaTeX. You do not need to read these two chapters very carefully for the first time. You can learn what can be possibly changed, and come back later to know how. For Chapter <a href="#editing"><strong>??</strong></a>, the technical details are not important unless you do not use the RStudio IDE (Section <a href="#rstudio-ide"><strong>??</strong></a>). Similarly, you may feel overwhelmed by the commands presented in Chapter <a href="#publishing"><strong>??</strong></a> to publish your book, but again, we have tried to make it easy to publish your book online via the RStudio IDE. The custom commands and functions are only for those who choose not to use RStudio’s service or want to understand the technical details.</p>
-<p>To sum it up, this book is a comprehensive reference of the <strong>bookdown</strong> package. You can follow the 80/20 rule when reading it. Some sections are there for the sake of completeness, and not all sections are equally useful to the particular book(s) that you intend to write.</p>
-</div>
-<div id="software-information-and-conventions" class="section level2 unnumbered" number="">
-<h2>Software information and conventions</h2>
-<p>This book is primarily about the R package <strong>bookdown</strong>, so you need to at least install R and the <strong>bookdown</strong> package. However, your book does not have to be related to the R language at all. It can use other computing languages (C++, SQL, Python, and so on; see Appendix <a href="#software-usage"><strong>??</strong></a>), and it can even be totally irrelevant to computing (e.g., you can write a novel, or a collection of poems). The software tools required to build a book are introduced in Appendix <a href="#software-tools"><strong>??</strong></a>.</p>
-<p>The R session information when compiling this book is shown below:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
-<pre><code>## R version 3.6.3 (2020-02-29)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 18363)
-## 
-## Matrix products: default
-## 
-## locale:
-## [1] LC_COLLATE=Korean_Korea.949 
-## [2] LC_CTYPE=Korean_Korea.949   
-## [3] LC_MONETARY=Korean_Korea.949
-## [4] LC_NUMERIC=C                
-## [5] LC_TIME=Korean_Korea.949    
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets 
-## [6] methods   base     
-## 
-## loaded via a namespace (and not attached):
-## [1] bookdown_0.18   miniUI_0.1.1.1  rmarkdown_2.1  
-## [4] tools_3.6.3     shiny_1.4.0.2   htmltools_0.4.0
-## [7] knitr_1.28</code></pre>
-<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>bookdown::render_book()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
-</div>
-<div id="acknowledgments" class="section level2 unnumbered" number="">
-<h2>Acknowledgments</h2>
-<p>First I’d like to thank my employer, RStudio, for providing me the opportunity to work on this exciting project. I was hoping to work on it when I first saw the GitBook project in 2013, because I immediately realized it was a beautiful book style and there was a lot more power we could add to it, judging from my experience of writing the <strong>knitr</strong> book <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span> and reading other books. R Markdown became mature after two years, and luckily, <strong>bookdown</strong> became my official job in late 2015. There are not many things in the world better than the fact that your job happens to be your hobby (or vice versa). I totally enjoyed messing around with JavaScript libraries, LaTeX packages, and endless regular expressions in R. Honestly I should also thank StackOverflow (<a href="http://stackoverflow.com" class="uri">http://stackoverflow.com</a>), and I believe you all know <a href="http://bit.ly/2cWbiAp">what I mean,</a> if you have ever written any program code.</p>
-<p>This project is certainly not a single person’s effort. Several colleagues at RStudio have helped me along the way. Hadley Wickham provided a huge amount of feedback during the development of <strong>bookdown</strong>, as he was working on his book <em>R for Data Science</em> with Garrett Grolemund. JJ Allaire and Jonathan McPherson provided a lot of technical help directly to this package as well as support in the RStudio IDE. Jeff Allen, Chaita Chaudhari, and the RStudio Connect team have been maintaining the <a href="https://bookdown.org" class="uri">https://bookdown.org</a> website. Robby Shaver designed a nice cover image for this book. Both Hadley Wickham and Mine Cetinkaya-Rundel reviewed the manuscript and gave me a lot of helpful comments. Tareef Kawaf tried his best to help me become a professional software engineer. It is such a blessing to work in this company with enthusiastic and smart people. I remember once I told Jonathan, “hey I found a problem in caching HTML widgets dependencies and finally figured out a possible solution”. Jonathan grabbed his beer and said, “I already solved it.” “Oh, nice, nice.”</p>
-<p>I also received a lot of feedback from book authors outside RStudio, including Jan de Leeuw, Jenny Bryan, Dean Attali, Rafael Irizarry, Michael Love, Roger Peng, Andrew Clark, and so on. Some users also contributed code to the project and helped revise the book. Here is a list of all contributors: <a href="https://github.com/rstudio/bookdown/graphs/contributors" class="uri">https://github.com/rstudio/bookdown/graphs/contributors</a>. It feels good when you invent a tool and realize you are also the beneficiary of your own tool. As someone who loves the GitHub pull request model, I wished readers did not have to email me there was a typo or obvious mistake in my book, but could just fix it via a pull request. This was made possible in <strong>bookdown</strong>. You can see how many pull requests on typos I have merged: <a href="https://github.com/rstudio/bookdown/pulls" class="uri">https://github.com/rstudio/bookdown/pulls</a>. It is nice to have so many outsourced careful human spell checkers. It is not that I do not know how to use a real spell checker, but I do not want to do this before the book is finished, and the evil Yihui also wants to leave a few simple tasks to the readers to engage them in improving the book.</p>
-<p>Callum Webb kindly designed a nice hexbin sticker for <strong>bookdown</strong>.</p>
-<p>The <strong>bookdown</strong> package is not possible without a few open-source software packages. In particular, Pandoc, GitBook, jQuery, and the dependent R packages, not to mention R itself. I thank the developers of these packages.</p>
-<p>I moved to Omaha, Nebraska, in 2015, and enjoyed one year at Steeplechase Apartments, where I lived comfortably while developing the <strong>bookdown</strong> package, thanks to the extremely friendly and helpful staff. Then I met a professional and smart realtor, Kevin Schaben, who found a fabulous home for us in an amazingly short period of time, and I finished this book in our new home.</p>
-<p>John Kimmel, the editor from Chapman &amp; Hall/CRC, helped me publish my first book. It is my pleasure to work with him again. He generously agreed to let me keep the online version of this book for free, so I can continue to update it after it is printed and published (i.e., you do not have to wait for years for the second edition to correct mistakes and introduce new features). I wish I could be as open-minded as he is when I’m his age. Rebecca Condit and Suzanne Lassandro proofread the manuscript, and their suggestions were professional and helpful. Shashi Kumar solved some of my technical issues with the publisher’s LaTeX class (<code>krantz.cls</code>) when I was trying to integrate it with <strong>bookdown</strong>. I also appreciate the very helpful comments from the reviewers Jan de Leeuw, Karl Broman, Brooke Anderson, Michael Grayling, Daniel Kaplan, and Max Kuhn.</p>
-<p>Lastly I want to thank my family, in particular, my wife and son, for their support. The one-year-old has discovered that my monitor will light up when he touches my keyboard, so occasionally he just creeps into my office and presses randomly on the keyboard when I’m away. I’m not sure if this counts as his contribution to the book… @)!%)&amp;@*</p>
 
-<p class="flushright">
-Yihui Xie<br />
-Elkhorn, Nebraska
-</p>
-
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
 </div>
             </section>
 
@@ -369,7 +232,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["bookdown.pdf", "bookdown.epub", "bookdown.mobi"],
+"download": ["book-basic-1.pdf", "book-basic-1.epub", "book-basic-1.mobi"],
 "toc": {
 "collapse": "none"
 }

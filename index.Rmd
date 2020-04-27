@@ -4,7 +4,7 @@ author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김�
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: krantz
-bibliography: [book.bib]
+bibliography: ["references/book.bib", "references/bib_pubmed_raw.bib"]
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
@@ -15,7 +15,7 @@ monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 description: "A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)."
-url: 'https\://bookdown.org/yihui/bookdown/'
+url: 'https\://pipetcpt.github.io/book-basic-1'
 github-repo: rstudio/bookdown
 cover-image: images/cover.jpg
 ---
@@ -25,6 +25,8 @@ options(
   htmltools.dir.version = FALSE, formatR.indent = 2,
   width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
+
+knitr::opts_chunk$set(echo=FALSE, out.width="100%")
 
 local({
   r = getOption('repos')
@@ -48,16 +50,14 @@ PIPET / Q-fitter Pharmacometrics Course
 
 Basic-1 모델 구축의 기초
 
-- Chapter 01 계량약리학과 관련 개념들 007
-- Chapter 02 NONMEM 데이터셋 015
-- Chapter 03 모델 유형 별 NONMEM 제어구문 소개 026
-- Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 042
-- Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 048
-- Chapter 06 기타 ADVAN 055
-- Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 058
-- Chapter 08 초기추정값 061
-- Chapter 09 파라미터 추정 방법 및 세팅 071
-- Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 078
-- Chapter 11 공변량 분석 087
-
-
+- Chapter 01 계량약리학과 관련 개념들
+- Chapter 02 NONMEM 데이터셋 
+- Chapter 03 모델 유형 별 NONMEM 제어구문 소개 
+- Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 
+- Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 
+- Chapter 06 기타 ADVAN 
+- Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 
+- Chapter 08 초기추정값 
+- Chapter 09 파라미터 추정 방법 및 세팅 
+- Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법
+- Chapter 11 공변량 분석
