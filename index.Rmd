@@ -18,6 +18,8 @@ description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 �
 url: 'https\://pipetcpt.github.io/book-basic-1'
 github-repo: pipetcpt/book-basic-1
 cover-image: images/cover.jpg
+header-includes:
+  - \usepackage{kotex}
 ---
 
 ```{r setup, include=FALSE}
@@ -40,7 +42,7 @@ lapply(c('DT', 'citr', 'formatR', 'svglite'), function(pkg) {
 })
 ```
 
-# Preface {-}
+# 서문 {-}
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://www.crcpress.com/product/isbn/9781138700109'}
 knitr::include_graphics('images/cover.jpg', dpi = NA)
