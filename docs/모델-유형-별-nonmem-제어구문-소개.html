@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
 
 
-<meta name="date" content="2020-04-20" />
+<meta name="date" content="2020-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -249,7 +249,7 @@ NM-TRAN 제어구문과 문법과 형식에 맞추어 작성된 데이터셋 파
 된다. 레코드의 명칭은 최소 세글자 이상이면 사용할 수 있다. 예를 들어, $PROBLEM은 $PROB,
 $PRO로 줄여서 사용할 수 있다. 또한, NONMEM 7.2 이전 버전에서는 제어구문의 모든 부분을
 대문자로 작성해야만 했으나, 7.2 이상 버전에서는 대문자와 소문자를 혼용하여 작성이 가능하다.
-제어구문 내에서 세미콜론을 사용하여, 부연 설명을 작성할 수 있다. 세미콜론을 사용한 행은 텍Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 27
+제어구문 내에서 세미콜론을 사용하여, 부연 설명을 작성할 수 있다. 세미콜론을 사용한 행은 텍
 스트로 간주되어, 모델 실행시 NM-TRAN이 읽어들이지 않는다.
 제어구문은 그림 3.1처럼 프로젝트의 제목을 기입하는 $PROBLEM, 분석할 데이터셋 파일의 경
 로를 표시하는 $DATA와 각 데이터의 특성을 정의하는 <span class="math inline">\(INPUT, 집단 약동학 모델링 또는 PK/ PD 모델링을 위한 PREDDPP (\)</span>SUBROUTINE, $MODEL, $PK, $ERROR) 또는 $PRED, 모델 파
@@ -269,7 +269,7 @@ NONMEM 내에 구축되어 있는 모델이나 시간 또는 구획에 대한 �
 단 약동학 분석을 위한 PRED 서브루틴으로 NONMEM에 내장되어 있다. PREDPP를 사용하여
 모델 파라미터를 추정할 경우 $SUBROUTINE과 사용하고자 하는 ADVAN과 TRANS(사용하는
 ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)를 결정하여야 하며, 사용하고자
-하는 ADVAN에 따라 $MODEL, $PK, $ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED28 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+하는 ADVAN에 따라 $MODEL, $PK, $ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED
 서브루틴을 사용하는 경우에는 $PRED를 이용하여 모델을 정의할 수 있다. 자세한 내용은 다음
 장에서부터 차례로 다루기로 한다.</p>
 </div>
@@ -288,7 +288,7 @@ ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)�
 $DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내
 에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:
 $DATA test.csv IGNORE = @
-또는Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 29
+또는
 $DATA ..//test.csv IGNORE = @
 위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후
 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이
@@ -315,7 +315,7 @@ $INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일�
 문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로
 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농
 도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 CON=DV 또는
-DV로 작성하여야 한다.30 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</p>
+DV로 작성하여야 한다.</p>
 </div>
 <div id="subroutine-model-pk-des" class="section level3" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> 3.4.2. $SUBROUTINE, $MODEL, $PK, $DES</h3>
@@ -331,7 +331,7 @@ ADVAN11과 ADVAN12는 3구획 약동학 모델에 각각 사용한다. 특수 AD
 표 3.1에 자세히 나와있다.
 &lt;표 3.1&gt; 특수 ADVAN과 그에 따른 TRANS 서브루틴
 특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정
-하였기 때문에, $MODEL과 $DES 레코드는 사용하지 않으며, $PK를 통해 각 파라미터의 대표값Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 31
+하였기 때문에, $MODEL과 $DES 레코드는 사용하지 않으며, $PK를 통해 각 파라미터의 대표값
 과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. $PK는 그림 3.3과 같이 작성
 한다.
 &lt;그림 3.3. 2구획 경구 약동학 모델의 $PK 레코드&gt;
@@ -350,7 +350,7 @@ F1 Bioavailability for the first compartment
 R1 Rate for the first compartment
 D1 Duration for the first compartment
 ALAG1 Absorption lag parameter
-*각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.32 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</p>
+*각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.</p>
 </div>
 <div id="일반-advan" class="section level4" number="3.4.2.2">
 <h4><span class="header-section-number">3.4.2.2</span> 3.4.2.2 일반 ADVAN</h4>
@@ -381,7 +381,7 @@ $THETA (0, 100) (0, 30) (0, 0.7)
 $OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이
 며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의
 $PK에서 CL=TVCL<em>EXP(ETA(1))로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집
-단의 대표값을 가지며, 평균은 0이고 분산은 ωCL2을 따르는 분포 η1를 포함한 개인의 CL값이다.Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 33
+단의 대표값을 가지며, 평균은 0이고 분산은 ωCL2을 따르는 분포 η1를 포함한 개인의 CL값이다.
 각 개인마다 하나의 η1을 가지므로 CL는 개인마다 다르다. 특히, CLi = TVCL</em>eηi 이며, 지수모델
 은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에
 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)
@@ -411,7 +411,7 @@ coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을
 아래와 같다:
 $ERROR
 IPRED = F
-IRES = DV-IPRED34 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+IRES = DV-IPRED
 IWRES = IRES/IPRED
 Y = F<em>(1+EPS(1)) +EPS(2)
 σ
@@ -442,7 +442,7 @@ $SIGMA 1 FIX
 <div id="estimation-simulation" class="section level3" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> 3.4.4. $ESTIMATION, $SIMULATION</h3>
 <p>$ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것
-인지를 명시하는 레코드이다. 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (firstorder conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다.Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 35
+인지를 명시하는 레코드이다. 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (firstorder conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다.
 추정방법에 대한 이론적인 설명은 9장에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는
 기본적인 코드와 용어에 대해서 설명한다.
 $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
@@ -468,7 +468,7 @@ $COVARIANCE는 함께 사용할 수 없다.</p>
 <h3><span class="header-section-number">3.4.5</span> 3.4.5. $COVARIANCE, $TABLE</h3>
 <p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬,
 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.
-$COVARIANCE PRINT = E UNCONTIONAL MATRIX=S36 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+$COVARIANCE PRINT = E UNCONTIONAL MATRIX=S
 PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다.
 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작
 은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우
@@ -498,7 +498,7 @@ table, parameter table, categorical covariate table, continuous covariate table�
 수 ADVAN을 사용할 경우 $SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선
 택하고, $PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다.
 ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 $MODEL과 $DES 레코드는 사용할
-필요가 없다. (그림 3.5.)Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 37
+필요가 없다. (그림 3.5.)
 &lt;그림 3.5. 2구획 경구 약동학 모델의 제어구문의 예. ADVAN4 &gt;
 동일한 데이터를 일반 ADVAN을 사용하여 분석할 경우, 일반 선형 ADVAN 또는 비선형
 ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, $MODEL 레코드에서 모델
@@ -506,7 +506,7 @@ ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, $MODE
 NONMEM에 내장되어 있는 옵션으로 각각 용량 구획과 관찰값 구획을 지정할 때 사용한다. 각
 구획의 물질 이동은 1차 이동속도를 따르는 선형 ADVAN이므로, $DES를 사용하지 않아도 된다.
 &lt;그림 3.6. 2구획 경구 약동학 모델의
-제어구문의 예. ADVAN5 &gt;38 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+제어구문의 예. ADVAN5 &gt;
 2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선
 형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모
 델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이
@@ -522,7 +522,7 @@ $SUBROUTINE에서 ‘TOL=’을 정의하지 않으면, 모델 실행이 되지 
 질량변화로 표현한다. 미분방정식을 계산하는 방법에 따라 다양한 ADVAN을 선택할 수 있다. 일
 반 비선형 모델을 이용한 약동학 분석 모델의 예를 모약물과 대사체의 약동학을 동시에 분석하는
 모델을 통해 살펴보자. 개발 중인 약이 주대사체로 많이 대사되며, 그 대사체도 약효를 나타내는
-경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 3.8과 같이 대사체Chapter 03 · 모델 유형 별 NONMEM 제어구문 소개 39
+경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 3.8과 같이 대사체
 의 생성은 비선형 모델(Michaelis–Menten 모델)을 따른다고 가정하였다.
 &lt;그림 3.8. 모약물과 대사체의 약동학 동시 분석 모델&gt;
 각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.
@@ -531,7 +531,7 @@ $SUBROUTINE에서 ‘TOL=’을 정의하지 않으면, 모델 실행이 되지 
 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 그림 3.9와 같다. 모약물과 대사체의 농도
 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대
 사체의 농도는 CMT=3이다. $DES에서 각 구획의 이동을 정의하였으며, $ERROR에서 모약물과
-대사체의 관찰값의 변이를 각각 추정하였다.40 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+대사체의 관찰값의 변이를 각각 추정하였다.
 &lt;그림 3.9. 모약물과 대사체의 약동학 동시 분석 모델의 제어구문&gt;</p>
 </div>
 <div id="pred-모델" class="section level3" number="3.5.3">
@@ -553,7 +553,7 @@ nonlinear mixed effects models. John Wiley &amp; Sons, 2014.</li>
 <li>Boeckmann AJ, Beal SL, Shenier LB, editors. NONMEM 7.4.0 Users Guides – Part IV. ICON plc,
 Gaithersburg, MD, 2017.</li>
 <li>Beal SL, Boeckmann AJ, Shenier LB, editors. NONMEM 7.4.0 Users Guides – Part VI. ICON plc,
-Gaithersburg, MD, 2017.42 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</li>
+Gaithersburg, MD, 2017.</li>
 </ol>
 
 </div>

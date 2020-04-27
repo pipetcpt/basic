@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
+  <title>PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
   <meta name="description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta property="og:title" content="PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/bookdown/" />
   <meta property="og:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta name="twitter:title" content="PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   
   <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
@@ -24,15 +24,15 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
 
 
-<meta name="date" content="2020-04-20" />
+<meta name="date" content="2020-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="모델-유형-별-nonmem-제어구문-소개.html"/>
-<link rel="next" href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"/>
+
+<link rel="next" href="계량약리학과-관련-개념들.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -226,131 +226,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs</h1>
-<p>전 상 일
-본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다
-루고자 하며, 이전 장에서 나왔던 제어파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로
-설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴
-으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은
-정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2
-구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 1). 그림 1, 2를 살펴보면 모두 정
-맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 1은 약물농도가 하나의 직선으
-로, 그림 2는 약물농도가 두개의 직선으로 나타나 있다. 그림 1과 같이 시간에 따른 로그-약물농
-도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 2와 같이 두개의 직선으로
-설명되는 경우는 ADVAN3을 사용하면 된다.
-표 1. 구획 모델별 특정 ADVAN의 종류
-IV Extravascular
-1-Compartment ADVAN1 ADVAN2
-2-Compartment ADVAN3 ADVAN4
-3-Compartment ADVAN11 ADVAN12Chapter 04 · 특수 ADVAN을 이용한 control stream의 코딩 43
-그림 1. Example of IV 1-compartment model 그림 2. Example of IV 2-compartment model
-TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은
-정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1
-TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획
-모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며,
-ADVAN 1~4에서 사용하는 TRANS 서브루틴을 표 2에서 확인할 수 있다. 추가로, 각 ADVAN에서
-필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에
-잘 설명되어 있고, 그중 ADVAN 1~4 까지의 내용을 그림 3에서 확인할 수 있다.
-표2. ADVAN 과 TRANS 서브루틴 조합에 따른 필수 파라미터
-ADVAN
-subroutine
-TRANS
-subroutine
-Required
-parameters
-ADVAN1
-TRANS1 K
-TRANS2 CL, V
-ADVAN2
-TRANS1 K, KA
-TRANS2 CL, V, KA
-ADVAN3
-TRANS1 K, K12, K21
-TRANS3 CL, V, Q, VSS
-TRANS4 CL, V1, Q, V2
-TRANS5 AOB, ALPHA, BETA
-TRANS6 ALPHA, BETA, K21
-ADVAN4
-TRANS1 K, K23, K32, KA
-TRANS3 CL, V, Q, VSS, KA
-TRANS4 CL, V2, Q, V3, KA
-TRANS5 AOB, ALPHA, BETA, KA
-TRANS6 ALPHA, BETA, K32, KA44 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
-그림 3. Standard Pharmacokinetic Models and Parameters
-ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파
-라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있
-다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는
-구획을 표시한다. 해당 내용은 표3에 간략히 설명하였으며 NONMEM User Guide - Part V의
-Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다.Chapter 04 · 특수 ADVAN을 이용한 control stream의 코딩 45
-표3. Additional PK parameters
-Name Parameter
-Sn Scaling parameter for compartment number n
-Fn Bioavailability fraction for compartment n
-Rn Rate parameter for compartment n
-Dn Duration parameter for compartment n
-ALAGn Absorption lag parameter for compartment n
-NM guide 4 page70
-앞서 언급된 ADVAN &amp; TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어
-간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외
-투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이
-다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으
-로 CL = THETA(1) * EXP(ETA(1)) 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할
-수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게
-작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 공변량 강의
-에서 다뤄질 예정이다.
-예시
-$SUBROUTINES ADVAN4 TRANS4
-$PK
-TVCL = THETA(1)
-TVV2 = THETA(2)
-TVV3 = THETA(3)
-TVQ = THETA(4)
-TVKA = THETA(5)
-CL = TVCL * EXP(ETA(1))
-V2 = TVV2 * EXP(ETA(2))
-V3 = TVV3 * EXP(ETA(3))
-Q = TVQ * EXP(ETA(4))
-KA = TVKA * EXP(ETA(5))46 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
-ALAG1 = THETA(6) * EXP(ETA(6))
-S2 = V2 / 1000
-ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫
-자는 해당 구획을 의미한다. ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)
-은 2구획, Peripheral(말초구획)은 3구획이다.
-그림 4. Structure of 2-compartment extravascular model
-$PK 블록에 쓰인 필수 파라미터를 살펴보면 CL은 청소율, V2, V3는 각각 중심구획의 분포용적,
-말초구획의 분포용적, Q는 Intercompartmental clearance, KA는 흡수속도상수를 의미하며, 부
-가 파라미터인 ALAG1은 저장구획의 흡수지연시간, S2는 중심구획에 대한 척도 파라미터를 의미
-한다.
-만약에 IV와 PO 데이터가 같이 있다면, 약물의 절대생체이용률을 구할 수 있는데, F1 =
-THETA(7) * EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획의 번호를 붙이는데,
-여기서는 저장구획이 1구획이니 F1을 사용하면 된다. IV 데이터는 없고 PO 데이터의 용량군이 여
-러 개라면 아래처럼 하나의 용량군을 1로 고정하고, 다른 용량군의 THETA를 다르게 주어 상대생
-체이용률을 구할 수 있다.
-IF (DOSE.EQ.50) F1 = 1
-IF (DOSE.EQ.100) F1 = THETA(7)
-IF (DOSE.EQ.200) F1 = THETA(8)
-척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라
-미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게Chapter 04 · 특수 ADVAN을 이용한 control stream의 코딩 47
-되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에
-서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도
-의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인
-경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/
-L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가
-일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으
-로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, control
-stream에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한
-구체적인 설명은 NONMEM User Guide - Part VI 및 그림 5를 참고하도록 하자.
-그림 5. Basic and additional pharmacokinetic parameters48 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</p>
+<div id="header">
+<h1 class="title">PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</h1>
+<p class="author"><em>임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬</em></p>
+<p class="date"><em>2020-04-27</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered" number="">
+<h1>Preface</h1>
+<p><a href="https://www.crcpress.com/product/isbn/9781138700109" target="_blank"><img src="images/cover.jpg" style="display: block; margin: auto;" /></a></p>
+<p>PIPET / Q-fitter Pharmacometrics Course</p>
+<p>Basic-1 모델 구축의 기초</p>
+<ul>
+<li>Chapter 01 계량약리학과 관련 개념들 007</li>
+<li>Chapter 02 NONMEM 데이터셋 015</li>
+<li>Chapter 03 모델 유형 별 NONMEM 제어구문 소개 026</li>
+<li>Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 042</li>
+<li>Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 048</li>
+<li>Chapter 06 기타 ADVAN 055</li>
+<li>Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 058</li>
+<li>Chapter 08 초기추정값 061</li>
+<li>Chapter 09 파라미터 추정 방법 및 세팅 071</li>
+<li>Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 078</li>
+<li>Chapter 11 공변량 분석 087</li>
+</ul>
+<p>This short book introduces an R package, <strong>bookdown</strong>, to change your workflow of writing books. It should be technically easy to write a book, visually pleasant to view the book, fun to interact with the book, convenient to navigate through the book, straightforward for readers to contribute or leave feedback to the book author(s), and more importantly, authors should not always be distracted by typesetting details.</p>
+<p>The <strong>bookdown</strong> package is built on top of R Markdown (<a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>), and inherits the simplicity of the Markdown syntax (you can learn the basics in five minutes; see Section <a href="#markdown-syntax"><strong>??</strong></a>), as well as the possibility of multiple types of output formats (PDF/HTML/Word/…). It has also added features like multi-page HTML output, numbering and cross-referencing figures/tables/sections/equations, inserting parts/appendices, and imported the GitBook style (<a href="https://www.gitbook.com" class="uri">https://www.gitbook.com</a>) to create elegant and appealing HTML book pages. This book itself is an example of how you can produce a book from a series of R Markdown documents, and both the printed version and the online version can look professional. You can find more examples at <a href="https://bookdown.org" class="uri">https://bookdown.org</a>.</p>
+<p><a href="https://github.com/rstudio/bookdown" target="_blank"><img src="images/logo.png" style="display: block; margin: auto;" /></a></p>
+<p>Despite the package name containing the word “book”, <strong>bookdown</strong> is not only for books. The “book” can be anything that consists of multiple R Markdown documents meant to be read in a linear sequence, such as course handouts, study notes, a software manual, a thesis, or even a diary. In fact, many <strong>bookdown</strong> features apply to single R Markdown documents as well (see Section <a href="#a-single-document"><strong>??</strong></a>).</p>
+<p><img src="images/by-nc-sa.png" alt="Creative Commons License" /><br />
+The online version of this book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. You can purchase a hardcopy from <a href="https://www.crcpress.com/product/isbn/9781138700109">Chapman &amp; Hall</a> or Amazon.</p>
+<div id="why-read-this-book" class="section level2 unnumbered" number="">
+<h2>Why read this book</h2>
+<p>Can we write a book in one source format, and generate the output to multiple formats? Traditionally books are often written with LaTeX or Microsoft Word. Either of these tools will make writing books a one-way trip and you cannot turn back: if you choose LaTeX, you typically end up only with a PDF document; if you work with Word, you are likely to have to stay in Word forever, and may also miss the many useful features and beautiful PDF output from LaTeX.</p>
+<p>Can we focus on writing the content without worrying too much about typesetting? There seems a natural contradiction between content and appearance, and we always have to balance our time spent on these two aspects. No one can have a cake and eat it too, but it does not mean we cannot have a half and eat a half. We want our book to look reasonably pretty, and we also want to focus on the content. One possibility is to give up PDF temporarily, and what you may have in return is a pretty preview of your book as HTML web pages. LaTeX is an excellent typesetting tool, but you can be easily buried in the numerous LaTeX commands and typesetting details while you are working on the book. It is just so hard to refrain from previewing the book in PDF, and unfortunately also so common to find certain words exceed the page margin, certain figures float to a random page, five or six stray words at the very end of a chapter proudly take up a whole new page, and so on. If the book is to be printed, we will have to deal with these issues eventually, but it is not worth being distracted over and over again while you are writing the content of the book. The fact that the Markdown syntax is simpler and has fewer features than LaTeX also helps you focus on the content. Do you really have to define a new command like <code>\myprecious{}</code> that applies <code>\textbf{\textit{\textsf{}}}</code> to your text? Does the letter “R” have to be enclosed in <code>\proglang{}</code> when readers can easily figure out it stands for the R language? It does not make much difference whether everything, or nothing, needs the reader’s attention.</p>
+<p>Can readers interact with examples in our book as they read it? The answer is certainly no if the book is printed on paper, but it is possible if your book has an HTML version that contains live examples, such as Shiny applications (<a href="https://shiny.rstudio.com" class="uri">https://shiny.rstudio.com</a>) or HTML widgets (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>). For example, readers may immediately know what happens if they change certain parameters of a statistical model.</p>
+<p>Can we get feedback and even contributions from readers as we develop the book? Traditionally the editor will find a small number of anonymous reviewers to review your book. Reviewers are often helpful, but you may still miss the wisdom of more representative readers. It is too late after the first edition is printed, and readers may need to wait for a few years before the second edition is ready. There are some web platforms that make it easy for people to provide feedback and contribute to your projects. GitHub (<a href="https://github.com" class="uri">https://github.com</a>) is one prominent example. If anyone finds a typo in your book, he/she can simply correct it online and submit the change back to you for your approval. It is a matter of clicking a button to merge the change, with no questions asked or emails back and forth. To be able to use these platforms, you need to learn the basics of version control tools like GIT, and your book source files should be in plain text.</p>
+<p>The combination of R (<a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>), Markdown, and Pandoc (<a href="http://pandoc.org" class="uri">http://pandoc.org</a>) makes it possible to go from one simple source format (R Markdown) to multiple possible output formats (PDF, HTML, EPUB, and Word, etc.). The <strong>bookdown</strong> package is based on R Markdown, and provides output formats for books and long-form articles, including the GitBook format, which is a multi-page HTML output format with a useful and beautiful user interface. It is much easier to typeset in HTML than LaTeX, so you can always preview your book in HTML, and work on PDF after the content is mostly done. Live examples can be easily embedded in HTML, which can make the book more attractive and useful. R Markdown is a plain-text format, so you can also enjoy the benefits of version control, such as collaborating on GitHub. We have also tried hard to port some important features from LaTeX to HTML and other output formats, such as figure/table numbering and cross-references.</p>
+<p>In short, you just prepare a few R Markdown book chapters, and <strong>bookdown</strong> can help you turn them into a beautiful book.</p>
+</div>
+<div id="structure-of-the-book" class="section level2 unnumbered" number="">
+<h2>Structure of the book</h2>
+<p>Chapters <a href="#introduction"><strong>??</strong></a> and <a href="#components"><strong>??</strong></a> introduce the basic usage and syntax, which should be sufficient to get most readers started in writing a book. Chapters <a href="#output-formats"><strong>??</strong></a> and <a href="#customization"><strong>??</strong></a> are for those who want to fine-tune the appearance of their books. They may look very technical if you are not familiar with HTML/CSS and LaTeX. You do not need to read these two chapters very carefully for the first time. You can learn what can be possibly changed, and come back later to know how. For Chapter <a href="#editing"><strong>??</strong></a>, the technical details are not important unless you do not use the RStudio IDE (Section <a href="#rstudio-ide"><strong>??</strong></a>). Similarly, you may feel overwhelmed by the commands presented in Chapter <a href="#publishing"><strong>??</strong></a> to publish your book, but again, we have tried to make it easy to publish your book online via the RStudio IDE. The custom commands and functions are only for those who choose not to use RStudio’s service or want to understand the technical details.</p>
+<p>To sum it up, this book is a comprehensive reference of the <strong>bookdown</strong> package. You can follow the 80/20 rule when reading it. Some sections are there for the sake of completeness, and not all sections are equally useful to the particular book(s) that you intend to write.</p>
+</div>
+<div id="software-information-and-conventions" class="section level2 unnumbered" number="">
+<h2>Software information and conventions</h2>
+<p>This book is primarily about the R package <strong>bookdown</strong>, so you need to at least install R and the <strong>bookdown</strong> package. However, your book does not have to be related to the R language at all. It can use other computing languages (C++, SQL, Python, and so on; see Appendix <a href="#software-usage"><strong>??</strong></a>), and it can even be totally irrelevant to computing (e.g., you can write a novel, or a collection of poems). The software tools required to build a book are introduced in Appendix <a href="#software-tools"><strong>??</strong></a>.</p>
+<p>The R session information when compiling this book is shown below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 3.6.3 (2020-02-29)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 18363)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=Korean_Korea.949 
+## [2] LC_CTYPE=Korean_Korea.949   
+## [3] LC_MONETARY=Korean_Korea.949
+## [4] LC_NUMERIC=C                
+## [5] LC_TIME=Korean_Korea.949    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets 
+## [6] methods   base     
+## 
+## loaded via a namespace (and not attached):
+## [1] bookdown_0.18   miniUI_0.1.1.1  rmarkdown_2.1  
+## [4] tools_3.6.3     shiny_1.4.0.2   htmltools_0.4.0
+## [7] knitr_1.28</code></pre>
+<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>bookdown::render_book()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
+</div>
+<div id="acknowledgments" class="section level2 unnumbered" number="">
+<h2>Acknowledgments</h2>
+<p>First I’d like to thank my employer, RStudio, for providing me the opportunity to work on this exciting project. I was hoping to work on it when I first saw the GitBook project in 2013, because I immediately realized it was a beautiful book style and there was a lot more power we could add to it, judging from my experience of writing the <strong>knitr</strong> book <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span> and reading other books. R Markdown became mature after two years, and luckily, <strong>bookdown</strong> became my official job in late 2015. There are not many things in the world better than the fact that your job happens to be your hobby (or vice versa). I totally enjoyed messing around with JavaScript libraries, LaTeX packages, and endless regular expressions in R. Honestly I should also thank StackOverflow (<a href="http://stackoverflow.com" class="uri">http://stackoverflow.com</a>), and I believe you all know <a href="http://bit.ly/2cWbiAp">what I mean,</a> if you have ever written any program code.</p>
+<p>This project is certainly not a single person’s effort. Several colleagues at RStudio have helped me along the way. Hadley Wickham provided a huge amount of feedback during the development of <strong>bookdown</strong>, as he was working on his book <em>R for Data Science</em> with Garrett Grolemund. JJ Allaire and Jonathan McPherson provided a lot of technical help directly to this package as well as support in the RStudio IDE. Jeff Allen, Chaita Chaudhari, and the RStudio Connect team have been maintaining the <a href="https://bookdown.org" class="uri">https://bookdown.org</a> website. Robby Shaver designed a nice cover image for this book. Both Hadley Wickham and Mine Cetinkaya-Rundel reviewed the manuscript and gave me a lot of helpful comments. Tareef Kawaf tried his best to help me become a professional software engineer. It is such a blessing to work in this company with enthusiastic and smart people. I remember once I told Jonathan, “hey I found a problem in caching HTML widgets dependencies and finally figured out a possible solution”. Jonathan grabbed his beer and said, “I already solved it.” “Oh, nice, nice.”</p>
+<p>I also received a lot of feedback from book authors outside RStudio, including Jan de Leeuw, Jenny Bryan, Dean Attali, Rafael Irizarry, Michael Love, Roger Peng, Andrew Clark, and so on. Some users also contributed code to the project and helped revise the book. Here is a list of all contributors: <a href="https://github.com/rstudio/bookdown/graphs/contributors" class="uri">https://github.com/rstudio/bookdown/graphs/contributors</a>. It feels good when you invent a tool and realize you are also the beneficiary of your own tool. As someone who loves the GitHub pull request model, I wished readers did not have to email me there was a typo or obvious mistake in my book, but could just fix it via a pull request. This was made possible in <strong>bookdown</strong>. You can see how many pull requests on typos I have merged: <a href="https://github.com/rstudio/bookdown/pulls" class="uri">https://github.com/rstudio/bookdown/pulls</a>. It is nice to have so many outsourced careful human spell checkers. It is not that I do not know how to use a real spell checker, but I do not want to do this before the book is finished, and the evil Yihui also wants to leave a few simple tasks to the readers to engage them in improving the book.</p>
+<p>Callum Webb kindly designed a nice hexbin sticker for <strong>bookdown</strong>.</p>
+<p>The <strong>bookdown</strong> package is not possible without a few open-source software packages. In particular, Pandoc, GitBook, jQuery, and the dependent R packages, not to mention R itself. I thank the developers of these packages.</p>
+<p>I moved to Omaha, Nebraska, in 2015, and enjoyed one year at Steeplechase Apartments, where I lived comfortably while developing the <strong>bookdown</strong> package, thanks to the extremely friendly and helpful staff. Then I met a professional and smart realtor, Kevin Schaben, who found a fabulous home for us in an amazingly short period of time, and I finished this book in our new home.</p>
+<p>John Kimmel, the editor from Chapman &amp; Hall/CRC, helped me publish my first book. It is my pleasure to work with him again. He generously agreed to let me keep the online version of this book for free, so I can continue to update it after it is printed and published (i.e., you do not have to wait for years for the second edition to correct mistakes and introduce new features). I wish I could be as open-minded as he is when I’m his age. Rebecca Condit and Suzanne Lassandro proofread the manuscript, and their suggestions were professional and helpful. Shashi Kumar solved some of my technical issues with the publisher’s LaTeX class (<code>krantz.cls</code>) when I was trying to integrate it with <strong>bookdown</strong>. I also appreciate the very helpful comments from the reviewers Jan de Leeuw, Karl Broman, Brooke Anderson, Michael Grayling, Daniel Kaplan, and Max Kuhn.</p>
+<p>Lastly I want to thank my family, in particular, my wife and son, for their support. The one-year-old has discovered that my monitor will light up when he touches my keyboard, so occasionally he just creeps into my office and presses randomly on the keyboard when I’m away. I’m not sure if this counts as his contribution to the book… @)!%)&amp;@*</p>
 
+<p class="flushright">
+Yihui Xie<br />
+Elkhorn, Nebraska
+</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="모델-유형-별-nonmem-제어구문-소개.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="계량약리학과-관련-개념들.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -381,7 +358,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/04.Rmd",
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/index.Rmd",
 "text": "Edit"
 },
 "history": {

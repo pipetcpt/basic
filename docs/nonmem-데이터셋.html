@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
 
 
-<meta name="date" content="2020-04-20" />
+<meta name="date" content="2020-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,7 +278,7 @@ event)로 만들어져 있다. 투약과 관측 정보는 같은 레코드(또�
 <p>데이터셋은 다양한 프로그램으로 만들 수 있다. 대게 excel을 사용하여 CSV 파일로 만들며, 복
 잡하거나 양이 많은 데이터의 경우 R과 같은 소프트웨어를 사용하여 데이터를 정리하여 데이
 터셋을 생성할 수 있다. 데이터셋은 여러가지 변수로 구성된다. 데이터셋 변수(Variables of the
-dataset)는 다른 말로 데이터 아이템(Data item) 이라고도 부른다. 이 중, 집단모델링을 위해 데이18 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+dataset)는 다른 말로 데이터 아이템(Data item) 이라고도 부른다. 이 중, 집단모델링을 위해 데이
 터셋에 필수적으로 포함되어야 하는 변수가 존재한다. 예를 들어 PREDPP를 이용할 때 ID, DV,
 TIME, AMT는 데이터셋에 필수적으로 갖추어야하는 변수들이다.
 많이 쓰이는 기본적인 데이터셋의 형태는 그림 3 과 같다. 첫 행은 데이터 아이템의 이름을 기재
@@ -323,7 +323,7 @@ NONMEM 실행 시 데이터셋을 불러들여올 때, 데이터 아이템 레�
 각각의 데이터 아이템에 대해 아래 설명되어 있다. 데이터 아이템은 NONMEM이 인식하는 이
 미지정 된 이름으로 설정하여 작성한다. 이와 같은 변수의 이름은 사용자와 NONMEM이 이미 약
 속하여 사용하는 것이며, 데이터셋에 새 변수를 추가하고자 할 때 이미 지정된 이름은 사용하지
-않는 것을 추천한다.20 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</p>
+않는 것을 추천한다.</p>
 </div>
 <div id="지정된-데이터-아이템-레이블-reserved-labels" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> 2.5 지정된 데이터 아이템 레이블 Reserved Labels</h2>
@@ -377,7 +377,7 @@ PREDPP 사용시 MDV는 데이터셋에서 필수적으로 필요한 변수는 �
 </div>
 <div id="time" class="section level3" number="2.5.5">
 <h3><span class="header-section-number">2.5.5</span> 2.5.5 TIME</h3>
-<p>TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전22 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+<p>TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전
 에는 음의 값을 가질 수 없었지만, NONMEM 7.4부터는 음의 값을 가질 수 있다. 그림 5. 와 같이
 데이터셋 작성 시 대상자 별로 시간이 순차적으로 증가하는 순서로 기입해야 하며, 감소하거나 뒤
 섞인 순서로 기입을 해서는 안된다(다만, 재설정 되는 투약 이벤트가 있는 경우는 예외일 수 있
@@ -430,7 +430,7 @@ AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 
 R1=THETA(1)). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의
 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로
 컨트롤 파일 작성 시 $PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를
-들어, D1=THETA(1)). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate)24 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+들어, D1=THETA(1)). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate)
 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.
 예를 들어, 시간에 따라 직선적으로 빠르게 증가하는 약물의 농도가 관측될 경우, 이는 0차 흡수
 를 보인다고 설명될 수 있으며 이를 설명하기 위해 데이터셋 상의 RATE를 -2로 기입하여, 투여 지
@@ -485,7 +485,7 @@ NONMEM은 공변량에 대한 정보가 없으며, 이는 사용자가 공변량
 <li>Owen, Joel S., and Jill Fiedler-Kelly. Introduction to population pharmacokinetic/pharmacodynamic
 analysis with nonlinear mixed effects models. John Wiley &amp; Sons, 2014.</li>
 <li>Boeckmann, A. J., L. B. Sheiner, and S. L. Beal. “NONMEM users guide – part V.” San Francisco:
-University of California San Francisco (2009).26 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초</li>
+University of California San Francisco (2009).</li>
 </ol>
 
 </div>

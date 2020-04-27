@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
+  <title>Chapter 7 Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
   <meta name="description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta property="og:title" content="Chapter 7 Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/bookdown/" />
   <meta property="og:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta name="twitter:title" content="Chapter 7 Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   
   <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/bookdown/images/cover.jpg" />
@@ -24,15 +24,15 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
 
 
-<meta name="date" content="2020-04-20" />
+<meta name="date" content="2020-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"/>
-<link rel="next" href="chapter-06-기타-advan-newer-advans-advan-9-13.html"/>
+<link rel="prev" href="chapter-06-기타-advan-newer-advans-advan-9-13.html"/>
+<link rel="next" href="chapter-08-초기추정값-initial-estimate.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -226,112 +226,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs</h1>
-<p>홍 태 곤
-일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. $MODEL 구문
-을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN
-6,8,9,13)에서는 $PK구문 다음에 $DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도,
-효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식
-(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN
-의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5~8에 대하여 다루기로 한다.
-ADVAN5 (General Linear)
-ADVAN6 (General Nonlinear)
-ADVAN7 (General Linear with Real Eigenvalues)
-ADVAN8 (General Nonlinear Kinetics with Stiff Equations)
-ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)
-ADVAN13 (General Nonlinear Kinetics using LSODA)
-표1. 일반 ADVAN 의 종류
-그림1. 일반 선형 ADVAN을 이용한 코드의 구조Chapter 05 · 일반 ADVAN을 이용한 control stream의 코딩 49
-5.1 일반 선형 ADVAN
-특수 ADVAN과 비교하였을 때, 일반 선형 ADVAN 코드의 특징은 $MODEL 구문이 추가되었
-다는 점이다. $MODEL 구문을 사용하여 모델에서 사용할 구획의 수와 특성을 정의할 수 있다. 다
-음에 언급될 비선형 ADVAN과 다르게 선형 ADVAN에서는 구획 사이의 1차 이동만을 가정하기
-때문에, $PK 구문만으로 각 구획 간의 연결 관계와 속도상수를 정의할 수 있다. 구획들 간의 관계
-는 1차 이동 속도상수를 의미하는 알파벳 K와 구획내의 물질 이동의 시작과 끝의 구획번호를 사
-용하여 $PK 구문에서 정의한다. M 구획에서 n 구획으로의 이동상수는 Kmn으로 표현한다. 예를
-들어, 파라미터 K12는 구획1에서 구획2로 이동하는 속도를 설명하는 1차 이동 속도상수이다. 따라
-서 일반 ADVAN 모델에서 추정하는 주된 파라미터는 속도상수가 되며 이러한 추정은 행렬지수
-(matrix exponential)에 대한 수치적 근사(numerical approximation)를 이용하여, 선형 미분방
-정식을 푸는 방식으로 이루어진다.
-ADVAN 5 ADVAN 7
-When used? Eigenvalues of the rate constant
-matrix are complex
-Eigenvalues of the rate constant
-matrix are known to be real
-Example PBPK model Many PK systems
-Running time Slower Faster
-표2. 일반 선형 ADVAN 의 종류 및 특징[1]
-일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소
-수(complex number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더50 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
-단순한 구조를 가지며 고유값이 실수(real number)인 일반적인 약동학 모델에서는 상대적으로
-더 빠른 ADVAN 7을 적용할 수 있다.
-그림2. 일반 선형 ADVAN을 이용한 코드 예시
-일반 선형 ADVAN의 코드를 보면 $SUBROUTINE 구문을 통해 어떤 ADVAN을 사용할 지 설정
-한 후, $MODEL 구문에서 모델에서 사용할 구획의 수와 특성을 정의한다. 특수 ADVAN 과 달리
-999개까지 사용자가 원하는 만큼 구획의 수를 설정할 수 있다. $PK구문을 이용하여 각 구획 간
-물질의 이동 관계를 설정하고 약동학 파라미터(ex CL, V)와의 관계도 정의할 수 있다.
-5.2 일반 비선형 ADVAN
-그림3. 일반 비선형 ADVAN을 이용한 코드의 구조Chapter 05 · 일반 ADVAN을 이용한 control stream의 코딩 51
-일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형
-관계를 허용하기 때문에 이러한 특성을 설명하기 위하여, 반드시 $DES 구문을 이용한 미분 방정
-식을 작성하여야 한다.
-ADVAN 6 ADVAN 8
-When used? Linear or non-linear transfer
-between compartments
-Big difference in the time constants
-(long half life: Ka vs Ke)
-Method Runge-Kutta method Gear method
-표3. 일반 비선형 ADVAN 의 종류 및 특징[2]
-일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 본 강의에서는 ADVAN 6와 8에 대하여
-다룬다. 보통 안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는
-속도상수 간 큰 차이를 보이는 불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가
-진 단일클론항체)은 ADVAN 6를 이용할 경우, 파라미터 추정 시간이 오래 걸리거나 추정에 실패
-할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수 추정을 위한 미분방
-정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를 적용하였
-을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method 를
-이용한 ADNVA 8의 적용을 고려할 수 있다.
-그림4. 일반 비선형 ADVAN을 이용한 코드 예시
-일반 비선형 ADVAN의 코드를 보면 앞에서 살펴본 일반 선형 ADVAN과 유사한 구조를 보이나,
-$PK에 이어 미분방정식을 표현하는 $DES 구문이 추가된다.52 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
-비선형 ADVAN을 사용할 경우, $SUBROUTINE 구문에 적용할 ADVAN(ex. ADVAN 6 or 8)을
-지정한 후, TOL 이라는 명령어를 추가해야 한다. TOL 은 tolerance 의 약자로, 각 구획의 내부값
-(질량, 농도, 효과) 계산에 필요한 숫자의 정확한 자릿수(NRD, number of required digits)를 의
-미하며, 일반적으로 $ESTIMATION 구문에 설정하는 SIG 값보다 1 또는 2 큰 숫자로 설정한다.
-$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정
-의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라
-고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다.
-DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하
-는 데이터 아이템(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요
-가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경
-우, “DEPOT” 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, “DEPOT”
-을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로
-DEFOBS 를 입력하지 않을 경우 “CENTRAL” 로 지정된 첫째 구획에 관찰값이 배정된 것으로
-NONMEM 이 인식을 하며, “CENTRAL” 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰
-값이 배정된 것으로 인식한다[3]. 데이터셋에 CMT 아이템을 만들고, DEFDOSE 와 DEFOBS 를
-데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식
-한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.
-마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 $DES에 미분 방정식을 작성
-하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를
-들어 1번 구획에서 약이 1차 속도로 제거되는 것은 DADT(1)= -KA * A(1)으로 나타낼 수 있다. 여
-기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. $DES 구
-문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 “T” 로 표현하여야 하며 이는 데
-이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.Chapter 05 · 일반 ADVAN을 이용한 control stream의 코딩 53
-그림5. $DES 구문 적용을 위한 코드 예시
-그림6. 2구획 경구모델을 ADVAN5로 구현한 코드 예시54 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
-그림7. 2구획 경구모델을 ADVAN6로 구현한 코드 예시
-동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하
-여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할
-수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나,
-$SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분
-방정식을 작성하여야 한다.
-참고문헌
-1. Beal SL, Shenier LB, Boeckmann AJ, Bauer RJ, editors. 1989 NONMEM 7.4.0 Users Guides – Part VI.
-(1989-2018). ICON Development Solutions, Hanover. P111.
-2. Bonate PL. Pharmacokinetic-Pharmacodynamic Modeling and Simulation. 2nd ed. New York: Springer
-Science + Business Media, LLC; 2011. P605.
-3. Beal SL, Shenier LB, Boeckmann AJ, Bauer RJ, editors. 1989 NONMEM 7.4.0 Users Guides – Part IV.
-(1989-2018). ICON Development Solutions, Hanover. P106.참고문헌 · 기타 ADVAN 55</p>
+<div id="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs</h1>
+<p>임 동 석
+7.1 $PRED와 PREDPP library사용할 때의 차이
+PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔
+지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델
+의 구조를 만들어 볼 수 있는 $PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식
+을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터
+셋의 칼럼 이름들을 정의해주는 $INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만
+특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 $PRED를
+쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론
+$DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는
+모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 $PRED
+와는 다르다.
+제어파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋
+을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라
+적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 1의 예는 1분획 모델을 ADVAN2 대신
+$PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른
+ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 2와 같이 차이가
+난다.Chapter 07 · <span class="math inline">\(PRED: ADVAN을 쓰지 않는 코딩 59 그림 1 ADVAN을 써서 코딩할 때(A)와 쓰지않고 할 때(B)의 예 그림 2 ADVAN을 써서 코딩할 때(A)와 쓰지않고 할 때(B)의 데이터셋 구조의 차이 AMT와 같은 용어는 PREDPP library를 사용할 경우(\)</span>SUBROUTINE 쓸 때) 한번의 투여간격
+사이에 주는 용량이라는 의미로 약속되어 있어서 $INPUT에서 데이터셋의 칼럼 이름으로 명시
+해 주어야 하고, 그림 2의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영
+향을 주는 값으로 약속되어 있다. 그러나 $PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼
+그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 1의 제어구문에서 “IPRED =
+D<em>COEF</em>KA/(KA-EXPO)<em>(EXP(-EXPO</em>T)-EXP(-KA*T))”의 용량을 나타내는 변수 “D”에 해당
+된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 $INPUT 뒤에 적
+어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 $PRED를 쓸 때는 $INPUT 뒤에 적어주는
+AMT는 용량이라는 의미를 잃어버리고, AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제60 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
+목이라는 의미만을 가진다. 단지 $PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 1의 예에
+서는 $INPUT 뒤에 나오는 네번째 칼럼 이름은 “D” 라고 써주면 될 것이다.
+미분방정식으로 각 분획간의 물질이동의 식만 주면 알아서 각 분획 별 물질의 양을 구해주는
+$DES와는 달리 $PRED를 쓸 경우 우리가 얻고자 하는 값(예컨데 특정 분획에서의 약물 농도)을
+라플라스 변환을 이용하든지 하여 수식으로 풀어서 넣어 주어야 한다.
+7.2 $PRED를 써야 하는 경우
+편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑 같은 모델을 굳이 복잡한 수식을 풀어서
+열거하는 $PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들
+만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처
+리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는
+경우도 많다(그림 3).
+그림 3 약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서
+수식을 직접 적어주는 것이 편리하다.Chapter 08 · 초기추정값 61</p>
 
 </div>
             </section>
@@ -339,8 +274,8 @@ Science + Business Media, LLC; 2011. P605.
           </div>
         </div>
       </div>
-<a href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter-06-기타-advan-newer-advans-advan-9-13.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chapter-06-기타-advan-newer-advans-advan-9-13.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-08-초기추정값-initial-estimate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -371,7 +306,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/05.Rmd",
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/07.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,6 +1,6 @@
 book_filename: bookdown
-repo: https://github.com/rstudio/bookdown/
-output_dir: _book
+repo: https://github.com/pipetcpt/book-basic-1/
+output_dir: docs
 clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
 language:
