@@ -1,8 +1,13 @@
+publish: clean gitbook pdf epub
+
 pdf:
-	Rscript --quiet _render.R "bookdown::pdf_book"
+	cp references/book-basic-1.pdf docs/
 
 gitbook:
 	Rscript --quiet _render.R "bookdown::gitbook"
 
-all:
-	Rscript --quiet _render.R
+epub:
+	Rscript --quiet _render.R "bookdown::epub_book"
+
+clean:
+	rm -rf docs

@@ -1,20 +1,23 @@
-# Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs
+# 일반 ADVAN을 이용한 control stream의 코딩 
+
+**Coding of control stream using general ADVANs**
+
 홍 태 곤
-일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. $MODEL 구문
-을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN
-6,8,9,13)에서는 $PK구문 다음에 $DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도,
-효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식
-(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN
-의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5~8에 대하여 다루기로 한다.
+
+일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. $MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 $PK구문 다음에 $DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5~8에 대하여 다루기로 한다.
+
 ADVAN5 (General Linear)
 ADVAN6 (General Nonlinear)
 ADVAN7 (General Linear with Real Eigenvalues)
 ADVAN8 (General Nonlinear Kinetics with Stiff Equations)
 ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)
 ADVAN13 (General Nonlinear Kinetics using LSODA)
+
 표1. 일반 ADVAN 의 종류
+
 그림1. 일반 선형 ADVAN을 이용한 코드의 구조Chapter 05 · 일반 ADVAN을 이용한 control stream의 코딩 49
-5.1 일반 선형 ADVAN
+
+## 5.1 일반 선형 ADVAN
 특수 ADVAN과 비교하였을 때, 일반 선형 ADVAN 코드의 특징은 $MODEL 구문이 추가되었
 다는 점이다. $MODEL 구문을 사용하여 모델에서 사용할 구획의 수와 특성을 정의할 수 있다. 다
 음에 언급될 비선형 ADVAN과 다르게 선형 ADVAN에서는 구획 사이의 1차 이동만을 가정하기

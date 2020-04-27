@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 모델 유형 별 NONMEM 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
-  <meta name="description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 모델 유형 별 NONMEM 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://pipetcpt.github.io/book-basic-1" />
   <meta property="og:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
-  <meta property="og:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
-  <meta name="github-repo" content="rstudio/bookdown" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/book-basic-1" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 모델 유형 별 NONMEM 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
   
-  <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="twitter:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
 
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="nonmem-데이터셋.html"/>
-<link rel="next" href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"/>
+<link rel="next" href="특수-advan을-이용한-control-stream의-코딩.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -67,7 +67,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Authoring Books with R Markdown</a></li>
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
@@ -82,55 +82,64 @@
 </ul></li>
 <li class="chapter" data-level="2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 2.1 필수 제어구문 작성 방법</a>
+<li class="chapter" data-level="2.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> 2.1.1 $PROB 레코드 작성</a></li>
-<li class="chapter" data-level="2.1.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> 2.1.2 $DATA 레코드 작성</a></li>
-<li class="chapter" data-level="2.1.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> 2.1.3 $INPUT 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> 2.2 PREDPP에 쓰는 데이터셋</a></li>
-<li class="chapter" data-level="2.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 2.3 데이터셋 소개</a></li>
-<li class="chapter" data-level="2.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 2.4 데이터셋 배열</a></li>
-<li class="chapter" data-level="2.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 2.5 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<li class="chapter" data-level="2.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#id"><i class="fa fa-check"></i><b>2.5.1</b> 2.5.1 ID</a></li>
-<li class="chapter" data-level="2.5.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> 2.5.2 DV</a></li>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
 <li class="chapter" data-level="2.5.3" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> 2.5.3 MDV</a></li>
-<li class="chapter" data-level="2.5.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> 2.5.4 EVID</a></li>
-<li class="chapter" data-level="2.5.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#time"><i class="fa fa-check"></i><b>2.5.5</b> 2.5.5 TIME</a></li>
-<li class="chapter" data-level="2.5.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> 2.5.6 AMT</a></li>
-<li class="chapter" data-level="2.5.7" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> 2.5.7 RATE</a></li>
-<li class="chapter" data-level="2.5.8" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> 2.5.8 ADDL &amp; II</a></li>
-<li class="chapter" data-level="2.5.9" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> 2.5.9 SS</a></li>
-<li class="chapter" data-level="2.5.10" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> 2.5.10 CMT</a></li>
-<li class="chapter" data-level="2.5.11" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> 2.5.11 Covariates</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="nonmem-데이터셋.html"><a href="nonmem-데이터셋.html#참고문헌"><i class="fa fa-check"></i><b>2.6</b> 참고문헌</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html"><i class="fa fa-check"></i><b>3</b> 모델 유형 별 NONMEM 제어구문 소개</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#소개"><i class="fa fa-check"></i><b>3.1</b> 3.1. 소개</a></li>
-<li class="chapter" data-level="3.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 3.2. 제어구문의 구성</a></li>
-<li class="chapter" data-level="3.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> 3.3. PREDPP와 PRED</a></li>
-<li class="chapter" data-level="3.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문에-쓰이는-레코드"><i class="fa fa-check"></i><b>3.4</b> 3.4. 제어구문에 쓰이는 레코드</a>
+<li class="chapter" data-level="3.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#소개"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#제어구문에-쓰이는-레코드"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> 3.4.1. $PROBLEM, $DATA, $INPUT</a></li>
-<li class="chapter" data-level="3.4.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> 3.4.2. $SUBROUTINE, $MODEL, $PK, $DES</a></li>
-<li class="chapter" data-level="3.4.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> 3.4.3. $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.4.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> 3.4.4. $ESTIMATION, $SIMULATION</a></li>
-<li class="chapter" data-level="3.4.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> 3.4.5. $COVARIANCE, $TABLE</a></li>
+<li class="chapter" data-level="3.4.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#모델-유형-별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 3.5 모델 유형 별 제어구문</a>
+<li class="chapter" data-level="3.5" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#모델-유형-별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 유형 별 제어구문</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 3.5.1. 특수 ADVAN과 일반 ADVAN</a></li>
-<li class="chapter" data-level="3.5.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 3.5.2. 일반 비선형 모델</a></li>
-<li class="chapter" data-level="3.5.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> 3.5.3. PRED 모델</a></li>
+<li class="chapter" data-level="3.5.1" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="모델-유형-별-nonmem-제어구문-소개.html"><a href="모델-유형-별-nonmem-제어구문-소개.html#참고문헌-1"><i class="fa fa-check"></i><b>3.6</b> 참고문헌</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><a href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html"><i class="fa fa-check"></i><b>4</b> Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs</a></li>
-<li class="chapter" data-level="5" data-path="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><a href="chapter-05-일반-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-general-advans.html"><i class="fa fa-check"></i><b>5</b> Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 Coding of control stream using general ADVANs</a></li>
-<li class="chapter" data-level="6" data-path="chapter-06-기타-advan-newer-advans-advan-9-13.html"><a href="chapter-06-기타-advan-newer-advans-advan-9-13.html"><i class="fa fa-check"></i><b>6</b> Chapter 06 기타 ADVAN newer ADVANs (ADVAN 9-13)</a></li>
+<li class="chapter" data-level="4" data-path="특수-advan을-이용한-control-stream의-코딩.html"><a href="특수-advan을-이용한-control-stream의-코딩.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="일반-advan을-이용한-control-stream의-코딩.html"><a href="일반-advan을-이용한-control-stream의-코딩.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="일반-advan을-이용한-control-stream의-코딩.html"><a href="일반-advan을-이용한-control-stream의-코딩.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 5.1 일반 선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="기타-advan.html"><a href="기타-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="기타-advan.html"><a href="기타-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="기타-advan.html"><a href="기타-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="기타-advan.html"><a href="기타-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="기타-advan.html"><a href="기타-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> 6.4 ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html"><a href="chapter-07-pred-advan을-쓰지-않는-코딩-coding-of-control-stream-not-using-advans.html"><i class="fa fa-check"></i><b>7</b> Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 Coding of control stream NOT using ADVANs</a></li>
 <li class="chapter" data-level="8" data-path="chapter-08-초기추정값-initial-estimate.html"><a href="chapter-08-초기추정값-initial-estimate.html"><i class="fa fa-check"></i><b>8</b> Chapter 08 초기추정값 Initial estimate</a></li>
 <li class="chapter" data-level="9" data-path="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><a href="chapter-09-파라미터-추정-방법-및-세팅-estimation-methods-settings.html"><i class="fa fa-check"></i><b>9</b> Chapter 09 파라미터 추정 방법 및 세팅 Estimation Methods &amp; Settings</a></li>
@@ -139,8 +148,9 @@
 <ul>
 <li class="chapter" data-level="11.1" data-path="chapter-11-공변량-분석-covariate-analysis.html"><a href="chapter-11-공변량-분석-covariate-analysis.html#서론"><i class="fa fa-check"></i><b>11.1</b> 11.1 서론</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="참고문헌-2.html"><a href="참고문헌-2.html"><i class="fa fa-check"></i><b>12</b> 참고문헌</a></li>
 <li class="divider"></li>
-<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
 
 </ul>
 
@@ -164,7 +174,7 @@
 <p><strong>Overview of control stream by model type</strong></p>
 <p><em>배 수 현</em></p>
 <div id="소개" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> 3.1. 소개</h2>
+<h2><span class="header-section-number">3.1</span> 소개</h2>
 <p>이 장에서는 NONMEM을 구동하기 위한 주요 요소들에 대하여 설명하고, 모델의 종류와 그에
 따른 NM-TRAN 제어구문에 대하여 소개한다. NONMEM 시스템은 크게 NM-TRAN (NonMem
 TRANslator), PREDPP (PREDiction of Population Pharmacokinetic models), NONMEM
@@ -176,7 +186,7 @@ NM-TRAN은 데이터셋과 적절한 FORTRAN을 차례로 호출하여 특정 �
 NM-TRAN 제어구문과 문법과 형식에 맞추어 작성된 데이터셋 파일이 필요하다.</p>
 </div>
 <div id="제어구문의-구성" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 3.2. 제어구문의 구성</h2>
+<h2><span class="header-section-number">3.2</span> 제어구문의 구성</h2>
 <p>NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 코드 블록으로 이루어져 있다.
 블록의 첫 시작은 ‘$’기호를 사용하여 사용할 레코드를 명시하고, 그와 관련된 코드를 나열하면
 된다. 레코드의 명칭은 최소 세글자 이상이면 사용할 수 있다. 예를 들어, $PROBLEM은 $PROB,
@@ -192,7 +202,7 @@ $TABLE로 이루어져 있다. 각 부분에 대해서는 3.4에서 자세히 �
 &lt;그림3.1 NM-TRAN 제어구문의 구성&gt;</p>
 </div>
 <div id="predpp와-pred" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> 3.3. PREDPP와 PRED</h2>
+<h2><span class="header-section-number">3.3</span> PREDPP와 PRED</h2>
 <p>제어구문에 사용되는 각 레코드의 자세한 설명에 앞서, PREDPP와 PRED에 대하여 알아보자.
 PRED는 ‘prediction’의 약자로 추정값을 얻기위한 서브루틴을 일컫는다. PK와 PK/PD 모델 분
 석 뿐만 아니라, 어떠한 값이라도 수식만 주어진다면 PRED를 사용하여 추정할 수 있다. PRED는
@@ -207,12 +217,12 @@ ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)�
 장에서부터 차례로 다루기로 한다.</p>
 </div>
 <div id="제어구문에-쓰이는-레코드" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> 3.4. 제어구문에 쓰이는 레코드</h2>
+<h2><span class="header-section-number">3.4</span> 제어구문에 쓰이는 레코드</h2>
 <p>&lt;그림 3.2. 예. 1구획 약동학 모델의 제어구문&gt;
 위의 그림은 1구획 약동학 모델 분석을 위한 제어구문의 예이다. 위의 제어구문은 각 레코드의
 정의와 사용 규칙을 이해하는데 도움이 될 것이다.</p>
 <div id="problem-data-input" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> 3.4.1. $PROBLEM, $DATA, $INPUT</h3>
+<h3><span class="header-section-number">3.4.1</span> $PROBLEM, $DATA, $INPUT</h3>
 <p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할
 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을
 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 $PROBLEM을 사용자가 정한 규
@@ -251,12 +261,12 @@ $INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일�
 DV로 작성하여야 한다.</p>
 </div>
 <div id="subroutine-model-pk-des" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> 3.4.2. $SUBROUTINE, $MODEL, $PK, $DES</h3>
+<h3><span class="header-section-number">3.4.2</span> $SUBROUTINE, $MODEL, $PK, $DES</h3>
 <p>$SUBROUTINE은 PREDPP에 내장되어 있는 ADVAN 루틴을 선택하여 원하는 모델과 파라미
 터를 추정할 수 있게 한다. ADVAN 서브루틴은 특수 ADVAN과 일반 ADVAN으로 구성되어 있으
 며, ADVAN의 선택에 따라 $MODEL, $DES를 사용해야 하거나 그렇지 않을 수 있다.</p>
 <div id="특수-advan" class="section level4" number="3.4.2.1">
-<h4><span class="header-section-number">3.4.2.1</span> 3.4.2.1 특수 ADVAN</h4>
+<h4><span class="header-section-number">3.4.2.1</span> 특수 ADVAN</h4>
 <p>특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2,
 ADVAN10은 1구획 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델,
 ADVAN11과 ADVAN12는 3구획 약동학 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정
@@ -286,7 +296,7 @@ ALAG1 Absorption lag parameter
 *각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.</p>
 </div>
 <div id="일반-advan" class="section level4" number="3.4.2.2">
-<h4><span class="header-section-number">3.4.2.2</span> 3.4.2.2 일반 ADVAN</h4>
+<h4><span class="header-section-number">3.4.2.2</span> 일반 ADVAN</h4>
 <p>일반 ADVAN은 사용자가 직접 모델을 제시할 수 있는 서브루틴이다. 구획의 수와 흡수 및 제거
 모델을 사용자가 결정하여 $MODEL과 $DES에 정의할 수 있다. 주로, 복잡한 흡수모델, 비선형
 약동학, 장간순환, 모약물–대사체 동시 분석, 그리고 PD 데이터 분석을 위해 사용된다. 선형 또는
@@ -298,7 +308,7 @@ ALAG1 Absorption lag parameter
 </div>
 </div>
 <div id="theta-omega-sigma" class="section level3" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> 3.4.3. $THETA, $OMEGA, $SIGMA</h3>
+<h3><span class="header-section-number">3.4.3</span> $THETA, $OMEGA, $SIGMA</h3>
 <p>$THETA, $OMEGA, $SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는
 블록들이다. $THETA는 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값
 추정을 위한 블록이다. $PK에서 정의된 번호 순서대로 초기값을 제시하면 된다.
@@ -373,7 +383,7 @@ $SIGMA 1 FIX
 값이다.</p>
 </div>
 <div id="estimation-simulation" class="section level3" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> 3.4.4. $ESTIMATION, $SIMULATION</h3>
+<h3><span class="header-section-number">3.4.4</span> $ESTIMATION, $SIMULATION</h3>
 <p>$ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것
 인지를 명시하는 레코드이다. 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (firstorder conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다.
 추정방법에 대한 이론적인 설명은 9장에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는
@@ -398,7 +408,7 @@ $SIMULATION (seed) ONLYSIM NSUB=1000
 $COVARIANCE는 함께 사용할 수 없다.</p>
 </div>
 <div id="covariance-table" class="section level3" number="3.4.5">
-<h3><span class="header-section-number">3.4.5</span> 3.4.5. $COVARIANCE, $TABLE</h3>
+<h3><span class="header-section-number">3.4.5</span> $COVARIANCE, $TABLE</h3>
 <p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬,
 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.
 $COVARIANCE PRINT = E UNCONTIONAL MATRIX=S
@@ -422,11 +432,11 @@ table, parameter table, categorical covariate table, continuous covariate table�
 </div>
 </div>
 <div id="모델-유형-별-제어구문" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> 3.5 모델 유형 별 제어구문</h2>
+<h2><span class="header-section-number">3.5</span> 모델 유형 별 제어구문</h2>
 <p>앞 단원에서는 NONMEM 실행에 필요한 제어구문의 각 레코드에 대하여 알아보았다. 이 단원
 에서는 모델 유형에 따른 제어구문의 예를 살펴보기로 한다.</p>
 <div id="특수-advan과-일반-advan" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> 3.5.1. 특수 ADVAN과 일반 ADVAN</h3>
+<h3><span class="header-section-number">3.5.1</span> 특수 ADVAN과 일반 ADVAN</h3>
 <p>2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특
 수 ADVAN을 사용할 경우 $SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선
 택하고, $PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다.
@@ -450,25 +460,25 @@ $SUBROUTINE에서 ‘TOL=’을 정의하지 않으면, 모델 실행이 되지 
 &lt;그림 3.7. 2구획 경구 약동학 모델의 제어구문의 예. ADVAN6 &gt;</p>
 </div>
 <div id="일반-비선형-모델" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> 3.5.2. 일반 비선형 모델</h3>
+<h3><span class="header-section-number">3.5.2</span> 일반 비선형 모델</h3>
 <p>그림 3.7처럼 일반 비선형 모델은 미분방정식을 사용하여 각 구획의 이동을 시간에 따른 구획의
 질량변화로 표현한다. 미분방정식을 계산하는 방법에 따라 다양한 ADVAN을 선택할 수 있다. 일
 반 비선형 모델을 이용한 약동학 분석 모델의 예를 모약물과 대사체의 약동학을 동시에 분석하는
 모델을 통해 살펴보자. 개발 중인 약이 주대사체로 많이 대사되며, 그 대사체도 약효를 나타내는
 경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 3.8과 같이 대사체
-의 생성은 비선형 모델(Michaelis–Menten 모델)을 따른다고 가정하였다.
-&lt;그림 3.8. 모약물과 대사체의 약동학 동시 분석 모델&gt;
-각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.
+의 생성은 비선형 모델(Michaelis–Menten 모델)을 따른다고 가정하였다.</p>
+<p>&lt;그림 3.8. 모약물과 대사체의 약동학 동시 분석 모델&gt;</p>
+<p>각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.
 여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax
 는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째
 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 그림 3.9와 같다. 모약물과 대사체의 농도
 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대
 사체의 농도는 CMT=3이다. $DES에서 각 구획의 이동을 정의하였으며, $ERROR에서 모약물과
-대사체의 관찰값의 변이를 각각 추정하였다.
-&lt;그림 3.9. 모약물과 대사체의 약동학 동시 분석 모델의 제어구문&gt;</p>
+대사체의 관찰값의 변이를 각각 추정하였다.</p>
+<p>&lt;그림 3.9. 모약물과 대사체의 약동학 동시 분석 모델의 제어구문&gt;</p>
 </div>
 <div id="pred-모델" class="section level3" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> 3.5.3. PRED 모델</h3>
+<h3><span class="header-section-number">3.5.3</span> PRED 모델</h3>
 <p>$PRED를 사용한 모델을 살펴보자. 그림 3.10는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는
 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, $PRED 레코드를 사용하여 각 파
 라미터와 추정식과 변이모델을 정의하였다. $PRED에는 사전에 약속된 구문이나 옵션이 없기 때
@@ -497,7 +507,7 @@ Gaithersburg, MD, 2017.</li>
         </div>
       </div>
 <a href="nonmem-데이터셋.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter-04-특수-advan을-이용한-control-stream의-코딩-coding-of-control-stream-using-specific-advans.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="특수-advan을-이용한-control-stream의-코딩.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -528,7 +538,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/03-Overview-of-control-stream-by-model-type.Rmd",
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/03.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -541,7 +551,7 @@ gitbook.start({
 },
 "download": ["book-basic-1.pdf", "book-basic-1.epub", "book-basic-1.mobi"],
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });

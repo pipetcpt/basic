@@ -1,21 +1,22 @@
-# Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 Coding of control stream using specific ADVANs
+# 특수 ADVAN을 이용한 control stream의 코딩 
+
+**Coding of control stream using specific ADVANs**
+
 전 상 일
-본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다
-루고자 하며, 이전 장에서 나왔던 제어파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로
-설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴
-으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은
-정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2
-구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 1). 그림 1, 2를 살펴보면 모두 정
-맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 1은 약물농도가 하나의 직선으
-로, 그림 2는 약물농도가 두개의 직선으로 나타나 있다. 그림 1과 같이 시간에 따른 로그-약물농
-도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 2와 같이 두개의 직선으로
-설명되는 경우는 ADVAN3을 사용하면 된다.
+
+본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로 설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 1). 그림 1, 2를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 1은 약물농도가 하나의 직선으로, 그림 2는 약물농도가 두개의 직선으로 나타나 있다. 그림 1과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 2와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.
+
 표 1. 구획 모델별 특정 ADVAN의 종류
+
 IV Extravascular
 1-Compartment ADVAN1 ADVAN2
 2-Compartment ADVAN3 ADVAN4
 3-Compartment ADVAN11 ADVAN12Chapter 04 · 특수 ADVAN을 이용한 control stream의 코딩 43
-그림 1. Example of IV 1-compartment model 그림 2. Example of IV 2-compartment model
+
+그림 1. Example of IV 1-compartment model 
+
+그림 2. Example of IV 2-compartment model
+
 TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은
 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1
 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획
@@ -112,5 +113,7 @@ L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 �
 로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, control
 stream에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한
 구체적인 설명은 NONMEM User Guide - Part VI 및 그림 5를 참고하도록 하자.
+
+
 그림 5. Basic and additional pharmacokinetic parameters48 PIPET / Q-fitter Pharmacometrics Course Basic-1 모델 구축의 기초
 

@@ -14,9 +14,9 @@ fontsize: 12pt
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
-description: "A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)."
+description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다."
 url: 'https\://pipetcpt.github.io/book-basic-1'
-github-repo: rstudio/bookdown
+github-repo: pipetcpt/book-basic-1
 cover-image: images/cover.jpg
 ---
 
@@ -48,7 +48,7 @@ knitr::include_graphics('images/cover.jpg', dpi = NA)
 
 PIPET / Q-fitter Pharmacometrics Course
 
-Basic-1 모델 구축의 기초
+모델 구축의 기초
 
 - Chapter 01 계량약리학과 관련 개념들
 - Chapter 02 NONMEM 데이터셋 
