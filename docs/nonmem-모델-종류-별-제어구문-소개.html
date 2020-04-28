@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</title>
+  <title>Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta property="og:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://pipetcpt.github.io/book-basic-1" />
   <meta property="og:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
@@ -16,12 +16,12 @@
   <meta name="github-repo" content="pipetcpt/book-basic-1" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초" />
+  <meta name="twitter:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   
   <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="twitter:image" content="https://pipetcpt.github.io/book-basic-1images/cover.jpg" />
 
-<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬" />
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
 <meta name="date" content="2020-04-28" />
@@ -53,6 +53,69 @@
 
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="css\style.css" type="text/css" />
 </head>
@@ -114,10 +177,11 @@
 <li class="chapter" data-level="3.3" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
 <li class="chapter" data-level="3.4" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#제어구문에-쓰이는-레코드"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.1</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
-<li class="chapter" data-level="3.4.2" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.2</b> $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.4.3" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.3</b> $ESTIMATION, $SIMULATION</a></li>
-<li class="chapter" data-level="3.4.4" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#covariance-table"><i class="fa fa-check"></i><b>3.4.4</b> $COVARIANCE, $TABLE</a></li>
+<li class="chapter" data-level="3.4.1" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="nonmem-모델-종류-별-제어구문-소개.html"><a href="nonmem-모델-종류-별-제어구문-소개.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
 <ul>
@@ -181,7 +245,62 @@
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="참고문헌-2.html"><a href="참고문헌-2.html"><i class="fa fa-check"></i><b>12</b> 참고문헌</a></li>
+<li class="chapter" data-level="12" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="모델-진단평가-개론.html"><a href="모델-진단평가-개론.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="모델-적합-상태에-대한-진단.html"><a href="모델-적합-상태에-대한-진단.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#실제-사례"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 14.3이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> 14.4 R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#theophylline-예제-데이터셋"><i class="fa fa-check"></i><b>14.5</b> 14.5 Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 14.6고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="nonmem의-covariance.html"><a href="nonmem의-covariance.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="모델-파라미터의-적절성.html"><a href="모델-파라미터의-적절성.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="모델의-예측성능-평가.html"><a href="모델의-예측성능-평가.html#참고문헌-2"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="18" data-path="pk-pd-연결-방법과-적합법.html"><a href="pk-pd-연결-방법과-적합법.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a></li>
+<li class="chapter" data-level="19" data-path="다양한-약물효과-모델링.html"><a href="다양한-약물효과-모델링.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a></li>
+<li class="chapter" data-level="20" data-path="지연효과-모델.html"><a href="지연효과-모델.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="참고문헌-3.html"><a href="참고문헌-3.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
 
@@ -194,7 +313,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
           </h1>
         </div>
 
@@ -213,7 +332,7 @@ Models)의 3가지의 요소로 이루어져 있다. PREDPP는 집단약동학 �
 FORTRAN 서브루틴으로 구성되어 있다. NM-TRAN은 데이터셋과 적절한 FORTRAN을 차례로 호출하여 특정 모델을
 실행시켜, 제어구문에 명시된 방법으로 다양한 결과를 출력할 수 있도록 해준다. NONMEM은 파라미터 추정을 위해
 사용되는 비선형 혼합효과 모델을 일컫는다. NONMEM 실행을 위해서는 사용자가 직접 작성한 NM-TRAN 제어구문과 문법과
-형식에 맞추어 작성된 데이터셋 파일이 필요하다.</p>
+형식에 맞추어 작성된 데이터셋 파일이 필요하다. </p>
 </div>
 <div id="제어구문의-구성" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> 제어구문의 구성</h2>
@@ -249,18 +368,17 @@ ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사�
 <p>&lt;그림 3.2. 예. 1구획 약동학 모델의 제어구문&gt;</p>
 <p>위의 그림은 1구획 약동학 모델 분석을 위한 제어구문의 예이다. 위의 제어구문은 각 레코드의 정의와 사용 규칙을 이해하는데 도움이
 될 것이다.</p>
-<blockquote>
-<p>3.4.1. $PROBLEM, $DATA, $INPUT</p>
-</blockquote>
+<div id="problem-data-input" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> $PROBLEM, $DATA, $INPUT</h3>
 <p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명
 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에
 부합하는 $PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을
 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.</p>
 <p>$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고
 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:</p>
-<p>$DATA test.csv IGNORE = @</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb1-1"><a href="nonmem-모델-종류-별-제어구문-소개.html#cb1-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> @</span></code></pre></div>
 <p>또는</p>
-<p>$DATA ..//test.csv IGNORE = @</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb2-1"><a href="nonmem-모델-종류-별-제어구문-소개.html#cb2-1"></a>$DATA ..<span class="kw">//</span>test.csv IGNORE <span class="kw">=</span> @</span></code></pre></div>
 <p>위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은
 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은
 제어구문이 있는 폴더에 생성된다.</p>
@@ -269,14 +387,14 @@ ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사�
 = <span class="citation">(<span class="citeproc-not-found" data-reference-id="을"><strong>???</strong></span>)</span> 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지
 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로
 데이터셋을 부분집합화 할 수 있다:</p>
-<p>$DATA test.csv IGNORE = # IGNORE=(SEX.EQ.1)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb3-1"><a href="nonmem-모델-종류-별-제어구문-소개.html#cb3-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
 <p>또는</p>
-<p>$DATA test.csv IGNORE = # IGNORE=(WEIGHT.LE.40)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb4-1"><a href="nonmem-모델-종류-별-제어구문-소개.html#cb4-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>)</span></code></pre></div>
 <p>또는</p>
-<p>$DATA test.csv IGNORE = # IGNORE=(WEIGHT.LE.40, SEX.EQ.1)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb5-1"><a href="nonmem-모델-종류-별-제어구문-소개.html#cb5-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>, SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
 <p>하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를
 사용하여야 한다. 또한, ‘.AND.’ 또는 ‘.OR.’을 사용하여 추가 구문의 조건을 결정할 수 있다.
-ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, IGNORE=# 또는 <a href="mailto:IGNORE=@를" class="email">IGNORE=@를</a> 제외하고
+ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, IGNORE=# 또는 IGNORE=@를 제외하고
 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.</p>
 <p>$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정
 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV,
@@ -284,13 +402,14 @@ ADDL, II, RATE, CMT, SS 등이 있다. ‘=DROP’구문을 사용하여 NONMEM 
 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를
 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 CON=DV 또는 DV로
 작성하여야 한다.</p>
-<div id="subroutine-model-pk-des" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> $SUBROUTINE, $MODEL, $PK, $DES</h3>
+</div>
+<div id="subroutine-model-pk-des" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> $SUBROUTINE, $MODEL, $PK, $DES</h3>
 <p>$SUBROUTINE은 PREDPP에 내장되어 있는 ADVAN 루틴을 선택하여 원하는 모델과 파라미터를 추정할 수 있게 한다.
 ADVAN 서브루틴은 특수 ADVAN과 일반 ADVAN으로 구성되어 있으며, ADVAN의 선택에 따라 $MODEL, $DES를
 사용해야 하거나 그렇지 않을 수 있다.</p>
-<div id="특수-advan" class="section level4" number="3.4.1.1">
-<h4><span class="header-section-number">3.4.1.1</span> 특수 ADVAN</h4>
+<div id="특수-advan" class="section level4" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> 특수 ADVAN</h4>
 <p>특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2, ADVAN10은 1구획
 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델, ADVAN11과 ADVAN12는 3구획 약동학
 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정하고자 하는 파라미터에 따라 TRANS를 선택하여야 한다.
@@ -346,8 +465,8 @@ ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 
 </table>
 <p><sup>*</sup>각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.</p>
 </div>
-<div id="일반-advan" class="section level4" number="3.4.1.2">
-<h4><span class="header-section-number">3.4.1.2</span> 일반 ADVAN</h4>
+<div id="일반-advan" class="section level4" number="3.4.2.2">
+<h4><span class="header-section-number">3.4.2.2</span> 일반 ADVAN</h4>
 <p>일반 ADVAN은 사용자가 직접 모델을 제시할 수 있는 서브루틴이다. 구획의 수와 흡수 및 제거 모델을 사용자가 결정하여
 $MODEL과 $DES에 정의할 수 있다. 주로, 복잡한 흡수모델, 비선형 약동학, 장간순환, 모약물–대사체 동시 분석, 그리고
 PD 데이터 분석을 위해 사용된다. 선형 또는 비선형 모델과 파라미터 추정 계산 방식에 따라 ADVAN
@@ -357,8 +476,8 @@ $DES 블록을 사용하지 않는다. ADVAN5와 ADVAN7을 제외한 일반 비�
 구획간의 이동에 대한 관계를 미분방정식을 사용하여 기술하여야 한다.</p>
 </div>
 </div>
-<div id="theta-omega-sigma" class="section level3" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> $THETA, $OMEGA, $SIGMA</h3>
+<div id="theta-omega-sigma" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> $THETA, $OMEGA, $SIGMA</h3>
 <p>$THETA, $OMEGA, $SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는 블록들이다. $THETA는
 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. $PK에서
 정의된 번호 순서대로 초기값을 제시하면 된다.</p>
@@ -419,8 +538,8 @@ $THETA 레코드에서 추정하도록 $ERROR의 코드를 변경해서 사용�
 EPS(1)은 $SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은
 $THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.</p>
 </div>
-<div id="estimation-simulation" class="section level3" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> $ESTIMATION, $SIMULATION</h3>
+<div id="estimation-simulation" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> $ESTIMATION, $SIMULATION</h3>
 <p>$ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것인지를 명시하는 레코드이다.
 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (first-order
 conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다. 추정방법에 대한
@@ -441,8 +560,8 @@ METHOD=0, FOCE는 METHOD=1이며, INTERACTION 옵션을 사용할 수 있다. NO
 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면
 된다. $SIMULATION을 사용 시 $ESTIMATION과 $COVARIANCE는 함께 사용할 수 없다.</p>
 </div>
-<div id="covariance-table" class="section level3" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> $COVARIANCE, $TABLE</h3>
+<div id="covariance-table" class="section level3" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> $COVARIANCE, $TABLE</h3>
 <p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬
 출력을 위해 사용된다.</p>
 <p>$COVARIANCE PRINT=E UNCONTIONAL MATRIX=S</p>
@@ -600,7 +719,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["book-basic-1.pdf", "book-basic-1.epub", "book-basic-1.mobi"],
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
 "toc": {
 "collapse": "section"
 }

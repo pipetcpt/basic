@@ -120,7 +120,7 @@ Selection: 4
 Selection: 2 or 5
 ```
 
-![](./assets/media-10/image11.emf)
+![](./assets/media-10/image11.png)
 
 그림1. Basic goodness-of-fit Plots
 
@@ -142,7 +142,7 @@ predictions (IPRED), 우측은 Conditional weighted residuals (CWRES) vs Time
 Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 예측값의 적합도를 확인할 수
 있으며(그림 2), 파라미터 간의 상관관계 및 공변량에 대한 탐색도 가능하다.
 
-![](./assets/media-10/image12.emf)
+![](./assets/media-10/image12.png)
 
 그림2. Individual Plots
 

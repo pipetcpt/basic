@@ -1,7 +1,6 @@
-book_filename: book-basic-1
-repo: https://github.com/pipetcpt/book-basic-1/
+book_filename: basic
+repo: https://github.com/pipetcpt/basic/
 output_dir: docs
-clean: [packages.bib, bookdown.bbl]
 delete_merged_file: true
 language:
   label:
@@ -12,19 +11,6 @@ language:
     chapter_name: "Chapter "
 
 
-# rmd_files: [
-#   "index.Rmd", 
-#   "01.Rmd",
-#   "02.Rmd",
-#   "03.md", 
-#   "04.md", 
-#   "05.md", 
-#   "06.md", 
-#   "07.md", 
-#   "08.Rmd",
-#   "09.md",
-#   "10.md",
-#   "11.md",
-#   "99-Appendix.Rmd"
-# ]
-# 
+#rmd_files: [
+#]
+

@@ -1,16 +1,17 @@
 --- 
-title: "PIPET / Q-fitter Pharmacometrics Course: Basic 1 모델 구축의 기초"
-author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬"
+title: "PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초"
+author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: krantz
 bibliography: ["references/book.bib", "references/bib_pubmed_raw.bib"]
+#bibliography: ["references/book.bib"]
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
 lot: yes
 lof: yes
-fontsize: 12pt
+fontsize: 10pt
 #monofont: "Source Code Pro"
 #monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
@@ -20,16 +21,10 @@ github-repo: pipetcpt/book-basic-1
 cover-image: images/cover.jpg
 header-includes:
   - \usepackage{kotex}
+mainfont: NanumGothic
 ---
 
 ```{r setup, include=FALSE}
-options(
-  htmltools.dir.version = FALSE, formatR.indent = 2,
-  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
-)
-library(tidyverse)
-knitr::opts_chunk$set(echo=FALSE, message = FALSE, out.width="100%", error = TRUE)
-
 local({
   r = getOption('repos')
   if (!length(r) || identical(unname(r['CRAN']), '@CRAN@'))
@@ -37,29 +32,40 @@ local({
   options(repos = r)
 })
 
-lapply(c('DT', 'citr', 'formatR', 'svglite'), function(pkg) {
-  if (system.file(package = pkg) == '') install.packages(pkg)
-})
+library(tidyverse)
+library(knitr)
+
+options(
+  htmltools.dir.version = FALSE, formatR.indent = 2,
+  width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
+)
+
+options(knitr.graphics.auto_pdf = FALSE)
+
+knitr::opts_chunk$set(echo=FALSE, message = FALSE, 
+					  out.width="100%", 
+					  #dpi = 96, 
+					  #fig.width = 1,
+					  error = TRUE)
 ```
 
 # 서문 {-}
 
-```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://www.crcpress.com/product/isbn/9781138700109'}
-knitr::include_graphics('images/cover.jpg', dpi = NA)
+계량약리학적 분석 기법의 적용과 그 결과물의 활용은 신약 개발 관련 각종 의사 결정, 라이센싱 인/아웃, 허가 자료 제출 등 광범위한 영역에서 필수적인 요소로 인식되고 있습니다. 이에 따라, 계량약리학에 대한 국내 학계, 제약업계 및 유관 정부기관의 관심 역시 꾸준히 증가하여 왔고, 최근에는 국내 신약 개발 프로젝트들에서도 계량약리학 분석 사례를 다수 접할 수 있게 되었습니다. 
+
+PIPET(가톨릭계량약리학연구소)은 2014년부터 5단계의 수준 별 계량약리학 교육과정을 개발하여, 임상시험글로벌선도센터 SCI-C 주최의 SCI-C Pharmacometrics Course 로서 꾸준히 이러한 수요에 부응함과 동시에, 국내 관련 인력의 전문성 강화와 계량약리학 활용도 제고를 위해 노력해 왔습니다. 임상시험글로벌선토센터 수행 중 축적한 교육과정 수행 노하우를 기반으로, 이제 국내 유일의 상용 계량약리학 서비스 기관인 큐피터(Q-fitter, inc.)와 함께 연속성 있고, 완성도를 갖춘 "PIPET/Q-fitter Pharmacometrics Course"를 운영하고 있습니다. 
+
+이 교재는 PIPET/Q-fitter Pharmacometrics Course의 Basic 과정에서 사용되는 것으로, 계량약리학의 기초와 제어구문 작성 방법, 모델 진단 기법과 약동-약력학 모델의 기초적 원리 및 적용 방법을 다루고 있습니다.
+
+**가톨릭계량약리학 연구소장 임동석**
+
+```{r ggtheophindi, fig.cap = 'Individual concentration-time curves of oral administration of Theoph (Subject 1)', fig.width = 6, fig.height = 3.5}
+ggplot(Theoph %>% dplyr::filter(Subject == 1), 
+       aes(Time, conc, group = Subject, color = Subject)) +
+  geom_point(size = 4) + geom_line(size = 1) +
+  theme_minimal() +
+  labs(title = 'Oral Administration of Theoph (320 mg) (Subject 1)',
+       x = 'Time (hour)', y = 'Concentration (ng/mL)')
 ```
 
-PIPET / Q-fitter Pharmacometrics Course
-
-모델 구축의 기초
-
-- Chapter 01 계량약리학과 관련 개념들
-- Chapter 02 NONMEM 데이터셋 
-- Chapter 03 모델 유형 별 NONMEM 제어구문 소개 
-- Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 
-- Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 
-- Chapter 06 기타 ADVAN 
-- Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 
-- Chapter 08 초기추정값 
-- Chapter 09 파라미터 추정 방법 및 세팅 
-- Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법
-- Chapter 11 공변량 분석
+\mainmatter

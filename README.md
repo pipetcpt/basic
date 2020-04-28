@@ -1,15 +1,22 @@
-# PIPET / Q-fitter Pharmacometrics Course: Basic 1 ¸ğµ¨ ±¸ÃàÀÇ ±âÃÊ
+# PIPET / Q-fitter Pharmacometrics Course: Basic
 
-ÀÓµ¿¼®, ÀÌ¼ÒÁø, ¹è¼öÇö, Àü»óÀÏ, È«ÅÂ°ï, ÇÑ½ÂÈÆ, ±èÁ¤·Ä
-
-- Chapter 01 °è·®¾à¸®ÇĞ°ú °ü·Ã °³³äµé
-- Chapter 02 NONMEM µ¥ÀÌÅÍ¼Â
-- Chapter 03 ¸ğµ¨ À¯Çü º° NONMEM Á¦¾î±¸¹® ¼Ò°³
-- Chapter 04 Æ¯¼ö ADVANÀ» ÀÌ¿ëÇÑ control streamÀÇ ÄÚµù
-- Chapter 05 ÀÏ¹İ ADVANÀ» ÀÌ¿ëÇÑ control streamÀÇ ÄÚµù
-- Chapter 06 ±âÅ¸ ADVAN
-- Chapter 07 $PRED: ADVANÀ» ¾²Áö ¾Ê´Â ÄÚµù
-- Chapter 08 ÃÊ±âÃßÁ¤°ª
-- Chapter 09 ÆÄ¶ó¹ÌÅÍ ÃßÁ¤ ¹æ¹ı ¹× ¼¼ÆÃ
-- Chapter 10 NONMEM ½ÇÇà°á°ú ÇØ¼® ¹× Xpose4 »ç¿ë¹ı
-- Chapter 11 °øº¯·® ºĞ¼®
+- Chapter 01 ê³„ëŸ‰ì•½ë¦¬í•™ê³¼ ê´€ë ¨ ê°œë…ë“¤
+- Chapter 02 NONMEM ë°ì´í„°ì…‹ 
+- Chapter 03 ëª¨ë¸ ìœ í˜• ë³„ NONMEM ì œì–´êµ¬ë¬¸ ì†Œê°œ 
+- Chapter 04 íŠ¹ìˆ˜ ADVANì„ ì´ìš©í•œ control streamì˜ ì½”ë”© 
+- Chapter 05 ì¼ë°˜ ADVANì„ ì´ìš©í•œ control streamì˜ ì½”ë”© 
+- Chapter 06 ê¸°íƒ€ ADVAN 
+- Chapter 07 $PRED: ADVANì„ ì“°ì§€ ì•ŠëŠ” ì½”ë”© 
+- Chapter 08 ì´ˆê¸°ì¶”ì •ê°’ 
+- Chapter 09 íŒŒë¼ë¯¸í„° ì¶”ì • ë°©ë²• ë° ì„¸íŒ… 
+- Chapter 10 NONMEM ì‹¤í–‰ê²°ê³¼ í•´ì„ ë° Xpose4 ì‚¬ìš©ë²•
+- Chapter 11 ê³µë³€ëŸ‰ ë¶„ì„
+- Chapter 12 ëª¨ë¸ ì§„ë‹¨í‰ê°€ ê°œë¡  
+- Chapter 13 ëª¨ë¸ ì í•© ìƒíƒœì— ëŒ€í•œ ì§„ë‹¨ 
+- Chapter 14 NONMEMì˜ $COVARIANCE 
+- Chapter 15 ëª¨ë¸ íŒŒë¼ë¯¸í„°ì˜ ì ì ˆì„± 
+- Chapter 16 ëª¨ë¸ì˜ ì˜ˆì¸¡ì„±ëŠ¥ í‰ê°€ 
+- Chapter 17 ì•½ë™-ì•½ë ¥(PK-PD) ëª¨ë¸ë§ì˜ ì´ë¡ ì  ê¸°ì´ˆ 
+- Chapter 18 ì•½ë™,ì•½ë ¥í•™ ì—°ê²° ë°©ë²• 
+- Chapter 19 ë‹¤ì–‘í•œ ì•½ë¬¼íš¨ê³¼ ëª¨ë¸ 
+- Chapter 20 ì§€ì—°íš¨ê³¼ ëª¨ë¸ 

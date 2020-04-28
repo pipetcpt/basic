@@ -1,1 +1,6 @@
-# 참고문헌
+\backmatter
+
+`r if (knitr::is_html_output()) '
+# 참고문헌 {-}
+'`
+

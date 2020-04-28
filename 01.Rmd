@@ -10,7 +10,9 @@
 
 **PK-PD 모델링은 무엇인가?**
 
-```{r pkpd-modeling-concept, fig.cap = "PK-PD 모델링의 개념 [@derendorf1999modeling]", out.width="100%"}
+(ref:cap1) PK-PD 모델링의 개념 [@derendorf1999modeling]
+
+```{r pkpd-modeling-concept, fig.cap = "(ref:cap1)", out.width="100%"}
 knitr::include_graphics('assets/01-fig-01.jpg')
 ```
 
@@ -28,7 +30,9 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 
 이러한 방법론들의 관계는 그림 \@ref(fig:diverse-concepts)에 요약되어 있다.
 
-```{r diverse-concepts, fig.cap = "PK-PD 모델링의 각종 개념들의 연관성 [@helmlinger2017drug]", out.width="100%"}
+(ref:cap2) PK-PD 모델링의 각종 개념들의 연관성 [@helmlinger2017drug]
+
+```{r diverse-concepts, fig.cap = "(ref:cap2)", out.width="100%"}
 knitr::include_graphics('assets/01-fig-03.png')
 ```
 
