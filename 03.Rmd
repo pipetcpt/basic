@@ -121,12 +121,11 @@ ADVAN 서브루틴은 특수 ADVAN과 일반 ADVAN으로 구성되어 있으며,
 특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2, ADVAN10은 1구획
 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델, ADVAN11과 ADVAN12는 3구획 약동학
 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정하고자 하는 파라미터에 따라 TRANS를 선택하여야 한다.
-각 ADVAN에 따른 TRANS 서브루틴은 표 3.1에 자세히 나와있다.
+각 ADVAN에 따른 TRANS 서브루틴은 표 \@ref(tab:advan-trans)에 자세히 나와있다.
 
-\<표 3.1\> 특수 ADVAN과 그에 따른 TRANS 서브루틴
+Table: (\#tab:advan-trans) 특수 ADVAN과 그에 따른 TRANS 서브루틴
 
-![C:\\Users\\Sangheon\\Documents\\반디카메라\\Cap 2016-06-28
-15-39-32-346.png](./assets/media-03/image3.png)
+![](./assets/media-03/image3.png)
 
 특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, $MODEL과
 $DES 레코드는 사용하지 않으며, $PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을
@@ -146,7 +145,7 @@ ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 
 위의 식에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. S2=V2/1000이며, 이를 $PK에 그림 3.3.처럼 기술한다.
 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.
 
-\<표 3.2\> 특수 ADVAN의 부가 파라미터
+Table: (\#tab:advan-param) 특수 ADVAN의 부가 파라미터
 
 | **Parameters<sup>\*</sup>** | **Descriptions**                          |
 | --------------------------- | ----------------------------------------- |
@@ -174,13 +173,12 @@ $THETA, $OMEGA, $SIGMA는 모델 파라미터 추정을 위해 각 파라미터�
 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. $PK에서
 정의된 번호 순서대로 초기값을 제시하면 된다.
 
-$PK
-
-TVCL = THETA(1) CL = TVCL \* EXP(ETA1))
-
-TVV = THETA(2) V = TVV \* EXP(ETA2))
-
+```
+$PK 
+TVCL = THETA(1) CL = TVCL \* EXP(ETA1)) 
+TVV = THETA(2) V = TVV \* EXP(ETA2)) 
 TVKA = THETA(3) KA = TVKA \* EXP(ETA(3))
+```
 
 예를 들어 $PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:
 
@@ -403,9 +401,7 @@ $PRED를 사용한 모델을 살펴보자. 그림 3.10는 Cmax와 약효(부작�
 
 ## 참고문헌
 
-1.  Owen JS, Fiedler-Kelly J. *Introduction to population
-    pharmacokinetic/pharmacodynamic analysis with nonlinear mixed
-    effects models*. John Wiley & Sons, 2014.
+1.  Owen JS, Fiedler-Kelly J. *Introduction to population pharmacokinetic/pharmacodynamic analysis with nonlinear mixed effects models*. John Wiley & Sons, 2014.
 
 2.  Boeckmann AJ, Beal SL, Shenier LB, editors. NONMEM 7.4.0 Users
     Guides – Part IV. ICON plc, Gaithersburg, MD, 2017.
