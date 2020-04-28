@@ -11,3 +11,20 @@ language:
     edit: "Edit"
     chapter_name: "Chapter "
 
+
+# rmd_files: [
+#   "index.Rmd", 
+#   "01.Rmd",
+#   "02.Rmd",
+#   "03.md", 
+#   "04.md", 
+#   "05.md", 
+#   "06.md", 
+#   "07.md", 
+#   "08.Rmd",
+#   "09.md",
+#   "10.md",
+#   "11.md",
+#   "99-Appendix.Rmd"
+# ]
+# 

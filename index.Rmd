@@ -11,8 +11,8 @@ colorlinks: yes
 lot: yes
 lof: yes
 fontsize: 12pt
-monofont: "Source Code Pro"
-monofontoptions: "Scale=0.7"
+#monofont: "Source Code Pro"
+#monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다."
 url: 'https\://pipetcpt.github.io/book-basic-1'
@@ -27,8 +27,8 @@ options(
   htmltools.dir.version = FALSE, formatR.indent = 2,
   width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
-
-knitr::opts_chunk$set(echo=FALSE, out.width="100%")
+library(tidyverse)
+knitr::opts_chunk$set(echo=FALSE, message = FALSE, out.width="100%", error = TRUE)
 
 local({
   r = getOption('repos')
