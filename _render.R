@@ -18,7 +18,7 @@ for (fmt in formats) {
   res = bookdown:::Rscript(c('-e', shQuote(cmd)))
   if (res != 0) stop('Failed to compile the book to ', fmt)
   if (!travis && fmt == 'bookdown::epub_book')
-    bookdown::calibre('docs/book-basic-1.epub', 'mobi')
+    bookdown::calibre('docs/basic.epub', 'mobi')
 }
 unlink('bookdown.log')
 

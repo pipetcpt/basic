@@ -20,8 +20,8 @@ url: 'https\://pipetcpt.github.io/basic'
 github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
 linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
-mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
-#mainfont: NanumMyeongjo
+#mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
+mainfont: NanumMyeongjo
 header-includes:
   - \usepackage{kotex}
 ---
@@ -59,7 +59,7 @@ PIPET(가톨릭계량약리학연구소)은 2014년부터 5단계의 수준 별 
 
 이 교재는 PIPET/Q-fitter Pharmacometrics Course의 Basic 과정에서 사용되는 것으로, 계량약리학의 기초와 제어구문 작성 방법, 모델 진단 기법과 약동-약력학 모델의 기초적 원리 및 적용 방법을 다루고 있습니다.
 
-**가톨릭계량약리학 연구소장 임동석**
+가톨릭계량약리학 연구소장 \hfill **임동석**
 
 
 \mainmatter

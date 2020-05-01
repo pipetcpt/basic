@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
+  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/basic" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
+
+
+<meta name="date" content="2020-05-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="기타-advan.html"/>
+<link rel="next" href="IE.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-stream.html"><a href="control-stream.html"><i class="fa fa-check"></i><b>3</b> NONMEM 모델 종류 별 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="control-stream.html"><a href="control-stream.html#소개-1"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="control-stream.html"><a href="control-stream.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="control-stream.html"><a href="control-stream.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="control-stream.html"><a href="control-stream.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="특수-advan을-이용한-control-stream의-코딩.html"><a href="특수-advan을-이용한-control-stream의-코딩.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="일반-advan을-이용한-control-stream의-코딩.html"><a href="일반-advan을-이용한-control-stream의-코딩.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="일반-advan을-이용한-control-stream의-코딩.html"><a href="일반-advan을-이용한-control-stream의-코딩.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
+<li class="chapter" data-level="5.2" data-path="일반-advan을-이용한-control-stream의-코딩.html"><a href="일반-advan을-이용한-control-stream의-코딩.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="기타-advan.html"><a href="기타-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="기타-advan.html"><a href="기타-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="기타-advan.html"><a href="기타-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="기타-advan.html"><a href="기타-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="기타-advan.html"><a href="기타-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#서론"><i class="fa fa-check"></i><b>8.1</b> 서론</a></li>
+<li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#초기-추정값의-의미와-역할"><i class="fa fa-check"></i><b>8.2</b> 초기 추정값의 의미와 역할</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.3</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
+<li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.4</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> THETA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> OMEGA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.7" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.7</b> SIGMA의 초기추정값 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estimation-methods.html"><a href="estimation-methods.html"><i class="fa fa-check"></i><b>9</b> 파라미터 추정 방법 및 세팅</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="estimation-methods.html"><a href="estimation-methods.html#추정-방법-및-관련-옵션"><i class="fa fa-check"></i><b>9.1</b> 추정 방법 및 관련 옵션</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="estimation-methods.html"><a href="estimation-methods.html#noabort"><i class="fa fa-check"></i><b>9.1.1</b> NOABORT</a></li>
+<li class="chapter" data-level="9.1.2" data-path="estimation-methods.html"><a href="estimation-methods.html#maxeval"><i class="fa fa-check"></i><b>9.1.2</b> MAXEVAL</a></li>
+<li class="chapter" data-level="9.1.3" data-path="estimation-methods.html"><a href="estimation-methods.html#method"><i class="fa fa-check"></i><b>9.1.3</b> METHOD</a></li>
+<li class="chapter" data-level="9.1.4" data-path="estimation-methods.html"><a href="estimation-methods.html#interaction"><i class="fa fa-check"></i><b>9.1.4</b> INTERACTION</a></li>
+<li class="chapter" data-level="9.1.5" data-path="estimation-methods.html"><a href="estimation-methods.html#print"><i class="fa fa-check"></i><b>9.1.5</b> PRINT</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="estimation-methods.html"><a href="estimation-methods.html#nonmem-추정"><i class="fa fa-check"></i><b>9.2</b> NONMEM 추정</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="estimation-methods.html"><a href="estimation-methods.html#ols-방식"><i class="fa fa-check"></i><b>9.2.1</b> OLS 방식</a></li>
+<li class="chapter" data-level="9.2.2" data-path="estimation-methods.html"><a href="estimation-methods.html#wls-방식"><i class="fa fa-check"></i><b>9.2.2</b> WLS 방식</a></li>
+<li class="chapter" data-level="9.2.3" data-path="estimation-methods.html"><a href="estimation-methods.html#els-방식"><i class="fa fa-check"></i><b>9.2.3</b> ELS 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood"><i class="fa fa-check"></i><b>9.3</b> Likelihood</a></li>
+<li class="chapter" data-level="9.4" data-path="estimation-methods.html"><a href="estimation-methods.html#taylor-전개식"><i class="fa fa-check"></i><b>9.4</b> Taylor 전개식</a></li>
+<li class="chapter" data-level="9.5" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood-ratio-test"><i class="fa fa-check"></i><b>9.5</b> Likelihood Ratio Test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="nonmem-실행결과-해석-및-xpose4-사용법.html"><a href="nonmem-실행결과-해석-및-xpose4-사용법.html"><i class="fa fa-check"></i><b>10</b> NONMEM 실행결과 해석 및 Xpose4 사용법</a></li>
+<li class="chapter" data-level="11" data-path="공변량-분석.html"><a href="공변량-분석.html"><i class="fa fa-check"></i><b>11</b> 공변량 분석</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="공변량-분석.html"><a href="공변량-분석.html#서론-1"><i class="fa fa-check"></i><b>11.1</b> 서론</a></li>
+<li class="chapter" data-level="11.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석의-일반적-절차"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석의 일반적 절차</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="공변량-분석.html"><a href="공변량-분석.html#항목-평가-variable-evaluation"><i class="fa fa-check"></i><b>11.2.1</b> 항목 평가 (variable evaluation)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-스크리닝-covariate-screening"><i class="fa fa-check"></i><b>11.2.2</b> 공변량 스크리닝 (covariate screening)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공선성co-linearity에-대한-고려"><i class="fa fa-check"></i><b>11.2.3</b> 공선성(co-linearity)에 대한 고려</a></li>
+<li class="chapter" data-level="11.2.4" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.2.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.2.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="diag-eval.html"><a href="diag-eval.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="diag-eval.html"><a href="diag-eval.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="diag-eval.html"><a href="diag-eval.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#실제-사례"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#theophylline-예제-데이터셋"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="모델-파라미터의-적절성.html"><a href="모델-파라미터의-적절성.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="evaluation.html"><a href="evaluation.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="evaluation.html"><a href="evaluation.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="evaluation.html"><a href="evaluation.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="evaluation.html"><a href="evaluation.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="evaluation.html"><a href="evaluation.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="evaluation.html"><a href="evaluation.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="evaluation.html"><a href="evaluation.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="evaluation.html"><a href="evaluation.html#참고문헌"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="18" data-path="pk-pd-연결-방법과-적합법.html"><a href="pk-pd-연결-방법과-적합법.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a></li>
+<li class="chapter" data-level="19" data-path="effect-model.html"><a href="effect-model.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="effect-model.html"><a href="effect-model.html#소개-2"><i class="fa fa-check"></i><b>19.1</b> 소개</a></li>
+<li class="chapter" data-level="19.2" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-종류"><i class="fa fa-check"></i><b>19.2</b> PD 모델의 종류</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#선형모델linear-model"><i class="fa fa-check"></i><b>19.2.1</b> 선형모델(linear model)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#로그-선형모델log-linear-model"><i class="fa fa-check"></i><b>19.2.2</b> 로그-선형모델(log-linear model)</a></li>
+<li class="chapter" data-level="19.2.3" data-path="effect-model.html"><a href="effect-model.html#emax-model"><i class="fa fa-check"></i><b>19.2.3</b> E<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.2.4" data-path="effect-model.html"><a href="effect-model.html#sigmoid-emax-model-hill-방정식"><i class="fa fa-check"></i><b>19.2.4</b> Sigmoid E<sub>max</sub> model (Hill 방정식)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-적용"><i class="fa fa-check"></i><b>19.3</b> PD 모델의 적용</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.3.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.3.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.3.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="지연효과-모델.html"><a href="지연효과-모델.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="참고문헌-1.html"><a href="참고문헌-1.html"><i class="fa fa-check"></i>참고문헌</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="PRED" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> $PRED: ADVAN을 쓰지 않는 코딩</h1>
+<p><strong>Coding of control stream NOT using ADVANs</strong></p>
+<p><em>임동석</em></p>
+<div id="pred와-predpp-library사용할-때의-차이" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> $PRED와 PREDPP library사용할 때의 차이</h2>
+<p>PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델의 구조를 만들어 볼 수 있는 $PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터셋의 칼럼 이름들을 정의해주는 $INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만 특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 $PRED를 쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론 $DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는 모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 $PRED와는 다르다.</p>
+<p>제어파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="PRED.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
+
+<div class="figure"><span id="fig:first-order-pred"></span>
+<img src="assets/media-07/image1.png" alt="1구획 모델의 ADVAN2, $PRED 제어파일 비교" width="100%" />
+<p class="caption">
+그림 7.1: 1구획 모델의 ADVAN2, $PRED 제어파일 비교
+</p>
+</div>
+
+<div class="figure"><span id="fig:pred-dataset"></span>
+<img src="assets/media-07/image2.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="100%" />
+<p class="caption">
+그림 7.2: ADVAN과 $PRED의 데이터셋 차이
+</p>
+</div>
+<p>AMT와 같은 용어는 PREDPP library를 사용할 경우($SUBROUTINE 쓸 때) 한번의 투여간격 사이에 주는 용량이라는 의미로 약속되어 있어서 $INPUT에서 데이터셋의 칼럼 이름으로 명시해 주어야 하고, 그림 <a href="PRED.html#fig:pred-dataset">7.2</a>의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영향을 주는 값으로 약속되어 있다. 그러나 $PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼 그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 제어구문에서 “IPRED = D*COEF*KA/(KA-EXPO)*(EXP(-EXPO*T)-EXP(-KA*T))”의 용량을 나타내는 변수 “D”에 해당된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 $INPUT 뒤에 적어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 $INPUT 뒤에 AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제목이라는 의미만을 가진다. 단지 $PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 예에서는 $INPUT 뒤에 나오는 네번째 칼럼 이름은 “D” 라고 써주면 될 것이다.</p>
+<p>미분방정식으로 각 분획간의 물질이동의 식만 주면 알아서 각 분획 별 물질의 양을 구해주는 $DES와는 달리 $PRED를 쓸 경우 우리가 얻고자 하는 값(예컨데 특정 분획에서의 약물 농도)을 라플라스 변환을 이용하든지 하여 수식으로 풀어서 넣어 주어야 한다.</p>
+</div>
+<div id="pred를-써야-하는-경우" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> $PRED를 써야 하는 경우</h2>
+<p>편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 $PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다(그림 <a href="PRED.html#fig:pred-formula">7.3</a>).</p>
+<div class="figure"><span id="fig:pred-formula"></span>
+<img src="assets/media-07/image3.png" alt="약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다." width="100%" />
+<p class="caption">
+그림 7.3: 약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
+</p>
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="기타-advan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="IE.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/07.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -23,21 +23,17 @@
 | **2-Compartment** | **ADVAN3** | **ADVAN4**        |
 | 3-Compartment     | ADVAN11    | ADVAN12           |
 
-![http://www.rxkinetics.com/pktutorial/1complot.jpg](./assets/media-04/image1.jpeg)
+```{r 1comp-ex, fig.cap="(ref:1comp-ex)"}
+knitr::include_graphics("./assets/media-04/image1.jpeg")
+```
+(ref:1comp-ex) Example of IV 1-compartment model
 
-그림 1. Example of IV 1-compartment model
+```{r 2comp-ex, fig.cap="(ref:2comp-ex)"}
+knitr::include_graphics("./assets/media-04/image2.png")
+```
+(ref:2comp-ex) Example of IV 2-compartment model
 
-![](./assets/media-04/image2.png)
-
-그림 2. Example of IV 2-compartment model
-
-TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를
-설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의
-파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획
-모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1\~4에서 사용하는 TRANS 서브루틴을 표
-2에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide
-- Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1\~4 까지의 내용을 그림 3에서 확인할 수
-있다.
+TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1\~4에서 사용하는 TRANS 서브루틴을 표 2에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1\~4 까지의 내용을 그림 3에서 확인할 수 있다. [@nonmem]
 
 표2. ADVAN 과 TRANS 서브루틴 조합에 따른 필수 파라미터
 
@@ -156,9 +152,11 @@ TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브�
 </tbody>
 </table>
 
-![](./assets/media-04/image3.png)
 
-그림 3. Standard Pharmacokinetic Models and Parameters
+```{r standard, fig.cap="(ref:standard)"}
+knitr::include_graphics("./assets/media-04/image3.png") # 3
+```
+(ref:standard) Standard Pharmacokinetic Models and Parameters
 
 ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는
 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그
@@ -210,9 +208,10 @@ ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있�
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은
 3구획이다.
 
-![](./assets/media-04/image4.png)
-
-그림 4. Structure of 2-compartment extravascular model
+```{r 2comp-structure, fig.cap="(ref:2comp-structure)"}
+knitr::include_graphics("./assets/media-04/image4.png") #4
+```
+(ref:2comp-structure) Structure of 2-compartment extravascular model
 
 $PK 블록에 쓰인 필수 파라미터를 살펴보면 CL은 청소율, V2, V3는 각각 중심구획의 분포용적, 말초구획의 분포용적, Q는
 Intercompartmental clearance, KA는 흡수속도상수를 의미하며, 부가 파라미터인 ALAG1은 저장구획의
@@ -244,6 +243,8 @@ THETA를 다르게 주어 상대생체이용률을 구할 수 있다.
 ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 그림 5를 참고하도록
 하자.
 
-![](./assets/media-04/image5.png)
+```{r basic-additional, fig.cap="(ref:basic-additional)"}
+knitr::include_graphics("./assets/media-04/image5.png")
+```
 
-그림 5. Basic and additional pharmacokinetic parameters
+(ref:basic-additional) Basic and additional pharmacokinetic parameters

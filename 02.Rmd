@@ -99,7 +99,7 @@ PREDPP 사용시 MDV는 데이터셋에서 필수적으로 필요한 변수는 �
 
 ### EVID
 
-EVID는 EVent Identification Data를 뜻하며 데이터 레코드의 유형에 대해 설명해 주는 변수이다. 데이터셋에 꼭 들어가야 하는 변수는 아니다. 데이터셋 내에 EVID 변수를 포함시키지 않았을 경우, 모델링 수행 시 NONMEM은 이를 자동으로 생성하여 부여한다. 이는 실행결과(output) 파일에서 확인이 가능하다. EVID 변수는 인위적으로 농도가 재설정되는 경우에 쓸 수 있다. 예를 들어, 교차 시험에서 두 기간(period) 간의 농도가 중첩되지 않는 경우 사용할 수 있다. EVID 관련해서는 NONMEM Users Guide – Part V의 EVID Data Item 섹션에 자세히 설명되어 있다.
+EVID는 EVent Identification Data를 뜻하며 데이터 레코드의 유형에 대해 설명해 주는 변수이다. 데이터셋에 꼭 들어가야 하는 변수는 아니다. 데이터셋 내에 EVID 변수를 포함시키지 않았을 경우, 모델링 수행 시 NONMEM은 이를 자동으로 생성하여 부여한다. 이는 실행결과(output) 파일에서 확인이 가능하다. EVID 변수는 인위적으로 농도가 재설정되는 경우에 쓸 수 있다. 예를 들어, 교차 시험에서 두 기간(period) 간의 농도가 중첩되지 않는 경우 사용할 수 있다. EVID 관련해서는 NONMEM Users Guide - Part V의 EVID Data Item 섹션에 자세히 설명되어 있다.
 
 ### TIME
 
@@ -109,7 +109,7 @@ TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 �
 
 TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 그림 \@ref(fig:time-dataset)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 '/' 또는 '-' 사용) 컨트롤 파일의 \$INPUT에 반드시 DATE=DROP 이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
 
-```{r time-dataset, fig.cap="Example of TIME in dataset – Allowed(sequential) vs. NOT allowed(non-sequential)"}
+```{r time-dataset, fig.cap="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)"}
 knitr::include_graphics("assets/02-fig-07.png")
 ```
 
@@ -131,7 +131,7 @@ AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 
 
 RATE 은 단위 시간 당 주입된 양(AMT per unit TIME)을 나타내며, 즉 정맥주입(infusion) 시 투여속도를 나타내는 변수이다. AMT와 함께 구체적인 투약 레코드를 나타내기 위해 사용되며, 투여속도를 나타내는 경우 양의 숫자로 기입된다. 그림 \@ref(fig:AMT-RATE)와 같이 약물 100 mg 을 한 시간동안 정맥 주입했을 경우 RATE 은 100 mg/h 가 된다. 만약, 약물 100 mg 을 30 분 동안 정맥주입 했을 경우 RATE는 100 mg/ 0.5 h 로 200 mg/h가 된다.
 
-```{r AMT-RATE, fig.cap="Example of AMT and RATE in dataset – drug 100mg IV infusion over 1 hr vs. 0.5 h"}
+```{r AMT-RATE, fig.cap="Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h"}
 knitr::include_graphics("assets/02-fig-09.png")
 ```
 
@@ -145,7 +145,7 @@ ADDL(Additional Dose)은 이벤트 레코드의 시작시간부터 일정한 투
 
 그림 \@ref(fig:dosing-dataset)과 같이 예를 들어 ID 302 대상자에게 약물 10mg 을 24시간 간격(0시간부터 96시간 까지)으로 총 5회 투여했을 경우, 투약 레코드는 TIME과 AMT를 사용하여 다섯 줄로 설명 가능하다. 하지만, 같은 투약정보를 ADDL과 II를 사용하여 한 줄로, 24시간 간격으로 4번의 추가 용량을 투여(총 다섯 번 투여), 간단하게 나타낼 수 있다.
 
-```{r dosing-dataset, fig.cap = "Example of Dosing record in dataset – using TIME, AMT vs. using TIME, AMT, ADDL, II"}
+```{r dosing-dataset, fig.cap = "Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II"}
 knitr::include_graphics("assets/02-fig-10.png")
 ```
 
@@ -170,4 +170,4 @@ Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영�
 다음 문헌을 참고하였다. [@kelly; @nonmem]
 
 1. Owen, Joel S., and Jill Fiedler-Kelly. Introduction to population pharmacokinetic/pharmacodynamic analysis with nonlinear mixed effects models. John Wiley & Sons, 2014.
-2. Boeckmann, A. J., L. B. Sheiner, and S. L. Beal. "NONMEM users guide – part V." San Francisco: University of California San Francisco (2009).
+2. Boeckmann, A. J., L. B. Sheiner, and S. L. Beal. "NONMEM users guide - part V." San Francisco: University of California San Francisco (2009).

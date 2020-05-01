@@ -1,7 +1,7 @@
-all: clean gitbook pdf
+all: clean gitbook pdf epub
 
 clean:
-	rm -rf docs
+	rm -rf docs _bookdown_files basic.*
 
 gitbook:
 	Rscript --quiet _render.R "bookdown::gitbook"
