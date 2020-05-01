@@ -4,8 +4,8 @@ author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김�
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: krantz
-bibliography: ["references/book.bib", "references/bib_pubmed_raw.bib"]
-#bibliography: ["references/book.bib"]
+bibliography: ["references/book.bib", "references/bib_pubmed_raw.bib", "references/packages.bib"]
+#bibliography: ["references/book.bib"] https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
@@ -16,12 +16,14 @@ fontsize: 10pt
 #monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다."
-url: 'https\://pipetcpt.github.io/book-basic-1'
-github-repo: pipetcpt/book-basic-1
+url: 'https\://pipetcpt.github.io/basic'
+github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
+linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
+mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
+#mainfont: NanumMyeongjo
 header-includes:
   - \usepackage{kotex}
-mainfont: NanumGothic
 ---
 
 ```{r setup, include=FALSE}
@@ -59,13 +61,5 @@ PIPET(가톨릭계량약리학연구소)은 2014년부터 5단계의 수준 별 
 
 **가톨릭계량약리학 연구소장 임동석**
 
-```{r ggtheophindi, fig.cap = 'Individual concentration-time curves of oral administration of Theoph (Subject 1)', fig.width = 6, fig.height = 3.5}
-ggplot(Theoph %>% dplyr::filter(Subject == 1), 
-       aes(Time, conc, group = Subject, color = Subject)) +
-  geom_point(size = 4) + geom_line(size = 1) +
-  theme_minimal() +
-  labs(title = 'Oral Administration of Theoph (320 mg) (Subject 1)',
-       x = 'Time (hour)', y = 'Concentration (ng/mL)')
-```
 
 \mainmatter

@@ -3,11 +3,12 @@ output:
   pdf_document: default
   html_document: default
 ---
+
 # 기타 ADVAN
 
 **Newer ADVANs (ADVAN 9-13)**
 
-임 동 석
+*임동석*
 
 ## ADVAN9 - General Nonlinear Model with Equilibrium Compartments
 

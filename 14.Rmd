@@ -1,22 +1,20 @@
-# NONMEM의 $COVARIANCE
+# NONMEM의 \$COVARIANCE {#cov}
+
+**\$COVARIANCE OF NONMEM**
 
 *배균섭*
 
-NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance
-step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω,
-Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV
-절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가
-있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND
-옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original
-scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다.
-UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.
+---
+
+NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.
+
+\index{UCP, unconstrained parameter}
+\index{$COVARIANCE}
 
 ## 실제 사례
 
-다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게
-320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 THEO 라는 파일 이름으로 포함되어 있다.
-그림은 14.5를 참고한다.
-
+다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 THEO 라는 파일 이름으로 포함되어 있다. 그림은 14.5를 참고한다.
+  
 ```
 $PROB THEOPHYLLINE ORAL
 $INPUT ID AMT=DROP TIME DV BWT
@@ -44,7 +42,7 @@ $TAB ID ETA(1) ETA(2) ETA(3)
      FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY
 ```
 
-위의 $COV STEP에 의해 생성된 부분은 다음과 같다. 아래 그림의 원래 output은 126열까지까지 있으나, 지면의
+위의 \$COV STEP에 의해 생성된 부분은 다음과 같다. 아래 그림의 원래 output은 126열까지까지 있으나, 지면의
 제약으로 인해 104열이후는 생략하였다.
 
 ```
@@ -345,41 +343,45 @@ matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해�
 
 $COV step이 실패하는 경우에는 먼저 파라미터 추정값에 이상이 없는지 살펴보고, 이상이 없어 보이면 붓스트랩이나
 profile-likelihood등의 다른 방법을 이용하여 신뢰구간을 구하면 된다. 이 때 신뢰구간이 비대칭일 가능성이 크므로
-표준오차는 제시하기 어려워진다. 혹자는 $COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이
-걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 $COV 절을 삭제하는 것이 시간을 절약하는 방법이다.
+표준오차는 제시하기 어려워진다. 혹자는 \$COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이
+걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 \$COV 절을 삭제하는 것이 시간을 절약하는 방법이다.
 
 ## NONMEM document
 
-NONMEM User’s guide와 help file에는 $COV를 다음과 같이 설명한다.
+NONMEM User’s guide와 help file에는 \$COV를 다음과 같이 설명한다.
 
-    $COVARIANCE
-    
-     DISCUSSION:
-     Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
-     This step outputs: standard errors, covariance matrix, inverse covari-
-     ance  matrix,  and the correlation form of the covariance matrix.
-    
-     OPTIONS:
-    
-     MATRIX=c
-          Specifies that the covariance matrix will be different  from  the
-          default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-          the inverse R matrix be used.  MATRIX=S requests that 4 times the
-          inverse  S  matrix be used.  (R and S are two matrices from  sta-
-          tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-          ces,  respectively.)   With  MATRIX=R the standard errors will be |
-          more consistent with other nonlinear regression  software  imple- |
-          mentations.
-    
-     PRINT=[E][R][S]
-          Additional outputs will be  printed  besides  the  defaults.   E:
-          print  the  eigenvalues  of the correlation matrix.  R: print the
-          matrix .5*R.  S: print the matrix .25*S.
-    
-     REFERENCES: Guide IV, section III.B.15
-     REFERENCES: Guide V, section 9.4.2 , 10.6
+```
+$COVARIANCE
 
-## 14.3이론적 배경 - MLE
+ DISCUSSION:
+ Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
+ This step outputs: standard errors, covariance matrix, inverse covari-
+ ance  matrix,  and the correlation form of the covariance matrix.
+
+ OPTIONS:
+
+ MATRIX=c
+      Specifies that the covariance matrix will be different  from  the
+      default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
+      inverse  S  matrix be used.  (R and S are two matrices from  sta-
+      tistical theory,  the Hessian and Cross-Product  Gradient  matri-
+      ces,  respectively.)   With  MATRIX=R the standard errors will be |
+      more consistent with other nonlinear regression  software  imple- |
+      mentations.
+
+ PRINT=[E][R][S]
+      Additional outputs will be  printed  besides  the  defaults.   E:
+      print  the  eigenvalues  of the correlation matrix.  R: print the
+      matrix .5*R.  S: print the matrix .25*S.
+
+ REFERENCES: Guide IV, section III.B.15
+ REFERENCES: Guide V, section 9.4.2 , 10.6
+```
+
+## 이론적 배경 - MLE
+
+\index{MLE, maximum likelihood estimation}
 
 NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, 표단계로 나눌 수 있다. 이중 공분산단계에 대하여 설명하고자
 한다. 추정단계가 끝나면 최종 파라미터 추정값이 구해진다. NONMEM에서는 Y의 분포가 정규이든 아니든 상관없이
@@ -427,11 +429,13 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 
 \[R = \frac{\partial^{2}O}{\partial\theta^{2}}\]
 
-## 14.4 R에서의 구현
+## R에서의 구현
 
-14.1의 예제를 R로 풀이하면 다음과 같다. 우선 **nmw** package를 설치한다.
+14.1의 예제를 R로 풀이하면 다음과 같다. 우선 **nmw** package를 설치한다. [@R-nmw]
 
-    if (!require(nmw)) install.packages("nmw")
+```r
+if (!require(nmw)) install.packages("nmw")
+```
 
 다음 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.
 
@@ -463,36 +467,40 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 
 S matrix를 계산하는 함수는 다음과 같다.
 
-    CalcSmat
-    ## function () 
-    ## {
-    ##     Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
-    ##         ncol = e$nPara)
-    ##     for (i in 1:e$nID) {
-    ##         e$DATAi = e$DataRef[[i]]
-    ##         e$ETAi = e$EBE[i, e$EtaNames]
-    ##         e$nReci = e$Oi[i, "nRec"]
-    ##         if (e$METHOD == "ZERO") {
-    ##             gr = grad(OiS0, e$FinalPara)
-    ##         }
-    ##         else {
-    ##             gr = grad(OiS1, e$FinalPara)
-    ##         }
-    ##         Smat = Smat + gr %*% t(gr)
-    ##     }
-    ##     return(Smat/4)
-    ## }
-    ## <bytecode: 0x000000001793eec0>
-    ## <environment: namespace:nmw>
+```r
+CalcSmat
+## function () 
+## {
+##     Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
+##         ncol = e$nPara)
+##     for (i in 1:e$nID) {
+##         e$DATAi = e$DataRef[[i]]
+##         e$ETAi = e$EBE[i, e$EtaNames]
+##         e$nReci = e$Oi[i, "nRec"]
+##         if (e$METHOD == "ZERO") {
+##             gr = grad(OiS0, e$FinalPara)
+##         }
+##         else {
+##             gr = grad(OiS1, e$FinalPara)
+##         }
+##         Smat = Smat + gr %*% t(gr)
+##     }
+##     return(Smat/4)
+## }
+## <bytecode: 0x000000001793eec0>
+## <environment: namespace:nmw>
+```
 
-## 14.5 Theophylline 예제 데이터셋
+## Theophylline 예제 데이터셋
 
-R에는 기본적으로 **nlme** 팩키지가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다.
+R에는 기본적으로 **nlme** 패키지[@R-nlme]가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다.
 
 Theophylline데이터를 그리면 다음과 같다.
 
-    require(nlme)
-    plot(Theoph)
+```r
+require(nlme)
+plot(Theoph)
+```
 
 ![](./assets/media-14/image1.png)
 
@@ -510,44 +518,45 @@ NONMEM 제어파일의 내용은 14.1에서 표시한 것과 같다.
 
 R에서는 다음과 같은 준비 작업이 필요하다.
 
-    DataAll = Theoph
-    colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")
-    DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))
-    
-    nTheta = 3
-    nEta = 3
-    nEps = 2
-    
-    THETAinit = c(2, 50, 0.1)
-    OMinit = matrix(c(0.2, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.2), 
-                    nrow=nEta, ncol=nEta)
-    SGinit = diag(c(0.1, 0.1))
-    
-    LB = rep(0, nTheta) # Lower bound
-    UB = rep(1000000, nTheta) # Upper bound
-    
-    FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/(TH1*exp(ETA1) - TH3*exp(ETA3))*
-                 (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),
-                 c("ETA1","ETA2","ETA3"),
-                 function.arg=c("TH1", "TH2", "TH3", "ETA1", "ETA2", "ETA3", "DOSE",
-                               "TIME"),
-                 func=TRUE, hessian=FALSE)
-    
-    H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), 
-              function.arg=c("F", "EPS1", "EPS2"), 
-              func=TRUE)
-    
-    PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
-    {
-      FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, 
-                    DATAi[,"TIME"])
-      Gres = attr(FGDres, "gradient")
-      Hres = attr(H(FGDres, 0, 0), "gradient")
-      Res = cbind(FGDres, Gres, Hres)
-      colnames(Res) = c("F", "G1", "G2", "G3", "H1", "H2")
-      return(Res)
-    }
+```r
+DataAll = Theoph
+colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")
+DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))
 
+nTheta = 3
+nEta = 3
+nEps = 2
+
+THETAinit = c(2, 50, 0.1)
+OMinit = matrix(c(0.2, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.2), 
+                nrow=nEta, ncol=nEta)
+SGinit = diag(c(0.1, 0.1))
+
+LB = rep(0, nTheta) # Lower bound
+UB = rep(1000000, nTheta) # Upper bound
+
+FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/(TH1*exp(ETA1) - TH3*exp(ETA3))*
+             (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),
+             c("ETA1","ETA2","ETA3"),
+             function.arg=c("TH1", "TH2", "TH3", "ETA1", "ETA2", "ETA3", "DOSE",
+                           "TIME"),
+             func=TRUE, hessian=FALSE)
+
+H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), 
+          function.arg=c("F", "EPS1", "EPS2"), 
+          func=TRUE)
+
+PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
+{
+  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, 
+                DATAi[,"TIME"])
+  Gres = attr(FGDres, "gradient")
+  Hres = attr(H(FGDres, 0, 0), "gradient")
+  Res = cbind(FGDres, Gres, Hres)
+  colnames(Res) = c("F", "G1", "G2", "G3", "H1", "H2")
+  return(Res)
+}
+```
 위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model
 predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한
 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F,
@@ -798,7 +807,7 @@ G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**�
     ## [12,] 12 -1.2863346 -0.388864841 -0.10134440
     # (Tab1 = TabStep())
 
-## 14.6고유값(Eigenvalue)
+## 고유값(Eigenvalue)
 
 공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.
 
@@ -814,10 +823,7 @@ G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**�
 
 이라는 특성 방정식의 근들로 구할 수 있다.
 
-Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다.
-조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의
-어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시
-minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.
+Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다. 조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의 어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시 minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.
 
 ## 결론
 
@@ -827,7 +833,9 @@ NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.
 1.  NMTRAN의 역할을 해줄 함수들이 없다.
 2.  속도가 적어도 수 십에서 수 백 배 느리다.
 
-나머지 FOCE나 Laplacian에 대해서는 **nmw** 팩키지의 도움말을 보고 실행하면 알 수 있다.
+나머지 FOCE나 Laplacian에 대해서는 **nmw** 패키지의 도움말을 보고 실행하면 알 수 있다.
+
+---
 
 참고문헌
 

@@ -1,5 +1,11 @@
 # 특수 ADVAN을 이용한 control stream의 코딩
 
+**Coding of control stream using specific ADVANs**
+
+*전상일*
+
+---
+
 본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던
 제어파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로 설명하고자 한다. 전형적인 $SUBROUTINES는
 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는

@@ -4,3 +4,8 @@
 # 참고문헌 {-}
 '`
 
+```{r include=FALSE}
+pack <- c('nlme', 'nmw')
+knitr::write_bib(pack, 'references/packages.bib')
+```
+

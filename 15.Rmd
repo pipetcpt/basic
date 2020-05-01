@@ -10,12 +10,13 @@ POSTHOC 추정값, 개인 파라미터 추정값(individual parameter estimates)
 사용된다. NONMEM에서는 조건부 추정법을 써서 개인 파라미터 추정값을 얻을 수 있으며, 1차추정법(FO)을 사용하는
 경우 $ESTIMATION에서 POSTHOC 옵션을 추가하여 개인 파라미터 추정값을 얻을 수 있다. 이러한 개인 파라미터 추정값은
 모델의 진단, 추정 및 결과값의 예측, 시뮬레이션 등에 사용될 수 있고, 그 중 모델의 진단 과정에서는 IPRED vs DV,
-IWRES vs IPRED, EBE vs EBE, EBE vs Covariate, GAM 등에 활용된다. 그림 1에는 EBE vs
+IWRES vs IPRED, EBE vs EBE, EBE vs Covariate, GAM 등에 활용된다. 그림 \@ref(fig:ebe-cov)에는 EBE vs
 Covariate의 예시가 나와있는데, 여기서는 청소율에 대한 ETA의 분포와 공변량 사이의 경향성을 파악할 수 있다.
 
-![](./assets/media-15/image1.png)
+```{r ebe-cov, fig.cap="Example of EBE vs Covariates [@bonate]"}
+knitr::include_graphics("./assets/media-15/image1.png")
+```
 
-그림 1. Example of EBE vs Covariates<sup>\[1\]</sup>
 
 개인 파라미터의 추정 시, 이에 대한 정보를 제공하는 데이터가 적거나 없을 때, 그 파라미터의 값은 종종 대표값으로
 축소(shrinkage)된다. 반대로, 해당 파라미터를 설명하는 데 필요한 관찰값이 많이 존재한다면 모델의 적합을
@@ -25,7 +26,7 @@ Covariate의 예시가 나와있는데, 여기서는 청소율에 대한 ETA의 
 
 > ![](./assets/media-15/image2.png)
 
-그림 2. Concept of η shrinkage<sup>\[2\]</sup>
+그림 2. Concept of η shrinkage [@uppsala]
 
 NONMEM에서 결과 파일의 ETAshrink(%)를 보면, 개인간 변이를 허용한 파라미터의 ETA shrinkage 값을 확인할
 수 있다. ETA shrinkage는 다음과 같이 계산할 수 있는데, 각 개인 별 η의 표준편차를 ω로 나누어서 1에서 뺀
@@ -135,3 +136,6 @@ misspecification<sup>\[2\]</sup>
 
 2.  > Uppsala University, Empirical Bayes Estimate(EBE)-Based
     > Diagnostics, 2007
+
+
+

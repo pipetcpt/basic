@@ -1,31 +1,27 @@
-# 모델 적합 상태에 대한 진단
+# 모델 적합 상태에 대한 진단 {#fit}
 
 *전상일*
 
-본 장에서는 모델의 적합 상태를 진단하는 방법 중, 잔차(residual)를 이용하여 진단하는 방법에 대하여 다루고자 한다. 그림
-1의 모델링 과정을 보면, 모델을 가정하고 그 후에 시험을 디자인하고, 시험을 수행하고, 얻어진 데이터를 탐색하여 모델에
-적용하고, 그 결과를 분석한 후에 다시 모델에 반영하는 과정을 거치는데, 이 중 모델의 결과(output)를
-분석하는 방법 중 하나인 잔차에 근거하여 결과를 분석하는 방법에 대해 설명하고자 한다. 이러한 잔차분석 방법에는
-런검정(run test)과 basic goodness-of-fit(GOF) 플롯의 잔차플롯 을 확인하여 진단하는 방법 등이
-있다. 
+---
 
-![](./assets/media-13/image1-2.png)
+본 장에서는 모델의 적합 상태를 진단하는 방법 중, 잔차(residual)를 이용하여 진단하는 방법에 대하여 다루고자 한다. 그림 \@ref(fig:carousel)의 모델링 과정을 보면, 모델을 가정하고 그 후에 시험을 디자인하고, 시험을 수행하고, 얻어진 데이터를 탐색하여 모델에 적용하고, 그 결과를 분석한 후에 다시 모델에 반영하는 과정을 거치는데, 이 중 모델의 결과(output)를 분석하는 방법 중 하나인 잔차에 근거하여 결과를 분석하는 방법에 대해 설명하고자 한다. 이러한 잔차분석 방법에는 런검정(run test)과 basic goodness-of-fit(GOF) 플롯의 잔차플롯 을 확인하여 진단하는 방법 등이 있다. 
 
-그림 1. Modeling carousel [@gabrielsson2006pharmacokinetic]
+(ref:carousel) Modeling carousel [@gabrielsson]
 
-잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 2), ε (epsilon)으로 표시한다(ε =
-C<sub>observation</sub> – C<sub>prediction</sub>). 잔차가 양수면, 즉 관측값이
-예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉
-관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.
+```{r carousel, fig.cap="(ref:carousel)"}
+knitr::include_graphics("./assets/media-13/image1-2.png")
+```
 
-![](./assets/media-13/image5.png)
+잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \@ref(fig:def-residual), ε (epsilon)으로 표시한다(ε = C<sub>observation</sub> – C<sub>prediction</sub>). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.
 
-그림 2. Definition of residual [@gabrielsson2006pharmacokinetic]
+(ref:def-residual) Definition of residual [@gabrielsson]
+
+```{r def-residual, fig.cap="(ref:def-residual)"}
+knitr::include_graphics("./assets/media-13/image5.png")
+```
 
 잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고
-가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ<sup>2</sup>인 정규분표를 따른다고
-가정한다(ε\~N(0, σ<sup>2</sup>). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수
-있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}
+가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ<sup>2</sup>인 정규분표를 따른다고 가정한다(ε\~N(0, σ<sup>2</sup>). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}
 
 잔차의 분포는 다음과 같이 크게 네 가지 함수 형식을 사용하여 모델링 할 수 있는데, 가법오차모델(Additive error
 model), 고정변동계수(Constant coefficient of variation, CCV)를 사용한 모델, 가법과 CCV를

@@ -4,6 +4,8 @@
 
 *홍태곤*
 
+---
+
 일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. $MODEL 구문을 사용하여 사용자가 원하는 만큼
 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 $PK구문 다음에 $DES구문을 사용하여
 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은
@@ -11,18 +13,17 @@
 ADVAN의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5\~8에 대하여 다루기로 한다.
 
 ```{r gen-advan, message = FALSE}
-library(dplyr)
-advans <- c("ADVAN5 (General Linear)",
+advan <- c("ADVAN5 (General Linear)",
 "ADVAN6 (General Nonlinear)",
 "ADVAN7 (General Linear with Real Eigenvalues)",
 "ADVAN8 (General Nonlinear Kinetics with Stiff Equations)",
 "ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)",
 "ADVAN13 (General Nonlinear Kinetics using LSODA)")
 
-knitr::kable(tibble(`General ADVAN` = advan), caption = "일반 ADVAN의 종류")
+knitr::kable(dplyr::tibble(`General ADVAN` = advan), caption = "일반 ADVAN의 종류")
 ```
 
-**5.1** **일반 선형 ADVAN**
+## 일반 선형 ADVAN
 
 ![](./assets/media-05/image1.png)
 
@@ -58,7 +59,7 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 구획의 수를 설정할 수 있다. $PK구문을 이용하여 각 구획 간 물질의 이동 관계를 설정하고 약동학 파라미터(ex CL,
 V)와의 관계도 정의할 수 있다.
 
-**5.2** **일반 비선형 ADVAN**
+## 일반 비선형 ADVAN
 
 ![](./assets/media-05/image3.png)
 
