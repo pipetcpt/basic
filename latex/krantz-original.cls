@@ -110,8 +110,8 @@
 \newif\if@krantzb
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ExecuteOptions{a4paper,10pt,twoside,onecolumn,final,openright}
-%\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
+
+\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%
@@ -243,10 +243,8 @@
 \newdimen\vtrimtop
 \newdimen\vtrimbot
 
-%\setlength\trimheight{300mm}
-%\setlength\trimwidth{176mm}
-\setlength\trimheight{9in} % original, FP 2020-05-04
-\setlength\trimwidth{6in}  % original, FP 2020-05-04
+\setlength\trimheight{9in}
+\setlength\trimwidth{6in}
 %
 %
 \if@krantza
@@ -264,8 +262,7 @@
   \hoffset-15pt
   \voffset39pt
 \let\normaltextheight\textheight
-
-\else\if@krantzb % 170mm x 242mm
+\else\if@krantzb
   \textheight = 51pc
 %  \advance\textheight by \topskip
   \textwidth 33pc
@@ -279,38 +276,35 @@
   \voffset-.15in%.04in
 \let\normaltextheight\textheight
 \else
-
 %%%Uncomment to get 6x9 trim
-%\textheight = 43pc
-%  %\advance\textheight by \topskip
-%\addtolength\textheight{3pt}
-%  \textwidth 26pc
-%\addtolength\textwidth{.5pt}
-% \topmargin0in
-%  \oddsidemargin1.1875in
-%  \evensidemargin1.1875in
-%  \htrim5.05pc
-%  \vtrimtop7.7pc
-%  \vtrimbot5.44pc
-%%  \hoffset-5pt
-%  \voffset45pt
-%\let\normaltextheight\textheight
-
-%%%Original
-%\textheight = 45pc
-%  %\advance\textheight by \topskip
-%\addtolength\textheight{3pt}
-%  \textwidth 28pc
-%\addtolength\textwidth{.5pt}
-%  \topmargin0in
-%  \oddsidemargin1.1875in
-%  \evensidemargin1.1875in
-%  \htrim.7365in
-%  \vtrimtop1.068in
-%  \vtrimbot1.068in
-%  \hoffset-15pt
-%  \voffset39pt
-%\let\normaltextheight\textheight
+%%%%\textheight = 43pc
+%%%%  %\advance\textheight by \topskip
+%%%%\addtolength\textheight{3pt}
+%%%%  \textwidth 26pc
+%%%%\addtolength\textwidth{.5pt}
+%%%% \topmargin0in
+%%%%  \oddsidemargin1.1875in
+%%%%  \evensidemargin1.1875in
+%%%%  \htrim5.05pc
+%%%%  \vtrimtop7.7pc
+%%%%  \vtrimbot5.44pc
+%%%%%  \hoffset-5pt
+%%%%  \voffset45pt
+%%%%\let\normaltextheight\textheight
+\textheight = 45pc
+  %\advance\textheight by \topskip
+\addtolength\textheight{3pt}
+  \textwidth 28pc
+\addtolength\textwidth{.5pt}
+  \topmargin0in
+  \oddsidemargin1.1875in
+  \evensidemargin1.1875in
+  \htrim.7365in
+  \vtrimtop1.068in
+  \vtrimbot1.068in
+  \hoffset-15pt
+  \voffset39pt
+\let\normaltextheight\textheight
 
   \fi
 \fi

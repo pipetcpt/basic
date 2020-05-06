@@ -1,29 +1,48 @@
 --- 
+#https://www.overleaf.com/gallery/tagged/book/page/5
+#https://pandoc.org/MANUAL.html#variables-for-latex
+#documentclass: extarticle
+#documentclass: scrbook
+documentclass: krantz
+classoption:
+- krantz2
+- a4paper
+linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
+mainfont: NanumMyeongjo
+#monofont: "Source Code Pro"
+monofontoptions: "Scale=0.4"
+#hyperrefoptions:
+#- linktoc=all
+#mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
+header-includes:
+  - \usepackage{kotex}
+fontsize: 10pt
+#http://ftp.harukasan.org/CTAN/macros/latex/contrib/geometry/geometry.pdf
+#geometry: "height=10in,b5paper"
+#geometry: "b5paper"
+#geometry: "margin=4in"
+#geometry: "a4paper,left=1.5in,right=1.5in,top=1in,bottom=1in"
+#geometry: "a4paper, nohead, nomarginpar,left=1.5in,right=1.5in,top=5in,bottom=3in,foot=1in"
+#geometry: "b5paper, nohead, nomarginpar" # 위 margin을 
+#geometry: "a4paper, nohead, nomarginpar"
+#geometry: "total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot"
+#geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
 title: "PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초"
 author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
-documentclass: krantz
-bibliography: ["references/book.bib", "references/bib_pubmed_raw.bib", "references/packages.bib"]
+bibliography: ["references/book.bib", "references/paper.bib", "references/packages.bib"]
 #bibliography: ["references/book.bib"] https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
 lot: yes
 lof: yes
-fontsize: 10pt
-#monofont: "Source Code Pro"
-#monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다."
 url: 'https\://pipetcpt.github.io/basic'
 github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
-linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
-#mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
-mainfont: NanumMyeongjo
-header-includes:
-  - \usepackage{kotex}
 ---
 
 ```{r setup, include=FALSE}
@@ -42,13 +61,14 @@ options(
   width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
 
-options(knitr.graphics.auto_pdf = FALSE)
+#options(knitr.graphics.auto_pdf = FALSE)
 
-knitr::opts_chunk$set(echo=FALSE, message = FALSE, 
-					  out.width="100%", 
-					  #dpi = 96, 
-					  #fig.width = 1,
-					  error = TRUE)
+knitr::opts_chunk$set(echo=FALSE, 
+                      message = FALSE, 
+                      #out.width="100%", 
+                      #dpi = 96, 
+                      #fig.width = 1,
+                      error = TRUE)
 ```
 
 # 서문 {-}
@@ -59,7 +79,6 @@ PIPET(가톨릭계량약리학연구소)은 2014년부터 5단계의 수준 별 
 
 이 교재는 PIPET/Q-fitter Pharmacometrics Course의 Basic 과정에서 사용되는 것으로, 계량약리학의 기초와 제어구문 작성 방법, 모델 진단 기법과 약동-약력학 모델의 기초적 원리 및 적용 방법을 다루고 있습니다.
 
-가톨릭계량약리학 연구소장 \hfill **임동석**
-
+가톨릭계량약리학 연구소장 \hfill 임동석
 
 \mainmatter

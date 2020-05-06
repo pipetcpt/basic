@@ -1,4 +1,4 @@
-all: clean gitbook pdf epub
+all: gitbook pdf epub
 
 clean:
 	rm -rf docs _bookdown_files basic.*
@@ -20,4 +20,7 @@ pdfcp:
 	cp references/book-basic-1.pdf docs/
 
 del:
-	rm pdf-*.pdf
+	rm pdf-*.pdf tmp-*.pdf
+
+crop:
+	sh _crop.sh ; cp docs/basic.pdf basic-no-crop.pdf

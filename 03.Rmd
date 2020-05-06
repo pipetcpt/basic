@@ -184,22 +184,20 @@ Y = F\*(1+EPS(1)) +EPS(2)
 
 여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수, 가법변동, 고정변동계수+가법변동을 선택할 수 있다. 잔차변이(EPS)를 \$THETA 레코드에서 추정하도록 \$ERROR의 코드를 변경해서 사용하기도 한다:
 
-```fortran
+```coffee
 $ERROR 
 IPRED = F 
-W = SQRT(THETA(4)\*\*2 + THETA(5)\*\*2 \*IPRED\*\*2) 
+W = SQRT(THETA(4)**2 + THETA(5)**2 *IPRED**2) 
 IRES = DV-IPRED 
 IWRES = IRES/W 
-Y = IPRED + W \* EPS(1)
+Y = IPRED + W * EPS(1)
 ...
 $THETA (0, 100) (0, 30) (0, 0.7) 10 0.2
 ...
 $SIGMA 1 FIX
 ```
 
-여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 \$ERROR 레코드에서 사용한
-EPS(1)은 $SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은
-$THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.
+여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 \$ERROR 레코드에서 사용한 EPS(1)은 \$SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 \$THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.
 
 ### $ESTIMATION, $SIMULATION
 
@@ -208,7 +206,9 @@ $ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정
 conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다. 추정방법에 대한
 이론적인 설명은 9장에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는 기본적인 코드와 용어에 대해서 설명한다.
 
+```
 $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
+```
 
 위의 $ESTIMATION에서 사용하는 옵션을 살펴보자. 우선, 추정방법은 'METHOD=' 을 사용한다. FO 방법은
 METHOD=0, FOCE는 METHOD=1이며, INTERACTION 옵션을 사용할 수 있다. NOABORT 옵션을 사용하여
@@ -222,25 +222,21 @@ METHOD=0, FOCE는 METHOD=1이며, INTERACTION 옵션을 사용할 수 있다. NO
 $SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적
 예측점검(visual predictive check) 과정에 사용할 수 있다.
 
+```
 $SIMULATION (seed) ONLYSIM NSUB=1000
+```
 
-'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을
-설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면
-된다. $SIMULATION을 사용 시 $ESTIMATION과 $COVARIANCE는 함께 사용할 수 없다.
+'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.
 
 ### $COVARIANCE, $TABLE
 
-$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬
-출력을 위해 사용된다.
+$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.
 
+```
 $COVARIANCE PRINT=E UNCONTIONAL MATRIX=S
+```
 
-PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여
-조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다.
-조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야
-할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sup>-1</sup>SR<sup>-1</sup>
-행렬이 기본계산에 사용되는데, MATRIX=S 또는 MATRIX=R 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나
-R 행렬을 사용할 수 있다. UNCONDITIONAL 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.
+PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sup>-1</sup>SR<sup>-1</sup> 행렬이 기본계산에 사용되는데, MATRIX=S 또는 MATRIX=R 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. UNCONDITIONAL 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 그림 \@ref(fig:table-record)처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.
 
@@ -293,37 +289,86 @@ knitr::include_graphics("./assets/media-03/image9.jpeg") # 3.8
 각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.
 
 $$
-\frac{dA(1)}{dt} = -k_a \cdot A(1) \\
-\frac{dA(2)}{dt} = k_a \cdot A(1) - k20 \cdot A(2) - \frac{V_{max} \cdot A(2)}{K_m + A(2)} \\
+\frac{dA(1)}{dt} = -k_a \cdot A(1) 
+$$
+
+$$
+\frac{dA(2)}{dt} = k_a \cdot A(1) - k20 \cdot A(2) - \frac{V_{max} \cdot A(2)}{K_m + A(2)}
+$$
+
+$$
 \frac{dA(3)}{dt} = -k30 \cdot A(3) + \frac{V_{max} \cdot A(2)}{k_m + A(2)} \cdot MPR
 $$
 
-여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 그림 \@ref(fig:parent-metabolite)와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. \$DES에서 각 구획의 이동을 정의하였으며, \$ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다.
+여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 \@ref(thm:parent-metabolite)와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. \$DES에서 각 구획의 이동을 정의하였으며, \$ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (코드 \@ref(thm:parent-metabolite))
 
-```{r parent-metabolite, fig.cap="(ref:parent-metabolite)"}
-knitr::include_graphics("./assets/media-03/image11.png") # 3.9
+```{theorem, parent-metabolite, name="모약물과 대사체의 약동학 동시 분석 모델의 제어구문"}
 ```
 
-(ref:parent-metabolite) 모약물과 대사체의 약동학 동시 분석 모델의 제어구문
+```fortran
+$PROBLEM Model of Parent and Metabolite Concentrations
+$INPUT ID TIME DV AMT EVID MDV CMT
+$DATA filename
+$SUBROUTINE ADVAN6 TOL=4
+$MODEL
+  COMP (DEPOT, DEFDOS)
+  COMP (CENTPRNT, DEFOBS)
+  COMP (CENTMETB)
+$PK
+  K20 = THETA(1) * EXP(ETA(1))
+  V2  = THETA(2) * EXP(ETA(2))
+  KA  = THETA(3)
+  VMAX= THETA(4)
+  KM  = THETA(5)
+  K30 = THETA(6)
+  V3  = THETA(7)
+  S2  = V2/1000
+  S3  = V3/1000
+$DES
+  DADT(1) = -KA*A(1)
+  DADT(2) = KA*A(1) - K20*A(2) - (VMAX*A(2))/(KM+A(2))
+  DADT(3) = -K30*A(3) + ((VMAX*A(2)))/(KM+A(2))*MPR
+$ERROR
+  IF (CMT.EQ.2) TYPE=0 ;Parent concentration
+  IF (CMT.EQ.3) TYPE=1 ;Metabolite concentration
+Y = F*EPS(1) * (1-TYPE)
+```
+
+<!-- (ref:parent-metabolite) 모약물과 대사체의 약동학 동시 분석 모델의 제어구문 -->
 
 ### PRED 모델
 
-\$PRED를 사용한 모델을 살펴보자. 그림 \@ref(fig:linear-model)는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.
+\$PRED를 사용한 모델을 살펴보자. 코드 \@ref(thm:linear-model)는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.
 
-```{r linear-model, fig.cap="(ref:linear-model)"}
-knitr::include_graphics("./assets/media-03/image12.png") # Fig 3.10
-```
+<!-- ```{r linear-model, fig.cap="(ref:linear-model)"} -->
+<!-- knitr::include_graphics("./assets/media-03/image12.png") # Fig 3.10 -->
+<!-- ``` -->
+
 
 (ref:linear-model) \$PRED를 이용한 간단한 선형 모델
 
+```{theorem, linear-model, name="(ref:linear-model)"}
+```
+
+```fortran
+$PROB QTc, PRED
+$INPUT ID=DROP DQTC=DV CMAX
+$DATA data.csv IGNORE=C 
+; Since the header row starts with a C,
+; that row is dropped
+$PRED
+  INT = THETA(1)       ; Intercept
+  SLP = THETA(2)       ; Slope
+  EFF = SLP*CMAX + INT ; Drug effect model- linear
+  Y   = EFF + ETA(1)   ; Residual error model - additive
+$EST PRINT=5 MAX=9999 SIG=3
+$THETA
+  0.1 ; Intercept
+  0.5 ; Slope
+$OMEGA
+  0.04 ; Magnitude of additive error
+```
+
 ---
 
-다음 문헌을 참고하였다. [@kelly; @nonmem]
-
-1.  Owen JS, Fiedler-Kelly J. *Introduction to population pharmacokinetic/pharmacodynamic analysis with nonlinear mixed effects models*. John Wiley & Sons, 2014.
-
-2.  Boeckmann AJ, Beal SL, Shenier LB, editors. NONMEM 7.4.0 Users
-    Guides – Part IV. ICON plc, Gaithersburg, MD, 2017.
-
-3.  Beal SL, Boeckmann AJ, Shenier LB, editors. NONMEM 7.4.0 Users
-    Guides – Part VI. ICON plc, Gaithersburg, MD, 2017.
+3장은 다음 문헌을 참고하였다. [@kelly; @nonmem]
