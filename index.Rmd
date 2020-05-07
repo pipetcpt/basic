@@ -65,8 +65,8 @@ options(
 
 knitr::opts_chunk$set(echo=FALSE, 
                       message = FALSE, 
-                      #out.width="100%", 
-                      #dpi = 96, 
+                      out.width="100%", 
+                      dpi = 96, 
                       #fig.width = 1,
                       error = TRUE)
 ```

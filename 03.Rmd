@@ -84,9 +84,14 @@ $DATA test.csv IGNORE = \# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)
 
 특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2, ADVAN10은 1구획 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델, ADVAN11과 ADVAN12는 3구획 약동학 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정하고자 하는 파라미터에 따라 TRANS를 선택하여야 한다. 각 ADVAN에 따른 TRANS 서브루틴은 표 \@ref(tab:advan-trans)에 자세히 나와있다.
 
-Table: (\#tab:advan-trans) 특수 ADVAN과 그에 따른 TRANS 서브루틴
+<table>
+<caption>(\#tab:advan-trans) 특수 ADVAN과 그에 따른 TRANS 서브루틴</caption>
+<tr><td>![](./assets/media-03/image3.png)</td></tr>
+</table>
 
-![](./assets/media-03/image3.png)
+<!-- Table: (\#tab:advan-trans) 특수 ADVAN과 그에 따른 TRANS 서브루틴 -->
+
+
 
 특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, \$MODEL과 \$DES 레코드는 사용하지 않으며, \$PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. \$PK는 그림 \@ref(fig:two-comp-pk)과 같이 작성한다.
 
@@ -96,10 +101,7 @@ knitr::include_graphics("./assets/media-03/image4.png") # 3.3
 
 (ref:two-comp-pk) 2구획 경구 약동학 모델의 \$PK 레코드
 
-$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는
-약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는
-ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가
-통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.
+$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.
 
 $$
 \frac{Amount\ (mg)}{Vd\ (L)} \neq \ DV\ (\frac{\text{μg}}{L})
@@ -300,9 +302,10 @@ $$
 \frac{dA(3)}{dt} = -k30 \cdot A(3) + \frac{V_{max} \cdot A(2)}{k_m + A(2)} \cdot MPR
 $$
 
-여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 \@ref(thm:parent-metabolite)와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. \$DES에서 각 구획의 이동을 정의하였으며, \$ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (코드 \@ref(thm:parent-metabolite))
+여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 \@ref(thm:parent-metabolite)와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. \$DES에서 각 구획의 이동을 정의하였으며, \$ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (Theorem \@ref(thm:parent-metabolite))
 
-```{theorem, parent-metabolite, name="모약물과 대사체의 약동학 동시 분석 모델의 제어구문"}
+```{theorem, parent-metabolite}
+모약물과 대사체의 약동학 동시 분석 모델의 제어구문
 ```
 
 ```fortran
@@ -338,17 +341,11 @@ Y = F*EPS(1) * (1-TYPE)
 
 ### PRED 모델
 
-\$PRED를 사용한 모델을 살펴보자. 코드 \@ref(thm:linear-model)는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.
-
-<!-- ```{r linear-model, fig.cap="(ref:linear-model)"} -->
-<!-- knitr::include_graphics("./assets/media-03/image12.png") # Fig 3.10 -->
-<!-- ``` -->
-
-
-(ref:linear-model) \$PRED를 이용한 간단한 선형 모델
-
-```{theorem, linear-model, name="(ref:linear-model)"}
+```{theorem, linear-model}
+\$PRED를 이용한 간단한 선형 모델
 ```
+
+\$PRED를 사용한 모델을 살펴보자. 코드 \@ref(thm:linear-model)는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.
 
 ```fortran
 $PROB QTc, PRED

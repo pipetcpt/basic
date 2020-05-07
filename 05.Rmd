@@ -1,4 +1,4 @@
-# 일반 ADVAN을 이용한 control stream의 코딩
+# 일반 ADVAN을 이용한 control stream의 코딩 {#general-advan}
 
 **Coding of control stream using general ADVANs**
 
@@ -25,9 +25,11 @@ knitr::kable(dplyr::tibble(`General ADVAN` = advan), caption = "일반 ADVAN의 
 
 ## 일반 선형 ADVAN
 
-![](./assets/media-05/image1.png)
+(ref:advan-code) 일반 선형 ADVAN을 이용한 코드의 구조
 
-그림1. 일반 선형 ADVAN을 이용한 코드의 구조
+```{r advan-code, fig.cap="(ref:advan-code)"}
+knitr::include_graphics("./assets/media-05/image1.png")
+```
 
 특수 ADVAN과 비교하였을 때, 일반 선형 ADVAN 코드의 특징은 $MODEL 구문이 추가되었다는 점이다. $MODEL 구문을
 사용하여 모델에서 사용할 구획의 수와 특성을 정의할 수 있다. 다음에 언급될 비선형 ADVAN과 다르게 선형 ADVAN에서는 구획
@@ -38,21 +40,23 @@ knitr::kable(dplyr::tibble(`General ADVAN` = advan), caption = "일반 ADVAN의 
 추정은 행렬지수(matrix exponential)에 대한 수치적 근사(numerical approximation)를
 이용하여, 선형 미분방정식을 푸는 방식으로 이루어진다.
 
-|              | ADVAN 5                                             | ADVAN 7                                                      |
-| ------------ | --------------------------------------------------- | ------------------------------------------------------------ |
-| When used?   | Eigenvalues of the rate constant matrix are complex | Eigenvalues of the rate constant matrix are known to be real |
-| Example      | PBPK model                                          | Many PK systems                                              |
-| Running time | Slower                                              | Faster                                                       |
+Table: (\#tab:advan-lin-property) 일반 선형 ADVAN 의 종류 및 특징 [@nonmem]
 
-표2. 일반 선형 ADVAN 의 종류 및 특징 [@nonmem]
+| | ADVAN 5 | ADVAN 7 |
+|---|---|---|
+| When used? | Eigenvalues of the rate constant matrix are complex | Eigenvalues of the rate constant matrix are known to be real |
+| Example | PBPK model | Many PK systems |
+| Running time | Slower| Faster |
 
 일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소수(complex
 number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더 단순한 구조를 가지며 고유값이
 실수(real number)인 일반적인 약동학 모델에서는 상대적으로 더 빠른 ADVAN 7을 적용할 수 있다.
 
-![](./assets/media-05/image2.png)
+(ref:advan-lin-example) 일반 선형 ADVAN을 이용한 코드 예시
 
-그림2. 일반 선형 ADVAN을 이용한 코드 예시
+```{r advan-example, fig.cap="(ref:advan-lin-example)"}
+knitr::include_graphics("./assets/media-05/image2.png")
+```
 
 일반 선형 ADVAN의 코드를 보면 $SUBROUTINE 구문을 통해 어떤 ADVAN을 사용할 지 설정한 후, $MODEL
 구문에서 모델에서 사용할 구획의 수와 특성을 정의한다. 특수 ADVAN 과 달리 999개까지 사용자가 원하는 만큼
@@ -61,14 +65,17 @@ V)와의 관계도 정의할 수 있다.
 
 ## 일반 비선형 ADVAN
 
-![](./assets/media-05/image3.png)
+(ref:nonlin-code) 일반 비선형 ADVAN을 이용한 코드의 구조
 
-그림3. 일반 비선형 ADVAN을 이용한 코드의 구조
+```{r nonlin-code, fig.cap="(ref:nonlin-code)"}
+knitr::include_graphics("./assets/media-05/image3.png")
+```
 
 일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형 관계를 허용하기 때문에 이러한
 특성을 설명하기 위하여, 반드시 $DES 구문을 이용한 미분 방정식을 작성하여야 한다.
 
 <table>
+<caption> (\#tab:nonlin-advan) 일반 비선형 ADVAN 의 종류 및 특징 [@bonate] </caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -91,62 +98,41 @@ V)와의 관계도 정의할 수 있다.
 </tbody>
 </table>
 
-표3. 일반 비선형 ADVAN 의 종류 및 특징\[2\]
+일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 본 강의에서는 ADVAN 6와 8에 대하여 다룬다. 보통 안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는 속도상수 간 큰 차이를 보이는 불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가진 단일클론항체)은 ADVAN 6를 이용할 경우, 파라미터 추정 시간이 오래 걸리거나 추정에 실패할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수 추정을 위한 미분방정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를 적용하였을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method 를 이용한 ADNVA 8의 적용을 고려할 수 있다.
 
-일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 본 강의에서는 ADVAN 6와 8에 대하여 다룬다. 보통
-안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는 속도상수 간 큰 차이를 보이는
-불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가진 단일클론항체)은 ADVAN 6를 이용할 경우,
-파라미터 추정 시간이 오래 걸리거나 추정에 실패할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수
-추정을 위한 미분방정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를
-적용하였을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method
-를 이용한 ADNVA 8의 적용을 고려할 수 있다.
+(ref:nonlin-advan-code-example) 일반 비선형 ADVAN을 이용한 코드 예시
 
-![](./assets/media-05/image4.png)
+```{r nonlin-advan-code-example, fig.cap="(ref:nonlin-advan-code-example)"}
+knitr::include_graphics("./assets/media-05/image4.png")
+```
 
-그림4. 일반 비선형 ADVAN을 이용한 코드 예시
+일반 비선형 ADVAN의 코드를 보면 앞에서 살펴본 일반 선형 ADVAN과 유사한 구조를 보이나, $PK에 이어 미분방정식을 표현하는 $DES 구문이 추가된다.
 
-일반 비선형 ADVAN의 코드를 보면 앞에서 살펴본 일반 선형 ADVAN과 유사한 구조를 보이나, $PK에 이어 미분방정식을
-표현하는 $DES 구문이 추가된다.
+비선형 ADVAN을 사용할 경우, $SUBROUTINE 구문에 적용할 ADVAN(ex. ADVAN 6 or 8)을 지정한 후, TOL 이라는 명령어를 추가해야 한다. TOL 은 tolerance 의 약자로, 각 구획의 내부값(질량, 농도, 효과) 계산에 필요한 숫자의 정확한 자릿수(NRD, number of required digits)를 의미하며, 일반적으로 $ESTIMATION 구문에 설정하는 SIG 값보다 1 또는 2 큰 숫자로 설정한다.
 
-비선형 ADVAN을 사용할 경우, $SUBROUTINE 구문에 적용할 ADVAN(ex. ADVAN 6 or 8)을 지정한 후,
-TOL 이라는 명령어를 추가해야 한다. TOL 은 tolerance 의 약자로, 각 구획의 내부값(질량, 농도, 효과) 계산에
-필요한 숫자의 정확한 자릿수(NRD, number of required digits)를 의미하며, 일반적으로
-$ESTIMATION 구문에 설정하는 SIG 값보다 1 또는 2 큰 숫자로 설정한다.
+$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 아이템(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, “DEPOT” 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, “DEPOT”을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 “CENTRAL” 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, “CENTRAL” 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다\[3\]. 데이터셋에 CMT 아이템을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.
 
-$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT,
-CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE,
-DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과
-관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 아이템(CMT)이 데이터셋에 포함되어 있지 않을 때
-이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지
-않을 경우, “DEPOT” 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, “DEPOT”을 지정하지
-않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우
-“CENTRAL” 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, “CENTRAL” 을 지정하지
-않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다\[3\]. 데이터셋에 CMT 아이템을 만들고,
-DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을
-인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.
+마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 $DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 DADT(1)= -KA * A(1)으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. $DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 `T` 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.
 
-마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 $DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은
-DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은
-DADT(1)= -KA \* A(1)으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한
-내부값(약의 양)을 의미한다. $DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는
-“**T”** 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.
+(ref:des-example) $DES 구문 적용을 위한 코드 예시
 
-![](./assets/media-05/image5.png)
+```{r}
+knitr::include_graphics("./assets/media-05/image5.png")
+```
 
-그림5. $DES 구문 적용을 위한 코드 예시
+(ref:advan5-example) 2구획 경구모델을 ADVAN5로 구현한 코드 예시
 
-![](./assets/media-05/image6.png)
+```{r}
+knitr::include_graphics("./assets/media-05/image6.png")
+```
 
-그림6. 2구획 경구모델을 ADVAN5로 구현한 코드 예시
+(ref:advan6-example) 2구획 경구모델을 ADVAN6로 구현한 코드 예시
 
-![](./assets/media-05/image7.png)
+```{r}
+knitr::include_graphics("./assets/media-05/image7.png")
+```
 
-그림7. 2구획 경구모델을 ADVAN6로 구현한 코드 예시
-
-동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형
-ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물
-동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질
-이동을 설명하는 미분방정식을 작성하여야 한다.
+동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
 
 참고문헌
 

@@ -1,5 +1,6 @@
 pacman::p_load('RefManageR', 'tidyverse')
-
+#install.packages('stringr')
+library(RefManageR)
 my_publication <- list(10100300, # derendorf1999modeling
                        9517366,  # sharma1998characteristics
                        17328581, 
