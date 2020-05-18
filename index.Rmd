@@ -31,7 +31,7 @@ title: "PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초"
 author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
-bibliography: ["references/book.bib", "references/paper.bib", "references/packages.bib"]
+bibliography: ["references/references.bib", "references/packages.bib"]
 #bibliography: ["references/book.bib"] https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
 biblio-style: apalike
 link-citations: yes

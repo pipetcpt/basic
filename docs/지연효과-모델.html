@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-18" />
+<meta name="date" content="2020-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,13 +288,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16.5" data-path="evaluation.html"><a href="evaluation.html#참고문헌"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="17" data-path="basic-pkpd.html"><a href="basic-pkpd.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#관련-개념"><i class="fa fa-check"></i><b>17.1</b> 관련 개념</a></li>
+<li class="chapter" data-level="17.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#약력학pd-및-약동-약력pk-pd-데이터의-특성"><i class="fa fa-check"></i><b>17.2</b> 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터"><i class="fa fa-check"></i><b>17.2.1</b> PD 데이터</a></li>
+<li class="chapter" data-level="17.2.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk-pd-데이터"><i class="fa fa-check"></i><b>17.2.2</b> PK-PD 데이터</a></li>
+<li class="chapter" data-level="17.2.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터를-모델링할-때-고려할-점"><i class="fa fa-check"></i><b>17.2.3</b> PD 데이터를 모델링할 때 고려할 점</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk와-pd의-관계"><i class="fa fa-check"></i><b>17.3</b> PK와 PD의 관계</a></li>
+</ul></li>
 <li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
 <li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
 <li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
-<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결-방법-적합법"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
 <li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
@@ -357,131 +367,168 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="지연효과-모델" class="section level1" number="20">
 <h1><span class="header-section-number">Chapter 20</span> 지연효과 모델</h1>
-<p><em>김정렬／임동석</em></p>
+<p><em>김정렬, 임동석</em></p>
 <div id="지연효과-개요" class="section level2" number="20.1">
 <h2><span class="header-section-number">20.1</span> 지연효과 개요</h2>
-<p>약물 투여 시 기대하는 반응의 시간에 따른 양상이 해당 약물의 유효성분 혈중 농도 양상과 유사하게 나타나기도 하지만, 최대 혈중
-농도 이후 상당한 시간이 경과한 시점에 최대 반응이 발생하는 경우도 있다. 이러한 지연효과는 투여 약물의 체내 노출을 대변하는
-약동학(PK) 측면뿐만 아니라 그 노출에 따른 약리작용을 설명하는 약력학(PD) 측면의 여러 원인으로 발생할 수 있다.</p>
-<p>우선 약동학적으로 혈액 내 존재하는 유효성분이 관찰된 반응과 관련된 부위(수용체 등)로 분포하는데 시간이 걸리는 경우를 생각할 수
-있다. 또한 반응을 나타내는데 필수적인 약물-수용체 상호작용에 있어 최대 반응이 나타나는데 시간적인 지연이 있을 수 있다. 한편
-약물이 목표로 하는 대상이 반응과 직접적으로 관련되기 보다는 그 반응을 증가시키거나 감소시키는데 필요한 것을 촉진하거나
-억제함으로써 궁극적으로 시간에 따른 반응 양상을 조절하는 경우도 혈중 농도와 반응간 지연효과를 보이게 된다.</p>
-<p>약물을 경구로 투여하면 투약 시점과 비교 시 혈중 농도가 지연되어 보이는 것처럼 수용체와 같은 약물이 목표로 하는 부위에서의
-농도도 혈중 농도에 비해 지연될 수 있다. 그런데 혈중 농도와 달리 목표 부위에서의 농도는 쉽게 측정할 수 없어 이러한
-지연 현상을 직접적으로 확인하기 어려운 경우가 대부분이다. 또한 목표 수용체 수준에서의 약물에 의한 조절로 인하여 시간에 따른
-바이오마커 변화 양상이 지연되어 관찰될 수 있다. 한편 이러한 바이오마커의 변화가 직접적으로 임상적 변화를 초래하지 못하는
-경우도 있다.</p>
+<p>약물 투여 시 기대하는 반응의 시간에 따른 양상이 해당 약물의 유효성분 혈중 농도 양상과 유사하게 나타나기도 하지만, 최대 혈중 농도 이후 상당한 시간이 경과한 시점에 최대 반응이 발생하는 경우도 있다. 이러한 지연효과는 투여 약물의 체내 노출을 대변하는 약동학(PK) 측면뿐만 아니라 그 노출에 따른 약리작용을 설명하는 약력학(PD) 측면의 여러 원인으로 발생할 수 있다.</p>
+<p>우선 약동학적으로 혈액 내 존재하는 유효성분이 관찰된 반응과 관련된 부위(수용체 등)로 분포하는데 시간이 걸리는 경우를 생각할 수 있다. 또한 반응을 나타내는데 필수적인 약물-수용체 상호작용에 있어 최대 반응이 나타나는데 시간적인 지연이 있을 수 있다. 한편 약물이 목표로 하는 대상이 반응과 직접적으로 관련되기 보다는 그 반응을 증가시키거나 감소시키는데 필요한 것을 촉진하거나 억제함으로써 궁극적으로 시간에 따른 반응 양상을 조절하는 경우도 혈중 농도와 반응간 지연효과를 보이게 된다.</p>
+<p>약물을 경구로 투여하면 투약 시점과 비교 시 혈중 농도가 지연되어 보이는 것처럼 수용체와 같은 약물이 목표로 하는 부위에서의 농도도 혈중 농도에 비해 지연될 수 있다. 그런데 혈중 농도와 달리 목표 부위에서의 농도는 쉽게 측정할 수 없어 이러한 지연 현상을 직접적으로 확인하기 어려운 경우가 대부분이다. 또한 목표 수용체 수준에서의 약물에 의한 조절로 인하여 시간에 따른 바이오마커 변화 양상이 지연되어 관찰될 수 있다. 한편 이러한 바이오마커의 변화가 직접적으로 임상적 변화를 초래하지 못하는 경우도 있다.</p>
 </div>
 <div id="시간에-따른-pk-pd-관계" class="section level2" number="20.2">
 <h2><span class="header-section-number">20.2</span> 시간에 따른 PK-PD 관계</h2>
-<p>시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를
-보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를
-보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다.
-또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는
-현상을 보인다 (그림 1).</p>
-<p><img src="assets/media-20/image1.png" /></p>
-<p>그림 1 PK와 PD의 관련성 <span class="math display">\[1\]</span></p>
-<p>이렇게 동일한 농도에서 관찰되는 효과가 농도가 증가하는 시점과 감소하는 시점에서 다르게 관찰되는 현상은 크게 두 종류로 나눌 수
-있다. 이중 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 작게 관찰되는 경우를 히스테레시스(hysteresis)라고
-하며, 농도-효과 관계의 양상이 시간이 흐름에 따라 반시계방향으로 그려진다. 반면 농도가 증가하는 시점에서의 효과가
-감소하는 시점보다 큰 양상을 보이는 경우 프로테레시스(proteresis)라 하며, 농도-효과 관계의 양상이
-시계방향으로 그려진다. (그림 2)</p>
-<p>약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체
-up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나
-활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.</p>
-<p><img src="assets/media-20/image2.png" /></p>
-<p>그림 2. 히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)</p>
+<p>시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를 보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를 보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다. 또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는 현상을 보인다 (그림 <a href="지연효과-모델.html#fig:pkpd-relationship">20.1</a>.</p>
+<div class="figure"><span id="fig:pkpd-relationship"></span>
+<img src="assets/media-20/image1.png" alt="PK와 PD의 관련성 (Gabrielsson 2006)" width="100%" />
+<p class="caption">
+그림 20.1: PK와 PD의 관련성 <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
+</p>
+</div>
+
+<p>이렇게 동일한 농도에서 관찰되는 효과가 농도가 증가하는 시점과 감소하는 시점에서 다르게 관찰되는 현상은 크게 두 종류로 나눌 수 있다. 이중 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 작게 관찰되는 경우를 히스테레시스(hysteresis)라고 하며, 농도-효과 관계의 양상이 시간이 흐름에 따라 반시계방향으로 그려진다. 반면 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 큰 양상을 보이는 경우 프로테레시스(proteresis)라 하며, 농도-효과 관계의 양상이 시계방향으로 그려진다. (그림 <a href="지연효과-모델.html#fig:hys-proteresis">20.2</a>)</p>
+<p>약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체 up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나 활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.</p>
+<div class="figure"><span id="fig:hys-proteresis"></span>
+<img src="assets/media-20/image2.png" alt="히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)" width="100%" />
+<p class="caption">
+그림 20.2: 히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)
+</p>
+</div>
+
 </div>
 <div id="효과구획-모델" class="section level2" number="20.3">
 <h2><span class="header-section-number">20.3</span> 효과구획 모델</h2>
-<p>약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의
-농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를
-가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고
-한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 ｂｏｌｕｓ로 약을 주사했을 때， 약효구획의 약물농도 （Ｃｅ）는 천천히 변화하며， 그 Ｃｅ와 약효와의 관계가 ｓｉｇｍｏｉｄ Ｅｍａｘ를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림
-3)</p>
-<p><img src="assets/media-20/image3.png" /></p>
-<p>그림 3. 효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect
-compartment concentration (NOT observed, produced), R: response
-(Actually observed) <span class="math display">\[1\]</span></p>
-<p>이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의
-관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는
-방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때， 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량（Ｋ１２＝０．００１＊Ｋ）이어서 혈장농도 모델링에 영향이 극히 미미하고，효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(그림
-4)</p>
-<p><img src="assets/media-20/image4.png" /></p>
-<p>그림 4. 효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="math display">\[2\]</span></p>
-<p>또다른 방식으로는 아래 코드(그림
-5)와 같이 중심구획에서 약물이 제거되는 속도는 Ｋ１０으로 표현되지만， 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고（ＤＡＤＴ（１）의 수식에 Ｋ１０이외에 다른 속도상수가 나타나지 않고 있음）대신 효과구획의 약물농도는 Ｋ２０이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고， 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데，이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 Ａ（２）는 효과구획의 약물의 양이 아니라 농도임을 유의해야
-한다．</p>
-<p><img src="assets/media-20/image5.png" /></p>
-<p>그림 5. 효과구획 모델 코드: Using General Nonlinear model (ADVAN6) <span class="math display">\[2\]</span></p>
+<p>약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의 농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를 가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고 한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 bolus로 약을 주사했을 때, 약효구획의 약물농도(Ce)는 천천히 변화하며, 그 Ce와 약효와의 관계가 sigmoid Emax를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림 <a href="지연효과-모델.html#fig:effect-comp">20.3</a>)</p>
+<div class="figure"><span id="fig:effect-comp"></span>
+<img src="assets/media-20/image3.png" alt="효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson 2006)" width="100%" />
+<p class="caption">
+그림 20.3: 효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
+</p>
+</div>
+
+<p>이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의 관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는 방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때, 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량(K12=0.001*K)이어서 혈장농도 모델링에 영향이 극히 미미하고,효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(코드 <a href="지연효과-모델.html#thm:effect-model-code">20.1</a>)</p>
+<!-- ```{r effect-model-code, fig.cap="효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>"} -->
+<!-- include_graphics("./assets/media-20/image4.png") -->
+<!-- ``` -->
+
+
+<div class="theorem">
+<span id="thm:effect-model-code" class="theorem"><strong>Theorem 20.1  </strong></span>효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+</div>
+<pre><code>$SUBROUTINES ADVAN3
+$PK
+  K   = THETA(1)*EXP(ETA(1))        ; TRIVIAL LOSS TO EFFECT CMPT
+  K12 = .001*K                      ; KEO
+  K21 = THETA(2)*EXP(ETA(2))        ; V1 FOR DRUG
+  S1  = THETA(3)*EXP(ETA(3))
+  EMAX= THETA(4)*EXP(ETA(4))
+  C50 = THETA(5)*EXP(ETA(5))
+  S2  = S1*K12/K21                  ; SO THAT CESS = CPSS
+$ERROR
+  IF (CMT.EQ.2) THEN
+  Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2
+  ELSE
+  Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
+  ENDIF</code></pre>
+<p>또다른 방식으로는 아래 코드 <a href="지연효과-모델.html#thm:effect-comp-advan6">20.2</a>와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．</p>
+
+<div class="theorem">
+<span id="thm:effect-comp-advan6" class="theorem"><strong>Theorem 20.2  </strong></span>효과구획 모델 코드: Using General Nonlinear model (ADVAN6) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="지연효과-모델.html#cb37-1"></a><span class="op">$</span>SUBROUTINES ADVAN6 TOL=<span class="dv">5</span></span>
+<span id="cb37-2"><a href="지연효과-모델.html#cb37-2"></a><span class="op">$</span>MODEL</span>
+<span id="cb37-3"><a href="지연효과-모델.html#cb37-3"></a>  COMP=(CENTRAL,DEFDOSE,DEFOBS)</span>
+<span id="cb37-4"><a href="지연효과-모델.html#cb37-4"></a>  COMP=EFFECT</span>
+<span id="cb37-5"><a href="지연효과-모델.html#cb37-5"></a><span class="op">$</span>PK</span>
+<span id="cb37-6"><a href="지연효과-모델.html#cb37-6"></a>  K10 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
+<span id="cb37-7"><a href="지연효과-모델.html#cb37-7"></a>  V1  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
+<span id="cb37-8"><a href="지연효과-모델.html#cb37-8"></a>  S1  =<span class="st"> </span>V1 </span>
+<span id="cb37-9"><a href="지연효과-모델.html#cb37-9"></a>  K20 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb37-10"><a href="지연효과-모델.html#cb37-10"></a>  C50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb37-11"><a href="지연효과-모델.html#cb37-11"></a>  EMAX=<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb37-12"><a href="지연효과-모델.html#cb37-12"></a><span class="op">$</span>DES</span>
+<span id="cb37-13"><a href="지연효과-모델.html#cb37-13"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K10<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)                 ; NOTE NO LOSS TO <span class="kw">A</span>(<span class="dv">2</span>)</span>
+<span id="cb37-14"><a href="지연효과-모델.html#cb37-14"></a>  <span class="kw">DADT</span>(<span class="dv">2</span>)=<span class="st"> </span>K20<span class="op">*</span>(<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>V1<span class="op">-</span><span class="kw">A</span>(<span class="dv">2</span>))       ; <span class="kw">A</span>(<span class="dv">2</span>) IS CE</span>
+<span id="cb37-15"><a href="지연효과-모델.html#cb37-15"></a><span class="op">$</span>ERROR</span>
+<span id="cb37-16"><a href="지연효과-모델.html#cb37-16"></a>  <span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN</span>
+<span id="cb37-17"><a href="지연효과-모델.html#cb37-17"></a>  Y   =<span class="st"> </span>EMAX<span class="op">*</span>F<span class="op">/</span>(C50<span class="op">+</span>F)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">2</span>))  ; DV =<span class="st"> </span>EFFECT IF CMT=<span class="dv">2</span></span>
+<span id="cb37-18"><a href="지연효과-모델.html#cb37-18"></a>  ELSE</span>
+<span id="cb37-19"><a href="지연효과-모델.html#cb37-19"></a>  Y   =<span class="st"> </span>F<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">1</span>))               ; DV =<span class="st"> </span>CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
+<span id="cb37-20"><a href="지연효과-모델.html#cb37-20"></a>  ENDIF</span></code></pre></div>
 </div>
 <div id="직접효과-vs.-간접효과" class="section level2" number="20.4">
 <h2><span class="header-section-number">20.4</span> 직접효과 vs. 간접효과</h2>
-<p>관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에
-의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는
-역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 6).</p>
-<p><img src="assets/media-20/image6.png" /></p>
-<p>그림 6. 직접효과와 간접효과의 모식도 <span class="math display">\[1\]</span></p>
+<p>관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 <a href="지연효과-모델.html#fig:direct-indirect">20.4</a>).</p>
+<div class="figure"><span id="fig:direct-indirect"></span>
+<img src="assets/media-20/image6.png" alt="직접효과와 간접효과의 모식도 (Gabrielsson 2006)" width="100%" />
+<p class="caption">
+그림 20.4: 직접효과와 간접효과의 모식도 <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
+</p>
+</div>
+
 </div>
 <div id="turnover-모델" class="section level2" number="20.5">
 <h2><span class="header-section-number">20.5</span> Turnover 모델</h2>
-<p>약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나
-감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을
-뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를
-의미한다.</p>
-<p><img src="assets/media-20/image7.png" /></p>
-<p>관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나
-억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 7에서 보듯 4가지 형태로
-구분된다.</p>
-<div class="figure">
-<img src="assets/media-20/image8.png" alt="" />
-<p class="caption">image</p>
+<p>약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나 감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을 뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를 의미한다.</p>
+<p><span class="math display">\[
+\frac{dR}{dt} = k_{in}^0\ - k_{out} \cdot R
+\]</span></p>
+<p>관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나 억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 <a href="지연효과-모델.html#fig:turnover-4">20.5</a>에서 보듯 4가지 형태로 구분된다.</p>
+<div class="figure"><span id="fig:turnover-4"></span>
+<img src="assets/media-20/image8.png" alt="Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko 1998)" width="100%" />
+<p class="caption">
+그림 20.5: Turnover 모델(간접효과 모델)의 네 가지 <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
+</p>
 </div>
-<p>그림 7 Turnover 모델(간접효과 모델)의 네 가지 <span class="math display">\[3\]</span></p>
+
 <div id="inhibition-on-production-model-i" class="section level3" number="20.5.1">
 <h3><span class="header-section-number">20.5.1</span> Inhibition on production (Model I)</h3>
-<p>관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다.
-생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을
-차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제
-함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 8)</p>
-<p><img src="assets/media-20/image9.png" /></p>
-<p>그림 8. Inhibition on production <span class="math display">\[3\]</span></p>
+<p>관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 <a href="지연효과-모델.html#fig:model-i">20.6</a>)</p>
+<div class="figure"><span id="fig:model-i"></span>
+<img src="assets/media-20/image9.png" alt="Inhibition on production (Sharma and Jusko 1998)" width="100%" />
+<p class="caption">
+그림 20.6: Inhibition on production <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
+</p>
+</div>
+
 </div>
 <div id="inhibition-on-loss-model-ii" class="section level3" number="20.5.2">
 <h3><span class="header-section-number">20.5.2</span> Inhibition on loss (Model II)</h3>
-<p>관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해
-cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은
-cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다.
-이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를
-사용할 수 있다. (그림 9)</p>
-<p><img src="assets/media-20/image10.png" /></p>
-<p>그림 9. Inhibition on loss <span class="math display">\[3\]</span></p>
+<p>관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해 cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은 cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 <a href="지연효과-모델.html#fig:model-ii">20.7</a>)</p>
+<div class="figure"><span id="fig:model-ii"></span>
+<img src="assets/media-20/image10.png" alt="Inhibition on loss (Sharma and Jusko 1998)" width="100%" />
+<p class="caption">
+그림 20.7: Inhibition on loss <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
+</p>
+</div>
+
 </div>
 <div id="stimulation-on-production-model-iii" class="section level3" number="20.5.3">
 <h3><span class="header-section-number">20.5.3</span> Stimulation on production (Model III)</h3>
-<p>관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜
-궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데
-erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구
-수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고
-아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 10)</p>
-<p><img src="assets/media-20/image11.png" /></p>
-<p>그림 10. Stimulation on production <span class="math display">\[3\]</span></p>
+<p>관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜 궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데 erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구 수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 <a href="지연효과-모델.html#fig:model-iii">20.8</a>)</p>
+<div class="figure"><span id="fig:model-iii"></span>
+<img src="assets/media-20/image11.png" alt="Stimulation on production (Sharma and Jusko 1998)" width="100%" />
+<p class="caption">
+그림 20.8: Stimulation on production <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
+</p>
+</div>
+
 </div>
 <div id="stimulation-on-loss-model-iv" class="section level3" number="20.5.4">
 <h3><span class="header-section-number">20.5.4</span> Stimulation on loss (Model IV)</h3>
-<p>관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수
-있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은
-반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다.
-(그림 11)</p>
-<p><img src="assets/media-20/image12.png" /></p>
-<p>그림 11. Stimulation on loss <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span></p>
+<p>관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수 있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 <a href="지연효과-모델.html#fig:model-iv">20.9</a>)</p>
+<div class="figure"><span id="fig:model-iv"></span>
+<img src="assets/media-20/image12.png" alt="Stimulation on loss (Sharma and Jusko 1998)" width="100%" />
+<p class="caption">
+그림 20.9: Stimulation on loss <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
+</p>
+</div>
+
 </div>
 <div id="기저값" class="section level3" number="20.5.5">
 <h3><span class="header-section-number">20.5.5</span> 기저값</h3>
-<p>간접효과 모델에서 약물 투여 전 상태에서의 반응을 기저값으로 간주하며, 반응이 증가하거나 감소하는 정도가 동일하여 겉보기에는
-변화가 없는 것처럼 보인다. 앞서 언급한 간접효과 미분방정식으로부터 유도한 기저값은 아래와 같다.</p>
-<p><img src="assets/media-20/image13.png" /></p>
+<p>간접효과 모델에서 약물 투여 전 상태에서의 반응을 기저값으로 간주하며, 반응이 증가하거나 감소하는 정도가 동일하여 겉보기에는 변화가 없는 것처럼 보인다. 앞서 언급한 간접효과 미분방정식으로부터 유도한 기저값은 아래와 같다.</p>
+<p><span class="math display">\[
+R_{0} = \frac{k_{in}^0}{k_{out}}
+\]</span></p>
 <p>이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.</p>
 <p>참고문헌</p>
 <p>1. Pharmacokinetic and Pharmacodynamic Data Analysis: Concepts and
@@ -497,6 +544,12 @@ Models and Applications to Clinical Drug Responses. Br J Clin Pharmacol.
 </div>
 <h3>참고문헌</h3>
 <div id="refs" class="references">
+<div id="ref-nonmem">
+<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
+</div>
+<div id="ref-gabrielsson">
+<p>Gabrielsson, Johan. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. Stockholm: Apotekarsocieteten.</p>
+</div>
 <div id="ref-sharma1998characteristics">
 <p>Sharma, A, and W J Jusko. 1998. “Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.” <em>British Journal of Clinical Pharmacology</em> 45 (3): 229–39. <a href="https://doi.org/10.1046/j.1365-2125.1998.00676.x">https://doi.org/10.1046/j.1365-2125.1998.00676.x</a>.</p>
 </div>

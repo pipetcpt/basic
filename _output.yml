@@ -1,4 +1,6 @@
 bookdown::gitbook:
+  mathjax: local
+  self_contained: false
   dev: svglite
   css: css/style.css
   split_by: chapter

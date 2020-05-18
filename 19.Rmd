@@ -51,7 +51,8 @@ $$
 $$
 E<sub>max</sub> 모델을 이용하여 약물(또는 리간드)과 수용체의 결합에 따른 약효를 설명할 수 있다. E<sub>max</sub> 모델의 수식 유도과정은 약물-수용체 결합을 참고 바란다.
 
-```{block2, note-text, type='rmdtip'}
+
+```{block2, note-text, type='rmdtip', echo=TRUE}
 **약물-수용체 결합**
 
 ![](./assets/media-19/box1.png)
@@ -64,66 +65,51 @@ E<sub>max</sub> 모델을 이용하여 약물(또는 리간드)과 수용체의 
 
 가정 1.에 의해,
 
-
 $$
-C \cdot R \cdot k_{on} = R \cdot k_{off}
-$$
-
-$$
-K_D = \frac{k_{off}}{k_{on}} = \frac{[C][R]}{[R^*]}
-$$
-K<sub>D</sub>: 평형상태에서 약물-수용체 복합체의 해리상수)
-$$
-dR*
+\begin{align}
+  C \cdot R \cdot k_{on} &= R \cdot k_{off} \\
+  K_D &= \frac{k_{off}}{k_{on}} = \frac{[C][R]}{[R^*]} \\
+  \frac{dR^*}{dt} &= k_{on} \cdot C \cdot R - k_{off} \cdot R^*
+\end{align}
 $$
 
-knitr::include_graphics(./assets/media-19/image4.png)
+(K<sub>D</sub>: 평형상태에서 약물-수용체 복합체의 해리상수)
 
-*가정 2)에 의하여 \[R\*\] = \[CR\] 이며, \[R<sub>T</sub>\]=\[R\]+\[R\*\] 이며,*
+가정 2.에 의하여 $[R^*]=[CR]$  이며, $[R_T] = [R] + [R^*]$이며, 
 
-knitr::include_graphics(./assets/media-19/image4.png) *(*\(\div\)*k<sub>on</sub>)*
+$$
+\begin{align}
+k_{on} \cdot C \cdot (R_T - R^*) - k_{off} \cdot R^* &= 0 \\
+C \cdot R_T - C \cdot R^* - K_D \cdot R^* &= 0 \\
+R^* &= \frac{C \cdot R_T}{C + K_D}
+\end{align}
+$$
 
-knitr::include_graphics(./assets/media-19/image4.png)
+가정 3.에 의하여 $E=\alpha \cdot [R^*]$이므로,
 
-knitr::include_graphics(./assets/media-19/image4.png)
+$$
+E = \alpha \cdot R^* = \frac{\alpha \cdot R_T \cdot C}{C + K_D}
+$$
 
-*가정 3)에 의하여 E = α · \[R\*\] 이므로,*
+$E_{max} = \alpha \cdot [R_T]$라 하면
 
-knitr::include_graphics(./assets/media-19/image4.png)
+$$
+E = \frac{E_{max} \cdot C}{C + K_D}
+$$
 
-*Emax = α · \[R<sub>T</sub>\] 라 하면,*
+여기서, K<sub>D</sub>의 단위는 농도이며 (C와 동일), 약물 수용체의 50%가 결합한 상태에서의 약효(EC<sub>50</sub>)는 Emax/2 가 된다. 이를 위의 식에 대입하면,
 
-knitr::include_graphics(./assets/media-19/image4.png)
+$$
+\frac{E_{max}}{2} = \frac{E_{max} \cdot EC_{50}}{K_D + EC_{50}}
+$$
 
-*가정 2)에 의하여 \[R\*\] = \[CR\] 이며, \[R<sub>T</sub>\]=\[R\]+\[R\*\] 이며,*
+이고 이를 정리하면, $K_D = EC_{50}$이다. 결국 다시 정리하면, Emax 모델은 다음과 같다.
 
-knitr::include_graphics(./assets/media-19/image4.png) *(*\(\div\)*k<sub>on</sub>)*
+$$
+E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
+$$
 
-knitr::include_graphics(./assets/media-19/image4.png)
-
-knitr::include_graphics(./assets/media-19/image4.png)
-
-*가정 3)에 의하여 E = α · \[R\*\] 이므로,*
-
-knitr::include_graphics(./assets/media-19/image4.png)
-
-*Emax = α · \[R<sub>T</sub>\] 라 하면,*
-
-knitr::include_graphics(./assets/media-19/image4.png)
-
-*여기서, K<sub>D</sub>의 단위는 농도이며 (C와 동일), 약물 수용체의 50%가 결합한 상태에서의
-약효(EC<sub>50</sub>)는 Emax/2 가 된다. 이를 위의 식에 대입하면,*
-
-\(\frac{E_{\max}}{2}\ \)=\(\text{\ \ }\frac{\ E_{\max} \bullet \text{EC}_{50}}{{K_{D} + \ EC}_{50}}\text{~~~~~}\mathbf{\text{~~~~~~~~~~~~~}}\)
-*이고,*
-
-*이를 정리하면, K<sub>D</sub>=EC<sub>50</sub>이다.*
-
-*결국, 다시 정리하면, Emax 모델은 다음과 같다.*
-
-\(\text{E~}\)=\(\frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}\)
-
-*\[C\]는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, \[C\]는 C<sub>T</sub> (특정조직에서의 약물농도)로 대체할 수 있다.  
+\[C\]는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, \[C\]는 C<sub>T</sub> (특정조직에서의 약물농도)로 대체할 수 있다.  
 ```
 
 ```{r emax-model, fig.cap="(ref:emax-model)"}
@@ -135,13 +121,13 @@ knitr::include_graphics("./assets/media-19/image5.png")
 약물농도가 EC<sub>50</sub>에 비하여 매우 작으면 (EC<sub>50</sub> \>\>C), 약효는 혈중 약물농도에 비례하지만 (E = (E<sub>max</sub>/EC<sub>50</sub>) · C), 약물농도가 EC<sub>50</sub>보다 크면(EC<sub>50</sub> \<\< C), 약효는 포화되어, 약물농도에 관계없이 일정한 값을 가진다(E<sub>max</sub>). 그림 \@ref(fig:emax-model)에서 E<sub>max</sub>는 약물의 효능(efficacy)을 나타내며, EC<sub>50</sub>은 약물의 효력(potency)를 나타내는 지표이다. 또한, 약물농도를 로그로 치환하면 EC<sub>50</sub>을 명확하게 확인할 수 있으며, 데이터에 기저치가 존재하면 다음과 같이 나타낼 수 있다.
 
 $$
-\text{E} \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}
+E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
 $$
 
 이 때, R<sub>max</sub> = E<sub>0</sub>+100이며, EC<sub>50</sub>일 때 약물반응은 E<sub>0</sub>+50 이다. 만약, E<sub>max</sub> 모델을 다음과 같이 나타내면,
 
 $$
-\text{E} \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{\text{EC}_{50} + \left\lbrack C \right\rbrack})
+E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})
 $$
 
 R<sub>max</sub> = E<sub>0</sub>+100일때, 모델의 최대약물효과는
@@ -165,8 +151,6 @@ $$
 \text{E} \approx E_{0} - \frac{\ I_{\max}\lbrack C\rbrack}{\text{IC}_{50} + \lbrack C\rbrack}
 $$
 
-
-
 ### Sigmoid E<sub>max</sub> model (Hill 방정식)
 
 Sigmoid E<sub>max</sub> model은 여러 결합부위를 가지고 있는 수용체와 약물 간의 관계를 설명하기 위해 사용된다. 약물과 수용체의 1:1 결합을 가정하는 일반적인 E<sub>max</sub> model과 달리 n개의 약물 분자가 수용체의 작용부위와 결합한다.
@@ -189,15 +173,21 @@ Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도�
 
 로그농도 그래프에서
 
-\(\text{E~}\)=\(\frac{\ E_{max \bullet}e^{n\ ln(C)}}{\text{EC}_{50}^{n} + e^{n\ ln(C)}}\)
-
-\(\frac{\text{dE}}{\text{dln}\left( C \right)}\ \)=\(\frac{\ n \bullet E_{max \bullet}\text{EC}_{50}^{n} \bullet C^{n}}{\left( \text{EC}_{50}^{n} + C^{n} \right)^{2}}\)
+$$
+\begin{align}
+E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
+\frac{dE}{dln ( C )} &= \frac{\ n \cdot E_{max}  \cdot EC_{50}^{n} \cdot C^{n}}{\left( EC_{50}^{n} + C^{n} \right)^{2}}
+\end{align}
+$$
 
 직선부위의 기울기를 m이라고 하고, C=EC<sup>50</sup>일 때의 m을 계산하면,
 
-\(m = \frac{\text{dE}}{\text{dln}\left( C \right)}\ \)=\(\frac{\ n \bullet E_{max \bullet}\text{EC}_{50}^{2n}}{\left( \text{EC}_{50}^{n} + \text{EC}_{50}^{n} \right)^{2}} = \ \frac{n \bullet E_{\max}}{4}\)
-
-\(n = \frac{4 \bullet m}{E_{\max}}\ \)  
+$$
+\begin{align}
+  m &= \frac{{dE}}{{dln}\left( C \right)}\ = \frac{\ n \cdot E_{max } \cdot {EC}_{50}^{2n}}{\left( {EC}_{50}^{n} + {EC}_{50}^{n} \right)^{2}} = \ \frac{n \cdot E_{\max}}{4} \\
+  n &= \frac{4 \cdot m}{E_{\max}}
+\end{align}
+$$
 
 ## PD 모델의 적용
 
