@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 NONMEM 데이터셋 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 NONMEM 데이터셋 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
+  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/basic" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 NONMEM 데이터셋 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
+
+
+<meta name="date" content="2020-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="control-stream.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-stream.html"><a href="control-stream.html"><i class="fa fa-check"></i><b>3</b> NONMEM 모델 종류 별 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="control-stream.html"><a href="control-stream.html#소개-1"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="control-stream.html"><a href="control-stream.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="control-stream.html"><a href="control-stream.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="control-stream.html"><a href="control-stream.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="general-advan.html"><a href="general-advan.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
+<li class="chapter" data-level="5.2" data-path="general-advan.html"><a href="general-advan.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="기타-advan.html"><a href="기타-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="기타-advan.html"><a href="기타-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="기타-advan.html"><a href="기타-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="기타-advan.html"><a href="기타-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="기타-advan.html"><a href="기타-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#서론"><i class="fa fa-check"></i><b>8.1</b> 서론</a></li>
+<li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#초기-추정값의-의미와-역할"><i class="fa fa-check"></i><b>8.2</b> 초기 추정값의 의미와 역할</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.3</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
+<li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.4</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> THETA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> OMEGA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.7" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.7</b> SIGMA의 초기추정값 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estimation-methods.html"><a href="estimation-methods.html"><i class="fa fa-check"></i><b>9</b> 파라미터 추정 방법 및 세팅</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="estimation-methods.html"><a href="estimation-methods.html#추정-방법-및-관련-옵션"><i class="fa fa-check"></i><b>9.1</b> 추정 방법 및 관련 옵션</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="estimation-methods.html"><a href="estimation-methods.html#noabort"><i class="fa fa-check"></i><b>9.1.1</b> NOABORT</a></li>
+<li class="chapter" data-level="9.1.2" data-path="estimation-methods.html"><a href="estimation-methods.html#maxeval"><i class="fa fa-check"></i><b>9.1.2</b> MAXEVAL</a></li>
+<li class="chapter" data-level="9.1.3" data-path="estimation-methods.html"><a href="estimation-methods.html#method"><i class="fa fa-check"></i><b>9.1.3</b> METHOD</a></li>
+<li class="chapter" data-level="9.1.4" data-path="estimation-methods.html"><a href="estimation-methods.html#interaction"><i class="fa fa-check"></i><b>9.1.4</b> INTERACTION</a></li>
+<li class="chapter" data-level="9.1.5" data-path="estimation-methods.html"><a href="estimation-methods.html#print"><i class="fa fa-check"></i><b>9.1.5</b> PRINT</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="estimation-methods.html"><a href="estimation-methods.html#nonmem-추정"><i class="fa fa-check"></i><b>9.2</b> NONMEM 추정</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="estimation-methods.html"><a href="estimation-methods.html#ols-방식"><i class="fa fa-check"></i><b>9.2.1</b> OLS 방식</a></li>
+<li class="chapter" data-level="9.2.2" data-path="estimation-methods.html"><a href="estimation-methods.html#wls-방식"><i class="fa fa-check"></i><b>9.2.2</b> WLS 방식</a></li>
+<li class="chapter" data-level="9.2.3" data-path="estimation-methods.html"><a href="estimation-methods.html#els-방식"><i class="fa fa-check"></i><b>9.2.3</b> ELS 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood"><i class="fa fa-check"></i><b>9.3</b> Likelihood</a></li>
+<li class="chapter" data-level="9.4" data-path="estimation-methods.html"><a href="estimation-methods.html#taylor-전개식"><i class="fa fa-check"></i><b>9.4</b> Taylor 전개식</a></li>
+<li class="chapter" data-level="9.5" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood-ratio-test"><i class="fa fa-check"></i><b>9.5</b> Likelihood Ratio Test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="nonmem-실행결과-해석-및-xpose4-사용법.html"><a href="nonmem-실행결과-해석-및-xpose4-사용법.html"><i class="fa fa-check"></i><b>10</b> NONMEM 실행결과 해석 및 Xpose4 사용법</a></li>
+<li class="chapter" data-level="11" data-path="공변량-분석.html"><a href="공변량-분석.html"><i class="fa fa-check"></i><b>11</b> 공변량 분석</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="공변량-분석.html"><a href="공변량-분석.html#서론-1"><i class="fa fa-check"></i><b>11.1</b> 서론</a></li>
+<li class="chapter" data-level="11.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석의-일반적-절차"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석의 일반적 절차</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="공변량-분석.html"><a href="공변량-분석.html#항목-평가-variable-evaluation"><i class="fa fa-check"></i><b>11.2.1</b> 항목 평가 (variable evaluation)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-스크리닝-covariate-screening"><i class="fa fa-check"></i><b>11.2.2</b> 공변량 스크리닝 (covariate screening)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공선성co-linearity에-대한-고려"><i class="fa fa-check"></i><b>11.2.3</b> 공선성(co-linearity)에 대한 고려</a></li>
+<li class="chapter" data-level="11.2.4" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.2.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.2.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="diag-eval.html"><a href="diag-eval.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="diag-eval.html"><a href="diag-eval.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="diag-eval.html"><a href="diag-eval.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="모델-파라미터의-적절성.html"><a href="모델-파라미터의-적절성.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="evaluation.html"><a href="evaluation.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="evaluation.html"><a href="evaluation.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="evaluation.html"><a href="evaluation.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="evaluation.html"><a href="evaluation.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="evaluation.html"><a href="evaluation.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="evaluation.html"><a href="evaluation.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="evaluation.html"><a href="evaluation.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="evaluation.html"><a href="evaluation.html#참고문헌"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
+<li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
+<li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결-방법-적합법"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
+<li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="effect-model.html"><a href="effect-model.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="effect-model.html"><a href="effect-model.html#소개-3"><i class="fa fa-check"></i><b>19.1</b> 소개</a></li>
+<li class="chapter" data-level="19.2" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-종류"><i class="fa fa-check"></i><b>19.2</b> PD 모델의 종류</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#선형모델linear-model"><i class="fa fa-check"></i><b>19.2.1</b> 선형모델(linear model)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#로그-선형모델log-linear-model"><i class="fa fa-check"></i><b>19.2.2</b> 로그-선형모델(log-linear model)</a></li>
+<li class="chapter" data-level="19.2.3" data-path="effect-model.html"><a href="effect-model.html#emax-model"><i class="fa fa-check"></i><b>19.2.3</b> E<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.2.4" data-path="effect-model.html"><a href="effect-model.html#sigmoid-emax-model-hill-방정식"><i class="fa fa-check"></i><b>19.2.4</b> Sigmoid E<sub>max</sub> model (Hill 방정식)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-적용"><i class="fa fa-check"></i><b>19.3</b> PD 모델의 적용</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.3.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.3.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.3.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="지연효과-모델.html"><a href="지연효과-모델.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="참고문헌-1.html"><a href="참고문헌-1.html"><i class="fa fa-check"></i>참고문헌</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nonmem-dataset" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> NONMEM 데이터셋</h1>
+<p><strong>Providing NONMEM with analysis data</strong></p>
+<p><em>이소진</em></p>
+<hr />
+<p>NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지 있다. 그 중에 가장 우선적으로 만들어야 하는 파일은 데이터셋 또는 데이터 파일이다. 이 단원에서는 컨트롤 파일에서 데이터셋을 어떻게 불러들여오는지에 대한 필수 제어구문 작성 방법, 데이터셋 작성 방법, 그리고 각각의 구성 요소들 (항목 또는 데이터 아이템)에 대해 설명하고자 한다.</p>
+<div id="필수-제어구문-작성-방법" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 필수 제어구문 작성 방법</h2>
+<p>컨트롤 파일의 작성시 모델링을 위한 본격적인 제어구문 작성에 앞서, 기본적으로 파일의 제목과 사용할 데이터셋, 그리고 데이터셋의 구성 내용을 설명해주는 제어구문이 필요하다. 이는 각각 $PROB, $DATA, $INPUT 레코드에 작성하며, 이는 컨트롤 파일의 맨 앞 세 줄로 각각 한 줄씩 기입한다.</p>
+<div id="prob-레코드-작성" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> $PROB 레코드 작성</h3>
+<p>컨트롤파일 첫 줄의 필수 제어구문은 $PROBLEM 으로 사용자가 전체 파일에 대한 제목 또는 서술적 명칭을 붙이는 공간이다. 모델을 점점 더 복잡하게 만드는 과정에서 컨트롤 파일마다 $PROBLEM 레코드에 새로운 목적 또는 모델에 대한 설명을 남겨놓는 것이 모델링 과정을 정리함에 있어 도움이 된다.</p>
+</div>
+<div id="data-레코드-작성" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> $DATA 레코드 작성</h3>
+<p>$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 <code>../</code> 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, <code>../</code> 가 없이 바로 파일 이름을 기입할 경우, 이는 컨트롤 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 아이템 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 IGNORE=@ 또는 IGNORE=#을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, “IGNORE=(GEN.EQ.1,AGE.GE.60)” 구문을 사용하여 가능하다).</p>
+</div>
+<div id="input-레코드-작성" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> $INPUT 레코드 작성</h3>
+<p>$INPUT 레코드에는 데이터셋에 기재된 데이터 아이템의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 아이템이 있을 경우, 변수 뒤에 “=DROP” 이라는 한정어를 써주어 해당 아이템을 제거할 수 있다. $DATA 레코드에서 “IGNORE” 또는 “ACCEPT” 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 $INPUT 에서 “=DROP”을 사용하여 불필요한 아이템을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 아이템 레이블 이외의 다른 이름을 사용할 경우, “내장된 변수명=새 이름” (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.</p>
+
+<div class="figure"><span id="fig:input"></span>
+<img src="assets/02-fig-01.jpg" alt="“$PROB, $DATA, $INPUT 제어구문 작성의 예”" width="100%" />
+<p class="caption">
+그림 2.1: “$PROB, $DATA, $INPUT 제어구문 작성의 예”
+</p>
+</div>
+<table>
+<caption><span id="tab:tab">표 2.1: </span>제어구문에 적합한 데이터셋의 예</caption>
+<thead>
+<tr class="header">
+<th align="right">ID</th>
+<th align="right">TIME</th>
+<th align="left">AMT</th>
+<th align="left">DV</th>
+<th align="right">MDV</th>
+<th align="right">SEX</th>
+<th align="right">AGE</th>
+<th align="right">WT</th>
+<th align="right">HT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.00</td>
+<td align="left">100000</td>
+<td align="left">.</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">50</td>
+<td align="right">73.7</td>
+<td align="right">184.5</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.00</td>
+<td align="left">.</td>
+<td align="left">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">50</td>
+<td align="right">73.7</td>
+<td align="right">184.5</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.25</td>
+<td align="left">.</td>
+<td align="left">891.2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">50</td>
+<td align="right">73.7</td>
+<td align="right">184.5</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.50</td>
+<td align="left">.</td>
+<td align="left">1179.9000000000001</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">50</td>
+<td align="right">73.7</td>
+<td align="right">184.5</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.75</td>
+<td align="left">.</td>
+<td align="left">682.75</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">50</td>
+<td align="right">73.7</td>
+<td align="right">184.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="predpp에-쓰는-데이터셋" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> PREDPP에 쓰는 데이터셋</h2>
+<p>PREDPP는 집단 약동학 데이터 분석에 적합하도록 NONMEM Project Group 이 제작한 NONMEM subroutine 인 PRED의 일반적인 편리한 버전이며, PRED Population Pharmacokinetics 를 줄인 말로 PREDPP 라고 불리운다. PREDPP Library의 subroutine (예를들어 ADVAN1, ADVAN2, ADVAN3 등)을 선택하여 사용자는 원하는 기본 모델을 선택할 수 있다.</p>
+<p>PREDPP를 사용할 경우, 데이터셋 작성 시 반드시 고려해야하는 사항이 있다. 데이터는 시간 순차적 이벤트(time-ordered events) 로서 투약 이벤트(dosing event) 와 관측 이벤트(observation event)로 만들어져 있다. 투약과 관측 정보는 같은 레코드(또는 같은 행)에 적을 수 없으며, 각각 다른 레코드로 기입한다. 각 데이터 레코드 당 이벤트가 일어난 시간을 반드시 입력해야 한다. 또한, 실제 이벤트가 일어난 순서와 데이터셋에 기입된 데이터 레코드 순서는 동일해야 한다 (만약 투약 이벤트가 관측 이벤트 보다 먼저 일어난 경우, 투약 이벤트 레코드를 먼저 기입하고 그 다음 관측 이벤트 레코드를 기입한다). 반면, PRED를 사용할 경우, 투약 레코드와 관측 레코드는 따로 구분하여 작성하지 않으며, 투약 용량(AMT)을 모든 데이터 레코드들에 마치 공변량과 같이 기재해 준다. 이번 단원에서는 PREDPP 용 데이터셋을 작성하는 법을 설명한다.</p>
+<div class="figure"><span id="fig:pred-predpp"></span>
+<img src="assets/02-fig-02.png" alt="Comparison between dataset for PRED and PREDPP" width="100%" />
+<p class="caption">
+그림 2.2: Comparison between dataset for PRED and PREDPP
+</p>
+</div>
+</div>
+<div id="데이터셋-소개" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> 데이터셋 소개</h2>
+<p>데이터셋은 다양한 프로그램으로 만들 수 있다. 대게 excel을 사용하여 CSV 파일로 만들며, 복잡하거나 양이 많은 데이터의 경우 R과 같은 소프트웨어를 사용하여 데이터를 정리하여 데이터셋을 생성할 수 있다. 데이터셋은 여러가지 변수로 구성된다. 데이터셋 변수(Variables of the dataset)는 다른 말로 데이터 아이템(Data item) 이라고도 부른다. 이 중, 집단모델링을 위해 데이터셋에 필수적으로 포함되어야 하는 변수가 존재한다. 예를 들어 PREDPP를 이용할 때 ID, DV, TIME, AMT는 데이터셋에 필수적으로 갖추어야하는 변수들이다.</p>
+<p>많이 쓰이는 기본적인 데이터셋의 형태는 그림 <a href="nonmem-dataset.html#fig:NONMEM-dataset">2.3</a>과 같다. 첫 행은 데이터 아이템의 이름을 기재하며 이를 데이터 아이템 레이블(Data item label)이라고 부른다. 첫 행에는 ID, TIME, AMT, DV, MDV 순으로 데이터 아이템이 기재되어 있다. 모든 데이터는 ID 별, TIME 별 오름차순으로 정렬하며, 각각의 이벤트 또는 결과값을 기재하고 이를 데이터 레코드 (Data record) 라고 부른다. 하나의 행에는 한 시점에 해당하는 하나의 이벤트(Event)를 기록한다.</p>
+<div class="figure"><span id="fig:NONMEM-dataset"></span>
+<img src="assets/02-fig-03.png" alt="Basic example of dataset for NONMEM" width="100%" />
+<p class="caption">
+그림 2.3: Basic example of dataset for NONMEM
+</p>
+</div>
+</div>
+<div id="데이터셋-배열" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 데이터셋 배열</h2>
+<p>데이터 레코드는 두 종류로 나뉜다. 하나는 투여한 용량 정보를 나타내는 투약 레코드(Dosing record)이며, 다른 하나는 시간에 따른 약동학 또는 약력학 데이터로 관측 레코드(Observation record) 라고 부른다. 각 대상자별 데이터 레코드 기입 시, 투약 레코드와 관측 레코드를 시간에 따라 순차적으로 입력한다. NONMEM 은 데이터셋을 정렬하는 기능이 없으므로, 일정한 순서(ID 별, TIME 별 순차적으로) 로 정리하여 기입하는 것이 중요하다. 만약, 데이터셋 작성시 시간에 따라 순차적으로 기입을 하지 않는다면, NONMEM에서 모델링 수행 시 에러가 나게 된다.</p>
+<p>NONMEM은 아스키코드를 인식하기 때문에 데이터 레코드 입력 시 숫자만을 사용해서 기입해야 한다. 그림 <a href="nonmem-dataset.html#fig:example-dataset">2.4</a>에서 첫 번째 열에 기입된 데이터 아이템인 ID 를 살펴보면, ID 앞에 #을 추가한 것을 볼 수 있다. 이와 같이 데이터 아이템 레이블 앞에 #을 쓰는 명령문은 ‘#이 기입된 행을 무시하라’ 라고 해석될 수 있다. 또한, 데이터 값이 없는 Null 데이터와 같은 경우는 해당 값이 없으므로 작성시 “.” 으로 표현할 수 있다. 만약, 빈칸으로 남겨두게 되면, 아직 기입을 하지 않은 값인지 또는 존재하지 않는 값인지 헷갈릴 수 있기 때문에 대부분의 경우 null 데이터를 “.”로 표현하는 것을 추천한다. 이전 NONMEM의 버전에서는 데이터 아이템의 수와 데이터 레코드 수에 제한이 있었으나, Version 7.2 부터는 그 수에 제한이 없다.</p>
+<div class="figure"><span id="fig:example-dataset"></span>
+<img src="assets/02-fig-04.png" alt="Example of dataset" width="100%" />
+<p class="caption">
+그림 2.4: Example of dataset
+</p>
+</div>
+<p>데이터 아이템 레이블 명명 시 간단한 규칙이 있다. NONMEM 7 에서부터 레이블은 알파벳 1-24 자 (A-Z), 숫자 (0-9), 그리고 “_”를 사용해서 만들 수 있다. 단, 첫째 글자는 알파벳이 라야 한다. 데이터셋 상의 데이터 아이템 순서는 사실 중요하지 않다(예를 들어, ID를 첫 열에 기입할지 또는 TIME을 첫 열에 기입할지 등). 다만 모든 데이터 레코드는 사용자에 의해 일정하게 약속된 데이터 아이템 순으로 기입되어야 하며, 컨트롤 파일의 $INPUT 레코드 작성 시 해당 순서에 따라 데이터 아이템 레이블을 기입해주면 된다. 데이터 아이템 레이블 행은 각 열을 명시함으로써 사용자가 입장에서 데이터를 알아보기 편하도록 삽입한 것이라고 볼 수 있다.</p>
+<p>NONMEM 실행 시 데이터셋을 불러들여올 때, 데이터 아이템 레이블 행 (첫 행)은 불러들이지 않으며, 이는 크게 두 가지 방법으로 가능하다. 첫째로, 데이터셋의 데이터 아이템 레이블 행의 첫 열에 #를 추가 (예를 들어, #ID)하여 데이터 아이템 레이블 행을 제거할 수 있다. 이 경우, 컨트롤 파일에 별도의 제어구문을 작성할 필요는 없다. 두번째로 컨트롤 파일 $DATA 레코드에 IGNORE 구문을 사용하여 데이터 아이템 레이블 행을 제거할 수 있다. <code>IGNORE=@</code>을 사용하면 알파벳으로 시작되는 데이터 레코드 행이 제거되며, <code>IGNORE=#</code> 명령문을 삽입하고, 데이터셋에 #을 데이터 아이템 레이블 행의 첫 열에 추가(예를 들어, #ID)하면 데이터 아이템 레이블 행을 제거할 수 있다.</p>
+<p>각각의 데이터 아이템에 대해 아래 설명되어 있다. 데이터 아이템은 NONMEM이 인식하는 이미 지정 된 이름으로 설정하여 작성한다. 이와 같은 변수의 이름은 사용자와 NONMEM이 이미 약속하여 사용하는 것이며, 데이터셋에 새 변수를 추가하고자 할 때 이미 지정된 이름은 사용하지 않는 것을 추천한다.</p>
+</div>
+<div id="지정된-데이터-아이템-레이블-reserved-labels" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 지정된 데이터 아이템 레이블 Reserved Labels</h2>
+<p>NONMEM 에서는 이미 약속하여 쓰는 데이터 아이템의 이름들이 있다. (표 <a href="nonmem-dataset.html#tab:reserveditems">2.2</a>) 대상자 인식 번호, 관측값, 관측값의 존재 유/무, 시간, 용량, 투여속도, 추가 투여 횟수, 투여 간격, 항정 상태 도달 유/무, 구획을 각각 ID, DV, MDV, TIME, AMT, RATE, ADDL, II, SS, CMT 로 명시하여 쓰게 된다.</p>
+<table>
+<caption><span id="tab:reserveditems">표 2.2: </span>List of reserved (pre-defined) data item labels</caption>
+<thead>
+<tr class="header">
+<th align="left">Variable Name</th>
+<th align="left">Situation</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ID</td>
+<td align="left">At all time</td>
+<td align="left">NM-TRAN infers that the data are population</td>
+</tr>
+<tr class="even">
+<td align="left">DV</td>
+<td align="left">At all time</td>
+<td align="left">Dependent Variable (Observation to be fitted)</td>
+</tr>
+<tr class="odd">
+<td align="left">MDV</td>
+<td align="left">At all time</td>
+<td align="left">Missing data variable (MDV = 1)</td>
+</tr>
+<tr class="even">
+<td align="left">TIME</td>
+<td align="left">PREDPP</td>
+<td align="left">Time</td>
+</tr>
+<tr class="odd">
+<td align="left">AMT</td>
+<td align="left">PREDPP</td>
+<td align="left">Dosing amount</td>
+</tr>
+<tr class="even">
+<td align="left">RATE</td>
+<td align="left">PREDPP</td>
+<td align="left">Dosing rate (infusion) - amount dosed during unit time</td>
+</tr>
+<tr class="odd">
+<td align="left">ADDL</td>
+<td align="left">PREDPP</td>
+<td align="left">Number of additional doses just like initial dose</td>
+</tr>
+<tr class="even">
+<td align="left">II</td>
+<td align="left">PREDPP</td>
+<td align="left">Interdose interval (Used with ADDL)</td>
+</tr>
+<tr class="odd">
+<td align="left">SS</td>
+<td align="left">PREDPP</td>
+<td align="left">Steady-state dose (55=1)</td>
+</tr>
+<tr class="even">
+<td align="left">CMT</td>
+<td align="left">PREDPP</td>
+<td align="left">Compartment</td>
+</tr>
+</tbody>
+</table>
+<div id="id" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> ID</h3>
+<p>ID는 대상자를 식별하기 위해 반드시 필요한 변수이다. 보통 임상 시험에서는 환자 고유 식별 번호를 알파벳을 넣어 부여하지만 NONMEM 데이터셋 작성시 아이디는 항상 숫자로 적어준다. ID는 오름차순으로 연속적으로 배열하는 것이 가장 이상적이며, 개인의 기록은 시간순으로 정렬한다. 따라서 ID 별, TIME 별 오름차순으로 정렬한 데이터 셋이 가장 많이 쓰인다. 그림 <a href="nonmem-dataset.html#fig:id-dataset">2.5</a>과 같이 앞에 사용된 같은 ID가 연속적으로 배열되지 않고 뒤에 다시 나오는 경우(예를 들어 그림 <a href="nonmem-dataset.html#fig:id-dataset">2.5</a>의 ID=101, 102), 이는 동일한 사람으로 인식되지 않으며 다른 사람으로 취급된다. 즉, NONMEM 은 ID=101, 102, 103 를 3명으로 인식하지 않고, 5명으로 인식한다. 따라서 같은 대상자의 데이터 레코드는 같이 그룹화하여 기입해주어야 한다.</p>
+<div class="figure"><span id="fig:id-dataset"></span>
+<img src="assets/02-fig-06.png" alt="Example of dataset with noncontinuous ID arrangement (NOT appropriate)" width="100%" />
+<p class="caption">
+그림 2.5: Example of dataset with noncontinuous ID arrangement (NOT appropriate)
+</p>
+</div>
+</div>
+<div id="dv" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> DV</h3>
+<p>DV는 Dependent Variable을 뜻하며 데이터셋 구성 시 필수적인 변수이다. DV는 관측값을 기입하는 데이터 아이템으로, PK 또는 PD 관측값을 기입한다. PK 모델링시 DV는 우리가 임상시험에서 얻은 원 데이터(raw data)의 약물 농도 값이며, PD 모델링시 DV는 효력 파라미터의 관측값을 나타낸다. 데이터셋에 구획(CMT) 이라는 변수를 추가하여 PK 와 PD 관측값에 구획을 지정할 수 있다. 이를 통해 동일 데이터셋에 PK와 PD 데이터를 함께 나타낼 수 있다. 하나의 데이터 레코드는 하나의 관측값을 가진다. 용량 정보를 나타내는 투약 레코드에서 DV 값은 존재하지 않으며 빈칸 또는 “.” 으로 처리한다. 관측 레코드에서는 DV 값이 존재하는 경우 관측값을 기재하고, 관측값이 존재하지 않을 경우 빈칸 또는 “.”으로 처리한다.</p>
+</div>
+<div id="mdv" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> MDV</h3>
+<p>MDV는 Missing Dependent Variable(결측치)을 뜻하며 데이터 레코드에 관측값이 존재하는가를 나타내는 변수이다. 결측치가 존재할 경우, 즉 관측값이 없는 경우, MDV 는 1로 처리된다. 대표적인 예로 투약 레코드 작성 시, 해당 시간에서의 관측값은 존재하지 않는 경우가 대부분이다. 따라서 MDV 는 1로 기입된다. 결측치가 존재하지 않을 경우, 즉 관측값이 존재하는 경우, MDV 는 0으로 처리된다. 예를 들어 관측 레코드 작성 시, 약물농도 관측값이 있는 경우 이를 DV에 기재하고 MDV는 1로 처리한다.</p>
+<p>PREDPP 사용시 MDV는 데이터셋에서 필수적으로 필요한 변수는 아니며, MDV가 없이 데이터셋이 작성되어 모델링이 수행되었을 경우, NONMEM 에서는 MDV 값을 자체적으로 생성하여 부여한다.</p>
+</div>
+<div id="evid" class="section level3" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> EVID</h3>
+<p>EVID는 EVent Identification Data를 뜻하며 데이터 레코드의 유형에 대해 설명해 주는 변수이다. 데이터셋에 꼭 들어가야 하는 변수는 아니다. 데이터셋 내에 EVID 변수를 포함시키지 않았을 경우, 모델링 수행 시 NONMEM은 이를 자동으로 생성하여 부여한다. 이는 실행결과(output) 파일에서 확인이 가능하다. EVID 변수는 인위적으로 농도가 재설정되는 경우에 쓸 수 있다. 예를 들어, 교차 시험에서 두 기간(period) 간의 농도가 중첩되지 않는 경우 사용할 수 있다. EVID 관련해서는 NONMEM Users Guide - Part V의 EVID Data Item 섹션에 자세히 설명되어 있다.</p>
+</div>
+<div id="time" class="section level3" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> TIME</h3>
+<p>TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전에는 음의 값을 가질 수 없었지만, NONMEM 7.4부터는 음의 값을 가질 수 있다. 그림 5. 와 같이 데이터셋 작성 시 대상자 별로 시간이 순차적으로 증가하는 순서로 기입해야 하며, 감소하거나 뒤섞인 순서로 기입을 해서는 안된다(다만, 재설정 되는 투약 이벤트가 있는 경우는 예외일 수 있다).</p>
+<p>TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.</p>
+<p>TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 그림 <a href="nonmem-dataset.html#fig:time-dataset">2.6</a>과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 ‘/’ 또는 ‘-’ 사용) 컨트롤 파일의 $INPUT에 반드시 DATE=DROP 이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.</p>
+<div class="figure"><span id="fig:time-dataset"></span>
+<img src="assets/02-fig-07.png" alt="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)" width="100%" />
+<p class="caption">
+그림 2.6: Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)
+</p>
+</div>
+<div class="figure"><span id="fig:date-dataset"></span>
+<img src="assets/02-fig-08.png" alt="DATE label and its format" width="100%" />
+<p class="caption">
+그림 2.7: DATE label and its format
+</p>
+</div>
+</div>
+<div id="amt" class="section level3" number="2.5.6">
+<h3><span class="header-section-number">2.5.6</span> AMT</h3>
+<p>AMT, RATE, ADDL, II, SS는 용량과 관련된 데이터 아이템들이다.</p>
+<p>AMT는 Amount를 의미하며 투여된 양을 나타내는 변수로서, 투여 레코드에 기록한다. 용량 정보를 표현하기 위해 AMT 와 함께 RATE, ADDL, SS, II 와 같은 데이터 아이템을 사용하여 용량 정보를 구체적으로 나타낼 수 있다(투여 경로는 CMT 데이터 아이템을 사용하여 나타낼 수 있다).</p>
+<p>AMT는 양의 숫자로 기입되야 하며, 모든 투여 레코드에 대해 일관된 단위로 기입되어야 한다. 투여 레코드에는 투여된 용량이 존재함으로 AMT 값이 항상 존재하지만, 관측 레코드에서는 AMT 값은 존재하지 않는 결측치로 표시되어야 한다 (즉, 결측지를 의미하는 “.” 또는 빈칸으로 처리해야 한다).</p>
+<p>AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 통일시켜야 한다. 이는 크게 두가지 방법으로 가능하다. 첫번째로, 데이터셋 안에서 AMT와 DV의 단위를 통일시키는 방법이 있다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 투여 용량에 1000을 곱하여 데이터셋 AMT에 바로 기재할 수 있다. 두번째 방법은 컨트롤 파일 작성 시 scaling factor 를 사용하여 수식을 기입하여 단위를 통일하는 방법이다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 컨트롤 파일에 S=V/1000을 기입하여 사용할 수 있다.</p>
+</div>
+<div id="rate" class="section level3" number="2.5.7">
+<h3><span class="header-section-number">2.5.7</span> RATE</h3>
+<p>RATE 은 단위 시간 당 주입된 양(AMT per unit TIME)을 나타내며, 즉 정맥주입(infusion) 시 투여속도를 나타내는 변수이다. AMT와 함께 구체적인 투약 레코드를 나타내기 위해 사용되며, 투여속도를 나타내는 경우 양의 숫자로 기입된다. 그림 <a href="nonmem-dataset.html#fig:AMT-RATE">2.8</a>와 같이 약물 100 mg 을 한 시간동안 정맥 주입했을 경우 RATE 은 100 mg/h 가 된다. 만약, 약물 100 mg 을 30 분 동안 정맥주입 했을 경우 RATE는 100 mg/ 0.5 h 로 200 mg/h가 된다.</p>
+<div class="figure"><span id="fig:AMT-RATE"></span>
+<img src="assets/02-fig-09.png" alt="Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h" width="100%" />
+<p class="caption">
+그림 2.8: Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h
+</p>
+</div>
+<p>그 외 RATE는 0, -1, -2 의 값을 가질 수 있다. RATE가 0 인 경우는 투여경로가 정맥 주입이 아니라는 뜻이다. 만약, 정맥주사(bolus)와 정맥주입(infusion)이 함께 이뤄진 경우, 정맥주사 투약 레코드의 RATE는 0으로 기입한다. RATE가 -1 인 경우는 투여 속도를 예측하는 경우이며, 컨트롤 파일 $PK 부분 작성 시 해당 파라미터를 표현하는 제어구문을 작성해야 한다(예를 들어, R1=THETA(1)). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로 컨트롤 파일 작성 시 $PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를들어, D1=THETA(1)). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate) 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.</p>
+<p>예를 들어, 시간에 따라 직선적으로 빠르게 증가하는 약물의 농도가 관측될 경우, 이는 0차 흡수를 보인다고 설명될 수 있으며 이를 설명하기 위해 데이터셋 상의 RATE를 -2로 기입하여, 투여 지속시간을 추정하는 경우가 많다.</p>
+</div>
+<div id="addl-ii" class="section level3" number="2.5.8">
+<h3><span class="header-section-number">2.5.8</span> ADDL &amp; II</h3>
+<p>ADDL(Additional Dose)은 이벤트 레코드의 시작시간부터 일정한 투여 간격을 두고 추가적으로 투여된 약물의 투여 횟수를 말한다 즉, 제일 첫 투여를 제외한 추가적인 투여 횟수를 나타낸다 (ADDL = N-1, N = 총 투여 횟수). 데이터셋 작성시, ADDL 은 II(Interdose Interval) 데이터 아이템과 함께 사용되며, 이는 투여 시간간격을 나타낸다. 투여정보를 TIME과 AMT만으로 나타낼 경우, 한 번의 투여 이벤트당 하나의 투약 레코드를 작성하게 된다. 하지만, ADDL과 II를 함께 사용하여 투약정보를 작성할 경우, 여러 건의 투약 레코드를 한 줄의 투약 레코드로 표현할 수 있다.</p>
+<p>그림 <a href="nonmem-dataset.html#fig:dosing-dataset">2.9</a>과 같이 예를 들어 ID 302 대상자에게 약물 10mg 을 24시간 간격(0시간부터 96시간 까지)으로 총 5회 투여했을 경우, 투약 레코드는 TIME과 AMT를 사용하여 다섯 줄로 설명 가능하다. 하지만, 같은 투약정보를 ADDL과 II를 사용하여 한 줄로, 24시간 간격으로 4번의 추가 용량을 투여(총 다섯 번 투여), 간단하게 나타낼 수 있다.</p>
+<div class="figure"><span id="fig:dosing-dataset"></span>
+<img src="assets/02-fig-10.png" alt="Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II" width="100%" />
+<p class="caption">
+그림 2.9: Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II
+</p>
+</div>
+</div>
+<div id="ss" class="section level3" number="2.5.9">
+<h3><span class="header-section-number">2.5.9</span> SS</h3>
+<p>SS(steady-state)는 시스템의 항정상태 도달 여부를 나타내며, 투약 레코드 기입에 쓰인다. SS는 0, 1, 또는 2의 값을 가질 수 있다. SS 가 0일 경우 항정상태가 아닌 경우의 투약을 나타내며, SS가 1 인 경우는 항정상태에서의 투약을 나타낸다. SS가 1인 경우 이전 투약기록을 모두 무시하고, 항정상태로 재설정하여 투약 정보를 전달한다. SS가 2인 경우는 항정상태를 나타내지만, 앞의 경우와는 다르게 이전 투약 레코드를 무시하지 않는다. 즉, 이 경우는 시스템을 재설정하지 않는다는 점이 다르다. 따라서 이전 투약 레코드와 현재 항정상태에서의 투약 레코드를 종합하여 시간에 따른 농도 값을 예측한다. 표 <a href="nonmem-dataset.html#tab:dosing-rec">2.3</a>에는 SS를 사용한 다양한 투약 레코드의 예시와 설명이 나와있다.</p>
+<table>
+<caption><span id="tab:dosing-rec">표 2.3: </span>Example of various dosing records and its description</caption>
+<thead>
+<tr class="header">
+<th align="right">TIME</th>
+<th align="right">AMT</th>
+<th align="left">RATE</th>
+<th align="right">ADDL</th>
+<th align="right">ss</th>
+<th align="right">II</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="left">·</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">8 N</td>
+<td align="left">on steady state, <br/>10mg bolus at 8hr, <br/>3 additional dose every 8hr</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="left">10</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="left">Non steady state, <br/>10mg infusion for 1hr at 8hr, <br/>3 additional dose every 8hr</td>
+</tr>
+<tr class="odd">
+<td align="right">64</td>
+<td align="right">10</td>
+<td align="left">·</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">8 S</td>
+<td align="left">teady state, <br/>10mg bolus at 64hr, <br/>3 additional dose every 8hr</td>
+</tr>
+<tr class="even">
+<td align="right">64</td>
+<td align="right">10</td>
+<td align="left">10</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="left">Steady state, <br/>10mg infusion for 1hr at 64hr <br/>3 additional dose every 8hr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="cmt" class="section level3" number="2.5.10">
+<h3><span class="header-section-number">2.5.10</span> CMT</h3>
+<p>CMT(compartment)는 구획을 지정해 주는 데이터 아이템이며, 필수적인 항목은 아니다. 정맥 주입 후 투약과 관측이 기본 구획에서 일어나는 경우 CMT 데이터 아이템은 필요하지 않다. 하지만, 예를 들어 PK 데이터와 PD 데이터를 함께 데이터셋에 입력하고자 한다면 데이터셋에 CMT 데이터 아이템을 추가하여 PK 데이터 관측 구획과 PD 데이터 관측 구획을 따로 지정하여 구분시킬 수 있다.</p>
+</div>
+<div id="covariates" class="section level3" number="2.5.11">
+<h3><span class="header-section-number">2.5.11</span> Covariates</h3>
+<p>Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영향 인자라고 생각할 수 있다. NONMEM은 공변량에 대한 정보가 없으며, 이는 사용자가 공변량 분석(Covariate analysis) 과정을 통해 선정한다. 예를 들어 성별, 나이, 인종, 몸무게, BMI 또는 실험결과값 등을 공변량으로 선정할 수 있으며, 이 정보를 데이터셋에 포함시킬 수 있다. 데이터셋 내의 공변량 정보도 다른 데이터 레코드와 마찬가지로 숫자로 적어주어야 한다. 따라서, 예컨데 남자는 0, 여자는 1과 같이 기입한다.</p>
+<hr />
+<p>다음 문헌을 참고하였다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<ol style="list-style-type: decimal">
+<li>Owen, Joel S., and Jill Fiedler-Kelly. Introduction to population pharmacokinetic/pharmacodynamic analysis with nonlinear mixed effects models. John Wiley &amp; Sons, 2014.</li>
+<li>Boeckmann, A. J., L. B. Sheiner, and S. L. Beal. “NONMEM users guide - part V.” San Francisco: University of California San Francisco (2009).</li>
+</ol>
+
+</div>
+</div>
+</div>
+<h3>참고문헌</h3>
+<div id="refs" class="references">
+<div id="ref-nonmem">
+<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
+</div>
+<div id="ref-kelly">
+<p>Owen, Fiedler‐Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="control-stream.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/02.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

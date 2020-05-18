@@ -1,0 +1,37 @@
+```{r setup}
+library(readxl)
+library(knitr)
+library(dplyr)
+```
+
+```{r}
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet='16', range="B2:D12") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet='22', range="B2:H6") %>% 
+  mutate(Description = gsub("\r\n", "<br/>", Description)) %>% 
+  kable(format='markdown')
+  #kable(format = 'html')
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet='47', range="B2:D39") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="50", range="B2:E36") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="71", range="B2:F20") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="112", range="B2:E7") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="125", range="B2:C6") %>% 
+  kable()
+
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>% 
+  kable()
+```
+

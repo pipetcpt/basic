@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
+  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/basic" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
+
+
+<meta name="date" content="2020-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nonmem-dataset.html"/>
+<link rel="next" href="specific-advan.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-stream.html"><a href="control-stream.html"><i class="fa fa-check"></i><b>3</b> NONMEM 모델 종류 별 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="control-stream.html"><a href="control-stream.html#소개-1"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="control-stream.html"><a href="control-stream.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="control-stream.html"><a href="control-stream.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="control-stream.html"><a href="control-stream.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="general-advan.html"><a href="general-advan.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
+<li class="chapter" data-level="5.2" data-path="general-advan.html"><a href="general-advan.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="기타-advan.html"><a href="기타-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="기타-advan.html"><a href="기타-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="기타-advan.html"><a href="기타-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="기타-advan.html"><a href="기타-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="기타-advan.html"><a href="기타-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#서론"><i class="fa fa-check"></i><b>8.1</b> 서론</a></li>
+<li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#초기-추정값의-의미와-역할"><i class="fa fa-check"></i><b>8.2</b> 초기 추정값의 의미와 역할</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.3</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
+<li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.4</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> THETA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> OMEGA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.7" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.7</b> SIGMA의 초기추정값 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estimation-methods.html"><a href="estimation-methods.html"><i class="fa fa-check"></i><b>9</b> 파라미터 추정 방법 및 세팅</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="estimation-methods.html"><a href="estimation-methods.html#추정-방법-및-관련-옵션"><i class="fa fa-check"></i><b>9.1</b> 추정 방법 및 관련 옵션</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="estimation-methods.html"><a href="estimation-methods.html#noabort"><i class="fa fa-check"></i><b>9.1.1</b> NOABORT</a></li>
+<li class="chapter" data-level="9.1.2" data-path="estimation-methods.html"><a href="estimation-methods.html#maxeval"><i class="fa fa-check"></i><b>9.1.2</b> MAXEVAL</a></li>
+<li class="chapter" data-level="9.1.3" data-path="estimation-methods.html"><a href="estimation-methods.html#method"><i class="fa fa-check"></i><b>9.1.3</b> METHOD</a></li>
+<li class="chapter" data-level="9.1.4" data-path="estimation-methods.html"><a href="estimation-methods.html#interaction"><i class="fa fa-check"></i><b>9.1.4</b> INTERACTION</a></li>
+<li class="chapter" data-level="9.1.5" data-path="estimation-methods.html"><a href="estimation-methods.html#print"><i class="fa fa-check"></i><b>9.1.5</b> PRINT</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="estimation-methods.html"><a href="estimation-methods.html#nonmem-추정"><i class="fa fa-check"></i><b>9.2</b> NONMEM 추정</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="estimation-methods.html"><a href="estimation-methods.html#ols-방식"><i class="fa fa-check"></i><b>9.2.1</b> OLS 방식</a></li>
+<li class="chapter" data-level="9.2.2" data-path="estimation-methods.html"><a href="estimation-methods.html#wls-방식"><i class="fa fa-check"></i><b>9.2.2</b> WLS 방식</a></li>
+<li class="chapter" data-level="9.2.3" data-path="estimation-methods.html"><a href="estimation-methods.html#els-방식"><i class="fa fa-check"></i><b>9.2.3</b> ELS 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood"><i class="fa fa-check"></i><b>9.3</b> Likelihood</a></li>
+<li class="chapter" data-level="9.4" data-path="estimation-methods.html"><a href="estimation-methods.html#taylor-전개식"><i class="fa fa-check"></i><b>9.4</b> Taylor 전개식</a></li>
+<li class="chapter" data-level="9.5" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood-ratio-test"><i class="fa fa-check"></i><b>9.5</b> Likelihood Ratio Test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="nonmem-실행결과-해석-및-xpose4-사용법.html"><a href="nonmem-실행결과-해석-및-xpose4-사용법.html"><i class="fa fa-check"></i><b>10</b> NONMEM 실행결과 해석 및 Xpose4 사용법</a></li>
+<li class="chapter" data-level="11" data-path="공변량-분석.html"><a href="공변량-분석.html"><i class="fa fa-check"></i><b>11</b> 공변량 분석</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="공변량-분석.html"><a href="공변량-분석.html#서론-1"><i class="fa fa-check"></i><b>11.1</b> 서론</a></li>
+<li class="chapter" data-level="11.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석의-일반적-절차"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석의 일반적 절차</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="공변량-분석.html"><a href="공변량-분석.html#항목-평가-variable-evaluation"><i class="fa fa-check"></i><b>11.2.1</b> 항목 평가 (variable evaluation)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-스크리닝-covariate-screening"><i class="fa fa-check"></i><b>11.2.2</b> 공변량 스크리닝 (covariate screening)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공선성co-linearity에-대한-고려"><i class="fa fa-check"></i><b>11.2.3</b> 공선성(co-linearity)에 대한 고려</a></li>
+<li class="chapter" data-level="11.2.4" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.2.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.2.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="공변량-분석.html"><a href="공변량-분석.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="diag-eval.html"><a href="diag-eval.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="diag-eval.html"><a href="diag-eval.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="diag-eval.html"><a href="diag-eval.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="모델-파라미터의-적절성.html"><a href="모델-파라미터의-적절성.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="evaluation.html"><a href="evaluation.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="evaluation.html"><a href="evaluation.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="evaluation.html"><a href="evaluation.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="evaluation.html"><a href="evaluation.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="evaluation.html"><a href="evaluation.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="evaluation.html"><a href="evaluation.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="evaluation.html"><a href="evaluation.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="evaluation.html"><a href="evaluation.html#참고문헌"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
+<li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
+<li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결-방법-적합법"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
+<li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="effect-model.html"><a href="effect-model.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="effect-model.html"><a href="effect-model.html#소개-3"><i class="fa fa-check"></i><b>19.1</b> 소개</a></li>
+<li class="chapter" data-level="19.2" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-종류"><i class="fa fa-check"></i><b>19.2</b> PD 모델의 종류</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#선형모델linear-model"><i class="fa fa-check"></i><b>19.2.1</b> 선형모델(linear model)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#로그-선형모델log-linear-model"><i class="fa fa-check"></i><b>19.2.2</b> 로그-선형모델(log-linear model)</a></li>
+<li class="chapter" data-level="19.2.3" data-path="effect-model.html"><a href="effect-model.html#emax-model"><i class="fa fa-check"></i><b>19.2.3</b> E<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.2.4" data-path="effect-model.html"><a href="effect-model.html#sigmoid-emax-model-hill-방정식"><i class="fa fa-check"></i><b>19.2.4</b> Sigmoid E<sub>max</sub> model (Hill 방정식)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-적용"><i class="fa fa-check"></i><b>19.3</b> PD 모델의 적용</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.3.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.3.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.3.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="지연효과-모델.html"><a href="지연효과-모델.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="지연효과-모델.html"><a href="지연효과-모델.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="지연효과-모델.html"><a href="지연효과-모델.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="지연효과-모델.html"><a href="지연효과-모델.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="참고문헌-1.html"><a href="참고문헌-1.html"><i class="fa fa-check"></i>참고문헌</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="control-stream" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> NONMEM 모델 종류 별 제어구문 소개</h1>
+<p><strong>Overview of control stream by model type</strong></p>
+<p><em>배수현</em></p>
+<div id="소개-1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 소개</h2>
+<p>이 장에서는 NONMEM을 구동하기 위한 주요 요소들에 대하여 설명하고, 모델의 종류와 그에 따른 NM-TRAN 제어구문에 대하여 소개한다. NONMEM 시스템은 크게 NM-TRAN (NonMem TRANslator), PREDPP (PREDiction of Population Pharmacokinetic models), NONMEM (NONlinear Mixed Effect Models)의 3가지의 요소로 이루어져 있다. PREDPP는 집단약동학 모델링을 통한 특정 파라미터 추정을 위한 서브루틴이며, FORTRAN 서브루틴으로 구성되어 있다. NM-TRAN은 데이터셋과 적절한 FORTRAN을 차례로 호출하여 특정 모델을 실행시켜, 제어구문에 명시된 방법으로 다양한 결과를 출력할 수 있도록 해준다. NONMEM은 파라미터 추정을 위해 사용되는 비선형 혼합효과 모델을 일컫는다. NONMEM 실행을 위해서는 사용자가 직접 작성한 NM-TRAN 제어구문과 문법과
+형식에 맞추어 작성된 데이터셋 파일이 필요하다. </p>
+</div>
+<div id="제어구문의-구성" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 제어구문의 구성</h2>
+<p>NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 코드 블록으로 이루어져 있다. 블록의 첫 시작은 ’$’기호를 사용하여 사용할 레코드를 명시하고, 그와 관련된 코드를 나열하면 된다. 레코드의 명칭은 최소 세글자 이상이면 사용할 수 있다. 예를 들어, $PROBLEM은 $PROB, $PRO로 줄여서 사용할 수 있다. 또한, NONMEM 7.2 이전 버전에서는 제어구문의 모든 부분을 대문자로 작성해야만 했으나, 7.2 이상 버전에서는 대문자와 소문자를 혼용하여 작성이 가능하다. 제어구문 내에서 세미콜론을 사용하여, 부연 설명을 작성할 수 있다. 세미콜론을 사용한 행은 텍스트로 간주되어, 모델 실행시 NM-TRAN이 읽어들이지 않는다.</p>
+<p>제어구문은 그림 <a href="control-stream.html#fig:nm-tran">3.1</a>처럼 프로젝트의 제목을 기입하는 $PROBLEM, 분석할 데이터셋 파일의 경로를 표시하는 $DATA와 각 데이터의 특성을 정의하는 $INPUT, 집단 약동학 모델링 또는 PK/PD 모델링을 위한 PREDDPP ($SUBROUTINE, $MODEL, $PK, $ERROR) 또는 $PRED, 모델 파라미터 추정을 위한 초기 추정값을 설정하는 $THETA, $OMEGA, $SIGMA, 추정방법을 명시하는 $ESTIMATION 또는 $SIMULATION 모델 실행 후 결과 출력을 표시하는 $COVARIANCE와 $TABLE로 이루어져 있다. 각 부분에 대해서는 <a href="control-stream.html#control-record">3.4</a>절에서 자세히 다루기로 한다.</p>
+<div class="figure"><span id="fig:nm-tran"></span>
+<img src="assets/media-03/image1.png" alt="NM-TRAN 제어구문의 구성" width="100%" />
+<p class="caption">
+그림 3.1: NM-TRAN 제어구문의 구성
+</p>
+</div>
+
+</div>
+<div id="predpp와-pred" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> PREDPP와 PRED</h2>
+<p>제어구문에 사용되는 각 레코드의 자세한 설명에 앞서, PREDPP와 PRED에 대하여 알아보자. PRED는 ’prediction’의 약자로 추정값을 얻기위한 서브루틴을 일컫는다. PK와 PK/PD 모델 분석 뿐만 아니라, 어떠한 값이라도 수식만 주어진다면 PRED를 사용하여 추정할 수 있다. PRED는 NONMEM 내에 구축되어 있는 모델이나 시간 또는 구획에 대한 약속된 처리 구문이 정해져 있지 않기 때문에, 모델의 유연성(flexibility)이 높으며, 사용자가 원하는 식을 이용하여 원하는 파라미터의 값을 추정할 수 있다. PREDPP는 ’PRED for population pharmacokinetics’의 줄임말로 집단 약동학 분석을 위한 PRED 서브루틴으로 NONMEM에 내장되어 있다. PREDPP를 사용하여 모델 파라미터를 추정할 경우 $SUBROUTINE과 사용하고자 하는 ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)를 결정하여야 하며, 사용하고자 하는 ADVAN에 따라 $MODEL, $PK, $ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED 서브루틴을 사용하는 경우에는 $PRED를 이용하여 모델을 정의할 수 있다. 자세한 내용은 다음 장에서부터 차례로 다루기로 한다.</p>
+</div>
+<div id="control-record" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> 제어구문에 쓰이는 레코드</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb1-1"><a href="control-stream.html#cb1-1"></a>$PROB <span class="dv">1</span><span class="kw">-</span>compartment model</span>
+<span id="cb1-2"><a href="control-stream.html#cb1-2"></a>$INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR</span>
+<span id="cb1-3"><a href="control-stream.html#cb1-3"></a>$DATA test.csv IGNORE<span class="kw">=</span>@</span>
+<span id="cb1-4"><a href="control-stream.html#cb1-4"></a>$SUBR ADVAN1 TRANS2</span>
+<span id="cb1-5"><a href="control-stream.html#cb1-5"></a>$PK</span>
+<span id="cb1-6"><a href="control-stream.html#cb1-6"></a>  V  <span class="kw">=</span> THETA(<span class="dv">1</span>)<span class="kw">*</span><span class="bu">EXP</span>(ETA(<span class="dv">1</span>))</span>
+<span id="cb1-7"><a href="control-stream.html#cb1-7"></a>  CL <span class="kw">=</span> THETA(<span class="dv">2</span>)<span class="kw">*</span><span class="bu">EXP</span>(ETA(<span class="dv">2</span>))</span>
+<span id="cb1-8"><a href="control-stream.html#cb1-8"></a>  S1 <span class="kw">=</span> V</span>
+<span id="cb1-9"><a href="control-stream.html#cb1-9"></a>$ERROR</span>
+<span id="cb1-10"><a href="control-stream.html#cb1-10"></a>  IPRED <span class="kw">=</span> F</span>
+<span id="cb1-11"><a href="control-stream.html#cb1-11"></a>  W     <span class="kw">=</span> <span class="bu">SQRT</span>(THETA(<span class="dv">3</span>)<span class="kw">**</span><span class="dv">2</span> <span class="kw">+</span> THETA(<span class="dv">4</span>)<span class="kw">**</span><span class="dv">2</span> <span class="kw">*</span> IPRED<span class="kw">**</span><span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="control-stream.html#cb1-12"></a>  IRES  <span class="kw">=</span> DV <span class="kw">-</span> IPRED</span>
+<span id="cb1-13"><a href="control-stream.html#cb1-13"></a>  IWRES <span class="kw">=</span> IRES <span class="kw">/</span> W</span>
+<span id="cb1-14"><a href="control-stream.html#cb1-14"></a>  Y     <span class="kw">=</span> IPRED <span class="kw">+</span> W <span class="kw">*</span> EPS(<span class="dv">1</span>)</span>
+<span id="cb1-15"><a href="control-stream.html#cb1-15"></a>$THETA</span>
+<span id="cb1-16"><a href="control-stream.html#cb1-16"></a>  (<span class="dv">0</span>, <span class="dv">400</span>)</span>
+<span id="cb1-17"><a href="control-stream.html#cb1-17"></a>  (<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb1-18"><a href="control-stream.html#cb1-18"></a>  <span class="fl">0.0001</span> FIX</span>
+<span id="cb1-19"><a href="control-stream.html#cb1-19"></a>  <span class="fl">0.5</span></span>
+<span id="cb1-20"><a href="control-stream.html#cb1-20"></a>$OMEGA</span>
+<span id="cb1-21"><a href="control-stream.html#cb1-21"></a>  <span class="fl">0.02</span> <span class="fl">0.01</span></span>
+<span id="cb1-22"><a href="control-stream.html#cb1-22"></a>  <span class="fl">0.02</span></span>
+<span id="cb1-23"><a href="control-stream.html#cb1-23"></a>$SIGMA</span>
+<span id="cb1-24"><a href="control-stream.html#cb1-24"></a>  <span class="dv">1</span> FIX</span>
+<span id="cb1-25"><a href="control-stream.html#cb1-25"></a>$ESTIMATION NOABORT MAXEVAL<span class="kw">=</span><span class="dv">9999</span> METHOD<span class="kw">=</span><span class="dv">1</span> INTER <span class="fu">PRINT</span><span class="kw">=</span><span class="dv">5</span></span>
+<span id="cb1-26"><a href="control-stream.html#cb1-26"></a>$TABLE ID TIME AMT RATE MDV DV IPRED IRES CWRES ONEHEADER NOPRINT FILE<span class="kw">=</span>sdtab1001</span>
+<span id="cb1-27"><a href="control-stream.html#cb1-27"></a>$TABLE ID TIME AMT DV CL V ETA1 ETA2 ONEHEADER NOPRINT FILE<span class="kw">=</span>patab1001</span>
+<span id="cb1-28"><a href="control-stream.html#cb1-28"></a>$TABLE ID RF SEX ONEHEADER NOPRINT FILE<span class="kw">=</span>catab1001</span>
+<span id="cb1-29"><a href="control-stream.html#cb1-29"></a>$TABLE ID WT AGE SEX HT ALB CLCR ONEHEADER NOPRINT FILE<span class="kw">=</span>cotab1001</span></code></pre></div>
+<div class="figure"><span id="fig:one-comp"></span>
+<img src="assets/media-03/image2.png" alt="1구획 약동학 모델의 제어구문" width="100%" />
+<p class="caption">
+그림 3.2: 1구획 약동학 모델의 제어구문
+</p>
+</div>
+
+<p>위의 그림은 1구획 약동학 모델 분석을 위한 제어구문의 예이다. 위의 제어구문은 각 레코드의 정의와 사용 규칙을 이해하는데 도움이 될 것이다.</p>
+<div id="problem-data-input" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> $PROBLEM, $DATA, $INPUT</h3>
+<p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 $PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.</p>
+<p>$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb2-1"><a href="control-stream.html#cb2-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> @</span></code></pre></div>
+<p>또는</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb3-1"><a href="control-stream.html#cb3-1"></a>$DATA ..<span class="kw">//</span>test.csv IGNORE <span class="kw">=</span> @</span></code></pre></div>
+<p>위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은 제어구문이 있는 폴더에 생성된다.</p>
+<p>$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, <code>IGNORE = #</code>를 사용하면 제어구문은 첫 번째 열에 #이 포함된 행을 읽어들이지 않고, <code>IGNORE = @</code>을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb4-1"><a href="control-stream.html#cb4-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
+<p>또는</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb5-1"><a href="control-stream.html#cb5-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>)</span></code></pre></div>
+<p>또는</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb6-1"><a href="control-stream.html#cb6-1"></a>$DATA test.csv IGNORE <span class="kw">=</span> \# IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>, SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
+<p>하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, <code>.AND.</code> 또는 <code>.OR.</code>을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, IGNORE=# 또는 IGNORE=@를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.</p>
+<p>$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV, ADDL, II, RATE, CMT, SS 등이 있다. ’=DROP’구문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 CON=DV 또는 DV로
+작성하여야 한다.</p>
+</div>
+<div id="subroutine-model-pk-des" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> $SUBROUTINE, $MODEL, $PK, $DES</h3>
+<p>$SUBROUTINE은 PREDPP에 내장되어 있는 ADVAN 루틴을 선택하여 원하는 모델과 파라미터를 추정할 수 있게 한다. ADVAN 서브루틴은 특수 ADVAN과 일반 ADVAN으로 구성되어 있으며, ADVAN의 선택에 따라 $MODEL, $DES를 사용해야 하거나 그렇지 않을 수 있다.</p>
+<div id="특수-advan" class="section level4" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> 특수 ADVAN</h4>
+<p>특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2, ADVAN10은 1구획 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델, ADVAN11과 ADVAN12는 3구획 약동학 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정하고자 하는 파라미터에 따라 TRANS를 선택하여야 한다. 각 ADVAN에 따른 TRANS 서브루틴은 표 <a href="control-stream.html#tab:advan-trans">3.1</a>에 자세히 나와있다.</p>
+<table>
+<caption>
+<span id="tab:advan-trans">표 3.1: </span> 특수 ADVAN과 그에 따른 TRANS 서브루틴
+</caption>
+<tr>
+<td>
+<img src="assets/media-03/image3.png" />
+</td>
+</tr>
+</table>
+<!-- Table: (\#tab:advan-trans) 특수 ADVAN과 그에 따른 TRANS 서브루틴 -->
+<p>특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, $MODEL과 $DES 레코드는 사용하지 않으며, $PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. $PK는 그림 <a href="control-stream.html#fig:two-comp-pk">3.3</a>과 같이 작성한다.</p>
+<div class="figure"><span id="fig:two-comp-pk"></span>
+<img src="assets/media-03/image4.png" alt="2구획 경구 약동학 모델의 $PK 레코드" width="100%" />
+<p class="caption">
+그림 3.3: 2구획 경구 약동학 모델의 $PK 레코드
+</p>
+</div>
+
+<p>$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.</p>
+<p><span class="math display">\[
+\frac{Amount\ (mg)}{Vd\ (L)} \neq \ DV\ (\frac{\text{μg}}{L})
+\]</span></p>
+<p>위의 식에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. S2=V2/1000이며, 이를 $PK에 그림 <a href="control-stream.html#fig:two-comp-pk">3.3</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
+<table>
+<caption><span id="tab:advan-param">표 3.2: </span> 특수 ADVAN의 부가 파라미터</caption>
+<thead>
+<tr class="header">
+<th><strong>Parameters<sup>*</sup></strong></th>
+<th><strong>Descriptions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>Scale for the first compartment</td>
+</tr>
+<tr class="even">
+<td>F1</td>
+<td>Bioavailability for the first compartment</td>
+</tr>
+<tr class="odd">
+<td>R1</td>
+<td>Rate for the first compartment</td>
+</tr>
+<tr class="even">
+<td>D1</td>
+<td>Duration for the first compartment</td>
+</tr>
+<tr class="odd">
+<td>ALAG1</td>
+<td>Absorption lag parameter</td>
+</tr>
+</tbody>
+</table>
+<p><sup>*</sup>각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.</p>
+</div>
+<div id="일반-advan" class="section level4" number="3.4.2.2">
+<h4><span class="header-section-number">3.4.2.2</span> 일반 ADVAN</h4>
+<p>일반 ADVAN은 사용자가 직접 모델을 제시할 수 있는 서브루틴이다. 구획의 수와 흡수 및 제거 모델을 사용자가 결정하여 $MODEL과 $DES에 정의할 수 있다. 주로, 복잡한 흡수모델, 비선형 약동학, 장간순환, 모약물–대사체 동시 분석, 그리고 PD 데이터 분석을 위해 사용된다. 선형 또는 비선형 모델과 파라미터 추정 계산 방식에 따라 ADVAN 5,6,7,8,9,13,14,15 (nm74 기준)로 나뉘며, 특히, 선형모델인 ADVAN5와 ADVAN7은 구획간 물질이동과 구획으로의 흡수와 제거를 1차 이동속도로 정의하기 때문에, $PK에서 구획간 약물의 이동에 대한 속도상수를 정의하고 $DES 블록을 사용하지 않는다. ADVAN5와 ADVAN7을 제외한 일반 비선형 ADVAN은 $DES 레코드를 사용하여 각 구획간의 이동에 대한 관계를 미분방정식을 사용하여 기술하여야 한다.</p>
+</div>
+</div>
+<div id="theta-omega-sigma" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> $THETA, $OMEGA, $SIGMA</h3>
+<p>$THETA, $OMEGA, $SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는 블록들이다. $THETA는 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. $PK에서 정의된 번호 순서대로 초기값을 제시하면 된다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb7-1"><a href="control-stream.html#cb7-1"></a>$PK </span>
+<span id="cb7-2"><a href="control-stream.html#cb7-2"></a>TVCL <span class="kw">=</span> THETA(<span class="dv">1</span>) CL <span class="kw">=</span> TVCL <span class="kw">*</span> <span class="bu">EXP</span>(ETA1)) </span>
+<span id="cb7-3"><a href="control-stream.html#cb7-3"></a>TVV <span class="kw">=</span> THETA(<span class="dv">2</span>) V <span class="kw">=</span> TVV <span class="kw">*</span> <span class="bu">EXP</span>(ETA2)) </span>
+<span id="cb7-4"><a href="control-stream.html#cb7-4"></a>TVKA <span class="kw">=</span> THETA(<span class="dv">3</span>) KA <span class="kw">=</span> TVKA <span class="kw">*</span> <span class="bu">EXP</span>(ETA(<span class="dv">3</span>))</span></code></pre></div>
+<p>예를 들어 $PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb8-1"><a href="control-stream.html#cb8-1"></a>$THETA (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>)</span></code></pre></div>
+<p>순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은
+’(하한값, 초기 추정값, 상한값)’을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10<sup>6</sup>이 기본 상한값이다.</p>
+<p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 CL=TVCL*EXP(ETA(1))로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL</sub><sup>2</sup>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다. 특히, CL<sub>i</sub> = TVCL*<span class="math inline">\(e^{\eta_{i}}\)</span> 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:</p>
+<p>ω<sub>1,1</sub><sup>2</sup></p>
+<p>0 ω<sub>2,2</sub><sup>2</sup></p>
+<p>0 0 ω<sub>3,3</sub><sup>2</sup></p>
+<p>OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 $OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb9-1"><a href="control-stream.html#cb9-1"></a>$OMEGA <span class="fl">0.16</span> <span class="fl">0.25</span> <span class="fl">0.16</span></span></code></pre></div>
+<p>여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb10-1"><a href="control-stream.html#cb10-1"></a>$OMEGA BLOCK(<span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="control-stream.html#cb10-2"></a><span class="fl">0.16</span></span>
+<span id="cb10-3"><a href="control-stream.html#cb10-3"></a><span class="fl">0.01</span> <span class="fl">0.25</span></span>
+<span id="cb10-4"><a href="control-stream.html#cb10-4"></a>$OMEGA <span class="fl">0.16</span></span></code></pre></div>
+<p>$SIGMA는 관찰갑과 예측값의 차이, 즉, 잔차의 분포를 나타내는 ε (residual varilability, RV)를 추정하는 블록이다. $SIGMA는 ε 를 가법변동(additive variation) 또는 고정변동계수(constant coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을 추정하는 것이며, 행렬로 표현할 수 있다. $ERROR를 사용하여 EPS(1)과 EPS(2)를 정의하고, 이를
+SIGMA 행렬로 표현하면 아래와 같다:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb11-1"><a href="control-stream.html#cb11-1"></a>$ERROR </span>
+<span id="cb11-2"><a href="control-stream.html#cb11-2"></a>IPRED <span class="kw">=</span> F </span>
+<span id="cb11-3"><a href="control-stream.html#cb11-3"></a>IRES <span class="kw">=</span> DV<span class="kw">-</span>IPRED </span>
+<span id="cb11-4"><a href="control-stream.html#cb11-4"></a>IWRES <span class="kw">=</span> IRES<span class="kw">/</span>IPRED </span>
+<span id="cb11-5"><a href="control-stream.html#cb11-5"></a>Y <span class="kw">=</span> F\<span class="kw">*</span>(<span class="dv">1</span><span class="kw">+</span>EPS(<span class="dv">1</span>)) <span class="kw">+</span>EPS(<span class="dv">2</span>)</span></code></pre></div>
+<p>σ<sub>1,1</sub><sup>2</sup></p>
+<p>0 σ <sub>2,2</sub><sup>2</sup></p>
+<p>여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수, 가법변동, 고정변동계수+가법변동을 선택할 수 있다. 잔차변이(EPS)를 $THETA 레코드에서 추정하도록 $ERROR의 코드를 변경해서 사용하기도 한다:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb12-1"><a href="control-stream.html#cb12-1"></a>$ERROR </span>
+<span id="cb12-2"><a href="control-stream.html#cb12-2"></a>IPRED <span class="kw">=</span> F </span>
+<span id="cb12-3"><a href="control-stream.html#cb12-3"></a>W <span class="kw">=</span> SQRT<span class="kw">(</span>THETA<span class="kw">(</span><span class="dv">4</span><span class="kw">)**</span><span class="dv">2</span> <span class="kw">+</span> THETA<span class="kw">(</span><span class="dv">5</span><span class="kw">)**</span><span class="dv">2</span> <span class="kw">*</span>IPRED<span class="kw">**</span><span class="dv">2</span><span class="kw">)</span> </span>
+<span id="cb12-4"><a href="control-stream.html#cb12-4"></a>IRES <span class="kw">=</span> DV<span class="kw">-</span>IPRED </span>
+<span id="cb12-5"><a href="control-stream.html#cb12-5"></a>IWRES <span class="kw">=</span> IRES<span class="kw">/</span>W </span>
+<span id="cb12-6"><a href="control-stream.html#cb12-6"></a>Y <span class="kw">=</span> IPRED <span class="kw">+</span> W <span class="kw">*</span> EPS<span class="kw">(</span><span class="dv">1</span><span class="kw">)</span></span>
+<span id="cb12-7"><a href="control-stream.html#cb12-7"></a><span class="kw">...</span></span>
+<span id="cb12-8"><a href="control-stream.html#cb12-8"></a>$THETA <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="dv">100</span><span class="kw">)</span> <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="dv">30</span><span class="kw">)</span> <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="fl">0.7</span><span class="kw">)</span> <span class="dv">10</span> <span class="fl">0.2</span></span>
+<span id="cb12-9"><a href="control-stream.html#cb12-9"></a><span class="kw">...</span></span>
+<span id="cb12-10"><a href="control-stream.html#cb12-10"></a>$SIGMA <span class="dv">1</span> FIX</span></code></pre></div>
+<p>여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 $ERROR 레코드에서 사용한 EPS(1)은 $SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 $THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.</p>
+</div>
+<div id="estimation-simulation" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> $ESTIMATION, $SIMULATION</h3>
+<p>$ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것인지를 명시하는 레코드이다.
+추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (first-order
+conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다. 추정방법에 대한
+이론적인 설명은 9장에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는 기본적인 코드와 용어에 대해서 설명한다.</p>
+<pre><code>$ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3</code></pre>
+<p>위의 $ESTIMATION에서 사용하는 옵션을 살펴보자. 우선, 추정방법은 ‘METHOD=’ 을 사용한다. FO 방법은
+METHOD=0, FOCE는 METHOD=1이며, INTERACTION 옵션을 사용할 수 있다. NOABORT 옵션을 사용하여
+데이터 내 개인의 Hessian 행렬이 양(+)의 값을 가지지 않아서 파라미터 추정을 위한 최소화 과정이 중단되는 것을
+방지할 수 있다. 즉, 추정 과정에서 모델이 중단되는 것을 어느정도 피할 수 있다. MAXEVAL 옵션은 목적함수를 이용한
+추정 계산 횟수를 정하는데 사용된다. 0 에서 99,999,999까지의 값을 줄수 있지만, 일반적으로 함수계산 횟수의 제한 때문에
+파라미터 추정이 중단되지 않기 위해 충분히 큰 값을 준다(위의 예에서는 MAXEVAL=9,999). PRINT=n은 추정과정 중
+자세한 정보를 n번 째 마다 제공하도록 하는 옵션이며, SIGDIGITS은 최종 파라미터 추정값의 유효숫자를 결정하는
+옵션이다. 이를 사용하지 않으면 NONMEM은 최종 파라미터의 유효숫자를 3으로 지정한다.</p>
+<p>$SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적
+예측점검(visual predictive check) 과정에 사용할 수 있다.</p>
+<pre><code>$SIMULATION (seed) ONLYSIM NSUB=1000</code></pre>
+<p>’NSUB=’으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. $SIMULATION을 사용 시 $ESTIMATION과 $COVARIANCE는 함께 사용할 수 없다.</p>
+</div>
+<div id="covariance-table" class="section level3" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> $COVARIANCE, $TABLE</h3>
+<p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.</p>
+<pre><code>$COVARIANCE PRINT=E UNCONTIONAL MATRIX=S</code></pre>
+<p>PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sup>-1</sup>SR<sup>-1</sup> 행렬이 기본계산에 사용되는데, MATRIX=S 또는 MATRIX=R 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. UNCONDITIONAL 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.</p>
+<p>$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 그림 <a href="control-stream.html#fig:table-record">3.4</a>처럼 $TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.</p>
+<div class="figure"><span id="fig:table-record"></span>
+<img src="assets/media-03/image5.png" alt="$TABLE 레코드의 예" width="100%" />
+<p class="caption">
+그림 3.4: $TABLE 레코드의 예
+</p>
+</div>
+
+</div>
+</div>
+<div id="모델-종류별-제어구문" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> 모델 종류별 제어구문</h2>
+<p>앞 단원에서는 NONMEM 실행에 필요한 제어구문의 각 레코드에 대하여 알아보았다. 이 단원에서는 모델 종류에 따른 제어구문의 예를 살펴보기로 한다.</p>
+<div id="특수-advan과-일반-advan" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> 특수 ADVAN과 일반 ADVAN</h3>
+<p>2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특수 ADVAN을 사용할 경우 $SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선택하고, $PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다. ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 $MODEL과 $DES 레코드는 사용할 필요가 없다. (그림 <a href="control-stream.html#fig:advan4">3.5</a>)</p>
+<div class="figure"><span id="fig:advan4"></span>
+<img src="assets/media-03/image6.png" alt="2구획 경구 약동학 모델의 제어구문의 예. ADVAN4" width="100%" />
+<p class="caption">
+그림 3.5: 2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
+</p>
+</div>
+
+<p>동일한 데이터를 일반 ADVAN을 사용하여 분석할 경우, 일반 선형 ADVAN 또는 비선형 ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, $MODEL 레코드에서 모델 분석에 사용할 구획의 수와 각 구획의 역할에 대하여 결정하여야 한다. DEFDOSE와 DEFOBS는 NONMEM에 내장되어 있는 옵션으로 각각 용량 구획과 관찰값 구획을 지정할 때 사용한다. 각 구획의 물질 이동은 1차 이동속도를 따르는 선형 ADVAN이므로, $DES를 사용하지 않아도 된다.</p>
+<div class="figure"><span id="fig:advan5"></span>
+<img src="assets/media-03/image7.png" alt="2구획 경구 약동학 모델의 제어구문의 예. ADVAN5" width="100%" />
+<p class="caption">
+그림 3.6: 2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
+</p>
+</div>
+
+<p>2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 그림 <a href="control-stream.html#fig:advan6">3.7</a>처럼, $MODEL을 이용하여 구획을 정의하고, $PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, $SUBROUTINE에서 ’TOL=’을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.</p>
+<div class="figure"><span id="fig:advan6"></span>
+<img src="assets/media-03/image8.png" alt="2구획 경구 약동학 모델의 제어구문의 예. ADVAN6" width="100%" />
+<p class="caption">
+그림 3.7: 2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
+</p>
+</div>
+
+</div>
+<div id="일반-비선형-모델" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> 일반 비선형 모델</h3>
+<p>그림 <a href="control-stream.html#fig:advan6">3.7</a>처럼 일반 비선형 모델은 미분방정식을 사용하여 각 구획의 이동을 시간에 따른 구획의 질량변화로 표현한다. 미분방정식을 계산하는 방법에 따라 다양한 ADVAN을 선택할 수 있다. 일반 비선형 모델을 이용한 약동학 분석 모델의 예를 모약물과 대사체의 약동학을 동시에 분석하는 모델을 통해 살펴보자. 개발 중인 약이 주대사체로 많이 대사되며, 그 대사체도 약효를 나타내는 경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 <a href="control-stream.html#fig:model-parent-metabolite">3.8</a>과 같이 대사체의 생성은 비선형 모델(Michaelis–Menten 모델)을 따른다고 가정하였다.</p>
+<div class="figure"><span id="fig:model-parent-metabolite"></span>
+<img src="assets/media-03/image9.jpeg" alt="모약물과 대사체의 약동학 동시 분석 모델" width="100%" />
+<p class="caption">
+그림 3.8: 모약물과 대사체의 약동학 동시 분석 모델
+</p>
+</div>
+
+<p>각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.</p>
+<p><span class="math display">\[
+\frac{dA(1)}{dt} = -k_a \cdot A(1) 
+\]</span></p>
+<p><span class="math display">\[
+\frac{dA(2)}{dt} = k_a \cdot A(1) - k20 \cdot A(2) - \frac{V_{max} \cdot A(2)}{K_m + A(2)}
+\]</span></p>
+<p><span class="math display">\[
+\frac{dA(3)}{dt} = -k30 \cdot A(3) + \frac{V_{max} \cdot A(2)}{k_m + A(2)} \cdot MPR
+\]</span></p>
+<p>여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 <a href="#thm:parent-metabolite"><strong>??</strong></a>와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. $DES에서 각 구획의 이동을 정의하였으며, $ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (Theorem <a href="#thm:parent-metabolite"><strong>??</strong></a>)</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb16-1"><a href="control-stream.html#cb16-1"></a>$PROBLEM Model of Parent and Metabolite Concentrations</span>
+<span id="cb16-2"><a href="control-stream.html#cb16-2"></a>$INPUT ID TIME DV AMT EVID MDV CMT</span>
+<span id="cb16-3"><a href="control-stream.html#cb16-3"></a>$DATA filename</span>
+<span id="cb16-4"><a href="control-stream.html#cb16-4"></a>$<span class="kw">SUBROUTINE</span> ADVAN6 TOL<span class="kw">=</span><span class="dv">4</span></span>
+<span id="cb16-5"><a href="control-stream.html#cb16-5"></a>$MODEL</span>
+<span id="cb16-6"><a href="control-stream.html#cb16-6"></a>  COMP (DEPOT, DEFDOS)</span>
+<span id="cb16-7"><a href="control-stream.html#cb16-7"></a>  COMP (CENTPRNT, DEFOBS)</span>
+<span id="cb16-8"><a href="control-stream.html#cb16-8"></a>  COMP (CENTMETB)</span>
+<span id="cb16-9"><a href="control-stream.html#cb16-9"></a>$PK</span>
+<span id="cb16-10"><a href="control-stream.html#cb16-10"></a>  K20 <span class="kw">=</span> THETA(<span class="dv">1</span>) <span class="kw">*</span> <span class="bu">EXP</span>(ETA(<span class="dv">1</span>))</span>
+<span id="cb16-11"><a href="control-stream.html#cb16-11"></a>  V2  <span class="kw">=</span> THETA(<span class="dv">2</span>) <span class="kw">*</span> <span class="bu">EXP</span>(ETA(<span class="dv">2</span>))</span>
+<span id="cb16-12"><a href="control-stream.html#cb16-12"></a>  KA  <span class="kw">=</span> THETA(<span class="dv">3</span>)</span>
+<span id="cb16-13"><a href="control-stream.html#cb16-13"></a>  VMAX<span class="kw">=</span> THETA(<span class="dv">4</span>)</span>
+<span id="cb16-14"><a href="control-stream.html#cb16-14"></a>  KM  <span class="kw">=</span> THETA(<span class="dv">5</span>)</span>
+<span id="cb16-15"><a href="control-stream.html#cb16-15"></a>  K30 <span class="kw">=</span> THETA(<span class="dv">6</span>)</span>
+<span id="cb16-16"><a href="control-stream.html#cb16-16"></a>  V3  <span class="kw">=</span> THETA(<span class="dv">7</span>)</span>
+<span id="cb16-17"><a href="control-stream.html#cb16-17"></a>  S2  <span class="kw">=</span> V2<span class="kw">/</span><span class="dv">1000</span></span>
+<span id="cb16-18"><a href="control-stream.html#cb16-18"></a>  S3  <span class="kw">=</span> V3<span class="kw">/</span><span class="dv">1000</span></span>
+<span id="cb16-19"><a href="control-stream.html#cb16-19"></a>$DES</span>
+<span id="cb16-20"><a href="control-stream.html#cb16-20"></a>  DADT(<span class="dv">1</span>) <span class="kw">=</span> <span class="kw">-</span>KA<span class="kw">*</span>A(<span class="dv">1</span>)</span>
+<span id="cb16-21"><a href="control-stream.html#cb16-21"></a>  DADT(<span class="dv">2</span>) <span class="kw">=</span> KA<span class="kw">*</span>A(<span class="dv">1</span>) <span class="kw">-</span> K20<span class="kw">*</span>A(<span class="dv">2</span>) <span class="kw">-</span> (VMAX<span class="kw">*</span>A(<span class="dv">2</span>))<span class="kw">/</span>(KM<span class="kw">+</span>A(<span class="dv">2</span>))</span>
+<span id="cb16-22"><a href="control-stream.html#cb16-22"></a>  DADT(<span class="dv">3</span>) <span class="kw">=</span> <span class="kw">-</span>K30<span class="kw">*</span>A(<span class="dv">3</span>) <span class="kw">+</span> ((VMAX<span class="kw">*</span>A(<span class="dv">2</span>)))<span class="kw">/</span>(KM<span class="kw">+</span>A(<span class="dv">2</span>))<span class="kw">*</span>MPR</span>
+<span id="cb16-23"><a href="control-stream.html#cb16-23"></a>$ERROR</span>
+<span id="cb16-24"><a href="control-stream.html#cb16-24"></a>  <span class="kw">IF</span> (CMT<span class="op">.EQ.</span><span class="dv">2</span>) <span class="dt">TYPE</span><span class="kw">=</span><span class="dv">0</span> ;Parent concentration</span>
+<span id="cb16-25"><a href="control-stream.html#cb16-25"></a>  <span class="kw">IF</span> (CMT<span class="op">.EQ.</span><span class="dv">3</span>) <span class="dt">TYPE</span><span class="kw">=</span><span class="dv">1</span> ;Metabolite concentration</span>
+<span id="cb16-26"><a href="control-stream.html#cb16-26"></a>Y <span class="kw">=</span> F<span class="kw">*</span>EPS(<span class="dv">1</span>) <span class="kw">*</span> (<span class="dv">1</span><span class="kw">-</span><span class="dt">TYPE</span>)</span></code></pre></div>
+<!-- (ref:parent-metabolite) 모약물과 대사체의 약동학 동시 분석 모델의 제어구문 -->
+</div>
+<div id="pred-모델" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> PRED 모델</h3>
+<p>$PRED를 사용한 모델을 살펴보자. 코드 <a href="#thm:linear-model"><strong>??</strong></a>는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, $PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. $PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 $ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 $PRED를 사용하는 것이 효율적이다.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb17-1"><a href="control-stream.html#cb17-1"></a>$PROB QTc, PRED</span>
+<span id="cb17-2"><a href="control-stream.html#cb17-2"></a>$INPUT ID<span class="kw">=</span>DROP DQTC<span class="kw">=</span>DV CMAX</span>
+<span id="cb17-3"><a href="control-stream.html#cb17-3"></a>$DATA data.csv IGNORE<span class="kw">=</span>C </span>
+<span id="cb17-4"><a href="control-stream.html#cb17-4"></a>; Since the header row starts with a C,</span>
+<span id="cb17-5"><a href="control-stream.html#cb17-5"></a>; that row is dropped</span>
+<span id="cb17-6"><a href="control-stream.html#cb17-6"></a>$PRED</span>
+<span id="cb17-7"><a href="control-stream.html#cb17-7"></a>  <span class="bu">INT</span> <span class="kw">=</span> THETA(<span class="dv">1</span>)       ; Intercept</span>
+<span id="cb17-8"><a href="control-stream.html#cb17-8"></a>  SLP <span class="kw">=</span> THETA(<span class="dv">2</span>)       ; Slope</span>
+<span id="cb17-9"><a href="control-stream.html#cb17-9"></a>  EFF <span class="kw">=</span> SLP<span class="kw">*</span>CMAX <span class="kw">+</span> <span class="bu">INT</span> ; Drug effect model<span class="kw">-</span> linear</span>
+<span id="cb17-10"><a href="control-stream.html#cb17-10"></a>  Y   <span class="kw">=</span> EFF <span class="kw">+</span> ETA(<span class="dv">1</span>)   ; Residual error model <span class="kw">-</span> additive</span>
+<span id="cb17-11"><a href="control-stream.html#cb17-11"></a>$EST <span class="fu">PRINT</span><span class="kw">=</span><span class="dv">5</span> <span class="bu">MAX</span><span class="kw">=</span><span class="dv">9999</span> SIG<span class="kw">=</span><span class="dv">3</span></span>
+<span id="cb17-12"><a href="control-stream.html#cb17-12"></a>$THETA</span>
+<span id="cb17-13"><a href="control-stream.html#cb17-13"></a>  <span class="fl">0.1</span> ; Intercept</span>
+<span id="cb17-14"><a href="control-stream.html#cb17-14"></a>  <span class="fl">0.5</span> ; Slope</span>
+<span id="cb17-15"><a href="control-stream.html#cb17-15"></a>$OMEGA</span>
+<span id="cb17-16"><a href="control-stream.html#cb17-16"></a>  <span class="fl">0.04</span> ; Magnitude of additive error</span></code></pre></div>
+<hr />
+<p>3장은 다음 문헌을 참고하였다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+
+</div>
+</div>
+</div>
+<h3>참고문헌</h3>
+<div id="refs" class="references">
+<div id="ref-nonmem">
+<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
+</div>
+<div id="ref-kelly">
+<p>Owen, Fiedler‐Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nonmem-dataset.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="specific-advan.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/03.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

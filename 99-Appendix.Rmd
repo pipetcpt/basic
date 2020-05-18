@@ -5,7 +5,7 @@
 '`
 
 ```{r include=FALSE}
-pack <- c('nlme', 'nmw')
+pack <- c('nlme', 'nmw', 'xpose4')
 knitr::write_bib(pack, 'references/packages.bib')
 ```
 
