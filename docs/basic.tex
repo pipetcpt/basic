@@ -242,8 +242,23 @@
 
 \title{PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초}
 \author{임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필}
-\date{2020-05-18}
+\date{2020-05-19}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -628,16 +643,7 @@ Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Owen, Joel S., and Jill Fiedler-Kelly. Introduction to population pharmacokinetic/pharmacodynamic analysis with nonlinear mixed effects models. John Wiley \& Sons, 2014.
-\item
-  Boeckmann, A. J., L. B. Sheiner, and S. L. Beal. ``NONMEM users guide - part V.'' San Francisco: University of California San Francisco (2009).
-\end{enumerate}
+이 장은 다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
 
 \hypertarget{control-stream}{%
 \chapter{NONMEM 모델 종류 별 제어구문 소개}\label{control-stream}}
@@ -1284,32 +1290,24 @@ THETA를 다르게 주어 상대생체이용률을 구할 수 있다. (코드 \r
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. \$MODEL 구문을 사용하여 사용자가 원하는 만큼
-999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 \$PK구문 다음에 \$DES구문을 사용하여
-모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은
-구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 \$DES구문이 필요하지 않다. 일반
-ADVAN의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5\textasciitilde8에 대하여 다루기로 한다.
+일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. \$MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 \$PK구문 다음에 \$DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 \$DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5\textasciitilde8에 대하여 다루기로 한다.
 
 \begin{table}
 
 \caption{\label{tab:gen-advan}일반 ADVAN의 종류}
 \centering
 \begin{tabular}[t]{l}
-\hline
+\toprule
 General ADVAN\\
-\hline
+\midrule
 ADVAN5 (General Linear)\\
-\hline
 ADVAN6 (General Nonlinear)\\
-\hline
 ADVAN7 (General Linear with Real Eigenvalues)\\
-\hline
 ADVAN8 (General Nonlinear Kinetics with Stiff Equations)\\
-\hline
 ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)\\
-\hline
+\addlinespace
 ADVAN13 (General Nonlinear Kinetics using LSODA)\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1331,51 +1329,17 @@ ADVAN13 (General Nonlinear Kinetics using LSODA)\\
 추정은 행렬지수(matrix exponential)에 대한 수치적 근사(numerical approximation)를
 이용하여, 선형 미분방정식을 푸는 방식으로 이루어진다.
 
-\begin{longtable}[]{@{}lll@{}}
-\caption{\label{tab:advan-lin-property} 일반 선형 ADVAN 의 종류 및 특징 (Beal \protect\hyperlink{ref-nonmem}{2018})}\tabularnewline
+Table: \label{tab:advan-lin-property} 일반 선형 ADVAN 의 종류 및 특징 (Beal \protect\hyperlink{ref-nonmem}{2018})
+
+\begin{tabular}{lll}
 \toprule
-\begin{minipage}[b]{0.30\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
-ADVAN 5\strut
-\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
-ADVAN 7\strut
-\end{minipage}\tabularnewline
+Reason & ADVAN 5 & ADVAN 7\\
 \midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{0.30\columnwidth}\raggedright
-\strut
-\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
-ADVAN 5\strut
-\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright
-ADVAN 7\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.30\columnwidth}\raggedright
-When used?\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-Eigenvalues of the rate constant matrix are complex\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-Eigenvalues of the rate constant matrix are known to be real\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.30\columnwidth}\raggedright
-Example\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-PBPK model\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-Many PK systems\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.30\columnwidth}\raggedright
-Running time\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-Slower\strut
-\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-Faster\strut
-\end{minipage}\tabularnewline
+When used? & Eigenvalues of the rate constant matrix are complex & Eigenvalues of the rate constant matrix are known to be real\\
+Example & PBPK model & Many PK systems\\
+Running time & Slower & Faster\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 
 일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소수(complex
 number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더 단순한 구조를 가지며 고유값이
@@ -1387,10 +1351,7 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 \includegraphics[width=1\linewidth]{./assets/media-05/image2} \caption{일반 선형 ADVAN을 이용한 코드 예시}\label{fig:advan-example}
 \end{figure}
 
-일반 선형 ADVAN의 코드를 보면 \$SUBROUTINE 구문을 통해 어떤 ADVAN을 사용할 지 설정한 후, \$MODEL
-구문에서 모델에서 사용할 구획의 수와 특성을 정의한다. 특수 ADVAN 과 달리 999개까지 사용자가 원하는 만큼
-구획의 수를 설정할 수 있다. \$PK구문을 이용하여 각 구획 간 물질의 이동 관계를 설정하고 약동학 파라미터(ex CL,
-V)와의 관계도 정의할 수 있다.
+일반 선형 ADVAN의 코드를 보면 \$SUBROUTINE 구문을 통해 어떤 ADVAN을 사용할 지 설정한 후, \$MODEL 구문에서 모델에서 사용할 구획의 수와 특성을 정의한다. 특수 ADVAN 과 달리 999개까지 사용자가 원하는 만큼 구획의 수를 설정할 수 있다. \$PK구문을 이용하여 각 구획 간 물질의 이동 관계를 설정하고 약동학 파라미터(ex CL, V)와의 관계도 정의할 수 있다.
 
 \hypertarget{uxc77cuxbc18-uxbe44uxc120uxd615-advan}{%
 \section{일반 비선형 ADVAN}\label{uxc77cuxbc18-uxbe44uxc120uxd615-advan}}
@@ -1401,8 +1362,7 @@ V)와의 관계도 정의할 수 있다.
 \includegraphics[width=1\linewidth]{./assets/media-05/image3} \caption{일반 비선형 ADVAN을 이용한 코드의 구조}\label{fig:nonlin-code}
 \end{figure}
 
-일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형 관계를 허용하기 때문에 이러한
-특성을 설명하기 위하여, 반드시 \$DES 구문을 이용한 미분 방정식을 작성하여야 한다.
+일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형 관계를 허용하기 때문에 이러한 특성을 설명하기 위하여, 반드시 \$DES 구문을 이용한 미분 방정식을 작성하여야 한다.
 
 \label{tab:nonlin-advan} 일반 비선형 ADVAN 의 종류 및 특징 (Bonate \protect\hyperlink{ref-bonate}{2011})
 
@@ -1436,9 +1396,9 @@ Gear method
 
 비선형 ADVAN을 사용할 경우, \$SUBROUTINE 구문에 적용할 ADVAN(ex. ADVAN 6 or 8)을 지정한 후, TOL 이라는 명령어를 추가해야 한다. TOL 은 tolerance 의 약자로, 각 구획의 내부값(질량, 농도, 효과) 계산에 필요한 숫자의 정확한 자릿수(NRD, number of required digits)를 의미하며, 일반적으로 \$ESTIMATION 구문에 설정하는 SIG 값보다 1 또는 2 큰 숫자로 설정한다.
 
-\$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 아이템(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, ``DEPOT'' 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, ``DEPOT''을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 ``CENTRAL'' 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, ``CENTRAL'' 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다\[3\]. 데이터셋에 CMT 아이템을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.
+\$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 아이템(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, ``DEPOT'' 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, ``DEPOT''을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 ``CENTRAL'' 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, ``CENTRAL'' 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다 (Beal \protect\hyperlink{ref-nonmem}{2018}). 데이터셋에 CMT 아이템을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.
 
-마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 \$DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 DADT(1)= -KA * A(1)으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. \$DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 \texttt{T} 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.
+마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 \$DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 \texttt{DADT(1)=\ -KA\ *\ A(1)}으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. \$DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 \texttt{T} 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.
 
 
 
@@ -1453,31 +1413,6 @@ Gear method
 \includegraphics[width=1\linewidth]{./assets/media-05/image7}
 
 동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
-
-참고문헌
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Beal SL, Shenier LB, Boeckmann AJ, Bauer RJ, editors. 1989 NONMEM
-  7.4.0 Users Guides -- Part VI. (1989-2018). ICON Development
-  Solutions, Hanover. P111.
-\item
-  Bonate PL. Pharmacokinetic-Pharmacodynamic Modeling and Simulation.
-  2nd ed.~New York: Springer Science + Business Media, LLC;
-
-  \begin{enumerate}
-  \def\labelenumii{\arabic{enumii}.}
-  \setcounter{enumii}{2010}
-  \tightlist
-  \item
-    P605.
-  \end{enumerate}
-\item
-  Beal SL, Shenier LB, Boeckmann AJ, Bauer RJ, editors. 1989 NONMEM
-  7.4.0 Users Guides -- Part IV. (1989-2018). ICON Development
-  Solutions, Hanover. P106.
-\end{enumerate}
 
 \hypertarget{uxae30uxd0c0-advan}{%
 \chapter{기타 ADVAN}\label{uxae30uxd0c0-advan}}
@@ -1538,7 +1473,7 @@ PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방�
 \includegraphics[width=1\linewidth]{./assets/media-07/image2} \caption{ADVAN과 \$PRED의 데이터셋 차이}\label{fig:pred-dataset}
 \end{figure}
 
-AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때) 한번의 투여간격 사이에 주는 용량이라는 의미로 약속되어 있어서 \$INPUT에서 데이터셋의 칼럼 이름으로 명시해 주어야 하고, 그림 \ref{fig:pred-dataset}의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영향을 주는 값으로 약속되어 있다. 그러나 \$PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼 그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 \ref{fig:first-order-pred}의 제어구문에서 ``IPRED = D*COEF*KA/(KA-EXPO)*(EXP(-EXPO*T)-EXP(-KA*T))''의 용량을 나타내는 변수 ``D''에 해당된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 \$INPUT 뒤에 적어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 \$INPUT 뒤에 AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제목이라는 의미만을 가진다. 단지 \$PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 \ref{fig:first-order-pred}의 예에서는 \$INPUT 뒤에 나오는 네번째 칼럼 이름은 ``D'' 라고 써주면 될 것이다.
+AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때) 한번의 투여간격 사이에 주는 용량이라는 의미로 약속되어 있어서 \$INPUT에서 데이터셋의 칼럼 이름으로 명시해 주어야 하고, 그림 \ref{fig:pred-dataset}의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영향을 주는 값으로 약속되어 있다. 그러나 \$PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼 그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 \ref{fig:first-order-pred}의 제어구문에서 \texttt{IPRED\ =\ D*COEF*KA/(KA-EXPO)*(EXP(-EXPO*T)-EXP(-KA*T))}의 용량을 나타내는 변수 \texttt{D}에 해당된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 \$INPUT 뒤에 적어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 \$INPUT 뒤에 AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제목이라는 의미만을 가진다. 단지 \$PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 \ref{fig:first-order-pred}의 예에서는 \$INPUT 뒤에 나오는 네번째 칼럼 이름은 ``D'' 라고 써주면 될 것이다.
 
 미분방정식으로 각 분획간의 물질이동의 식만 주면 알아서 각 분획 별 물질의 양을 구해주는 \$DES와는 달리 \$PRED를 쓸 경우 우리가 얻고자 하는 값(예컨데 특정 분획에서의 약물 농도)을 라플라스 변환을 이용하든지 하여 수식으로 풀어서 넣어 주어야 한다.
 
@@ -2079,24 +2014,9 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 \hypertarget{uxc11cuxb860-1}{%
 \section{서론}\label{uxc11cuxb860-1}}
 
-모델링-시뮬레이션은 관찰한 현상을 일관된 모델로서 정립하여 현상 안에 담긴 의미를 일반화하는 것이며, 이렇게 일반화된 지식을
-토대로 특정한 상황에서 약동-약력학적 결과를 예측하여, 의사 결정 등에 활용하고자 하는 것이다. 특히, 임상시험 수행
-혹은 시판 후 상황 등에서 환자 요인, 약물 요인, 질병 요인에 따라 달라지는 약물의 치료 효과 등을 예측하는 것은 임상 개발
-전략 또는 임상시험 설계 등을 결정하는 데에 핵심적인 정보가 된다. 예를 들어, 성인을 대상으로 수집한 약동-약력학 데이터로부터,
-연령이 증가할수록 관심 대상 약물의 청소율이 감소하는 현상을 모델로서 구축할 수 있으며, 이러한 모델을 이용해 50세 이상
-환자군과 50세 미만 환자군을 나누어 시뮬레이션함으로써, 특정 용량-용법 투여 시 약물 효과를 두 군에서 비교
-예측해 볼 수 있다. 이 때, `연령'과 같이 약동-약력학 모델의 구조 또는 파라미터에 유의미한 영향을 끼치는 다양한
-요인을 공변량(covariate)라 한다. 즉, 모델링-시뮬레이션의 작업 흐름(workflow) 속에서 공변량은 모델의
-핵심적인 구성 요소 중 하나라 하겠다.
+모델링-시뮬레이션은 관찰한 현상을 일관된 모델로서 정립하여 현상 안에 담긴 의미를 일반화하는 것이며, 이렇게 일반화된 지식을 토대로 특정한 상황에서 약동-약력학적 결과를 예측하여, 의사 결정 등에 활용하고자 하는 것이다. 특히, 임상시험 수행 혹은 시판 후 상황 등에서 환자 요인, 약물 요인, 질병 요인에 따라 달라지는 약물의 치료 효과 등을 예측하는 것은 임상 개발 전략 또는 임상시험 설계 등을 결정하는 데에 핵심적인 정보가 된다. 예를 들어, 성인을 대상으로 수집한 약동-약력학 데이터로부터, 연령이 증가할수록 관심 대상 약물의 청소율이 감소하는 현상을 모델로서 구축할 수 있으며, 이러한 모델을 이용해 50세 이상 환자군과 50세 미만 환자군을 나누어 시뮬레이션함으로써, 특정 용량-용법 투여 시 약물 효과를 두 군에서 비교 예측해 볼 수 있다. 이 때, `연령'과 같이 약동-약력학 모델의 구조 또는 파라미터에 유의미한 영향을 끼치는 다양한 요인을 공변량(covariate)라 한다. 즉, 모델링-시뮬레이션의 작업 흐름(workflow) 속에서 공변량은 모델의 핵심적인 구성 요소 중 하나라 하겠다.
 
-공변량이라 함은 단순히 데이터 수집 단계에서 모아진 정보의 항목들을 의미하는 것이 아니라, 그러한 항목들 중 통계학적인 분석을
-통해 모델에 반영하는 것이 적절하다고 입증된 것만을 의미한다. 수집된 데이터 중 약동-약력학 분석에 종속변수로서 사용되는
-약물의 농도 또는 작용에 대한 측정값(바이오마커로서 측정되는 경우가 많음)을 제외한 데이터 항목들(인구학적 정보, 질환 특성
-등)은 실제 모델에 반영된 공변량과 구분하여, 잠재적 공변량(potential covariate)이라 지칭한다. 즉, 공변량
-분석(covariate analysis)이란 잠재적 공변량에 대한 적절한 통계분석을 통해 모델링의 대상이 되는 약물의
-약동-약력학 모델에 유의미한 영향을 미치는 공변량을 찾아내는 과정이라 할 수 있으며, 여기에는 데이터 항목
-평가(variable evaluation), 스크리닝(covariate screening), 전진선택(forward
-selection), 후진제거(backward elimination), 검증(validation)의 과정이 포함된다.
+공변량이라 함은 단순히 데이터 수집 단계에서 모아진 정보의 항목들을 의미하는 것이 아니라, 그러한 항목들 중 통계학적인 분석을 통해 모델에 반영하는 것이 적절하다고 입증된 것만을 의미한다. 수집된 데이터 중 약동-약력학 분석에 종속변수로서 사용되는 약물의 농도 또는 작용에 대한 측정값(바이오마커로서 측정되는 경우가 많음)을 제외한 데이터 항목들(인구학적 정보, 질환 특성 등)은 실제 모델에 반영된 공변량과 구분하여, 잠재적 공변량(potential covariate)이라 지칭한다. 즉, 공변량 분석(covariate analysis)이란 잠재적 공변량에 대한 적절한 통계분석을 통해 모델링의 대상이 되는 약물의 약동-약력학 모델에 유의미한 영향을 미치는 공변량을 찾아내는 과정이라 할 수 있으며, 여기에는 데이터 항목 평가(variable evaluation), 스크리닝(covariate screening), 전진선택(forward selection), 후진제거(backward elimination), 검증(validation)의 과정이 포함된다.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{./assets/media-11/image1} \caption{공변량 분석의 workflow}\label{fig:workflow-covariate}
@@ -2132,7 +2052,7 @@ selection), 후진제거(backward elimination), 검증(validation)의 과정이 
 \hypertarget{uxae30uxc220uxd1b5uxacc4uxbd84uxc11duxacfc-uxbd80uxc801uxc808uxd55c-uxd56duxbaa9-uxb610uxb294-uxc218uxc900uxc758-uxc81cuxac70}{%
 \subsubsection{기술통계분석과 부적절한 항목 또는 수준의 제거}\label{uxae30uxc220uxd1b5uxacc4uxbd84uxc11duxacfc-uxbd80uxc801uxc808uxd55c-uxd56duxbaa9-uxb610uxb294-uxc218uxc900uxc758-uxc81cuxac70}}
 
-이 단계의 핵심적 절차는 각 항목이 어떠한 척도로 조사되었는가를 확인하고, 해당 척도에 적합한 방법으로 기술 통계 분석을 실시하는 것이다. 즉, 비척도로 조사된 항목은 평균, 표준편차, 분위 수 등의 값을 산출하여야 하고, 서열척도나 명목척도로 조사된 항목은 각 수준(level) 별로 빈도를 파악한다. 등간척도의 경우에는 상황에 따라 적절한 기술통계 방법을 선택한다. 실제 모델링 수행 시에는 완성된 기반 모델 (base model)의 제어구문 맨 뒤에 \$TABLE로서 잠재적 공변량의 상세 사항을 출력한 후, R package인 xpose4 (ver. 4.5.X 기준)를 사용하면, 6: Covariate model \textgreater{} 2. Numerically summarize the covariates 기능을 이용하여 이 과정을 간단히 수행할 수 있다. (구체적인 방법은 xpose4 매뉴얼 참조) 이러한 분석의 결과로는 다음과 같은 표를 얻을 수 있다.
+이 단계의 핵심적 절차는 각 항목이 어떠한 척도로 조사되었는가를 확인하고, 해당 척도에 적합한 방법으로 기술 통계 분석을 실시하는 것이다. 즉, 비척도로 조사된 항목은 평균, 표준편차, 분위 수 등의 값을 산출하여야 하고, 서열척도나 명목척도로 조사된 항목은 각 수준(level) 별로 빈도를 파악한다. 등간척도의 경우에는 상황에 따라 적절한 기술통계 방법을 선택한다. 실제 모델링 수행 시에는 완성된 기반 모델 (base model)의 제어구문 맨 뒤에 \$TABLE로서 잠재적 공변량의 상세 사항을 출력한 후, R package인 xpose4 (ver. 4.5.X 기준) (Jonsson and Karlsson \protect\hyperlink{ref-xpose41999}{1999})를 사용하면, 6: Covariate model \textgreater{} 2. Numerically summarize the covariates 기능을 이용하여 이 과정을 간단히 수행할 수 있다. (구체적인 방법은 xpose4 매뉴얼 참조) 이러한 분석의 결과로는 다음과 같은 표를 얻을 수 있다.
 
 \begin{verbatim}
 ## Error in Encoding(x): object '.' not found
@@ -2140,12 +2060,11 @@ selection), 후진제거(backward elimination), 검증(validation)의 과정이 
 
 
 
-각 개인의 특성 중 약동-약력학 파라미터에 유의미한 영향을 미치는 항목과 그 정량적 관계를 파악하는 것이 공변량 분석의 목적임을
-고려할 때에, 기술통계분석 결과를 통해 1차적으로 수행하여야 하는 작업은 각 개인의 특성으로서 모델에 반영하기에 적절하지 않은
-항목 또는 수준을 제외하는 것이다. 적절하지 않다 함은 다음의 두 가지 상황으로 요약할 수 있다.
+각 개인의 특성 중 약동-약력학 파라미터에 유의미한 영향을 미치는 항목과 그 정량적 관계를 파악하는 것이 공변량 분석의 목적임을 고려할 때에, 기술통계분석 결과를 통해 1차적으로 수행하여야 하는 작업은 각 개인의 특성으로서 모델에 반영하기에 적절하지 않은 항목 또는 수준을 제외하는 것이다. 적절하지 않다 함은 다음의 두 가지 상황으로 요약할 수 있다.
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   결측치가 너무 많음 (\textgreater25\textasciitilde30\%)
 \item
@@ -2157,38 +2076,24 @@ selection), 후진제거(backward elimination), 검증(validation)의 과정이 
 \hypertarget{uxacb0uxce21uxce58uxac00-uxb9ceuxc740-uxd56duxbaa9}{%
 \paragraph{결측치가 많은 항목}\label{uxacb0uxce21uxce58uxac00-uxb9ceuxc740-uxd56duxbaa9}}
 
-결측치는 많은 임상연구에서 필연적으로 발생한다. 그러기에 결측치를 대체(imputation)하기 위한 다양한 방법들이 존재한다.
-그럼에도 불구하고, 지나치게 결측치가 많은 경우, 약동-약력학 파라미터에 대한 해당 항목의 영향을 정확하게 평가하는 것이
-불가능하므로 해당 항목을 분석에서 제외하는 것이 좋다. 특정 항목을 분석에서 제외하여야 하는 결측치 비율이 정확하게
-정해져 있는 것은 아니므로, 결측치가 발생함으로써 나타난 항목 분포와 모델링의 목적 등 다양한 요소를 고려하여 제외 여부를
-결정한다. 그렇기 때문에 결측치의 비율이 상당히 높은 항목이라 할지라도, 해당 항목의 중요성이 높고, 충분히 정당화 가능한 근거가
-있다면, 이를 분석에 포함하기도 한다. 예를 들어, 신장으로 배설되는 약물에 대해 혈중 크레아티닌 수치의 결측치가 발생하였을 때,
-그러한 결측치가 특정 연령 대에서 집중적으로 발생하였다면, 해당 연령 대를 제외한 공변량 분석에 활용할 수 있을 것이다.
+결측치는 많은 임상연구에서 필연적으로 발생한다. 그러기에 결측치를 대체(imputation)하기 위한 다양한 방법들이 존재한다. 그럼에도 불구하고, 지나치게 결측치가 많은 경우, 약동-약력학 파라미터에 대한 해당 항목의 영향을 정확하게 평가하는 것이 불가능하므로 해당 항목을 분석에서 제외하는 것이 좋다. 특정 항목을 분석에서 제외하여야 하는 결측치 비율이 정확하게 정해져 있는 것은 아니므로, 결측치가 발생함으로써 나타난 항목 분포와 모델링의 목적 등 다양한 요소를 고려하여 제외 여부를 결정한다. 그렇기 때문에 결측치의 비율이 상당히 높은 항목이라 할지라도, 해당 항목의 중요성이 높고, 충분히 정당화 가능한 근거가 있다면, 이를 분석에 포함하기도 한다. 예를 들어, 신장으로 배설되는 약물에 대해 혈중 크레아티닌 수치의 결측치가 발생하였을 때, 그러한 결측치가 특정 연령 대에서 집중적으로 발생하였다면, 해당 연령 대를 제외한 공변량 분석에 활용할 수 있을 것이다.
 
 \hypertarget{uxbd80uxc801uxc808uxd55c-uxbd84uxd3ecuxb97c-uxbcf4uxc774uxb294-uxd56duxbaa9}{%
 \paragraph{부적절한 분포를 보이는 항목}\label{uxbd80uxc801uxc808uxd55c-uxbd84uxd3ecuxb97c-uxbcf4uxc774uxb294-uxd56duxbaa9}}
 
-공변량 분석은 물론, 모든 약동-약력학 모델링에서 비례적 관계를 다루는 경우에, 각 연구자는 그러한 비례적 관계가 독립변수의 어느
-범위에서 유효한가를 먼저 고민해야 한다. 그러한 범위 이외에서 같은 관계를 외삽하는 경우, 실제 값과 다른 예측 결과를 보일 수
-있기 때문이다. 공변량이라는 측면에서 이러한 문제를 보이는 대표적인 사례는 Cockcroft-Gault equation이다.
-이 식은 토리여과율(Glomerular filtration rate)을 다른 신체적 변수 간의 관계를 통해 추정하는데, 해당
-관계식에 포함된 체중 또는 연령의 값이 인구 평균에서 멀어질수록 예측 값과 실제 토리여과율 간의 차이가 확대되는 양상을
-보인다.(그림 3)
+공변량 분석은 물론, 모든 약동-약력학 모델링에서 비례적 관계를 다루는 경우에, 각 연구자는 그러한 비례적 관계가 독립변수의 어느 범위에서 유효한가를 먼저 고민해야 한다. 그러한 범위 이외에서 같은 관계를 외삽하는 경우, 실제 값과 다른 예측 결과를 보일 수 있기 때문이다. 공변량이라는 측면에서 이러한 문제를 보이는 대표적인 사례는 Cockcroft-Gault equation이다. 이 식은 토리여과율(Glomerular filtration rate)을 다른 신체적 변수 간의 관계를 통해 추정하는데, 해당 관계식에 포함된 체중 또는 연령의 값이 인구 평균에서 멀어질수록 예측 값과 실제 토리여과율 간의 차이가 확대되는 양상을 보인다.(그림 \ref{fig:gfr})
 
-\includegraphics{./assets/media-11/image3.jpeg}
 
-Estimated glomerular filtration ratio is a better index than creatinine
-clearance (Cockcroft--Gault) for predicting the prevalence of atrial
-fibrillation in the general Japanese population
 
-\textless{} 그림 3 \textgreater{} 독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-11/image3} \caption{독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시}\label{fig:gfr}
+\end{figure}
 
-따라서, 이러한 식을 적용할 수 있는 독립변수의 범위가 어디인가를 설정하는 것은 매우 중요한 일이며, 약동-약력학 모델링에서도
-청소율이나 효능 등 파라미터와 비례하는 공변량을 도입할 때 유사한 고려가 이루어져야 한다.
+\emph{Estimated glomerular filtration ratio is a better index than creatinine clearance (Cockcroft--Gault) for predicting the prevalence of atrial fibrillation in the general Japanese population}
 
-적절한 비례 관계 및 그 범위를 설정하는 첫 번째 작업은 기술통계분석 결과로부터 각 변수의 분포 특성을 확인하는 것이다. 많은
-경우에 약동-약력학 데이터는 특정한 선정/제외기준을 만족하는 인구집단으로부터 얻어지는데, 이러한 이유로 인해 다음과 같은
-문제가 발생할 수 있다.
+따라서, 이러한 식을 적용할 수 있는 독립변수의 범위가 어디인가를 설정하는 것은 매우 중요한 일이며, 약동-약력학 모델링에서도 청소율이나 효능 등 파라미터와 비례하는 공변량을 도입할 때 유사한 고려가 이루어져야 한다.
+
+적절한 비례 관계 및 그 범위를 설정하는 첫 번째 작업은 기술통계분석 결과로부터 각 변수의 분포 특성을 확인하는 것이다. 많은 경우에 약동-약력학 데이터는 특정한 선정/제외기준을 만족하는 인구집단으로부터 얻어지는데, 이러한 이유로 인해 다음과 같은 문제가 발생할 수 있다.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2378,14 +2283,14 @@ ETA 간의 상관성이 유도(induction)되는 특성이 있어, 이러한 문�
 평가 전략을 구축한다.
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   개별 파라미터-공변량 관계는 생리학적으로 타당한가?
 \item
   공변량 스크리닝 단계에서 특정 파라미터와 보다 큰 상관성 혹은 AIC 감소를 보여준 관계는 무엇인가?
 \item
-  공선성 관계를 가지는 하나의 파라미터-공변량 관계를 모델에 반영한 후에 또다른 파라미터-공변량 관계를 추가하고자 한다면,
-  이를 지지할 수 있는 생리학적인 혹은 수학적인 관계가 있는가?
+  공선성 관계를 가지는 하나의 파라미터-공변량 관계를 모델에 반영한 후에 또다른 파라미터-공변량 관계를 추가하고자 한다면, 이를 지지할 수 있는 생리학적인 혹은 수학적인 관계가 있는가?
 \end{enumerate}
 
 공선성은 매우 많은 상황에서 다양한 유형으로 발생하기 때문에 공변량 평가를 위한 표준적인 기준을 제시하기는 어렵다. 따라서,
@@ -2401,34 +2306,29 @@ ETA 간의 상관성이 유도(induction)되는 특성이 있어, 이러한 문�
 무엇보다도 중요하며, 2.1\textasciitilde2.3의 절차가 올바르게 수행되었다면, 이 절에서 수행하고자 하는 공변량 평가 과정에 투입되는
 시간과 노력을 절감할 수 있을 것이다. 이제부터는 공변량 평가의 첫 단계인 전진선택법에 대해 알아보도록 하겠다.
 
-\hypertarget{uxc804uxc9c4uxc120uxd0dduxc774uxb780}{%
-\subsubsection{전진선택이란?}\label{uxc804uxc9c4uxc120uxd0dduxc774uxb780}}
+\hypertarget{forward-selection}{%
+\subsubsection{전진선택이란?}\label{forward-selection}}
 
-전진선택은 2.3절에서 약동-약력학 파라미터와 유의한 상관관계를 가질 가능성이 있다고 평가된 공변량들을 실제 모델의 제어구문에
-반영하여 평가하는 것이다. 제어구문에 반영한다 함은 특정 약동-약력학 파라미터를 기반 모델에서와 같이 특정한 THETA에
-대응시키는 것이 아니라, 공변량과 가장 가능성 있는 관계로서 표현하는 것을 의미한다.(공변량-파라미터 관계에 대해서는 다음
-절에 설명함) 예를 들어, 분포용적과 체중이 선형적 상관관계를 가질 수 있다고 판단한다면, 기반 모델의 제어구문을 다음과
-같이 변경하면 된다.
+전진선택은 2.3절에서 약동-약력학 파라미터와 유의한 상관관계를 가질 가능성이 있다고 평가된 공변량들을 실제 모델의 제어구문에 반영하여 평가하는 것이다. 제어구문에 반영한다 함은 특정 약동-약력학 파라미터를 기반 모델에서와 같이 특정한 THETA에 대응시키는 것이 아니라, 공변량과 가장 가능성 있는 관계로서 표현하는 것을 의미한다.(공변량-파라미터 관계에 대해서는 다음 절에 설명함) 예를 들어, 분포용적과 체중이 선형적 상관관계를 가질 수 있다고 판단한다면, 기반 모델의 제어구문을 다음과 같이 변경하면 된다.
 
-V = THETA(i) → V = WT*THETA(i) + THETA(i+1)
+\texttt{V\ =\ THETA(i)} → \texttt{V\ =\ WT\textbackslash{}*THETA(i)\ +\ THETA(i+1)}
 
 제어구문이 변경되었다면 이제 이를 실행하여, 그러한 변경(공변량의 반영)이 모델의 성능을 개선하는가를 평가하여야 한다. 평가의
 요소는 다음의 세 가지이다.(각각에 대해서는 하위 절에서 구체적으로 설명한다.)
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   목적함수값(objective function value, OFV)가 이전 모델에 비해 특정 cut-point 이상
   감소하는가?
 \item
-  공변량을 반영한 파라미터에 대응하는 개인 간 변이(between-subject variability, BSV)가 이전
-  모델에 비해 감소하는가?
+  공변량을 반영한 파라미터에 대응하는 개인 간 변이(between-subject variability, BSV)가 이전 모델에 비해 감소하는가?
 \item
   이전 모델에 비해 잔차의 뚜렷한 증가가 없는가?
 \end{enumerate}
 
-1)은 공변량이 전체 모델의 성능을 개선하는가를 평가하는 기준이다. 제시한 특정 cut-point란 기반 모델 구축 시 적용한
-바와 마찬가지로, 모델의 개선을 평가하기 위한 가능도비검정(Likelihood-Ration Test, LRT) 방법에 따라
+1은 공변량이 전체 모델의 성능을 개선하는가를 평가하는 기준이다. 제시한 특정 cut-point란 기반 모델 구축 시 적용한 바와 마찬가지로, 모델의 개선을 평가하기 위한 가능도비검정(Likelihood-Ration Test, LRT) 방법에 따라
 정해진 p-value에 대응하는 OFV의 감소 값을 의미한다. 일반적으로 다음의 표를 참고한다.
 
 \includegraphics{./assets/media-11/image12.png}
@@ -2439,47 +2339,33 @@ effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효�
 
 \includegraphics{./assets/media-11/image13.png}
 
-특정 개인이 아닌 전체 인구집단에서 공변량과 파라미터가 일정한 관계를 갖는다면 이는 더 이상 설명 불가능한 개인차가 아니다.
-따라서, 이는 설명 가능한 개인차로서 모델에 반영이 되며, 이렇게 적절히 반영된 공변량은 고정효과가 되는 것이다.
-그렇다면 설명 불가능한 개인차의 크기는 줄어드는데 이것이 모델에서는 다음과 같이 표현된다.
+특정 개인이 아닌 전체 인구집단에서 공변량과 파라미터가 일정한 관계를 갖는다면 이는 더 이상 설명 불가능한 개인차가 아니다. 따라서, 이는 설명 가능한 개인차로서 모델에 반영이 되며, 이렇게 적절히 반영된 공변량은 고정효과가 되는 것이다. 그렇다면 설명 불가능한 개인차의 크기는 줄어드는데 이것이 모델에서는 다음과 같이 표현된다.
 
-V = THETA(i)*exp(ETA(i)) → V = (WT*THETA(i) + THETA(i+1))*exp(ETA(i))
+\texttt{V\ =\ THETA(i)*exp(ETA(i))} → \texttt{V\ =\ (WT*THETA(i)\ +\ THETA(i+1))*exp(ETA(i))}
 
-왼쪽의 경우와 오른쪽의 경우 ETA(i)의 의미는 어떻게 다르겠는가? 왼쪽의 경우, 분포용적에 대해 제공된 공정효과는 집단의
-대표값인 THETA(i) 뿐이다. 따라서, 이 값과 각 개인의 분포용적 값 차이는 모두 ETA(i)로 설명된다. 이제
-오른쪽을 보면, 고정효과로서 체중과의 선형적 관계가 제시되었다. 즉, 체중이 큰 사람은 분포용적이 크다는 일반적 경향은
-고정효과로 설명이 되는 것이다. 결국 이 경우 ETA(i)는 체중의 차이가 무시된 집단의 대표값과 각 개인 값의
-차이가 아닌, 같은 체중을 가진 사람들의 대표값과 각 개인 값의 차이가 된다. 따라서, 각 ETA(i)의 크기는 왼쪽에
-비해 오른쪽에서 줄어들게 되고, 이는 궁극적으로 \emph{ωi}2의 감소 효과를 일으키게
-되는 것이다. 한 가지 추가할 사항은 시각적 스크리닝에서 본 바와 같은 공변량과 개인 별 파라미터 값 간의
-scatterplot에 대한 것이다. 위에서 설명한 이유로 왼쪽의 ETA(i)는 체중과 일관된 경향을 가지는 값이 될 것이나,
-오른쪽의 ETA(i)는 체중과 무관한 경향을 가지는 값이 되어야 한다.(체중의 영향은 고정효과로 설명이 되고, 남은 개인
-간 차는 체중과는 무관한 차이일 것이므로) 따라서, 오른쪽 상황에서 체중과 ETA(i) 간의 scatterplot을 그리면
-경향성이 없게 되는 것이 정상이며, 만일 경향성이 보인다면 공변량-파라미터 관계가 최적의 구조로 구현되지 않았다는 것을
-의미하는 결과라 할 수 있다. 이 경우에는, 2.4.2를 참고하여 새로운 공변량-파라미터 구조 모델을 시도해 보아야 한다.
+왼쪽의 경우와 오른쪽의 경우 ETA(i)의 의미는 어떻게 다르겠는가? 왼쪽의 경우, 분포용적에 대해 제공된 공정효과는 집단의 대표값인 THETA(i) 뿐이다. 따라서, 이 값과 각 개인의 분포용적 값 차이는 모두 ETA(i)로 설명된다. 이제 오른쪽을 보면, 고정효과로서 체중과의 선형적 관계가 제시되었다. 즉, 체중이 큰 사람은 분포용적이 크다는 일반적 경향은 고정효과로 설명이 되는 것이다. 결국 이 경우 ETA(i)는 체중의 차이가 무시된 집단의 대표값과 각 개인 값의 차이가 아닌, 같은 체중을 가진 사람들의 대표값과 각 개인 값의 차이가 된다. 따라서, 각 ETA(i)의 크기는 왼쪽에 비해 오른쪽에서 줄어들게 되고, 이는 궁극적으로 \emph{ωi}2의 감소 효과를 일으키게 되는 것이다. 한 가지 추가할 사항은 시각적 스크리닝에서 본 바와 같은 공변량과 개인 별 파라미터 값 간의 scatterplot에 대한 것이다. 위에서 설명한 이유로 왼쪽의 ETA(i)는 체중과 일관된 경향을 가지는 값이 될 것이나, 오른쪽의 ETA(i)는 체중과 무관한 경향을 가지는 값이 되어야 한다.(체중의 영향은 고정효과로 설명이 되고, 남은 개인 간 차는 체중과는 무관한 차이일 것이므로) 따라서, 오른쪽 상황에서 체중과 ETA(i) 간의 scatterplot을 그리면 경향성이 없게 되는 것이 정상이며, 만일 경향성이 보인다면 공변량-파라미터 관계가 최적의 구조로 구현되지 않았다는 것을 의미하는 결과라 할 수 있다. 이 경우에는, 2.4.2를 참고하여 새로운 공변량-파라미터 구조 모델을 시도해 보아야 한다.
 
 3)은 이상치(outlier)와도 관련이 있는 사항으로서, 대부분의 사람에서 설명력이 개선되는 경우 1), 2)의 조건을
-만족하지만, 드물게는 새롭게 반영되는 공변량-파라미터 간의 고정효과와 완전히 다른 trend를 가지는 개인이
-있어 잔차가 증가하는 상황이 발생하기도 한다. 따라서, 이 경우에는 추후 진행할 시뮬레이션 등의 목적 등을 고려하여
-공변량을 반영할 것인가를 선택해야 할 수 있다.
+만족하지만, 드물게는 새롭게 반영되는 공변량-파라미터 간의 고정효과와 완전히 다른 trend를 가지는 개인이 있어 잔차가 증가하는 상황이 발생하기도 한다. 따라서, 이 경우에는 추후 진행할 시뮬레이션 등의 목적 등을 고려하여 공변량을 반영할 것인가를 선택해야 할 수 있다.
 
-특정 공변량이 위의 세가지 기준을 모두 만족하여 유의미한 공변량으로 확인된다면, 이제 해당 공변량은 모델에 그대로 둔 채로 새로운
-공변량을 같은 방법으로 모델에 반영 및 평가하게 된다. 공변량 스크리닝 단계에서 평가 필요성이 제시된 모든 공변량에 대하여 이
-과정을 반복 수행한다. 어떤 순서로 공변량을 모델에 반영하여 평가하여야 하는가에 대해 정해진 이론은 없다. 하지만,
-일반적으로 공변량 스크리닝 단계에서 시각적으로 좋은 상관관계가 보였거나 GAM 단계에서 AIC의 감소가 컸던 순으로
-전진선택을 수행하게 된다. 추가 사항은 J.S.Owen과 J.Fiedler-Kelly가 저술한 Introduction to
-Population Pharmacokinetic / Pharmacodynamic Analysis with Nonlinear
-Mixed Effects Models의 5.7.6-7절을 참고할 수 있다.
+특정 공변량이 위의 세가지 기준을 모두 만족하여 유의미한 공변량으로 확인된다면, 이제 해당 공변량은 모델에 그대로 둔 채로 새로운 공변량을 같은 방법으로 모델에 반영 및 평가하게 된다. 공변량 스크리닝 단계에서 평가 필요성이 제시된 모든 공변량에 대하여 이 과정을 반복 수행한다. 어떤 순서로 공변량을 모델에 반영하여 평가하여야 하는가에 대해 정해진 이론은 없다. 하지만, 일반적으로 공변량 스크리닝 단계에서 시각적으로 좋은 상관관계가 보였거나 GAM 단계에서 AIC의 감소가 컸던 순으로 전진선택을 수행하게 된다. 추가 사항은 J.S.Owen과 J.Fiedler-Kelly가 저술한 Introduction to Population Pharmacokinetic / Pharmacodynamic Analysis with Nonlinear Mixed Effects Models의 5.7.6-7절을 참고할 수 있다. (Owen \protect\hyperlink{ref-kelly}{2014})
 
 \hypertarget{uxacf5uxbcc0uxb7c9-uxd30cuxb77cuxbbf8uxd130-uxac04uxc758-uxad00uxacc4-uxbaa8uxb378}{%
 \subsubsection{공변량-파라미터 간의 관계 모델}\label{uxacf5uxbcc0uxb7c9-uxd30cuxb77cuxbbf8uxd130-uxac04uxc758-uxad00uxacc4-uxbaa8uxb378}}
 
-2.4.1에서 선형적 관계로 공변량을 반영하는 예시를 제시하였다. 많은 경우에 이러한 선형적 모델은 공변량 평가의 기본 구조가
-된다. 그러나, 시각적 스크리닝 단계에서 선형적 관계가 아닌 것으로 보이거나, GAM 과정에서 2번 이상 선택되는 잠재적
-공변량 등은 선형적 관계 이외에 보다 적합한 공변량-파라미터 관계를 가질 수 있다. 심지어 이러한 잠재적 공변량들은 단순 선형
-모델을 이용한 공변량 반영 및 평가 시 2.4.1.에 제시한 3가지 기준을 만족하지 못할 수 있으므로, 해당 잠재적 공변량들에
-대해서는 선형적인 관계로 공변량의 유의성을 평가만을 수행해서는 안 되며, 이후 또다른 구조를 이용한 평가가 필요하다.
-아래는 연속형 변수로 측정된 공변량에 대해 적용할 수 있는 다양한 구조들의 예시이다.
+2.4.1에서 선형적 관계로 공변량을 반영하는 예시를 제시하였다. 많은 경우에 이러한 선형적 모델은 공변량 평가의 기본 구조가 된다. 그러나, 시각적 스크리닝 단계에서 선형적 관계가 아닌 것으로 보이거나, GAM 과정에서 2번 이상 선택되는 잠재적 공변량 등은 선형적 관계 이외에 보다 적합한 공변량-파라미터 관계를 가질 수 있다. 심지어 이러한 잠재적 공변량들은 단순 선형 모델을 이용한 공변량 반영 및 평가 시 \protect\hyperlink{forward-selection}{17.4.1}에 제시한 3가지 기준을 만족하지 못할 수 있으므로, 해당 잠재적 공변량들에 대해서는 선형적인 관계로 공변량의 유의성을 평가만을 수행해서는 안 되며, 이후 또다른 구조를 이용한 평가가 필요하다. 아래는 연속형 변수로 측정된 공변량에 대해 적용할 수 있는 다양한 구조들의 예시이다.
+
+\begin{itemize}
+\tightlist
+\item
+  Linear
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(CL = CL_{pop} + slope * WT\)
+  \end{itemize}
+\end{itemize}
 
 \includegraphics{./assets/media-11/image14.png}
 
@@ -2501,67 +2387,27 @@ Mixed Effects Models의 5.7.6-7절을 참고할 수 있다.
 \hypertarget{uxacf5uxbcc0uxb7c9-uxd3c9uxac00-uxd6c4uxc9c4uxc81cuxac70backward-elimination}{%
 \subsection{공변량 평가: 후진제거(backward-elimination)}\label{uxacf5uxbcc0uxb7c9-uxd3c9uxac00-uxd6c4uxc9c4uxc81cuxac70backward-elimination}}
 
-후진제거는 전진선택이 완료된 후 수행하는 절차이다. 전진선택은 스크리닝에서 확인된 잠재적 공변량 중, 2.4.1.의 세 가지
-기준을 만족하여 유의한 공변량으로 선택되는 것이 더 이상 없을 때까지 진행한다고 하였으며, 이 절차가 끝났더라도
-후진제거를 통해 선택된 공변량들을 재평가해야 한다는 것이 핵심이다. 후진제거 시에는 공변량이 모델에 포함된 순서의
-역순으로 공변량을 하나씩 모델에서 빼 보면서, 그러한 공변량의 제거가 모델의 유의미한 악화를 유발하는가를 평가한다. 예를
-들어, 전진선택 시 A, B, C, D 네 개의 공변량이 순서대로 유의한 공변량으로 선택되었다고 하자. 이 경우 후진
-제거는 A,B,D를 가진 모델, A,C,D를 가진 모델, B,C,D를 가진 모델 순으로 수행한다. 마찬가지로
-2.4.1.의 세 가지 기준을 이용하며, 특정한 공변량 제거 시에 유의미한 OFV의 증가가 있는가?,
-\emph{ωi}2가 증가하는가?, 잔차에 변화가 없는가?의 기준을 통해 세 가지를 모두 충족하는
-경우 유의미한 공변량으로 확정한다.
+후진제거는 전진선택이 완료된 후 수행하는 절차이다. 전진선택은 스크리닝에서 확인된 잠재적 공변량 중, 2.4.1.의 세 가지 기준을 만족하여 유의한 공변량으로 선택되는 것이 더 이상 없을 때까지 진행한다고 하였으며, 이 절차가 끝났더라도 후진제거를 통해 선택된 공변량들을 재평가해야 한다는 것이 핵심이다. 후진제거 시에는 공변량이 모델에 포함된 순서의 역순으로 공변량을 하나씩 모델에서 빼 보면서, 그러한 공변량의 제거가 모델의 유의미한 악화를 유발하는가를 평가한다. 예를 들어, 전진선택 시 A, B, C, D 네 개의 공변량이 순서대로 유의한 공변량으로 선택되었다고 하자. 이 경우 후진 제거는 A,B,D를 가진 모델, A,C,D를 가진 모델, B,C,D를 가진 모델 순으로 수행한다. 마찬가지로 2.4.1.의 세 가지 기준을 이용하며, 특정한 공변량 제거 시에 유의미한 OFV의 증가가 있는가?, \emph{ωi}2가 증가하는가?, 잔차에 변화가 없는가?의 기준을 통해 세 가지를 모두 충족하는 경우 유의미한 공변량으로 확정한다.
 
 이 작업을 수행하는 이유는 아래와 같이 매우 간단하다.
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
-  앞서 전진선택 수행 시, 일반적으로 공변량 스크리닝 단계에서 시각적으로 좋은 상관관계가 보였거나 GAM 단계에서 AIC의
-  감소가 컸던 순으로 수행한다고 하였으나, 이러한 순서가 반드시 지켜지는 것은 아니다.
+  앞서 전진선택 수행 시, 일반적으로 공변량 스크리닝 단계에서 시각적으로 좋은 상관관계가 보였거나 GAM 단계에서 AIC의 감소가 컸던 순으로 수행한다고 하였으나, 이러한 순서가 반드시 지켜지는 것은 아니다.
 \item
-  전진선택의 기본적 원리는 단변량 대 단변량의 관계이므로, 여러 가지의 공변량-파라미터 효과가 종합된 모델에서 개별
-  공변량-파라미터 관계가 여전히 유효한 것인지를 확인할 수 없다.
+  전진선택의 기본적 원리는 단변량 대 단변량의 관계이므로, 여러 가지의 공변량-파라미터 효과가 종합된 모델에서 개별 공변량-파라미터 관계가 여전히 유효한 것인지를 확인할 수 없다.
 \end{enumerate}
 
-분포 용적에 대해 체중과 BMI 모두 가능성 있는 잠재적 공변량으로 선택된 상황에서, 체중-BMI 순으로 전진선택을 수행하였고,
-둘 모두 공변량으로 선택되었다 하더라도, 후진제거 실시 과정에서 체중은 유의미한 공변량이 아닌 것으로 확인될 수 있다. 이것이
-후진제거가 필요한 단적인 상황으로서, 보다 파라미터와 상관관계가 좋으며, 이전에 포함된 공변량의 정보를 일부 가진 공변량이
-전진선택에서 이후에 평가되었을 때, 이전에 포함된 공변량이 더 이상 필요 없음에도 불구하고 모델에 남아 있게 되는
-상황을 피하고자 하는 것이다. 이는 앞서 언급한 공선성과 관련이 있는 문제이며, 사전에 공선성을 파악하여 보다 좋은 공변량을
-선별적으로 선택할 수도 있지만, 판단이 어려운 경우에 후진 제거를 실시하면 정확한 통계적 근거를 통해 불필요한 공변량을 제거할
-수 있다. 후진 제거 시에는 OFV 변화에 대해 전진선택보다 더 엄격한 \emph{p}-value를 적용하기도 한다. 추가 사항은
-J.S.Owen과 J.Fiedler-Kelly가 저술한 Introduction to Population
-Pharmacokinetic / Pharmacodynamic Analysis with Nonlinear Mixed Effects
-Models의 5.7.8절을 참고할 수 있다.
+분포 용적에 대해 체중과 BMI 모두 가능성 있는 잠재적 공변량으로 선택된 상황에서, 체중-BMI 순으로 전진선택을 수행하였고, 둘 모두 공변량으로 선택되었다 하더라도, 후진제거 실시 과정에서 체중은 유의미한 공변량이 아닌 것으로 확인될 수 있다. 이것이 후진제거가 필요한 단적인 상황으로서, 보다 파라미터와 상관관계가 좋으며, 이전에 포함된 공변량의 정보를 일부 가진 공변량이 전진선택에서 이후에 평가되었을 때, 이전에 포함된 공변량이 더 이상 필요 없음에도 불구하고 모델에 남아 있게 되는 상황을 피하고자 하는 것이다. 이는 앞서 언급한 공선성과 관련이 있는 문제이며, 사전에 공선성을 파악하여 보다 좋은 공변량을 선별적으로 선택할 수도 있지만, 판단이 어려운 경우에 후진 제거를 실시하면 정확한 통계적 근거를 통해 불필요한 공변량을 제거할 수 있다. 후진 제거 시에는 OFV 변화에 대해 전진선택보다 더 엄격한 p-value를 적용하기도 한다. 추가 사항은 J.S.Owen과 J.Fiedler-Kelly가 저술한 Introduction to Population Pharmacokinetic / Pharmacodynamic Analysis with Nonlinear Mixed Effects Models의 5.7.8절을 참고할 수 있다. (Owen \protect\hyperlink{ref-kelly}{2014})
 
 \hypertarget{uxacf5uxbcc0uxb7c9-uxbd84uxc11d-uxad00uxb828-uxcd94uxac00-uxace0uxb824-uxc0acuxd56d}{%
 \section{공변량 분석 관련 추가 고려 사항}\label{uxacf5uxbcc0uxb7c9-uxbd84uxc11d-uxad00uxb828-uxcd94uxac00-uxace0uxb824-uxc0acuxd56d}}
 
-공변량 분석에서 무엇보다도 중요한 고려 사항은 바로 생리학적 타당성이다. 항목 평가에서 후진제거에 이르기까지 생리학적 타당성은 늘
-고려되어야 한다. 실제 모델링 수행 시 접하게 되는 가장 흔한 상황은 전진선택과 후진제거의 모든 절차를 완료한 후 (통계학적
-타당성을 확보하였다는 의미임) 특정 파라미터에 대해 생리학적으로 관련성이 적은 항목이 모델에 유의한 공변량으로 남아
-있는 경우이다. 이 경우, 이러한 결과를 생리학적으로 해석해 낼 수 있는가가 그러한 공변량을 최종적으로 선택할 것인지 말
-것인지를 결정하는 핵심 요소가 된다. 예를 들어, 신장으로 제거되는 약물의 청소율이 간의 기능을 나타내는 혈중 알부민 수치나
-프로트롬빈 시간(prothrombin time) 등과 비례 관계를 가지는 결과가 도출되었다 한다면, 이것이 생리학적으로
-타당하지 않은 것인가? 일반적인 관점에서 이는 우연의 산물이거나, 해석할 수 없는 외부 요인의 결과라고 볼 수도
-있겠지만, 이러한 데이터가 진행된 간경변 환자에서 확보된 것이라면, 간 기능 저하에 의한 신 기능 저하를 충분히 의심할 수
-있을 것이다. 따라서, 생리학적 타당성이란 고정된 개념이 아니라, 데이터가 확보된 대상자의 특성과 연구 대상 의약품의 특성 등이
-종합적으로 해석되어야 확보할 수 있는 것이라 하겠다. 반대로 이미 잘 알려져 있는 공변량-파라미터 관계가 있고, 공변량에 대한
-정보도 충분히 확보되었음에도 불구하고 그러한 공변량-파라미터가 최종 모델에서 통계적으로 유의하게 선택되지 않을 때, 그 이유에
-대한 정당화 역시 필수적으로 요구된다. 이 경우에는 모델링 과정에서 세운 가정이나 모델 구조 등에 문제가 없었는지를 다시
-한 번 확인해야 하며, 혼란 변인 등의 역할에 대해서도 생각해 보아야 한다. 해당 내용은 최종 모델링 보고서 등에 포함하는
-것이 추천된다.
+공변량 분석에서 무엇보다도 중요한 고려 사항은 바로 생리학적 타당성이다. 항목 평가에서 후진제거에 이르기까지 생리학적 타당성은 늘 고려되어야 한다. 실제 모델링 수행 시 접하게 되는 가장 흔한 상황은 전진선택과 후진제거의 모든 절차를 완료한 후 (통계학적 타당성을 확보하였다는 의미임) 특정 파라미터에 대해 생리학적으로 관련성이 적은 항목이 모델에 유의한 공변량으로 남아 있는 경우이다. 이 경우, 이러한 결과를 생리학적으로 해석해 낼 수 있는가가 그러한 공변량을 최종적으로 선택할 것인지 말 것인지를 결정하는 핵심 요소가 된다. 예를 들어, 신장으로 제거되는 약물의 청소율이 간의 기능을 나타내는 혈중 알부민 수치나 프로트롬빈 시간(prothrombin time) 등과 비례 관계를 가지는 결과가 도출되었다 한다면, 이것이 생리학적으로 타당하지 않은 것인가? 일반적인 관점에서 이는 우연의 산물이거나, 해석할 수 없는 외부 요인의 결과라고 볼 수도 있겠지만, 이러한 데이터가 진행된 간경변 환자에서 확보된 것이라면, 간 기능 저하에 의한 신 기능 저하를 충분히 의심할 수 있을 것이다. 따라서, 생리학적 타당성이란 고정된 개념이 아니라, 데이터가 확보된 대상자의 특성과 연구 대상 의약품의 특성 등이 종합적으로 해석되어야 확보할 수 있는 것이라 하겠다. 반대로 이미 잘 알려져 있는 공변량-파라미터 관계가 있고, 공변량에 대한 정보도 충분히 확보되었음에도 불구하고 그러한 공변량-파라미터가 최종 모델에서 통계적으로 유의하게 선택되지 않을 때, 그 이유에 대한 정당화 역시 필수적으로 요구된다. 이 경우에는 모델링 과정에서 세운 가정이나 모델 구조 등에 문제가 없었는지를 다시 한 번 확인해야 하며, 혼란 변인 등의 역할에 대해서도 생각해 보아야 한다. 해당 내용은 최종 모델링 보고서 등에 포함하는 것이 추천된다.
 
-공변량이 포함된 모델에 대한 평가(evaluation) 시에는 주요 공변량의 수준 별로 Visual Predictive Check
-(VPC)를 수행하는 것이 필수적이다. 앞서 특정 개인에게는 일반화된 고정 효과로서의 공변량-파라미터 관계가 잘 적용되지 않을
-수도 있다고 설명하였는데, 이는 해당 공변량의 특정 수준에 대해서도 마찬가지이다. 가장 흔하게 접하는 경우는 여러 개의
-용량이 포함된 데이터셋을 모델링하는 경우에, 용량-생체이용률 간 관계를 도입하는 경우이다. 또는, 연령이 광범위하게
-분포하는 데이터셋에서 연령-청소율 간의 관계도 유사한 경향성을 가진다. 모델링 과정에서 OFV의 감소가 가장
-구조로서 공변량-파라미터 관계를 표현하게 되는데, 이러한 방법의 가장 큰 문제는 측정값의 개수가 충분치 않은
-공변량의 특정 수준을 잘 반영하지 못할 수 있다는 것이다. 이에 따라, 공변량 수준(특정 용량 또는 연령 범위
-등)에 따라 VPC를 수행하면, 모든 수준에서 측정값과 모델 예측값이 적절히 대응하고 있는지를 평가할 수 있음과 동시에
-앞서 언급한 문제에 의해 잘 예측되지 않은 수준이 어느 것인지도 확인할 수 있다. 심지어 공변량 모델링 시 간과한 부적절한
-공변량-파라미터 관계까지도 확인할 수 있으므로, 이러한 평가 과정은 반드시 수행되어야 할 것이다.
+공변량이 포함된 모델에 대한 평가(evaluation) 시에는 주요 공변량의 수준 별로 Visual Predictive Check (VPC)를 수행하는 것이 필수적이다. 앞서 특정 개인에게는 일반화된 고정 효과로서의 공변량-파라미터 관계가 잘 적용되지 않을 수도 있다고 설명하였는데, 이는 해당 공변량의 특정 수준에 대해서도 마찬가지이다. 가장 흔하게 접하는 경우는 여러 개의 용량이 포함된 데이터셋을 모델링하는 경우에, 용량-생체이용률 간 관계를 도입하는 경우이다. 또는, 연령이 광범위하게 분포하는 데이터셋에서 연령-청소율 간의 관계도 유사한 경향성을 가진다. 모델링 과정에서 OFV의 감소가 가장 구조로서 공변량-파라미터 관계를 표현하게 되는데, 이러한 방법의 가장 큰 문제는 측정값의 개수가 충분치 않은 공변량의 특정 수준을 잘 반영하지 못할 수 있다는 것이다. 이에 따라, 공변량 수준(특정 용량 또는 연령 범위 등)에 따라 VPC를 수행하면, 모든 수준에서 측정값과 모델 예측값이 적절히 대응하고 있는지를 평가할 수 있음과 동시에 앞서 언급한 문제에 의해 잘 예측되지 않은 수준이 어느 것인지도 확인할 수 있다. 심지어 공변량 모델링 시 간과한 부적절한 공변량-파라미터 관계까지도 확인할 수 있으므로, 이러한 평가 과정은 반드시 수행되어야 할 것이다.
 
 \hypertarget{diag-eval}{%
 \chapter{모델 진단/평가 개론}\label{diag-eval}}
@@ -3994,46 +3840,33 @@ NPC는 VPC와 유사한 방식으로 모델 진단을 수행하며, 그 논리�
   Nordgren RU, S;. NPC/VPC user guide Perl-speaks-NONMEM 490 2018.
 \end{enumerate}
 
-\hypertarget{uxc57duxb3d9-uxc57duxb825pk-pd-uxbaa8uxb378uxb9c1uxc758-uxc774uxb860uxc801-uxae30uxcd08}{%
-\chapter{약동-약력(PK-PD) 모델링의 이론적 기초}\label{uxc57duxb3d9-uxc57duxb825pk-pd-uxbaa8uxb378uxb9c1uxc758-uxc774uxb860uxc801-uxae30uxcd08}}
+\hypertarget{basic-pkpd}{%
+\chapter{약동-약력(PK-PD) 모델링의 이론적 기초}\label{basic-pkpd}}
 
 \emph{임동석}
 
-\textbf{17.1 관련 개념}
+\hypertarget{uxad00uxb828-uxac1cuxb150}{%
+\section{관련 개념}\label{uxad00uxb828-uxac1cuxb150}}
 
-약효가 용량과 상관관계가 있다는 것은 정확히 말한다면 혈장 약물농도나 농도곡선하면적 등으로 표현되는 약물노출(exposure)과
-약효가 상관 있고, 그 약물노출은 또 외부에서 투여한 약의 용량에 의해 결정된다는 것이다. 이는 너무도 당연한 것이라고 볼
-수도 있으나, 용량-노출, 노출-약효의 상관관계가 단순한 정비례 관계가 아니라, 인체의 약물제거 능력, 수용체와 약물의
-복잡한 상호작용(약력학), 시간이라는 변수 등이 관련되고 또 개인간의 차이까지 관여되므로 이 관계를 잘 파악하고 정량화하는
-것은 적절한 효과를 얻기 위해 얼마의 용량을 얼마 간격으로 주어야 하는가를 결정하기 위해 반드시 필요한 과정이다.
+약효가 용량과 상관관계가 있다는 것은 정확히 말한다면 혈장 약물농도나 농도곡선하면적 등으로 표현되는 약물노출(exposure)과 약효가 상관 있고, 그 약물노출은 또 외부에서 투여한 약의 용량에 의해 결정된다는 것이다. 이는 너무도 당연한 것이라고 볼 수도 있으나, 용량-노출, 노출-약효의 상관관계가 단순한 정비례 관계가 아니라, 인체의 약물제거 능력, 수용체와 약물의 복잡한 상호작용(약력학), 시간이라는 변수 등이 관련되고 또 개인간의 차이까지 관여되므로 이 관계를 잘 파악하고 정량화하는 것은 적절한 효과를 얻기 위해 얼마의 용량을 얼마 간격으로 주어야 하는가를 결정하기 위해 반드시 필요한 과정이다.
 
 \includegraphics{./assets/media-17/image1.jpeg}
 
-신약개발에 있어 임상약리학의 핵심적 역할은 최적의 약효를 얻기 위한 용량용법을 찾는 것이라 할 수 있다. 용량과 노출의 관련성을
-탐구하는 것이 약동학이고, 넓게 정의한다면 약물의 효과를 탐구하는 모든 연구분야를 약력학이라 할 수 있겠지만, 임상약리학에서는
-약물노출과 생체에서 측정된 약효의 관련성을 탐구하는 것이 약력학(pharmacodynamics)이다. 이러한 약동학과 약력학을
-연결하여 설명할 수 있다면 적절한 용량용법을 찾아낼 수 있는 것이다.
+신약개발에 있어 임상약리학의 핵심적 역할은 최적의 약효를 얻기 위한 용량용법을 찾는 것이라 할 수 있다. 용량과 노출의 관련성을 탐구하는 것이 약동학이고, 넓게 정의한다면 약물의 효과를 탐구하는 모든 연구분야를 약력학이라 할 수 있겠지만, 임상약리학에서는 약물노출과 생체에서 측정된 약효의 관련성을 탐구하는 것이 약력학(pharmacodynamics)이다. 이러한 약동학과 약력학을 연결하여 설명할 수 있다면 적절한 용량용법을 찾아낼 수 있는 것이다.
 
 여기서 약효와 관련된 다양한 용어들을 살펴볼 필요가 있다.
 
-약에 대한 response란 약을 주고 나서 측정할 수 있는 모든 종류의 값들(혈당치, EFV1.0)을 포괄적으로 의미한다면
-e\textbf{ffect란 response 값이 약 주기 전의 기저값으로부터 얼마나 변했는지 그 크기를 따지는 것이다. 이에 반해
-efficacy는 약으로부터 얻을 수 있는 최대의 effect를 말한다. Potency는 최대효과의 50\%를 나타내게 해 주는
-용량이나 농도를 의미하며 이 값이 낮을수록 potency가 높다고 한다. Effectiveness 란 효과가 있다 없다와
-같이 이분법으로 구분한 판단이며 정량적인 의미는 없다.}
+약에 대한 response란 약을 주고 나서 측정할 수 있는 모든 종류의 값들(혈당치, EFV1.0)을 포괄적으로 의미한다면 effect란 response 값이 약 주기 전의 기저값으로부터 얼마나 변했는지 그 크기를 따지는 것이다. 이에 반해 efficacy는 약으로부터 얻을 수 있는 최대의 effect를 말한다. Potency는 최대효과의 50\%를 나타내게 해 주는 용량이나 농도를 의미하며 이 값이 낮을수록 potency가 높다고 한다. Effectiveness 란 효과가 있다 없다와 같이 이분법으로 구분한 판단이며 정량적인 의미는 없다.
 
-\textbf{17.2 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성}
+\hypertarget{uxc57duxb825uxd559pd-uxbc0f-uxc57duxb3d9-uxc57duxb825pk-pd-uxb370uxc774uxd130uxc758-uxd2b9uxc131}{%
+\section{약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성}\label{uxc57duxb825uxd559pd-uxbc0f-uxc57duxb3d9-uxc57duxb825pk-pd-uxb370uxc774uxd130uxc758-uxd2b9uxc131}}
 
-\textbf{17.2.1 PD 데이터}
+\hypertarget{pd-uxb370uxc774uxd130}{%
+\subsection{PD 데이터}\label{pd-uxb370uxc774uxd130}}
 
-\textbf{많은 경우 PD 데이터는 약동학 데이터(혈장약물농도)에 비해 숫자가 적고, 잔차(측정오차 등)가 크고, 측정된 시점도 사람마다
-차이가 날 수 있다. 또 혈장약물농도는 측정된 최고 값과 최저 값이 수 백 배 이상 차이 나는 경우가 많지만, 약력학 데이터는
-그보다는 변동범위가 훨씬 좁은 편이다. (대게 수 십 배 이하) 따라서 혼합효과 모델링할 때 잔차에 대하여
-가법오차(additive error) 모델을 쓰는 편이다.}
+많은 경우 PD 데이터는 약동학 데이터(혈장약물농도)에 비해 숫자가 적고, 잔차(측정오차 등)가 크고, 측정된 시점도 사람마다 차이가 날 수 있다. 또 혈장약물농도는 측정된 최고 값과 최저 값이 수 백 배 이상 차이 나는 경우가 많지만, 약력학 데이터는 그보다는 변동범위가 훨씬 좁은 편이다. (대게 수 십 배 이하) 따라서 혼합효과 모델링할 때 잔차에 대하여 가법오차(additive error) 모델을 쓰는 편이다.
 
-\textbf{PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형,
-범주형 변수와 기타 다른 형태의 변수들이 있다.(표1) 변수의 성격에 따라 NONMEM에서의 \$ESTIMATION 의 옵션도
-달라져야 한다.}
+PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형, 범주형 변수와 기타 다른 형태의 변수들이 있다.(표1) 변수의 성격에 따라 NONMEM에서의 \$ESTIMATION 의 옵션도 달라져야 한다.
 
 \textbf{표 1 PD 데이터의 종류}
 
@@ -4077,68 +3910,38 @@ Time to event data
 
 예) 수면유도제의 효과: 잠들 때까지의 시간
 
-\textbf{PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을
-주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은
-시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는
-약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의
-영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림
-1)}
+PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을 주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은 시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는 약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의 영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림 \ref{fig:pd-time-course})
 
-\includegraphics{./assets/media-17/image2.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-17/image2} \caption{PD의 시간에 따른 변화의 사례}\label{fig:pd-time-course}
+\end{figure}
 
-\textbf{그림 1 PD의 시간에 따른 변화의 사례}
 
-\textbf{왼쪽: 혈압강하제의 약효와 혈압 자체의 일중변동을 모두 반영한 모델 \[1\], 오른쪽: 알츠하이머병의 평생에 걸친 따른
-질병악화와 치료제의 기전에 따른 변화. 시간에 따른 질병의 진행을 모델에 반영하여야 약효를 정확히 기술할 수
-있다.\[2\]}
 
-\textbf{17.2.2 PK-PD 데이터}
+\emph{왼쪽: 혈압강하제의 약효와 혈압 자체의 일중변동을 모두 반영한 모델 (Lee et al. \protect\hyperlink{ref-lee2013pharmacokinetic}{2013}), 오른쪽: 알츠하이머병의 평생에 걸친 따른 질병악화와 치료제의 기전에 따른 변화. 시간에 따른 질병의 진행을 모델에 반영하여야 약효를 정확히 기술할 수 있다. (Primary Psychiatry \protect\hyperlink{ref-dementia}{2013})}
 
-NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농도(PK)와 PD 데이터의 두 가지로 나뉜다. 따라서
-데이터셋에도 두 종류의 DV를 구분해 넣어주어야 하므로 주로 구획(compartment)의 번호를 달리하는 방법을
-쓴다. 물론 구획의 번호는 모델 구조에 따라 적절히 넣어주면 된다. 한 번 채혈한 말초혈액 시료에서 혈장약물농도도
-측정하고, 어떤 바이오마커도 측정하여 이를 PK와 PD 데이터로 쓴다면, 측정시간이 동일하겠지만, 많은 경우 PD
-데이터들을 얻는 시점은 혈장약물농도를 얻기 위한 채혈과는 다르다. 이는 연구자가 PD 데이터로 간주할 수 있는 데이터의 종류가
-혈액검사로서 측정되는 바이오마커 이외에도 매우 다양하고, 이를 측정할 수 있는 적절한 간격이 PK 채혈을 위한 시간간격보다는 훨씬
-긴 경우가 많아서이다. 예컨데, 만성적 질병상태를 의사가 종합적으로 평가한 임상적 점수, CT검사로 측정한 종양의 크기 등은 한
-달에 한 번 정도 이상 빈번히 측정해야 할 필요가 없기 때문이다.
+\hypertarget{pk-pd-uxb370uxc774uxd130}{%
+\subsection{PK-PD 데이터}\label{pk-pd-uxb370uxc774uxd130}}
 
-또, 두 데이터의 종류가 다르므로 단위도 다르고 구체적으로 기입되는 수치의 단위도 몇 자리 이상 차이가 나는 경우도 흔하다.
-따라서 개인간차, 잔차 등도 PK와 PD 데이터에 대해 제각기 다른 Ω와 Σ값들을 주고 모델링해야 한다.
+NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농도(PK)와 PD 데이터의 두 가지로 나뉜다. 따라서 데이터셋에도 두 종류의 DV를 구분해 넣어주어야 하므로 주로 구획(compartment)의 번호를 달리하는 방법을 쓴다. 물론 구획의 번호는 모델 구조에 따라 적절히 넣어주면 된다. 한 번 채혈한 말초혈액 시료에서 혈장약물농도도 측정하고, 어떤 바이오마커도 측정하여 이를 PK와 PD 데이터로 쓴다면, 측정시간이 동일하겠지만, 많은 경우 PD 데이터들을 얻는 시점은 혈장약물농도를 얻기 위한 채혈과는 다르다. 이는 연구자가 PD 데이터로 간주할 수 있는 데이터의 종류가 혈액검사로서 측정되는 바이오마커 이외에도 매우 다양하고, 이를 측정할 수 있는 적절한 간격이 PK 채혈을 위한 시간간격보다는 훨씬 긴 경우가 많아서이다. 예컨데, 만성적 질병상태를 의사가 종합적으로 평가한 임상적 점수, CT검사로 측정한 종양의 크기 등은 한 달에 한 번 정도 이상 빈번히 측정해야 할 필요가 없기 때문이다.
 
-\textbf{17.2.3 PD 데이터를 모델링할 때 고려할 점}
+또, 두 데이터의 종류가 다르므로 단위도 다르고 구체적으로 기입되는 수치의 단위도 몇 자리 이상 차이가 나는 경우도 흔하다. 따라서 개인간차, 잔차 등도 PK와 PD 데이터에 대해 제각기 다른 Ω와 Σ값들을 주고 모델링해야 한다.
 
-앞에서도 나왔듯이 PD 데이터의 기저치와 개일리듬(circadian rhythm)의 존재여부, 농도와 효과 간의 이미 알려진
-작용기전의 존재여부, 시간차(time delay), 설명할 수 있는 모델의 선택 등을 먼저 고려해야 한다. 또한 PK와
-PD 모델링을 PK를 먼저, PD는 다음에 하는 식으로 순차적으로 수행할지, 동시에 할지, 순차적으로 한다면 PK 모델의 정보를
-어느 선까지 PD 모델링 단계에서 쓸지 등을 고려해야 한다.
+\hypertarget{pd-uxb370uxc774uxd130uxb97c-uxbaa8uxb378uxb9c1uxd560-uxb54c-uxace0uxb824uxd560-uxc810}{%
+\subsection{PD 데이터를 모델링할 때 고려할 점}\label{pd-uxb370uxc774uxd130uxb97c-uxbaa8uxb378uxb9c1uxd560-uxb54c-uxace0uxb824uxd560-uxc810}}
 
-데이터셋을 만들 때 PK와 PD 자료를 한꺼번에 넣으려 하면 혼란이 생길 수 있어서 Dosing 데이터셋, PK 데이터셋, PD
-데이터셋을 각각 만든 후 병합하는 것을 추천한다. 또 실제 관찰한 시간 이외에도 이후 모델 진단 등을 위해 Time after
-dose(TAD, 여러 번 투약 시 직전 투약시간 이후 경과시간을 표시한 것) 칼럼도 함께 넣어주는 것이 좋다.
+앞에서도 나왔듯이 PD 데이터의 기저치와 개일리듬(circadian rhythm)의 존재여부, 농도와 효과 간의 이미 알려진 작용기전의 존재여부, 시간차(time delay), 설명할 수 있는 모델의 선택 등을 먼저 고려해야 한다. 또한 PK와 PD 모델링을 PK를 먼저, PD는 다음에 하는 식으로 순차적으로 수행할지, 동시에 할지, 순차적으로 한다면 PK 모델의 정보를 어느 선까지 PD 모델링 단계에서 쓸지 등을 고려해야 한다.
 
-\textbf{17.3 PK와 PD의 관계}
+데이터셋을 만들 때 PK와 PD 자료를 한꺼번에 넣으려 하면 혼란이 생길 수 있어서 Dosing 데이터셋, PK 데이터셋, PD 데이터셋을 각각 만든 후 병합하는 것을 추천한다. 또 실제 관찰한 시간 이외에도 이후 모델 진단 등을 위해 Time after dose(TAD, 여러 번 투약 시 직전 투약시간 이후 경과시간을 표시한 것) 칼럼도 함께 넣어주는 것이 좋다.
 
-혈장약물농도와 약효(또는 바이오마커)의 관계는 이 책의 다음 장들에서 자세히 나와 있다. 약물농도와 약효의 관계는 시험관내
-실험에서 약효가 포화되는 Emax, sigmoid Emax, 또는 비례적인 선형관계 등이 있지만, 이와 같은
-관계만으로 생체 내에서의 혈장약물농도와 약효의 관계를 설명하기에 충분치 않다. 이 책의 이어지는 장들에서 자세히
-나오겠지만, 많은 약들의 경우 그림 2와 같이 혈장농도의 상승, 하강보다 약효의 상승, 하강이 더 늦게 나타나는 현상이
-나타나고 이를 설명하고 예측하기 위한 다양한 모델들 중 가장 적절한 것을 선택하는 것이 PK-PD 모델링의 핵심이다. 이
-중에서 많이 쓰이는 것들이 생리학적 모델(또는 turnover 모델)과 약효구획모델(effect compartment
-모델)이다.
+\hypertarget{pkuxc640-pduxc758-uxad00uxacc4}{%
+\section{PK와 PD의 관계}\label{pkuxc640-pduxc758-uxad00uxacc4}}
 
-일정하게 유지되고 있던 물질의 인체 내에서의 생성속도와 제거속도에 약이 영향을 미쳐서 그 물질의 농도가 높아지거나 낮아지게 만들
-수 있는데 그 물질의 농도 자체를 약효(또는 약효를 반영하는 바이오마커)라고 간주한다면, 그러한 새로운 평형상태에 도달하는데
-걸리는 시간으로 인해 농도-약효 간의 시간차가 발생하는 것을 설명하는 것이 PK-PD 모델 중 생리학적 모델이다.
-Warfarin의 예를 들면 혈액응고를 저해하는 효과는 간에서 비타민 K를 억제하여 응고인자 생성을 막는 것인데 이미 만들어져
-있는 응고인자들이 소모되어 없어져야 warfarin의 약효가 완전히 나타나게 되어 INR 값이 최대가 될 것이다.
-응고인자는 간에서 일정한 속도로 만들어지고, 일정한 속도로 제거되면서 인체의 혈액응고기능이 일정한 수준으로
-유지되는데, 그 생성속도를 떨어뜨려 혈액응고기능을 떨어뜨리는 방향으로 새로운 균형을 찾기까지 시간이 걸리는 것이다.
+혈장약물농도와 약효(또는 바이오마커)의 관계는 이 책의 다음 장들에서 자세히 나와 있다. 약물농도와 약효의 관계는 시험관내 실험에서 약효가 포화되는 Emax, sigmoid Emax, 또는 비례적인 선형관계 등이 있지만, 이와 같은 관계만으로 생체 내에서의 혈장약물농도와 약효의 관계를 설명하기에 충분치 않다. 이 책의 이어지는 장들에서 자세히 나오겠지만, 많은 약들의 경우 그림 2와 같이 혈장농도의 상승, 하강보다 약효의 상승, 하강이 더 늦게 나타나는 현상이 나타나고 이를 설명하고 예측하기 위한 다양한 모델들 중 가장 적절한 것을 선택하는 것이 PK-PD 모델링의 핵심이다. 이 중에서 많이 쓰이는 것들이 생리학적 모델(또는 turnover 모델)과 약효구획모델(effect compartment 모델)이다.
 
-이에 반해 약효구획모델은 이러한 내인성 물질들의 turnover로 설명되지 않는, 이유를 모르는 약효의 시간적 뒤쳐짐을 설명하기
-위해 쓸 수 있다. 약효변화가 혈장농도의 변화보다 늦어지는 이유를 약이 중심구획(혈장)에서부터 약효 구획이라는 가상의 구획으로
-분포하는데 걸리는 시간 때문으로 설명하고자 하는 방법이며 그 구획으로 이동하는 약의 양은 실제 중심구획에 있는 약의 양에 영향을
-미치지 않는 극히 소량이라고 가정한다.
+일정하게 유지되고 있던 물질의 인체 내에서의 생성속도와 제거속도에 약이 영향을 미쳐서 그 물질의 농도가 높아지거나 낮아지게 만들 수 있는데 그 물질의 농도 자체를 약효(또는 약효를 반영하는 바이오마커)라고 간주한다면, 그러한 새로운 평형상태에 도달하는데 걸리는 시간으로 인해 농도-약효 간의 시간차가 발생하는 것을 설명하는 것이 PK-PD 모델 중 생리학적 모델이다. Warfarin의 예를 들면 혈액응고를 저해하는 효과는 간에서 비타민 K를 억제하여 응고인자 생성을 막는 것인데 이미 만들어져 있는 응고인자들이 소모되어 없어져야 warfarin의 약효가 완전히 나타나게 되어 INR 값이 최대가 될 것이다. 응고인자는 간에서 일정한 속도로 만들어지고, 일정한 속도로 제거되면서 인체의 혈액응고기능이 일정한 수준으로 유지되는데, 그 생성속도를 떨어뜨려 혈액응고기능을 떨어뜨리는 방향으로 새로운 균형을 찾기까지 시간이 걸리는 것이다.
+
+이에 반해 약효구획모델은 이러한 내인성 물질들의 turnover로 설명되지 않는, 이유를 모르는 약효의 시간적 뒤쳐짐을 설명하기 위해 쓸 수 있다. 약효변화가 혈장농도의 변화보다 늦어지는 이유를 약이 중심구획(혈장)에서부터 약효 구획이라는 가상의 구획으로 분포하는데 걸리는 시간 때문으로 설명하고자 하는 방법이며 그 구획으로 이동하는 약의 양은 실제 중심구획에 있는 약의 양에 영향을 미치지 않는 극히 소량이라고 가정한다.
 
 \includegraphics{./assets/media-17/image3.png}
 
@@ -4146,16 +3949,10 @@ Warfarin의 예를 들면 혈액응고를 저해하는 효과는 간에서 비�
 
 약효의 변화가 약물농도의 변화보다 늦게 나타날 경우 오른쪽 아래 그림과 같은 반시계방향 히스테레시스 현상이 나타나게 된다.
 
-참고문헌
-
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Jongtae Lee, Seunghoon Han, Sangil Jeon, Taegon Hong, Dong-Seok
-  Yim. Pharmacokinetic-pharmacodynamic Model of Fimasartan Applied to
-  Predict the Influence of a High Fat Diet on Its Blood
-  Pressure-Lowering Effect in Healthy Subjects. Eur J Clin
-  Pharmacol.~2013 Jan;69(1):11-20}
+\setcounter{enumi}{1}
+\tightlist
 \item
   \url{http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/}
 \end{enumerate}
@@ -4187,7 +3984,7 @@ PK-PD 모델링을 수행하는 경우, 우선적으로 PK 모델이 구축되�
 
 PD 모델링을 위해서 PD 데이터의 특성을 파악하는 것이 중요하며, 모델링 결과를 유용하게 활용하기 위해서는 충분한 효과를 보이는 것으로 알려진 약력학적 기준 (PD threshold 또는 target level)을 선정하는 것이 중요하다.
 
-우선, PD 데이터의 특성을 살펴보자. PD 데이터는 대부분 환자 또는 동물 질환모델에서 얻어진 관측값이며, 질병의 경과와 약물의 작용의 복잡한 과정으로 인해 개인(개체) 간 변이에 대한 원인을 정확히 설명할 수 없는 경우가 많다. 따라서 PD 데이터는 약물의 효과는 PK와의 관계, 반응의 기저치, 일중변동, 질병 진행, 내성 발현 등과 같은 많은 요소들의 영향이 합쳐져서 나타나는 결과이다. (Owen \protect\hyperlink{ref-kelly}{2014}) 이와 같은 영향들을 고려하기 위해 위약군에서의 PD 데이터를 측정하기도 한다. 또한, 환자 간 PD 모델은 본질적으로 PK 모델에 비해 복잡한 특성을 지니며, PD 모델링 시의 고려할 점은 아래와 같다. PD 파라미터의 기저치 값이 존재하는지(또는 위에 언급된 PD 데이터에 영향을 주는 다양한 요인들에 의한 영향을 어떻게 고려할지), 약물농도의 증가에 따라 PD 측정값이 증가(또는 감소)하는지, 약물 농도와 효과 간에 이미 알려진 기전이 있는지, 농도-효과 간의 시간 지연(time delay)이 있는지, 농도-효과 간의 관계를 어떤 모델로 설명할 것인지(예를 들어, Emax 모델 등), PK 및 PD 파라미터 추정을 동시에 진행할 것인지 또는 순차적으로 진행할 것인지(순차적으로 수행할 경우 PK 데이터 및 PK 모델을 얼마만큼 활용할 것인지) 등에 대한 고려가 필요하다. (Ette \protect\hyperlink{ref-ette}{2007}; Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006}) PK 와 PD 모델을 적합하는 다양한 방법에 대해서는 6.4에서 자세히 다루도록 한다.
+우선, PD 데이터의 특성을 살펴보자. PD 데이터는 대부분 환자 또는 동물 질환모델에서 얻어진 관측값이며, 질병의 경과와 약물의 작용의 복잡한 과정으로 인해 개인(개체) 간 변이에 대한 원인을 정확히 설명할 수 없는 경우가 많다. 따라서 PD 데이터는 약물의 효과는 PK와의 관계, 반응의 기저치, 일중변동, 질병 진행, 내성 발현 등과 같은 많은 요소들의 영향이 합쳐져서 나타나는 결과이다. (Owen \protect\hyperlink{ref-kelly}{2014}) 이와 같은 영향들을 고려하기 위해 위약군에서의 PD 데이터를 측정하기도 한다. 또한, 환자 간 PD 모델은 본질적으로 PK 모델에 비해 복잡한 특성을 지니며, PD 모델링 시의 고려할 점은 아래와 같다. PD 파라미터의 기저치 값이 존재하는지(또는 위에 언급된 PD 데이터에 영향을 주는 다양한 요인들에 의한 영향을 어떻게 고려할지), 약물농도의 증가에 따라 PD 측정값이 증가(또는 감소)하는지, 약물 농도와 효과 간에 이미 알려진 기전이 있는지, 농도-효과 간의 시간 지연(time delay)이 있는지, 농도-효과 간의 관계를 어떤 모델로 설명할 것인지(예를 들어, Emax 모델 등), PK 및 PD 파라미터 추정을 동시에 진행할 것인지 또는 순차적으로 진행할 것인지(순차적으로 수행할 경우 PK 데이터 및 PK 모델을 얼마만큼 활용할 것인지) 등에 대한 고려가 필요하다. (Ette \protect\hyperlink{ref-ette}{2007}; Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006}) PK 와 PD 모델을 적합하는 다양한 방법에 대해서는 \protect\hyperlink{pkpd-link-method}{18.4}에서 자세히 다루도록 한다.
 
 \hypertarget{pk-pd-uxb370uxc774uxd130uxb97c-uxb2e4uxb8f0-uxb54c-uxace0uxb824uxd560-uxc810}{%
 \section{PK-PD 데이터를 다룰 때 고려할 점}\label{pk-pd-uxb370uxc774uxd130uxb97c-uxb2e4uxb8f0-uxb54c-uxace0uxb824uxd560-uxc810}}
@@ -4204,8 +4001,8 @@ PK-PD 모델링을 수행하는 과정에서 우리는 PK 와 PD 데이터를 �
 
 
 
-\hypertarget{pk-pd-uxc5f0uxacb0-uxbc29uxbc95-uxc801uxd569uxbc95}{%
-\section{PK-PD 연결 방법 (적합법)}\label{pk-pd-uxc5f0uxacb0-uxbc29uxbc95-uxc801uxd569uxbc95}}
+\hypertarget{pkpd-link-method}{%
+\section{PK-PD 연결 방법 (적합법)}\label{pkpd-link-method}}
 
 PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적합법 선택에 있어 고려하는 요소는 데이터의 특성, 모델링 과정에 소요되는 시간, 최종 파라미터 추정값의 정밀도 등이 있으며, 이 요소들 간의 적절한 균형을 고려하여 적합법을 선택할 수 있다.
 
@@ -4615,17 +4412,9 @@ estimates \[5\]}
 PK-PD 모델링을 진행해야 한다. 풍부한 PK 및 PD 데이터를 보유하였을 경우, 위의 네 가지 방법으로 얻은 결과는 유사할
 것으로 생각되며, 어떠한 방법으로 모델링을 진행하여도 정밀도가 높은 PD 파라미터 추정치가 나올 것으로 생각된다.
 
-하지만, PK 또는 PD 데이터가 촘촘하지 않을 경우 각 상황에 따라 적합한 방법을 선택하여 모델링을 진행하여야 한다. 예컨데
-PK 데이터가 촘촘하지 않은 경우라면 PK 모델링을 수행하여 개인의 PK 파라미터 추정치를 얻은 후 IPP로 모델링을 진행했다고
-하여도, 이 결과를 충분히 믿을 수 있을 지 알 수 없다. 따라서, 이와 같은 경우는 SIM 방법을 시도해 볼 수 있겠다.
-SIM 방법은 이상적일 수 있으나 모델의 수렴 시간이 오래 걸리고, 많은 파라미터를 동시에 예측함으로 실제 파라미터 값이 잘
-구해지지 않을 수 있다.
+하지만, PK 또는 PD 데이터가 촘촘하지 않을 경우 각 상황에 따라 적합한 방법을 선택하여 모델링을 진행하여야 한다. 예컨데 PK 데이터가 촘촘하지 않은 경우라면 PK 모델링을 수행하여 개인의 PK 파라미터 추정치를 얻은 후 IPP로 모델링을 진행했다고 하여도, 이 결과를 충분히 믿을 수 있을 지 알 수 없다. 따라서, 이와 같은 경우는 SIM 방법을 시도해 볼 수 있겠다. SIM 방법은 이상적일 수 있으나 모델의 수렴 시간이 오래 걸리고, 많은 파라미터를 동시에 예측함으로 실제 파라미터 값이 잘 구해지지 않을 수 있다.
 
-실제로 일반적인 PK 데이터는 시간에 따라 연속적으로 촘촘하게 얻어져 있는 경우가 많으며, 따라서 시간적 효율성이 높은 IPP
-방법을 많이 사용하여 PK-PD 모델링을 진행한다. 다만 이 경우는 PK와 PD 데이터를 측정한 대상자(또는 개체)가
-동일한 경우 사용한다. 동일한 개체가 아닐 경우, PPP\&D 또는 PPP 방법을 사용하는 경우가 많다. PK 데이터가
-조금 더 신뢰도가 높은 경우는 PPP\&D를 선택하여 사용할 수 있고, PK 데이터는 존재하지만 PD 데이터의 신뢰도가 더 높은
-경우에는 PPP 방법을 사용하는 모델링을 진행할 수 있다.
+실제로 일반적인 PK 데이터는 시간에 따라 연속적으로 촘촘하게 얻어져 있는 경우가 많으며, 따라서 시간적 효율성이 높은 IPP 방법을 많이 사용하여 PK-PD 모델링을 진행한다. 다만 이 경우는 PK와 PD 데이터를 측정한 대상자(또는 개체)가 동일한 경우 사용한다. 동일한 개체가 아닐 경우, PPP\&D 또는 PPP 방법을 사용하는 경우가 많다. PK 데이터가 조금 더 신뢰도가 높은 경우는 PPP\&D를 선택하여 사용할 수 있고, PK 데이터는 존재하지만 PD 데이터의 신뢰도가 더 높은 경우에는 PPP 방법을 사용하는 모델링을 진행할 수 있다.
 
 각 네 가지 PK-PD 연결방법을 아래의 표에 요약하였다(표 2). SIM 및 PPP\&D 방법은 데이터셋에 PK 데이터와 PD
 데이터를 모두 포함하며, PPP와 IPP는 PD 데이터만을 포함한다. PPP\&D 와 PPP 방법은 집단 PK 파라미터
@@ -4637,42 +4426,9 @@ SIM 방법은 이상적일 수 있으나 모델의 수렴 시간이 오래 걸�
 
 \includegraphics{./assets/media-18/image19.png}
 
-우리는 이와 같은 다양한 PK-PD 모델링 방법을 사용하여 궁극적으로 PD 파라미터 값을 얻을 수 있다. 내가 가진 데이터의
-성격을 탐색하여 상황에 따라 적절한 PK-PD 연결방법을 선택하여 사용하는 것이 가장 이상적이라고 할 수 있다.
-PK-PD 모델링을 통해 얻은 PD 파라미터 값을 기반으로 시뮬레이션을 하여 다양한 용량 별 시간에 따른 효과의 변화를 예측할 수
-있다. 결론적으로, 이 결과를 가지고 우리는 임상에서 알고자 하는 약물의 효과에 대한 질문의 답을 얻을 수 있다.
+우리는 이와 같은 다양한 PK-PD 모델링 방법을 사용하여 궁극적으로 PD 파라미터 값을 얻을 수 있다. 내가 가진 데이터의 성격을 탐색하여 상황에 따라 적절한 PK-PD 연결방법을 선택하여 사용하는 것이 가장 이상적이라고 할 수 있다. PK-PD 모델링을 통해 얻은 PD 파라미터 값을 기반으로 시뮬레이션을 하여 다양한 용량 별 시간에 따른 효과의 변화를 예측할 수 있다. 결론적으로, 이 결과를 가지고 우리는 임상에서 알고자 하는 약물의 효과에 대한 질문의 답을 얻을 수 있다.
 
 \textbf{참고문헌}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Owen, Joel S., and Jill Fiedler-Kelly.~\emph{Introduction to population
-  pharmacokinetic/pharmacodynamic analysis with nonlinear mixed
-  effects models}. John Wiley \& Sons, 2014.
-\item
-  Ette, Ene I., and Paul J. Williams, eds.~\emph{Pharmacometrics: the
-  science of quantitative pharmacology}. John Wiley \& Sons, 2013.
-\item
-  Gabrielsson, Johan, and Daniel Weiner.~\emph{Pharmacokinetic and
-  pharmacodynamic data analysis: concepts and applications}. CRC
-  Press, 2001.
-\item
-  Lee, Joomi, et al.~``Population pharmacokinetic/pharmacodynamic
-  modeling of clopidogrel in Korean healthy volunteers and stroke
-  patients.''~\emph{The Journal of Clinical Pharmacology}~52.7 (2012):
-  985-995.
-\item
-  Zhang, Liping, Stuart L. Beal, and Lewis B. Sheiner. ``Simultaneous
-  vs.~sequential analysis for population PK/PD data I: best-case
-  performance.''~\emph{Journal of pharmacokinetics and
-  pharmacodynamics}~30.6 (2003): 387-404.
-\item
-  Zhang, Liping, Stuart L. Beal, and Lewis B. Sheiner. ``Simultaneous
-  vs.~sequential analysis for population PK/PD data II: robustness of
-  methods.''~\emph{Journal of pharmacokinetics and pharmacodynamics}~30.6
-  (2003): 405-416.
-\end{enumerate}
 
 \hypertarget{effect-model}{%
 \chapter{다양한 약물효과 모델링}\label{effect-model}}
@@ -4733,6 +4489,87 @@ E = m \cdot ln(C+A_0)
 \text{E} = \frac{\text{E}_{\max}\lbrack C \rbrack}{\text{EC}_{50} + \lbrack C\rbrack}
 \]
 Emax 모델을 이용하여 약물(또는 리간드)과 수용체의 결합에 따른 약효를 설명할 수 있다. Emax 모델의 수식 유도과정은 약물-수용체 결합을 참고 바란다.
+
+\begin{rmdtip}
+\textbf{약물-수용체 결합}
+
+\includegraphics{./assets/media-19/box1.png}
+
+수용체-리간드 반응을 통해 약효를 나타내며, 이 과정에는 몇 가지 가정이 존재한다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  약물 {[}D{]}, 수용체 {[}R{]}, 약물-수용체 복합체 {[}R*{]}은 평형상태에 있으며, 이 반응은 가역적이다.
+\item
+  약물과 수용체는 1:1로 결합한다. (예, 약물 1 mole이 수용체 1 mole과 결합한다)
+\item
+  약물-수용체 복합체 {[}R*{]}은 약효(E)와 비례한다.
+\end{enumerate}
+
+가정 1.에 의해,
+
+\[
+C \cdot R \cdot k_{on} = R \cdot k_{off}
+\]
+
+\[
+K_D = \frac{k_{off}}{k_{on}} = \frac{[C][R]}{[R^*]}
+\]
+KD: 평형상태에서 약물-수용체 복합체의 해리상수)
+\[
+dR*
+\]
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{가정 2)에 의하여 \[R\*\] = \[CR\] 이며, \[R<sub>T</sub>\]=\[R\]+\[R\*\] 이며,}
+
+knitr::include\_graphics(./assets/media-19/image4.png) \emph{(}\(\div\)\emph{kon)}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{가정 3)에 의하여 E = α · \[R\*\] 이므로,}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{Emax = α · \[R<sub>T</sub>\] 라 하면,}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{가정 2)에 의하여 \[R\*\] = \[CR\] 이며, \[R<sub>T</sub>\]=\[R\]+\[R\*\] 이며,}
+
+knitr::include\_graphics(./assets/media-19/image4.png) \emph{(}\(\div\)\emph{kon)}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{가정 3)에 의하여 E = α · \[R\*\] 이므로,}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{Emax = α · \[R<sub>T</sub>\] 라 하면,}
+
+knitr::include\_graphics(./assets/media-19/image4.png)
+
+\emph{여기서, KD의 단위는 농도이며 (C와 동일), 약물 수용체의 50\%가 결합한 상태에서의
+약효(EC50)는 Emax/2 가 된다. 이를 위의 식에 대입하면,}
+
+\(\frac{E_{\max}}{2}\ \)=\(\text{\ \ }\frac{\ E_{\max} \bullet \text{EC}_{50}}{{K_{D} + \ EC}_{50}}\text{~~~~~}\mathbf{\text{~~~~~~~~~~~~~}}\)
+\emph{이고,}
+
+\emph{이를 정리하면, KD=EC50이다.}
+
+\emph{결국, 다시 정리하면, Emax 모델은 다음과 같다.}
+
+\(\text{E~}\)=\(\frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}\)
+
+*\[C\]는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, \[C\]는 CT (특정조직에서의 약물농도)로 대체할 수 있다.
+\end{rmdtip}
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{./assets/media-19/image5} \caption{Emax model (좌)선형농도, (우)로그농도}\label{fig:emax-model}
@@ -4861,175 +4698,186 @@ knitr::include\_graphics(./assets/media-19/image12.png)
 \hypertarget{uxc9c0uxc5f0uxd6a8uxacfc-uxbaa8uxb378}{%
 \chapter{지연효과 모델}\label{uxc9c0uxc5f0uxd6a8uxacfc-uxbaa8uxb378}}
 
-\emph{김정렬／임동석}
+\emph{김정렬, 임동석}
 
 \hypertarget{uxc9c0uxc5f0uxd6a8uxacfc-uxac1cuxc694}{%
 \section{지연효과 개요}\label{uxc9c0uxc5f0uxd6a8uxacfc-uxac1cuxc694}}
 
-약물 투여 시 기대하는 반응의 시간에 따른 양상이 해당 약물의 유효성분 혈중 농도 양상과 유사하게 나타나기도 하지만, 최대 혈중
-농도 이후 상당한 시간이 경과한 시점에 최대 반응이 발생하는 경우도 있다. 이러한 지연효과는 투여 약물의 체내 노출을 대변하는
-약동학(PK) 측면뿐만 아니라 그 노출에 따른 약리작용을 설명하는 약력학(PD) 측면의 여러 원인으로 발생할 수 있다.
+약물 투여 시 기대하는 반응의 시간에 따른 양상이 해당 약물의 유효성분 혈중 농도 양상과 유사하게 나타나기도 하지만, 최대 혈중 농도 이후 상당한 시간이 경과한 시점에 최대 반응이 발생하는 경우도 있다. 이러한 지연효과는 투여 약물의 체내 노출을 대변하는 약동학(PK) 측면뿐만 아니라 그 노출에 따른 약리작용을 설명하는 약력학(PD) 측면의 여러 원인으로 발생할 수 있다.
 
-우선 약동학적으로 혈액 내 존재하는 유효성분이 관찰된 반응과 관련된 부위(수용체 등)로 분포하는데 시간이 걸리는 경우를 생각할 수
-있다. 또한 반응을 나타내는데 필수적인 약물-수용체 상호작용에 있어 최대 반응이 나타나는데 시간적인 지연이 있을 수 있다. 한편
-약물이 목표로 하는 대상이 반응과 직접적으로 관련되기 보다는 그 반응을 증가시키거나 감소시키는데 필요한 것을 촉진하거나
-억제함으로써 궁극적으로 시간에 따른 반응 양상을 조절하는 경우도 혈중 농도와 반응간 지연효과를 보이게 된다.
+우선 약동학적으로 혈액 내 존재하는 유효성분이 관찰된 반응과 관련된 부위(수용체 등)로 분포하는데 시간이 걸리는 경우를 생각할 수 있다. 또한 반응을 나타내는데 필수적인 약물-수용체 상호작용에 있어 최대 반응이 나타나는데 시간적인 지연이 있을 수 있다. 한편 약물이 목표로 하는 대상이 반응과 직접적으로 관련되기 보다는 그 반응을 증가시키거나 감소시키는데 필요한 것을 촉진하거나 억제함으로써 궁극적으로 시간에 따른 반응 양상을 조절하는 경우도 혈중 농도와 반응간 지연효과를 보이게 된다.
 
-약물을 경구로 투여하면 투약 시점과 비교 시 혈중 농도가 지연되어 보이는 것처럼 수용체와 같은 약물이 목표로 하는 부위에서의
-농도도 혈중 농도에 비해 지연될 수 있다. 그런데 혈중 농도와 달리 목표 부위에서의 농도는 쉽게 측정할 수 없어 이러한
-지연 현상을 직접적으로 확인하기 어려운 경우가 대부분이다. 또한 목표 수용체 수준에서의 약물에 의한 조절로 인하여 시간에 따른
-바이오마커 변화 양상이 지연되어 관찰될 수 있다. 한편 이러한 바이오마커의 변화가 직접적으로 임상적 변화를 초래하지 못하는
-경우도 있다.
+약물을 경구로 투여하면 투약 시점과 비교 시 혈중 농도가 지연되어 보이는 것처럼 수용체와 같은 약물이 목표로 하는 부위에서의 농도도 혈중 농도에 비해 지연될 수 있다. 그런데 혈중 농도와 달리 목표 부위에서의 농도는 쉽게 측정할 수 없어 이러한 지연 현상을 직접적으로 확인하기 어려운 경우가 대부분이다. 또한 목표 수용체 수준에서의 약물에 의한 조절로 인하여 시간에 따른 바이오마커 변화 양상이 지연되어 관찰될 수 있다. 한편 이러한 바이오마커의 변화가 직접적으로 임상적 변화를 초래하지 못하는 경우도 있다.
 
 \hypertarget{uxc2dcuxac04uxc5d0-uxb530uxb978-pk-pd-uxad00uxacc4}{%
 \section{시간에 따른 PK-PD 관계}\label{uxc2dcuxac04uxc5d0-uxb530uxb978-pk-pd-uxad00uxacc4}}
 
-시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를
-보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를
-보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다.
-또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는
-현상을 보인다 (그림 1).
+시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를 보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를 보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다. 또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는 현상을 보인다 (그림 \ref{fig:pkpd-relationship}.
 
-\includegraphics{./assets/media-20/image1.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image1} \caption{PK와 PD의 관련성 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:pkpd-relationship}
+\end{figure}
 
-그림 1 PK와 PD의 관련성 \[1\]
 
-이렇게 동일한 농도에서 관찰되는 효과가 농도가 증가하는 시점과 감소하는 시점에서 다르게 관찰되는 현상은 크게 두 종류로 나눌 수
-있다. 이중 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 작게 관찰되는 경우를 히스테레시스(hysteresis)라고
-하며, 농도-효과 관계의 양상이 시간이 흐름에 따라 반시계방향으로 그려진다. 반면 농도가 증가하는 시점에서의 효과가
-감소하는 시점보다 큰 양상을 보이는 경우 프로테레시스(proteresis)라 하며, 농도-효과 관계의 양상이
-시계방향으로 그려진다. (그림 2)
 
-약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체
-up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나
-활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.
+이렇게 동일한 농도에서 관찰되는 효과가 농도가 증가하는 시점과 감소하는 시점에서 다르게 관찰되는 현상은 크게 두 종류로 나눌 수 있다. 이중 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 작게 관찰되는 경우를 히스테레시스(hysteresis)라고 하며, 농도-효과 관계의 양상이 시간이 흐름에 따라 반시계방향으로 그려진다. 반면 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 큰 양상을 보이는 경우 프로테레시스(proteresis)라 하며, 농도-효과 관계의 양상이 시계방향으로 그려진다. (그림 \ref{fig:hys-proteresis})
 
-\includegraphics{./assets/media-20/image2.png}
+약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체 up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나 활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.
 
-그림 2. 히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image2} \caption{히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)}\label{fig:hys-proteresis}
+\end{figure}
+
+
 
 \hypertarget{uxd6a8uxacfcuxad6cuxd68d-uxbaa8uxb378}{%
 \section{효과구획 모델}\label{uxd6a8uxacfcuxad6cuxd68d-uxbaa8uxb378}}
 
-약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의
-농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를
-가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고
-한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 ｂｏｌｕｓ로 약을 주사했을 때， 약효구획의 약물농도 （Ｃｅ）는 천천히 변화하며， 그 Ｃｅ와 약효와의 관계가 ｓｉｇｍｏｉｄ Ｅｍａｘ를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림
-3)
+약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의 농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를 가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고 한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 bolus로 약을 주사했을 때, 약효구획의 약물농도(Ce)는 천천히 변화하며, 그 Ce와 약효와의 관계가 sigmoid Emax를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림 \ref{fig:effect-comp})
 
-\includegraphics{./assets/media-20/image3.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image3} \caption{효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:effect-comp}
+\end{figure}
 
-그림 3. 효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect
-compartment concentration (NOT observed, produced), R: response
-(Actually observed) \[1\]
 
-이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의
-관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는
-방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때， 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량（Ｋ１２＝０．００１＊Ｋ）이어서 혈장농도 모델링에 영향이 극히 미미하고，효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(그림
-4)
 
-\includegraphics{./assets/media-20/image4.png}
+이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의 관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는 방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때, 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량(K12=0.001*K)이어서 혈장농도 모델링에 영향이 극히 미미하고,효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(코드 \ref{thm:effect-model-code})
 
-그림 4. 효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) \[2\]
 
-또다른 방식으로는 아래 코드(그림
-5)와 같이 중심구획에서 약물이 제거되는 속도는 Ｋ１０으로 표현되지만， 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고（ＤＡＤＴ（１）의 수식에 Ｋ１０이외에 다른 속도상수가 나타나지 않고 있음）대신 효과구획의 약물농도는 Ｋ２０이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고， 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데，이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 Ａ（２）는 효과구획의 약물의 양이 아니라 농도임을 유의해야
-한다．
 
-\includegraphics{./assets/media-20/image5.png}
+\begin{theorem}
+\protect\hypertarget{thm:effect-model-code}{}{\label{thm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})
+\end{theorem}
 
-그림 5. 효과구획 모델 코드: Using General Nonlinear model (ADVAN6) \[2\]
+\begin{verbatim}
+$SUBROUTINES ADVAN3
+$PK
+  K   = THETA(1)*EXP(ETA(1))        ; TRIVIAL LOSS TO EFFECT CMPT
+  K12 = .001*K                      ; KEO
+  K21 = THETA(2)*EXP(ETA(2))        ; V1 FOR DRUG
+  S1  = THETA(3)*EXP(ETA(3))
+  EMAX= THETA(4)*EXP(ETA(4))
+  C50 = THETA(5)*EXP(ETA(5))
+  S2  = S1*K12/K21                  ; SO THAT CESS = CPSS
+$ERROR
+  IF (CMT.EQ.2) THEN
+  Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2
+  ELSE
+  Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
+  ENDIF
+\end{verbatim}
+
+또다른 방식으로는 아래 코드 \ref{thm:effect-comp-advan6}와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．
+
+\begin{theorem}
+\protect\hypertarget{thm:effect-comp-advan6}{}{\label{thm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})
+\end{theorem}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN6 TOL=}\DecValTok{5}
+\OperatorTok{$}\NormalTok{MODEL}
+\NormalTok{  COMP=(CENTRAL,DEFDOSE,DEFOBS)}
+\NormalTok{  COMP=EFFECT}
+\OperatorTok{$}\NormalTok{PK}
+\NormalTok{  K10 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
+\NormalTok{  V1  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
+\NormalTok{  S1  =}\StringTok{ }\NormalTok{V1 }
+\NormalTok{  K20 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  C50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  EMAX=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\OperatorTok{$}\NormalTok{DES}
+  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K10}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)                 ; NOTE NO LOSS TO }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+  \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=}\StringTok{ }\NormalTok{K20}\OperatorTok{*}\NormalTok{(}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{V1}\OperatorTok{{-}}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))       ; }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) IS CE}
+\OperatorTok{$}\NormalTok{ERROR}
+  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN}
+\NormalTok{  Y   =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{F}\OperatorTok{/}\NormalTok{(C50}\OperatorTok{+}\NormalTok{F)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{))  ; DV =}\StringTok{ }\NormalTok{EFFECT IF CMT=}\DecValTok{2}
+\NormalTok{  ELSE}
+\NormalTok{  Y   =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{))               ; DV =}\StringTok{ }\NormalTok{CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
+\NormalTok{  ENDIF}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{uxc9c1uxc811uxd6a8uxacfc-vs.-uxac04uxc811uxd6a8uxacfc}{%
 \section{직접효과 vs.~간접효과}\label{uxc9c1uxc811uxd6a8uxacfc-vs.-uxac04uxc811uxd6a8uxacfc}}
 
-관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에
-의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는
-역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 6).
+관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 \ref{fig:direct-indirect}).
 
-\includegraphics{./assets/media-20/image6.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image6} \caption{직접효과와 간접효과의 모식도 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:direct-indirect}
+\end{figure}
 
-그림 6. 직접효과와 간접효과의 모식도 \[1\]
+
 
 \hypertarget{turnover-uxbaa8uxb378}{%
 \section{Turnover 모델}\label{turnover-uxbaa8uxb378}}
 
-약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나
-감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을
-뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를
-의미한다.
+약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나 감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을 뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를 의미한다.
 
-\includegraphics{./assets/media-20/image7.png}
+\[
+\frac{dR}{dt} = k_{in}^0\ - k_{out} \cdot R
+\]
 
-관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나
-억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 7에서 보듯 4가지 형태로
-구분된다.
+관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나 억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 \ref{fig:turnover-4}에서 보듯 4가지 형태로 구분된다.
 
 \begin{figure}
-\centering
-\includegraphics{./assets/media-20/image8.png}
-\caption{image}
+\includegraphics[width=1\linewidth]{./assets/media-20/image8} \caption{Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:turnover-4}
 \end{figure}
 
-그림 7 Turnover 모델(간접효과 모델)의 네 가지 \[3\]
+
 
 \hypertarget{inhibition-on-production-model-i}{%
 \subsection{Inhibition on production (Model I)}\label{inhibition-on-production-model-i}}
 
-관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다.
-생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을
-차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제
-함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 8)
+관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 \ref{fig:model-i})
 
-\includegraphics{./assets/media-20/image9.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image9} \caption{Inhibition on production (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:model-i}
+\end{figure}
 
-그림 8. Inhibition on production \[3\]
+
 
 \hypertarget{inhibition-on-loss-model-ii}{%
 \subsection{Inhibition on loss (Model II)}\label{inhibition-on-loss-model-ii}}
 
-관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해
-cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은
-cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다.
-이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를
-사용할 수 있다. (그림 9)
+관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해 cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은 cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 \ref{fig:model-ii})
 
-\includegraphics{./assets/media-20/image10.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image10} \caption{Inhibition on loss (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:model-ii}
+\end{figure}
 
-그림 9. Inhibition on loss \[3\]
+
 
 \hypertarget{stimulation-on-production-model-iii}{%
 \subsection{Stimulation on production (Model III)}\label{stimulation-on-production-model-iii}}
 
-관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜
-궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데
-erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구
-수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고
-아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 10)
+관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜 궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데 erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구 수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 \ref{fig:model-iii})
 
-\includegraphics{./assets/media-20/image11.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image11} \caption{Stimulation on production (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:model-iii}
+\end{figure}
 
-그림 10. Stimulation on production \[3\]
+
 
 \hypertarget{stimulation-on-loss-model-iv}{%
 \subsection{Stimulation on loss (Model IV)}\label{stimulation-on-loss-model-iv}}
 
-관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수
-있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은
-반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다.
-(그림 11)
+관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수 있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONEMEM 코드를 사용할 수 있다. (그림 \ref{fig:model-iv})
 
-\includegraphics{./assets/media-20/image12.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{./assets/media-20/image12} \caption{Stimulation on loss (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:model-iv}
+\end{figure}
 
-그림 11. Stimulation on loss (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})
+
 
 \hypertarget{uxae30uxc800uxac12}{%
 \subsection{기저값}\label{uxae30uxc800uxac12}}
 
-간접효과 모델에서 약물 투여 전 상태에서의 반응을 기저값으로 간주하며, 반응이 증가하거나 감소하는 정도가 동일하여 겉보기에는
-변화가 없는 것처럼 보인다. 앞서 언급한 간접효과 미분방정식으로부터 유도한 기저값은 아래와 같다.
+간접효과 모델에서 약물 투여 전 상태에서의 반응을 기저값으로 간주하며, 반응이 증가하거나 감소하는 정도가 동일하여 겉보기에는 변화가 없는 것처럼 보인다. 앞서 언급한 간접효과 미분방정식으로부터 유도한 기저값은 아래와 같다.
 
-\includegraphics{./assets/media-20/image13.png}
+\[
+R_{0} = \frac{k_{in}^0}{k_{out}}
+\]
 
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
 
@@ -5082,6 +4930,12 @@ Helmlinger, Gabriel, Nidal Al-Huniti, Sergey Aksenov, Kirill Peskov, Karen M Hal
 \leavevmode\hypertarget{ref-nickholford}{}%
 Holford, N. 2010. \emph{Differential Equation Models Using Nm-Tran}. Auckland, New Zealand: University of Auckland; University of Auckland. \url{http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf}.
 
+\leavevmode\hypertarget{ref-xpose41999}{}%
+Jonsson, E. N., and M. O. Karlsson. 1999. ``Xpose--an S-Plus Based Population Pharmacokinetic/Pharmacodynamic Model Building Aid for Nonmem.'' \emph{Computer Methods and Programs in Biomedicine} 58 (1): 51--64. \url{https://doi.org/10.1016/s0169-2607(98)00067-4}.
+
+\leavevmode\hypertarget{ref-lee2013pharmacokinetic}{}%
+Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. ``Pharmacokinetic--Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.'' \emph{European Journal of Clinical Pharmacology} 69 (1): 11--20.
+
 \leavevmode\hypertarget{ref-lee2012population}{}%
 Lee, Joomi, Yangha Hwang, Wonku Kang, Sook Jin Seong, Mi-sun Lim, Hae Won Lee, Dong-Seok Yim, Dong Ryul Sohn, Seunghoon Han, and Young-Ran Yoon. 2012. ``Population Pharmacokinetic/Pharmacodynamic Modeling of Clopidogrel in Korean Healthy Volunteers and Stroke Patients.'' \emph{The Journal of Clinical Pharmacology} 52 (7): 985--95.
 
@@ -5090,6 +4944,9 @@ Owen, Fiedler‐Kelly, J. 2014. \emph{Introduction to Population Pharmacokinetic
 
 \leavevmode\hypertarget{ref-R-nlme}{}%
 Pinheiro, Jose, Douglas Bates, and R-core. 2020. \emph{Nlme: Linear and Nonlinear Mixed Effects Models}. \url{https://CRAN.R-project.org/package=nlme}.
+
+\leavevmode\hypertarget{ref-dementia}{}%
+Primary Psychiatry. 2013. \emph{From Symptom Palliation to Disease Modification: Implications for Dementia Care}. \url{http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/}.
 
 \leavevmode\hypertarget{ref-sharma1998characteristics}{}%
 Sharma, A, and W J Jusko. 1998. ``Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.'' \emph{British Journal of Clinical Pharmacology} 45 (3): 229--39. \url{https://doi.org/10.1046/j.1365-2125.1998.00676.x}.

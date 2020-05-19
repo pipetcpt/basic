@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-18" />
+<meta name="date" content="2020-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,13 +288,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16.5" data-path="evaluation.html"><a href="evaluation.html#참고문헌"><i class="fa fa-check"></i><b>16.5</b> 참고문헌</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="약동-약력pk-pd-모델링의-이론적-기초.html"><a href="약동-약력pk-pd-모델링의-이론적-기초.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a></li>
+<li class="chapter" data-level="17" data-path="basic-pkpd.html"><a href="basic-pkpd.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#관련-개념"><i class="fa fa-check"></i><b>17.1</b> 관련 개념</a></li>
+<li class="chapter" data-level="17.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#약력학pd-및-약동-약력pk-pd-데이터의-특성"><i class="fa fa-check"></i><b>17.2</b> 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터"><i class="fa fa-check"></i><b>17.2.1</b> PD 데이터</a></li>
+<li class="chapter" data-level="17.2.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk-pd-데이터"><i class="fa fa-check"></i><b>17.2.2</b> PK-PD 데이터</a></li>
+<li class="chapter" data-level="17.2.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터를-모델링할-때-고려할-점"><i class="fa fa-check"></i><b>17.2.3</b> PD 데이터를 모델링할 때 고려할 점</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk와-pd의-관계"><i class="fa fa-check"></i><b>17.3</b> PK와 PD의 관계</a></li>
+</ul></li>
 <li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
 <li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
 <li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
-<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결-방법-적합법"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
 <li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
@@ -393,6 +403,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Holford, N. 2010. <em>Differential Equation Models Using Nm-Tran</em>. Auckland, New Zealand: University of Auckland; University of Auckland. <a href="http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf">http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf</a>.</p>
 </div>
 <div>
+<p>Jonsson, E. N., and M. O. Karlsson. 1999. “Xpose–an S-Plus Based Population Pharmacokinetic/Pharmacodynamic Model Building Aid for Nonmem.” <em>Computer Methods and Programs in Biomedicine</em> 58 (1): 51–64. <a href="https://doi.org/10.1016/s0169-2607(98)00067-4">https://doi.org/10.1016/s0169-2607(98)00067-4</a>.</p>
+</div>
+<div>
+<p>Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. “Pharmacokinetic–Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.” <em>European Journal of Clinical Pharmacology</em> 69 (1): 11–20.</p>
+</div>
+<div>
 <p>Lee, Joomi, Yangha Hwang, Wonku Kang, Sook Jin Seong, Mi-sun Lim, Hae Won Lee, Dong-Seok Yim, Dong Ryul Sohn, Seunghoon Han, and Young-Ran Yoon. 2012. “Population Pharmacokinetic/Pharmacodynamic Modeling of Clopidogrel in Korean Healthy Volunteers and Stroke Patients.” <em>The Journal of Clinical Pharmacology</em> 52 (7): 985–95.</p>
 </div>
 <div>
@@ -400,6 +416,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p>Pinheiro, Jose, Douglas Bates, and R-core. 2020. <em>Nlme: Linear and Nonlinear Mixed Effects Models</em>. <a href="https://CRAN.R-project.org/package=nlme">https://CRAN.R-project.org/package=nlme</a>.</p>
+</div>
+<div>
+<p>Primary Psychiatry. 2013. <em>From Symptom Palliation to Disease Modification: Implications for Dementia Care</em>. <a href="http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/">http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/</a>.</p>
 </div>
 <div>
 <p>Sharma, A, and W J Jusko. 1998. “Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.” <em>British Journal of Clinical Pharmacology</em> 45 (3): 229–39. <a href="https://doi.org/10.1046/j.1365-2125.1998.00676.x">https://doi.org/10.1046/j.1365-2125.1998.00676.x</a>.</p>
