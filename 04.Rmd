@@ -152,19 +152,22 @@ knitr::include_graphics("./assets/media-04/image3.png") # 3
 
 ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 \@ref(tab:additional-param)에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. [@nonmem]
 
-Table: (\#tab:additional-param) Additional PK parameters 
+```{r additional-param}
+txt <- "Name, Parameter
+Sn, Scaling parameter for compartment number n
+Fn, Bioavailability fraction for compartment n
+Rn, Rate parameter for compartment n
+Dn, Duration parameter for compartment n
+ALAGn, Absorption lag parameter for compartment n"
+read_csv(txt) %>% 
+  kable(booktabs=TRUE,
+        caption = "Additional PK parameters")
+```
 
-| **Name** | **Parameter**                              |
-| -------- | ------------------------------------------ |
-| Sn       | Scaling parameter for compartment number n |
-| Fn       | Bioavailability fraction for compartment n |
-| Rn       | Rate parameter for compartment n           |
-| Dn       | Duration parameter for compartment n       |
-| ALAGn    | Absorption lag parameter for compartment n |
 
 앞서 언급된 ADVAN & TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 CL = THETA(1) * EXP(ETA(1)) 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 공변량 강의에서 다뤄질 예정이다.
 
-```{theorem, code-example-advan4}
+```{theorem, code-example-advan4, echo = TRUE}
 공변량 수식 작성에 수월한 제어구문
 ```
 
@@ -205,7 +208,7 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 사용하면 된다. IV 데이터는 없고 PO 데이터의 용량군이 여러 개라면 아래처럼 하나의 용량군을 1로 고정하고, 다른 용량군의
 THETA를 다르게 주어 상대생체이용률을 구할 수 있다. (코드 \@ref(thm:code-if))
 
-```{theorem, code-if}
+```{theorem, code-if, echo=TRUE}
 상대생체이용률을 위한 제어구문
 ```
 

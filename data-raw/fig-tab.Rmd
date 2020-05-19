@@ -1,7 +1,14 @@
+---
+header-includes:
+  - \usepackage{kotex}
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
 ```{r setup}
-library(readxl)
-library(knitr)
-library(dplyr)
+my_packages <- c('kableExtra', 'readxl', 'readr', 'knitr', 'tidyverse')
+pacman::p_load(char = my_packages)
 ```
 
 ```{r}
@@ -33,5 +40,13 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="125", range="B2:C6") %>%
 
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>% 
   kable()
+```
+
+```{r}
+read_csv('../assets/media-13/tab1.csv') %>% 
+  rename(`Fitted $\\hat{Y}_i$` = 3) %>% 
+  kable(booktabs=TRUE, escape=FALSE) %>% 
+  kable_styling("striped") %>% 
+  add_header_above(c(" " = 1, "Plot of εi Versus" = 3))
 ```
 

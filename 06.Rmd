@@ -4,7 +4,7 @@ output:
   html_document: default
 ---
 
-# 기타 ADVAN
+# 기타 ADVAN {#newer-advan}
 
 **Newer ADVANs (ADVAN 9-13)**
 

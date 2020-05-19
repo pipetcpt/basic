@@ -1,4 +1,4 @@
-# 공변량 분석
+# 공변량 분석 {#covariate-analysis}
 
 **Covariate Analysis**
 
