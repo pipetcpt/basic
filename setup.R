@@ -10,3 +10,5 @@ knitr::opts_chunk$set(echo=FALSE,
                       dpi = 96, 
                       #fig.width = 1,
                       error = TRUE)
+
+options(knitr.kable.NA = '')

@@ -18,16 +18,25 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 
 ### \$DATA 레코드 작성
 
-\$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 `../` 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, `../` 가 없이 바로 파일 이름을 기입할 경우, 이는 컨트롤 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 아이템 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 IGNORE=@ 또는 IGNORE=#을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, "IGNORE=(GEN.EQ.1,AGE.GE.60)" 구문을 사용하여 가능하다).
+\$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 `../` 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, `../` 가 없이 바로 파일 이름을 기입할 경우, 이는 컨트롤 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 아이템 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 IGNORE=@ 또는 `IGNORE=#`을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, `IGNORE=(GEN.EQ.1,AGE.GE.60)` 구문을 사용하여 가능하다).
 
 ### \$INPUT 레코드 작성
 
-\$INPUT 레코드에는 데이터셋에 기재된 데이터 아이템의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 아이템이 있을 경우, 변수 뒤에 "=DROP" 이라는 한정어를 써주어 해당 아이템을 제거할 수 있다. \$DATA 레코드에서 "IGNORE" 또는 "ACCEPT" 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 \$INPUT 에서 "=DROP"을 사용하여 불필요한 아이템을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 아이템 레이블 이외의 다른 이름을 사용할 경우, "내장된 변수명=새 이름" (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.
+\$INPUT 레코드에는 데이터셋에 기재된 데이터 아이템의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 아이템이 있을 경우, 변수 뒤에 `=DROP` 이라는 한정어를 써주어 해당 아이템을 제거할 수 있다. \$DATA 레코드에서 "IGNORE" 또는 "ACCEPT" 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 \$INPUT 에서 `=DROP`을 사용하여 불필요한 아이템을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 아이템 레이블 이외의 다른 이름을 사용할 경우, "내장된 변수명=새 이름" (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.
 
-(ref:input) "\$PROB, \$DATA, \$INPUT 제어구문 작성의 예"
 
-```{r input, fig.cap ="(ref:input)"}
-knitr::include_graphics('assets/02-fig-01.jpg')
+<!-- ```{r input, fig.cap ="(ref:input)"} -->
+<!-- knitr::include_graphics('assets/02-fig-01.jpg') -->
+<!-- ``` -->
+
+```{theorem, input, echo=TRUE}
+\$PROB, \$DATA, \$INPUT 제어구문 작성의 예
+```
+
+```fortran
+$PROB HO_IV_1comp
+$DATA ../HOdata_IV.csv IGNORE=@
+$INPUT ID TIME AMT DV MDV SEX AGE WT HT
 ```
 
 ```{r tab}
@@ -105,18 +114,26 @@ EVID는 EVent Identification Data를 뜻하며 데이터 레코드의 유형에 
 
 ### TIME
 
-TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전에는 음의 값을 가질 수 없었지만, NONMEM 7.4부터는 음의 값을 가질 수 있다. 그림 5. 와 같이 데이터셋 작성 시 대상자 별로 시간이 순차적으로 증가하는 순서로 기입해야 하며, 감소하거나 뒤섞인 순서로 기입을 해서는 안된다(다만, 재설정 되는 투약 이벤트가 있는 경우는 예외일 수 있다).
+TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전에는 음의 값을 가질 수 없었지만, NONMEM 7.4부터는 음의 값을 가질 수 있다. 그림 \@ref(fig:time-dataset)와 같이 데이터셋 작성 시 대상자 별로 시간이 순차적으로 증가하는 순서로 기입해야 하며, 감소하거나 뒤섞인 순서로 기입을 해서는 안된다(다만, 재설정 되는 투약 이벤트가 있는 경우는 예외일 수 있다).
 
 TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.
 
-TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 그림 \@ref(fig:time-dataset)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 '/' 또는 '-' 사용) 컨트롤 파일의 \$INPUT에 반드시 DATE=DROP 이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
+TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \@ref(thm:date-dataset-chunk)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 '/' 또는 '-' 사용) 컨트롤 파일의 \$INPUT에 반드시 `DATE=DROP`이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
 
 ```{r time-dataset, fig.cap="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)"}
 knitr::include_graphics("assets/02-fig-07.png")
 ```
 
-```{r date-dataset, fig.cap="DATE label and its format"}
-knitr::include_graphics("assets/02-fig-08.png")
+
+```{theorem, date-dataset-chunk, echo=TRUE}
+DATE label and its format
+```
+
+```
+DATE  month day year
+DAT1  day month year
+DAT2  year month day
+DAT3  year day month
 ```
 
 ### AMT
@@ -159,6 +176,7 @@ SS(steady-state)는 시스템의 항정상태 도달 여부를 나타내며, 투
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet='22', range="B2:H6") %>% 
   mutate(Description = gsub("\r\n", "<br/>", Description)) %>% 
   knitr::kable(caption = 'Example of various dosing records and its description',
+               format='markdown',
                booktabs=TRUE)
 ```
 
