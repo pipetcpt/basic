@@ -110,11 +110,15 @@ MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information M
 MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1계 편미분한 것의 제곱과 2계 편미분한 것이
 부호만 반대인 같은 기대값을 가진다.
 
-\[\int f(x;\theta)dx = 1\]
+$$
+\begin{split}
+\int f(x;\theta)dx & = 1 \\
+\int exp(lnf(x;\theta))dx & = 1
+\end{split}
+(\#eq:mle-theory)
+$$
 
-\[\int exp(lnf(x;\theta))dx = 1\]
-
-양변을 \(\theta\)에 대해 미분하면
+양변을 $\theta$에 대해 미분하면
 
 \[\int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0\]
 

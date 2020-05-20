@@ -28,6 +28,7 @@ IE이 필요한 이유는 NONMEM이 파라미터 추정을 위해 Newton-Raphson
 
 $$
 x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
+
 $$
 
 또한, 이러한 일련의 과정을 그림 \@ref(fig:newton-minimization)을 통해 보다 쉽게 이해할 수 있다.

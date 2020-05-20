@@ -42,7 +42,7 @@ knitr::include_graphics("./assets/media-03/image1.png") # 3.1
 1구획 약동학 모델의 제어구문
 ```
 
-```c
+```r
 $PROB 1-compartment model
 $INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR
 $DATA test.csv IGNORE=@
