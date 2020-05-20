@@ -28,25 +28,25 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 
 ## \$PRED를 써야 하는 경우
 
-편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 \$PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 \@ref(thm:formula))
+편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 \$PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 \@ref(exm:formula))
 
-```{theorem, label="formula", echo = TRUE}
+```{example, label="formula", echo = TRUE}
 약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
+
+    $PROB Sigmoidal PD Model
+    $DATA ../sigmoidal_effect.csv IGNORE=@
+    $INPUT ID CP RESP=DV
+    $PRED
+      E0=THETA(1) ; Baseline
+      EMAX=THETA(2) ; Max Effect
+      C50=THETA(3)*EXP(ETA(1)) ; C50
+      ; only parameter with interindividual variability
+      GAM=THETA(4) ; Gamma
+      ; do not add an ETA to this - very hard to fit
+      IPRD=E0+(EMAX-E0)*CP**GAM/(CP**GAM+C50**GAM)
+      Y=IPRD+EPS(1)
+    $THETA
+    ...
+
 ```
 
-```fortran
-$PROB Sigmoidal PD Model
-$DATA ../sigmoidal_effect.csv IGNORE=@
-$INPUT ID CP RESP=DV
-$PRED
-  E0=THETA(1) ; Baseline
-  EMAX=THETA(2) ; Max Effect
-  C50=THETA(3)*EXP(ETA(1)) ; C50
-  ; only parameter with interindividual variability
-  GAM=THETA(4) ; Gamma
-  ; do not add an ETA to this - very hard to fit
-  IPRD=E0+(EMAX-E0)*CP**GAM/(CP**GAM+C50**GAM)
-  Y=IPRD+EPS(1)
-$THETA
-...
-```

@@ -16,6 +16,19 @@ monofontoptions: "Scale=0.4"
 #mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
 header-includes:
   - \usepackage{kotex}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
 fontsize: 10pt
 #http://ftp.harukasan.org/CTAN/macros/latex/contrib/geometry/geometry.pdf
 #geometry: "height=10in,b5paper"
@@ -32,8 +45,10 @@ author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김�
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 bibliography: ["references/references.bib", "references/packages.bib"]
-#bibliography: ["references/book.bib"] https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
 biblio-style: apalike
+#https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
+#biblio-style: authoryear
+#biblatexoptions: [refsegment=chapter]
 link-citations: yes
 colorlinks: yes
 lot: yes

@@ -12,7 +12,7 @@
 knitr::include_graphics("./assets/media-13/image1-2.png")
 ```
 
-잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \@ref(fig:def-residual), ε (epsilon)으로 표시한다(ε = C<sub>observation</sub> – C<sub>prediction</sub>). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.
+잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \@ref(fig:def-residual), ε (epsilon)으로 표시한다(ε = C~observation~ – C~prediction~). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.
 
 \index{과대예측}
 
@@ -43,9 +43,9 @@ include_graphics("./assets/media-13/image6-9.png") # fig 3
 ```
 
 
-실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \@ref(thm:combined-upper), \@ref(thm:combined-lower)와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드  \@ref(thm:combined-upper)은 가장 기본적인 형태이고,  코드 \@ref(thm:combined-lower)의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, 0.0001 FIX)하면 된다.
+실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \@ref(exm:combined-upper), \@ref(exm:combined-lower)와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드  \@ref(exm:combined-upper)은 가장 기본적인 형태이고,  코드 \@ref(exm:combined-lower)의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, 0.0001 FIX)하면 된다.
 
-```{theorem, combined-upper, echo=TRUE}
+```{example, combined-upper, echo=TRUE}
 $ERROR structure in NONMEM control stream: 기본형태
 ```
 
@@ -55,7 +55,7 @@ $ERROR
   Y     = IPRED * (1+EPS(1)) + EPS(2)
 ```
 
-```{theorem, combined-lower, echo=TRUE}
+```{example, combined-lower, echo=TRUE}
 $ERROR structure in NONMEM control stream
 ```
 

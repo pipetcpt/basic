@@ -1,10 +1,27 @@
 ---
 title: "test"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+header-includes:
+  - \usepackage{kotex}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
 ---
 
 ```{r setup, include=FALSE}
-source('../setup.R')
+source('../_setup.R')
 ```
 
 ## R Markdown
@@ -13,8 +30,31 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
+```{r}
+library(kableExtra)
+library(knitr)
 
+collapse_rows_dt <- data.frame(C1 = c(rep("a", 10), rep("b", 5)),
+                               C2 = c(rep("c", 7), rep("d", 3), rep("c", 2), rep("d", 3)),
+                               C3 = 1:15,
+                               C4 = sample(c(0,1), 15, replace = TRUE))
+
+#readxl::read_excel("fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
+kable(collapse_rows_dt, align = "c") %>%
+#  kable(align = "c") %>%
+  kable_styling(full_width = F) %>%
+  collapse_rows(columns = 1) %>%
+  column_spec(1, bold = T, extra_css = 'vertical-align: top !important;')
+```
+
+
+```{r cars, results = 'asis', eval = TRUE}
+readxl::read_excel("fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
+  kable(#booktabs=TRUE,  #longtable=TRUE, 
+        caption = "ADVAN") %>%
+  #column_spec(3:4, width = "3cm") %>% 
+  #column_spec(3:4) # %>% 
+  collapse_rows(columns = 1)
 ```
 
 ## Including Plots

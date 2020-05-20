@@ -1,5 +1,5 @@
 book_filename: basic
-before_chapter_script: ["setup.R"]
+before_chapter_script: ["_setup.R"]
 repo: https://github.com/pipetcpt/basic/
 output_dir: docs
 delete_merged_file: true
@@ -7,7 +7,8 @@ language:
   label:
     fig: "그림 "
     tab: "표 "
-    thm: "코드 "
+    #thm: "코드 "
+    exm: "코드 "
   ui:
     edit: "Edit"
     chapter_name: "Chapter "

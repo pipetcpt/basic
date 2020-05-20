@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A NONMEM 아웃풋 파일 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="A NONMEM 아웃풋 파일 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
+  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/basic" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A NONMEM 아웃풋 파일 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
+
+
+<meta name="date" content="2020-05-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="delayed-effect.html"/>
+<link rel="next" href="참고문헌.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-stream.html"><a href="control-stream.html"><i class="fa fa-check"></i><b>3</b> NONMEM 모델 종류 별 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="control-stream.html"><a href="control-stream.html#소개-1"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="control-stream.html"><a href="control-stream.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="control-stream.html"><a href="control-stream.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="control-stream.html"><a href="control-stream.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="general-advan.html"><a href="general-advan.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
+<li class="chapter" data-level="5.2" data-path="general-advan.html"><a href="general-advan.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="newer-advan.html"><a href="newer-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="newer-advan.html"><a href="newer-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="newer-advan.html"><a href="newer-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="newer-advan.html"><a href="newer-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="newer-advan.html"><a href="newer-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#서론"><i class="fa fa-check"></i><b>8.1</b> 서론</a></li>
+<li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#IE-role"><i class="fa fa-check"></i><b>8.2</b> 초기 추정값의 의미와 역할</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.3</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
+<li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.4</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> THETA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> OMEGA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.7" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.7</b> SIGMA의 초기추정값 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estimation-methods.html"><a href="estimation-methods.html"><i class="fa fa-check"></i><b>9</b> 파라미터 추정 방법 및 세팅</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="estimation-methods.html"><a href="estimation-methods.html#추정-방법-및-관련-옵션"><i class="fa fa-check"></i><b>9.1</b> 추정 방법 및 관련 옵션</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="estimation-methods.html"><a href="estimation-methods.html#noabort"><i class="fa fa-check"></i><b>9.1.1</b> NOABORT</a></li>
+<li class="chapter" data-level="9.1.2" data-path="estimation-methods.html"><a href="estimation-methods.html#maxeval"><i class="fa fa-check"></i><b>9.1.2</b> MAXEVAL</a></li>
+<li class="chapter" data-level="9.1.3" data-path="estimation-methods.html"><a href="estimation-methods.html#method"><i class="fa fa-check"></i><b>9.1.3</b> METHOD</a></li>
+<li class="chapter" data-level="9.1.4" data-path="estimation-methods.html"><a href="estimation-methods.html#interaction"><i class="fa fa-check"></i><b>9.1.4</b> INTERACTION</a></li>
+<li class="chapter" data-level="9.1.5" data-path="estimation-methods.html"><a href="estimation-methods.html#print"><i class="fa fa-check"></i><b>9.1.5</b> PRINT</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="estimation-methods.html"><a href="estimation-methods.html#nonmem-추정"><i class="fa fa-check"></i><b>9.2</b> NONMEM 추정</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="estimation-methods.html"><a href="estimation-methods.html#ols-방식"><i class="fa fa-check"></i><b>9.2.1</b> OLS 방식</a></li>
+<li class="chapter" data-level="9.2.2" data-path="estimation-methods.html"><a href="estimation-methods.html#wls-방식"><i class="fa fa-check"></i><b>9.2.2</b> WLS 방식</a></li>
+<li class="chapter" data-level="9.2.3" data-path="estimation-methods.html"><a href="estimation-methods.html#els-방식"><i class="fa fa-check"></i><b>9.2.3</b> ELS 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood"><i class="fa fa-check"></i><b>9.3</b> Likelihood</a></li>
+<li class="chapter" data-level="9.4" data-path="estimation-methods.html"><a href="estimation-methods.html#taylor-전개식"><i class="fa fa-check"></i><b>9.4</b> Taylor 전개식</a></li>
+<li class="chapter" data-level="9.5" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood-ratio-test"><i class="fa fa-check"></i><b>9.5</b> Likelihood Ratio Test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="use-of-xpose4.html"><a href="use-of-xpose4.html"><i class="fa fa-check"></i><b>10</b> NONMEM 실행결과 해석 및 Xpose4 사용법</a></li>
+<li class="chapter" data-level="11" data-path="covariate-analysis.html"><a href="covariate-analysis.html"><i class="fa fa-check"></i><b>11</b> 공변량 분석</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#서론-1"><i class="fa fa-check"></i><b>11.1</b> 서론</a></li>
+<li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석의-일반적-절차"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석의 일반적 절차</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#항목-평가-variable-evaluation"><i class="fa fa-check"></i><b>11.2.1</b> 항목 평가 (variable evaluation)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-스크리닝-covariate-screening"><i class="fa fa-check"></i><b>11.2.2</b> 공변량 스크리닝 (covariate screening)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공선성co-linearity에-대한-고려"><i class="fa fa-check"></i><b>11.2.3</b> 공선성(co-linearity)에 대한 고려</a></li>
+<li class="chapter" data-level="11.2.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.2.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.2.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="diag-eval.html"><a href="diag-eval.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="diag-eval.html"><a href="diag-eval.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="diag-eval.html"><a href="diag-eval.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="parameters.html"><a href="parameters.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="evaluation.html"><a href="evaluation.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="evaluation.html"><a href="evaluation.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="evaluation.html"><a href="evaluation.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="evaluation.html"><a href="evaluation.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="evaluation.html"><a href="evaluation.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="evaluation.html"><a href="evaluation.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="evaluation.html"><a href="evaluation.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="basic-pkpd.html"><a href="basic-pkpd.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#관련-개념"><i class="fa fa-check"></i><b>17.1</b> 관련 개념</a></li>
+<li class="chapter" data-level="17.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#약력학pd-및-약동-약력pk-pd-데이터의-특성"><i class="fa fa-check"></i><b>17.2</b> 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터"><i class="fa fa-check"></i><b>17.2.1</b> PD 데이터</a></li>
+<li class="chapter" data-level="17.2.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk-pd-데이터"><i class="fa fa-check"></i><b>17.2.2</b> PK-PD 데이터</a></li>
+<li class="chapter" data-level="17.2.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터를-모델링할-때-고려할-점"><i class="fa fa-check"></i><b>17.2.3</b> PD 데이터를 모델링할 때 고려할 점</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk와-pd의-관계"><i class="fa fa-check"></i><b>17.3</b> PK와 PD의 관계</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
+<li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
+<li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
+<li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="pkpd-link.html"><a href="pkpd-link.html#간접효과-pk-pd-모델의-예-examples-of-pk-pd-model-with-indirect-response"><i class="fa fa-check"></i><b>18.6</b> 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response)</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="pkpd-link.html"><a href="pkpd-link.html#sim과-pppd-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.1</b> SIM과 PPP&amp;D 데이터셋 및 제어구문</a></li>
+<li class="chapter" data-level="18.6.2" data-path="pkpd-link.html"><a href="pkpd-link.html#ppp의-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.2</b> PPP의 데이터셋 및 제어구문</a></li>
+<li class="chapter" data-level="18.6.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp의-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.3</b> IPP의 데이터셋 및 제어구문</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결방법적합법-비교"><i class="fa fa-check"></i><b>18.7</b> PK-PD 연결방법(적합법) 비교</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="pkpd-link.html"><a href="pkpd-link.html#각-방법의-장점-및-단점"><i class="fa fa-check"></i><b>18.7.1</b> 각 방법의 장점 및 단점</a></li>
+<li class="chapter" data-level="18.7.2" data-path="pkpd-link.html"><a href="pkpd-link.html#각-방법의-소요시간-및-정밀도-비교"><i class="fa fa-check"></i><b>18.7.2</b> 각 방법의 소요시간 및 정밀도 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결방법적합법-요약-및-결론"><i class="fa fa-check"></i><b>18.8</b> PK-PD 연결방법(적합법) 요약 및 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="effect-model.html"><a href="effect-model.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="effect-model.html"><a href="effect-model.html#소개-3"><i class="fa fa-check"></i><b>19.1</b> 소개</a></li>
+<li class="chapter" data-level="19.2" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-종류"><i class="fa fa-check"></i><b>19.2</b> PD 모델의 종류</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#선형모델linear-model"><i class="fa fa-check"></i><b>19.2.1</b> 선형모델(linear model)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#로그-선형모델log-linear-model"><i class="fa fa-check"></i><b>19.2.2</b> 로그-선형모델(log-linear model)</a></li>
+<li class="chapter" data-level="19.2.3" data-path="effect-model.html"><a href="effect-model.html#emax-model"><i class="fa fa-check"></i><b>19.2.3</b> E<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.2.4" data-path="effect-model.html"><a href="effect-model.html#sigmoid-emax-model-hill-방정식"><i class="fa fa-check"></i><b>19.2.4</b> Sigmoid E<sub>max</sub> model (Hill 방정식)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-적용"><i class="fa fa-check"></i><b>19.3</b> PD 모델의 적용</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.3.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.3.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.3.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="delayed-effect.html"><a href="delayed-effect.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="delayed-effect.html"><a href="delayed-effect.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="delayed-effect.html"><a href="delayed-effect.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="delayed-effect.html"><a href="delayed-effect.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="delayed-effect.html"><a href="delayed-effect.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="delayed-effect.html"><a href="delayed-effect.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="delayed-effect.html"><a href="delayed-effect.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="delayed-effect.html"><a href="delayed-effect.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="delayed-effect.html"><a href="delayed-effect.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>별첨</b></span></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
+<li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nonmem-아웃풋-파일" class="section level1" number="21">
+<h1><span class="header-section-number">A</span> NONMEM 아웃풋 파일</h1>
+<pre><code>##   [1] &quot;&quot;                                                                                                       
+##   [2] &quot;```&quot;                                                                                                    
+##   [3] &quot;*******************************************************************************************************&quot;
+##   [4] &quot;********************                                                                                ***&quot;
+##   [5] &quot;********************                                   FIRST ORDER                                  ***&quot;
+##   [6] &quot;********************                            STANDARD ERROR OF ESTIMATE                          ***&quot;
+##   [7] &quot;********************                                                                                ***&quot;
+##   [8] &quot;*******************************************************************************************************&quot;
+##   [9] &quot;                                                                                                       &quot;
+##  [10] &quot;                                                                                                       &quot;
+##  [11] &quot;                                                                                                       &quot;
+##  [12] &quot;THETA - VECTOR OF FIXED EFFECTS PARAMETERS   *********                                                 &quot;
+##  [13] &quot;                                                                                                       &quot;
+##  [14] &quot;                                                                                                       &quot;
+##  [15] &quot;        TH 1      TH 2      TH 3                                                                       &quot;
+##  [16] &quot;                                                                                                       &quot;
+##  [17] &quot;        6.41E-01  1.68E+00  2.31E-02                                                                   &quot;
+##  [18] &quot;                                                                                                       &quot;
+##  [19] &quot;                                                                                                       &quot;
+##  [20] &quot;                                                                                                       &quot;
+##  [21] &quot;OMEGA - COV MATRIX FOR RANDOM EFFECTS - ETAS  ********                                                 &quot;
+##  [22] &quot;                                                                                                       &quot;
+##  [23] &quot;                                                                                                       &quot;
+##  [24] &quot;        ETA1      ETA2      ETA3                                                                       &quot;
+##  [25] &quot;                                                                                                       &quot;
+##  [26] &quot;ETA1    4.21E-01                                                                                       &quot;
+##  [27] &quot;                                                                                                       &quot;
+##  [28] &quot;ETA2    8.22E-02  1.98E-02                                                                             &quot;
+##  [29] &quot;                                                                                                       &quot;
+##  [30] &quot;ETA3    3.40E-01  2.30E-02  2.89E-01                                                                   &quot;
+##  [31] &quot;                                                                                                       &quot;
+##  [32] &quot;                                                                                                       &quot;
+##  [33] &quot;                                                                                                       &quot;
+##  [34] &quot;SIGMA - COV MATRIX FOR RANDOM EFFECTS - EPSILONS  ****                                                 &quot;
+##  [35] &quot;                                                                                                       &quot;
+##  [36] &quot;                                                                                                       &quot;
+##  [37] &quot;        EPS1      EPS2                                                                                 &quot;
+##  [38] &quot;                                                                                                       &quot;
+##  [39] &quot;EPS1    3.58E-03                                                                                       &quot;
+##  [40] &quot;                                                                                                       &quot;
+##  [41] &quot;EPS2   .........  3.21E-02                                                                             &quot;
+##  [42] &quot;                                                                                                       &quot;
+##  [43] &quot;                                                                                                       &quot;
+##  [44] &quot;                                                                                                       &quot;
+##  [45] &quot;                                                                                                       &quot;
+##  [46] &quot;OMEGA - CORR MATRIX FOR RANDOM EFFECTS - ETAS  *******                                                 &quot;
+##  [47] &quot;                                                                                                       &quot;
+##  [48] &quot;                                                                                                       &quot;
+##  [49] &quot;        ETA1      ETA2      ETA3                                                                       &quot;
+##  [50] &quot;                                                                                                       &quot;
+##  [51] &quot;ETA1    1.92E-01                                                                                       &quot;
+##  [52] &quot;                                                                                                       &quot;
+##  [53] &quot;ETA2    1.78E-01  5.59E-02                                                                             &quot;
+##  [54] &quot;                                                                                                       &quot;
+##  [55] &quot;ETA3    2.10E-01  1.99E-01  2.89E-01                                                                   &quot;
+##  [56] &quot;                                                                                                       &quot;
+##  [57] &quot;                                                                                                       &quot;
+##  [58] &quot;                                                                                                       &quot;
+##  [59] &quot;SIGMA - CORR MATRIX FOR RANDOM EFFECTS - EPSILONS  ***                                                 &quot;
+##  [60] &quot;                                                                                                       &quot;
+##  [61] &quot;                                                                                                       &quot;
+##  [62] &quot;        EPS1      EPS2                                                                                 &quot;
+##  [63] &quot;                                                                                                       &quot;
+##  [64] &quot;EPS1    1.63E-02                                                                                       &quot;
+##  [65] &quot;                                                                                                       &quot;
+##  [66] &quot;EPS2   .........  6.88E-02                                                                             &quot;
+##  [67] &quot;                                                                                                       &quot;
+##  [68] &quot;                                                                                                       &quot;
+##  [69] &quot;*******************************************************************************************************&quot;
+##  [70] &quot;********************                                                                                ***&quot;
+##  [71] &quot;********************                                   FIRST ORDER                                  ***&quot;
+##  [72] &quot;********************                          COVARIANCE MATRIX OF ESTIMATE                         ***&quot;
+##  [73] &quot;********************                                                                                ***&quot;
+##  [74] &quot;*******************************************************************************************************&quot;
+##  [75] &quot;                                                                                                       &quot;
+##  [76] &quot;                                                                                                       &quot;
+##  [77] &quot;           TH 1      TH 2      TH 3      OM11      OM12      OM13      OM22      OM23      OM33      SG&quot;
+##  [78] &quot;                                                                                                       &quot;
+##  [79] &quot;                                                                                                       &quot;
+##  [80] &quot;TH 1    4.11E-01                                                                                       &quot;
+##  [81] &quot;                                                                                                       &quot;
+##  [82] &quot;TH 2    3.39E-01  2.84E+00                                                                             &quot;
+##  [83] &quot;                                                                                                       &quot;
+##  [84] &quot;TH 3    5.75E-03  5.04E-03  5.32E-04                                                                   &quot;
+##  [85] &quot;                                                                                                       &quot;
+##  [86] &quot;OM11    2.06E-01  3.37E-01  1.63E-03  1.77E-01                                                         &quot;
+##  [87] &quot;                                                                                                       &quot;
+##  [88] &quot;OM12    2.01E-03  3.48E-02 -1.04E-03  1.95E-02  6.75E-03                                               &quot;
+##  [89] &quot;                                                                                                       &quot;
+##  [90] &quot;OM13    1.22E-01  1.49E-01  7.11E-03  5.75E-02 -1.01E-02  1.16E-01                                     &quot;
+##  [91] &quot;                                                                                                       &quot;
+##  [92] &quot;OM22   -2.19E-03  1.28E-02 -2.50E-04  3.21E-03  1.50E-03 -2.83E-03  3.92E-04                           &quot;
+##  [93] &quot;                                                                                                       &quot;
+##  [94] &quot;OM23    1.00E-03  2.38E-02  6.31E-05  4.21E-03  8.56E-04  3.12E-03  2.32E-04  5.31E-04                 &quot;
+##  [95] &quot;                                                                                                       &quot;
+##  [96] &quot;OM33    6.70E-02  5.74E-02  6.22E-03  1.80E-02 -1.31E-02  9.40E-02 -3.27E-03  1.87E-03  8.38E-02       &quot;
+##  [97] &quot;                                                                                                       &quot;
+##  [98] &quot;SG11    1.05E-03  1.81E-03  5.81E-05  5.14E-04 -7.52E-05  9.77E-04 -2.05E-05  2.79E-05  8.05E-04  1.28E&quot;
+##  [99] &quot;                                                                                                       &quot;
+## [100] &quot;SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......&quot;
+## [101] &quot;                                                                                                       &quot;
+## [102] &quot;SG22   -4.97E-03 -9.95E-03 -4.79E-04 -1.01E-03  9.53E-04 -3.86E-03  1.81E-04  2.20E-04 -3.40E-03 -2.82E&quot;
+## [103] &quot;                                                                                                       &quot;
+## [104] &quot;                                                                                                       &quot;
+## [105] &quot;*******************************************************************************************************&quot;
+## [106] &quot;********************                                                                                ***&quot;
+## [107] &quot;********************                                   FIRST ORDER                                  ***&quot;
+## [108] &quot;********************                          CORRELATION MATRIX OF ESTIMATE                        ***&quot;
+## [109] &quot;********************                                                                                ***&quot;
+## [110] &quot;*******************************************************************************************************&quot;
+## [111] &quot;                                                                                                       &quot;
+## [112] &quot;                                                                                                       &quot;
+## [113] &quot;           TH 1      TH 2      TH 3      OM11      OM12      OM13      OM22      OM23      OM33      SG&quot;
+## [114] &quot;                                                                                                       &quot;
+## [115] &quot;                                                                                                       &quot;
+## [116] &quot;TH 1    6.41E-01                                                                                       &quot;
+## [117] &quot;                                                                                                       &quot;
+## [118] &quot;TH 2    3.14E-01  1.68E+00                                                                             &quot;
+## [119] &quot;                                                                                                       &quot;
+## [120] &quot;TH 3    3.89E-01  1.30E-01  2.31E-02                                                                   &quot;
+## [121] &quot;                                                                                                       &quot;
+## [122] &quot;OM11    7.63E-01  4.76E-01  1.68E-01  4.21E-01                                                         &quot;
+## [123] &quot;                                                                                                       &quot;
+## [124] &quot;OM12    3.81E-02  2.52E-01 -5.49E-01  5.64E-01  8.22E-02                                               &quot;
+## [125] &quot;                                                                                                       &quot;
+## [126] &quot;OM13    5.57E-01  2.60E-01  9.06E-01  4.02E-01 -3.61E-01  3.40E-01                                     &quot;
+## [127] &quot;                                                                                                       &quot;
+## [128] &quot;OM22   -1.73E-01  3.83E-01 -5.48E-01  3.85E-01  9.24E-01 -4.19E-01  1.98E-02                           &quot;
+## [129] &quot;                                                                                                       &quot;
+## [130] &quot;OM23    6.79E-02  6.14E-01  1.19E-01  4.35E-01  4.52E-01  3.98E-01  5.09E-01  2.30E-02                 &quot;
+## [131] &quot;                                                                                                       &quot;
+## [132] &quot;OM33    3.61E-01  1.18E-01  9.32E-01  1.48E-01 -5.50E-01  9.54E-01 -5.70E-01  2.80E-01  2.89E-01       &quot;
+## [133] &quot;                                                                                                       &quot;
+## [134] &quot;SG11    4.58E-01  3.00E-01  7.04E-01  3.42E-01 -2.56E-01  8.02E-01 -2.90E-01  3.38E-01  7.78E-01  3.58E&quot;
+## [135] &quot;                                                                                                       &quot;
+## [136] &quot;SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......&quot;
+## [137] &quot;                                                                                                       &quot;
+## [138] &quot;SG22   -2.42E-01 -1.84E-01 -6.47E-01 -7.52E-02  3.61E-01 -3.54E-01  2.84E-01  2.97E-01 -3.66E-01 -2.46E&quot;
+## [139] &quot;                                                                                                       &quot;
+## [140] &quot;                                                                                                       &quot;
+## [141] &quot;*******************************************************************************************************&quot;
+## [142] &quot;********************                                                                                ***&quot;
+## [143] &quot;********************                                   FIRST ORDER                                  ***&quot;
+## [144] &quot;********************                      INVERSE COVARIANCE MATRIX OF ESTIMATE                     ***&quot;
+## [145] &quot;********************                                                                                ***&quot;
+## [146] &quot;*******************************************************************************************************&quot;
+## [147] &quot;                                                                                                       &quot;
+## [148] &quot;                                                                                                       &quot;
+## [149] &quot;           TH 1      TH 2      TH 3      OM11      OM12      OM13      OM22      OM23      OM33      SG&quot;
+## [150] &quot;                                                                                                       &quot;
+## [151] &quot;                                                                                                       &quot;
+## [152] &quot;TH 1    1.06E+02                                                                                       &quot;
+## [153] &quot;                                                                                                       &quot;
+## [154] &quot;TH 2   -6.86E+01  5.80E+01                                                                             &quot;
+## [155] &quot;                                                                                                       &quot;
+## [156] &quot;TH 3    6.45E+03 -4.88E+03  5.90E+05                                                                   &quot;
+## [157] &quot;                                                                                                       &quot;
+## [158] &quot;OM11    3.36E+02 -3.02E+02  2.70E+04  1.68E+03                                                         &quot;
+## [159] &quot;                                                                                                       &quot;
+## [160] &quot;OM12   -2.55E+03  2.18E+03 -1.89E+05 -1.17E+04  8.48E+04                                               &quot;
+## [161] &quot;                                                                                                       &quot;
+## [162] &quot;OM13   -1.20E+03  9.40E+02 -9.03E+04 -5.09E+03  3.58E+04  1.67E+04                                     &quot;
+## [163] &quot;                                                                                                       &quot;
+## [164] &quot;OM22   -3.88E+02  5.71E+02 -6.62E+04 -3.41E+03  1.37E+04  1.09E+04  7.22E+04                           &quot;
+## [165] &quot;                                                                                                       &quot;
+## [166] &quot;OM23    1.08E+04 -8.98E+03  7.96E+05  4.74E+04 -3.37E+05 -1.50E+05 -1.17E+05  1.42E+06                 &quot;
+## [167] &quot;                                                                                                       &quot;
+## [168] &quot;OM33   -4.97E+01  8.80E+01 -1.06E+04 -4.44E+02  3.32E+03  9.71E+02  2.83E+03 -1.41E+04  9.57E+02       &quot;
+## [169] &quot;                                                                                                       &quot;
+## [170] &quot;SG11    1.17E+04 -1.01E+04  8.99E+05  5.33E+04 -3.79E+05 -1.67E+05 -1.39E+05  1.59E+06 -2.01E+04  2.03E&quot;
+## [171] &quot;                                                                                                       &quot;
+## [172] &quot;SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......&quot;
+## [173] &quot;                                                                                                       &quot;
+## [174] &quot;SG22   -1.04E+03  1.00E+03 -4.72E+04 -4.88E+03  3.51E+04  1.43E+04  1.57E+04 -1.52E+05  9.39E+02 -1.70E&quot;
+## [175] &quot;                                                                                                       &quot;
+## [176] &quot;                                                                                                       &quot;
+## [177] &quot;*******************************************************************************************************&quot;
+## [178] &quot;********************                                                                                ***&quot;
+## [179] &quot;********************                                   FIRST ORDER                                  ***&quot;
+## [180] &quot;********************                      EIGENVALUES OF COR MATRIX OF ESTIMATE                     ***&quot;
+## [181] &quot;********************                                                                                ***&quot;
+## [182] &quot;*******************************************************************************************************&quot;
+## [183] &quot;                                                                                                       &quot;
+## [184] &quot;                                                                                                       &quot;
+## [185] &quot;            1         2         3         4         5         6         7         8         9        10&quot;
+## [186] &quot;                                                                                                       &quot;
+## [187] &quot;        2.52E-04  9.67E-03  1.08E-02  2.33E-02  5.21E-02  2.98E-01  5.05E-01  9.11E-01  1.21E+00  3.21E&quot;
+## [188] &quot;                                                                                                       &quot;
+## [189] &quot;                                                                                                       &quot;
+## [190] &quot;*******************************************************************************************************&quot;
+## [191] &quot;********************                                                                                ***&quot;
+## [192] &quot;********************                                   FIRST ORDER                                  ***&quot;
+## [193] &quot;********************                                     R MATRIX                                   ***&quot;
+## [194] &quot;********************                                                                                ***&quot;
+## [195] &quot;*******************************************************************************************************&quot;
+## [196] &quot;                                                                                                       &quot;
+## [197] &quot;                                                                                                       &quot;
+## [198] &quot;           TH 1      TH 2      TH 3      OM11      OM12      OM13      OM22      OM23      OM33      SG&quot;
+## [199] &quot;                                                                                                       &quot;
+## [200] &quot;                                                                                                       &quot;
+## [201] &quot;TH 1    1.79E+01                                                                                       &quot;
+## [202] &quot;                                                                                                       &quot;
+## [203] &quot;TH 2   -1.33E+00  5.51E-01                                                                             &quot;
+## [204] &quot;                                                                                                       &quot;
+## [205] &quot;TH 3   -1.63E+02 -7.67E+00  3.43E+04                                                                   &quot;
+## [206] &quot;                                                                                                       &quot;
+## [207] &quot;OM11   -4.13E+00  1.12E-01  8.60E+01  2.86E+01                                                         &quot;
+## [208] &quot;                                                                                                       &quot;
+## [209] &quot;OM12    2.16E+01 -1.46E+00  4.34E+02 -1.77E+02  1.93E+03                                               &quot;
+## [210] &quot;                                                                                                       &quot;
+## [211] &quot;OM13   -1.10E+01  2.99E+00 -9.08E+01 -5.29E+01  2.11E+02  2.13E+02                                     &quot;
+## [212] &quot;                                                                                                       &quot;
+## [213] &quot;OM22    1.02E+01 -1.65E+01  1.35E+01  2.73E+02 -4.27E+03 -1.40E+02  1.66E+04                           &quot;
+## [214] &quot;                                                                                                       &quot;
+## [215] &quot;OM23    5.23E+01 -1.83E+01  9.57E+02  1.64E+02 -1.42E+03 -5.56E+02  1.11E+03  4.05E+03                 &quot;
+## [216] &quot;                                                                                                       &quot;
+## [217] &quot;OM33    7.05E+00 -2.23E+00 -1.35E+03  2.45E+01 -4.37E+01 -1.51E+02  1.87E+01  1.31E+02  2.37E+02       &quot;
+## [218] &quot;                                                                                                       &quot;
+## [219] &quot;SG11    2.49E+02 -1.21E+02 -7.03E+03  5.03E+01 -1.01E+03  9.63E+01  4.68E+03 -5.57E+02 -2.03E+01  1.93E&quot;
+## [220] &quot;                                                                                                       &quot;
+## [221] &quot;SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......&quot;
+## [222] &quot;                                                                                                       &quot;
+## [223] &quot;SG22   -1.75E+00 -5.21E+00 -1.99E+03  6.01E+00  1.24E+02 -6.30E+01 -4.59E+01 -2.01E+02  9.27E+01  6.57E&quot;
+## [224] &quot;                                                                                                       &quot;
+## [225] &quot;                                                                                                       &quot;
+## [226] &quot;*******************************************************************************************************&quot;
+## [227] &quot;********************                                                                                ***&quot;
+## [228] &quot;********************                                   FIRST ORDER                                  ***&quot;
+## [229] &quot;********************                                     S MATRIX                                   ***&quot;
+## [230] &quot;********************                                                                                ***&quot;
+## [231] &quot;*******************************************************************************************************&quot;
+## [232] &quot;                                                                                                       &quot;
+## [233] &quot;                                                                                                       &quot;
+## [234] &quot;           TH 1      TH 2      TH 3      OM11      OM12      OM13      OM22      OM23      OM33      SG&quot;
+## [235] &quot;                                                                                                       &quot;
+## [236] &quot;                                                                                                       &quot;
+## [237] &quot;TH 1    7.83E+01                                                                                       &quot;
+## [238] &quot;                                                                                                       &quot;
+## [239] &quot;TH 2   -4.65E+00  7.65E-01                                                                             &quot;
+## [240] &quot;                                                                                                       &quot;
+## [241] &quot;TH 3   -1.30E+03  6.44E+01  1.84E+05                                                                   &quot;
+## [242] &quot;                                                                                                       &quot;
+## [243] &quot;OM11   -1.19E+01  2.62E+00 -2.31E+02  1.84E+01                                                         &quot;
+## [244] &quot;                                                                                                       &quot;
+## [245] &quot;OM12    1.43E+02 -2.86E+01  8.40E+02 -1.72E+02  2.01E+03                                               &quot;
+## [246] &quot;                                                                                                       &quot;
+## [247] &quot;OM13   -2.67E+01  2.39E-01  3.80E+03 -1.97E+01  5.17E+01  1.29E+02                                     &quot;
+## [248] &quot;                                                                                                       &quot;
+## [249] &quot;OM22   -1.46E+02  2.95E+01  9.00E+03  2.92E+02 -3.81E+03  1.89E+02  1.20E+04                           &quot;
+## [250] &quot;                                                                                                       &quot;
+## [251] &quot;OM23    4.44E+01  1.08E+01 -1.08E+04  8.49E+01 -7.65E+02 -2.93E+02  6.68E+02  1.12E+03                 &quot;
+## [252] &quot;                                                                                                       &quot;
+## [253] &quot;OM33    1.40E+01 -4.41E+00 -6.40E+03  3.47E+00  8.80E+01 -1.56E+02 -7.13E+02  2.95E+02  3.28E+02       &quot;
+## [254] &quot;                                                                                                       &quot;
+## [255] &quot;SG11    2.04E+03 -3.98E+02 -4.14E+03 -1.17E+03  8.92E+03  1.80E+03 -3.83E+03 -1.06E+04  1.81E+03  4.20E&quot;
+## [256] &quot;                                                                                                       &quot;
+## [257] &quot;SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......&quot;
+## [258] &quot;                                                                                                       &quot;
+## [259] &quot;SG22    2.80E+02 -4.73E+01 -6.05E+04 -2.27E+01  6.71E+02 -1.11E+03 -3.49E+03  2.78E+03  2.36E+03  1.81E&quot;
+## [260] &quot;```&quot;</code></pre>
+<!--  -->
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="delayed-effect.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="참고문헌.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/99-Appendix.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

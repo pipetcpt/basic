@@ -1,4 +1,5 @@
-all: gitbook pdf epub
+alL: pdf
+#alL: gitbook pdf epub
 
 clean:
 	rm -rf docs _bookdown_files basic.*

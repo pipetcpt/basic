@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 NONMEM의 $COVARIANCE | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 NONMEM의 $COVARIANCE | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
+  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="github-repo" content="pipetcpt/basic" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 NONMEM의 $COVARIANCE | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  
+  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+
+<meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
+
+
+<meta name="date" content="2020-05-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fit.html"/>
+<link rel="next" href="parameters.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링-mixed-effects-modeling"><i class="fa fa-check"></i><b>1.2</b> 혼합효과 모델링 Mixed-effects modeling</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#집단의-데이터를-처리하는-세가지-방법"><i class="fa fa-check"></i><b>1.2.1</b> 집단의 데이터를 처리하는 세가지 방법</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#혼합효과-모델링의-개념"><i class="fa fa-check"></i><b>1.2.2</b> 혼합효과 모델링의 개념</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html"><i class="fa fa-check"></i><b>2</b> NONMEM 데이터셋</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#필수-제어구문-작성-방법"><i class="fa fa-check"></i><b>2.1</b> 필수 제어구문 작성 방법</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#prob-레코드-작성"><i class="fa fa-check"></i><b>2.1.1</b> $PROB 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#data-레코드-작성"><i class="fa fa-check"></i><b>2.1.2</b> $DATA 레코드 작성</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#input-레코드-작성"><i class="fa fa-check"></i><b>2.1.3</b> $INPUT 레코드 작성</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
+<li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
+<li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
+<li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
+<li class="chapter" data-level="2.5.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#mdv"><i class="fa fa-check"></i><b>2.5.3</b> MDV</a></li>
+<li class="chapter" data-level="2.5.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#evid"><i class="fa fa-check"></i><b>2.5.4</b> EVID</a></li>
+<li class="chapter" data-level="2.5.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#time"><i class="fa fa-check"></i><b>2.5.5</b> TIME</a></li>
+<li class="chapter" data-level="2.5.6" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#amt"><i class="fa fa-check"></i><b>2.5.6</b> AMT</a></li>
+<li class="chapter" data-level="2.5.7" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#rate"><i class="fa fa-check"></i><b>2.5.7</b> RATE</a></li>
+<li class="chapter" data-level="2.5.8" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#addl-ii"><i class="fa fa-check"></i><b>2.5.8</b> ADDL &amp; II</a></li>
+<li class="chapter" data-level="2.5.9" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#ss"><i class="fa fa-check"></i><b>2.5.9</b> SS</a></li>
+<li class="chapter" data-level="2.5.10" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#cmt"><i class="fa fa-check"></i><b>2.5.10</b> CMT</a></li>
+<li class="chapter" data-level="2.5.11" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#covariates"><i class="fa fa-check"></i><b>2.5.11</b> Covariates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="control-stream.html"><a href="control-stream.html"><i class="fa fa-check"></i><b>3</b> NONMEM 모델 종류 별 제어구문 소개</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="control-stream.html"><a href="control-stream.html#소개-1"><i class="fa fa-check"></i><b>3.1</b> 소개</a></li>
+<li class="chapter" data-level="3.2" data-path="control-stream.html"><a href="control-stream.html#제어구문의-구성"><i class="fa fa-check"></i><b>3.2</b> 제어구문의 구성</a></li>
+<li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#predpp와-pred"><i class="fa fa-check"></i><b>3.3</b> PREDPP와 PRED</a></li>
+<li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.4</b> 제어구문에 쓰이는 레코드</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.4.1</b> $PROBLEM, $DATA, $INPUT</a></li>
+<li class="chapter" data-level="3.4.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.4.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.4.3</b> $THETA, $OMEGA, $SIGMA</a></li>
+<li class="chapter" data-level="3.4.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.4.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.4.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.4.5</b> $COVARIANCE, $TABLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.5</b> 모델 종류별 제어구문</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="control-stream.html"><a href="control-stream.html#특수-advan과-일반-advan"><i class="fa fa-check"></i><b>3.5.1</b> 특수 ADVAN과 일반 ADVAN</a></li>
+<li class="chapter" data-level="3.5.2" data-path="control-stream.html"><a href="control-stream.html#일반-비선형-모델"><i class="fa fa-check"></i><b>3.5.2</b> 일반 비선형 모델</a></li>
+<li class="chapter" data-level="3.5.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.5.3</b> PRED 모델</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="general-advan.html"><a href="general-advan.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
+<li class="chapter" data-level="5.2" data-path="general-advan.html"><a href="general-advan.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="newer-advan.html"><a href="newer-advan.html"><i class="fa fa-check"></i><b>6</b> 기타 ADVAN</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="newer-advan.html"><a href="newer-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
+<li class="chapter" data-level="6.2" data-path="newer-advan.html"><a href="newer-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
+<li class="chapter" data-level="6.3" data-path="newer-advan.html"><a href="newer-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.4" data-path="newer-advan.html"><a href="newer-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#서론"><i class="fa fa-check"></i><b>8.1</b> 서론</a></li>
+<li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#IE-role"><i class="fa fa-check"></i><b>8.2</b> 초기 추정값의 의미와 역할</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.3</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
+<li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.4</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> THETA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> OMEGA의 초기추정값 지정</a></li>
+<li class="chapter" data-level="8.7" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.7</b> SIGMA의 초기추정값 지정</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="estimation-methods.html"><a href="estimation-methods.html"><i class="fa fa-check"></i><b>9</b> 파라미터 추정 방법 및 세팅</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="estimation-methods.html"><a href="estimation-methods.html#추정-방법-및-관련-옵션"><i class="fa fa-check"></i><b>9.1</b> 추정 방법 및 관련 옵션</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="estimation-methods.html"><a href="estimation-methods.html#noabort"><i class="fa fa-check"></i><b>9.1.1</b> NOABORT</a></li>
+<li class="chapter" data-level="9.1.2" data-path="estimation-methods.html"><a href="estimation-methods.html#maxeval"><i class="fa fa-check"></i><b>9.1.2</b> MAXEVAL</a></li>
+<li class="chapter" data-level="9.1.3" data-path="estimation-methods.html"><a href="estimation-methods.html#method"><i class="fa fa-check"></i><b>9.1.3</b> METHOD</a></li>
+<li class="chapter" data-level="9.1.4" data-path="estimation-methods.html"><a href="estimation-methods.html#interaction"><i class="fa fa-check"></i><b>9.1.4</b> INTERACTION</a></li>
+<li class="chapter" data-level="9.1.5" data-path="estimation-methods.html"><a href="estimation-methods.html#print"><i class="fa fa-check"></i><b>9.1.5</b> PRINT</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="estimation-methods.html"><a href="estimation-methods.html#nonmem-추정"><i class="fa fa-check"></i><b>9.2</b> NONMEM 추정</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="estimation-methods.html"><a href="estimation-methods.html#ols-방식"><i class="fa fa-check"></i><b>9.2.1</b> OLS 방식</a></li>
+<li class="chapter" data-level="9.2.2" data-path="estimation-methods.html"><a href="estimation-methods.html#wls-방식"><i class="fa fa-check"></i><b>9.2.2</b> WLS 방식</a></li>
+<li class="chapter" data-level="9.2.3" data-path="estimation-methods.html"><a href="estimation-methods.html#els-방식"><i class="fa fa-check"></i><b>9.2.3</b> ELS 방식</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood"><i class="fa fa-check"></i><b>9.3</b> Likelihood</a></li>
+<li class="chapter" data-level="9.4" data-path="estimation-methods.html"><a href="estimation-methods.html#taylor-전개식"><i class="fa fa-check"></i><b>9.4</b> Taylor 전개식</a></li>
+<li class="chapter" data-level="9.5" data-path="estimation-methods.html"><a href="estimation-methods.html#likelihood-ratio-test"><i class="fa fa-check"></i><b>9.5</b> Likelihood Ratio Test</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="use-of-xpose4.html"><a href="use-of-xpose4.html"><i class="fa fa-check"></i><b>10</b> NONMEM 실행결과 해석 및 Xpose4 사용법</a></li>
+<li class="chapter" data-level="11" data-path="covariate-analysis.html"><a href="covariate-analysis.html"><i class="fa fa-check"></i><b>11</b> 공변량 분석</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#서론-1"><i class="fa fa-check"></i><b>11.1</b> 서론</a></li>
+<li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석의-일반적-절차"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석의 일반적 절차</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#항목-평가-variable-evaluation"><i class="fa fa-check"></i><b>11.2.1</b> 항목 평가 (variable evaluation)</a></li>
+<li class="chapter" data-level="11.2.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-스크리닝-covariate-screening"><i class="fa fa-check"></i><b>11.2.2</b> 공변량 스크리닝 (covariate screening)</a></li>
+<li class="chapter" data-level="11.2.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공선성co-linearity에-대한-고려"><i class="fa fa-check"></i><b>11.2.3</b> 공선성(co-linearity)에 대한 고려</a></li>
+<li class="chapter" data-level="11.2.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.2.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.2.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.2.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.3</b> 공변량 분석 관련 추가 고려 사항</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#서-론"><i class="fa fa-check"></i><b>12.1</b> 서 론</a></li>
+<li class="chapter" data-level="12.2" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.2</b> 모델 진단과 평가의 일반 특성</a></li>
+<li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단평가의-요소"><i class="fa fa-check"></i><b>12.3</b> 모델 진단/평가의 요소</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="diag-eval.html"><a href="diag-eval.html#적합도의-확인-방법"><i class="fa fa-check"></i><b>12.3.1</b> 적합도의 확인 방법</a></li>
+<li class="chapter" data-level="12.3.2" data-path="diag-eval.html"><a href="diag-eval.html#파라미터의-정확성과-정밀성"><i class="fa fa-check"></i><b>12.3.2</b> 파라미터의 정확성과 정밀성</a></li>
+<li class="chapter" data-level="12.3.3" data-path="diag-eval.html"><a href="diag-eval.html#재현성"><i class="fa fa-check"></i><b>12.3.3</b> 재현성</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.4</b> 맺음말</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
+<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="parameters.html"><a href="parameters.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
+<li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="evaluation.html"><a href="evaluation.html#소개-introduction"><i class="fa fa-check"></i><b>16.1</b> 소개 (Introduction)</a></li>
+<li class="chapter" data-level="16.2" data-path="evaluation.html"><a href="evaluation.html#외부검증external-validation내부검증internal-validation"><i class="fa fa-check"></i><b>16.2</b> 외부검증(External validation)/내부검증(Internal validation)</a></li>
+<li class="chapter" data-level="16.3" data-path="evaluation.html"><a href="evaluation.html#붓스트랩-bootstrap"><i class="fa fa-check"></i><b>16.3</b> 붓스트랩 (Bootstrap)</a></li>
+<li class="chapter" data-level="16.4" data-path="evaluation.html"><a href="evaluation.html#simulation-based-diagnostics"><i class="fa fa-check"></i><b>16.4</b> Simulation-based diagnostics</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="evaluation.html"><a href="evaluation.html#사후-예측-점검-posterior-predictive-check"><i class="fa fa-check"></i><b>16.4.1</b> 사후 예측 점검 (posterior predictive check)</a></li>
+<li class="chapter" data-level="16.4.2" data-path="evaluation.html"><a href="evaluation.html#시각적-예측-점검-visual-predictive-check"><i class="fa fa-check"></i><b>16.4.2</b> 시각적 예측 점검 (visual predictive check)</a></li>
+<li class="chapter" data-level="16.4.3" data-path="evaluation.html"><a href="evaluation.html#수치적-예측-점검-numerical-predictive-check"><i class="fa fa-check"></i><b>16.4.3</b> 수치적 예측 점검 (numerical predictive check)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="basic-pkpd.html"><a href="basic-pkpd.html"><i class="fa fa-check"></i><b>17</b> 약동-약력(PK-PD) 모델링의 이론적 기초</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#관련-개념"><i class="fa fa-check"></i><b>17.1</b> 관련 개념</a></li>
+<li class="chapter" data-level="17.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#약력학pd-및-약동-약력pk-pd-데이터의-특성"><i class="fa fa-check"></i><b>17.2</b> 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터"><i class="fa fa-check"></i><b>17.2.1</b> PD 데이터</a></li>
+<li class="chapter" data-level="17.2.2" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk-pd-데이터"><i class="fa fa-check"></i><b>17.2.2</b> PK-PD 데이터</a></li>
+<li class="chapter" data-level="17.2.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pd-데이터를-모델링할-때-고려할-점"><i class="fa fa-check"></i><b>17.2.3</b> PD 데이터를 모델링할 때 고려할 점</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="basic-pkpd.html"><a href="basic-pkpd.html#pk와-pd의-관계"><i class="fa fa-check"></i><b>17.3</b> PK와 PD의 관계</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pkpd-link.html"><a href="pkpd-link.html"><i class="fa fa-check"></i><b>18</b> PK-PD 연결 방법과 적합법</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#소개-2"><i class="fa fa-check"></i><b>18.1</b> 소개</a></li>
+<li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.2</b> PD 데이터 및 PD 모델의 특징</a></li>
+<li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.3</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
+<li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
+<li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="pkpd-link.html"><a href="pkpd-link.html#간접효과-pk-pd-모델의-예-examples-of-pk-pd-model-with-indirect-response"><i class="fa fa-check"></i><b>18.6</b> 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response)</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="pkpd-link.html"><a href="pkpd-link.html#sim과-pppd-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.1</b> SIM과 PPP&amp;D 데이터셋 및 제어구문</a></li>
+<li class="chapter" data-level="18.6.2" data-path="pkpd-link.html"><a href="pkpd-link.html#ppp의-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.2</b> PPP의 데이터셋 및 제어구문</a></li>
+<li class="chapter" data-level="18.6.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp의-데이터셋-및-제어구문"><i class="fa fa-check"></i><b>18.6.3</b> IPP의 데이터셋 및 제어구문</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결방법적합법-비교"><i class="fa fa-check"></i><b>18.7</b> PK-PD 연결방법(적합법) 비교</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="pkpd-link.html"><a href="pkpd-link.html#각-방법의-장점-및-단점"><i class="fa fa-check"></i><b>18.7.1</b> 각 방법의 장점 및 단점</a></li>
+<li class="chapter" data-level="18.7.2" data-path="pkpd-link.html"><a href="pkpd-link.html#각-방법의-소요시간-및-정밀도-비교"><i class="fa fa-check"></i><b>18.7.2</b> 각 방법의 소요시간 및 정밀도 비교</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-연결방법적합법-요약-및-결론"><i class="fa fa-check"></i><b>18.8</b> PK-PD 연결방법(적합법) 요약 및 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="effect-model.html"><a href="effect-model.html"><i class="fa fa-check"></i><b>19</b> 다양한 약물효과 모델링</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="effect-model.html"><a href="effect-model.html#소개-3"><i class="fa fa-check"></i><b>19.1</b> 소개</a></li>
+<li class="chapter" data-level="19.2" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-종류"><i class="fa fa-check"></i><b>19.2</b> PD 모델의 종류</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#선형모델linear-model"><i class="fa fa-check"></i><b>19.2.1</b> 선형모델(linear model)</a></li>
+<li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#로그-선형모델log-linear-model"><i class="fa fa-check"></i><b>19.2.2</b> 로그-선형모델(log-linear model)</a></li>
+<li class="chapter" data-level="19.2.3" data-path="effect-model.html"><a href="effect-model.html#emax-model"><i class="fa fa-check"></i><b>19.2.3</b> E<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.2.4" data-path="effect-model.html"><a href="effect-model.html#sigmoid-emax-model-hill-방정식"><i class="fa fa-check"></i><b>19.2.4</b> Sigmoid E<sub>max</sub> model (Hill 방정식)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#pd-모델의-적용"><i class="fa fa-check"></i><b>19.3</b> PD 모델의 적용</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.3.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
+<li class="chapter" data-level="19.3.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.3.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.4</b> 결론</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="delayed-effect.html"><a href="delayed-effect.html#지연효과-개요"><i class="fa fa-check"></i><b>20.1</b> 지연효과 개요</a></li>
+<li class="chapter" data-level="20.2" data-path="delayed-effect.html"><a href="delayed-effect.html#시간에-따른-pk-pd-관계"><i class="fa fa-check"></i><b>20.2</b> 시간에 따른 PK-PD 관계</a></li>
+<li class="chapter" data-level="20.3" data-path="delayed-effect.html"><a href="delayed-effect.html#효과구획-모델"><i class="fa fa-check"></i><b>20.3</b> 효과구획 모델</a></li>
+<li class="chapter" data-level="20.4" data-path="delayed-effect.html"><a href="delayed-effect.html#직접효과-vs.-간접효과"><i class="fa fa-check"></i><b>20.4</b> 직접효과 vs. 간접효과</a></li>
+<li class="chapter" data-level="20.5" data-path="delayed-effect.html"><a href="delayed-effect.html#turnover-모델"><i class="fa fa-check"></i><b>20.5</b> Turnover 모델</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="delayed-effect.html"><a href="delayed-effect.html#inhibition-on-production-model-i"><i class="fa fa-check"></i><b>20.5.1</b> Inhibition on production (Model I)</a></li>
+<li class="chapter" data-level="20.5.2" data-path="delayed-effect.html"><a href="delayed-effect.html#inhibition-on-loss-model-ii"><i class="fa fa-check"></i><b>20.5.2</b> Inhibition on loss (Model II)</a></li>
+<li class="chapter" data-level="20.5.3" data-path="delayed-effect.html"><a href="delayed-effect.html#stimulation-on-production-model-iii"><i class="fa fa-check"></i><b>20.5.3</b> Stimulation on production (Model III)</a></li>
+<li class="chapter" data-level="20.5.4" data-path="delayed-effect.html"><a href="delayed-effect.html#stimulation-on-loss-model-iv"><i class="fa fa-check"></i><b>20.5.4</b> Stimulation on loss (Model IV)</a></li>
+<li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>별첨</b></span></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
+<li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cov" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> NONMEM의 $COVARIANCE</h1>
+<p><strong>$COVARIANCE OF NONMEM</strong></p>
+<p><em>배균섭</em></p>
+<hr />
+<p>NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.</p>
+<p>
+</p>
+<div id="actual-example" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> 실제 사례</h2>
+<p>다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 THEO 라는 파일 이름으로 포함되어 있다. 그림은 <a href="cov.html#Theoph">14.5</a>절을 참고한다.</p>
+<pre><code>$PROB THEOPHYLLINE ORAL
+$INPUT ID AMT=DROP TIME DV BWT
+$DATA ../THEO
+$PRED
+  DOSE = 320
+  KA   = THETA(1) * EXP(ETA(1))
+  V    = THETA(2) * EXP(ETA(2))
+  K    = THETA(3) * EXP(ETA(3))
+  F    = DOSE/V*KA/(KA - K)*(EXP(-K*TIME) - EXP(-KA*TIME))
+  IPRE = F
+  Y    = F + F*EPS(1) + EPS(2)
+
+$THETA (0, 2) (0, 50) (0, 0.1)
+$OMEGA BLOCK(3)
+  0.2
+  0.1  0.2
+  0.1  0.1  0.2
+$SIGMA 0.1  0.1
+$EST MAX=9999 METHOD=ZERO POSTHOC
+$COV PRINT=ERS
+$TAB ID TIME IPRE CWRES
+     FILE=sdtab NOPRINT ONEHEADER
+$TAB ID ETA(1) ETA(2) ETA(3)
+     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</code></pre>
+<p>위의 $COV STEP에 의해 생성된 부분은 Appendix 1과 같다. Appendix 1의 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
+<p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.</p>
+<p>$COV output의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
+<p>$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다. 다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.</p>
+<p>$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.</p>
+<p>$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다. 만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 14.5를 참고한다.</p>
+<p>$COV output의 여섯 번째 부분은 R matrix이다. 이는 log likelihood를 parameter들로 이계미분한 것(hessian matrix)으로 Fisher’s Information Matrix(FIM)이라고도 한다. 일반적인 최대가능도추정법(maximum likelihood estimation, MLE)에서는 이것의 역행렬을 분산-공분산 행렬로 삼지만 NONMEM에서는 다음에 나오는 S matrix와 함께 sandwich estimator를 사용한다.</p>
+<p>$COV output의 마지막 부분은 S matrix이다. 이는 개별 대상자의 log likelihood를 파라미터들로 일계미분값(gradient vector)에 대한 cross product(n by 1 열벡터를 그것의 transpose(1 by n vector)와 곱한 것으로 n by n matrix가 된다)들을 모두 합한 것이다. MLE 이론에 따르면 이상적인 상황에서 S matrix와 R matrix의 기대값은 같다. 하지만, 실제로는 상당히 다를 수 있고, 정규분포 가정도 어긋날 수 있으므로 NONMEM은 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span> 를 분산-공분산행렬로 삼는다.</p>
+<p>만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 $COV에서 MATRIX=R 또는 MATRIX=S 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차 가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.</p>
+<p>$COV step이 실패하는 경우에는 먼저 파라미터 추정값에 이상이 없는지 살펴보고, 이상이 없어 보이면 붓스트랩이나 profile-likelihood등의 다른 방법을 이용하여 신뢰구간을 구하면 된다. 이 때 신뢰구간이 비대칭일 가능성이 크므로 표준오차는 제시하기 어려워진다. 혹자는 $COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이 걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 $COV 절을 삭제하는 것이 시간을 절약하는 방법이다.</p>
+</div>
+<div id="nonmem-document" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> NONMEM document</h2>
+<p>NONMEM User’s guide와 help file에는 $COV를 다음과 같이 설명한다.</p>
+<pre><code>$COVARIANCE
+
+ DISCUSSION:
+ Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
+ This step outputs: standard errors, covariance matrix, inverse covari-
+ ance  matrix,  and the correlation form of the covariance matrix.
+
+ OPTIONS:
+
+ MATRIX=c
+      Specifies that the covariance matrix will be different  from  the
+      default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
+      inverse  S  matrix be used.  (R and S are two matrices from  sta-
+      tistical theory,  the Hessian and Cross-Product  Gradient  matri-
+      ces,  respectively.)   With  MATRIX=R the standard errors will be |
+      more consistent with other nonlinear regression  software  imple- |
+      mentations.
+
+ PRINT=[E][R][S]
+      Additional outputs will be  printed  besides  the  defaults.   E:
+      print  the  eigenvalues  of the correlation matrix.  R: print the
+      matrix .5*R.  S: print the matrix .25*S.
+
+ REFERENCES: Guide IV, section III.B.15
+ REFERENCES: Guide V, section 9.4.2 , 10.6</code></pre>
+</div>
+<div id="이론적-배경---mle" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> 이론적 배경 - MLE</h2>
+<p></p>
+<p>NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, 표단계로 나눌 수 있다. 이중 공분산단계에 대하여 설명하고자
+한다. 추정단계가 끝나면 최종 파라미터 추정값이 구해진다. NONMEM에서는 Y의 분포가 정규이든 아니든 상관없이
+정규분포의 가능도 함수(엄밀히는 이것을 약간 변형한 것)를 목적함수로 한다. 즉, maximum
+likelihood estimation (MLE) 방법을 사용한다.</p>
+<p>MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information Matrix의 역행렬을 이용하여
+추정값들의 분산-공분산 행렬과 표준오차를 구할 수 있다. 표준오차는 분산-공분산 행렬의 대각원소를 1/2승 한 것이다.</p>
+<p>MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1계 편미분한 것의 제곱과 2계 편미분한 것이
+부호만 반대인 같은 기대값을 가진다.</p>
+<p><span class="math display" id="eq:mle-theory">\[
+\begin{split}
+\int f(x;\theta)dx &amp; = 1 \\
+\int exp(lnf(x;\theta))dx &amp; = 1
+\end{split}
+\tag{14.1}
+\]</span></p>
+<p>양변을 <span class="math inline">\(\theta\)</span>에 대해 미분하면</p>
+<p><span class="math display">\[\int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0\]</span></p>
+<p><span class="math display">\[E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack = 0\]</span></p>
+<p>한 번 더 미분하면</p>
+<p><span class="math display">\[\int\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \right\rbrack^{2} \right\} exp(lnf(x;\theta))dx = 0\]</span></p>
+<p><span class="math display">\[E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0\]</span></p>
+<p><span class="math display">\[I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\}\]</span></p>
+<p>좀 더 복잡한 과정을 거치면 <span class="math inline">\(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)</span>는
+점근적으로 <span class="math inline">\(N(0,\lbrack I(\theta)\rbrack^{- 1})\)</span> 를 따름을 증명할 수 있다. <span class="citation">(김우철 <a href="#ref-kim" role="doc-biblioref">2012</a>)</span></p>
+<p>아주 이상적이지만(그러나 극히 드문) 상황에서는 목적함수의 1계 미분의 제곱과 2계 미분이 같겠지만, 실제 관찰값으로 계산하면
+다르다. NONMEM에서는 1계 미분의 제곱행렬을 S matrix, 2계 미분 행렬(Hessian)을 R matrix라고
+부른다. 대부분의 MLE software에서는 R matrix의 inverse만으로 estimate의 분산-공분산 행렬로 삼고
+표준오차를 산출한다. NONMEM에서는 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>을 estimate의 분산-공분산 행렬로 삼는다. 이것은
+더 보수적인 방법이어서 신뢰구간이 더 넓게 나온다.</p>
+<p>수식으로 표현하자면 다음과 같다. 여기에서 <span class="math inline">\(O_{i}\)</span>는 개인(i)의 목적함수 값이며, <span class="math inline">\(O\)</span>는 전체 목적함수 값이다.</p>
+<p><span class="math display">\[O = \sum_{i}^{}O_{i}\]</span></p>
+<p><span class="math display">\[S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T}\]</span></p>
+<p><span class="math display">\[R = \frac{\partial^{2}O}{\partial\theta^{2}}\]</span></p>
+</div>
+<div id="r에서의-구현" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> R에서의 구현</h2>
+<p>14.1의 예제를 R로 풀이하면 다음과 같다. 우선 <strong>nmw</strong> package를 설치한다. <span class="citation">(Bae <a href="#ref-R-nmw" role="doc-biblioref">2018</a>)</span></p>
+<p><code>if (!require(nmw)) install.packages("nmw")</code></p>
+<p>다음 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.</p>
+<pre><code>CovStep
+## function () 
+## {
+##     e$STEP = &quot;COV&quot;
+##     StartTime = Sys.time()
+##     Rmat = hessian(Obj, e$FinalPara)/2
+##     Smat = CalcSmat()
+##     if (is.nan(Smat[1, 1])) 
+##         stop(&quot;Error - NaN produced&quot;)
+##     invR = solve(Rmat)
+##     Cov = invR %*% Smat %*% invR
+##     SE = sqrt(diag(Cov))
+##     Correl = cov2cor(Cov)
+##     InvCov = Rmat %*% solve(Smat) %*% Rmat
+##     EigenVal = sort(eigen(Correl)$values)
+##     RunTime = difftime(Sys.time(), StartTime)
+##     Result = list(RunTime, SE, Cov, Correl, InvCov, EigenVal, 
+##         Rmat, Smat)
+##     names(Result) = list(&quot;Time&quot;, &quot;Standard Error&quot;, &quot;Covariance Matrix of Estimates&quot;, 
+##         &quot;Correlation Matrix of Estimates&quot;, &quot;Inverse Covariance Matrix of Estimates&quot;, 
+##         &quot;Eigen Values&quot;, &quot;R Matrix&quot;, &quot;S Matrix&quot;)
+##     return(Result)
+## }
+## &lt;bytecode: 0x0000000015ebb088&gt;
+## &lt;environment: namespace:nmw&gt;</code></pre>
+<p>S matrix를 계산하는 함수는 다음과 같다.</p>
+<pre><code>CalcSmat
+## function () 
+## {
+##     Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
+##         ncol = e$nPara)
+##     for (i in 1:e$nID) {
+##         e$DATAi = e$DataRef[[i]]
+##         e$ETAi = e$EBE[i, e$EtaNames]
+##         e$nReci = e$Oi[i, &quot;nRec&quot;]
+##         if (e$METHOD == &quot;ZERO&quot;) {
+##             gr = grad(OiS0, e$FinalPara)
+##         }
+##         else {
+##             gr = grad(OiS1, e$FinalPara)
+##         }
+##         Smat = Smat + gr %*% t(gr)
+##     }
+##     return(Smat/4)
+## }
+## &lt;bytecode: 0x000000001793eec0&gt;
+## &lt;environment: namespace:nmw&gt;</code></pre>
+</div>
+<div id="Theoph" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Theophylline 예제 데이터셋</h2>
+<p>R에는 기본적으로 <strong>nlme</strong> 패키지<span class="citation">(Pinheiro, Bates, and R-core <a href="#ref-R-nlme" role="doc-biblioref">2020</a>)</span>가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다.</p>
+<p>Theophylline데이터를 그리면 다음과 같다.</p>
+
+<div class="figure"><span id="fig:theophconctime"></span>
+<img src="basic_files/figure-html/theophconctime-1.svg" alt="Theophylline 경구 복용 후 농도-시간 곡선" width="100%" />
+<p class="caption">
+그림 14.1: Theophylline 경구 복용 후 농도-시간 곡선
+</p>
+</div>
+<p>위의 자료를 다음과 같이 경구 1 구획모델에 적합시켜 보기로 한다.</p>
+<p><span class="math display">\[K_{a} = \theta_{1}e^{\eta_{1}}\]</span></p>
+<p><span class="math display">\[V = \theta_{2}e^{\eta_{2}}\]</span></p>
+<p><span class="math display">\[K = \theta_{3}e^{\eta_{3}}\]</span>
+<span class="math display">\[C(t) = \frac{\text{DOSE}}{V}\frac{K_{a}}{K_{a} - K}(e^{- Kt} - e^{- K_{a}t})\]</span></p>
+<p>NONMEM 제어파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
+<p>R에서는 다음과 같은 준비 작업이 필요하다.</p>
+<p>위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model
+predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한
+통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F,
+G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 <strong>nmtran</strong>이 G와 H를 구하는 수식을
+기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와
+같이 사용자가 직접 구성해 주어야 한다.</p>
+<p>이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.</p>
+<pre><code># First Order Approximation Method
+InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=UB,
+         Pred=PRED1, METHOD=&quot;ZERO&quot;)
+(EstRes1 = EstStep())
+## $`Initial OFV`
+## [1] 141.3076
+## 
+## $Time
+## Time difference of 2.999814 secs
+## 
+## $Optim
+## $Optim$par
+##  [1]  0.560417594 -0.167835388  0.148962362  0.995143048  0.056166719
+##  [6]  0.151227211 -1.032468525  0.005776729  0.110936464 -0.956899772
+## [11] -0.205559310
+## 
+## $Optim$value
+## [1] 57.32106
+## 
+## $Optim$counts
+## function gradient 
+##       74       74 
+## 
+## $Optim$convergence
+## [1] 0
+## 
+## $Optim$message
+## [1] &quot;CONVERGENCE: REL_REDUCTION_OF_F &lt;= FACTR*EPSMCH&quot;
+## 
+## 
+## $`Final Estimates`
+##  [1]  3.16946754 38.25213460  0.10501808  1.19823325  0.13747849
+##  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782
+## [11]  0.05427434
+(CovRes1 = CovStep())
+## $Time
+## Time difference of 1.0468 secs
+## 
+## $`Standard Error`
+##  [1] 0.641076544 1.685217844 0.023072024 0.420617306 0.082197497
+##  [6] 0.019812976 0.340273208 0.023052142 0.289524327 0.003576926
+## [11] 0.032078283
+## 
+## $`Covariance Matrix of Estimates`
+##                [,1]         [,2]          [,3]          [,4]          [,5]
+##  [1,]  0.4109791347  0.339158144  5.746694e-03  0.2058089645  2.003772e-03
+##  [2,]  0.3391581437  2.839959182  5.032613e-03  0.3376028346  3.490465e-02
+##  [3,]  0.0057466939  0.005032613  5.323183e-04  0.0016294512 -1.041991e-03
+##  [4,]  0.2058089645  0.337602835  1.629451e-03  0.1769189182  1.951490e-02
+##  [5,]  0.0020037724  0.034904655 -1.041991e-03  0.0195149026  6.756428e-03
+##  [6,] -0.0021925236  0.012804811 -2.503963e-04  0.0032072246  1.504690e-03
+##  [7,]  0.1215890847  0.149089319  7.111900e-03  0.0575731487 -1.010198e-02
+##  [8,]  0.0009971098  0.023865634  6.271266e-05  0.0042158445  8.584714e-04
+##  [9,]  0.0669924083  0.057326151  6.226096e-03  0.0179862543 -1.309239e-02
+## [10,]  0.0010500117  0.001807746  5.805488e-05  0.0005143569 -7.516774e-05
+## [11,] -0.0049728997 -0.009950377 -4.790610e-04 -0.0010145003  9.532948e-04
+##                [,6]          [,7]         [,8]          [,9]         [,10]
+##  [1,] -2.192524e-03  0.1215890847 9.971098e-04  0.0669924083  1.050012e-03
+##  [2,]  1.280481e-02  0.1490893190 2.386563e-02  0.0573261514  1.807746e-03
+##  [3,] -2.503963e-04  0.0071119003 6.271266e-05  0.0062260963  5.805488e-05
+##  [4,]  3.207225e-03  0.0575731487 4.215844e-03  0.0179862543  5.143569e-04
+##  [5,]  1.504690e-03 -0.0101019780 8.584714e-04 -0.0130923877 -7.516774e-05
+##  [6,]  3.925540e-04 -0.0028272756 2.326326e-04 -0.0032697941 -2.051327e-05
+##  [7,] -2.827276e-03  0.1157858558 3.116262e-03  0.0940102394  9.767199e-04
+##  [8,]  2.326326e-04  0.0031162617 5.314013e-04  0.0018656807  2.786064e-05
+##  [9,] -3.269794e-03  0.0940102394 1.865681e-03  0.0838243357  8.055388e-04
+## [10,] -2.051327e-05  0.0009767199 2.786064e-05  0.0008055388  1.279440e-05
+## [11,]  1.806783e-04 -0.0038608273 2.199601e-04 -0.0033970159 -2.824858e-05
+##               [,11]
+##  [1,] -4.972900e-03
+##  [2,] -9.950377e-03
+##  [3,] -4.790610e-04
+##  [4,] -1.014500e-03
+##  [5,]  9.532948e-04
+##  [6,]  1.806783e-04
+##  [7,] -3.860827e-03
+##  [8,]  2.199601e-04
+##  [9,] -3.397016e-03
+## [10,] -2.824858e-05
+## [11,]  1.029016e-03
+## 
+## $`Correlation Matrix of Estimates`
+##              [,1]       [,2]       [,3]        [,4]        [,5]       [,6]
+##  [1,]  1.00000000  0.3139325  0.3885281  0.76325079  0.03802594 -0.1726174
+##  [2,]  0.31393253  1.0000000  0.1294350  0.47628061  0.25198153  0.3835018
+##  [3,]  0.38852814  0.1294350  1.0000000  0.16790689 -0.54943908 -0.5477629
+##  [4,]  0.76325079  0.4762806  0.1679069  1.00000000  0.56444374  0.3848509
+##  [5,]  0.03802594  0.2519815 -0.5494391  0.56444374  1.00000000  0.9239295
+##  [6,] -0.17261745  0.3835018 -0.5477629  0.38485092  0.92392947  1.0000000
+##  [7,]  0.55738714  0.2599936  0.9058832  0.40225837 -0.36117699 -0.4193635
+##  [8,]  0.06747173  0.6143355  0.1179121  0.43479661  0.45306025  0.5093422
+##  [9,]  0.36093637  0.1174929  0.9320626  0.14769593 -0.55014251 -0.5700142
+## [10,]  0.45790382  0.2998965  0.7034659  0.34187510 -0.25566008 -0.2894510
+## [11,] -0.24181804 -0.1840655 -0.6472826 -0.07518893  0.36154098  0.2842792
+##             [,7]       [,8]       [,9]      [,10]       [,11]
+##  [1,]  0.5573871 0.06747173  0.3609364  0.4579038 -0.24181804
+##  [2,]  0.2599936 0.61433553  0.1174929  0.2998965 -0.18406548
+##  [3,]  0.9058832 0.11791205  0.9320626  0.7034659 -0.64728263
+##  [4,]  0.4022584 0.43479661  0.1476959  0.3418751 -0.07518893
+##  [5,] -0.3611770 0.45306025 -0.5501425 -0.2556601  0.36154098
+##  [6,] -0.4193635 0.50934216 -0.5700142 -0.2894510  0.28427925
+##  [7,]  1.0000000 0.39727833  0.9542504  0.8024764 -0.35370524
+##  [8,]  0.3972783 1.00000000  0.2795381  0.3378856  0.29745513
+##  [9,]  0.9542504 0.27953807  1.0000000  0.7778421 -0.36576437
+## [10,]  0.8024764 0.33788563  0.7778421  1.0000000 -0.24619292
+## [11,] -0.3537052 0.29745513 -0.3657644 -0.2461929  1.00000000
+## 
+## $`Inverse Covariance Matrix of Estimates`
+##              [,1]         [,2]        [,3]        [,4]        [,5]
+##  [1,]   106.16085    -68.57396    6449.005    335.8698   -2554.409
+##  [2,]   -68.57396     58.03937   -4878.746   -302.1420    2175.297
+##  [3,]  6449.00514  -4878.74594  589180.809  26966.6055 -188642.065
+##  [4,]   335.86981   -302.14199   26966.605   1681.5577  -11681.346
+##  [5,] -2554.40932   2175.29716 -188642.065 -11681.3456   84767.297
+##  [6,]  -386.87894    570.22260  -66147.099  -3404.8900   13635.511
+##  [7,] -1202.16352    939.99684  -90186.464  -5086.8917   35747.140
+##  [8,] 10794.57609  -8973.04621  795473.397  47387.2333 -336778.082
+##  [9,]   -49.38187     87.68163  -10522.263   -442.6127    3308.451
+## [10,] 11656.77324 -10122.84537  899033.055  53311.6422 -378718.161
+## [11,] -1043.11500   1001.74635  -47225.438  -4879.5431   35063.038
+##               [,6]         [,7]        [,8]         [,9]      [,10]
+##  [1,]    -386.8789   -1202.1635   10794.576    -49.38187   11656.77
+##  [2,]     570.2226     939.9968   -8973.046     87.68163  -10122.85
+##  [3,]  -66147.0986  -90186.4639  795473.397 -10522.26321  899033.06
+##  [4,]   -3404.8900   -5086.8917   47387.233   -442.61268   53311.64
+##  [5,]   13635.5106   35747.1396 -336778.082   3308.45066 -378718.16
+##  [6,]   72186.1449   10923.7488 -116902.668   2827.92008 -138707.39
+##  [7,]   10923.7488   16640.0641 -149635.854    965.72182 -166637.08
+##  [8,] -116902.6684 -149635.8536 1416416.077 -14025.69870 1587796.18
+##  [9,]    2827.9201     965.7218  -14025.699    954.65511  -20047.21
+## [10,] -138707.3931 -166637.0784 1587796.183 -20047.20949 2031529.82
+## [11,]   15687.7641   14275.7793 -151936.736    935.29881 -170271.34
+##              [,11]
+##  [1,]   -1043.1150
+##  [2,]    1001.7464
+##  [3,]  -47225.4381
+##  [4,]   -4879.5431
+##  [5,]   35063.0376
+##  [6,]   15687.7641
+##  [7,]   14275.7793
+##  [8,] -151936.7362
+##  [9,]     935.2988
+## [10,] -170271.3406
+## [11,]   28036.5550
+## 
+## $`Eigen Values`
+##  [1] 0.0002519304 0.0096729015 0.0108358602 0.0233184643 0.0520725533
+##  [6] 0.2982375053 0.5047779131 0.9114702297 1.2088053283 3.2082379737
+## [11] 4.7723193401
+## 
+## $`R Matrix`
+##              [,1]         [,2]         [,3]         [,4]         [,5]
+##  [1,]   17.924787   -1.3343223  -162.767654   -4.1309683    21.546405
+##  [2,]   -1.334322    0.5507357    -7.672315    0.1118322    -1.462878
+##  [3,] -162.767654   -7.6723148 34333.363150   86.0269293   433.962384
+##  [4,]   -4.130968    0.1118322    86.026929   28.6263094  -177.270130
+##  [5,]   21.546405   -1.4628778   433.962384 -177.2701302  1930.445843
+##  [6,]   10.225928  -16.5210396    13.387686  272.9370786 -4270.878832
+##  [7,]  -11.022690    2.9849069   -90.741373  -52.9261900   210.709300
+##  [8,]   52.304346  -18.2457139   956.482064  164.3158075 -1421.957500
+##  [9,]    7.044855   -2.2338946 -1350.939646   24.4536958   -43.763546
+## [10,]  248.456482 -120.7991176 -7033.212482   50.2328789 -1013.856688
+## [11,]   -1.752135   -5.2052276 -1992.414213    6.0120604   124.417556
+##              [,6]        [,7]        [,8]         [,9]        [,10]
+##  [1,]    10.22593  -11.022690    52.30435     7.044855    248.45648
+##  [2,]   -16.52104    2.984907   -18.24571    -2.233895   -120.79912
+##  [3,]    13.38769  -90.741373   956.48206 -1350.939646  -7033.21248
+##  [4,]   272.93708  -52.926190   164.31581    24.453696     50.23288
+##  [5,] -4270.87883  210.709300 -1421.95750   -43.763546  -1013.85669
+##  [6,] 16610.43942 -139.814385  1113.59904    18.726078   4680.59998
+##  [7,]  -139.81438  213.228947  -555.99366  -151.083275     96.25915
+##  [8,]  1113.59904 -555.993663  4043.51428   130.794770   -555.76917
+##  [9,]    18.72608 -151.083275   130.79477   236.875935    -20.42601
+## [10,]  4680.59998   96.259149  -555.76917   -20.426010 192857.05263
+## [11,]   -46.02961  -62.941133  -201.26760    92.656857   6568.90926
+##              [,11]
+##  [1,]    -1.752135
+##  [2,]    -5.205228
+##  [3,] -1992.414213
+##  [4,]     6.012060
+##  [5,]   124.417556
+##  [6,]   -46.029614
+##  [7,]   -62.941133
+##  [8,]  -201.267605
+##  [9,]    92.656857
+## [10,]  6568.909257
+## [11,]  3974.804398
+## 
+## $`S Matrix`
+##               [,1]         [,2]         [,3]         [,4]        [,5]
+##  [1,]    78.316509   -4.6468525  -1295.13192   -11.873085   142.72165
+##  [2,]    -4.646852    0.7648878     64.36589     2.623533   -28.61925
+##  [3,] -1295.131915   64.3658917 183632.39790  -230.636173   840.38211
+##  [4,]   -11.873085    2.6235332   -230.63617    18.368716  -171.71679
+##  [5,]   142.721653  -28.6192545    840.38211  -171.716794  2005.81552
+##  [6,]  -145.835176   29.4905947   9000.10289   291.779615 -3809.95407
+##  [7,]   -26.707401    0.2387057   3794.27704   -19.686952    51.76139
+##  [8,]    44.375129   10.7614124 -10813.66435    84.841787  -765.19107
+##  [9,]    13.946014   -4.4042212  -6396.75146     3.480210    87.90129
+## [10,]  2039.647982 -397.4745827  -4148.02643 -1170.279733  8916.77585
+## [11,]   279.500822  -47.3111189 -60483.51062   -22.729230   670.78875
+##              [,6]          [,7]         [,8]         [,9]       [,10]
+##  [1,]  -145.83518   -26.7074010     44.37513    13.946014   2039.6480
+##  [2,]    29.49059     0.2387057     10.76141    -4.404221   -397.4746
+##  [3,]  9000.10289  3794.2770370 -10813.66435 -6396.751456  -4148.0264
+##  [4,]   291.77961   -19.6869516     84.84179     3.480210  -1170.2797
+##  [5,] -3809.95407    51.7613883   -765.19107    87.901295   8916.7758
+##  [6,] 12023.28652   188.5688359    667.62858  -711.894529  -3829.1367
+##  [7,]   188.56884   129.3349739   -292.66398  -155.764410   1796.9713
+##  [8,]   667.62858  -292.6639799   1121.03185   294.247258 -10631.8774
+##  [9,]  -711.89453  -155.7644099    294.24726   327.282119   1812.2113
+## [10,] -3829.13667  1796.9713202 -10631.87742  1812.211286 419517.6543
+## [11,] -3489.01512 -1105.9231026   2773.71160  2358.454995  18067.4267
+##              [,11]
+##  [1,]    279.50082
+##  [2,]    -47.31112
+##  [3,] -60483.51062
+##  [4,]    -22.72923
+##  [5,]    670.78875
+##  [6,]  -3489.01512
+##  [7,]  -1105.92310
+##  [8,]   2773.71160
+##  [9,]   2358.45500
+## [10,]  18067.42672
+## [11,]  24042.66052
+(EBE1 = PostHocEta()) # Using e$FinalPara from EstStep()
+##       ID       ETA1         ETA2        ETA3
+##  [1,]  1 -0.6367109 -0.232258352 -0.73648224
+##  [2,]  2 -0.5895843 -0.153341805 -0.06619115
+##  [3,]  3 -0.3083755 -0.124816676 -0.21013190
+##  [4,]  4 -1.0305984 -0.186821177 -0.21195510
+##  [5,]  5 -0.8235560 -0.302352128 -0.24453948
+##  [6,]  6 -1.0025271  0.068181532 -0.08745089
+##  [7,]  7 -1.4316285 -0.097903076 -0.13802639
+##  [8,]  8 -0.7541785 -0.039239022 -0.19621190
+##  [9,]  9  0.7875803  0.010757282 -0.19937965
+## [10,] 10 -1.4555649 -0.369057237 -0.40057582
+## [11,] 11  0.1541451 -0.005061315 -0.08005791
+## [12,] 12 -1.2863346 -0.388864841 -0.10134440
+# (Tab1 = TabStep())</code></pre>
+</div>
+<div id="고유값eigenvalue" class="section level2" number="14.6">
+<h2><span class="header-section-number">14.6</span> 고유값(Eigenvalue)</h2>
+<p>공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.</p>
+<p>어떤 행렬 A를 스칼라 <span class="math inline">\(\lambda\)</span>와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,</p>
+<p><span class="math display">\[Au = \lambda u\]</span></p>
+<p><span class="math inline">\(\lambda\)</span>를 A의 고유값이라 하고 그 고유값에 해당하는 벡터 u를 고유벡터(eigenvector)라고 한다.</p>
+<p><span class="math inline">\(\lambda\)</span>는</p>
+<p><span class="math display">\[\left| A - \lambda I \right| = 0\]</span></p>
+<p>이라는 특성 방정식의 근들로 구할 수 있다.</p>
+<p>Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다. 조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의 어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시 minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.</p>
+</div>
+<div id="결론" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> 결론</h2>
+<p>NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이
+NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.</p>
+<ol style="list-style-type: decimal">
+<li>NMTRAN의 역할을 해줄 함수들이 없다.</li>
+<li>속도가 적어도 수 십에서 수 백 배 느리다.</li>
+</ol>
+<p>나머지 FOCE나 Laplacian에 대해서는 <strong>nmw</strong> 패키지의 도움말을 보고 실행하면 알 수 있다.</p>
+<hr />
+<p>참고문헌</p>
+<ol style="list-style-type: decimal">
+<li>NONMEM User’s Guide I - VIII</li>
+<li>김우철. 수리통계학. 민영사. 2012</li>
+</ol>
+
+</div>
+</div>
+<h3>참고문헌</h3>
+<div id="refs" class="references">
+<div id="ref-R-nmw">
+<p>Bae, Kyun-Seop. 2018. <em>Nmw: Understanding Nonlinear Mixed Effects Modeling for Population Pharmacokinetics</em>. <a href="https://CRAN.R-project.org/package=nmw">https://CRAN.R-project.org/package=nmw</a>.</p>
+</div>
+<div id="ref-R-nlme">
+<p>Pinheiro, Jose, Douglas Bates, and R-core. 2020. <em>Nlme: Linear and Nonlinear Mixed Effects Models</em>. <a href="https://CRAN.R-project.org/package=nlme">https://CRAN.R-project.org/package=nlme</a>.</p>
+</div>
+<div id="ref-kim">
+<p>김우철. 2012. <em>수리통계학</em>. 민영사. <a href="https://books.google.co.kr/books?id=yBOWtwAACAAJ">https://books.google.co.kr/books?id=yBOWtwAACAAJ</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parameters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/14.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

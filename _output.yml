@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  mathjax: local
+  #mathjax: local
   self_contained: false
   dev: svglite
   css: css/style.css
@@ -20,8 +20,10 @@ bookdown::gitbook:
 bookdown::html_chapters:
   css: [css/style.css, css/toc.css]
 bookdown::pdf_book: 
+  #citation_package: biblatex
+  #https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
   keep_tex: yes
-  pandoc_args: --top-level-division=chapter
+  pandoc_args: "--top-level-division=chapter"
   toc_depth: 3
   toc_unnumbered: no
   toc_appendix: yes

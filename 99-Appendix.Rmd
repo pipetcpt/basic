@@ -1,12 +1,16 @@
 \backmatter
 
+# (APPENDIX) 별첨 {-}
+
+# NONMEM 아웃풋 파일
+
+```{r}
+read_lines("assets/nonmem-output.txt")
+```
+
 <!-- `r if (knitr::is_html_output()) ''` -->
 
 # 참고문헌 {-}
 
-
 ```{r include=FALSE}
-pack <- c('nlme', 'nmw', 'xpose4')
-pacman::p_load(char = pack)
-knitr::write_bib(pack, 'references/packages.bib')
 ```
