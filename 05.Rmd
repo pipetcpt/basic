@@ -6,7 +6,7 @@
 
 ---
 
-일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. \$MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 \$PK구문 다음에 \$DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 본 강의에서는 ADVAN 5\~8에 대하여 다루기로 한다.
+일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. \$MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 \$PK구문 다음에 \$DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 이 장에서는 ADVAN 5\~8에 대하여 다루기로 한다.
 
 ```{r gen-advan, message = FALSE}
 advan <- c("ADVAN5 (General Linear)",
@@ -46,7 +46,9 @@ tibble::tribble(
   'When used?', 'Eigenvalues of the rate constant matrix are complex', 'Eigenvalues of the rate constant matrix are known to be real',
 'Example','PBPK model','Many PK systems',
 'Running time', 'Slower', 'Faster'
-) %>% kable(booktabs=TRUE, caption = "(ref:advan-lin-property)")
+) %>% 
+  kable(booktabs=TRUE, caption = "(ref:advan-lin-property)") %>%
+  column_spec(2:3, width = "3cm")
 ```
 
 일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소수(complex
@@ -82,7 +84,7 @@ tibble::tribble(~" ", ~"ADVAN 6", ~"ADVAN 8",
 
 (ref:nonlin-advan) 일반 비선형 ADVAN 의 종류 및 특징 [@bonate]
 
-일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 본 강의에서는 ADVAN 6와 8에 대하여 다룬다. 보통 안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는 속도상수 간 큰 차이를 보이는 불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가진 단일클론항체)은 ADVAN 6를 이용할 경우, 파라미터 추정 시간이 오래 걸리거나 추정에 실패할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수 추정을 위한 미분방정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를 적용하였을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method 를 이용한 ADNVA 8의 적용을 고려할 수 있다.
+일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 이 장에서는 ADVAN 6와 8에 대하여 다룬다. 보통 안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는 속도상수 간 큰 차이를 보이는 불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가진 단일클론항체)은 ADVAN 6를 이용할 경우, 파라미터 추정 시간이 오래 걸리거나 추정에 실패할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수 추정을 위한 미분방정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를 적용하였을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method 를 이용한 ADNVA 8의 적용을 고려할 수 있다.
 
 (ref:nonlin-advan-code-example) 일반 비선형 ADVAN을 이용한 코드 예시
 
@@ -126,7 +128,7 @@ knitr::include_graphics("./assets/media-05/image7.png")
     Solutions, Hanover. P111.
 
 2.  Bonate PL. Pharmacokinetic-Pharmacodynamic Modeling and Simulation.
-    2<sup>nd</sup> ed. New York: Springer Science + Business Media, LLC;
+    2~nd~ ed. New York: Springer Science + Business Media, LLC;
     2011. P605.
 
 3.  Beal SL, Shenier LB, Boeckmann AJ, Bauer RJ, editors. 1989 NONMEM

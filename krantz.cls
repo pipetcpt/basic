@@ -110,7 +110,7 @@
 \newif\if@krantzb
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ExecuteOptions{a4paper,10pt,twoside,onecolumn,final,openright}
+\ExecuteOptions{a4paper,10pt,twoside,onecolumn,final,openright} %sungpil
 %\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
 \ProcessOptions
 
@@ -227,7 +227,7 @@
 \marginparsep   1pc
 \topmargin  12pt %0pt
 \headheight 12pt
-\headsep    12pt
+\headsep    18pt %sungpil - originally 12pt 2020-05-21
 \footskip   2pc
 %
 % DIMENSION OF TEXT:
@@ -245,8 +245,8 @@
 
 %\setlength\trimheight{300mm}
 %\setlength\trimwidth{176mm}
-\setlength\trimheight{9in} % original, FP 2020-05-04
-\setlength\trimwidth{6in}  % original, FP 2020-05-04
+\setlength\trimheight{9in} % original, sungpil 2020-05-04
+\setlength\trimwidth{6in}  % original, sungpil 2020-05-04
 %
 %
 \if@krantza

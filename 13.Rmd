@@ -22,7 +22,7 @@ knitr::include_graphics("./assets/media-13/image1-2.png")
 knitr::include_graphics("./assets/media-13/image5.png")
 ```
 
-잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ<sup>2</sup>인 정규분표를 따른다고 가정한다(ε\~N(0, σ<sup>2</sup>). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}
+잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ~2~인 정규분표를 따른다고 가정한다(ε\~N(0, σ~2~). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}
 
 잔차의 분포는 다음과 같이 크게 네 가지 함수 형식을 사용하여 모델링 할 수 있는데, 가법오차모델(Additive error model), 고정변동계수(Constant coefficient of variation, CCV)를 사용한 모델, 가법과 CCV를 더한 모델, 그리고 로그오차모델(Log-error model)이다. \index{CCV, Constant coefficient of variation}
 
@@ -45,18 +45,14 @@ include_graphics("./assets/media-13/image6-9.png") # fig 3
 
 실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \@ref(exm:combined-upper), \@ref(exm:combined-lower)와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드  \@ref(exm:combined-upper)은 가장 기본적인 형태이고,  코드 \@ref(exm:combined-lower)의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, 0.0001 FIX)하면 된다.
 
-```{example, combined-upper, echo=TRUE}
-$ERROR structure in NONMEM control stream: 기본형태
-```
 
 ```r
 $ERROR
   IPRED = F
   Y     = IPRED * (1+EPS(1)) + EPS(2)
 ```
-
-```{example, combined-lower, echo=TRUE}
-$ERROR structure in NONMEM control stream
+```{example, combined-upper, echo=TRUE}
+$ERROR structure in NONMEM control stream: 기본형태
 ```
 
 ```r
@@ -66,6 +62,9 @@ $ERROR
   IRES  = DV - IPRED
   IWRES = IRES / W
   Y     = IPRED + W * EPS(1)
+```
+```{example, combined-lower, echo=TRUE}
+$ERROR structure in NONMEM control stream
 ```
 
 
@@ -102,7 +101,7 @@ include_graphics("./assets/media-13/image22.png") # fig 7
 ```
 
 
-우선, 첫째로 구조모델이 잘못된 경우이다. 그림 8을 보면 시간에 따른 잔차의 모양이 곡선형태를 이루고 있는데, 이는 모델에 지연시간을 반영하지 않은 경우이다. Run test를 통해 +/-를 확인해보면 앞쪽 시간에서는 마이너스, 중간시간대에서는 플러스가 됐다가 이후 다시 마이너스가 되는 현상이 나타나고, 이를 그림으로 보면 말발굽 모양이 된다. (그림 \@ref(fig:wrong-structure))
+우선, 첫째로 구조모델이 잘못된 경우이다. 그림 \@ref(fig:wrong-structure)을 보면 시간에 따른 잔차의 모양이 곡선형태를 이루고 있는데, 이는 모델에 지연시간을 반영하지 않은 경우이다. Run test를 통해 +/-를 확인해보면 앞쪽 시간에서는 마이너스, 중간시간대에서는 플러스가 됐다가 이후 다시 마이너스가 되는 현상이 나타나고, 이를 그림으로 보면 말발굽 모양이 된다. (그림 \@ref(fig:wrong-structure))
 
 ```{r wrong-structure, fig.cap = "(ref:wrong-structure)"}
 include_graphics("./assets/media-13/image23.png") # fig 8
@@ -131,7 +130,7 @@ include_graphics("./assets/media-13/image27.png") # fig 11
 추가로, 잔차 플롯들의 다양한 형태에 따른 개선 방안을 살펴보면(표 \@ref(tab:diag-response)) 크게 두 가지 경우로 요약할 수 있는데, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우와 잔차의 모양이 특정 경향성을 나타내는 경우이다. 첫째로, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우, 시간이나 농도에 따른 잔차 플롯이 깔때기 모양이 되며, 이 경우 잔차에 가중치를 줄 수 있는 모델을 써야 한다. 둘째로, 잔차값들이 흩어져 있는 정도는 일정하지만 그 모양이 상승 또는 하강하는 띠 모양이거나 휘어지는 띠 모양을 나타내는 경우에는 구조모델 자체를 다른 것으로 바꾸어 이 현상을 해결해야 한다. 자세한 내용은 아래 표를 참고하도록 하자.
 
 ```{r diag-response}
-read_csv('assets/media-13/tab1.csv') %>% 
+read_csv('data-raw/media-13-tab-1.csv', col_types="cccc") %>% 
   rename(`Fitted $\\hat{Y}_i$` = 3,
          `$X_{ji}$ values` = 4) %>% 
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:diag-response)") %>% 

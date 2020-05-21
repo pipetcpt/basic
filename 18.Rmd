@@ -55,8 +55,10 @@ PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적
 
 ```{r pk-pd-link-methods}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>% 
-  kable(booktabs=TRUE, longtable=TRUE, caption = "PK-PD 연결 방법들") %>% 
-  collapse_rows(1)
+  kable(booktabs=TRUE, caption = "PK-PD 연결 방법들") %>% 
+  column_spec(c(1,2), width = "3cm") %>%
+  column_spec(3:5, width = "2.5cm") %>%
+  collapse_rows(1, valign = "top")
 ```
 
 
@@ -70,25 +72,23 @@ knitr::include_graphics("./assets/media-18/image4.png") # fig 3
 
 (ref:level-info) PK-PD 연결 방법과 그에 관련된 정보의 수준
 
-## 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)
+## 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model) {#direct-pkpd}
 
-### 동시적합법(SIM, Simultaneous fitting)
+### 동시적합법(SIM, Simultaneous fitting) 
 
 PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.
 
-6.5의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.
+[18.5](#direct-pkpd)의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.
 
-SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 4).
+SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 \@ref(fig:SIM-dataset)).
 
 제어파일을 살펴보면, $PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. $DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 $ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 $THETA 이하의 제어 구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \@ref(exm:SIM-control)).
 
-![](./assets/media-18/image5.png)
-
-**그림 4. SIM 방법의 데이터셋의 예**
-
-```{example, SIM-control, echo = TRUE}
-SIM 방법의 제어구문의 예
+```{r SIM-dataset, fig.cap = "(ref:SIM-dataset)"}
+include_graphics("./assets/media-18/image5.png") # fig4
 ```
+
+(ref:SIM-dataset) SIM 방법의 데이터셋의 예
 
 ```r
 $PK 
@@ -124,12 +124,13 @@ $SIGMA
 0.025 
 0.04
 ```
-
-
+```{example, SIM-control, echo = TRUE}
+SIM 방법의 제어구문의 예 <!--fig5-->
+```
 
 아래의 제어구문은 NONMEM을 기본적으로 수행시키기 위해 $PK 위에 들어가는 명령어라고 볼 수 있다.
 
-```fortran
+```r
 $PROB 1 comp IV Emax model 
 $INPUT ID TIME AMT DV MDV CMT 
 $DATA DATAFILENAME.csv IGNORE=@ 
@@ -139,22 +140,22 @@ COMP (CENT, DEFDOSE, DEFOBS)
 COMP (PD)
 ```
 
-추가적으로 R 소프트웨어의 xpose4 패키지를 사용하여 적합도 플롯(goodness of fit plot)을 그리고자 하는 경우, IWRES 값이 필요하며, 그림 5에서 제시한 단순화된 오차모델 대신 아래와 같은 오차모델을 사용하여 PK-PD 모델링을 진행할 수 있다. 아래의 예시에는 PK 오차모델에는 가법오차와 비례오차를 모두 주었고, PD 오차모델에는 가법오차 만을 주었다.
+추가적으로 R 소프트웨어의 xpose4 패키지를 사용하여 적합도 플롯(goodness of fit plot)을 그리고자 하는 경우, IWRES 값이 필요하며, 코드 \@ref(exm:SIM-control)에서 제시한 단순화된 오차모델 대신 아래와 같은 오차모델을 사용하여 PK-PD 모델링을 진행할 수 있다. 아래의 예시에는 PK 오차모델에는 가법오차와 비례오차를 모두 주었고, PD 오차모델에는 가법오차 만을 주었다.
 
-```fortran
+```r
 $ERROR 
 IF (CMT.EQ.1) THEN 
 IPRED = CP 
-W = SQRT(THETA(10)\*\*2 + THETA(11)\*\*2 \* IPRED\*\*2) 
+W = SQRT(THETA(10)**2 + THETA(11)**2 * IPRED**2) 
 IRES = DV - IPRED 
 IWRES = IRES / W 
-Y = IPRED + W \* EPS(1) 
+Y = IPRED + W * EPS(1) 
 IF (CMT.EQ.2) THEN 
-IPRED = EMAX\*CP/(EC50+CP) 
+IPRED = EMAX*CP/(EC50+CP) 
 W = THETA(12) 
 IRES = DV - IPRED 
 IWRES = IRES / W 
-Y = IPRED + W \* EPS(2) 
+Y = IPRED + W * EPS(2) 
 ENDIF
 ```
 
@@ -162,7 +163,7 @@ ENDIF
 
 #### PPP\&D (Population PK Parameters & Data)
 
-PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 포함된다. 따라서, SIM에서 사용한 데이터셋의 구조와 동일하다(그림 6). PPP\&D에서는 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행하며, 이는 $THETA, $OMEGA, $SIGMA 블록 내의 θ1~CL~, θ~V1~, ω~CL~<sup>2</sup>, ω~V1~<sup>2</sup>그리고 σ~1~<sup>2</sup>에 해당한다(그림 7).
+PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 포함된다. 따라서, SIM에서 사용한 데이터셋의 구조와 동일하다(그림 \@ref(fig:pppd)). PPP\&D에서는 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행하며, 이는 $THETA, $OMEGA, $SIGMA 블록 내의 θ1~CL~, θ~V1~, ω~CL~~2~, ω~V1~~2~그리고 σ~1~~2~에 해당한다(코드 \@ref(exm:pppd-code)).
 
 ```{r pppd, fig.cap="(ref:pppd)"}
 knitr::include_graphics("./assets/media-18/image6.png") # fig 6
@@ -170,7 +171,9 @@ knitr::include_graphics("./assets/media-18/image6.png") # fig 6
 
 (ref:pppd) PPP&D 방법의 데이터셋의 예
 
-```fortran
+
+
+```r
 $PK 
 CL = THETA(1) * EXP(ETA(1)) 
 V1 = THETA(2) * EXP(ETA(2)) 
@@ -204,38 +207,39 @@ $SIGMA
 0.025 FIX
 0.04
 ```
+```{example, pppd-code, echo=TRUE}
+PPP\&D 방법의 제어구문의 예
+```
 
-그림 7. PPP\&D 방법의 제어구문의 예
 
 #### PPP (Population PK Parameters)
 
-PPP로 PK-PD 모델링 수행 시 PPP\&D 와 마찬가지로 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행한다. 이는 $THETA, $OMEGA 블록 내의 θ1~CL~, θ~V1~, ω~CL~<sup>2</sup>, ω~V1~<sup>2</sup>에 해당한다.
+PPP로 PK-PD 모델링 수행 시 PPP\&D 와 마찬가지로 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행한다. 이는 $THETA, $OMEGA 블록 내의 θ1~CL~, θ~V1~, ω~CL~~2~, ω~V1~~2~에 해당한다.
 
-PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이전 방법에서 CMT 1에 표시된 PK 데이터는 포함되지 않는다(그림 8). 이전 방법에서는 오차 모델이 PK 와 PD에 대하여 각각 들어갔으나, PPP 방법은 이와 다르게 PD 데이터만을 사용하여 PK-PD 모델을 연결하고 PD 모델링을 수행하기 때문에, PD에 대한 오차모델 하나만 사용한다(그림 9).
+PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이전 방법에서 CMT 1에 표시된 PK 데이터는 포함되지 않는다(그림 \@ref(fig:PPP-dataset)). 이전 방법에서는 오차 모델이 PK 와 PD에 대하여 각각 들어갔으나, PPP 방법은 이와 다르게 PD 데이터만을 사용하여 PK-PD 모델을 연결하고 PD 모델링을 수행하기 때문에, PD에 대한 오차모델 하나만 사용한다(코드 \@ref(exm:control-ppp)).
 
-![](./assets/media-18/image7.png)
-
-그림 8. Example of dataset for PPP
-
-
-```{example, control-ppp}
-Example of control file for PPP
+```{r PPP-dataset, fig.cap = "(ref:PPP-dataset)"}
+include_graphics("./assets/media-18/image7.png") # fig 8
 ```
 
-```fortran
+(ref:PPP-dataset) Example of dataset for PPP
+
+
+
+```r
 $PK 
-CL = THETA(1) \* EXP(ETA(1)) 
-V1 = THETA(2) \* EXP(ETA(2)) 
+CL = THETA(1) * EXP(ETA(1)) 
+V1 = THETA(2) * EXP(ETA(2)) 
 K = CL / V1 
-EMAX = THETA(3) \* EXP(ETA(3)) 
-EC50 = THETA(4) \* EXP(ETA(4))
+EMAX = THETA(3) * EXP(ETA(3)) 
+EC50 = THETA(4) * EXP(ETA(4))
 
 $DES 
 CP = A(1) / V1 
-DADT(1) = -K \* A(1)
+DADT(1) = -K * A(1)
 
 $ERROR 
-EFF = EMAX\*CP / (EC50+CP) 
+EFF = EMAX*CP / (EC50+CP) 
 Y = EFF + ERR(1)
 
 $THETA 
@@ -252,6 +256,9 @@ $OMEGA
 
 $SIGMA 
 0.04
+```
+```{example, control-ppp, echo=TRUE}
+Example of control file for PPP
 ```
 
 
@@ -271,78 +278,72 @@ include_graphics("./assets/media-18/image8.png")
 
 (ref:ipp-dataset-ex) IPP 방법의 데이터셋의 예
 
+```r
+$PK
+  CL = ICL
+  V1 = IV
+  K = CL / V1
+  EMAX = THETA(3) * EXP(ETA(3))
+  EC50 = THETA(4) * EXP(ETA(4))
 
+$DES
+  CP = A(1) / V1
+  DADT(1) = -K * A(1)
+
+$ERROR
+  EFF = EMAX*CP / (EC50+CP)
+  Y = EFF + ERR(1)
+
+$THETA
+  (0, 15)
+  (0, 20)
+
+$OMEGA
+  0.2
+  0.25
+
+$SIGMA
+  0.04
+```
 ```{example, IPP-example, echo = TRUE}
 IPP 방법의 제어구문의 예
-
-    $PK
-      CL = ICL
-      V1 = IV
-      K = CL / V1
-      EMAX = THETA(3) \* EXP(ETA(3))
-      EC50 = THETA(4) \* EXP(ETA(4))
-    
-    $DES
-      CP = A(1) / V1
-      DADT(1) = -K \* A(1)
-    
-    $ERROR
-      EFF = EMAX\*CP / (EC50+CP)
-      Y = EFF + ERR(1)
-    
-    $THETA
-      (0, 15)
-      (0, 20)
-    
-    $OMEGA
-      0.2
-      0.25
-    
-    $SIGMA
-      0.04
-
 ```
 
-## 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response)
+## 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response) {#indirect-pkpd}
 
 ### SIM과 PPP\&D 데이터셋 및 제어구문
 
-이 장에서는 앞서 소개한 6.5 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자.
-본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서,
-구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의
-간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을
-가정) 시키는 것을 나타냈다.
+이 장에서는 앞서 소개한 [18.5](#direct-pkpd) 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.
 
-SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 12). 경구투여 시 용량정보는 CMT 1, PK
-데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이
-CMT로 구분한다.
+SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 \@ref(fig:sim-pppd-dataset)). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.
 
-![](./assets/media-18/image9.png)
+```{r sim-pppd-dataset, fig.cap = "(ref:sim-pppd-dataset)"}
+include_graphics("./assets/media-18/image9.png") # fig 12
+```
 
-**그림 12. SIM 방법과 PPP\&D 방법을 쓸 때의 PK-PD 데이터셋의 예**
+(ref:sim-pppd-dataset) SIM 방법과 PPP\&D 방법을 쓸 때의 PK-PD 데이터셋의 예
 
-이전 제어파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이
-포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK
-데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(그림
-13).
+이전 제어파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(그림 \@ref(fig:sim-pppd-similarity)).
 
-제어파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 $ERROR 뒤에 이어지는 $THETA, $OMEGA,
-$SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이
-PPP\&D 방법이라고 할 수 있다.
+제어파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 $ERROR 뒤에 이어지는 $THETA, $OMEGA, $SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP\&D 방법이라고 할 수 있다.
 
-![](./assets/media-18/image10.png)
+```{r sim-pppd-similarity, fig.cap = "(ref:sim-pppd-similarity)"}
+include_graphics("./assets/media-18/image10.png") # fig13
+```
 
-**그림 13. SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분**
+(ref:sim-pppd-similarity) SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
 
 ### PPP의 데이터셋 및 제어구문
 
-PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 14). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 12)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
+PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ppp-pkpd-dataset)). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 \@ref:sim-pppd-dataset)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
 
-PPP의 제어구문은 위의 그림 13과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.
+PPP의 제어구문은 위의 그림 \@ref(fig:sim-pppd-similarity)과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.
 
-![](./assets/media-18/image13.png)
+```{r ppp-pkpd-dataset, fig.cap ="(ref:ppp-pkpd-dataset)"}
+include_graphics("./assets/media-18/image13.png") # fig14
+```
 
-**그림 14. PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조**
+(ref:ppp-pkpd-dataset) PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
 
 ### IPP의 데이터셋 및 제어구문
 
@@ -356,43 +357,44 @@ include_graphics("./assets/media-18/image14.png")
 
 (ref:ipp-dataset) IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
 
+```r
+$PROB HO_PO_2comp
+$DATA IPP_S.csv IGNORE=@
+$INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA
+
+$SUBROUTINE ADVAN6 TOL=3
+
+$MODEL NCOMP=4
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENT)
+  COMP(PERI)
+  COMP(EFFE, DEFOBS)
+ 
+$PK
+
+  CL    = ICL
+  V2    = IV2
+  V3    = IV3
+  Q     = 4.97
+  KA    = IKA
+  
+  S2    = V2
+  
+  K23   = Q/V2
+  K32   = Q/V3
+  
+  KE    = CL/V2
+  
+  EMAX  = THETA(1) * EXP(ETA(1))
+  EC50  = THETA(2) * EXP(ETA(2))
+  KIN   = THETA(3) * EXP(ETA(3))
+  BASE  = THETA(4) * EXP(ETA(4))
+  A_0(4)= BASE
+  KOUT  = KIN/BASE
+
+```
 ```{example, ipp-control-stream, echo = TRUE}
 IPP 방법의 제어구문의 예
-
-    $PROB HO_PO_2comp
-    $DATA IPP_S.csv IGNORE=@
-    $INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA
-    
-    $SUBROUTINE ADVAN6 TOL=3
-    
-    $MODEL NCOMP=4
-      COMP(DEPOT, DEFDOSE)
-      COMP(CENT)
-      COMP(PERI)
-      COMP(EFFE, DEFOBS)
-     
-    $PK
-    
-      CL    = ICL
-      V2    = IV2
-      V3    = IV3
-      Q     = 4.97
-      KA    = IKA
-      
-      S2    = V2
-      
-      K23   = Q/V2
-      K32   = Q/V3
-      
-      KE    = CL/V2
-      
-      EMAX  = THETA(1) * EXP(ETA(1))
-      EC50  = THETA(2) * EXP(ETA(2))
-      KIN   = THETA(3) * EXP(ETA(3))
-      BASE  = THETA(4) * EXP(ETA(4))
-      A_0(4)= BASE
-      KOUT  = KIN/BASE
-
 ```
 
 

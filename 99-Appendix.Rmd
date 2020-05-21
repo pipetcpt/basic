@@ -2,11 +2,18 @@
 
 # (APPENDIX) 별첨 {-}
 
-# NONMEM 아웃풋 파일
+# 별첨 1
 
-```{r}
-read_lines("assets/nonmem-output.txt")
+14장 NONMEM 아웃풋 파일
+
+<!--
+```{r eval=FALSE}
+tibble(txt = read_lines("assets/nonmem-output.txt")) %>% 
+  mutate(txt = sprintf("`%s`", txt)) %>% 
+  kable(booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = c("scale_down"))
 ```
+-->
 
 <!-- `r if (knitr::is_html_output()) ''` -->
 

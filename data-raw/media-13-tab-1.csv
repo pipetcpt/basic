@@ -1,0 +1,4 @@
+﻿Unsatisfactory Plot,Time order,Fitted yi,Xji Values
+Funnel indicating nonconstant variance,Use weighted least squares,Use weighted least squares or transform the Yi,Used weighted least squares or transform the Yi
+Ascending or descending band,Consider adding first-order term in time,Error in analysis or wrongful omission of β0,Error in the calculations; first-order effect of Xi not removed
+Curved band,Consider adding first- and second- order terms in time,Consider adding extra terms to the model or transform the Yi,Consider adding extra terms to the model or transform the Yi

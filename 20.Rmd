@@ -48,11 +48,8 @@ include_graphics("./assets/media-20/image3.png")
 
 (ref:effect-model-code) 효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) [@nonmem]
 
-```{example, effect-model-code, echo=TRUE}
-(ref:effect-model-code)
-```
 
-```
+```r
 $SUBROUTINES ADVAN3
 $PK
   K   = THETA(1)*EXP(ETA(1))        ; TRIVIAL LOSS TO EFFECT CMPT
@@ -69,12 +66,12 @@ $ERROR
   Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
   ENDIF
 ```
+```{example, effect-model-code, echo=TRUE}
+(ref:effect-model-code)
+```
 
 또다른 방식으로는 아래 코드 \@ref(exm:effect-comp-advan6)와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．  
 
-```{example, effect-comp-advan6, echo=TRUE}
-효과구획 모델 코드: Using General Nonlinear model (ADVAN6) [@nonmem]
-```
 
 
 ```r
@@ -98,6 +95,9 @@ $ERROR
   ELSE
   Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
   ENDIF
+```
+```{example, effect-comp-advan6, echo=TRUE}
+효과구획 모델 코드: Using General Nonlinear model (ADVAN6) [@nonmem]
 ```
 
 ## 직접효과 vs. 간접효과

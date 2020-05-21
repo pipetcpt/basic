@@ -44,7 +44,8 @@ Achieved by partial inspection on modeling outcome, Achieved by full validation 
 Targeted at modeling procedures, Targeted at model quality 
 Emphasis on the standards, Emphasis on the purpose"
 read_csv(txt) %>% 
-  kable(booktabs=TRUE, caption = "(ref:diag-eval-property)")
+  kable(booktabs=TRUE, caption = "(ref:diag-eval-property)") %>%
+  column_spec(1:2, width="7cm")
 ```
 
 물론, 최종 모델에 대한 타당성 입증은 작업 전체의 흐름에 대한 확인 절차(예\> 파라미터 추가에 따른 최소 목적함수값(minimized values of objective function) 감소 추이 등) 등을 추가해야 할 수 있지만, 이 역시 기초적 방법론에서는 본 교재에서 설명하는 진단/평가 기법의 확장된 범위 안에 있다고 하겠다.
@@ -65,19 +66,21 @@ read_csv(txt) %>%
 tibble::tribble(~" ", ~"Numerical", ~"Visual",
                 
                 "적합도 (goodness-of-fit, GoF)", 
-                "- Fit statistics (OFV, iOFV) \n - Akaike information criterion (AIC) for non-nested model", 
-                "- Goodness-of-fit plot \n - Individual plot",
+                "- Fit statistics (OFV, iOFV)\n- Akaike information criterion (AIC) for non-nested model", 
+                "- Goodness-of-fit plot\n- Individual plot",
                 
                 "파라미터 정확성(accuracy) / 정밀성(precision)",
-                "- Parameter estimates \n - Parameter imprecision estimates (by NONMEM) \n- EBE shrinkage\n- Bootstrap median & confidence interval",
+                "- Parameter estimates\n- Parameter imprecision estimates (by NONMEM)\n- EBE shrinkage\n- Bootstrap median & confidence interval",
                 "- Empirical Bayes Estimate (EBE) distribution",
                 
                 "재현성(reproducibility)",
                 "- Posterior Predictive Check (PPC)\n- Numerical Predictive Check (NPC)",
                 "- Visual Predictive Check (VPC)") %>% 
-  knitr::kable(escape=TRUE, 
+  mutate_all(linebreak) %>%
+  knitr::kable(escape = FALSE, 
 			   booktabs = TRUE, 
-			   caption = "모델 진단/평가의 요소 별 수행 방법론 요약")
+			   caption = "모델 진단/평가의 요소 별 수행 방법론 요약") %>%
+  column_spec(1:3, width = "4cm")
 ```
 
 ### 적합도의 확인 방법
