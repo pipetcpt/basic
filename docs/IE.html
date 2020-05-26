@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 초기추정값 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 초기추정값 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-25" />
+<meta name="date" content="2020-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#direct-pkpd"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
-<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting) </a></li>
 <li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
 <li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
 </ul></li>
@@ -394,9 +394,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>IE이 필요한 이유는 NONMEM이 파라미터 추정을 위해 Newton-Raphson 방법과 유사한 접근 방식(quasi-Newton-type minimization algorithm)을 사용한다는 것이다. 이 방법의 구체적인 내용을 여기에 다루지 않으나, 이것이 특정한 출발점에서부터 시작하여 NONMEM의 목적함수 값을 최소화(관측값의 발생가능성을 최대로 한다는 것과 동일한 의미임 - NONMEM의 추정 방법 관련 내용 참고)하는 파라미터 값들의 조합을 찾아가는 방법이라는 것만은 이해하여야 한다. 다시 말해, NONMEM의 추정이라는 것은 목적함수값을 최소화하는 파라미터 값들의 조합을 찾는 것이며, 이 때의 파라미터 값을 FPE을 최소화된 목적함수값과 함께 보고해 주는 것이다. 따라서, NONMEM은 각각의 파라미터에 대해 추정을 시작할 수 있는 시작점을 필요로 하게 되고, 이것이 사용자가 제어구문에 각 파라미터 별로 IE을 입력해 주어야 하는 유일하면서도 불가피한 이유인 것이다.</p>
 <p>다음 절에 대한 이해를 위해 여기에서 추정 알고리즘에 대해 약간 더 설명한다. 다음은 NONMEM이 목적함수값을 최소화하는 파라미터 값을 찾아가는 논리를 나타낸 것이다. 효율적인 설명을 위해 파라미터가 단 하나인 상황을 가정한다.</p>
 <ol style="list-style-type: decimal">
-<li>목적함수를 그래프로 그렸을 때, 그 함수값이 최소화되는 점(극값)에서 목적함수의 미분값은 0이다.</li>
-<li>따라서, 목적함수의 도함수를 구한 후, 이 값이 0이 되는 값을 찾으면 된다.</li>
-<li>이를 위해 우선 IE에서의 도함수의 기울기(이계도함수값)를 가지며, 도함수값을 지나는 직선을 구한다.</li>
+<li>목적함수를 그래프로 그렸을 때, 그 함수값이 최소화되는 점(극값)에서 목적함수의 미분값은 0이다. </li>
+<li>따라서, 목적함수의 도함수를 구한 후, 이 값이 0이 되는 값을 찾으면 된다. </li>
+<li>이를 위해 우선 IE에서의 도함수의 기울기(이계도함수값)를 가지며, 도함수값을 지나는 직선을 구한다. </li>
 <li>3.에서 구한 직선과 x축의 교점을 찾고, 교점의 x값에 해당하는 값으로 3.의 IE을 업데이트한다.</li>
 <li>더 이상 유의한 수준의 목적함수값 감소가 없는 때까지 3., 4.의 작업을 반복한다. (최종 지점에서는 이계도함수값이 양의 값을 가져야만 최소값을 구할 수 있다.)</li>
 </ol>

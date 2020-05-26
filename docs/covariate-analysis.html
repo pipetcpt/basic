@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 공변량 분석 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 공변량 분석 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-25" />
+<meta name="date" content="2020-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#direct-pkpd"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
-<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting) </a></li>
 <li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
 <li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
 </ul></li>
@@ -430,7 +430,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="improper" class="section level5" number="11.2.1.1.2">
 <h5><span class="header-section-number">11.2.1.1.2</span> 부적절한 분포를 보이는 항목</h5>
-<p>공변량 분석은 물론, 모든 약동-약력학 모델링에서 비례적 관계를 다루는 경우에, 각 연구자는 그러한 비례적 관계가 독립변수의 어느 범위에서 유효한가를 먼저 고민해야 한다. 그러한 범위 이외에서 같은 관계를 외삽하는 경우, 실제 값과 다른 예측 결과를 보일 수 있기 때문이다. 공변량이라는 측면에서 이러한 문제를 보이는 대표적인 사례는 Cockcroft-Gault equation이다. 이 식은 토리여과율(Glomerular filtration rate)을 다른 신체적 변수 간의 관계를 통해 추정하는데, 해당 관계식에 포함된 체중 또는 연령의 값이 인구 평균에서 멀어질수록 예측 값과 실제 토리여과율 간의 차이가 확대되는 양상을 보인다.(그림 <a href="covariate-analysis.html#fig:gfr">11.3</a>)</p>
+<p>공변량 분석은 물론, 모든 약동-약력학 모델링에서 비례적 관계를 다루는 경우에, 각 연구자는 그러한 비례적 관계가 독립변수의 어느 범위에서 유효한가를 먼저 고민해야 한다. 그러한 범위 이외에서 같은 관계를 외삽하는 경우, 실제 값과 다른 예측 결과를 보일 수 있기 때문이다. 공변량이라는 측면에서 이러한 문제를 보이는 대표적인 사례는 Cockcroft-Gault equation이다. 이 식은 토리여과율(Glomerular filtration rate)을 다른 신체적 변수 간의 관계를 통해 추정하는데, 해당 관계식에 포함된 체중 또는 연령의 값이 인구 평균에서 멀어질수록 예측 값과 실제 토리여과율 간의 차이가 확대되는 양상을 보인다.(그림 <a href="covariate-analysis.html#fig:gfr">11.3</a>) </p>
 
 <div class="figure"><span id="fig:gfr"></span>
 <img src="assets/media-11/image3.jpeg" alt="독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시" width="100%" />
@@ -447,9 +447,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>1.의 경우, 잠재적 공변량이 연속형 변수라면, 양극단에 있는 소수의 정보가 약동-약력학 파라미터와 잠재적 공변량 간의 비례 형태에 대한 잘못된 추론을 가능케 할 수 있으므로 이후 공변량 분석에서 이를 주의하여 수행하여야 한다. (그림 <a href="covariate-analysis.html#fig:improper-distribution">11.4</a> 좌) 범주형 변수라면, 어느 한 수준의 측정값이 다른 수준에 비해 절대적으로 부족하게 되며(그림 <a href="covariate-analysis.html#fig:improper-distribution">11.4</a> 우), 이 경우에는 그러한 수준을 가장 가까운 수준과 병합하거나 그 수준을 제외하고 이후 공변량 분석을 수행하여야 한다. 만약 수준을 단 2개만 가진 항목(예&gt; 성별, 환자 여부 등)이라면 아예 항목 자체를 제외하여야 할 수 있다. 그러나 특정 수준의 데이터 비율이 상대적으로 적은 경우라 할 지라도, 그 데이터 양이 충분(N &gt; 30)하다고 판단된다면 이를 포함할 지 여부를 신중하게 고려하여 결정할 수 있다.</p>
 <div class="figure"><span id="fig:improper-distribution"></span>
-<img src="assets/media-11/improper.png" alt="(improper-distribution" width="100%" />
+<img src="assets/media-11/improper.png" alt="부적절한 데이터 분포" width="100%" />
 <p class="caption">
-그림 11.4: (improper-distribution
+그림 11.4: 부적절한 데이터 분포
 </p>
 </div>
 
@@ -516,9 +516,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>만일, 3)의 조건을 만족하는 잠재적 공변량이 없다면, GAM은 step 1에서 종료되고, 유의한 잠재적 공변량이 없다고 보고한다. 그러나 3)의 조건을 만족하는 공변량이 하나라도 있다면, GAM은 다른 step을 개시하며, 같은 작업을 반복한다. 다만, 다음 step에서는 1)의 기준 AIC가 이전 step에서 선택한 최적 모델의 AIC가 되며, 2)에서는 이전 step에서 선택된 잠재적 공변량을 모델에 유지한 채, 또 하나의 잠재적 공변량을 선형적 구조로서 가법적으로 이어 붙여 해당 모델의 AIC를 평가하게 된다.(예를 들어 CLCR이 이전에 step에서 포함된 상황이라면, <code>ETA1 ~ CLCR + SEX</code>와 같은 구조가 된다.) 이는 통계학적으로 다변량 선형회귀분석에서 사용하는 모델과 동일하다. 이 평가 과정 역시 모든 잠재적 공변량에 대해 이루어지며, 3)의 조건을 만족하는 잠재적 공변량이 없을 때까지 step이 반복된다. 중요한 것은 이미 모델에 포함되어 있는 잠재적 공변량일지라도, 각 step에서 한 번 더 평가가 이루어진다는 것이다.(e.g. <code>ETA1 ~ CLCR + CLCR</code>) 만일, 동일한 공변량이 두 번 이상 선택된다면, 이는 유의한 상관관계가 있지만, 잠재적 공변량과 파라미터 간의 상관 구조가 선형적이 아닐 수 있다는 것을 시사하는 것이므로, 앞서 그림 <a href="covariate-analysis.html#fig:nonlinear-rel">11.7</a>에서 언급한 경우와 같이 기록해 두고 다음 과정을 진행하여야 한다.</p>
 <p>이제 GAM이라는 의미를 다시 살펴보면, ‘모든 잠재적 공변량에 대해(generalized), 가법적으로(additive), 모델을 수행(modeling)하여, 각 결과를 비교하는 것이다.’라는 것을 알 수 있다. 파라미터 별 GAM 수행 결과는 그림 <a href="covariate-analysis.html#fig:gam-step">11.8</a>의 결과를 반복적으로 보여 주는 형태로 확인하기도 하지만, 다음의 그림과 같이 모델 구조에 따른 AIC의 변화를 도식적으로 나타내어 선택된 잠재적 공변량들을 한 눈에 확인하는 경우가 많다.</p>
 <div class="figure"><span id="fig:gam-summary"></span>
-<img src="assets/media-11/image11.png" alt="(ref:gam-summary" width="100%" />
+<img src="assets/media-11/image11.png" alt="GAM 실행 summary (https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html)" width="100%" />
 <p class="caption">
-그림 11.9: (ref:gam-summary
+그림 11.9: GAM 실행 summary (<a href="https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html" class="uri">https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html</a>)
 </p>
 </div>
 
@@ -638,8 +638,8 @@ p = 0.001
 </tr>
 </tbody>
 </table>
-<!-- ![](./assets/media-11/image12.png) <!--no-num-->
-<p>–&gt;</p>
+<!-- ![](./assets/media-11/image12.png)-->
+<!--no-num-->
 <p>2.는 매우 중요한 개념으로, ω<sub>i2</sub>의 감소로 판단한다. 이는 임의 효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.</p>
 <p><img src="assets/media-11/image13.png" /> <!--no-num--></p>
 <p>특정 개인이 아닌 전체 인구집단에서 공변량과 파라미터가 일정한 관계를 갖는다면 이는 더 이상 설명 불가능한 개인차가 아니다. 따라서, 이는 설명 가능한 개인차로서 모델에 반영이 되며, 이렇게 적절히 반영된 공변량은 고정효과가 되는 것이다. 그렇다면 설명 불가능한 개인차의 크기는 줄어드는데 이것이 모델에서는 다음과 같이 표현된다.</p>
@@ -687,14 +687,14 @@ p = 0.001
 </ul></li>
 <li>Power
 <ul>
-<li><span class="math inline">\(CL = CL_{pop,female} * Male_{diff}^{SEX}\)</span></li>
+<li><span class="math inline">\(CL = CL_{pop,female} * Male_{diff}\^{SEX}\)</span></li>
 </ul></li>
 <li>Exponential
 <ul>
 <li><span class="math inline">\(CL = CL_{pop,female} * exp(Male_{diff}*SEX)\)</span></li>
 </ul></li>
 </ul>
-<p>위의 예에서 SEX는 성별을 뜻하며, 여성은 0, 남성은 1의 방식으로 coding할 수 있다. 만일, 특정 공변량이 3개 이상의 범주를 가지는 경우에는 위의 예와 같이 일관된 수식으로서 표현하기 어려운 상황이 많아, 제어구문 중 IF문을 사용하여, 각 범주 별로 파라미터 값을 각각 추정하게 할 수도 있다. 이 때 범주 하나 당 하나의 THETA가 대응되므로, 2.4.1의 1) 기준 평가 시 이를 고려해야 한다. 또한, 범주 별로 분산을 같다고 가정할 지, 다르다고 가정할 지 역시 모두 OFV 등의 기준을 이용하여 평가해 보아야 한다는 어려움도 있다. 범주형 변수가 가진 수준의 수가 충분히 많아지면, 이를 연속형 변수와 유사하게 처리할 수 있다는 이론도 있으나, 일반적인 모델링에서는 용량(증량 시험 등에서)을 제외하고 이렇게 다양한 수준의 범주형 자료가 수집되는 경우는 많지 않아 여기에서는 다루지 않는다.</p>
+<p>위의 예에서 SEX는 성별을 뜻하며, 여성은 0, 남성은 1의 방식으로 coding할 수 있다. 만일, 특정 공변량이 3개 이상의 범주를 가지는 경우에는 위의 예와 같이 일관된 수식으로서 표현하기 어려운 상황이 많아, 제어구문 중 IF문을 사용하여, 각 범주 별로 파라미터 값을 각각 추정하게 할 수도 있다. 이 때 범주 하나 당 하나의 THETA가 대응되므로, <a href="covariate-analysis.html#forward-sel-def">11.2.4.1</a>의 1. 기준 평가 시 이를 고려해야 한다. 또한, 범주 별로 분산을 같다고 가정할 지, 다르다고 가정할 지 역시 모두 OFV 등의 기준을 이용하여 평가해 보아야 한다는 어려움도 있다. 범주형 변수가 가진 수준의 수가 충분히 많아지면, 이를 연속형 변수와 유사하게 처리할 수 있다는 이론도 있으나, 일반적인 모델링에서는 용량(증량 시험 등에서)을 제외하고 이렇게 다양한 수준의 범주형 자료가 수집되는 경우는 많지 않아 여기에서는 다루지 않는다.</p>
 </div>
 </div>
 <div id="공변량-평가-후진제거backward-elimination" class="section level3" number="11.2.5">

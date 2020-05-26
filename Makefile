@@ -25,3 +25,6 @@ del:
 
 crop:
 	sh _crop.sh ; cp docs/basic.pdf basic-no-crop.pdf
+
+index:
+	sh -x _index.sh

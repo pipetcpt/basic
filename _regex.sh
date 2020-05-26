@@ -1,3 +1,10 @@
+# https://askubuntu.com/questions/537967/appending-to-end-of-a-line-using-sed
+
+grep -rl '대각행렬' ./*.Rmd | xargs sed -i '/대각행렬/ s/$/\\index{대각행렬 \/ diagonal matrix}/'
+grep -rl '대체' ./*.Rmd | xargs sed -i '/대체/ s/$/\\index{대체 \/ imputation}/'
+grep -rl '독립변수' ./*.Rmd | xargs sed -i '/독립변수/ s/$/\\index{독립변수 \/ independent variable}/'
+
+
 :%s/Chapter ...*$//g
 :%s/...PIPET.*$//g
 :%s/참고문헌.*NONMEM 데이터셋.*[0-9]$//g

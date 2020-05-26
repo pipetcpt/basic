@@ -137,7 +137,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet='28', range="B2:E23") %>%
   collapse_rows(columns = c(1,4), latex_hline = "major", valign = "top")
 ```
 
-특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, \$MODEL과 \$DES 레코드는 사용하지 않으며, \$PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. \$PK는 코드 \@ref(exm:two-comp-pk)과 같이 작성한다.
+특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, \$MODEL과 \$DES 레코드는 사용하지 않으며, \$PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. \$PK는 코드 \@ref(exm:two-comp-pk)과 같이 작성한다.\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}
 
 ```r
 $SUBROUTINE ADVAN4 TRANS4
@@ -208,7 +208,7 @@ $THETA (0, 100) (0, 30) (0, 0.7)
 
 순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 '(하한값, 초기 추정값, 상한값)'을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10~6~이 기본 상한값이다.
 
-\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 `CL=TVCL*EXP(ETA(1))`로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω~CL~~2~을 따르는 분포 η~1~를 포함한 개인의 CL값이다. 각 개인마다 하나의 η~1~을 가지므로 CL는 개인마다 다르다. 특히, CL~i~ = TVCL\*\(e^{\eta_{i}}\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:
+\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 `CL=TVCL*EXP(ETA(1))`로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω~CL~~2~을 따르는 분포 η~1~를 포함한 개인의 CL값이다. 각 개인마다 하나의 η~1~을 가지므로 CL는 개인마다 다르다. 특히, CL~i~ = TVCL\*\(e^{\eta_{i}}\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}
 
 $$
 \begin{pmatrix} 
@@ -218,13 +218,13 @@ $$
 \end{pmatrix}
 $$
 
-OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다.
+OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다.\index{대각행렬 / diagonal matrix}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}
 
 ```r
 $OMEGA 0.16 0.25 0.16
 ```
 
-여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다.
+여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다.\index{공분산 / covariance}
 
 ```r
 $OMEGA BLOCK(2)
@@ -233,7 +233,7 @@ $OMEGA BLOCK(2)
 $OMEGA 0.16
 ```
 
-\$SIGMA는 관찰갑과 예측값의 차이, 즉, 잔차의 분포를 나타내는 ε (residual varilability, RV)를 추정하는 블록이다. \$SIGMA는 ε 를 가법변동(additive variation) 또는 고정변동계수(constant coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을 추정하는 것이며, 행렬로 표현할 수 있다. \$ERROR를 사용하여 EPS(1)과 EPS(2)를 정의하고, 이를 SIGMA 행렬로 표현하면 아래와 같다.
+\$SIGMA는 관찰갑과 예측값의 차이, 즉, 잔차의 분포를 나타내는 ε (residual varilability, RV)를 추정하는 블록이다. \$SIGMA는 ε 를 가법변동(additive variation) 또는 고정변동계수(constant coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을 추정하는 것이며, 행렬로 표현할 수 있다. \$ERROR를 사용하여 EPS(1)과 EPS(2)를 정의하고, 이를 SIGMA 행렬로 표현하면 아래와 같다.\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}
 
 ```r
 $ERROR 
@@ -250,7 +250,7 @@ $$
 \end{pmatrix}
 $$
 
-여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수, 가법변동, 고정변동계수+가법변동을 선택할 수 있다. 잔차변이(EPS)를 \$THETA 레코드에서 추정하도록 \$ERROR의 코드를 변경해서 사용하기도 한다:
+여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수, 가법변동, 고정변동계수+가법변동을 선택할 수 있다. 잔차변이(EPS)를 \$THETA 레코드에서 추정하도록 \$ERROR의 코드를 변경해서 사용하기도 한다:\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}
 
 ```coffee
 $ERROR 
@@ -265,7 +265,7 @@ $THETA (0, 100) (0, 30) (0, 0.7) 10 0.2
 $SIGMA 1 FIX
 ```
 
-여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 \$ERROR 레코드에서 사용한 EPS(1)은 \$SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 \$THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.
+여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 \$ERROR 레코드에서 사용한 EPS(1)은 \$SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 \$THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}
 
 ### $ESTIMATION, $SIMULATION
 
@@ -278,25 +278,25 @@ conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다
 $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
 ```
 
-위의 $ESTIMATION에서 사용하는 옵션을 살펴보자. 우선, 추정방법은 `METHOD=` 을 사용한다. FO 방법은 `METHOD=0`, FOCE는 `METHOD=1`이며, INTERACTION 옵션을 사용할 수 있다. NOABORT 옵션을 사용하여 데이터 내 개인의 Hessian 행렬이 양(+)의 값을 가지지 않아서 파라미터 추정을 위한 최소화 과정이 중단되는 것을 방지할 수 있다. 즉, 추정 과정에서 모델이 중단되는 것을 어느정도 피할 수 있다. MAXEVAL 옵션은 목적함수를 이용한 추정 계산 횟수를 정하는데 사용된다. 0 에서 99,999,999까지의 값을 줄수 있지만, 일반적으로 함수계산 횟수의 제한 때문에 파라미터 추정이 중단되지 않기 위해 충분히 큰 값을 준다(위의 예에서는 `MAXEVAL=9999`). `PRINT=n`은 추정과정 중 자세한 정보를 n번 째 마다 제공하도록 하는 옵션이며, SIGDIGITS은 최종 파라미터 추정값의 유효숫자를 결정하는 옵션이다. 이를 사용하지 않으면 NONMEM은 최종 파라미터의 유효숫자를 3으로 지정한다.
+위의 $ESTIMATION에서 사용하는 옵션을 살펴보자. 우선, 추정방법은 `METHOD=` 을 사용한다. FO 방법은 `METHOD=0`, FOCE는 `METHOD=1`이며, INTERACTION 옵션을 사용할 수 있다. NOABORT 옵션을 사용하여 데이터 내 개인의 Hessian 행렬이 양(+)의 값을 가지지 않아서 파라미터 추정을 위한 최소화 과정이 중단되는 것을 방지할 수 있다. 즉, 추정 과정에서 모델이 중단되는 것을 어느정도 피할 수 있다. MAXEVAL 옵션은 목적함수를 이용한 추정 계산 횟수를 정하는데 사용된다. 0 에서 99,999,999까지의 값을 줄수 있지만, 일반적으로 함수계산 횟수의 제한 때문에 파라미터 추정이 중단되지 않기 위해 충분히 큰 값을 준다(위의 예에서는 `MAXEVAL=9999`). `PRINT=n`은 추정과정 중 자세한 정보를 n번 째 마다 제공하도록 하는 옵션이며, SIGDIGITS은 최종 파라미터 추정값의 유효숫자를 결정하는 옵션이다. 이를 사용하지 않으면 NONMEM은 최종 파라미터의 유효숫자를 3으로 지정한다.\index{목적함수 / objective function}
 
-$SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적 예측점검(visual predictive check) 과정에 사용할 수 있다.
+$SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적 예측점검(visual predictive check) 과정에 사용할 수 있다.\index{시뮬레이션 / simulation}
 
 ```r
 $SIMULATION (seed) ONLYSIM NSUB=1000
 ```
 
-'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.
+'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.\index{시뮬레이션 / simulation}
 
 ### $COVARIANCE, $TABLE
 
-$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.
+$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{상관행렬 / correlation matrix}
 
 ```r
 $COVARIANCE PRINT=E UNCONTIONAL MATRIX=S
 ```
 
-PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R~-1~SR~-1~ 행렬이 기본계산에 사용되는데, `MATRIX=S` 또는 `MATRIX=R` 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. `UNCONDITIONAL` 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.
+PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R~-1~SR~-1~ 행렬이 기본계산에 사용되는데, `MATRIX=S` 또는 `MATRIX=R` 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. `UNCONDITIONAL` 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 \@ref(exm:table-record)처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (@R-xpose4) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.
 
@@ -343,7 +343,7 @@ $TABLE 레코드의 예
 
 ### 특수 ADVAN과 일반 ADVAN
 
-2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특수 ADVAN을 사용할 경우 \$SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선택하고, \$PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다. ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 \$MODEL과 \$DES 레코드는 사용할 필요가 없다. (코드 \@ref(exm:advan4))
+2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특수 ADVAN을 사용할 경우 \$SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선택하고, \$PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다. ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 \$MODEL과 \$DES 레코드는 사용할 필요가 없다. (코드 \@ref(exm:advan4))\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}
 
 
 ```r

@@ -7,14 +7,14 @@
 ---
 
 
-NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.
+NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.\index{공분산 / covariance}\index{목적함수 / objective function}
 
 \index{UCP, unconstrained parameter}
 \index{\$COVARIANCE}
 
 ## 실제 사례 {#actual-example}
 
-다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 `THEO` 라는 파일 이름으로 포함되어 있다. 그림은 \@ref(Theoph)절을 참고한다.
+다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 `THEO` 라는 파일 이름으로 포함되어 있다. 그림은 \@ref(Theoph)절을 참고한다.\index{공분산 / covariance}
   
 ```r
 $PROB THEOPHYLLINE ORAL
@@ -47,21 +47,21 @@ $TAB ID ETA(1) ETA(2) ETA(3)
 
 $COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.
 
-$COV output의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 \(R^{- 1}SR^{- 1}\)를 계산한 것이다.
+$COV output의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 \(R^{- 1}SR^{- 1}\)를 계산한 것이다.\index{공분산 / covariance}
 
-$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다.  다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.
+$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다.  다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.\index{공분산 / covariance}\index{상관행렬 / correlation matrix}
 
-$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.
+$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.\index{공분산 / covariance}
 
-$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다.  만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 [14.5](#Theoph)를 참고한다.
+$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다.  만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 [14.5](#Theoph)를 참고한다.\index{상관행렬 / correlation matrix}
 
-$COV output의 여섯 번째 부분은 R matrix이다. 이는 log likelihood를 parameter들로 이계미분한 것(hessian matrix)으로 Fisher’s Information Matrix(FIM)이라고도 한다. 일반적인 최대가능도추정법(maximum likelihood estimation, MLE)에서는 이것의 역행렬을 분산-공분산 행렬로 삼지만 NONMEM에서는 다음에 나오는 S matrix와 함께 sandwich estimator를 사용한다.
+$COV output의 여섯 번째 부분은 R matrix이다. 이는 log likelihood를 parameter들로 이계미분한 것(hessian matrix)으로 Fisher’s Information Matrix(FIM)이라고도 한다. 일반적인 최대가능도추정법(maximum likelihood estimation, MLE)에서는 이것의 역행렬을 분산-공분산 행렬로 삼지만 NONMEM에서는 다음에 나오는 S matrix와 함께 sandwich estimator를 사용한다.\index{가능도 / likelihood}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}
 
-$COV output의 마지막 부분은 S matrix이다. 이는 개별 대상자의 log likelihood를 파라미터들로 일계미분값(gradient vector)에 대한 cross product(n by 1 열벡터를 그것의 transpose(1 by n vector)와 곱한 것으로 n by n matrix가 된다)들을 모두 합한 것이다. MLE 이론에 따르면 이상적인 상황에서 S matrix와 R matrix의 기대값은 같다. 하지만, 실제로는 상당히 다를 수 있고, 정규분포 가정도 어긋날 수 있으므로 NONMEM은 \(R^{- 1}SR^{- 1}\) 를 분산-공분산행렬로 삼는다.
+$COV output의 마지막 부분은 S matrix이다. 이는 개별 대상자의 log likelihood를 파라미터들로 일계미분값(gradient vector)에 대한 cross product(n by 1 열벡터를 그것의 transpose(1 by n vector)와 곱한 것으로 n by n matrix가 된다)들을 모두 합한 것이다. MLE 이론에 따르면 이상적인 상황에서 S matrix와 R matrix의 기대값은 같다. 하지만, 실제로는 상당히 다를 수 있고, 정규분포 가정도 어긋날 수 있으므로 NONMEM은 \(R^{- 1}SR^{- 1}\) 를 분산-공분산행렬로 삼는다.\index{공분산 / covariance}
 
-만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 $COV에서 MATRIX=R 또는 MATRIX=S 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차 가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.
+만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 $COV에서 MATRIX=R 또는 MATRIX=S 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차 가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.\index{공분산 / covariance}
 
-$COV step이 실패하는 경우에는 먼저 파라미터 추정값에 이상이 없는지 살펴보고, 이상이 없어 보이면 붓스트랩이나 profile-likelihood등의 다른 방법을 이용하여 신뢰구간을 구하면 된다. 이 때 신뢰구간이 비대칭일 가능성이 크므로 표준오차는 제시하기 어려워진다. 혹자는 \$COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이 걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 \$COV 절을 삭제하는 것이 시간을 절약하는 방법이다.
+$COV step이 실패하는 경우에는 먼저 파라미터 추정값에 이상이 없는지 살펴보고, 이상이 없어 보이면 붓스트랩이나 profile-likelihood등의 다른 방법을 이용하여 신뢰구간을 구하면 된다. 이 때 신뢰구간이 비대칭일 가능성이 크므로 표준오차는 제시하기 어려워진다. 혹자는 \$COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이 걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 \$COV 절을 삭제하는 것이 시간을 절약하는 방법이다.\index{붓스트랩 / bootstrapping}
 
 ## NONMEM document
 
@@ -100,9 +100,9 @@ $COVARIANCE
 
 \index{MLE, maximum likelihood estimation}
 
-NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, 표단계로 나눌 수 있다. 이중 공분산단계에 대하여 설명하고자 한다. 추정단계가 끝나면 최종 파라미터 추정값이 구해진다. NONMEM에서는 Y의 분포가 정규이든 아니든 상관없이 정규분포의 가능도 함수(엄밀히는 이것을 약간 변형한 것)를 목적함수로 한다. 즉, maximum likelihood estimation (MLE) 방법을 사용한다.
+NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, 표단계로 나눌 수 있다. 이중 공분산단계에 대하여 설명하고자 한다. 추정단계가 끝나면 최종 파라미터 추정값이 구해진다. NONMEM에서는 Y의 분포가 정규이든 아니든 상관없이 정규분포의 가능도 함수(엄밀히는 이것을 약간 변형한 것)를 목적함수로 한다. 즉, maximum likelihood estimation (MLE) 방법을 사용한다.\index{가능도 / likelihood}\index{공분산 / covariance}\index{목적함수 / objective function}
 
-MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information Matrix의 역행렬을 이용하여 추정값들의 분산-공분산 행렬과 표준오차를 구할 수 있다. 표준오차는 분산-공분산 행렬의 대각원소를 1/2승 한 것이다.
+MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information Matrix의 역행렬을 이용하여 추정값들의 분산-공분산 행렬과 표준오차를 구할 수 있다. 표준오차는 분산-공분산 행렬의 대각원소를 1/2승 한 것이다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{분산-공분산 행렬 / variance-covariance matrix}
 
 MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1계 편미분한 것의 제곱과 2계 편미분한 것이 부호만 반대인 같은 기대값을 가진다.
 \begin{equation}
@@ -130,13 +130,13 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 좀 더 복잡한 과정을 거치면 \(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)는
 점근적으로 \(N(0,\lbrack I(\theta)\rbrack^{- 1})\) 를 따름을 증명할 수 있다. [@kim]
 
-아주 이상적이지만(그러나 극히 드문) 상황에서는 목적함수의 1계 미분의 제곱과 2계 미분이 같겠지만, 실제 관찰값으로 계산하면
+아주 이상적이지만(그러나 극히 드문) 상황에서는 목적함수의 1계 미분의 제곱과 2계 미분이 같겠지만, 실제 관찰값으로 계산하면\index{목적함수 / objective function}
 다르다. NONMEM에서는 1계 미분의 제곱행렬을 S matrix, 2계 미분 행렬(Hessian)을 R matrix라고
-부른다. 대부분의 MLE software에서는 R matrix의 inverse만으로 estimate의 분산-공분산 행렬로 삼고
-표준오차를 산출한다. NONMEM에서는 \(R^{- 1}SR^{- 1}\)을 estimate의 분산-공분산 행렬로 삼는다. 이것은
+부른다. 대부분의 MLE software에서는 R matrix의 inverse만으로 estimate의 분산-공분산 행렬로 삼고\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}
+표준오차를 산출한다. NONMEM에서는 \(R^{- 1}SR^{- 1}\)을 estimate의 분산-공분산 행렬로 삼는다. 이것은\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}
 더 보수적인 방법이어서 신뢰구간이 더 넓게 나온다.
 
-수식으로 표현하자면 다음과 같다. 여기에서 \(O_{i}\)는 개인(i)의 목적함수 값이며, \(O\)는 전체 목적함수 값이다.
+수식으로 표현하자면 다음과 같다. 여기에서 \(O_{i}\)는 개인(i)의 목적함수 값이며, \(O\)는 전체 목적함수 값이다.\index{목적함수 / objective function}
 
 \[O = \sum_{i}^{}O_{i}\]
 
@@ -274,7 +274,7 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
 }
 ```
 
-위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.
+위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.\index{목적함수 / objective function}
 
 이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.
 
@@ -521,15 +521,15 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 # (Tab1 = TabStep())
 ```
 
-## 고유값(Eigenvalue)
+## 고유값(Eigenvalue)\index{고유값 / eigenvalues}
 
-공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.
+공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}
 
 어떤 행렬 A를 스칼라 \(\lambda\)와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,
 
 \[Au = \lambda u\]
 
-\(\lambda\)를 A의 고유값이라 하고 그 고유값에 해당하는 벡터 u를 고유벡터(eigenvector)라고 한다.
+\(\lambda\)를 A의 고유값이라 하고 그 고유값에 해당하는 벡터 u를 고유벡터(eigenvector)라고 한다.\index{고유값 / eigenvalues}
 
 \(\lambda\)는
 
@@ -537,11 +537,11 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 
 이라는 특성 방정식의 근들로 구할 수 있다.
 
-Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다. 조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의 어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시 minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.
+Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다. 조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의 어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시 minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.\index{고유값 / eigenvalues}
 
 ## 결론
 
-NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.
+NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.\index{대체 / imputation}
 
 1.  NMTRAN의 역할을 해줄 함수들이 없다.
 2.  속도가 적어도 수 십에서 수 백 배 느리다.

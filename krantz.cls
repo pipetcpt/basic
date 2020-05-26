@@ -1493,7 +1493,7 @@
       \endlist}
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
-\newcommand\indexname{색인}
+\newcommand\indexname{찾아보기} % sungpil
 \newenvironment{theindex}
                {\cleardoublepage\if@twocolumn
                   \@restonecolfalse

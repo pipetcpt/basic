@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-25" />
+<meta name="date" content="2020-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#direct-pkpd"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
-<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting) </a></li>
 <li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
 <li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
 </ul></li>
@@ -495,7 +495,7 @@ Numerical Predictive Check (NPC)
 </div>
 <div id="simulation-based-diagnostics" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> Simulation-based diagnostics</h2>
-<p>시뮬레이션에 기반한 예측성능 평가 과정인 사후 예측 점검(PPC), VPC와 NPC은 모두 관찰값과 모델에 의해 시뮬레이션된 값들의 분포를 비교하는 것이다. <span class="citation">(Yano, Beal, and Sheiner <a href="#ref-yano2001evaluating" role="doc-biblioref">2001</a>; Post et al. <a href="#ref-post2008extensions" role="doc-biblioref">2008</a>)</span> 시뮬레이션 데이터가 관찰 데이터의 분포특징을 적절히 반영하고 있음을 시각적, 수치적으로 확인할 수 있다면 모델의 예측성능 평가가 잘 이루어졌다고 말할 수 있다.</p>
+<p>시뮬레이션에 기반한 예측성능 평가 과정인 사후예측점검(PPC), VPC와 NPC은 모두 관찰값과 모델에 의해 시뮬레이션된 값들의 분포를 비교하는 것이다. <span class="citation">(Yano, Beal, and Sheiner <a href="#ref-yano2001evaluating" role="doc-biblioref">2001</a>; Post et al. <a href="#ref-post2008extensions" role="doc-biblioref">2008</a>)</span> 시뮬레이션 데이터가 관찰 데이터의 분포특징을 적절히 반영하고 있음을 시각적, 수치적으로 확인할 수 있다면 모델의 예측성능 평가가 잘 이루어졌다고 말할 수 있다.</p>
 <div id="사후-예측-점검-posterior-predictive-check" class="section level3" number="16.4.1">
 <h3><span class="header-section-number">16.4.1</span> 사후 예측 점검 (posterior predictive check)</h3>
 <p>사후 예측 점검을 통해 현재와 미래 자료 세트의 중요한 임상적 특성이 모델에 의해 충실히 재현이 되는가를 결정하는데 유용할 수 있다. <span class="citation">(Post et al. <a href="#ref-post2008extensions" role="doc-biblioref">2008</a>)</span> 이 방법은 특정 요약 통계량을 원본 데이터셋에서 계산하고 이를 시뮬레이션으로부터 발생된 사후 예측 분포와 비교하는 것이다. (그림 <a href="evaluation.html#fig:ppc">16.3</a>) 사후값(posterior)은 불확실성(uncertainty)과 잔류변이(residual variability)를 반영하고 있으며 이것이 특정 분포를 따르지 않는 경우, 또는 관찰값과 큰 차이가 나는 경우 자신의 모델을 점검할 수 있다. 시뮬레이션의 반복 데이터셋을 생성하여 통계량의 분포와 상응하는 유의확률값을 얻어낼 수도 있다. 그러나 현재로서는 이러한 접근법이 널리 통용되고 있지는 않다.</p>
@@ -512,7 +512,7 @@ Numerical Predictive Check (NPC)
 <p>
 </p>
 <p>VPC로 생성된 그림은 관찰값과 시뮬레이션에 의한 예측구간을 겹쳐서 그림 형태로 제시한다.(그림 <a href="evaluation.html#fig:scatter-vpc">16.4</a>) 시각적으로 표현된 자료는 빠르고 직관적으로 모델의 예측성능을 평가할 수 있다는 큰 장점을 갖기에 현재 가장 널리 쓰이고 있는 방법이다.</p>
-<p>모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, $PK 또는 $PRED는 손대지 않고 $THETA, $OMEGA, $SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 $MSFI 구문을 이용해 모델규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. $EST, $COV는 삭제하고 $SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다.</p>
+<p>모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, $PK 또는 $PRED는 손대지 않고 $THETA, $OMEGA, $SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 $MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. $EST, $COV는 삭제하고 $SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. </p>
 <pre><code>$SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000</code></pre>
 <p>최소 1000개 이상의 반복 데이터셋이 선호되며 이를 통해 관측값과 시뮬레이션 예측값을 비교하게 된다. 반복 데이터셋을 생성하기 위한 입력 데이터셋은 모델을 구축할 때 사용한 데이터셋과 유사한 형태이나 DV값이 시뮬레이션 값으로 대체된다. 반복수가 커질수록 결과 파일의 용량이 비례적으로 커지게 되고 따라서 자료 처리 속도가 늦어지므로 처음에는 낮은 반복수로 확인 후, 어느정도 확인이 된 후 1000개, 2000개 반복수로 높이는 실용적인 접근법을 택할 수도 있다.</p>
 <div class="figure"><span id="fig:scatter-vpc"></span>

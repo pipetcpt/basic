@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 18 PK-PD 연결 방법과 적합법 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 18 PK-PD 연결 방법과 적합법 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-25" />
+<meta name="date" content="2020-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.4</b> PK-PD 연결 방법 (적합법)</a></li>
 <li class="chapter" data-level="18.5" data-path="pkpd-link.html"><a href="pkpd-link.html#direct-pkpd"><i class="fa fa-check"></i><b>18.5</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
-<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
+<li class="chapter" data-level="18.5.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.5.1</b> 동시적합법(SIM, Simultaneous fitting) </a></li>
 <li class="chapter" data-level="18.5.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.5.2</b> 순차적합법 (Sequential fitting)</a></li>
 <li class="chapter" data-level="18.5.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.5.3</b> IPP (Individual PK Parameters)</a></li>
 </ul></li>
@@ -417,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pkpd-link-method" class="section level2" number="18.4">
 <h2><span class="header-section-number">18.4</span> PK-PD 연결 방법 (적합법)</h2>
 <p>PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적합법 선택에 있어 고려하는 요소는 데이터의 특성, 모델링 과정에 소요되는 시간, 최종 파라미터 추정값의 정밀도 등이 있으며, 이 요소들 간의 적절한 균형을 고려하여 적합법을 선택할 수 있다.</p>
-<p>첫 번째 방법은 PK-PD 모델의 동시적합법(SIM, simultaneous fitting)으로, 이는 PK 모델과 PD 모델을 동시에 데이터에 적합시켜 PK 파라미터와 PD 파라미터를 동시에 추정하는 방법이다. 다른 방법은 PK 모델을 적합시킨 후, 추정된 PK 파라미터를 PD 모델에 대한 입력값으로 사용하여 PD 파라미터를 추정하는 순차적합법(sequential fitting)이 있다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>, <a href="#ref-zhang2" role="doc-biblioref">2003</a><a href="#ref-zhang2" role="doc-biblioref">b</a>)</span></p>
+<p>첫 번째 방법은 PK-PD 모델의 동시적합법(SIM, simultaneous fitting)으로, 이는 PK 모델과 PD 모델을 동시에 데이터에 적합시켜 PK 파라미터와 PD 파라미터를 동시에 추정하는 방법이다. 다른 방법은 PK 모델을 적합시킨 후, 추정된 PK 파라미터를 PD 모델에 대한 입력값으로 사용하여 PD 파라미터를 추정하는 순차적합법(sequential fitting)이 있다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>, <a href="#ref-zhang2" role="doc-biblioref">2003</a><a href="#ref-zhang2" role="doc-biblioref">b</a>)</span> </p>
 <p>순차적합법은 PD 모델의 추정방법에 따라(어떤 데이터에 비중을 두고 PD 모델링을 진행할지에 따라) 최소 세가지로 나눌 수 있다. 이 세가지 방법은 PPP&amp;D (Population PK Parameter &amp; Data), PPP (Population PK Parameter), 그리고 IPP (Individual PK Parameters)로, 이 이름들은 각 방법에 대한 간단한 설명으로 생각할 수 있다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>, <a href="#ref-zhang2" role="doc-biblioref">2003</a><a href="#ref-zhang2" role="doc-biblioref">b</a>)</span></p>
 <p>우선, 순차적합법 중 첫번째 방법인 PPP&amp;D는 PK 파라미터 집단 대표값을 고정하고, PK 데이터와 PD 데이터를 모두 데이터셋에 포함하여 개인의 PK 파라미터 및 PD 파라미터를 추정하는 방법이다.</p>
 <p>순차적합법 중 두 번째 방법은 PPP로 PK 파라미터의 집단 대표값을 고정하고, 오로지 PD 데이터만을 데이터셋에 포함하여, 이를 근거로 개인의 PK 파라미터와 PD 파라미터를 추정한다. 산출된 개인 PK 파라미터는 오로지 PD 데이터에 의존하여 산출되었다는 점에서 이전 방법과 다르다. 따라서 개인의 PD 데이터가 상대적으로 높은 값을 가지는 경우, 개인의 혈장약물농도는 높게 측정된 PD 데이터를 설명하기 위해 실제보다 높게 예측될 수 있다. 따라서 이 방법은 PD 데이터에 더 큰 비중을 둔 방법이라고 할 수 있다.</p>
@@ -526,7 +526,7 @@ Fix (as given by the PK model)
 <div id="direct-pkpd" class="section level2" number="18.5">
 <h2><span class="header-section-number">18.5</span> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</h2>
 <div id="동시적합법sim-simultaneous-fitting" class="section level3" number="18.5.1">
-<h3><span class="header-section-number">18.5.1</span> 동시적합법(SIM, Simultaneous fitting)</h3>
+<h3><span class="header-section-number">18.5.1</span> 동시적합법(SIM, Simultaneous fitting) </h3>
 <p>PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.</p>
 <p><a href="pkpd-link.html#direct-pkpd">18.5</a>의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.</p>
 <p>SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 <a href="pkpd-link.html#fig:SIM-dataset">18.4</a>).</p>
@@ -836,7 +836,7 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 </div>
 <div id="각-방법의-소요시간-및-정밀도-비교" class="section level3" number="18.7.2">
 <h3><span class="header-section-number">18.7.2</span> 각 방법의 소요시간 및 정밀도 비교</h3>
-<p>SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 추정에 소요되는 시간(estimation time)이 대략 40 – 75% 가량 절약된다. 그 중 IPP 방법은 목적함수를 최소화하는 시간을 대략 75% 절약할 수 있는 것으로 나타났다(그림 <a href="pkpd-link.html#fig:time-comparison">18.12</a>). <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
+<p>SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 추정에 소요되는 시간(estimation time)이 대략 40 – 75% 가량 절약된다. 그 중 IPP 방법은 목적함수를 최소화하는 시간을 대략 75% 절약할 수 있는 것으로 나타났다(그림 <a href="pkpd-link.html#fig:time-comparison">18.12</a>). <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span> </p>
 <p>또한, PD 파라미터 추정의 성공 빈도와 정밀도 면에서 순차적합법이 SIM 방법보다 나은 것으로 나타났으며, 순차적합법 중 IPP
 방법이 성공률이 가장 높은 것으로 나타났다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
 <div class="figure"><span id="fig:time-comparison"></span>
