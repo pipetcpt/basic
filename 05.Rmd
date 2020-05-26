@@ -51,8 +51,8 @@ tibble::tribble(
   column_spec(2:3, width = "3cm")
 ```
 
-일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소수(complex\index{고유값 / eigenvalues}
-number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더 단순한 구조를 가지며 고유값이\index{고유값 / eigenvalues}
+일반 선형 ADVAN에는 ADVAN 5와 7이 있으며, 보통 속도상수의 고유값(eigenvalue)이 복소수(complex\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
+number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더 단순한 구조를 가지며 고유값이\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
 실수(real number)인 일반적인 약동학 모델에서는 상대적으로 더 빠른 ADVAN 7을 적용할 수 있다.
 
 (ref:advan-lin-example) 일반 선형 ADVAN을 이용한 코드 예시

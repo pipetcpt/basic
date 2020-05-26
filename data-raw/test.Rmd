@@ -1,8 +1,8 @@
 ---
 title: "test"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 header-includes:
   - \usepackage{kotex}
   - \usepackage{booktabs}
@@ -24,45 +24,25 @@ header-includes:
 source('../_setup.R')
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-library(kableExtra)
-library(knitr)
-
-collapse_rows_dt <- data.frame(C1 = c(rep("a", 10), rep("b", 5)),
-                               C2 = c(rep("c", 7), rep("d", 3), rep("c", 2), rep("d", 3)),
-                               C3 = 1:15,
-                               C4 = sample(c(0,1), 15, replace = TRUE))
-
-#readxl::read_excel("fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
-kable(collapse_rows_dt, align = "c") %>%
-#  kable(align = "c") %>%
-  kable_styling(full_width = F) %>%
-  collapse_rows(columns = 1) %>%
-  column_spec(1, bold = T, extra_css = 'vertical-align: top !important;')
+```{r required-param-subroutine}
+tibble::tribble(
+  ~`ADVAN subroutine`, ~`TRANS subroutine`, ~`Required parameters`,
+  "ADVAN1", "TRANS1", "K",
+  "ADVAN1", "TRANS2", "CL, V", # bold: \\textbf{TRANS2}
+  "ADVAN2", "TRANS1", "K, KA",
+  "ADVAN2", "TRANS2", "CL, V, KA", # bold: \\textbf{TRANS2}
+  "ADVAN3", "TRANS1", "K, K12, K21",
+  "ADVAN3", "TRANS3", "CL, V, Q, VSS",
+  "ADVAN3", "TRANS4", "CL, V1, Q, V2", # bold: \\textbf{TRANS4}
+  "ADVAN3", "TRANS5", "AOB, ALPHA, BETA",
+  "ADVAN3", "TRANS6", "ALPHA, BETA, K21",
+  "ADVAN4", "TRANS1", "K, K23, K32, KA",
+  "ADVAN4", "TRANS3", "CL, V, Q, VSS, KA",
+  "ADVAN4", "TRANS4", "CL, V2, Q, V3, KA", # bold: \\textbf{TRANS4}
+  "ADVAN4", "TRANS5", "AOB, ALPHA, BETA, KA",
+  "ADVAN4", "TRANS6", "ALPHA, BETA, K32, KA"
+) %>% 
+  kable(booktabs = TRUE, align = "l", escape = FALSE, caption = "ADVAN과 TRANS 서브루틴 조합에 따른 필수 파라미터") %>% 
+  column_spec(1, bold=TRUE) %>% 
+  collapse_rows(columns=1, latex_hline="major", valign = "top", row_group_label_position = 'stack')
 ```
-
-
-```{r cars, results = 'asis', eval = TRUE}
-readxl::read_excel("fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
-  kable(#booktabs=TRUE,  #longtable=TRUE, 
-        caption = "ADVAN") %>%
-  #column_spec(3:4, width = "3cm") %>% 
-  #column_spec(3:4) # %>% 
-  collapse_rows(columns = 1)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

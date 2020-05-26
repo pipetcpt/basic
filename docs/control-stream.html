@@ -719,11 +719,12 @@ ALPHA, BETA, GAMMA, K32, K42, KA
 <div class="example">
 <span id="exm:two-comp-pk" class="example"><strong>코드 3.2  </strong></span>2구획 경구 약동학 모델의 $PK 레코드
 </div>
-<p>$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.</p>
-<p><span class="math display">\[
+<p>$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.
+<span class="math display" id="eq:scalingparam">\[\begin{equation}
 \frac{Amount\ (mg)}{Vd\ (L)} \neq \ DV\ (μg/L)
-\]</span></p>
-<p>위의 식에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. <code>S2=V2/1000</code>이며, 이를 $PK에 코드 <a href="control-stream.html#exm:two-comp-pk">3.2</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
+\tag{3.1}
+\end{equation}\]</span></p>
+<p>위의 식 @red(eq:scalingparam)에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. <code>S2=V2/1000</code>이며, 이를 $PK에 코드 <a href="control-stream.html#exm:two-comp-pk">3.2</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:advan-param">표 3.2: </span>특수 ADVAN의 부가 파라미터
@@ -807,14 +808,15 @@ Absorption lag parameter
 <p>예를 들어 $PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="control-stream.html#cb11-1"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>)</span></code></pre></div>
 <p>순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 ’(하한값, 초기 추정값, 상한값)’을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10<sub>6</sub>이 기본 상한값이다.</p>
-<p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 <code>CL=TVCL*EXP(ETA(1))</code>로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL2</sub>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다. 특히, CL<sub>i</sub> = TVCL*<span class="math inline">\(e^{\eta_{i}}\)</span> 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:</p>
-<p><span class="math display">\[
+<p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 <code>CL=TVCL*EXP(ETA(1))</code>로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL2</sub>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다. 특히, CL<sub>i</sub> = TVCL*<span class="math inline">\(e^{\eta_{i}}\)</span> 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:
+<span class="math display" id="eq:iivomega">\[\begin{equation}
 \begin{pmatrix} 
    \omega_{1,1}^2 &amp; 0 &amp; 0 \\
    0 &amp; \omega_{2,2}^2 &amp; 0 \\
    0 &amp; 0 &amp; \omega_{3,3}^2
+\tag{3.2}
 \end{pmatrix}
-\]</span></p>
+\end{equation}\]</span></p>
 <p>OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 $OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="control-stream.html#cb12-1"></a><span class="op">$</span>OMEGA <span class="fl">0.16</span> <span class="fl">0.25</span> <span class="fl">0.16</span></span></code></pre></div>
 <p>여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다.</p>
@@ -828,23 +830,24 @@ Absorption lag parameter
 <span id="cb14-3"><a href="control-stream.html#cb14-3"></a>IRES =<span class="st"> </span>DV<span class="op">-</span>IPRED </span>
 <span id="cb14-4"><a href="control-stream.html#cb14-4"></a>IWRES =<span class="st"> </span>IRES<span class="op">/</span>IPRED </span>
 <span id="cb14-5"><a href="control-stream.html#cb14-5"></a>Y =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="kw">EPS</span>(<span class="dv">2</span>)</span></code></pre></div>
-<p><span class="math display">\[
+<p><span class="math display" id="eq:ccv-equation">\[\begin{equation}
 \begin{pmatrix} 
    \sigma_{1,1}^2 &amp; 0 \\
    0 &amp; \sigma_{2,2}^2 \\
 \end{pmatrix}
-\]</span></p>
-<p>여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수, 가법변동, 고정변동계수+가법변동을 선택할 수 있다. 잔차변이(EPS)를 $THETA 레코드에서 추정하도록 $ERROR의 코드를 변경해서 사용하기도 한다:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb15-1"><a href="control-stream.html#cb15-1"></a>$ERROR </span>
-<span id="cb15-2"><a href="control-stream.html#cb15-2"></a>IPRED <span class="kw">=</span> F </span>
-<span id="cb15-3"><a href="control-stream.html#cb15-3"></a>W <span class="kw">=</span> SQRT<span class="kw">(</span>THETA<span class="kw">(</span><span class="dv">4</span><span class="kw">)**</span><span class="dv">2</span> <span class="kw">+</span> THETA<span class="kw">(</span><span class="dv">5</span><span class="kw">)**</span><span class="dv">2</span> <span class="kw">*</span>IPRED<span class="kw">**</span><span class="dv">2</span><span class="kw">)</span> </span>
-<span id="cb15-4"><a href="control-stream.html#cb15-4"></a>IRES <span class="kw">=</span> DV<span class="kw">-</span>IPRED </span>
-<span id="cb15-5"><a href="control-stream.html#cb15-5"></a>IWRES <span class="kw">=</span> IRES<span class="kw">/</span>W </span>
-<span id="cb15-6"><a href="control-stream.html#cb15-6"></a>Y <span class="kw">=</span> IPRED <span class="kw">+</span> W <span class="kw">*</span> EPS<span class="kw">(</span><span class="dv">1</span><span class="kw">)</span></span>
-<span id="cb15-7"><a href="control-stream.html#cb15-7"></a><span class="kw">...</span></span>
-<span id="cb15-8"><a href="control-stream.html#cb15-8"></a>$THETA <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="dv">100</span><span class="kw">)</span> <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="dv">30</span><span class="kw">)</span> <span class="kw">(</span><span class="dv">0</span><span class="kw">,</span> <span class="fl">0.7</span><span class="kw">)</span> <span class="dv">10</span> <span class="fl">0.2</span></span>
-<span id="cb15-9"><a href="control-stream.html#cb15-9"></a><span class="kw">...</span></span>
-<span id="cb15-10"><a href="control-stream.html#cb15-10"></a>$SIGMA <span class="dv">1</span> FIX</span></code></pre></div>
+\tag{3.3}
+\end{equation}\]</span></p>
+<p>여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수(CCV), 가법변동, 가법과 ccv 더한 모델이 있다. 잔차변이(EPS)를 $THETA 레코드에서 추정하도록 $ERROR의 코드를 변경해서 사용하기도 한다:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="control-stream.html#cb15-1"></a><span class="op">$</span>ERROR </span>
+<span id="cb15-2"><a href="control-stream.html#cb15-2"></a>IPRED =<span class="st"> </span>F </span>
+<span id="cb15-3"><a href="control-stream.html#cb15-3"></a>W =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span>IPRED<span class="op">**</span><span class="dv">2</span>) </span>
+<span id="cb15-4"><a href="control-stream.html#cb15-4"></a>IRES =<span class="st"> </span>DV<span class="op">-</span>IPRED </span>
+<span id="cb15-5"><a href="control-stream.html#cb15-5"></a>IWRES =<span class="st"> </span>IRES<span class="op">/</span>W </span>
+<span id="cb15-6"><a href="control-stream.html#cb15-6"></a>Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
+<span id="cb15-7"><a href="control-stream.html#cb15-7"></a>...</span>
+<span id="cb15-8"><a href="control-stream.html#cb15-8"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>) <span class="dv">10</span> <span class="fl">0.2</span></span>
+<span id="cb15-9"><a href="control-stream.html#cb15-9"></a>...</span>
+<span id="cb15-10"><a href="control-stream.html#cb15-10"></a><span class="op">$</span>SIGMA <span class="dv">1</span> FIX</span></code></pre></div>
 <p>여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 $ERROR 레코드에서 사용한 EPS(1)은 $SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 $THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.</p>
 </div>
 <div id="estimation-simulation" class="section level3" number="3.4.4">
@@ -1034,13 +1037,14 @@ conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다
 </div>
 
 <p>각 구획의 이동을 미분방정식으로 나타내면 다음과 같다.</p>
-<p><span class="math display">\[
+<p><span class="math display" id="eq:comp-mpr">\[\begin{equation} 
 \begin{split}
   \frac{dA(1)}{dt} &amp; = -k_a \cdot A(1)  \\
   \frac{dA(2)}{dt} &amp; = \ \ k_a \cdot A(1) - k20 \cdot A(2) - \frac{V_{max} \cdot A(2)}{K_m + A(2)} \\
   \frac{dA(3)}{dt} &amp; = -k30 \cdot A(3) + \frac{V_{max} \cdot A(2)}{k_m + A(2)} \cdot MPR
 \end{split}
-\]</span></p>
+\tag{3.4}
+\end{equation}\]</span></p>
 <p>여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 <a href="control-stream.html#exm:parent-metabolite">3.7</a>와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. $DES에서 각 구획의 이동을 정의하였으며, $ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (코드 <a href="control-stream.html#exm:parent-metabolite">3.7</a>)</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="control-stream.html#cb23-1"></a><span class="op">$</span>PROBLEM Model of Parent and Metabolite Concentrations</span>
 <span id="cb23-2"><a href="control-stream.html#cb23-2"></a><span class="op">$</span>INPUT ID TIME DV AMT EVID MDV CMT</span>

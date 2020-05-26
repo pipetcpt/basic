@@ -34,17 +34,17 @@ TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브�
 tibble::tribble(
   ~`ADVAN subroutine`, ~`TRANS subroutine`, ~`Required parameters`,
   "ADVAN1", "TRANS1", "K",
-  "ADVAN1", "**TRANS2**", "CL, V",
+  "ADVAN1", "TRANS2", "CL, V", # bold: \\textbf{TRANS2}
   "ADVAN2", "TRANS1", "K, KA",
-  "ADVAN2", "**TRANS2**", "CL, V, KA",
+  "ADVAN2", "TRANS2", "CL, V, KA", # bold: \\textbf{TRANS2}
   "ADVAN3", "TRANS1", "K, K12, K21",
   "ADVAN3", "TRANS3", "CL, V, Q, VSS",
-  "ADVAN3", "**TRANS4**", "CL, V1, Q, V2",
+  "ADVAN3", "TRANS4", "CL, V1, Q, V2", # bold: \\textbf{TRANS4}
   "ADVAN3", "TRANS5", "AOB, ALPHA, BETA",
   "ADVAN3", "TRANS6", "ALPHA, BETA, K21",
   "ADVAN4", "TRANS1", "K, K23, K32, KA",
   "ADVAN4", "TRANS3", "CL, V, Q, VSS, KA",
-  "ADVAN4", "**TRANS4**", "CL, V2, Q, V3, KA" ,
+  "ADVAN4", "TRANS4", "CL, V2, Q, V3, KA", # bold: \\textbf{TRANS4}
   "ADVAN4", "TRANS5", "AOB, ALPHA, BETA, KA",
   "ADVAN4", "TRANS6", "ALPHA, BETA, K32, KA"
 ) %>% 
@@ -54,11 +54,15 @@ tibble::tribble(
 ```
 
 ```{r standard-pk-models}
-readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="B2:D39") %>%
-  #kable(booktabs = TRUE, longtable = TRUE, align = "l", 
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
+  rename(` ` = 1) %>%	
   kable(booktabs = TRUE, align = "l", escape = FALSE,
 		caption = "Standard Pharmacokinetic Models and Parameters") %>% 
-  column_spec(2, width = "3cm")
+  column_spec(1, width = "2cm") %>%
+  column_spec(2, width = "1.5cm") %>%
+  column_spec(3, width = "3cm") %>%
+  column_spec(4, width = "5cm") %>%
+  collapse_rows(columns=1, latex_hline="major", valign = "middle")
 ```
 
 ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 \@ref(tab:additional-param)에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. [@nonmem]
@@ -134,9 +138,9 @@ IF (DOSE.EQ.200) F1 = THETA(8)
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="50", range="B2:E36") %>% 
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:basic-additional)") %>% 
   column_spec(1, width = "2cm") %>%
-  column_spec(2, width = "4cm") %>%
-  column_spec(3, width = "2cm") %>%
-  column_spec(4, width = "7cm") %>%
-  collapse_rows(1:2, valign = "top")
+  column_spec(2, width = "2.5cm") %>%
+  column_spec(3, width = "1cm") %>%
+  column_spec(4, width = "6cm") %>%
+  collapse_rows(1:2, valign = "middle")
 ```
 

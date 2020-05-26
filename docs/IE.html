@@ -416,17 +416,18 @@ x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 </div>
 <div id="왜-좋은-초기추정값을-선택해야-하는가" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> 왜 좋은 초기추정값을 선택해야 하는가?</h2>
-<p><a href="IE.html#IE-role">8.2</a>에서 다룬 바만으로도 IE을 실제 최종 추정값으로부터 먼 값으로 줄수록 추정에 시간이 더 많이 걸릴 것이라는 정도는 이해할 수 있다. 보다 더 여러 번의 iteration이 필요할 것이기 때문이다. 그러나 이는 잘못된 IE이 발생시킬 수 있는 사소한 문제에 지나지 않는다. 더욱 중요한 문제는 IE을 잘못 선택했을 때, 잘못된 최종 추정값을 얻을 수 있다는 것이다. 2절의 내용을 제대로 이해한 독자라면 Newton-Raphson 방법이나 그 유사 방법이 찾는 것은 “극값”이라는 점을 알 수 있을 것이다. 엄밀히 말하면 제시한 IE으로부터 가장 가까운 곳에 있는 극값을 의미한다. 문제는 대부분의 약동-약력학 데이터 분석의 상황에서 목적함수의 형태가 단순한 형태가 아니며 따라서 그러한 함수가 여러 개의 극값을 가질 수 있다는 것이다. 아래의 단순화된 사례를 확인해 보자. 이 사례는 Peter L. Bonate가 지은 Pharmacokinetic-pharmacodynamic modeling and simulation 중 Nonlinear models and regression 절에 소개되어 있다.</p>
-<p><span class="math display">\[
+<p><a href="IE.html#IE-role">8.2</a>에서 다룬 바만으로도 IE을 실제 최종 추정값으로부터 먼 값으로 줄수록 추정에 시간이 더 많이 걸릴 것이라는 정도는 이해할 수 있다. 보다 더 여러 번의 iteration이 필요할 것이기 때문이다. 그러나 이는 잘못된 IE이 발생시킬 수 있는 사소한 문제에 지나지 않는다. 더욱 중요한 문제는 IE을 잘못 선택했을 때, 잘못된 최종 추정값을 얻을 수 있다는 것이다. 2절의 내용을 제대로 이해한 독자라면 Newton-Raphson 방법이나 그 유사 방법이 찾는 것은 “극값”이라는 점을 알 수 있을 것이다. 엄밀히 말하면 제시한 IE으로부터 가장 가까운 곳에 있는 극값을 의미한다. 문제는 대부분의 약동-약력학 데이터 분석의 상황에서 목적함수의 형태가 단순한 형태가 아니며 따라서 그러한 함수가 여러 개의 극값을 가질 수 있다는 것이다. 아래의 단순화된 사례를 확인해 보자. 이 사례는 Peter L. Bonate가 지은 Pharmacokinetic-pharmacodynamic modeling and simulation 중 Nonlinear models and regression 절에 소개되어 있다.
+<span class="math display" id="eq:multiplepoles">\[\begin{equation}
 Y = 5x^6 - 36x^5 + \frac{165}{2}x^4 - 60x^3 + 36
-\]</span></p>
+\tag{8.2}
+\end{equation}\]</span></p>
 <div class="figure"><span id="fig:limitation-newton-rhapson"></span>
 <img src="assets/media-08/08-fig-02.png" alt="복잡한 함수에서 Newton-Raphson 방법의 한계" width="100%" />
 <p class="caption">
 그림 8.2: 복잡한 함수에서 Newton-Raphson 방법의 한계
 </p>
 </div>
-<p>위의 그림 <a href="IE.html#fig:limitation-newton-rhapson">8.2</a>에서 목적함수의 극값은 3개이며, 2개는 극소값, 1개는 극대값이 된다. 이 때, 당연히도 도함수가 0과 교차하는 점은 3개가 되고, 2개는 이계도함수값이 양의 값을, 1개는 이계도함수값이 음의 값을 가지게 되는 것이다. 즉, 2절에서 제시한 요건을 만족하는 지점이 2개가 된다. 그렇다면 이 상황에서 초기 조건은 최종 도달지점에서 어떤 영향을 미칠 것이가? 아래의 그림 <a href="IE.html#fig:final-destination">8.3</a>를 통해 확인할 수 있다.</p>
+<p>위의 그림 <a href="IE.html#fig:limitation-newton-rhapson">8.2</a>에서 목적함수의 극값은 3개이며, 2개는 극소값, 1개는 극대값이 된다. 이 때, 당연히도 도함수가 0과 교차하는 점은 3개가 되고, 2개는 이계도함수값이 양의 값을, 1개는 이계도함수값이 음의 값을 가지게 되는 것이다. 즉, 2절에서 제시한 요건을 만족하는 지점이 2개가 된다. 그렇다면 이 상황에서 초기 조건은 최종 도달지점에서 어떤 영향을 미칠 것인가? 아래의 그림 <a href="IE.html#fig:final-destination">8.3</a>를 통해 확인할 수 있다.</p>
 <div class="figure"><span id="fig:final-destination"></span>
 <img src="assets/media-08/08-fig-table-1.png" alt="초기값에 따른 최종 도달지점의 변화 (Han, Jeon, and Yim 2016)" width="100%" />
 <p class="caption">
@@ -458,7 +459,7 @@ V_p &amp; = V_c \cdot \frac{k_{12}}{k_{21}} \\
 Q &amp; = V_c \cdot k_{12} = V_p \cdot k_{21} \\
 CL &amp; = V_c \cdot k_{10}
 \end{split}
-\tag{8.2}
+\tag{8.3}
 \end{equation}\]</span></p>
 <p>많은 약동-약력학 모델에 대해 유사한 방법으로 IE 값을 얻는 전략이 Gabrielsson과 Weiner의 Pharmacokinetic and Pharmacodynamic Data Analysis, 5th ed. 중 ‘Chapter 2. Pharmacokinetic Concepts’, ‘Chapter 3. Pharmacodynamic Concepts’에 잘 정리되어 있으므로 이를 읽어보기를 추천한다. <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span></p>
 <p>또한, 집단의 대표값과 각 개인 파라미터 값의 관계를 어떻게 설정했는가에 따라 <em>θ</em>의 값은 약간씩 달라질 수 있는데, 예를 들어 개인 간 변이를 가법적으로 설정한 경우(<em>P</em><sub>ij</sub> = <em>θ</em><sub>i</sub> + <em>η</em><sub>ij</sub>)에 <em>θ</em> 값은 해당 파라미터의 집단 평균값에 가까워질 것이며, 이를 지수적으로 설정했다면(<em>P</em><sub>ij</sub> = <em>θ</em><sub>i</sub> · EXP(<em>η</em><sub>ij</sub>)), <em>θ</em> 값은 중앙값에 가까워질 것이다. 이러한 맥락에서 모델링을 수행하는 사람이라면 본인이 작성한 제어구문의 구조가 파라미터 추정값에 어떠한 영향을 미치는가를 이해할 수 있어야 한다고 하겠다. 특히, 공변량 관계가 적용된 모델에서는 공변량 효과 역시 고정 효과로써 반영이 되므로 공변량이 적용되는 파라미터에는 1개 이상의 <em>θ</em>가 추가되며, 이는 기존에 THETA 하나를 이용하여 집단의 대표값을 설명하는 경우와는 다른 고려가 필요하다. 예를 들어, 집단의 분포용적 대표값이 100 L일 때, 이를 <em>θ</em> 하나로 표현하면 그 값이 그대로 100 L/hr이겠으나, V = <em>θ</em><sub>1</sub>*WT + <em>θ</em><sub>2</sub> (WT는 체중)라는 구조로 표현한다면, <em>θ</em><sub>1</sub>의 값은 100을 WT의 평균으로 나눈 값과 유사한 값이 될 것이므로, 이를 반영하여 IE를 설정해 주어야 할 것이다.</p>

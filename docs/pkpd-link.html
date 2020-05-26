@@ -752,42 +752,11 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 </p>
 </div>
 
-<p>이전 제어파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP&amp;D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(그림 <a href="pkpd-link.html#fig:sim-pppd-similarity">18.9</a>).</p>
+<p>이전 제어파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP&amp;D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(코드 <a href="pkpd-link.html#exm:sim-pppd-similarity">18.5</a>).</p>
 <p>제어파일에서 SIM과 PPP&amp;D를 구분할 수 있게 해 주는 부분은 $ERROR 뒤에 이어지는 $THETA, $OMEGA, $SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP&amp;D 방법이라고 할 수 있다.</p>
-<div class="figure"><span id="fig:sim-pppd-similarity"></span>
-<img src="assets/media-18/image10.png" alt="SIM 방법과 PPP&amp;D 방법 쓸 때 제어구문의 공통된 부분" width="100%" />
-<p class="caption">
-그림 18.9: SIM 방법과 PPP&amp;D 방법 쓸 때 제어구문의 공통된 부분
-</p>
-</div>
-
-</div>
-<div id="ppp의-데이터셋-및-제어구문" class="section level3" number="18.6.2">
-<h3><span class="header-section-number">18.6.2</span> PPP의 데이터셋 및 제어구문</h3>
-<p>PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 <a href="pkpd-link.html#fig:ppp-pkpd-dataset">18.10</a>). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP&amp;D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 @ref:sim-pppd-dataset)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 $DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다($DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.</p>
-<p>PPP의 제어구문은 위의 그림 <a href="pkpd-link.html#fig:sim-pppd-similarity">18.9</a>과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.</p>
-<div class="figure"><span id="fig:ppp-pkpd-dataset"></span>
-<img src="assets/media-18/image13.png" alt="PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="100%" />
-<p class="caption">
-그림 18.10: PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
-</p>
-</div>
-
-</div>
-<div id="ipp의-데이터셋-및-제어구문" class="section level3" number="18.6.3">
-<h3><span class="header-section-number">18.6.3</span> IPP의 데이터셋 및 제어구문</h3>
-<p>IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이터를 포함한다. 다만, PK 모델을 통해 얻은 개인의 파라미터 추정치(예를 들어, CL, V2, V3, KA)를 바로 데이터셋에 기입해 준다. IPP에 적합한 데이터셋 형태는 아래와 같다(그림 <a href="pkpd-link.html#fig:ipp-dataset">18.11</a>).</p>
-<p>이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 <a href="pkpd-link.html#exm:ipp-control-stream">18.5</a>). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.</p>
-<div class="figure"><span id="fig:ipp-dataset"></span>
-<img src="assets/media-18/image14.png" alt="IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="100%" />
-<p class="caption">
-그림 18.11: IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
-</p>
-</div>
-
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="pkpd-link.html#cb49-1"></a><span class="op">$</span>PROB HO_PO_2comp</span>
-<span id="cb49-2"><a href="pkpd-link.html#cb49-2"></a><span class="op">$</span>DATA IPP_S.csv IGNORE=<span class="er">@</span></span>
-<span id="cb49-3"><a href="pkpd-link.html#cb49-3"></a><span class="er">$</span>INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA</span>
+<span id="cb49-2"><a href="pkpd-link.html#cb49-2"></a><span class="op">$</span>DATA SIM_S.csv IGNORE=<span class="er">@</span></span>
+<span id="cb49-3"><a href="pkpd-link.html#cb49-3"></a><span class="er">$</span>INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT</span>
 <span id="cb49-4"><a href="pkpd-link.html#cb49-4"></a></span>
 <span id="cb49-5"><a href="pkpd-link.html#cb49-5"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
 <span id="cb49-6"><a href="pkpd-link.html#cb49-6"></a></span>
@@ -796,31 +765,91 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 <span id="cb49-9"><a href="pkpd-link.html#cb49-9"></a>  <span class="kw">COMP</span>(CENT)</span>
 <span id="cb49-10"><a href="pkpd-link.html#cb49-10"></a>  <span class="kw">COMP</span>(PERI)</span>
 <span id="cb49-11"><a href="pkpd-link.html#cb49-11"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
-<span id="cb49-12"><a href="pkpd-link.html#cb49-12"></a> </span>
+<span id="cb49-12"><a href="pkpd-link.html#cb49-12"></a></span>
 <span id="cb49-13"><a href="pkpd-link.html#cb49-13"></a><span class="op">$</span>PK</span>
-<span id="cb49-14"><a href="pkpd-link.html#cb49-14"></a></span>
-<span id="cb49-15"><a href="pkpd-link.html#cb49-15"></a>  CL    =<span class="st"> </span>ICL</span>
-<span id="cb49-16"><a href="pkpd-link.html#cb49-16"></a>  V2    =<span class="st"> </span>IV2</span>
-<span id="cb49-17"><a href="pkpd-link.html#cb49-17"></a>  V3    =<span class="st"> </span>IV3</span>
-<span id="cb49-18"><a href="pkpd-link.html#cb49-18"></a>  Q     =<span class="st"> </span><span class="fl">4.97</span></span>
-<span id="cb49-19"><a href="pkpd-link.html#cb49-19"></a>  KA    =<span class="st"> </span>IKA</span>
-<span id="cb49-20"><a href="pkpd-link.html#cb49-20"></a>  </span>
-<span id="cb49-21"><a href="pkpd-link.html#cb49-21"></a>  S2    =<span class="st"> </span>V2</span>
-<span id="cb49-22"><a href="pkpd-link.html#cb49-22"></a>  </span>
-<span id="cb49-23"><a href="pkpd-link.html#cb49-23"></a>  K23   =<span class="st"> </span>Q<span class="op">/</span>V2</span>
-<span id="cb49-24"><a href="pkpd-link.html#cb49-24"></a>  K32   =<span class="st"> </span>Q<span class="op">/</span>V3</span>
-<span id="cb49-25"><a href="pkpd-link.html#cb49-25"></a>  </span>
-<span id="cb49-26"><a href="pkpd-link.html#cb49-26"></a>  KE    =<span class="st"> </span>CL<span class="op">/</span>V2</span>
-<span id="cb49-27"><a href="pkpd-link.html#cb49-27"></a>  </span>
-<span id="cb49-28"><a href="pkpd-link.html#cb49-28"></a>  EMAX  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb49-29"><a href="pkpd-link.html#cb49-29"></a>  EC50  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb49-30"><a href="pkpd-link.html#cb49-30"></a>  KIN   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb49-31"><a href="pkpd-link.html#cb49-31"></a>  BASE  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb49-32"><a href="pkpd-link.html#cb49-32"></a>  <span class="kw">A_0</span>(<span class="dv">4</span>)=<span class="st"> </span>BASE</span>
-<span id="cb49-33"><a href="pkpd-link.html#cb49-33"></a>  KOUT  =<span class="st"> </span>KIN<span class="op">/</span>BASE</span></code></pre></div>
+<span id="cb49-14"><a href="pkpd-link.html#cb49-14"></a>;<span class="op">----</span><span class="st"> </span>PK FIXED EFFECT <span class="op">----</span></span>
+<span id="cb49-15"><a href="pkpd-link.html#cb49-15"></a><span class="st">  </span>TVCL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
+<span id="cb49-16"><a href="pkpd-link.html#cb49-16"></a>  TVV2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
+<span id="cb49-17"><a href="pkpd-link.html#cb49-17"></a>  TVV3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
+<span id="cb49-18"><a href="pkpd-link.html#cb49-18"></a>  TVQ  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
+<span id="cb49-19"><a href="pkpd-link.html#cb49-19"></a>  TVKA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
+<span id="cb49-20"><a href="pkpd-link.html#cb49-20"></a></span>
+<span id="cb49-21"><a href="pkpd-link.html#cb49-21"></a>;<span class="op">----</span><span class="st"> </span>PK RANDOM EFFECT <span class="op">----</span></span>
+<span id="cb49-22"><a href="pkpd-link.html#cb49-22"></a><span class="st">  </span>CL   =<span class="st"> </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb49-23"><a href="pkpd-link.html#cb49-23"></a>  V2   =<span class="st"> </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb49-24"><a href="pkpd-link.html#cb49-24"></a>  V3   =<span class="st"> </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb49-25"><a href="pkpd-link.html#cb49-25"></a>  Q    =<span class="st"> </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb49-26"><a href="pkpd-link.html#cb49-26"></a>  KA   =<span class="st"> </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb49-27"><a href="pkpd-link.html#cb49-27"></a></span>
+<span id="cb49-28"><a href="pkpd-link.html#cb49-28"></a>;<span class="op">----</span><span class="st"> </span>PK PARAMETER RELATIONSHIP <span class="op">----</span></span>
+<span id="cb49-29"><a href="pkpd-link.html#cb49-29"></a><span class="st">  </span>S2   =<span class="st"> </span>V2</span>
+<span id="cb49-30"><a href="pkpd-link.html#cb49-30"></a>  K23  =<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb49-31"><a href="pkpd-link.html#cb49-31"></a>  K32  =<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb49-32"><a href="pkpd-link.html#cb49-32"></a>  KE   =<span class="st"> </span>CL<span class="op">/</span>V2</span></code></pre></div>
 
 <div class="example">
-<span id="exm:ipp-control-stream" class="example"><strong>코드 18.5  </strong></span>IPP 방법의 제어구문의 예
+<span id="exm:sim-pppd-similarity" class="example"><strong>코드 18.5  </strong></span>(ref:sim-pppd-similarity) SIM 방법과 PPP&amp;D 방법 쓸 때 제어구문의 공통된 부분 <!--fig13-->
+</div>
+</div>
+<div id="ppp의-데이터셋-및-제어구문" class="section level3" number="18.6.2">
+<h3><span class="header-section-number">18.6.2</span> PPP의 데이터셋 및 제어구문</h3>
+<p>PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 <a href="pkpd-link.html#fig:ppp-pkpd-dataset">18.9</a>). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP&amp;D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 @ref:sim-pppd-dataset)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 $DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다($DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.</p>
+<p>PPP의 제어구문은 위의 코드 <a href="pkpd-link.html#exm:sim-pppd-similarity">18.5</a>과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.</p>
+<div class="figure"><span id="fig:ppp-pkpd-dataset"></span>
+<img src="assets/media-18/image13.png" alt="PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="100%" />
+<p class="caption">
+그림 18.9: PPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
+</p>
+</div>
+
+</div>
+<div id="ipp의-데이터셋-및-제어구문" class="section level3" number="18.6.3">
+<h3><span class="header-section-number">18.6.3</span> IPP의 데이터셋 및 제어구문</h3>
+<p>IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이터를 포함한다. 다만, PK 모델을 통해 얻은 개인의 파라미터 추정치(예를 들어, CL, V2, V3, KA)를 바로 데이터셋에 기입해 준다. IPP에 적합한 데이터셋 형태는 아래와 같다(그림 <a href="pkpd-link.html#fig:ipp-dataset">18.10</a>).</p>
+<p>이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 <a href="pkpd-link.html#exm:ipp-control-stream">18.6</a>). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.</p>
+<div class="figure"><span id="fig:ipp-dataset"></span>
+<img src="assets/media-18/image14.png" alt="IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="100%" />
+<p class="caption">
+그림 18.10: IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
+</p>
+</div>
+
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="pkpd-link.html#cb50-1"></a><span class="op">$</span>PROB HO_PO_2comp</span>
+<span id="cb50-2"><a href="pkpd-link.html#cb50-2"></a><span class="op">$</span>DATA IPP_S.csv IGNORE=<span class="er">@</span></span>
+<span id="cb50-3"><a href="pkpd-link.html#cb50-3"></a><span class="er">$</span>INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA</span>
+<span id="cb50-4"><a href="pkpd-link.html#cb50-4"></a></span>
+<span id="cb50-5"><a href="pkpd-link.html#cb50-5"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
+<span id="cb50-6"><a href="pkpd-link.html#cb50-6"></a></span>
+<span id="cb50-7"><a href="pkpd-link.html#cb50-7"></a><span class="op">$</span>MODEL NCOMP=<span class="dv">4</span></span>
+<span id="cb50-8"><a href="pkpd-link.html#cb50-8"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
+<span id="cb50-9"><a href="pkpd-link.html#cb50-9"></a>  <span class="kw">COMP</span>(CENT)</span>
+<span id="cb50-10"><a href="pkpd-link.html#cb50-10"></a>  <span class="kw">COMP</span>(PERI)</span>
+<span id="cb50-11"><a href="pkpd-link.html#cb50-11"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
+<span id="cb50-12"><a href="pkpd-link.html#cb50-12"></a> </span>
+<span id="cb50-13"><a href="pkpd-link.html#cb50-13"></a><span class="op">$</span>PK</span>
+<span id="cb50-14"><a href="pkpd-link.html#cb50-14"></a></span>
+<span id="cb50-15"><a href="pkpd-link.html#cb50-15"></a>  CL    =<span class="st"> </span>ICL</span>
+<span id="cb50-16"><a href="pkpd-link.html#cb50-16"></a>  V2    =<span class="st"> </span>IV2</span>
+<span id="cb50-17"><a href="pkpd-link.html#cb50-17"></a>  V3    =<span class="st"> </span>IV3</span>
+<span id="cb50-18"><a href="pkpd-link.html#cb50-18"></a>  Q     =<span class="st"> </span><span class="fl">4.97</span></span>
+<span id="cb50-19"><a href="pkpd-link.html#cb50-19"></a>  KA    =<span class="st"> </span>IKA</span>
+<span id="cb50-20"><a href="pkpd-link.html#cb50-20"></a>  </span>
+<span id="cb50-21"><a href="pkpd-link.html#cb50-21"></a>  S2    =<span class="st"> </span>V2</span>
+<span id="cb50-22"><a href="pkpd-link.html#cb50-22"></a>  </span>
+<span id="cb50-23"><a href="pkpd-link.html#cb50-23"></a>  K23   =<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb50-24"><a href="pkpd-link.html#cb50-24"></a>  K32   =<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb50-25"><a href="pkpd-link.html#cb50-25"></a>  </span>
+<span id="cb50-26"><a href="pkpd-link.html#cb50-26"></a>  KE    =<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb50-27"><a href="pkpd-link.html#cb50-27"></a>  </span>
+<span id="cb50-28"><a href="pkpd-link.html#cb50-28"></a>  EMAX  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb50-29"><a href="pkpd-link.html#cb50-29"></a>  EC50  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb50-30"><a href="pkpd-link.html#cb50-30"></a>  KIN   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb50-31"><a href="pkpd-link.html#cb50-31"></a>  BASE  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb50-32"><a href="pkpd-link.html#cb50-32"></a>  <span class="kw">A_0</span>(<span class="dv">4</span>)=<span class="st"> </span>BASE</span>
+<span id="cb50-33"><a href="pkpd-link.html#cb50-33"></a>  KOUT  =<span class="st"> </span>KIN<span class="op">/</span>BASE</span></code></pre></div>
+
+<div class="example">
+<span id="exm:ipp-control-stream" class="example"><strong>코드 18.6  </strong></span>IPP 방법의 제어구문의 예
 </div>
 </div>
 </div>
@@ -836,21 +865,21 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 </div>
 <div id="각-방법의-소요시간-및-정밀도-비교" class="section level3" number="18.7.2">
 <h3><span class="header-section-number">18.7.2</span> 각 방법의 소요시간 및 정밀도 비교</h3>
-<p>SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 추정에 소요되는 시간(estimation time)이 대략 40 – 75% 가량 절약된다. 그 중 IPP 방법은 목적함수를 최소화하는 시간을 대략 75% 절약할 수 있는 것으로 나타났다(그림 <a href="pkpd-link.html#fig:time-comparison">18.12</a>). <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span> </p>
+<p>SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 추정에 소요되는 시간(estimation time)이 대략 40 – 75% 가량 절약된다. 그 중 IPP 방법은 목적함수를 최소화하는 시간을 대략 75% 절약할 수 있는 것으로 나타났다(그림 <a href="pkpd-link.html#fig:time-comparison">18.11</a>). <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span> </p>
 <p>또한, PD 파라미터 추정의 성공 빈도와 정밀도 면에서 순차적합법이 SIM 방법보다 나은 것으로 나타났으며, 순차적합법 중 IPP
 방법이 성공률이 가장 높은 것으로 나타났다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
 <div class="figure"><span id="fig:time-comparison"></span>
 <img src="assets/media-18/image17.png" alt="순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) (Zhang, Beal, and Sheiner 2003a)" width="100%" />
 <p class="caption">
-그림 18.12: 순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
+그림 18.11: 순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
 </p>
 </div>
 
-<p>그림 <a href="pkpd-link.html#fig:absolute-signed">18.13</a>은 네 가지의 PK-PD 연결방법 사용시 얻은 PD 파라미터 추정치들(Emax, EC50 등)의 각각의 오차의 크기를 보여준다. 이를 통해 전체적으로 SIM 과 PPP&amp;D 방법으로 얻은 PD 파라미터 추정치들의 오차가 다른 방법에 비해 적은 것을 확인할 수 있다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
+<p>그림 <a href="pkpd-link.html#fig:absolute-signed">18.12</a>은 네 가지의 PK-PD 연결방법 사용시 얻은 PD 파라미터 추정치들(Emax, EC50 등)의 각각의 오차의 크기를 보여준다. 이를 통해 전체적으로 SIM 과 PPP&amp;D 방법으로 얻은 PD 파라미터 추정치들의 오차가 다른 방법에 비해 적은 것을 확인할 수 있다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
 <div class="figure"><span id="fig:absolute-signed"></span>
 <img src="assets/media-18/image18.png" alt="Average absolute (A) and signed error (B) of PD parameter estimates (Zhang, Beal, and Sheiner 2003a)" width="100%" />
 <p class="caption">
-그림 18.13: Average absolute (A) and signed error (B) of PD parameter estimates <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
+그림 18.12: Average absolute (A) and signed error (B) of PD parameter estimates <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
 </p>
 </div>
 
