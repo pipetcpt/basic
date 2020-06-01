@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 계량약리학과 관련 개념들 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 계량약리학과 관련 개념들 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-05-26" />
+<meta name="date" content="2020-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -388,7 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>PK-PD 모델링은 무엇인가?</strong></p>
 
 <div class="figure"><span id="fig:pkpd-modeling-concept"></span>
-<img src="assets/01-fig-01.jpg" alt="PK-PD 모델링의 개념 (Derendorf and Meibohm 1999)" width="100%" />
+<img src="figures/01-fig-01.png" alt="PK-PD 모델링의 개념 (Derendorf and Meibohm 1999)" width="100%" />
 <p class="caption">
 그림 1.1: PK-PD 모델링의 개념 <span class="citation">(Derendorf and Meibohm <a href="#ref-derendorf1999modeling" role="doc-biblioref">1999</a>)</span>
 </p>
@@ -396,7 +396,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>은 PK-PD 모델링의 개념을 가장 잘 보여주는 그림이다. 약을 개발하는 초기단계부터 개발자가 알고 싶어하는 것은 신약 몇 mg을 얼마의 간격으로 주면 가장 적절한 효과를 얻을 수 있을까, 얼마까지 안전할까 하는 질문들일 것이다. 이에 답하기 위해서는 환자에서 임상시험을 통해 그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>의 맨 아래 패널과 같은 곡선을 구하면 되겠지만, 환자에서 약효를 투약간격 동안 이렇게 여러 번 실시간으로 측정하는 것은 거의 불가능하다. 대신 쉽게 얻을 수 있는, 시간에 따른 사람에서의 PK 변화(위 왼쪽)와 시험관내 연구 등을 통해 얻어진 약물농도와 PD(약효 대신 추정할 수 있는 각종 생체표지자들)의 관계를 정량적 모델로 파악하면 환자에서 직접 관찰하지 못할지라도 아래쪽 패널과 같이 용량용법(dosage regimen)에 따른 약효나 부작용의 추이의 곡선을 예측할 수 있고, 이를 비임상, 임상시험의 설계나 시판용량 결정 등에 적용할 수 있게 된다. 그리고 그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>의 위 두 패널의 곡선들끼리의 관계를 수학적 모델로 만들어 아래쪽 패널의 곡선을 예측하기 위한 일체의 연구를 하는 연구활동을 포괄적으로 PK/PD 모델링이라고 부른다.</p>
 <p>그런데 실제상황에서 어떤 약의 임상시험이나 시판을 위한 용량용법을 결정하고자 할 때, 환자들에서의 PK와 PD와의 관계는 그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>에서처럼 매끈한 하나의 곡선끼리의 조합으로 정의할 수는 없게 된다. 단 한 사람의 환자라면 이것이 가능할지 모르나 다수의 환자 데이터에 대해 적용하기 위해서는 전체 환자들을 대표하는 곡선들과 그 신뢰구간들을 포함하는 좀 더 복잡한 모델을 만들어야 될 것이다(그림 <a href="intro.html#fig:pkpd-population-concept">1.2</a>). 이런 모델을 이용해서 약효나 부작용을 예측한다면 단순히 ‘얼마를 주면 효과가 있다’ 보다는, 이를테면 ‘특정 환자집단에게 이 약을 매일 100 mg씩 주면 환자들의 90%는 최대약효의 80% 이상을 나타내고, 95%는 70% 이상을 나타내고, 또 그 중 10%는 grade 1의 부작용을 경험할 것이다.’와 같은 좀 더 정교하게 예측하는 방식이 될 것이다. PK/PD 모델링 중에서도 이렇게 인구 집단을 대상으로 하여 통계학적 기법을 적극적으로 쓰는 연구방식을 population PK/PD 모델링 (집단 약동/약력학 모델링)이라고 구분하여 부른다. 집단약동/약력 모델링은 혼합효과 모델링(mixed-effects modeling)이라는 방법론을 쓰고 있으며 이 방법을 적용하여 모델을 만들고 파라미터들을 찾아내는 소프트웨어가 몇 종이 있는데, 전세계적으로 가장 일찍 개발되어 널리 쓰이는 것이 NONMEM이다.</p>
 <div class="figure"><span id="fig:pkpd-population-concept"></span>
-<img src="assets/01-fig-02.png" alt="집단(population)의 분포값들을 고려한 PK-PD 모델링의 개념" width="100%" />
+<img src="figures/01-fig-02.png" alt="집단(population)의 분포값들을 고려한 PK-PD 모델링의 개념" width="100%" />
 <p class="caption">
 그림 1.2: 집단(population)의 분포값들을 고려한 PK-PD 모델링의 개념
 </p>
@@ -406,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>이러한 방법론들의 관계는 그림 <a href="intro.html#fig:diverse-concepts">1.3</a>에 요약되어 있다.</p>
 
 <div class="figure"><span id="fig:diverse-concepts"></span>
-<img src="assets/01-fig-03.png" alt="PK-PD 모델링의 각종 개념들의 연관성 (Helmlinger et al. 2017)" width="100%" />
+<img src="figures/01-fig-03.png" alt="PK-PD 모델링의 각종 개념들의 연관성 (Helmlinger et al. 2017)" width="100%" />
 <p class="caption">
 그림 1.3: PK-PD 모델링의 각종 개념들의 연관성 <span class="citation">(Helmlinger et al. <a href="#ref-helmlinger2017drug" role="doc-biblioref">2017</a>)</span>
 </p>
@@ -421,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </p>
 <div class="figure"><span id="fig:three-ways"></span>
-<img src="assets/01-fig-04.png" alt="집단의 데이터를 처리하는 세가지 방법 A) 각자에서 얻어진 데이터, B) naive pooled method, C) two-stage method, D) mixed-effects method" width="100%" />
+<img src="figures/01-fig-04.png" alt="집단의 데이터를 처리하는 세가지 방법 A) 각자에서 얻어진 데이터, B) naive pooled method, C) two-stage method, D) mixed-effects method" width="100%" />
 <p class="caption">
 그림 1.4: 집단의 데이터를 처리하는 세가지 방법 A) 각자에서 얻어진 데이터, B) naive pooled method, C) two-stage method, D) mixed-effects method
 </p>
@@ -459,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}\]</span>
 개인간차와 잔차의 분산들을 각기 ω<sup>2</sup>과 σ<sup>2</sup>으로 이름 붙인 것은 혼합효과 모델링에서 쓰기로 정한 하나의 약속이다. 물론 더 깊이 생각해 본다면 이 열 사람 중에서 품질이 더 심하게 나쁜 저울에 올라선 어떤 이의 체중은 매 측정 시마다 차이가 좀 더 심하게 날 수도 있어서 다른 사람들보다 더 큰 σ<sup>2</sup>을 쓰는 것이 적절할 수도 있다. 그러나 일반적으로 혼합효과 모델링의 기본 가정은 전체 인구집단에서 σ<sup>2</sup>은 개인별로 차이가 없다고 가정한다.</p>
 <div class="figure"><span id="fig:measured-weight"></span>
-<img src="assets/01-fig-05.png" alt="측정된 체중의 분포" width="100%" />
+<img src="figures/01-fig-05.png" alt="측정된 체중의 분포" width="100%" />
 <p class="caption">
 그림 1.5: 측정된 체중의 분포
 </p>
@@ -471,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 
 <div class="figure"><span id="fig:nonmem-figure"></span>
-<img src="assets/01-fig-06.png" alt="혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal 2018)의 그림에 수식을 추가한 것" width="100%" />
+<img src="figures/01-fig-06.png" alt="혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal 2018)의 그림에 수식을 추가한 것" width="100%" />
 <p class="caption">
 그림 1.6: 혼합효과 모델링의 개념도. NONMEM 매뉴얼<span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>의 그림에 수식을 추가한 것
 </p>
