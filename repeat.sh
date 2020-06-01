@@ -1,7 +1,7 @@
 #!/bin/bash
 while true; do 
-  git pull ; rm -rf ../basic ; mv ./docs ../basic
-  sleep 3600
+  git pull ; rm -rf ../basic ; cp -rf ./docs ../basic
+  sleep 1800
 done
 
 # sh repeat.sh &
