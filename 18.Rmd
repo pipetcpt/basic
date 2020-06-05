@@ -11,7 +11,7 @@
 이 장에서는 PK-PD 모델을 연결하는 다양한 방법(PK-PD linking method)과 각 방법의 특징에 대하여 소개한다.
 
 ```{r pkpd-link, fig.cap="(ref:pkpd-link)"}
-knitr::include_graphics("./assets/media-18/image1.png")
+knitr::include_graphics("figures/18-fig-01.png")
 ```
 (ref:pkpd-link) PK-PD의 연결고리
 
@@ -32,7 +32,7 @@ PK-PD 모델링을 수행하는 과정에서 우리는 PK 와 PD 데이터를 �
 또한 PK 와 PD 가 같은 대상자(또는 같은 질환 모델 개체)에서 얻어진 값인지 파악해야 한다. PK 데이터와 PD 데이터는 다른 시간에서 얻어질 수 있으며, 각각의 관측치의 차이의 폭(scale)이 다를 수 있음을 염두해야 두어야 한다.
 
 ```{r clopidogrel, fig.cap="(ref:clopidogrel)"}
-knitr::include_graphics("./assets/media-18/image2.png")
+knitr::include_graphics("figures/18-fig-02.png")
 ```
 
 (ref:clopidogrel) Clopidogrel의 PK-PD 모델 구조 [@lee2012population]
@@ -67,7 +67,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>%
 
 
 ```{r level-info, fig.cap="(ref:level-info)"}
-knitr::include_graphics("./assets/media-18/image4.png") # fig 3
+knitr::include_graphics("figures/18-fig-03.png") # fig 3
 ```
 
 (ref:level-info) PK-PD 연결 방법과 그에 관련된 정보의 수준
@@ -454,7 +454,7 @@ SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 
 방법이 성공률이 가장 높은 것으로 나타났다. [@zhang1] 
 
 ```{r time-comparison, fig.cap = "(ref:time-comparison)"}
-include_graphics("./assets/media-18/image17.png")
+include_graphics("figures/18-fig-11.png")
 ```
 
 (ref:time-comparison) 순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) [@zhang1]
@@ -462,7 +462,7 @@ include_graphics("./assets/media-18/image17.png")
 그림 \@ref(fig:absolute-signed)은 네 가지의 PK-PD 연결방법 사용시 얻은 PD 파라미터 추정치들(Emax, EC50 등)의 각각의 오차의 크기를 보여준다. 이를 통해 전체적으로 SIM 과 PPP\&D 방법으로 얻은 PD 파라미터 추정치들의 오차가 다른 방법에 비해 적은 것을 확인할 수 있다. [@zhang1]
 
 ```{r absolute-signed, fig.cap = "(ref:absolute-signed)"}
-include_graphics("./assets/media-18/image18.png")
+include_graphics("figures/18-fig-12.png")
 ```
 
 (ref:absolute-signed) Average absolute (A) and signed error (B) of PD parameter estimates [@zhang1]

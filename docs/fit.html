@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-01" />
+<meta name="date" content="2020-06-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -386,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>본 장에서는 모델의 적합 상태를 진단하는 방법 중, 잔차(residual)를 이용하여 진단하는 방법에 대하여 다루고자 한다. 그림 <a href="fit.html#fig:carousel">13.1</a>의 모델링 과정을 보면, 모델을 가정하고 그 후에 시험을 디자인하고, 시험을 수행하고, 얻어진 데이터를 탐색하여 모델에 적용하고, 그 결과를 분석한 후에 다시 모델에 반영하는 과정을 거치는데, 이 중 모델의 결과(output)를 분석하는 방법 중 하나인 잔차에 근거하여 결과를 분석하는 방법에 대해 설명하고자 한다. 이러한 잔차분석 방법에는 런검정(run test)과 basic goodness-of-fit(GOF) 플롯의 잔차플롯 을 확인하여 진단하는 방법 등이 있다.</p>
 
 <div class="figure"><span id="fig:carousel"></span>
-<img src="assets/media-13/image1-2.png" alt="Modeling carousel (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-01.png" alt="Modeling carousel (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.1: Modeling carousel <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -395,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 
 <div class="figure"><span id="fig:def-residual"></span>
-<img src="assets/media-13/image5.png" alt="Definition of residual (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-02.png" alt="Definition of residual (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.2: Definition of residual <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -409,32 +409,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>예측값과 표준편차(σ) 사이의 관계를 그림으로 살펴보면(그림 <a href="fit.html#fig:pred-sd">13.3</a>) 가법오차모델의 경우 예측값이 작은 경우와 큰 경우 모두 표준편차가 일정한 반면, 고정변동계수모델의 경우 예측값이 커짐에 따라 표준편차도 커지는데, 이를 CV(변동계수, Coefficient of variation)와 예측값의 관계로 볼 경우 일정하기 때문에 비례오차모델 혹은 고정변동계수(CCV; constant CV)모델이라고 한다. 위 두 모델을 같이 사용하는 경우를, 가법과 CCV를 더한 모델 혹은 혼합오차모델(combined error model)이라고 하는데, 예측값이 작은 경우에는 표준편차가 일정하고, 값이 커질수록 표준편차가 커지는 것을 가정한다.</p>
 <p></p>
 <div class="figure"><span id="fig:pred-sd"></span>
-<img src="assets/media-13/image6-9.png" alt="Relationship between standard deviation of residual variability and predicted concentrations" width="100%" />
+<img src="figures/13-fig-03.png" alt="Relationship between standard deviation of residual variability and predicted concentrations" width="100%" />
 <p class="caption">
 그림 13.3: Relationship between standard deviation of residual variability and predicted concentrations
 </p>
 </div>
 <p>실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 <a href="fit.html#exm:combined-upper">13.1</a>, <a href="fit.html#exm:combined-lower">13.2</a>와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 <a href="fit.html#exm:combined-upper">13.1</a>은 가장 기본적인 형태이고, 코드 <a href="fit.html#exm:combined-lower">13.2</a>의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, 0.0001 FIX)하면 된다.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="fit.html#cb32-1"></a><span class="op">$</span>ERROR</span>
-<span id="cb32-2"><a href="fit.html#cb32-2"></a>  IPRED =<span class="st"> </span>F</span>
-<span id="cb32-3"><a href="fit.html#cb32-3"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="fit.html#cb34-1"></a><span class="op">$</span>ERROR</span>
+<span id="cb34-2"><a href="fit.html#cb34-2"></a>  IPRED =<span class="st"> </span>F</span>
+<span id="cb34-3"><a href="fit.html#cb34-3"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span></code></pre></div>
 
 <div class="example">
 <span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span>$ERROR structure in NONMEM control stream: 기본형태
 </div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fit.html#cb33-1"></a><span class="op">$</span>ERROR</span>
-<span id="cb33-2"><a href="fit.html#cb33-2"></a>  IPRED =<span class="st"> </span>F</span>
-<span id="cb33-3"><a href="fit.html#cb33-3"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb33-4"><a href="fit.html#cb33-4"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED</span>
-<span id="cb33-5"><a href="fit.html#cb33-5"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W</span>
-<span id="cb33-6"><a href="fit.html#cb33-6"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fit.html#cb35-1"></a><span class="op">$</span>ERROR</span>
+<span id="cb35-2"><a href="fit.html#cb35-2"></a>  IPRED =<span class="st"> </span>F</span>
+<span id="cb35-3"><a href="fit.html#cb35-3"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb35-4"><a href="fit.html#cb35-4"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED</span>
+<span id="cb35-5"><a href="fit.html#cb35-5"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W</span>
+<span id="cb35-6"><a href="fit.html#cb35-6"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)</span></code></pre></div>
 
 <div class="example">
-<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span>$ERROR structure in NONMEM control stream
+<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span>$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
+이고, 비례오차모델의 표준편차를 반영
 </div>
 <p>Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 <a href="fit.html#fig:run-test">13.4</a>)</p>
 <div class="figure"><span id="fig:run-test"></span>
-<img src="assets/media-13/image12.png" alt="Example of Run test (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-04.png" alt="Example of Run test (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.4: Example of Run test <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -444,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 분포가 무작위가 아님을 시사하지만, 이 결과만으로 결론내기보다는 잔차에 대한 진단 플롯들과 함께 고려하여 판단해야 한다.</p>
 <p>Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 그 중 하나인 basic goodness-of-fit plots에서(그림 <a href="fit.html#fig:basic-gof-plot">13.5</a>) 아래쪽 두 개의 그림이 잔차(residual)에 대한 진단 플롯이다. 좌측은 |IWRES| vs Individual predictions (IPRED), 우측은 Conditional weighted residuals (CWRES) vs Time을 나타낸 그림이다. IWRES는 개인 가중잔차(Individual Weighted residuals)이고 |IWRES|는 개인 가중잔차의 절대값이다. 잔차모델이 적절하다면, CWRES 플롯의 모든 점들이 0을 기준으로 대칭으로 분포하게 되며, CWRES 값들의 흩어진 정도가 시간이나 개인 예측 값에 따라 경향성이 없고, 그 범위가 -3과+3 사이에 분포할 것으로 기대된다(<a href="use-of-xpose4.html#use-of-xpose4">10장</a> 참고).</p>
 <div class="figure"><span id="fig:basic-gof-plot"></span>
-<img src="assets/media-13/image13.png" alt="Basic goodness-of-fit plots" width="100%" />
+<img src="figures/13-fig-05.png" alt="Basic goodness-of-fit plots" width="100%" />
 <p class="caption">
 그림 13.5: Basic goodness-of-fit plots
 </p>
@@ -459,14 +460,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>그림 <a href="fit.html#fig:wrong-models">13.6</a>을 보면, 구조 모델이 잘못된 경우와 잔차의 분산 모델이 잘못된 경우의 예시가 나와있는데, 이 중 몇 가지 예시를 살펴보기로 하자.</p>
 
 <div class="figure"><span id="fig:wrong-models"></span>
-<img src="assets/media-13/image22.png" alt="Schematic illustration of wrong structural models (upper row) and wrong variance models (lower row) (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-06.png" alt="Schematic illustration of wrong structural models (upper row) and wrong variance models (lower row) (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.6: Schematic illustration of wrong structural models (upper row) and wrong variance models (lower row) <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
 </div>
 <p>우선, 첫째로 구조모델이 잘못된 경우이다. 그림 <a href="fit.html#fig:wrong-structure">13.7</a>을 보면 시간에 따른 잔차의 모양이 곡선형태를 이루고 있는데, 이는 모델에 지연시간을 반영하지 않은 경우이다. Run test를 통해 +/-를 확인해보면 앞쪽 시간에서는 마이너스, 중간시간대에서는 플러스가 됐다가 이후 다시 마이너스가 되는 현상이 나타나고, 이를 그림으로 보면 말발굽 모양이 된다. (그림 <a href="fit.html#fig:wrong-structure">13.7</a>)</p>
 <div class="figure"><span id="fig:wrong-structure"></span>
-<img src="assets/media-13/image23.png" alt="Example of Wrong structure model (lag time) (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-07.png" alt="Example of Wrong structure model (lag time) (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.7: Example of Wrong structure model (lag time) <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -474,21 +475,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>실제 goodness-of-fit 플롯의 CWRES 플롯에서도 이와 같은 형태를 발견할 수 있으며, 경구흡수의 지연시간을 추가했을 때 (그림 <a href="fit.html#fig:lag-gof">13.8</a>) 이런 현상이 해결되는 것을 확인할 수 있다.</p>
 <div class="figure"><span id="fig:lag-gof"></span>
-<img src="assets/media-13/image24.png" alt="Lag time 추가시의 GOF 변화" width="100%" />
+<img src="figures/13-fig-08.png" alt="Lag time 추가시의 GOF 변화" width="100%" />
 <p class="caption">
 그림 13.8: Lag time 추가시의 GOF 변화
 </p>
 </div>
 <p>구조 모델이 잘못된 두번째 예시를 살펴보면, U자 형태의 커브가 관찰되는데, 2구획 모델을 1구획 모델로 설명하려고 하는 경우에 이와 같은 잔차 플롯이 흔히 관찰된다. (그림 <a href="fit.html#fig:u-curve">13.9</a>)</p>
 <div class="figure"><span id="fig:u-curve"></span>
-<img src="assets/media-13/image25.png" alt="Example of Wrong structure model (2-compartment model)" width="100%" />
+<img src="figures/13-fig-09.png" alt="Example of Wrong structure model (2-compartment model)" width="100%" />
 <p class="caption">
 그림 13.9: Example of Wrong structure model (2-compartment model)
 </p>
 </div>
 <p>세 번째 예시는, 잔차의 모델이 잘못된 경우인데, 혼합오차모델(또는 비례오차모델)을 사용해야 하는 경우에 가법오차모델만 사용한 경우의 예시이다. 앞 시간대에서는 잔차가 크다가 뒤로 갈수록 잔차가 작아지는 형태인데, 약물 농도로 바꾸어 생각해보면, 약물 농도가 높아짐에(앞 시간대 약물 농도가 높으므로)따라 잔차가 커지는 경우이다. 잔차 모델을 가법오차모델에서 혼합오차모델 모델로 변경한 경우의 goodness-of-fit plots을 그림 <a href="fit.html#fig:addi-comb-gof">13.10</a>에서 확인할 수 있다.</p>
 <div class="figure"><span id="fig:addi-comb-gof"></span>
-<img src="assets/media-13/image27.png" alt="Example of Wrong variance model (error model)" width="100%" />
+<img src="figures/13-fig-10.png" alt="Example of Wrong variance model (error model)" width="100%" />
 <p class="caption">
 그림 13.10: Example of Wrong variance model (error model)
 </p>

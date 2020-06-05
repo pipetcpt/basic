@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-01" />
+<meta name="date" content="2020-06-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -578,26 +578,75 @@ Gear method
 <p>마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 $DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 <code>DADT(1)= -KA * A(1)</code>으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. $DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 <code>T</code> 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.</p>
 
 <div class="figure"><span id="fig:des-example"></span>
-<img src="assets/media-05/image5.png" alt="$DES 구문 적용을 위한 코드 예시" width="100%" />
+<img src="figures/05-fig-05.png" alt="$DES 구문 적용을 위한 코드 예시" width="100%" />
 <p class="caption">
 그림 5.5: $DES 구문 적용을 위한 코드 예시
 </p>
 </div>
-
-<div class="figure"><span id="fig:advan5-example"></span>
-<img src="assets/media-05/image6.png" alt="2구획 경구모델을 ADVAN5로 구현한 코드 예시" width="100%" />
+<p><span class="math display" id="eq:2comp-oral">\[\begin{equation}
+\begin{split}
+\frac{dA_1}{dt} &amp; = -A(1) \cdot k_a \\
+\frac{dA_2}{dt} &amp; = A(1) \cdot k_a - A(2) \cdot (k_{23} + k_{20}) + A(3) \cdot k_{32} \\
+\frac{dA_3}{dt} &amp; = A(2) \cdot k_{23} - A(3) \cdot k_{32}
+\end{split}
+\tag{5.1}
+\end{equation}\]</span></p>
+<div class="figure"><span id="fig:2comp-oral"></span>
+<img src="figures/05-fig-06.png" alt="2구획 경구모델" width="100%" />
 <p class="caption">
-그림 5.6: 2구획 경구모델을 ADVAN5로 구현한 코드 예시
+그림 5.6: 2구획 경구모델
 </p>
 </div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="general-advan.html#cb27-1"></a><span class="op">$</span>SUBROUTINE ADVAN5</span>
+<span id="cb27-2"><a href="general-advan.html#cb27-2"></a><span class="op">$</span>MODEL</span>
+<span id="cb27-3"><a href="general-advan.html#cb27-3"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
+<span id="cb27-4"><a href="general-advan.html#cb27-4"></a>  <span class="kw">COMP</span>(CENTRAL, DEFOBS)</span>
+<span id="cb27-5"><a href="general-advan.html#cb27-5"></a>  <span class="kw">COMP</span>(PERIPH)</span>
+<span id="cb27-6"><a href="general-advan.html#cb27-6"></a><span class="op">$</span>PK ; Define basic PK relationships</span>
+<span id="cb27-7"><a href="general-advan.html#cb27-7"></a>  CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb27-8"><a href="general-advan.html#cb27-8"></a>  V2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb27-9"><a href="general-advan.html#cb27-9"></a>  V3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb27-10"><a href="general-advan.html#cb27-10"></a>  Q  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb27-11"><a href="general-advan.html#cb27-11"></a>  KA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb27-12"><a href="general-advan.html#cb27-12"></a>  </span>
+<span id="cb27-13"><a href="general-advan.html#cb27-13"></a>  S2 =<span class="st"> </span>V2</span>
+<span id="cb27-14"><a href="general-advan.html#cb27-14"></a>  K12=<span class="st"> </span>KA</span>
+<span id="cb27-15"><a href="general-advan.html#cb27-15"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb27-16"><a href="general-advan.html#cb27-16"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb27-17"><a href="general-advan.html#cb27-17"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb27-18"><a href="general-advan.html#cb27-18"></a><span class="op">$</span>ERROR</span>
+<span id="cb27-19"><a href="general-advan.html#cb27-19"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
 
-<div class="figure"><span id="fig:advan6-example"></span>
-<img src="assets/media-05/image7.png" alt="2구획 경구모델을 ADVAN6로 구현한 코드 예시" width="100%" />
-<p class="caption">
-그림 5.7: 2구획 경구모델을 ADVAN6로 구현한 코드 예시
-</p>
+<div class="example">
+<span id="exm:advan5-example" class="example"><strong>코드 5.1  </strong></span>2구획 경구모델을 ADVAN5로 구현한 코드 예시
 </div>
-<p>동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.</p>
+<p>동일한 2구획 경구모델(그림 <a href="general-advan.html#fig:2comp-oral">5.6</a>)을 일반 선형(ADVAN5, 코드 <a href="general-advan.html#exm:advan5-example">5.1</a>) 및 비선형(ADVAN6, 코드 <a href="general-advan.html#exm:advan6-example">5.2</a>) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="general-advan.html#cb28-1"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">4</span></span>
+<span id="cb28-2"><a href="general-advan.html#cb28-2"></a><span class="op">$</span>MODEL</span>
+<span id="cb28-3"><a href="general-advan.html#cb28-3"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
+<span id="cb28-4"><a href="general-advan.html#cb28-4"></a>  <span class="kw">COMP</span>(CENTRAL, DEFOBS)</span>
+<span id="cb28-5"><a href="general-advan.html#cb28-5"></a>  <span class="kw">COMP</span>(PERIPH)</span>
+<span id="cb28-6"><a href="general-advan.html#cb28-6"></a><span class="op">$</span>PK ; Define basic PK relationships</span>
+<span id="cb28-7"><a href="general-advan.html#cb28-7"></a>  CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb28-8"><a href="general-advan.html#cb28-8"></a>  V2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb28-9"><a href="general-advan.html#cb28-9"></a>  V3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb28-10"><a href="general-advan.html#cb28-10"></a>  Q  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb28-11"><a href="general-advan.html#cb28-11"></a>  KA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb28-12"><a href="general-advan.html#cb28-12"></a>  </span>
+<span id="cb28-13"><a href="general-advan.html#cb28-13"></a>  S2 =<span class="st"> </span>V2</span>
+<span id="cb28-14"><a href="general-advan.html#cb28-14"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb28-15"><a href="general-advan.html#cb28-15"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb28-16"><a href="general-advan.html#cb28-16"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb28-17"><a href="general-advan.html#cb28-17"></a><span class="op">$</span>DES ; Define differential equations</span>
+<span id="cb28-18"><a href="general-advan.html#cb28-18"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA</span>
+<span id="cb28-19"><a href="general-advan.html#cb28-19"></a>  <span class="kw">DADT</span>(<span class="dv">2</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>(K23<span class="op">+</span>K20) <span class="op">+</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
+<span id="cb28-20"><a href="general-advan.html#cb28-20"></a>  <span class="kw">DADT</span>(<span class="dv">3</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>K23 <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
+<span id="cb28-21"><a href="general-advan.html#cb28-21"></a><span class="op">$</span>ERROR</span>
+<span id="cb28-22"><a href="general-advan.html#cb28-22"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
+
+<div class="example">
+<span id="exm:advan6-example" class="example"><strong>코드 5.2  </strong></span>2구획 경구모델을 ADVAN6로 구현한 코드 예시
+</div>
 <!--
 참고문헌
 

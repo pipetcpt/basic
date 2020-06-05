@@ -103,22 +103,78 @@ knitr::include_graphics("./figures/05-fig-04.png")
 (ref:des-example) $DES 구문 적용을 위한 코드 예시
 
 ```{r des-example, fig.cap="(ref:des-example)"}
-knitr::include_graphics("./assets/media-05/image5.png")
+knitr::include_graphics("./figures/05-fig-05.png")
+```
+\begin{equation}
+\begin{split}
+\frac{dA_1}{dt} & = -A(1) \cdot k_a \\
+\frac{dA_2}{dt} & = A(1) \cdot k_a - A(2) \cdot (k_{23} + k_{20}) + A(3) \cdot k_{32} \\
+\frac{dA_3}{dt} & = A(2) \cdot k_{23} - A(3) \cdot k_{32}
+\end{split}
+(\#eq:2comp-oral)
+\end{equation}
+
+```{r 2comp-oral, fig.cap = "2구획 경구모델"}
+knitr::include_graphics("figures/05-fig-06.png")
 ```
 
-(ref:advan5-example) 2구획 경구모델을 ADVAN5로 구현한 코드 예시
-
-```{r advan5-example, fig.cap = "(ref:advan5-example)"}
-knitr::include_graphics("./assets/media-05/image6.png")
+```r
+$SUBROUTINE ADVAN5
+$MODEL
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENTRAL, DEFOBS)
+  COMP(PERIPH)
+$PK ; Define basic PK relationships
+  CL = THETA(1)*EXP(ETA(1))
+  V2 = THETA(2)*EXP(ETA(2))
+  V3 = THETA(3)*EXP(ETA(3))
+  Q  = THETA(4)*EXP(ETA(4))
+  KA = THETA(5)*EXP(ETA(5))
+  
+  S2 = V2
+  K12= KA
+  K20= CL/V2
+  K23= Q/V2
+  K32= Q/V3
+$ERROR
+  Y  = F*(1+EPS(1)) 
 ```
 
-(ref:advan6-example) 2구획 경구모델을 ADVAN6로 구현한 코드 예시
-
-```{r advan6-example, fig.cap = "(ref:advan6-example)"}
-knitr::include_graphics("./assets/media-05/image7.png")
+```{example, advan5-example, echo = TRUE}
+2구획 경구모델을 ADVAN5로 구현한 코드 예시
 ```
 
-동일한 2구획 경구모델을 일반 선형(ADVAN5) 및 비선형(ADVAN6) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
+
+동일한 2구획 경구모델(그림 \@ref(fig:2comp-oral))을 일반 선형(ADVAN5, 코드 \@ref(exm:advan5-example)) 및 비선형(ADVAN6, 코드 \@ref(exm:advan6-example)) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
+
+```r
+$SUBROUTINE ADVAN6 TOL=4
+$MODEL
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENTRAL, DEFOBS)
+  COMP(PERIPH)
+$PK ; Define basic PK relationships
+  CL = THETA(1)*EXP(ETA(1))
+  V2 = THETA(2)*EXP(ETA(2))
+  V3 = THETA(3)*EXP(ETA(3))
+  Q  = THETA(4)*EXP(ETA(4))
+  KA = THETA(5)*EXP(ETA(5))
+  
+  S2 = V2
+  K20= CL/V2
+  K23= Q/V2
+  K32= Q/V3
+$DES ; Define differential equations
+  DADT(1) = -A(1)*KA
+  DADT(2) = A(1)*KA - A(2)*(K23+K20) + A(3)*K32
+  DADT(3) = A(2)*K23 - A(3)*K32
+$ERROR
+  Y  = F*(1+EPS(1)) 
+```
+
+```{example, advan6-example, echo = TRUE}
+2구획 경구모델을 ADVAN6로 구현한 코드 예시
+```
 
 <!--
 참고문헌

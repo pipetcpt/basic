@@ -1,5 +1,7 @@
 # PIPET / Q-fitter Pharmacometrics Course: Basic
 
+계량약리학 Basic 코스의 교재입니다.
+
 - Chapter 01 계량약리학과 관련 개념들 - 임동석
 - Chapter 02 NONMEM 데이터셋 - 이소진
 - Chapter 03 모델 유형 별 NONMEM 제어구문 소개 - 배수현
@@ -27,3 +29,5 @@
 - 마이크로소프트 워드를 사용할 수도 있으나 pandoc을 사용하여 변환하는 과정을 거쳐야 하므로 피치 못할 경우에 사용한다.
 - 모든 그림 파일은 pdf 형태 혹은 png 형태로 작성한다.
 - R 패키지에 대해 기본적인 이해가 필요합니다. `rmarkdown`, `bookdown`, `knitr`, `kableExtra`
+
+

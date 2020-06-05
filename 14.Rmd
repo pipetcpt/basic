@@ -112,21 +112,23 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 \end{equation}
 
 양변을 $\theta$에 대해 미분하면
-
-\[\int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0\]
-
-\[E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack = 0\]
+\begin{equation}
+\int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0 \\
+E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack = 0
+(\#eq:theta-differential)
+\end{equation}
 
 한 번 더 미분하면
+\begin{equation}
+\int\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \right\rbrack^{2} \right\} exp(lnf(x;\theta))dx = 0 \\
 
-\[\int\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \right\rbrack^{2} \right\} exp(lnf(x;\theta))dx = 0\]
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
 
-\[E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0\]
+I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+(\#eq:diff-diff)
+\end{equation}
 
-\[I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\}\]
-
-좀 더 복잡한 과정을 거치면 \(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)는
-점근적으로 \(N(0,\lbrack I(\theta)\rbrack^{- 1})\) 를 따름을 증명할 수 있다. [@kim]
+좀 더 복잡한 과정을 거치면 \(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)는 점근적으로 \(N(0,\lbrack I(\theta)\rbrack^{- 1})\) 를 따름을 증명할 수 있다. [@kim]
 
 아주 이상적이지만(그러나 극히 드문) 상황에서는 목적함수의 1계 미분의 제곱과 2계 미분이 같겠지만, 실제 관찰값으로 계산하면\index{목적함수 / objective function}\index{objective function / 목적함수}
 다르다. NONMEM에서는 1계 미분의 제곱행렬을 S matrix, 2계 미분 행렬(Hessian)을 R matrix라고
@@ -136,11 +138,12 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 
 수식으로 표현하자면 다음과 같다. 여기에서 \(O_{i}\)는 개인(i)의 목적함수 값이며, \(O\)는 전체 목적함수 값이다.\index{목적함수 / objective function}\index{objective function / 목적함수}
 
-\[O = \sum_{i}^{}O_{i}\]
-
-\[S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T}\]
-
-\[R = \frac{\partial^{2}O}{\partial\theta^{2}}\]
+\begin{equation}
+O = \sum_{i}^{}O_{i} \\
+S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
+R = \frac{\partial^{2}O}{\partial\theta^{2}}
+(\#eq:o-s-r)
+\end{equation}
 
 ## R에서의 구현
 
@@ -152,58 +155,14 @@ if (!require(nmw)) install.packages("nmw")
 
 다음 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.\index{covariance / 공분산}
 
-```
-CovStep
-## function () 
-## {
-##     e$STEP = "COV"
-##     StartTime = Sys.time()
-##     Rmat = hessian(Obj, e$FinalPara)/2
-##     Smat = CalcSmat()
-##     if (is.nan(Smat[1, 1])) 
-##         stop("Error - NaN produced")
-##     invR = solve(Rmat)
-##     Cov = invR %*% Smat %*% invR
-##     SE = sqrt(diag(Cov))
-##     Correl = cov2cor(Cov)
-##     InvCov = Rmat %*% solve(Smat) %*% Rmat
-##     EigenVal = sort(eigen(Correl)$values)
-##     RunTime = difftime(Sys.time(), StartTime)
-##     Result = list(RunTime, SE, Cov, Correl, InvCov, EigenVal, 
-##         Rmat, Smat)
-##     names(Result) = list("Time", "Standard Error", "Covariance Matrix of Estimates", 
-##         "Correlation Matrix of Estimates", "Inverse Covariance Matrix of Estimates", 
-##         "Eigen Values", "R Matrix", "S Matrix")
-##     return(Result)
-## }
-## <bytecode: 0x0000000015ebb088>
-## <environment: namespace:nmw>
+```{r}
+nmw::CovStep
 ```
 
 S matrix를 계산하는 함수는 다음과 같다.
 
-```
-CalcSmat
-## function () 
-## {
-##     Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
-##         ncol = e$nPara)
-##     for (i in 1:e$nID) {
-##         e$DATAi = e$DataRef[[i]]
-##         e$ETAi = e$EBE[i, e$EtaNames]
-##         e$nReci = e$Oi[i, "nRec"]
-##         if (e$METHOD == "ZERO") {
-##             gr = grad(OiS0, e$FinalPara)
-##         }
-##         else {
-##             gr = grad(OiS1, e$FinalPara)
-##         }
-##         Smat = Smat + gr %*% t(gr)
-##     }
-##     return(Smat/4)
-## }
-## <bytecode: 0x000000001793eec0>
-## <environment: namespace:nmw>
+```{r}
+nmw::CalcSmat
 ```
 
 ## Theophylline 예제 데이터셋 {#Theoph}
@@ -216,7 +175,6 @@ R에는 기본적으로 **nlme** 패키지[@R-nlme]가 설치되어 있으며, N
 require(nlme)
 plot(Theoph)
 ```
-
 위의 자료를 다음과 같이 경구 1 구획모델에 적합시켜 보기로 한다.
 \begin{equation}
 \begin{split}
@@ -525,13 +483,19 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 
 어떤 행렬 A를 스칼라 \(\lambda\)와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,
 
-\[Au = \lambda u\]
+\begin{equation}
+Au = \lambda u
+(\#eq:au-lu)
+\end{equation}
 
 \(\lambda\)를 A의 고유값이라 하고 그 고유값에 해당하는 벡터 u를 고유벡터(eigenvector)라고 한다.\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
 
 \(\lambda\)는
 
-\[\left| A - \lambda I \right| = 0\]
+\begin{equation}
+\left| A - \lambda I \right| = 0
+(\#eq:a-li-zero)
+\end{equation}
 
 이라는 특성 방정식의 근들로 구할 수 있다.
 

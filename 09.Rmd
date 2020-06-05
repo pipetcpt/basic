@@ -53,7 +53,7 @@ NONMEM이 실행되면 파라미터를 추정하기 위해 되풀이(iteration)�
 NONMEM은 목적함수(objective function)를 최적화하는 방식으로 파라미터를 추정하게 되고, 이때 최적화된 목적함수 값(Objective Function Value, OFV)이 산출된다. 개발한 모델로부터 산출된 OFV는 가능도비 검정(Likelihood Ratio Test, LRT) 방법을 이용함으로써 보다 적절한 모델을 선정할 수도 있다. 여기 제시된 내용은 수학자가 아닌 이상 정확하게 이해하기는 쉽지 않지만, 개념적으로 간단히 도식화하면 그림 \@ref(fig:obj)과 같다.\index{가능도 / likelihood}\index{가능도비 검정 / likelihood ratio test}\index{목적함수 / objective function}\index{likelihood / 가능도}\index{likelihood ratio test / 가능도비 검정}\index{objective function / 목적함수}
 
 ```{r obj, fig.cap = "NONMEM 추정 도식화"}
-knitr::include_graphics("./assets/media-09/image3.png")
+knitr::include_graphics("./figures/09-fig-01.png")
 ```
 
 일반적으로 우리는 주어진 자료를 설명하기 위해 다양한 파라미터가 포함된 모델을 개발하게 되고 이를 NONMEM으로 실행하게 될 것이다. 이때 NONMEM은 목적함수를 계산하게 되고 이 값이 최소화되는 파라미터 조합을 output 파일을 통해 제시한다. 어떤 형태로 목적함수를 설정하느냐에 따라 OLS, WLS, ELS 방법 여러 가지 방식들이 이용된다.\index{목적함수 / objective function}\index{objective function / 목적함수}
@@ -65,7 +65,7 @@ OLS (ordinary least square) 방식은 단순 선형회귀(linear regression)를 
 따른 약동학 파라미터 AUC의 상관관계를 파악하기 위해 그래프를 그리고 가상의 선을 설정하여 "용량에 따라 AUC는 증가한다"는 결론을 내리는 것이 전형적인 OLS 방식이다.(그림 \@ref(fig:OLS))
 
 ```{r OLS, fig.cap = "ordinary least square"}
-include_graphics("./assets/media-09/image4.png") #fig 2
+include_graphics("./figures/09-fig-02.png") #fig 2
 ```
 
 
@@ -105,7 +105,7 @@ OLS 방식에서는 관찰값이 모두 동일한 가치를 지니고 있으므�
 우리가 모델을 통해 확인하고자 하는 파라미터는 NONMEM에서 θ 형태로 표현되며, 약동학에서 청소율, 분포용적 등이 이에 해당하고 앞서 예시의 경우 앞면이 나올 확률이다. 아래 그림 \@ref(fig:coin)은 동전을 던져 앞면이 일곱번 나왔을 때 동전 앞면이 나올 확률, 즉 추정하고자 하는 파라미터에 대한 가능도를 나타낸 것이다. 예상한 바와 같이 앞면이 나올 확률이 0.7인 경우 가능도가 가장 크며, 이는 앞면이 나올 확률이 0.7인 동전일 때 관찰 결과를 가장 잘 설명함을 의미한다.\index{가능도 / likelihood}\index{likelihood / 가능도}
 
 ```{r coin, fig.cap = "동전 앞면이 7회 나올 확률의 가능도"}
-include_graphics("./assets/media-09/image5.png")
+include_graphics("./figures/09-fig-03.png")
 ```
 
 평균이 μ이고 표준편차가 σ인 정규분포를 따르는 확률변수 x를 가정할 때, 파라미터 θ의 가능도를 구하는 함수는 아래와 같다.\index{가능도 / likelihood}\index{likelihood / 가능도}
@@ -114,7 +114,7 @@ include_graphics("./assets/media-09/image5.png")
   L\left( \theta \middle| \mathcal{x} \right) & = P\left( \mathcal{x}_{1} \right|\widehat{\theta}) \times P\left( \mathcal{x}_{2} \right|\widehat{\theta}) \times \cdots \times P\left( \mathcal{x}_{n} \right|\widehat{\theta}) \\
   & = \left( 2\pi \right)^{- \frac{1}{2}n} \times \prod_{\mathcal{i}\text{=1}}^{n}\left( (\sigma_{i}^{2})^{- \frac{1}{2}} \times e^{- {\ \frac{1}{{2\sigma}_{i}^{2}}\left( x_{i} - \widehat{\theta} \right)}^{2}} \right)
 \end{split}
-(\#eq:likelihood)\index{likelihood / 가능도}
+(\#eq:likelihood)
 \end{equation}
 
 위 식의 양변을 로그변환한 식 및 그 식에 -2를 곱한 식은 각각 아래와 같다.

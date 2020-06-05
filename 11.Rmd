@@ -11,7 +11,7 @@
 공변량이라 함은 단순히 데이터 수집 단계에서 모아진 정보의 항목들을 의미하는 것이 아니라, 그러한 항목들 중 통계학적인 분석을 통해 모델에 반영하는 것이 적절하다고 입증된 것만을 의미한다. 수집된 데이터 중 약동-약력학 분석에 종속변수로서 사용되는 약물의 농도 또는 작용에 대한 측정값(바이오마커로서 측정되는 경우가 많음)을 제외한 데이터 항목들(인구학적 정보, 질환 특성 등)은 실제 모델에 반영된 공변량과 구분하여, 잠재적 공변량(potential covariate)이라 지칭한다. 즉, 공변량 분석(covariate analysis)이란 잠재적 공변량에 대한 적절한 통계분석을 통해 모델링의 대상이 되는 약물의 약동-약력학 모델에 유의미한 영향을 미치는 공변량을 찾아내는 과정이라 할 수 있으며, 여기에는 데이터 항목 평가(variable evaluation), 스크리닝(covariate screening), 전진선택(forward selection), 후진제거(backward elimination), 검증(validation)의 과정이 포함된다.
 
 ```{r workflow-covariate, fig.cap="(ref:workflow-covariate)"}
-knitr::include_graphics("./assets/media-11/image1.png")
+knitr::include_graphics("figures/11-fig-01.png")
 ```
 
 (ref:workflow-covariate) 공변량 분석의 workflow
@@ -36,7 +36,7 @@ knitr::include_graphics("./assets/media-11/image1.png")
 이 단계의 핵심적 절차는 각 항목이 어떠한 척도로 조사되었는가를 확인하고, 해당 척도에 적합한 방법으로 기술 통계 분석을 실시하는 것이다. 즉, 비척도로 조사된 항목은 평균, 표준편차, 분위 수 등의 값을 산출하여야 하고, 서열척도나 명목척도로 조사된 항목은 각 수준(level) 별로 빈도를 파악한다. 등간척도의 경우에는 상황에 따라 적절한 기술통계 방법을 선택한다. 실제 모델링 수행 시에는 완성된 기반 모델 (base model)의 제어구문 맨 뒤에 $TABLE로서 잠재적 공변량의 상세 사항을 출력한 후, R package인 xpose4 (ver. 4.5.X 기준) [@R-xpose4]를 사용하면, 6: Covariate model \> 2. Numerically summarize the covariates 기능을 이용하여 이 과정을 간단히 수행할 수 있다.  (구체적인 방법은 xpose4 매뉴얼^[https://cran.r-project.org/web/packages/xpose4/xpose4.pdf] 참조) 이러한 분석의 결과로는 다음과 같은 표를 얻을 수 있다.
 
 ```{r covariate-summary, fig.cap="(ref:covariate-summary)"}
-include_graphics("./assets/media-11/image2.png")
+include_graphics("./figures/11-fig-02.png")
 ```
 
 (ref:covariate-summary) 항목 평가에 필요한 잠재적 공변량 요약표
@@ -59,7 +59,7 @@ include_graphics("./assets/media-11/image2.png")
 (ref:gfr) 독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시
 
 ```{r gfr, fig.cap = "(ref:gfr)"}
-include_graphics("./assets/media-11/image3.jpeg") # fig 3
+include_graphics("./figures/11-fig-03.png") # fig 3
 ```
 
 *Estimated glomerular filtration ratio is a better index than creatinine clearance (Cockcroft–Gault) for predicting the prevalence of atrial fibrillation in the general Japanese population*
@@ -75,7 +75,7 @@ include_graphics("./assets/media-11/image3.jpeg") # fig 3
 1.의 경우, 잠재적 공변량이 연속형 변수라면, 양극단에 있는 소수의 정보가 약동-약력학 파라미터와 잠재적 공변량 간의 비례 형태에 대한 잘못된 추론을 가능케 할 수 있으므로 이후 공변량 분석에서 이를 주의하여 수행하여야 한다. (그림 \@ref(fig:improper-distribution) 좌) 범주형 변수라면, 어느 한 수준의 측정값이 다른 수준에 비해 절대적으로 부족하게 되며(그림 \@ref(fig:improper-distribution) 우), 이 경우에는 그러한 수준을 가장 가까운 수준과 병합하거나 그 수준을 제외하고 이후 공변량 분석을 수행하여야 한다. 만약 수준을 단 2개만 가진 항목(예\> 성별, 환자 여부 등)이라면 아예 항목 자체를 제외하여야 할 수 있다. 그러나 특정 수준의 데이터 비율이 상대적으로 적은 경우라 할 지라도, 그 데이터 양이 충분(N \> 30)하다고 판단된다면 이를 포함할 지 여부를 신중하게 고려하여 결정할 수 있다.
 
 ```{r improper-distribution, fig.cap="(ref:improper-distribution)"}
-include_graphics("./assets/media-11/improper.png") # fig 4
+include_graphics("./figures/11-fig-04.png") # fig 4
 ```
 
 (ref:improper-distribution) 부적절한 데이터 분포
@@ -87,7 +87,7 @@ include_graphics("./assets/media-11/improper.png") # fig 4
 본 과정은 다음 [11.2.3](#colinearity)에서 소개할 공선성 분석을 위한 준비 단계로서, 각 대상자 별로 확보된 잠재적 공변량의 값들 간에 나타나는 비례관계 유무를 파악하는 것이다. 우선적으로는 시각적 방법이 활용되며, 통계적 방법을 통해 이를 보강할 수 있다. 이 과정의 핵심적 절차는 각 대상자에서 관찰된 잠재적 공변량 항목들의 값을 그림 \@ref(fig:cov-scatter)와 같이 scatterplot matrix로 나타내는 것이다. [11.2.1.1](#variable-eval)에서 언급한 바와 마찬가지로, xpose4 (ver. 4.5.X 기준)의 6: Covariate model \> 3. Scatterplot matrix of covariates 기능을 통해 간단히 수행할 수 있다. 그 수행 결과는 아래 그림 \@ref(fig:cov-scatter)에 나타난 바와 같다.
 
 ```{r cov-scatter, fig.cap = "(ref:cov-scatter)"}
-include_graphics("./assets/media-11/image4.png") # fig 5
+include_graphics("./figures/11-fig-05.png") # fig 5
 ```
 
 (ref:cov-scatter) 공변량 간의 상관 관계 탐색을 위한 scatterplot matrix
@@ -107,7 +107,7 @@ include_graphics("./assets/media-11/image4.png") # fig 5
 시각적 스크리닝의 핵심적 절차는 대상자 별로 확보된 잠재적 공변량의 값과 각 파라미터의 ETA 값을 각 조합 별로 하나의 그림에 나타내어 양의 혹은 음의 상관 관계가 보이는가를 시각적으로 판단해 보는 것이다. 이 때, 보통 공변량을 원인 변수로, 파라미터의 ETA 값을 종속 변수로 보기 때문에(약동-약력학적 파라미터는 각 개인의 특성 또는 특정 상황에 따라 발생한 결과값이라 생각함), 잠재적 공변량 값을 x축에, ETA 값을 y축으로 하여 나타내게 된다. 잠재적 공변량이 연속형 변수라면 이를 scatterplot으로 나타내고, 범주형 변수라면 각 수준 별 boxplot으로 나타낸다. 이 절차는 xpose4(ver. 4.5.X 기준) 의 6: Covariate model \> 4. Parameters vs covariates 기능을 이용하여 간단히 수행할 수 있다. 그림 \@ref(fig:visual-screening)은 그 예시로써, 패널(a), (b)는 scatterplot이며, (c), (d)는 boxplot이다.
 
 ```{r visual-screening, fig.cap = "(ref:visual-screening)"}
-include_graphics("./assets/media-11/image5-7.png") # fig6
+include_graphics("./figures/11-fig-06.png") # fig6
 ```
 
 (ref:visual-screening) 시각적 스크리닝을 위한 plot 예시
@@ -115,7 +115,7 @@ include_graphics("./assets/media-11/image5-7.png") # fig6
 패널 (b)와 (c)에서는 명확한 상관관계를 확인할 수 있으며, (d)는 상관관계가 없는 것으로 보인다. 따라서, 이 경우, 청소율에 대해 CLCR을, 분포용적에 대해 SEX를 실제 모델링을 위한 잠재적 공변량으로 선정하고, ACE는 제외한다. 패널(a)의 추세선은 선형적 상관관계가 없는 것처럼 보이지만, 해당 패널을 좀 더 자세히 보면 불과 1-2개의 관측값이 추세선의 형태를 변형시키고 있다는 것을 알 수 있다. 이는 [11.2.1.1.2 부적절한 분포를 보이는 항목](#improper)에서 언급한 “특정 독립변수 범위(주로 분포 범위의 양극단)에 대한 정보가 충분치 않음”에 해당하는 것이다. 관측값이 조밀한 영역에서는 분명한 음의 상관관계를 보이고 있음을 알 수 있으므로, AGE 역시 청소율에 대한 유효한 잠재적 공변량으로서 다음 단계의 평가에 포함하는 것이 바람직하며, 이를 제외하는 오류를 범해서는 안 된다. 이러한 오류는 시각적 스크리닝 과정에서 가장 빈번히 일어나는 것이기도 하다. 일부 경우에는 다음과 같이 반드시 선형적 상관관계를 가진다고 단정 짓지 못하는 사례도 있을 수 있다.\index{독립변수 / independent variable}\index{independent variable / 독립변수}
 
 ```{r nonlinear-rel, fig.cap = "(ref:nonlinear-rel)"}
-include_graphics("./assets/media-11/image8-9.png") # fig7
+include_graphics("figures/11-fig-07.png") # fig7
 ```
 
 (ref:nonlinear-rel) 비선형적 상관관계를 가질 가능성이 있는 경우 [@kelly] 
@@ -138,20 +138,20 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 이러한 3가지의 절차를 1개의 ‘step’이라 한다. 하나의 step이 수행된 결과는 아래와 같이 표시되며, 이 사례에서는 CLCR이 최선의 결과로 선택되었다.
 
 ```{r gam-step, fig.cap="(ref:gam-step)"}
-include_graphics("./assets/media-11/image10.png") # fig8
+include_graphics("./figures/11-fig-08.png") # fig8
 ```
 
 (ref:gam-step) GAM에서 1개의 step을 실행한 결과
 
 만일, 3)의 조건을 만족하는 잠재적 공변량이 없다면, GAM은 step 1에서 종료되고, 유의한 잠재적 공변량이 없다고 보고한다. 그러나 3)의 조건을 만족하는 공변량이 하나라도 있다면, GAM은 다른 step을 개시하며, 같은 작업을 반복한다. 다만, 다음 step에서는 1)의 기준 AIC가 이전 step에서 선택한 최적 모델의 AIC가 되며, 2)에서는 이전 step에서 선택된 잠재적 공변량을 모델에 유지한 채, 또 하나의 잠재적 공변량을 선형적 구조로서 가법적으로 이어 붙여 해당 모델의 AIC를 평가하게 된다.(예를 들어 CLCR이 이전에 step에서 포함된 상황이라면, `ETA1 ~ CLCR + SEX`와 같은 구조가 된다.) 이는 통계학적으로 다변량 선형회귀분석에서 사용하는 모델과 동일하다. 이 평가 과정 역시 모든 잠재적 공변량에 대해 이루어지며, 3)의 조건을 만족하는 잠재적 공변량이 없을 때까지 step이 반복된다. 중요한 것은 이미 모델에 포함되어 있는 잠재적 공변량일지라도, 각 step에서 한 번 더 평가가 이루어진다는 것이다.(e.g. `ETA1 ~ CLCR + CLCR`) 만일, 동일한 공변량이 두 번 이상 선택된다면, 이는 유의한 상관관계가 있지만, 잠재적 공변량과 파라미터 간의 상관 구조가 선형적이 아닐 수 있다는 것을 시사하는 것이므로, 앞서 그림 \@ref(fig:nonlinear-rel)에서 언급한 경우와 같이 기록해 두고 다음 과정을 진행하여야 한다.
 
-이제 GAM이라는 의미를 다시 살펴보면, ‘모든 잠재적 공변량에 대해(generalized), 가법적으로(additive), 모델을 수행(modeling)하여, 각 결과를 비교하는 것이다.’라는 것을 알 수 있다. 파라미터 별 GAM 수행 결과는 그림 \@ref(fig:gam-step)의 결과를 반복적으로 보여 주는 형태로 확인하기도 하지만, 다음의 그림과 같이 모델 구조에 따른 AIC의 변화를 도식적으로 나타내어 선택된 잠재적 공변량들을 한 눈에 확인하는 경우가 많다.
+이제 GAM이라는 의미를 다시 살펴보면, ‘모든 잠재적 공변량에 대해(generalized), 가법적으로(additive), 모델을 수행(modeling)하여, 각 결과를 비교하는 것이다.’라는 것을 알 수 있다. 파라미터 별 GAM 수행 결과는 그림 \@ref(fig:gam-step)^[https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html]의 결과를 반복적으로 보여 주는 형태로 확인하기도 하지만, 다음의 그림과 같이 모델 구조에 따른 AIC의 변화를 도식적으로 나타내어 선택된 잠재적 공변량들을 한 눈에 확인하는 경우가 많다.
 
 ```{r gam-summary, fig.cap = "(ref:gam-summary)"}
-include_graphics("./assets/media-11/image11.png") # fig9
+include_graphics("./figures/11-fig-09.png") # fig9
 ```
 
-(ref:gam-summary) GAM 실행 summary (https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html)
+(ref:gam-summary) GAM 실행 summary
 
 ### 공선성(co-linearity)에 대한 고려 {#colinearity}
 
@@ -195,11 +195,11 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="112", range="B2:E6") %>%
     add_header_above(c(" ", `$\\Delta$-2LL` = 3))
 ```
 
-<!-- ![](./assets/media-11/image12.png)--> <!--no-num-->
-
 2.는 매우 중요한 개념으로, ω~i2~의 감소로 판단한다. 이는 임의 효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
-![](./assets/media-11/image13.png) <!--no-num-->
+```{r fig.cap = "임의 효과로 남겨져 있는 설명 불가능한 개인차"}
+include_graphics("./figures/11-fig-10.png")
+```
 
 특정 개인이 아닌 전체 인구집단에서 공변량과 파라미터가 일정한 관계를 갖는다면 이는 더 이상 설명 불가능한 개인차가 아니다. 따라서, 이는 설명 가능한 개인차로서 모델에 반영이 되며, 이렇게 적절히 반영된 공변량은 고정효과가 되는 것이다. 그렇다면 설명 불가능한 개인차의 크기는 줄어드는데 이것이 모델에서는 다음과 같이 표현된다.
 
@@ -235,7 +235,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="112", range="B2:E6") %>%
 - Proportional 
     * $CL = CL_{pop,female} * (1 + Male_{diff}*SEX)$
 - Power
-    * $CL = CL_{pop,female} * Male_{diff}\^{SEX}$
+    * $CL = CL_{pop,female} * Male_{diff}^{SEX}$
 - Exponential 
     * $CL = CL_{pop,female} * exp(Male_{diff}*SEX)$
 

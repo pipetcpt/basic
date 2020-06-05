@@ -21,7 +21,7 @@ E = E_0 + S \cdot C
 여기서 E는 약효, E~0~는 기저치(baseline), C는 약물농도를 나타내며, S는 기울기이다. 약효를 나타내는 반응에 있어 반응의 최대치(R~max~)가 존재하지 않으므로, 효소나 리간드의 결합과 같이 생리학적으로 반응의 최대치가 존재하여 포화과정이 일어나는 PD 데이터를 설명하기에는 적합하지 않은 모델이다. 약물의 작용기전을 고려할 때, 고농도에서 반응이 포화된다고 하더라도 가지고 있는 데이터가 선형성을 나타낸다면, 제한적으로 사용할 수 있으나, 구축된 선형모델을 이용하여 더 높은 농도에서의 약효 예측(extrapolation)에는 사용할 수 없다. 또한, 기저치가 존재한다면, E~0~ 값을 고정 또는 추정할 수 있다.\index{기울기 / gradient}\index{gradient / 기울기}
 
 ```{r linear-pd, fig.cap="(ref:linear-pd)"}
-knitr::include_graphics("./assets/media-19/image1.png")
+knitr::include_graphics("figures/19-fig-01.png")
 ```
 
 (ref:linear-pd) 선형 PD 모델 (dots: 관찰값, line: 예측값)
@@ -129,7 +129,7 @@ E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50}
 R~max~ = E~0~+100일때, 모델의 최대약물효과는 E~0~·E~max~가 된다 (그림 \@ref(fig:emax-comparison) (우)).
 
 ```{r emax-comparison, fig.cap="(ref:emax-comparison)"}
-knitr::include_graphics("./assets/media-19/image6.png")
+knitr::include_graphics("figures/19-fig-04.png")
 ```
 
 (ref:emax-comparison) E~max~ 모델의 비교 (좌) $\text{E} \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}$ (우) $\text{E} \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{\text{EC}_{50} + \left\lbrack C \right\rbrack})$
@@ -155,7 +155,7 @@ E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}
 여기서 n은 수용체와 결합하는 약물분자의 수를 의미하며, Hill 계수(Hill coefficient, H)라고도 한다.
 
 ```{r sigmoid-emax, fig.cap="(ref:sigmoid-emax)"}
-knitr::include_graphics("./assets/media-19/image8.png")
+knitr::include_graphics("figures/19-fig-06.png")
 ```
 
 (ref:sigmoid-emax) Sigmoid E~max~ model. H에 따른 E~max~ model의 형태 변화
@@ -166,7 +166,7 @@ Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도�
 
 **Sigmoid E~max~ model에서 n 구하기**
 
-![](./assets/media-19/image9.png) <!--no-num-->
+![](19-fig-sigmoid-emax.png) <!--no-num-->
 
 로그농도 그래프에서
 \begin{equation}
@@ -199,7 +199,7 @@ E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 그림 \@ref(fig:sigmoid-imax)은 혈중 약물농도의 변화에 따른 저해반응을 그래프로 나타내었다. 동일한 관찰값을 이용하여 각각 I~max~ model과 sigmoid I~max~ model을 사용하여 각 파라미터를 추정하고, 예측값을 그려보면, 그림에서 알 수 있듯이, sigmoid I~max~ model은 좀 더 유연성을 지니며, 데이터의 곡률을 더 잘 포착한다. 데이터의 특성(약물농도와 반응 관계가 약물의 기전상 1:1의 관계인지 아닌지) 등을 잘 파악하여, 모델 구축의 목적에 맞게 모델을 선정해야 할 것이다.
 
 ```{r sigmoid-imax, fig.cap="(ref:sigmoid-imax)"}
-knitr::include_graphics("./assets/media-19/image10.png")
+knitr::include_graphics("figures/19-fig-07.png")
 ```
 
 (ref:sigmoid-imax) 일반적인 I~max~ model(빨강)과 sigmoid I~max~ model(파랑)의 비교
@@ -228,7 +228,7 @@ K_2 &= k_2 / k_{-2}
 여기서 R~T~는 총 수용체 수, K~d~는 약물-1차 수용체 복합체 해리상수(k~-1~/k~1~), K~2~는 약물-2차 수용체 복합체 결합상수(k~2~/k~-2~)를 의미한다. K~2~=0이면, 위의 식은 E~max~ model과 동일하며, K~2~의 값이 커질수록 2차 결합이 빨라지므로, E~peak~값이 작아지며, 농도가 증가할수록 효과(E)의 크기도 더 많이 감소한다 (그림 \@ref(fig:K2)).
 
 ```{r K2, fig.cap="(ref:K2)"}
-knitr::include_graphics("./assets/media-19/image13.png")
+knitr::include_graphics("figures/19-fig-08.png")
 ```
 
 (ref:K2) K~2~의 변화에 따른 약물농도-약효와의 관계

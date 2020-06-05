@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-01" />
+<meta name="date" content="2020-06-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -389,14 +389,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>제어파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="PRED.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
 
 <div class="figure"><span id="fig:first-order-pred"></span>
-<img src="assets/media-07/image1.png" alt="1구획 모델의 ADVAN2, $PRED 제어파일 비교" width="100%" />
+<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, $PRED 제어파일 비교" width="100%" />
 <p class="caption">
 그림 7.1: 1구획 모델의 ADVAN2, $PRED 제어파일 비교
 </p>
 </div>
 
 <div class="figure"><span id="fig:pred-dataset"></span>
-<img src="assets/media-07/image2.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="100%" />
+<img src="figures/07-fig-02.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="100%" />
 <p class="caption">
 그림 7.2: ADVAN과 $PRED의 데이터셋 차이
 </p>
@@ -407,20 +407,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pred를-써야-하는-경우" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> $PRED를 써야 하는 경우</h2>
 <p>편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 $PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 <a href="PRED.html#exm:formula">7.1</a>)</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="PRED.html#cb27-1"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
-<span id="cb27-2"><a href="PRED.html#cb27-2"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span></span>
-<span id="cb27-3"><a href="PRED.html#cb27-3"></a><span class="er">$</span>INPUT ID CP RESP=DV</span>
-<span id="cb27-4"><a href="PRED.html#cb27-4"></a><span class="op">$</span>PRED</span>
-<span id="cb27-5"><a href="PRED.html#cb27-5"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
-<span id="cb27-6"><a href="PRED.html#cb27-6"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
-<span id="cb27-7"><a href="PRED.html#cb27-7"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
-<span id="cb27-8"><a href="PRED.html#cb27-8"></a>  ; only parameter with interindividual variability</span>
-<span id="cb27-9"><a href="PRED.html#cb27-9"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
-<span id="cb27-10"><a href="PRED.html#cb27-10"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
-<span id="cb27-11"><a href="PRED.html#cb27-11"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
-<span id="cb27-12"><a href="PRED.html#cb27-12"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
-<span id="cb27-13"><a href="PRED.html#cb27-13"></a><span class="op">$</span>THETA</span>
-<span id="cb27-14"><a href="PRED.html#cb27-14"></a>...</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="PRED.html#cb29-1"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
+<span id="cb29-2"><a href="PRED.html#cb29-2"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span></span>
+<span id="cb29-3"><a href="PRED.html#cb29-3"></a><span class="er">$</span>INPUT ID CP RESP=DV</span>
+<span id="cb29-4"><a href="PRED.html#cb29-4"></a><span class="op">$</span>PRED</span>
+<span id="cb29-5"><a href="PRED.html#cb29-5"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
+<span id="cb29-6"><a href="PRED.html#cb29-6"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
+<span id="cb29-7"><a href="PRED.html#cb29-7"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
+<span id="cb29-8"><a href="PRED.html#cb29-8"></a>  ; only parameter with interindividual variability</span>
+<span id="cb29-9"><a href="PRED.html#cb29-9"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
+<span id="cb29-10"><a href="PRED.html#cb29-10"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
+<span id="cb29-11"><a href="PRED.html#cb29-11"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
+<span id="cb29-12"><a href="PRED.html#cb29-12"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
+<span id="cb29-13"><a href="PRED.html#cb29-13"></a><span class="op">$</span>THETA</span>
+<span id="cb29-14"><a href="PRED.html#cb29-14"></a>...</span></code></pre></div>
 
 <div class="example">
 <span id="exm:formula" class="example"><strong>코드 7.1  </strong></span>약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.

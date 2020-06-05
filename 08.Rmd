@@ -32,7 +32,7 @@ x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 또한, 이러한 일련의 과정을 그림 \@ref(fig:newton-minimization)을 통해 보다 쉽게 이해할 수 있다.
 
 ```{r newton-minimization, fig.cap="Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도"}
-knitr::include_graphics("assets/media-08/08-fig-01.png")
+knitr::include_graphics("figures/08-fig-01.png")
 ```
  
 이러한 과정의 핵심은 파라미터 값의 업데이트이며, 이러한 업데이트 과정을 1회 거치는 것을 1회의 iteration이라고 지칭한다. 물론 NONMEM의 목적함수는 파라미터가 여러 개이며, 함수의 형태 자체도 복잡하므로, 실제 추정작업을 이처럼 단순한 함수 관계로 나타내기는 어렵다. 그러나 기본적인 원리는 이와 유사하기 때문에 이 정도 이해만으로도 충분히 초기값이 파라미터 추정에서 어떠한 역할을 하는지는 파악할 수 있을 것이다.\index{목적함수 / objective function}\index{iteration / 되풀이}\index{objective function / 목적함수}
@@ -46,13 +46,19 @@ Y = 5x^6 - 36x^5 + \frac{165}{2}x^4 - 60x^3 + 36
 \end{equation}
 
 ```{r limitation-newton-rhapson, fig.cap="복잡한 함수에서 Newton-Raphson 방법의 한계"}
-knitr::include_graphics("assets/media-08/08-fig-02.png")
+knitr::include_graphics("figures/08-fig-02.png")
 ```
 
-위의 그림 \@ref(fig:limitation-newton-rhapson)에서 목적함수의 극값은 3개이며, 2개는 극소값, 1개는 극대값이 된다. 이 때, 당연히도 도함수가 0과 교차하는 점은 3개가 되고, 2개는 이계도함수값이 양의 값을, 1개는 이계도함수값이 음의 값을 가지게 되는 것이다. 즉, 2절에서 제시한 요건을 만족하는 지점이 2개가 된다. 그렇다면 이 상황에서 초기 조건은 최종 도달지점에서 어떤 영향을 미칠 것인가? 아래의 그림 \@ref(fig:final-destination)를 통해 확인할 수 있다.\index{목적함수 / objective function}\index{objective function / 목적함수}
+위의 그림 \@ref(fig:limitation-newton-rhapson)에서 목적함수의 극값은 3개이며, 2개는 극소값, 1개는 극대값이 된다. 이 때, 당연히도 도함수가 0과 교차하는 점은 3개가 되고, 2개는 이계도함수값이 양의 값을, 1개는 이계도함수값이 음의 값을 가지게 되는 것이다. 즉, 2절에서 제시한 요건을 만족하는 지점이 2개가 된다. 그렇다면 이 상황에서 초기 조건은 최종 도달지점에서 어떤 영향을 미칠 것인가? 아래의 표 \@ref(tab:final-destination)를 통해 확인할 수 있다.\index{목적함수 / objective function}\index{objective function / 목적함수}
 
-```{r final-destination, fig.cap = "(ref:destination)"}
-knitr::include_graphics("assets/media-08/08-fig-table-1.png")
+```{r final-destination}
+#knitr::include_graphics("assets/media-08/08-fig-table-1.png")
+readxl::read_excel("data-raw/fig-tab.xlsx", sheet="71", range="B2:F19") %>% 
+  rename(`$X_i$`= 2) %>% 
+  kable(escape = FALSE, caption = "(ref:destination)")
+
+
+    
 ```
 
 (ref:destination) 초기값에 따른 최종 도달지점의 변화  [@han2016tips]
@@ -71,9 +77,13 @@ knitr::include_graphics("assets/media-08/08-fig-table-1.png")
 
 고정효과의 IE는 FPE에 대한 대략적인 사용자의 추정값이라고 할 수 있다. 이러한 추정의 정확성을 높여 좋은 IE를 제시하기 위해 사용자는 각 파라미터가 가지는 생리학적인 의미를 파악할 수 있어야 하며, 이에 비추어 특정한 파라미터 값이 타당한 값인가를 판단할 수 있어야 한다. 이를 고려할 때, 많은 의약품에서 *CL*, *V~d~*, 그리고 1차 속도론적 흡수속도상수(*ka*)는 1–100 L/h, 10–1000 L, and 0.1–10 h~−1~ 정도의 범위에 있는 것이 타당하다. 또한, 혈관 내 투여에 대한 정보 없이 혈관 외 투여 후의 약동학 데이터를 다룰 때는 생체이용률(*F*, 0-1 범위에 있음)로 나누어진 *CL*, *V~d~* 등의 값이 구해진다는 것 역시 염두에 두어야 한다. 이러한 이해를 기반으로 문헌 등에 제시된 유사 사례에서의 고정효과 파라미터 값을 참고할 수 있으며, 그 값이 타당한 경우 IE 값으로 사용할 수 있다. 문헌과 분석용 데이터 간의 인구집단 특성, 질병 관련 요인, 제형의 차이 등을 고려하여 그러한 변인들의 약동-약력학적 영향을 파악할 수 있다면, 보다 적절한 IE 값을 선택할 수 있을 것이다.
 
-보다 정교한 IE 값의 선택을 위해서는 탐색적 데이터 분석(exploratory data analysis) 과정을 철저히 수행하는 것을 추천한다. FPE는 제시된 구조 모형과 사용된 파라미터 등을 고려할 때, 주어진 데이터셋에 가장 적절한 파라미터 값이다. 다시 말해, 확보한 데이터가 FPE를 결정하는 것이며, 데이터셋을 보다 면밀히 파악함으로써 사용자는 더 좋은 IE 값을 제시할 수 있다. 간단히 y축을 로그 척도로 하여 시간에 따른 집단의 평균 농도를 그려 보는 것만으로도 매우 중요한 정보들을 얻을 수 있는데, 다음 그림을 통해 이를 설명하도록 하겠다.
+보다 정교한 IE 값의 선택을 위해서는 탐색적 데이터 분석(exploratory data analysis) 과정을 철저히 수행하는 것을 추천한다. FPE는 제시된 구조 모형과 사용된 파라미터 등을 고려할 때, 주어진 데이터셋에 가장 적절한 파라미터 값이다. 다시 말해, 확보한 데이터가 FPE를 결정하는 것이며, 데이터셋을 보다 면밀히 파악함으로써 사용자는 더 좋은 IE 값을 제시할 수 있다. 간단히 y축을 로그 척도로 하여 시간에 따른 집단의 평균 농도를 그려 보는 것만으로도 매우 중요한 정보들을 얻을 수 있는데, 그림 \@ref(fig:eda-ie)을 통해 이를 설명하도록 하겠다.
 
-![](./assets/media-08/image6.png) <!--no-num-->
+
+```{r eda-ie, fig.cap = "탐색적 데이터 분석을 통한 IE 값 결정"}
+include_graphics("figures/08-fig-03.png") # <!--no-num-->
+```
+
 
 이 그림은 일반적으로 관찰되는 혈관 내 투여 후 시간-농도 관계로서, 2구획 모델로 설명하기에 적절한 데이터이다. 따라서, 두 개의 직선의 합으로써 농도 변화를 설명할 수 있으며, 각 직선의 시작점과 기울기 등 상수 값들을 얻을 수 있다. 이후 이러한 상수 값을 다음의 변환 과정을 통해 빈번하게 사용하는 약동학적 파라미터 값으로 변환하면, FPE에 상당히 근접한 IE 값을 얻게 된다.\index{기울기 / gradient}\index{gradient / 기울기}
 \begin{equation}
