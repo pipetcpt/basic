@@ -54,11 +54,12 @@ knitr::include_graphics("figures/08-fig-02.png")
 ```{r final-destination}
 #knitr::include_graphics("assets/media-08/08-fig-table-1.png")
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="71", range="B2:F19") %>% 
-  rename(`$X_i$`= 2) %>% 
+  rename(`$i$`= 2) %>% 
+  rename(`$x_i$`= 2) %>% 
+  rename(`$\frac{dY}{dx_i}$`= 3) %>% 
+  rename(`$\frac{dY}{d^2x_i}$`= 4) %>% 
+  rename(`$x_{i+1}$`= 5) %>% 
   kable(escape = FALSE, caption = "(ref:destination)")
-
-
-    
 ```
 
 (ref:destination) 초기값에 따른 최종 도달지점의 변화  [@han2016tips]
