@@ -1,10 +1,8 @@
 # 초기추정값 {#IE}
 
-**Initial estimate**
+한승훈
 
-*한승훈*
-
-## 서론
+---
 
 IE(initial estimate, IE)은 NONMEM 제어 구문의 필수 구성 요소이다. 단 한 번의 모델링 경험만으로도 IE을 결정하는 것이 단순한 작업이 아니라는 것과 IE에 따라 FPE(final parameter estimate, FPE)이나 NONMEM 실행 시간이 달라질 수 있다는 것을 알게 된다. 특히, 계량약리학 분야의 초보자들은 일반적으로 NONMEM의 작동 방식과 제어 구문 구성 요소에 대한 이해의 폭이 좁기 때문에, IE의 개념, 역할 및 가치에 관한 지식이 부족할 수 있다. 그러나 모델의 구조나 IE의 역할에 대한 충분한 이해 없이 IE을 선택하는 경우, 전혀 타당하지 않은 FPE을 얻을 수 있으므로 이 문제를 간과해서는 안 된다. 따라서, 모델 구축 작업과 관련하여 일반적으로 받아들여질 수 있는 적절성을 확보하기 위해서는 IE에 관한 정확한 정보와 지식을 갖는 것이 중요하다 하겠다.
 
@@ -56,8 +54,8 @@ knitr::include_graphics("figures/08-fig-02.png")
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="71", range="B2:F19") %>% 
   rename(`$i$`= 2) %>% 
   rename(`$x_i$`= 2) %>% 
-  rename(`$\frac{dY}{dx_i}$`= 3) %>% 
-  rename(`$\frac{dY}{d^2x_i}$`= 4) %>% 
+  rename(`$\\frac{dY}{dx_i}$`= 3) %>% 
+  rename(`$\\frac{dY}{d^2x_i}$`= 4) %>% 
   rename(`$x_{i+1}$`= 5) %>% 
   kable(escape = FALSE, caption = "(ref:destination)")
 ```

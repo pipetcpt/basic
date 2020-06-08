@@ -46,7 +46,7 @@ PREDPP는 집단 약동학 데이터 분석에 적합하도록 NONMEM Project Gr
 PREDPP를 사용할 경우, 데이터셋 작성 시 반드시 고려해야하는 사항이 있다. 데이터는 시간 순차적 이벤트(time-ordered events) 로서 투약 이벤트(dosing event) 와 관측 이벤트(observation event)로 만들어져 있다. 투약과 관측 정보는 같은 레코드(또는 같은 행)에 적을 수 없으며, 각각 다른 레코드로 기입한다. 각 데이터 레코드 당 이벤트가 일어난 시간을 반드시 입력해야 한다. 또한, 실제 이벤트가 일어난 순서와 데이터셋에 기입된 데이터 레코드 순서는 동일해야 한다 (만약 투약 이벤트가 관측 이벤트 보다 먼저 일어난 경우, 투약 이벤트 레코드를 먼저 기입하고 그 다음 관측 이벤트 레코드를 기입한다). 반면, PRED를 사용할 경우, 투약 레코드와 관측 레코드는 따로 구분하여 작성하지 않으며, 투약 용량(AMT)을 모든 데이터 레코드들에 마치 공변량과 같이 기재해 준다. 이번 단원에서는 PREDPP 용 데이터셋을 작성하는 법을 설명한다.
 
 ```{r pred-predpp, fig.cap = "Comparison between dataset for PRED and PREDPP"}
-knitr::include_graphics("assets/02-fig-02.png")
+knitr::include_graphics("figures/02-fig-02.png")
 ```
 
 ## 데이터셋 소개
@@ -56,7 +56,7 @@ knitr::include_graphics("assets/02-fig-02.png")
 많이 쓰이는 기본적인 데이터셋의 형태는 그림 \@ref(fig:NONMEM-dataset)과 같다. 첫 행은 데이터 아이템의 이름을 기재하며 이를 데이터 아이템 레이블(Data item label)이라고 부른다. 첫 행에는 ID, TIME, AMT, DV, MDV 순으로 데이터 아이템이 기재되어 있다. 모든 데이터는 ID 별, TIME 별 오름차순으로 정렬하며, 각각의 이벤트 또는 결과값을 기재하고 이를 데이터 레코드 (Data record) 라고 부른다. 하나의 행에는 한 시점에 해당하는 하나의 이벤트(Event)를 기록한다.
 
 ```{r NONMEM-dataset, fig.cap="Basic example of dataset for NONMEM"}
-knitr::include_graphics("assets/02-fig-03.png")
+knitr::include_graphics("figures/02-fig-03.png")
 ```
 
 ## 데이터셋 배열
@@ -66,7 +66,7 @@ knitr::include_graphics("assets/02-fig-03.png")
 NONMEM은 아스키코드를 인식하기 때문에 데이터 레코드 입력 시 숫자만을 사용해서 기입해야 한다. 그림 \@ref(fig:example-dataset)에서 첫 번째 열에 기입된 데이터 아이템인 ID 를 살펴보면, ID 앞에 #을 추가한 것을 볼 수 있다. 이와 같이 데이터 아이템 레이블 앞에 #을 쓰는 명령문은 '#이 기입된 행을 무시하라' 라고 해석될 수 있다. 또한, 데이터 값이 없는 Null 데이터와 같은 경우는 해당 값이 없으므로 작성시 "." 으로 표현할 수 있다. 만약, 빈칸으로 남겨두게 되면, 아직 기입을 하지 않은 값인지 또는 존재하지 않는 값인지 헷갈릴 수 있기 때문에 대부분의 경우 null 데이터를 "."로 표현하는 것을 추천한다. 이전 NONMEM의 버전에서는 데이터 아이템의 수와 데이터 레코드 수에 제한이 있었으나, Version 7.2 부터는 그 수에 제한이 없다.
 
 ```{r example-dataset, fig.cap = "Example of dataset"}
-knitr::include_graphics("assets/02-fig-04.png")
+knitr::include_graphics("figures/02-fig-04.png")
 ```
 
 데이터 아이템 레이블 명명 시 간단한 규칙이 있다. NONMEM 7 에서부터 레이블은 알파벳 1-24 자 (A-Z), 숫자 (0-9), 그리고 "\_"를 사용해서 만들 수 있다. 단, 첫째 글자는 알파벳이 라야 한다. 데이터셋 상의 데이터 아이템 순서는 사실 중요하지 않다(예를 들어, ID를 첫 열에 기입할지 또는 TIME을 첫 열에 기입할지 등). 다만 모든 데이터 레코드는 사용자에 의해 일정하게 약속된 데이터 아이템 순으로 기입되어야 하며, 컨트롤 파일의 \$INPUT 레코드 작성 시 해당 순서에 따라 데이터 아이템 레이블을 기입해주면 된다. 데이터 아이템 레이블 행은 각 열을 명시함으로써 사용자가 입장에서 데이터를 알아보기 편하도록 삽입한 것이라고 볼 수 있다.
@@ -90,7 +90,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet='16', range="B2:D12") %>%
 ID는 대상자를 식별하기 위해 반드시 필요한 변수이다. 보통 임상 시험에서는 환자 고유 식별 번호를 알파벳을 넣어 부여하지만 NONMEM 데이터셋 작성시 아이디는 항상 숫자로 적어준다. ID는 오름차순으로 연속적으로 배열하는 것이 가장 이상적이며, 개인의 기록은 시간순으로 정렬한다. 따라서 ID 별, TIME 별 오름차순으로 정렬한 데이터 셋이 가장 많이 쓰인다. 그림 \@ref(fig:id-dataset)과 같이 앞에 사용된 같은 ID가 연속적으로 배열되지 않고 뒤에 다시 나오는 경우(예를 들어 그림 \@ref(fig:id-dataset)의 ID=101, 102), 이는 동일한 사람으로 인식되지 않으며 다른 사람으로 취급된다. 즉, NONMEM 은 ID=101, 102, 103 를 3명으로 인식하지 않고, 5명으로 인식한다. 따라서 같은 대상자의 데이터 레코드는 같이 그룹화하여 기입해주어야 한다.
 
 ```{r id-dataset, fig.cap="Example of dataset with noncontinuous ID arrangement (NOT appropriate)"}
-knitr::include_graphics("assets/02-fig-06.png")
+knitr::include_graphics("figures/02-fig-06.png")
 ```
 
 ### DV
@@ -116,7 +116,7 @@ TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 �
 TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \@ref(exm:date-dataset-chunk)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 '/' 또는 '-' 사용) 컨트롤 파일의 \$INPUT에 반드시 `DATE=DROP`이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
 
 ```{r time-dataset, fig.cap="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)"}
-knitr::include_graphics("assets/02-fig-07.png")
+knitr::include_graphics("figures/02-fig-07.png")
 ```
 
 ```r
@@ -144,7 +144,7 @@ AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 
 RATE 은 단위 시간 당 주입된 양(AMT per unit TIME)을 나타내며, 즉 정맥주입(infusion) 시 투여속도를 나타내는 변수이다. AMT와 함께 구체적인 투약 레코드를 나타내기 위해 사용되며, 투여속도를 나타내는 경우 양의 숫자로 기입된다. 그림 \@ref(fig:AMT-RATE)와 같이 약물 100 mg 을 한 시간동안 정맥 주입했을 경우 RATE 은 100 mg/h 가 된다. 만약, 약물 100 mg 을 30 분 동안 정맥주입 했을 경우 RATE는 100 mg/ 0.5 h 로 200 mg/h가 된다.
 
 ```{r AMT-RATE, fig.cap="Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h"}
-knitr::include_graphics("assets/02-fig-09.png")
+knitr::include_graphics("figures/02-fig-09.png")
 ```
 
 그 외 RATE는 0, -1, -2 의 값을 가질 수 있다. RATE가 0 인 경우는 투여경로가 정맥 주입이 아니라는 뜻이다. 만약, 정맥주사(bolus)와 정맥주입(infusion)이 함께 이뤄진 경우, 정맥주사 투약 레코드의 RATE는 0으로 기입한다. RATE가 -1 인 경우는 투여 속도를 예측하는 경우이며, 컨트롤 파일 \$PK 부분 작성 시 해당 파라미터를 표현하는 제어구문을 작성해야 한다(예를 들어, R1=THETA(1)). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로 컨트롤 파일 작성 시 \$PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를들어, D1=THETA(1)). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate) 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.
@@ -158,7 +158,7 @@ ADDL(Additional Dose)은 이벤트 레코드의 시작시간부터 일정한 투
 그림 \@ref(fig:dosing-dataset)과 같이 예를 들어 ID 302 대상자에게 약물 10mg 을 24시간 간격(0시간부터 96시간 까지)으로 총 5회 투여했을 경우, 투약 레코드는 TIME과 AMT를 사용하여 다섯 줄로 설명 가능하다. 하지만, 같은 투약정보를 ADDL과 II를 사용하여 한 줄로, 24시간 간격으로 4번의 추가 용량을 투여(총 다섯 번 투여), 간단하게 나타낼 수 있다.
 
 ```{r dosing-dataset, fig.cap = "Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II"}
-knitr::include_graphics("assets/02-fig-10.png")
+knitr::include_graphics("figures/02-fig-10.png")
 ```
 
 ### SS

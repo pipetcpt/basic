@@ -119,11 +119,10 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 \end{equation}
 
 한 번 더 미분하면
+
 \begin{equation}
-\int\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \right\rbrack^{2} \right\} exp(lnf(x;\theta))dx = 0 \\
-
+\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
 E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
-
 I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
 (\#eq:diff-diff)
 \end{equation}

@@ -1,8 +1,6 @@
 # 파라미터 추정 방법 및 세팅 {#estimation-methods}
 
-**Estimation Methods & Settings**
-
-*김정렬*
+김정렬
 
 ## 추정 방법 및 관련 옵션
 

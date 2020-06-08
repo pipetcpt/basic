@@ -1,8 +1,6 @@
 # \$PRED: ADVAN을 쓰지 않는 코딩 {#PRED}
 
-**Coding of control stream NOT using ADVANs**
-
-*임동석*
+임동석
 
 ## \$PRED와 PREDPP library사용할 때의 차이
 

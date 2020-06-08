@@ -1,8 +1,6 @@
 # 일반 ADVAN을 이용한 control stream의 코딩 {#general-advan}
 
-**Coding of control stream using general ADVANs**
-
-*홍태곤*
+홍태곤
 
 ---
 

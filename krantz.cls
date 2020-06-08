@@ -245,15 +245,17 @@
 
 %\setlength\trimheight{300mm}
 %\setlength\trimwidth{176mm}
-\setlength\trimheight{9in} % original, sungpil 2020-05-04
-\setlength\trimwidth{6in}  % original, sungpil 2020-05-04
+%\setlength\trimheight{9in} % original, sungpil 2020-05-04
+\setlength\trimheight{260mm} % original, sungpil 2020-05-04
+%\setlength\trimwidth{6in}  % original, sungpil 2020-05-04
+\setlength\trimwidth{190mm}  % original, sungpil 2020-05-04
 %
 %
 \if@krantza
-\textheight = 45pc
+\textheight = 210mm % http://wiki.ktug.org/wiki/wiki.php/KTSConference/2009?action=download&value=pub_with_TeX.pdf
   %\advance\textheight by \topskip
 \addtolength\textheight{3pt}
-  \textwidth 28pc
+  \textwidth 135mm
 \addtolength\textwidth{.5pt}
   \topmargin0in
   \oddsidemargin1.1875in

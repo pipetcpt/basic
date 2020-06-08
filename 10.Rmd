@@ -1,8 +1,6 @@
 # NONMEM 실행결과 해석 및 Xpose4 사용법 {#use-of-xpose4}
 
-**Requesting NONMEM output files and the use of Xpose4**\index{output files / 실행결과 파일}
-
-*전상일*
+전상일
 
 ---
 
