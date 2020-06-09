@@ -473,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="turnover-모델" class="section level2" number="20.5">
 <h2><span class="header-section-number">20.5</span> Turnover 모델</h2>
 <p>약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나 감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을 뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를 의미한다.</p>
-<p><span class="math display" id="eq:model-ii" id="eq:model-i" id="eq:turnovereq">\[\begin{equation}
+<p><span class="math display" id="eq:turnovereq">\[\begin{equation}
 \frac{dR}{dt} = k_{in}^0\ - k_{out} \cdot R
 \tag{20.1}
 \end{equation}\]</span></p>
@@ -489,18 +489,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">20.5.1</span> Inhibition on production (Model I)</h3>
 <p>관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 <a href="delayed-effect.html#fig:model-i">20.6</a>)</p>
 <div class="figure"><span id="fig:model-i"></span>
-<img src="figures/20-fig-06.png" alt="Inhibition on production (Sharma and Jusko 1998)" width="90%" />
+<img src="figures/20-fig-06.png" alt="Inhibition on production (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
 그림 20.6: Inhibition on production <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
 </p>
 </div>
 
-<p> &amp; = k_{in} - k_{out} R \
-k_{in} &amp; k_{in} (1 - H(t)) \
-H(t) &amp; =     (0 &lt; I_{max} )
+<p><span class="math display" id="eq:model-i">\[\begin{equation}
+\begin{split}
+\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
+k_{in} \rightarrow k_{in} \cdot (1 - H(t)) \\
+H(t) = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 &lt; I_{max} \leq 1)
 \end{split}
 \tag{20.2}
-\end{equation}</p>
+\end{equation}\]</span></p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="delayed-effect.html#cb57-1"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
 <span id="cb57-2"><a href="delayed-effect.html#cb57-2"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
 <span id="cb57-3"><a href="delayed-effect.html#cb57-3"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>IMAX<span class="op">*</span>C1<span class="op">/</span>(IC50<span class="op">+</span>C1))<span class="op">-</span>KOUT<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
@@ -509,18 +511,20 @@ H(t) &amp; =     (0 &lt; I_{max} )
 <h3><span class="header-section-number">20.5.2</span> Inhibition on loss (Model II)</h3>
 <p>관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해 cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은 cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 <a href="delayed-effect.html#fig:model-ii">20.7</a>)</p>
 <div class="figure"><span id="fig:model-ii"></span>
-<img src="figures/20-fig-07.png" alt="Inhibition on loss (Sharma and Jusko 1998)" width="90%" />
+<img src="figures/20-fig-07.png" alt="Inhibition on loss (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
 그림 20.7: Inhibition on loss <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
 </p>
 </div>
 
-<p> &amp; = k_{in} - k_{out} R \
-k_{out} &amp; k_{out} (1 - H(t)) \
-H(t) &amp; =     (0 &lt; I_{max} )
+<p><span class="math display" id="eq:model-ii">\[\begin{equation}
+\begin{split}
+\frac{dR}{dt} &amp; = k_{in} - k_{out} \cdot R \\
+k_{out} &amp; \rightarrow k_{out} \cdot (1 - H(t)) \\
+H(t) &amp; = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 &lt; I_{max} \leq 1)
 \end{split}
 \tag{20.3}
-\end{equation}</p>
+\end{equation}\]</span></p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="delayed-effect.html#cb58-1"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
 <span id="cb58-2"><a href="delayed-effect.html#cb58-2"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
 <span id="cb58-3"><a href="delayed-effect.html#cb58-3"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">-</span>KOUT<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>IMAX<span class="op">*</span>C1<span class="op">/</span>(IC50<span class="op">+</span>C1))<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
@@ -529,7 +533,7 @@ H(t) &amp; =     (0 &lt; I_{max} )
 <h3><span class="header-section-number">20.5.3</span> Stimulation on production (Model III)</h3>
 <p>관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜 궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데 erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구 수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 <a href="delayed-effect.html#fig:model-iii">20.8</a>)</p>
 <div class="figure"><span id="fig:model-iii"></span>
-<img src="figures/20-fig-08.png" alt="Stimulation on production (Sharma and Jusko 1998)" width="90%" />
+<img src="figures/20-fig-08.png" alt="Stimulation on production (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
 그림 20.8: Stimulation on production <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
 </p>
@@ -551,7 +555,7 @@ H(t) &amp; = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 &lt; S_{max})
 <h3><span class="header-section-number">20.5.4</span> Stimulation on loss (Model IV)</h3>
 <p>관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수 있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 <a href="delayed-effect.html#fig:model-iv">20.9</a>)</p>
 <div class="figure"><span id="fig:model-iv"></span>
-<img src="figures/20-fig-09.png" alt="Stimulation on loss (Sharma and Jusko 1998)" width="90%" />
+<img src="figures/20-fig-09.png" alt="Stimulation on loss (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
 그림 20.9: Stimulation on loss <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
 </p>

@@ -214,7 +214,7 @@ knitr::include_graphics("figures/19-fig-07.png")
 
 
 \begin{equation}
-[C] + [R] \xrightarrow[k_{-2}]{k1} [CR] + [C] \xrightarrow[k_{-2}]{k_2} [C2R]
+[C] + [R] \xrightarrow[k_{-1}]{k_1} [CR] + [C] \xrightarrow[k_{-2}]{k_2} [C2R]
 (\#eq:multiplebinding)
 \end{equation}
 

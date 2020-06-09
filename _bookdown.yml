@@ -9,6 +9,7 @@ language:
     tab: "표 "
     #thm: "코드 "
     exm: "코드 "
+    sol: "코드 "
   ui:
     edit: "Edit"
     chapter_name: "Chapter "

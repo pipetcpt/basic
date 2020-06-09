@@ -129,17 +129,17 @@ include_graphics("figures/20-fig-05.png")
 
 관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-i))
 
-```{r model-i, fig.cap="(ref:model-i)"}
+```{r model-i, fig.cap="(ref:model-i)", out.width='50%'}
 include_graphics("figures/20-fig-06.png")
 ```
 
 (ref:model-i) Inhibition on production [@sharma1998characteristics]
 
-\start{equation}
-\start{split}
-\frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
-k_{in} & \rightarrow k_{in} \cdot (1 - H(t)) \\
-H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
+\begin{equation}
+\begin{split}
+\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
+k_{in} \rightarrow k_{in} \cdot (1 - H(t)) \\
+H(t) = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 \end{split}
 (\#eq:model-i)
 \end{equation}
@@ -154,14 +154,14 @@ DADT(2)=KIN*(1-IMAX*C1/(IC50+C1))-KOUT*A(2)
 
 관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해 cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은 cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다.  이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-ii))
 
-```{r model-ii, fig.cap="(ref:model-ii)"}
+```{r model-ii, fig.cap="(ref:model-ii)", out.width='50%'}
 include_graphics("figures/20-fig-07.png")
 ```
 
 (ref:model-ii) Inhibition on loss [@sharma1998characteristics]
 
-\start{equation}
-\start{split}
+\begin{equation}
+\begin{split}
 \frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
 k_{out} & \rightarrow k_{out} \cdot (1 - H(t)) \\
 H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
@@ -179,7 +179,7 @@ DADT(2)=KIN-KOUT*(1-IMAX*C1/(IC50+C1))*A(2)
 
 관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜 궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데 erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구 수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-iii))
 
-```{r model-iii, fig.cap="(ref:model-iii)"}
+```{r model-iii, fig.cap="(ref:model-iii)", out.width='50%'}
 include_graphics("figures/20-fig-08.png")
 ```
 
@@ -204,7 +204,7 @@ DADT(2)=KIN*(1+SMAX*C1/(SC50+C1))-KOUT*A(2)
 
 관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수 있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다.  (그림 \@ref(fig:model-iv))
 
-```{r model-iv, fig.cap="(ref:model-iv)"}
+```{r model-iv, fig.cap="(ref:model-iv)", out.width='50%'}
 include_graphics("figures/20-fig-09.png")
 ```
 
@@ -235,4 +235,3 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 \end{equation}
 
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
-

@@ -12,10 +12,10 @@ documentclass: krantz
 classoption:
 - krantz2
 - a4paper
-linestretch: 1.15 # https://github.com/jgm/pandoc/issues/5179
+linestretch: 1.4 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
-#monofont: "Source Code Pro"
-monofontoptions: "Scale=0.2"
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.8"
 #https://www.overleaf.com/gallery/tagged/book/page/5
 #https://pandoc.org/MANUAL.html#variables-for-latex
 #documentclass: extarticle

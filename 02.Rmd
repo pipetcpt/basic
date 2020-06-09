@@ -28,8 +28,8 @@ $PROB HO_IV_1comp
 $DATA ../HOdata_IV.csv IGNORE=@
 $INPUT ID TIME AMT DV MDV SEX AGE WT HT
 ```
-```{example, input, echo=TRUE}
-\$PROB, \$DATA, \$INPUT 제어구문 작성의 예
+```{solution, input, echo=TRUE}
+1. \$PROB, \$DATA, \$INPUT 제어구문 작성의 예
 ```
 
 ```{r tab}
@@ -125,8 +125,8 @@ DAT1  day month year
 DAT2  year month day
 DAT3  year day month
 ```
-```{example, date-dataset-chunk, echo=TRUE}
-DATE label and its format
+```{solution, date-dataset-chunk, echo=TRUE}
+2. DATE label and its format
 ```
 
 ### AMT
