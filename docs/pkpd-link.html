@@ -299,9 +299,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.1" data-path="pkpd-link.html"><a href="pkpd-link.html#pd-데이터-및-pd-모델의-특징"><i class="fa fa-check"></i><b>18.1</b> PD 데이터 및 PD 모델의 특징</a></li>
 <li class="chapter" data-level="18.2" data-path="pkpd-link.html"><a href="pkpd-link.html#pk-pd-데이터를-다룰-때-고려할-점"><i class="fa fa-check"></i><b>18.2</b> PK-PD 데이터를 다룰 때 고려할 점</a></li>
 <li class="chapter" data-level="18.3" data-path="pkpd-link.html"><a href="pkpd-link.html#pkpd-link-method"><i class="fa fa-check"></i><b>18.3</b> PK-PD 연결 방법 (적합법)</a></li>
-<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model-direct-pkpd"><i class="fa fa-check"></i><b>18.4</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model) {#direct-pkpd}</a>
+<li class="chapter" data-level="18.4" data-path="pkpd-link.html"><a href="pkpd-link.html#direct-pkpd"><i class="fa fa-check"></i><b>18.4</b> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</a>
 <ul>
-<li class="chapter" data-level="18.4.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.4.1</b> 동시적합법(SIM, Simultaneous fitting) </a></li>
+<li class="chapter" data-level="18.4.1" data-path="pkpd-link.html"><a href="pkpd-link.html#동시적합법sim-simultaneous-fitting"><i class="fa fa-check"></i><b>18.4.1</b> 동시적합법(SIM, Simultaneous fitting)</a></li>
 <li class="chapter" data-level="18.4.2" data-path="pkpd-link.html"><a href="pkpd-link.html#순차적합법-sequential-fitting"><i class="fa fa-check"></i><b>18.4.2</b> 순차적합법 (Sequential fitting)</a></li>
 <li class="chapter" data-level="18.4.3" data-path="pkpd-link.html"><a href="pkpd-link.html#ipp-individual-pk-parameters"><i class="fa fa-check"></i><b>18.4.3</b> IPP (Individual PK Parameters)</a></li>
 </ul></li>
@@ -514,16 +514,18 @@ Fix (as given by the PK model)
 </div>
 
 </div>
-<div id="직접효과-pk-pd-모델의-예examples-of-direct-effect-pk-pd-model-direct-pkpd" class="section level2" number="18.4">
-<h2><span class="header-section-number">18.4</span> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model) {#direct-pkpd}</h2>
+<div id="direct-pkpd" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model)</h2>
+<p></p>
 <div id="동시적합법sim-simultaneous-fitting" class="section level3" number="18.4.1">
-<h3><span class="header-section-number">18.4.1</span> 동시적합법(SIM, Simultaneous fitting) </h3>
+<h3><span class="header-section-number">18.4.1</span> 동시적합법(SIM, Simultaneous fitting)</h3>
+<p></p>
 <p>PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.</p>
-<p><a href="#direct-pkpd">18.5</a>의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.</p>
+<p><a href="pkpd-link.html#direct-pkpd">18.5</a>의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.</p>
 <p>SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 <a href="pkpd-link.html#fig:SIM-dataset">18.4</a>).</p>
 <p>제어파일을 살펴보면, $PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. $DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 $ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 $THETA 이하의 제어 구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 <a href="pkpd-link.html#exm:SIM-control">18.1</a>).</p>
 <div class="figure"><span id="fig:SIM-dataset"></span>
-<img src="assets/media-18/image5.png" alt="SIM 방법의 데이터셋의 예" width="90%" />
+<img src="assets/media-18/image5.png" alt="SIM 방법의 데이터셋의 예" width="50%" />
 <p class="caption">
 그림 18.4: SIM 방법의 데이터셋의 예
 </p>
@@ -595,7 +597,7 @@ Fix (as given by the PK model)
 <h4><span class="header-section-number">18.4.2.1</span> PPP&amp;D (Population PK Parameters &amp; Data)</h4>
 <p>PPP&amp;D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 포함된다. 따라서, SIM에서 사용한 데이터셋의 구조와 동일하다(그림 <a href="pkpd-link.html#fig:pppd">18.5</a>). PPP&amp;D에서는 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행하며, 이는 $THETA, $OMEGA, $SIGMA 블록 내의 θ1<sub>CL</sub>, θ<sub>V1</sub>, ω<sub>CL2</sub>, ω<sub>V12</sub>그리고 σ<sub>12</sub>에 해당한다(코드 <a href="pkpd-link.html#exm:pppd-code">18.2</a>).</p>
 <div class="figure"><span id="fig:pppd"></span>
-<img src="assets/media-18/image6.png" alt="PPP&amp;D 방법의 데이터셋의 예" width="90%" />
+<img src="assets/media-18/image6.png" alt="PPP&amp;D 방법의 데이터셋의 예" width="50%" />
 <p class="caption">
 그림 18.5: PPP&amp;D 방법의 데이터셋의 예
 </p>
@@ -693,7 +695,7 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.</p>
 <p>그림 <a href="pkpd-link.html#fig:ipp-dataset-ex">18.7</a>에서 CL 와 V1에 해당하는 데이터 아이템 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 <a href="pkpd-link.html#exm:IPP-example">18.4</a>).</p>
 <div class="figure"><span id="fig:ipp-dataset-ex"></span>
-<img src="assets/media-18/image8.png" alt="IPP 방법의 데이터셋의 예" width="90%" />
+<img src="assets/media-18/image8.png" alt="IPP 방법의 데이터셋의 예" width="50%" />
 <p class="caption">
 그림 18.7: IPP 방법의 데이터셋의 예
 </p>
@@ -734,10 +736,10 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 <h2><span class="header-section-number">18.5</span> 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response)</h2>
 <div id="sim과-pppd-데이터셋-및-제어구문" class="section level3" number="18.5.1">
 <h3><span class="header-section-number">18.5.1</span> SIM과 PPP&amp;D 데이터셋 및 제어구문</h3>
-<p>이 장에서는 앞서 소개한 <a href="#direct-pkpd">18.5</a> 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.</p>
+<p>이 장에서는 앞서 소개한 <a href="pkpd-link.html#direct-pkpd">18.5</a> 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.</p>
 <p>SIM과 PPP&amp;D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 <a href="pkpd-link.html#fig:sim-pppd-dataset">18.8</a>). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.</p>
 <div class="figure"><span id="fig:sim-pppd-dataset"></span>
-<img src="assets/media-18/image9.png" alt="SIM 방법과 PPP&amp;D 방법을 쓸 때의 PK-PD 데이터셋의 예" width="90%" />
+<img src="assets/media-18/image9.png" alt="SIM 방법과 PPP&amp;D 방법을 쓸 때의 PK-PD 데이터셋의 예" width="50%" />
 <p class="caption">
 그림 18.8: SIM 방법과 PPP&amp;D 방법을 쓸 때의 PK-PD 데이터셋의 예
 </p>

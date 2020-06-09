@@ -69,9 +69,13 @@ knitr::include_graphics("figures/18-fig-03.png") # fig 3
 
 (ref:level-info) PK-PD 연결 방법과 그에 관련된 정보의 수준
 
-## 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model) {#direct-pkpd}\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
+## 직접효과 PK-PD 모델의 예(Examples of direct effect PK-PD model) {#direct-pkpd}
 
-### 동시적합법(SIM, Simultaneous fitting) \index{동시적합법 / simulatneous fitting}\index{simulatneous fitting / 동시적합법}
+\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
+
+### 동시적합법(SIM, Simultaneous fitting) 
+
+\index{동시적합법 / simulatneous fitting}\index{simulatneous fitting / 동시적합법}
 
 PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.
 
@@ -81,7 +85,7 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 
 제어파일을 살펴보면, \$PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. \$DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 \$ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 \$THETA 이하의 제어 구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \@ref(exm:SIM-control)).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
-```{r SIM-dataset, fig.cap = "(ref:SIM-dataset)"}
+```{r SIM-dataset, fig.cap = "(ref:SIM-dataset)", out.width='50%'}
 include_graphics("./assets/media-18/image5.png") # fig4
 ```
 
@@ -162,7 +166,7 @@ ENDIF
 
 PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 포함된다. 따라서, SIM에서 사용한 데이터셋의 구조와 동일하다(그림 \@ref(fig:pppd)). PPP\&D에서는 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행하며, 이는 \$THETA, \$OMEGA, \$SIGMA 블록 내의 θ1~CL~, θ~V1~, ω~CL~~2~, ω~V1~~2~그리고 σ~1~~2~에 해당한다(코드 \@ref(exm:pppd-code)).
 
-```{r pppd, fig.cap="(ref:pppd)"}
+```{r pppd, fig.cap="(ref:pppd)", out.width='50%'}
 knitr::include_graphics("./assets/media-18/image6.png") # fig 6
 ```
 
@@ -269,7 +273,7 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 
 그림 \@ref(fig:ipp-dataset-ex)에서 CL 와 V1에 해당하는 데이터 아이템 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 \@ref(exm:IPP-example)).
 
-```{r ipp-dataset-ex, fig.cap = "(ref:ipp-dataset-ex)"}
+```{r ipp-dataset-ex, fig.cap = "(ref:ipp-dataset-ex)", out.width='50%'}
 include_graphics("./assets/media-18/image8.png")
 ```
 
@@ -314,7 +318,7 @@ IPP 방법의 제어구문의 예
 
 SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 \@ref(fig:sim-pppd-dataset)). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.
 
-```{r sim-pppd-dataset, fig.cap = "(ref:sim-pppd-dataset)"}
+```{r sim-pppd-dataset, fig.cap = "(ref:sim-pppd-dataset)", out.width='50%'}
 include_graphics("./assets/media-18/image9.png") # fig 12
 ```
 
