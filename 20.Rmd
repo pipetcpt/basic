@@ -98,21 +98,24 @@ $ERROR
 
 ## 직접효과 vs. 간접효과
 
-관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 \@ref(fig:direct-indirect)).
+\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
+
+관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 \@ref(fig:direct-indirect)).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 ```{r direct-indirect, fig.cap="(ref:direct-indirect)"}
 include_graphics("figures/20-fig-04.png")
 ```
 
-(ref:direct-indirect) 직접효과와 간접효과의 모식도 [@gabrielsson]
+(ref:direct-indirect) 직접효과와 간접효과의 모식도 [@gabrielsson]\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 ## Turnover 모델
 
 약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나 감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을 뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를 의미한다.
 
-$$
+\begin{equation}
 \frac{dR}{dt} = k_{in}^0\ - k_{out} \cdot R
-$$
+(\#eq:turnovereq)
+\end{equation}
 
 관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나 억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 \@ref(fig:turnover-4)에서 보듯 4가지 형태로 구분된다.
 
@@ -132,11 +135,14 @@ include_graphics("figures/20-fig-06.png")
 
 (ref:model-i) Inhibition on production [@sharma1998characteristics]
 
-$$
-\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
-k_{in} \rightarrow k_{in} \cdot (1 - H(t)) \\
-H(t) = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
-$$
+\start{equation}
+\start{split}
+\frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
+k_{in} & \rightarrow k_{in} \cdot (1 - H(t)) \\
+H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
+\end{split}
+(\#eq:model-i)
+\end{equation}
 
 ```r
 C1=A(1)/S1
@@ -154,11 +160,15 @@ include_graphics("figures/20-fig-07.png")
 
 (ref:model-ii) Inhibition on loss [@sharma1998characteristics]
 
-$$
-\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
-k_{out} \rightarrow k_{out} \cdot (1 - H(t)) \\
-H(t) = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
-$$
+\start{equation}
+\start{split}
+\frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
+k_{out} & \rightarrow k_{out} \cdot (1 - H(t)) \\
+H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
+\end{split}
+(\#eq:model-ii)
+\end{equation}
+
 ```r
 C1=A(1)/S1
 DADT(1)=-K*A(1)
@@ -175,11 +185,15 @@ include_graphics("figures/20-fig-08.png")
 
 (ref:model-iii) Stimulation on production [@sharma1998characteristics]
 
-$$
-\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
-k_{in} \rightarrow k_{in} \cdot (1 + H(t)) \\
-H(t) = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
-$$
+\begin{equation}
+\begin{split}
+\frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
+k_{in} & \rightarrow k_{in} \cdot (1 + H(t)) \\
+H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
+\end{split}
+(\#eq:model-iii)
+\end{equation}
+
 ```r
 C1=A(1)/S1
 DADT(1)=-K*A(1)
@@ -196,11 +210,15 @@ include_graphics("figures/20-fig-09.png")
 
 (ref:model-iv) Stimulation on loss [@sharma1998characteristics]
 
-$$
-\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
-k_{out} \rightarrow k_{out} \cdot (1 + H(t)) \\
-H(t) = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
-$$
+\begin{equation}
+\begin{split}
+\frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
+k_{out} & \rightarrow k_{out} \cdot (1 + H(t)) \\
+H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
+\end{split}
+(\#eq:model-iv)
+\end{equation}
+
 ```r
 C1=A(1)/S1
 DADT(1)=-K*A(1)
@@ -211,9 +229,10 @@ DADT(2)=KIN-KOUT*(1+SMAX*C1/(SC50+C1))*A(2)
 
 간접효과 모델에서 약물 투여 전 상태에서의 반응을 기저값으로 간주하며, 반응이 증가하거나 감소하는 정도가 동일하여 겉보기에는 변화가 없는 것처럼 보인다. 앞서 언급한 간접효과 미분방정식으로부터 유도한 기저값은 아래와 같다.
 
-$$
+\begin{equation}
 R_{0} = \frac{k_{in}^0}{k_{out}}
-$$
+(\#eq:baseline)
+\end{equation}
 
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
 

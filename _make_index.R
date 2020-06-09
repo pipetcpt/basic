@@ -1,9 +1,9 @@
-# setup ----
+# en ----
 
 library(tidyverse)
 library(readxl)
 
-raw_index <- read_excel('assets/index.xlsx') %>% 
+raw_index <- read_excel('index/index.xlsx') %>% 
   print()
 
 index_cmd_en <- raw_index %>% 
@@ -15,6 +15,12 @@ index_cmd_en <- raw_index %>%
 write_lines(index_cmd_en$cmd, path = "_index_en.sh")
 
 # ko ----
+
+library(tidyverse)
+library(readxl)
+
+raw_index <- read_excel('index/index.xlsx') %>% 
+  print()
 
 index_cmd <- raw_index %>% 
   filter(commit == 0) %>% 

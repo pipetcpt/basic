@@ -12,7 +12,7 @@ documentclass: krantz
 classoption:
 - krantz2
 - a4paper
-linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
+linestretch: 1.15 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
 #monofont: "Source Code Pro"
 monofontoptions: "Scale=0.2"
@@ -87,7 +87,7 @@ pacman::p_load(char = my_packages)
 opts_chunk$set(echo=FALSE, 
                message = FALSE, 
                warning = FALSE,
-               out.width="100%", 
+               out.width="90%", 
                dpi = NA,
                #fig.width = 7,
                error = TRUE)

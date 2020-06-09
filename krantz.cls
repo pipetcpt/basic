@@ -243,8 +243,10 @@
 \newdimen\vtrimtop
 \newdimen\vtrimbot
 
-\setlength\trimheight{9in}
-\setlength\trimwidth{6in}
+%\setlength\trimheight{9in}
+\setlength\trimheight{1in}
+%\setlength\trimwidth{6in}
+\setlength\trimwidth{1in}
 %
 %
 \if@krantza

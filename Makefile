@@ -1,7 +1,7 @@
 all: gitbook pdf
 
 clean:
-	rm -rf docs _bookdown_files basic.*
+	rm -rf docs _bookdown_files basic.* basic-*.pdf
 
 gitbook:
 	Rscript --quiet _render.R "bookdown::gitbook"
@@ -23,9 +23,11 @@ del:
 	rm pdf-*.pdf tmp-*.pdf
 
 crop:
-	sh _crop.sh ; cp docs/basic.pdf basic-no-crop.pdf
+	sh _shell/_crop.sh ; cp docs/basic.pdf basic-no-crop.pdf
 
-index:
+allindex: indexko indexen
+
+indexko:
 	sh -x _index.sh
 
 indexen:

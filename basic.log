@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.6.8)  9 JUN 2020 11:37
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.6.8)  9 JUN 2020 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -785,7 +785,7 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \c@definition=\count321
 \c@example=\count322
 \c@exercise=\count323
-(./basic.aux)
+No file basic.aux.
 \openout1 = `basic.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 289.
@@ -1725,6 +1725,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 289.
 LaTeX Info: Redefining \pageref on input line 289.
 LaTeX Info: Redefining \nameref on input line 289.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: threeparttable package is loaded.
@@ -1919,50 +1922,9 @@ LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
 (Font)              scaled to size 18.0pt on input line 306.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/it' will be
 (Font)              scaled to size 18.0pt on input line 306.
-(./basic.toc
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.6131pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.43793pt on input line 6.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-.
-(d:/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.87692pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.61385pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.43846pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.87479pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.61235pt on input line 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.4374pt on input line 6.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (d:/texlive/2020/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (d:/texlive/2020/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
+\tf@toc=\write5
+\openout5 = `basic.toc'.
 
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/up' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/n' instead on input line 6.
-
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 7.0pt on input line 6.
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 5.0pt on input line 6.
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -1971,347 +1933,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [3
 
 ]
-Overfull \hbox (0.11195pt too wide) detected at line 85
- [] \TU/NanumMyeongjo(0)/m/it/10 100
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 86
- [] \TU/NanumMyeongjo(0)/m/it/10 100
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 91
- [] \TU/NanumMyeongjo(0)/m/it/10 106
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 94
- [] \TU/NanumMyeongjo(0)/m/it/10 110
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 95
- [] \TU/NanumMyeongjo(0)/m/it/10 111
- []
-
-[4]
-Overfull \hbox (0.11195pt too wide) detected at line 98
- [] \TU/NanumMyeongjo(0)/m/it/10 115
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 99
- [] \TU/NanumMyeongjo(0)/m/it/10 116
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 101
- [] \TU/NanumMyeongjo(0)/m/it/10 119
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 102
- [] \TU/NanumMyeongjo(0)/m/it/10 120
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 103
- [] \TU/NanumMyeongjo(0)/m/it/10 122
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 104
- [] \TU/NanumMyeongjo(0)/m/it/10 122
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 105
- [] \TU/NanumMyeongjo(0)/m/it/10 124
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 106
- [] \TU/NanumMyeongjo(0)/m/it/10 126
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 107
- [] \TU/NanumMyeongjo(0)/m/it/10 126
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 110
- [] \TU/NanumMyeongjo(0)/m/it/10 137
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 111
- [] \TU/NanumMyeongjo(0)/m/it/10 139
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 112
- [] \TU/NanumMyeongjo(0)/m/it/10 140
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 113
- [] \TU/NanumMyeongjo(0)/m/it/10 142
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 114
- [] \TU/NanumMyeongjo(0)/m/it/10 144
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 115
- [] \TU/NanumMyeongjo(0)/m/it/10 154
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 116
- [] \TU/NanumMyeongjo(0)/m/it/10 155
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 119
- [] \TU/NanumMyeongjo(0)/m/it/10 168
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 120
- [] \TU/NanumMyeongjo(0)/m/it/10 169
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 121
- [] \TU/NanumMyeongjo(0)/m/it/10 169
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 122
- [] \TU/NanumMyeongjo(0)/m/it/10 169
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 123
- [] \TU/NanumMyeongjo(0)/m/it/10 171
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 124
- [] \TU/NanumMyeongjo(0)/m/it/10 174
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 126
- [] \TU/NanumMyeongjo(0)/m/it/10 177
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 127
- [] \TU/NanumMyeongjo(0)/m/it/10 178
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 128
- [] \TU/NanumMyeongjo(0)/m/it/10 178
- []
-
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Overfull \hbox (0.11195pt too wide) detected at line 129
- [] \TU/NanumMyeongjo(0)/m/it/10 180
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 130
- [] \TU/NanumMyeongjo(0)/m/it/10 180
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 131
- [] \TU/NanumMyeongjo(0)/m/it/10 181
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 133
- [] \TU/NanumMyeongjo(0)/m/it/10 184
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 134
- [] \TU/NanumMyeongjo(0)/m/it/10 184
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 135
- [] \TU/NanumMyeongjo(0)/m/it/10 185
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 136
- [] \TU/NanumMyeongjo(0)/m/it/10 188
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 137
- [] \TU/NanumMyeongjo(0)/m/it/10 188
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 138
- [] \TU/NanumMyeongjo(0)/m/it/10 191
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 141
- [] \TU/NanumMyeongjo(0)/m/it/10 194
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 142
- [] \TU/NanumMyeongjo(0)/m/it/10 196
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 143
- [] \TU/NanumMyeongjo(0)/m/it/10 196
- []
-
-[5]
-Overfull \hbox (0.11195pt too wide) detected at line 144
- [] \TU/NanumMyeongjo(0)/m/it/10 198
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 145
- [] \TU/NanumMyeongjo(0)/m/it/10 199
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 146
- [] \TU/NanumMyeongjo(0)/m/it/10 201
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 147
- [] \TU/NanumMyeongjo(0)/m/it/10 201
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 148
- [] \TU/NanumMyeongjo(0)/m/it/10 202
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 149
- [] \TU/NanumMyeongjo(0)/m/it/10 202
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 151
- [] \TU/NanumMyeongjo(0)/m/it/10 205
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 152
- [] \TU/NanumMyeongjo(0)/m/it/10 205
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 153
- [] \TU/NanumMyeongjo(0)/m/it/10 206
- []
-
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 154.
-
-Overfull \hbox (0.11195pt too wide) detected at line 154
- [] \TU/NanumMyeongjo(0)/m/it/10 207
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 155
- [] \TU/NanumMyeongjo(0)/m/it/10 211
- []
 
-
-Overfull \hbox (0.11195pt too wide) detected at line 156
- [] \TU/NanumMyeongjo(0)/m/it/10 213
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 157
- [] \TU/NanumMyeongjo(0)/m/it/10 213
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 158
- [] \TU/NanumMyeongjo(0)/m/it/10 213
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 159
- [] \TU/NanumMyeongjo(0)/m/it/10 215
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 161
- [] \TU/NanumMyeongjo(0)/m/it/10 217
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 162
- [] \TU/NanumMyeongjo(0)/m/it/10 218
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 163
- [] \TU/NanumMyeongjo(0)/m/it/10 219
- []
-
-
-Overfull \hbox (0.11195pt too wide) detected at line 164
- [] \TU/NanumMyeongjo(0)/m/it/10 222
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 165
- [] \TU/NanumMyeongjo(0)/m/it/10 222
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 166
- [] \TU/NanumMyeongjo(0)/m/it/10 223
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 167
- [] \TU/NanumMyeongjo(0)/m/it/10 224
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 168
- [] \TU/NanumMyeongjo(0)/m/it/10 225
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 169
- [] \TU/NanumMyeongjo(0)/m/it/10 226
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (0.11195pt too wide) detected at line 170
- [] \TU/NanumMyeongjo(0)/m/it/10 227
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
  []
 
-)
-\tf@toc=\write5
-\openout5 = `basic.toc'.
+[4
 
-[6]
+]
 Underfull \vbox (badness 10000) detected at line 308
  []
 
@@ -2360,7 +2020,6 @@ LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
 
 Package hyperref Warning: bookmark level for unknown fm defaults to 0.
 
-(./basic.lot)
 \tf@lot=\write6
 \openout6 = `basic.lot'.
 
@@ -2369,8 +2028,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[7
-
+[5
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2409,7 +2067,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[8
+[6
 
 ]
 Underfull \vbox (badness 10000) detected at line 309
@@ -2457,72 +2115,56 @@ LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
 (Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 309.
 
 
-(./basic.lof
+\tf@lof=\write7
+\openout7 = `basic.lof'.
+
+
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[9
+[7
 
 ]
-Overfull \hbox (1.21872pt too wide) detected at line 56
-\TU/NanumMyeongjo(0)/m/it/10 11.10 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (1.21872pt too wide) detected at line 69
-\TU/NanumMyeongjo(0)/m/it/10 13.10 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (1.21872pt too wide) detected at line 82
-\TU/NanumMyeongjo(0)/m/it/10 15.10 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (1.21872pt too wide) detected at line 83
-\TU/NanumMyeongjo(0)/m/it/10 15.11 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (1.21872pt too wide) detected at line 84
-\TU/NanumMyeongjo(0)/m/it/10 15.12 
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
  []
 
-[10]
-Overfull \hbox (1.21872pt too wide) detected at line 107
-\TU/NanumMyeongjo(0)/m/it/10 18.10 
- []
+[8
 
-
-Overfull \hbox (1.21872pt too wide) detected at line 108
-\TU/NanumMyeongjo(0)/m/it/10 18.11 
- []
-
-
-Overfull \hbox (1.21872pt too wide) detected at line 109
-\TU/NanumMyeongjo(0)/m/it/10 18.12 
- []
-
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 114.
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 114.
-Package microtype Info: Character `\quotesinglbase ' is missing
-(microtype)             in font `\TU/NanumMyeongjo(1)/m/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `\quotedblbase ' is missing
-(microtype)             in font `\TU/NanumMyeongjo(1)/m/n/10'.
-(microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 114.
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 114.
-[11])
-\tf@lof=\write7
-\openout7 = `basic.lof'.
-
-[12]
+]
 Underfull \vbox (badness 10000) detected at line 312
  []
 
@@ -2573,8 +2215,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[13
-
+[9
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2613,7 +2254,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[14
+[10
 
 ]
 Underfull \vbox (badness 10000) detected at line 326
@@ -2663,8 +2304,22 @@ LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
 
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
 (Font)              scaled to size 12.0pt on input line 331.
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 335.
 File: figures/01-fig-01.png Graphic file (type bmp)
 <figures/01-fig-01.png>
+
+LaTeX Warning: Reference `fig:pkpd-modeling-concept' on page 1 undefined on inp
+ut line 343.
+
+
+LaTeX Warning: Reference `fig:pkpd-modeling-concept' on page 1 undefined on inp
+ut line 343.
+
+
+LaTeX Warning: Reference `fig:pkpd-modeling-concept' on page 1 undefined on inp
+ut line 343.
+
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -2674,62 +2329,210 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ]
+
+LaTeX Warning: Reference `fig:pkpd-modeling-concept' on page 2 undefined on inp
+ut line 345.
+
+
+LaTeX Warning: Reference `fig:pkpd-population-concept' on page 2 undefined on i
+nput line 345.
+
 File: figures/01-fig-02.png Graphic file (type bmp)
 <figures/01-fig-02.png>
 [2]
+
+LaTeX Warning: Reference `fig:diverse-concepts' on page 3 undefined on input li
+ne 355.
+
 File: figures/01-fig-03.png Graphic file (type bmp)
 <figures/01-fig-03.png>
+
+LaTeX Warning: Reference `fig:three-ways' on page 3 undefined on input line 366
+.
+
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
 (Font)              scaled to size 11.0pt on input line 369.
 File: figures/01-fig-04.png Graphic file (type bmp)
 <figures/01-fig-04.png>
-[3] [4] [5] [6]
+[3]
+
+LaTeX Warning: Reference `fig:three-ways' on page 4 undefined on input line 377
+.
+
+
+LaTeX Warning: Reference `fig:three-ways' on page 4 undefined on input line 382
+.
+
+
+LaTeX Warning: Reference `fig:three-ways' on page 4 undefined on input line 387
+.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.6131pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.43793pt on input line 387.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+87.
+(d:/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.87692pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.61385pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.43846pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.87479pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.61235pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.4374pt on input line 387.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 387
+.
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (d:/texlive/2020/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 387
+.
+(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (d:/texlive/2020/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+
+LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/up' undefined
+(Font)              using `TU/NanumMyeongjo(0)/m/n' instead on input line 387.
+
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
+(Font)              scaled to size 7.0pt on input line 387.
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
+(Font)              scaled to size 5.0pt on input line 387.
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 387.
+[4]
+
+LaTeX Warning: Reference `fig:three-ways' on page 5 undefined on input line 394
+.
+
+
+LaTeX Warning: Reference `fig:three-ways' on page 5 undefined on input line 404
+.
+
+
+LaTeX Warning: Reference `fig:measured-weight' on page 5 undefined on input lin
+e 406.
+
+
+LaTeX Warning: Reference `eq:etaeps' on page 5 undefined on input line 410.
+
+[5]
 File: figures/01-fig-05.png Graphic file (type bmp)
 <figures/01-fig-05.png>
-[7]
+
+LaTeX Warning: Reference `fig:nonmem-figure' on page 6 undefined on input line 
+427.
+
+
+LaTeX Warning: Reference `fig:measured-weight' on page 6 undefined on input lin
+e 427.
+
+
+LaTeX Warning: Reference `fig:nonmem-figure' on page 6 undefined on input line 
+427.
+
+
+LaTeX Warning: Reference `fig:nonmem-figure' on page 6 undefined on input line 
+427.
+
+[6]
 File: figures/01-fig-06.png Graphic file (type bmp)
 <figures/01-fig-06.png>
-[8]
-Underfull \vbox (badness 10000) detected at line 440
- []
+[7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 440
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 440
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 440
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 440
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 440
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 440
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 440
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[8
+
+]
+Underfull \vbox (badness 10000) detected at line 438
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 438
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 438
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 438
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 438
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 438
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 438
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 438
 []
  []
 
 Chapter 2.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 440.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 438.
 
+
+
+LaTeX Warning: Reference `exm:input' on page 9 undefined on input line 449.
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -2738,89 +2541,140 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [9
 
-
 ]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 470.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 468.
 [10]
 File: figures/02-fig-02.png Graphic file (type bmp)
 <figures/02-fig-02.png>
-[11]
+
+LaTeX Warning: Reference `fig:NONMEM-dataset' on page 11 undefined on input lin
+e 511.
+
 File: figures/02-fig-03.png Graphic file (type bmp)
 <figures/02-fig-03.png>
-[12]
+[11]
+
+LaTeX Warning: Reference `fig:example-dataset' on page 12 undefined on input li
+ne 522.
+
 File: figures/02-fig-04.png Graphic file (type bmp)
 <figures/02-fig-04.png>
-[13] [14]
+[12]
+
+LaTeX Warning: Reference `tab:reserveditems' on page 13 undefined on input line
+ 537.
+
+
+LaTeX Warning: Reference `fig:id-dataset' on page 13 undefined on input line 56
+5.
+
+
+LaTeX Warning: Reference `fig:id-dataset' on page 13 undefined on input line 56
+5.
+
+[13]
 File: figures/02-fig-06.png Graphic file (type bmp)
 <figures/02-fig-06.png>
-[15] [16]
+[14]
+
+LaTeX Warning: Reference `fig:time-dataset' on page 15 undefined on input line 
+591.
+
+
+LaTeX Warning: Reference `exm:date-dataset-chunk' on page 15 undefined on input
+ line 595.
+
 File: figures/02-fig-07.png Graphic file (type bmp)
 <figures/02-fig-07.png>
-[17]
+[15]
+
+LaTeX Warning: Reference `fig:AMT-RATE' on page 16 undefined on input line 628.
+
+
 File: figures/02-fig-09.png Graphic file (type bmp)
 <figures/02-fig-09.png>
-[18]
+[16]
+
+LaTeX Warning: Reference `fig:dosing-dataset' on page 17 undefined on input lin
+e 643.
+
 File: figures/02-fig-10.png Graphic file (type bmp)
 <figures/02-fig-10.png>
-[19] [20]
-Underfull \vbox (badness 10000) detected at line 687
+
+LaTeX Warning: Reference `tab:dosing-rec' on page 17 undefined on input line 65
+2.
+
+[17] [18]
+Underfull \vbox (badness 10000) detected at line 685
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 687
+Overfull \hbox (395.75pt too wide) detected at line 685
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 687
+Underfull \vbox (badness 10000) detected at line 685
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 687
+Overfull \hbox (395.75pt too wide) detected at line 685
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 687
+Underfull \vbox (badness 10000) detected at line 685
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 687
+Overfull \hbox (395.75pt too wide) detected at line 685
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 687
+Underfull \vbox (badness 10000) detected at line 685
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 687
+Overfull \hbox (395.75pt too wide) detected at line 685
 []
  []
 
 Chapter 3.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 687.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 685.
 
 
+
+LaTeX Warning: Reference `fig:nm-tran' on page 19 undefined on input line 698.
+
+
+LaTeX Warning: Reference `control-record' on page 19 undefined on input line 69
+8.
+
+File: ./figures/03-fig-01.png Graphic file (type bmp)
+<./figures/03-fig-01.png>
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[21
+[19
 
 
 ]
-File: ./figures/03-fig-01.png Graphic file (type bmp)
-<./figures/03-fig-01.png>
-[22]
-Underfull \vbox (badness 7888) detected at line 754
- []
 
-[23] [24] [25]
+LaTeX Warning: Reference `exm:one-comp' on page 20 undefined on input line 714.
+
+
+[20] [21] [22]
+
+LaTeX Warning: Reference `tab:advan-trans' on page 23 undefined on input line 8
+20.
+
+
 Overfull \hbox (5.15291pt too wide) in paragraph at lines 858--858
 []|\TU/NanumMyeongjo(0)/m/it/10 ADVAN10|  
  []
@@ -2844,162 +2698,293 @@ Overfull \hbox (13.8858pt too wide) in paragraph at lines 826--873
  [][] 
  []
 
-[26]
-Underfull \hbox (badness 1184) in paragraph at lines 906--907
+
+LaTeX Warning: Reference `exm:two-comp-pk' on page 23 undefined on input line 8
+77.
+
+[23]
+
+LaTeX Warning: Reference `exm:two-comp-pk' on page 24 undefined on input line 9
+08.
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 908--909
 [] \TU/NanumMyeongjo(0)/m/it/10 위 의 식 @red(eq:scalingparam) 에 서 좌 변 에 1000 을 곱 
 하 면 단 위 가 DV 와 통 일 된 다.
  []
 
+[24] [25] [26] [27]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `exm:table-record' on page 28 undefined on input line 
+1069.
 
-[27] [28] [29] [30] [31]
-Underfull \vbox (badness 5345) detected at line 1096
- []
+[28]
 
-[32] [33] [34] [35] [36]
+LaTeX Warning: Reference `exm:advan4' on page 29 undefined on input line 1116.
+
+[29]
+
+LaTeX Warning: Reference `exm:advan5' on page 30 undefined on input line 1168.
+
+[30]
+
+LaTeX Warning: Reference `exm:advan6' on page 31 undefined on input line 1206.
+
+[31]
+
+LaTeX Warning: Reference `exm:advan6' on page 32 undefined on input line 1251.
+
+
+LaTeX Warning: Reference `fig:model-parent-metabolite' on page 32 undefined on 
+input line 1251.
+
 File: ./figures/03-fig-02.png Graphic file (type bmp)
 <./figures/03-fig-02.png>
-[37] [38] [39] [40]
-Underfull \vbox (badness 10000) detected at line 1336
+
+LaTeX Warning: Reference `exm:parent-metabolite' on page 32 undefined on input 
+line 1270.
+
+
+LaTeX Warning: Reference `exm:parent-metabolite' on page 32 undefined on input 
+line 1270.
+
+[32]
+
+LaTeX Warning: Reference `exm:linear-model' on page 33 undefined on input line 
+1310.
+
+[33] [34]
+Underfull \vbox (badness 10000) detected at line 1342
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1336
+Overfull \hbox (395.75pt too wide) detected at line 1342
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1336
+Underfull \vbox (badness 10000) detected at line 1342
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1336
+Overfull \hbox (395.75pt too wide) detected at line 1342
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1336
+Underfull \vbox (badness 10000) detected at line 1342
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1336
+Overfull \hbox (395.75pt too wide) detected at line 1342
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1336
+Underfull \vbox (badness 10000) detected at line 1342
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1336
+Overfull \hbox (395.75pt too wide) detected at line 1342
 []
  []
 
 Chapter 4.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1336
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1342
 .
+
+
+LaTeX Warning: Reference `tab:specific-advan' on page 35 undefined on input lin
+e 1348.
+
+
+LaTeX Warning: Reference `fig:1comp-ex' on page 35 undefined on input line 1348
+.
+
+
+LaTeX Warning: Reference `fig:2comp-ex' on page 35 undefined on input line 1348
+.
+
+
+LaTeX Warning: Reference `fig:1comp-ex' on page 35 undefined on input line 1348
+.
+
+
+LaTeX Warning: Reference `fig:2comp-ex' on page 35 undefined on input line 1348
+.
+
+
+LaTeX Warning: Reference `fig:1comp-ex' on page 35 undefined on input line 1348
+.
+
+
+LaTeX Warning: Reference `fig:2comp-ex' on page 35 undefined on input line 1348
+.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.1 on input line 1364.
 
 File: figures/04-fig-01.png Graphic file (type bmp)
 <figures/04-fig-01.png>
 File: figures/04-fig-02.png Graphic file (type bmp)
 <figures/04-fig-02.png>
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[41
+LaTeX Warning: Reference `tab:required-param-subroutine' on page 35 undefined o
+n input line 1378.
 
 
-]
-Overfull \hbox (4.9576pt too wide) in paragraph at lines 1419--1419
+LaTeX Warning: Reference `tab:standard-pk-models' on page 35 undefined on input
+ line 1378.
+
+
+Overfull \hbox (4.9576pt too wide) in paragraph at lines 1425--1425
 []|\TU/NanumMyeongjo(0)/m/it/10 Alternative 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1435--1435
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1441--1441
 []|\TU/NanumMyeongjo(0)/m/it/10 Intercompartmental 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1443--1443
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1449--1449
 []|\TU/NanumMyeongjo(0)/m/it/10 Intercompartmental 
  []
 
 
-Overfull \hbox (0.9534pt too wide) in paragraph at lines 1447--1448
+Overfull \hbox (0.9534pt too wide) in paragraph at lines 1453--1454
 []|\TU/NanumMyeongjo(0)/m/it/10 K21=(AOB*BETA+ALPHA)/(AOB+1)|  
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1463--1463
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1469--1469
 []|\TU/NanumMyeongjo(0)/m/it/10 Intercompartmental 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1473--1473
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1479--1479
 []|\TU/NanumMyeongjo(0)/m/it/10 Intercompartmental 
  []
 
-[42] [43] [44]
+
+LaTeX Warning: Reference `tab:additional-param' on page 35 undefined on input l
+ine 1488.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[35
+
+
+] [36]
 File: figures/04-fig-03.png Graphic file (type bmp)
 <figures/04-fig-03.png>
-[45] [46]
-Overfull \hbox (19.3207pt too wide) in paragraph at lines 1566--1566
+
+LaTeX Warning: Reference `exm:code-if' on page 37 undefined on input line 1548.
+
+
+[37] [38]
+
+LaTeX Warning: Reference `tab:basic-additional' on page 39 undefined on input l
+ine 1562.
+
+[39]
+Overfull \hbox (19.3207pt too wide) in paragraph at lines 1572--1572
 []|\TU/NanumMyeongjo(0)/m/it/10 Parameters|  
  []
 
 
-Overfull \hbox (13.88579pt too wide) in paragraph at lines 1564--1637
+Overfull \hbox (13.88579pt too wide) in paragraph at lines 1570--1643
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 14.26315pt on input line 1637.
+LaTeX Warning: Float too large for page by 14.26315pt on input line 1643.
 
-[47] [48]
-Underfull \vbox (badness 10000) detected at line 1640
- []
+[40] [41]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1640
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1640
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1640
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1640
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1640
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1640
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1640
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[42
+
+]
+Underfull \vbox (badness 10000) detected at line 1646
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1646
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1646
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1646
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1646
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1646
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1646
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1646
 []
  []
 
 Chapter 5.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1640
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1646
 .
 
 File: ./figures/05-fig-01.png Graphic file (type bmp)
@@ -3009,32 +2994,213 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[49
-
+[43
 
 ]
 File: ./figures/05-fig-02.png Graphic file (type bmp)
 <./figures/05-fig-02.png>
-[50]
 File: ./figures/05-fig-03.png Graphic file (type bmp)
 <./figures/05-fig-03.png>
-[51]
+[44] [45]
+
+LaTeX Warning: Reference `tab:advan-6-8' on page 46 undefined on input line 174
+0.
+
 File: ./figures/05-fig-04.png Graphic file (type bmp)
 <./figures/05-fig-04.png>
-[52] [53]
+[46]
 File: ./figures/05-fig-05.png Graphic file (type bmp)
 <./figures/05-fig-05.png>
 File: figures/05-fig-06.png Graphic file (type bmp)
 <figures/05-fig-06.png>
-[54]
-Underfull \vbox (badness 10000) detected at line 1798
+[47] [48]
+
+LaTeX Warning: Reference `fig:2comp-oral' on page 49 undefined on input line 18
+03.
+
+
+LaTeX Warning: Reference `exm:advan5-example' on page 49 undefined on input lin
+e 1803.
+
+
+LaTeX Warning: Reference `exm:advan6-example' on page 49 undefined on input lin
+e 1803.
+
+[49] [50]
+Underfull \vbox (badness 10000) detected at line 1837
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1798
+Overfull \hbox (395.75pt too wide) detected at line 1837
+[]
  []
 
-[55] [56] [57]
+
+Underfull \vbox (badness 10000) detected at line 1837
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1837
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1837
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1837
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1837
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1837
+[]
+ []
+
+Chapter 6.
+
+LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1837
+.
+
+
+LaTeX Warning: Reference `fig:advan1112' on page 51 undefined on input line 185
+4.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[51
+
+
+]
+File: figures/06-fig-01.png Graphic file (type bmp)
+<figures/06-fig-01.png>
+[52] [53]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[54
+
+]
+Underfull \vbox (badness 10000) detected at line 1868
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1868
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1868
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1868
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1868
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1868
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1868
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 1868
+[]
+ []
+
+Chapter 7.
+
+LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1868
+.
+
+
+LaTeX Warning: Reference `fig:first-order-pred' on page 55 undefined on input l
+ine 1877.
+
+
+LaTeX Warning: Reference `fig:pred-dataset' on page 55 undefined on input line 
+1877.
+
+File: figures/07-fig-01.png Graphic file (type bmp)
+<figures/07-fig-01.png>
+File: figures/07-fig-02.png Graphic file (type bmp)
+<figures/07-fig-02.png>
+
+LaTeX Warning: Reference `fig:pred-dataset' on page 55 undefined on input line 
+1891.
+
+
+LaTeX Warning: Reference `fig:first-order-pred' on page 55 undefined on input l
+ine 1891.
+
+
+LaTeX Warning: Reference `fig:first-order-pred' on page 55 undefined on input l
+ine 1891.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[55
+
+]
+
+LaTeX Warning: Reference `exm:formula' on page 56 undefined on input line 1898.
+
+
+[56] [57]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3074,45 +3240,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [58
 
 ]
-Underfull \vbox (badness 10000) detected at line 1838
+Underfull \vbox (badness 10000) detected at line 1924
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1838
+Overfull \hbox (395.75pt too wide) detected at line 1924
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1838
+Underfull \vbox (badness 10000) detected at line 1924
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1838
+Overfull \hbox (395.75pt too wide) detected at line 1924
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1838
+Underfull \vbox (badness 10000) detected at line 1924
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1838
+Overfull \hbox (395.75pt too wide) detected at line 1924
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1838
+Underfull \vbox (badness 10000) detected at line 1924
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1838
+Overfull \hbox (395.75pt too wide) detected at line 1924
 []
  []
 
-Chapter 6.
+Chapter 8.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1838
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1924
 .
 
 
@@ -3123,254 +3289,88 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [59
 
 ]
-File: figures/06-fig-01.png Graphic file (type bmp)
-<figures/06-fig-01.png>
-[60] [61]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[62
-
-]
-Underfull \vbox (badness 10000) detected at line 1869
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1869
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1869
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1869
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1869
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1869
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1869
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1869
-[]
- []
-
-Chapter 7.
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1869
-.
-
-File: figures/07-fig-01.png Graphic file (type bmp)
-<figures/07-fig-01.png>
-File: figures/07-fig-02.png Graphic file (type bmp)
-<figures/07-fig-02.png>
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[63
-
-] [64] [65]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[66
-
-]
-Underfull \vbox (badness 10000) detected at line 1925
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1925
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1925
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1925
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1925
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1925
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1925
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 1925
-[]
- []
-
-Chapter 8.
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1925
-.
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[67
-
-]
-Underfull \hbox (badness 10000) detected at line 1948
+Underfull \hbox (badness 10000) detected at line 1947
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1948
+Underfull \hbox (badness 10000) detected at line 1947
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1950
+Underfull \hbox (badness 10000) detected at line 1949
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1950
+Underfull \hbox (badness 10000) detected at line 1949
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1952
+Underfull \hbox (badness 10000) detected at line 1951
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1952
+Underfull \hbox (badness 10000) detected at line 1951
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1954
+Underfull \hbox (badness 10000) detected at line 1953
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1954
+Underfull \hbox (badness 10000) detected at line 1953
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1956
+Underfull \hbox (badness 10000) detected at line 1955
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1956
+Underfull \hbox (badness 10000) detected at line 1955
 [][][]
  []
 
-[68]
+
+LaTeX Warning: Reference `eq:updateparam' on page 60 undefined on input line 19
+58.
+
+
+LaTeX Warning: Reference `fig:newton-minimization' on page 60 undefined on inpu
+t line 1963.
+
 File: figures/08-fig-01.png Graphic file (type bmp)
 <figures/08-fig-01.png>
-[69]
+[60]
 File: figures/08-fig-02.png Graphic file (type bmp)
 <figures/08-fig-02.png>
-[70]
+
+LaTeX Warning: Reference `fig:limitation-newton-rhapson' on page 61 undefined o
+n input line 1984.
+
+
+LaTeX Warning: Reference `tab:final-destination' on page 61 undefined on input 
+line 1984.
+
+[61] [62]
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 2026.
-[71] [72]
+(Font)              scaled to size 7.0pt on input line 2025.
+[63]
 Missing character: There is no − in font NanumMyeongjo/OT:language=dflt;mapping
 =tex-text;!
-[73]
+
+LaTeX Warning: Reference `fig:eda-ie' on page 64 undefined on input line 2036.
+
 File: figures/08-fig-03.png Graphic file (type bmp)
 <figures/08-fig-03.png>
-[74] [75] [76] [77]
+[64] [65] [66] [67]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3407,48 +3407,48 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[78
+[68
 
 ]
-Underfull \vbox (badness 10000) detected at line 2074
+Underfull \vbox (badness 10000) detected at line 2076
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2074
+Overfull \hbox (395.75pt too wide) detected at line 2076
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2074
+Underfull \vbox (badness 10000) detected at line 2076
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2074
+Overfull \hbox (395.75pt too wide) detected at line 2076
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2074
+Underfull \vbox (badness 10000) detected at line 2076
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2074
+Overfull \hbox (395.75pt too wide) detected at line 2076
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2074
+Underfull \vbox (badness 10000) detected at line 2076
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2074
+Overfull \hbox (395.75pt too wide) detected at line 2076
 []
  []
 
 Chapter 9.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2074
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2076
 .
 
 
@@ -3456,57 +3456,129 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[79
+[69
 
-] [80]
+]
+
+LaTeX Warning: Reference `tab:fofoce' on page 70 undefined on input line 2108.
+
+[70]
+
+LaTeX Warning: Reference `fig:obj' on page 71 undefined on input line 2142.
+
 File: ./figures/09-fig-01.png Graphic file (type bmp)
 <./figures/09-fig-01.png>
-[81]
+
+LaTeX Warning: Reference `fig:OLS' on page 71 undefined on input line 2155.
+
 File: ./figures/09-fig-02.png Graphic file (type bmp)
 <./figures/09-fig-02.png>
-[82] [83]
+
+LaTeX Warning: Reference `eq:OLS' on page 71 undefined on input line 2161.
+
+[71]
+
+LaTeX Warning: Reference `fig:OLS' on page 72 undefined on input line 2167.
+
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2175.
+[72]
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 2188.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/NanumMyeongjo(1)/m/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/NanumMyeongjo(1)/m/n/10'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 2188.
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2188.
+
+LaTeX Warning: Reference `fig:coin' on page 73 undefined on input line 2197.
+
 File: ./figures/09-fig-03.png Graphic file (type bmp)
 <./figures/09-fig-03.png>
-[84] [85] [86]
-Underfull \vbox (badness 10000) detected at line 2235
- []
+[73] [74] [75]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2235
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2235
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2235
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2235
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2235
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2235
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2235
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[76
+
+]
+Underfull \vbox (badness 10000) detected at line 2239
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2239
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2239
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2239
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2239
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2239
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2239
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2239
 []
  []
 
 Chapter 10.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2235
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2239
 .
 
 File: ./assets/media-10/image1.png Graphic file (type bmp)
@@ -3516,67 +3588,66 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[87
-
+[77
 
 ]
 File: ./assets/media-10/image2.png Graphic file (type bmp)
 <./assets/media-10/image2.png>
-[88]
+[78]
 File: ./assets/media-10/image3.png Graphic file (type bmp)
 <./assets/media-10/image3.png>
-[89]
+[79]
 File: ./assets/media-10/image4.png Graphic file (type bmp)
 <./assets/media-10/image4.png>
-[90]
+[80]
+
+LaTeX Warning: Reference `tab:basic-data-format' on page 81 undefined on input 
+line 2261.
+
 File: ./assets/media-10/image5.png Graphic file (type bmp)
 <./assets/media-10/image5.png>
-[91]
+[81]
 File: ./assets/media-10/image6.png Graphic file (type bmp)
 <./assets/media-10/image6.png>
 File: ./assets/media-10/image7.png Graphic file (type bmp)
 <./assets/media-10/image7.png>
-[92]
+[82]
 File: ./assets/media-10/image8.png Graphic file (type bmp)
 <./assets/media-10/image8.png>
-[93]
+[83]
 File: ./assets/media-10/image9.png Graphic file (type bmp)
 <./assets/media-10/image9.png>
-[94]
+[84]
 
-LaTeX Font Warning: Font shape `TU/UnDotum.ttf(0)/m/it' undefined
-(Font)              using `TU/UnDotum.ttf(0)/m/n' instead on input line 2331.
+LaTeX Warning: Reference `exm:table-example' on page 85 undefined on input line
+ 2311.
 
 LaTeX Font Info:    Font shape `TU/UnDotum.ttf(0)/m/n' will be
-(Font)              scaled to size 9.2273pt on input line 2331.
+(Font)              scaled to size 9.2273pt on input line 2315.
+
+LaTeX Warning: Reference `fig:basic-gof' on page 85 undefined on input line 232
+8.
+
+
+LaTeX Warning: Reference `fig:indi-plots' on page 85 undefined on input line 23
+28.
+
+
+LaTeX Font Warning: Font shape `TU/UnDotum.ttf(0)/m/it' undefined
+(Font)              using `TU/UnDotum.ttf(0)/m/n' instead on input line 2335.
+
 LaTeX Font Info:    Font shape `TU/UnDotum.ttf(0)/m/it' will be
-(Font)              scaled to size 9.2273pt on input line 2331.
+(Font)              scaled to size 9.2273pt on input line 2335.
 File: ./assets/media-10/image11.png Graphic file (type bmp)
 <./assets/media-10/image11.png>
-[95] [96]
+[85]
+
+LaTeX Warning: Reference `fig:indi-plots' on page 86 undefined on input line 23
+51.
+
 File: ./assets/media-10/image12.png Graphic file (type bmp)
 <./assets/media-10/image12.png>
 
-Underfull \hbox (badness 10000) detected at line 2361
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2361
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2363
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2363
-[][][]
- []
-
-[97]
 Underfull \hbox (badness 10000) detected at line 2365
  [][]
  []
@@ -3636,57 +3707,136 @@ Underfull \hbox (badness 10000) detected at line 2375
 [][][]
  []
 
-[98]
-Underfull \vbox (badness 10000) detected at line 2379
+[86]
+Underfull \hbox (badness 10000) detected at line 2377
+ [][]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2379
+Underfull \hbox (badness 10000) detected at line 2377
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2379
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2379
+[][][]
+ []
+
+[87]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2379
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2379
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2379
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2379
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2379
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2379
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[88
+
+]
+Underfull \vbox (badness 10000) detected at line 2383
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2383
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2383
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2383
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2383
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2383
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2383
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2383
 []
  []
 
 Chapter 11.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2379
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2383
 .
 
 File: figures/11-fig-01.png Graphic file (type bmp)
 <figures/11-fig-01.png>
 
-Underfull \hbox (badness 10000) detected at line 2401
+Underfull \hbox (badness 10000) detected at line 2405
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2401
+Underfull \hbox (badness 10000) detected at line 2405
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2407
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2407
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2409
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2409
 [][][]
  []
 
@@ -3695,45 +3845,24 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[99
-
+[89
 
 ]
-Underfull \hbox (badness 10000) detected at line 2403
+Underfull \hbox (badness 10000) detected at line 2411
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2403
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2405
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2405
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2407
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2407
+Underfull \hbox (badness 10000) detected at line 2411
 [][][]
  []
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.70068pt on input line 2423.
+(Font)              scaled to size 8.70068pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.52551pt on input line 2423.
+(Font)              scaled to size 6.52551pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 2423.
+(Font)              scaled to size 8.0pt on input line 2427.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(1)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3741,17 +3870,17 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(1)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 2423.
+(Font)              scaled to size 6.0pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.70154pt on input line 2423.
+(Font)              scaled to size 8.70154pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.52615pt on input line 2423.
+(Font)              scaled to size 6.52615pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.69983pt on input line 2423.
+(Font)              scaled to size 8.69983pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.52487pt on input line 2423.
+(Font)              scaled to size 6.52487pt on input line 2427.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 8.0pt on input line 2423.
+(Font)              scaled to size 8.0pt on input line 2427.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/up/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -3759,42 +3888,44 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/up/8'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 6.0pt on input line 2423.
-[100]
+(Font)              scaled to size 6.0pt on input line 2427.
 File: ./figures/11-fig-02.png Graphic file (type bmp)
 <./figures/11-fig-02.png>
-[101]
-Underfull \hbox (badness 10000) detected at line 2437
+
+Underfull \hbox (badness 10000) detected at line 2441
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2437
+Underfull \hbox (badness 10000) detected at line 2441
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2439
+Underfull \hbox (badness 10000) detected at line 2443
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2439
+Underfull \hbox (badness 10000) detected at line 2443
 [][][]
  []
 
+[90]
+LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
+(Font)              scaled to size 10.0pt on input line 2456.
+Package microtype Info: Character `\quotesinglbase ' is missing
+(microtype)             in font `\TU/NanumMyeongjo(0)/m/up/10'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `\quotedblbase ' is missing
+(microtype)             in font `\TU/NanumMyeongjo(0)/m/up/10'.
+(microtype)             Ignoring protrusion settings for this character.
+
+LaTeX Warning: Reference `fig:gfr' on page 91 undefined on input line 2456.
+
+[91]
 File: ./figures/11-fig-03.png Graphic file (type bmp)
 <./figures/11-fig-03.png>
-[102]
-Underfull \hbox (badness 10000) detected at line 2470
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2470
-[][][]
- []
-
 
 Underfull \hbox (badness 10000) detected at line 2472
  [][]
@@ -3805,28 +3936,47 @@ Underfull \hbox (badness 10000) detected at line 2472
 [][][]
  []
 
-[103]
+
+Underfull \hbox (badness 10000) detected at line 2474
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2474
+[][][]
+ []
+
+
+LaTeX Warning: Reference `fig:improper-distribution' on page 92 undefined on in
+put line 2477.
+
+
+LaTeX Warning: Reference `fig:improper-distribution' on page 92 undefined on in
+put line 2477.
+
+[92]
 File: ./figures/11-fig-04.png Graphic file (type bmp)
 <./figures/11-fig-04.png>
+
+LaTeX Warning: Reference `fig:cov-scatter' on page 93 undefined on input line 2
+490.
+
+
+LaTeX Warning: Reference `fig:cov-scatter' on page 93 undefined on input line 2
+490.
+
 File: ./figures/11-fig-05.png Graphic file (type bmp)
 <./figures/11-fig-05.png>
-[104] [105]
+[93] [94]
+
+LaTeX Warning: Reference `fig:visual-screening' on page 95 undefined on input l
+ine 2512.
+
 File: ./figures/11-fig-06.png Graphic file (type bmp)
 <./figures/11-fig-06.png>
-[106]
 File: figures/11-fig-07.png Graphic file (type bmp)
 <figures/11-fig-07.png>
-[107]
-Underfull \hbox (badness 10000) detected at line 2542
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2542
-[][][]
- []
-
-
+[95] [96]
 Underfull \hbox (badness 10000) detected at line 2544
  [][]
  []
@@ -3836,39 +3986,40 @@ Underfull \hbox (badness 10000) detected at line 2544
 [][][]
  []
 
-[108]
+
 Underfull \hbox (badness 10000) detected at line 2546
  [][]
  []
 
 
 Underfull \hbox (badness 10000) detected at line 2546
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2548
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2548
 [][][]
  []
 
 File: ./figures/11-fig-08.png Graphic file (type bmp)
 <./figures/11-fig-08.png>
-LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 10.0pt on input line 2559.
-Package microtype Info: Character `\quotesinglbase ' is missing
-(microtype)             in font `\TU/NanumMyeongjo(0)/m/up/10'.
-(microtype)             Ignoring protrusion settings for this character.
-Package microtype Info: Character `\quotedblbase ' is missing
-(microtype)             in font `\TU/NanumMyeongjo(0)/m/up/10'.
-(microtype)             Ignoring protrusion settings for this character.
+
+LaTeX Warning: Reference `fig:nonlinear-rel' on page 97 undefined on input line
+ 2559.
+
+[97]
+
+LaTeX Warning: Reference `fig:gam-step' on page 98 undefined on input line 2561
+.
+
 File: ./figures/11-fig-09.png Graphic file (type bmp)
 <./figures/11-fig-09.png>
-[109] [110]
-Underfull \hbox (badness 10000) detected at line 2580
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2580
-[][][]
- []
-
-
+[98]
 Underfull \hbox (badness 10000) detected at line 2582
  [][]
  []
@@ -3888,17 +4039,17 @@ Underfull \hbox (badness 10000) detected at line 2584
 [][][]
  []
 
-[111]
-Underfull \hbox (badness 10000) detected at line 2607
+
+Underfull \hbox (badness 10000) detected at line 2586
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2607
+Underfull \hbox (badness 10000) detected at line 2586
 [][][]
  []
 
-
+[99]
 Underfull \hbox (badness 10000) detected at line 2609
  [][]
  []
@@ -3917,119 +4068,98 @@ Underfull \hbox (badness 10000) detected at line 2611
 Underfull \hbox (badness 10000) detected at line 2611
 [][][]
  []
+
+
+Underfull \hbox (badness 10000) detected at line 2613
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2613
+[][][]
+ []
+
+
+LaTeX Warning: Reference `tab:cutpoint-param' on page 100 undefined on input li
+ne 2616.
 
 File: ./figures/11-fig-10.png Graphic file (type bmp)
 <./figures/11-fig-10.png>
-[112] [113] [114] [115]
-Underfull \hbox (badness 10000) detected at line 2754
+[100] [101] [102]
+Underfull \hbox (badness 10000) detected at line 2758
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2754
+Underfull \hbox (badness 10000) detected at line 2758
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2756
+Underfull \hbox (badness 10000) detected at line 2760
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2756
+Underfull \hbox (badness 10000) detected at line 2760
 [][][]
  []
 
-[116] [117]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[103] [104]
+Underfull \vbox (badness 10000) detected at line 2773
+ []
 
 
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
+Overfull \hbox (395.75pt too wide) detected at line 2773
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 2773
+ []
 
 
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
+Overfull \hbox (395.75pt too wide) detected at line 2773
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 2773
+ []
 
 
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
+Overfull \hbox (395.75pt too wide) detected at line 2773
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
+Underfull \vbox (badness 10000) detected at line 2773
  []
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[118
-
-]
-Underfull \vbox (badness 10000) detected at line 2769
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 2769
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 2769
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 2769
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 2769
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 2769
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 2769
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 2769
+Overfull \hbox (395.75pt too wide) detected at line 2773
 []
  []
 
 Chapter 12.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2769
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2773
 .
 
 File: ./figures/12-fig-01.png Graphic file (type bmp)
 <./figures/12-fig-01.png>
 
-Underfull \hbox (badness 10000) detected at line 2790
+LaTeX Warning: Reference `fig:ms-workflow' on page 105 undefined on input line 
+2787.
+
+
+Underfull \hbox (badness 10000) detected at line 2793
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2790
+Underfull \hbox (badness 10000) detected at line 2793
 [][][]
  []
 
@@ -4038,162 +4168,399 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[119
+[105
+
 
 ]
-Underfull \hbox (badness 10000) detected at line 2792
+Underfull \hbox (badness 10000) detected at line 2795
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2792
+Underfull \hbox (badness 10000) detected at line 2795
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2794
+Underfull \hbox (badness 10000) detected at line 2797
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2794
+Underfull \hbox (badness 10000) detected at line 2797
 [][][]
  []
 
-[120]
-Overfull \hbox (22.33856pt too wide) in paragraph at lines 2824--2837
+
+LaTeX Warning: Reference `tab:diag-eval-property' on page 106 undefined on inpu
+t line 2819.
+
+
+Overfull \hbox (22.33856pt too wide) in paragraph at lines 2827--2840
  [][] 
  []
 
-[121]
+[106]
 
-LaTeX Warning: Reference `tab:eval-summary' on page 122 undefined on input line
- 2860.
+LaTeX Warning: Reference `tab:eval-summary' on page 107 undefined on input line
+ 2863.
 
-
-Overfull \hbox (307.5pt too wide) in paragraph at lines 2864--2864
-[]\TU/lmtt/m/n/10 ## Error in (function (..., row.names = NULL, check.rows = FA
-LSE, check.names = TRUE, : arguments imply differing number of rows: 3, 4[] 
- []
-
-[122] [123] [124] [125] [126]
-Underfull \vbox (badness 10000) detected at line 2929
- []
+[107] [108] [109] [110] [111]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2929
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2929
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2929
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2929
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2929
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2929
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2929
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[112
+
+]
+Underfull \vbox (badness 10000) detected at line 2946
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2946
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2946
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2946
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2946
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2946
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2946
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 2946
 []
  []
 
 Chapter 13.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2929
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2946
 .
+
+
+LaTeX Warning: Reference `fig:carousel' on page 113 undefined on input line 295
+2.
 
 File: ./figures/13-fig-01.png Graphic file (type bmp)
 <./figures/13-fig-01.png>
+
+LaTeX Warning: Reference `fig:def-residual' on page 113 undefined on input line
+ 2960.
+
+File: ./figures/13-fig-02.png Graphic file (type bmp)
+<./figures/13-fig-02.png>
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[127
-
+[113
 
 ]
-File: ./figures/13-fig-02.png Graphic file (type bmp)
-<./figures/13-fig-02.png>
-[128]
+
+LaTeX Warning: Reference `fig:pred-sd' on page 114 undefined on input line 2982
+.
+
 File: ./figures/13-fig-03.png Graphic file (type bmp)
 <./figures/13-fig-03.png>
-[129]
+
+LaTeX Warning: Reference `exm:combined-upper' on page 114 undefined on input li
+ne 2990.
+
+
+LaTeX Warning: Reference `exm:combined-lower' on page 114 undefined on input li
+ne 2990.
+
+
+LaTeX Warning: Reference `exm:combined-upper' on page 114 undefined on input li
+ne 2990.
+
+
+LaTeX Warning: Reference `exm:combined-lower' on page 114 undefined on input li
+ne 2990.
+
+[114]
+
+LaTeX Warning: Reference `fig:run-test' on page 115 undefined on input line 302
+0.
+
 File: ./figures/13-fig-04.png Graphic file (type bmp)
 <./figures/13-fig-04.png>
-[130]
+
+LaTeX Warning: Reference `fig:basic-gof-plot' on page 115 undefined on input li
+ne 3031.
+
+[115]
 File: ./figures/13-fig-05.png Graphic file (type bmp)
 <./figures/13-fig-05.png>
 
-Underfull \hbox (badness 10000) detected at line 3026
+Underfull \hbox (badness 10000) detected at line 3043
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3026
+Underfull \hbox (badness 10000) detected at line 3043
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3028
+Underfull \hbox (badness 10000) detected at line 3045
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3028
+Underfull \hbox (badness 10000) detected at line 3045
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3030
+Underfull \hbox (badness 10000) detected at line 3047
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3030
+Underfull \hbox (badness 10000) detected at line 3047
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 3032
+[116]
+Underfull \hbox (badness 10000) detected at line 3049
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3032
+Underfull \hbox (badness 10000) detected at line 3049
 [][][]
+ []
+
+
+LaTeX Warning: Reference `fig:wrong-models' on page 117 undefined on input line
+ 3052.
+
+File: ./figures/13-fig-06.png Graphic file (type bmp)
+<./figures/13-fig-06.png>
+
+LaTeX Warning: Reference `fig:wrong-structure' on page 117 undefined on input l
+ine 3060.
+
+
+LaTeX Warning: Reference `fig:wrong-structure' on page 117 undefined on input l
+ine 3060.
+
+File: ./figures/13-fig-07.png Graphic file (type bmp)
+<./figures/13-fig-07.png>
+
+LaTeX Warning: Reference `fig:lag-gof' on page 117 undefined on input line 3068
+.
+
+File: ./figures/13-fig-08.png Graphic file (type bmp)
+<./figures/13-fig-08.png>
+
+LaTeX Warning: Reference `fig:u-curve' on page 117 undefined on input line 3076
+.
+
+File: ./figures/13-fig-09.png Graphic file (type bmp)
+<./figures/13-fig-09.png>
+
+LaTeX Warning: Reference `fig:addi-comb-gof' on page 117 undefined on input lin
+e 3082.
+
+File: ./figures/13-fig-10.png Graphic file (type bmp)
+<./figures/13-fig-10.png>
+
+LaTeX Warning: Reference `tab:diag-response' on page 117 undefined on input lin
+e 3088.
+
+
+Overfull \hbox (596.27539pt too wide) in paragraph at lines 3094--3105
+ [][] 
+ []
+
+[117] [118] [119] [120]
+Underfull \vbox (badness 10000) detected at line 3110
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 3110
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3110
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 3110
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3110
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 3110
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3110
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 3110
+[]
+ []
+
+Chapter 14.
+
+LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3110
+.
+
+
+LaTeX Warning: Reference `Theoph' on page 121 undefined on input line 3121.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[121
+
+
+] [122]
+Overfull \hbox (276.31836pt too wide) in paragraph at lines 3204--3204
+[] \TU/lmtt/m/n/10 This step outputs: standard errors, covariance matrix, inver
+se covari\index{standard errors of the estimates / \TU/UnDotum.ttf(0)/m/it/10 추
+정값의 표준오차\TU/lmtt/m/n/10 }[] 
+ []
+
+
+Overfull \hbox (105.45459pt too wide) in paragraph at lines 3204--3204
+[]      \TU/lmtt/m/n/10 the inverse R matrix be used.  MATRIX=S requests that 4
+ times the\index{R matrix / R \TU/UnDotum.ttf(0)/m/it/10 행렬\TU/lmtt/m/n/10 }[] 
+
+ []
+
+
+Overfull \hbox (292.06836pt too wide) in paragraph at lines 3204--3204
+[]      \TU/lmtt/m/n/10 ces,  respectively.)   With  MATRIX=R the standard erro
+rs will be |\index{standard errors of the estimates / \TU/UnDotum.ttf(0)/m/it/1
+0 추정값의 표준오차\TU/lmtt/m/n/10 }[] 
+ []
+
+[123] [124]
+Overfull \vbox (1.229pt too high) detected at line 3307
+ []
+
+[125]
+File: basic_files/figure-latex/theophconctime-1.pdf Graphic file (type pdf)
+<use basic_files/figure-latex/theophconctime-1.pdf>
+[126]
+
+LaTeX Warning: Reference `actual-example' on page 127 undefined on input line 3
+357.
+
+[127] [128] [129]
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+[130]
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3643
  []
 
 [131]
-File: ./figures/13-fig-06.png Graphic file (type bmp)
-<./figures/13-fig-06.png>
-File: ./figures/13-fig-07.png Graphic file (type bmp)
-<./figures/13-fig-07.png>
-File: ./figures/13-fig-08.png Graphic file (type bmp)
-<./figures/13-fig-08.png>
-File: ./figures/13-fig-09.png Graphic file (type bmp)
-<./figures/13-fig-09.png>
-File: ./figures/13-fig-10.png Graphic file (type bmp)
-<./figures/13-fig-10.png>
-[132] [133] [134]
-Overfull \hbox (596.27539pt too wide) in paragraph at lines 3075--3086
- [][] 
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+[132]
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3643
+ []
+
+[133] [134]
+Underfull \hbox (badness 10000) detected at line 3701
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3701
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3703
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3703
+[][][]
  []
 
 [135]
@@ -4236,47 +4603,65 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [136
 
 ]
-Underfull \vbox (badness 10000) detected at line 3091
+Underfull \vbox (badness 10000) detected at line 3709
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3091
+Overfull \hbox (395.75pt too wide) detected at line 3709
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3091
+Underfull \vbox (badness 10000) detected at line 3709
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3091
+Overfull \hbox (395.75pt too wide) detected at line 3709
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3091
+Underfull \vbox (badness 10000) detected at line 3709
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3091
+Overfull \hbox (395.75pt too wide) detected at line 3709
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3091
+Underfull \vbox (badness 10000) detected at line 3709
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3091
+Overfull \hbox (395.75pt too wide) detected at line 3709
 []
  []
 
-Chapter 14.
+Chapter 15.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3091
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3709
 .
 
+
+LaTeX Warning: Reference `fig:ebe-cov' on page 137 undefined on input line 3715
+.
+
+File: figures/15-fig-01.png Graphic file (type bmp)
+<figures/15-fig-01.png>
+
+LaTeX Warning: Reference `fig:eta-shrinkage' on page 137 undefined on input lin
+e 3723.
+
+File: figures/15-fig-02.png Graphic file (type bmp)
+<figures/15-fig-02.png>
+
+LaTeX Warning: Reference `fig:eta-shrinkage-plot' on page 137 undefined on inpu
+t line 3743.
+
+File: ./figures/15-fig-03.png Graphic file (type bmp)
+<./figures/15-fig-03.png>
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
@@ -4284,309 +4669,210 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [137
 
-] [138] [139] [140] [141] [142]
-Underfull \vbox (badness 6396) detected at line 3316
- []
+] [138]
 
-[143]
-File: basic_files/figure-latex/theophconctime-1.pdf Graphic file (type pdf)
-<use basic_files/figure-latex/theophconctime-1.pdf>
-[144] [145] [146]
-Underfull \vbox (badness 4872) detected at line 3626
- []
+LaTeX Warning: Reference `fig:ex2-cons' on page 139 undefined on input line 375
+3.
 
-[147]
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-[148]
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-[149]
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-[150]
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-[151]
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3626
- []
-
-[152]
-Underfull \vbox (badness 4193) detected at line 3648
- []
-
-[153] [154]
-Underfull \hbox (badness 10000) detected at line 3684
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 3684
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 3686
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 3686
-[][][]
- []
-
-[155]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[156
-
-]
-Underfull \vbox (badness 10000) detected at line 3692
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 3692
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3692
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 3692
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3692
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 3692
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 3692
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 3692
-[]
- []
-
-Chapter 15.
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3692
-.
-
-File: figures/15-fig-01.png Graphic file (type bmp)
-<figures/15-fig-01.png>
-File: figures/15-fig-02.png Graphic file (type bmp)
-<figures/15-fig-02.png>
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[157
-
-]
-File: ./figures/15-fig-03.png Graphic file (type bmp)
-<./figures/15-fig-03.png>
 File: figures/15-fig-04.png Graphic file (type bmp)
 <figures/15-fig-04.png>
-[158]
+
+LaTeX Warning: Reference `fig:ex3-cons' on page 139 undefined on input line 376
+1.
+
+
+LaTeX Warning: Reference `fig:induced-corr' on page 139 undefined on input line
+ 3761.
+
 File: figures/15-fig-05.png Graphic file (type bmp)
 <figures/15-fig-05.png>
-
-LaTeX Warning: Float too large for page by 2.43211pt on input line 3742.
-
 File: ./assets/media-15/image8.png Graphic file (type bmp)
 <./assets/media-15/image8.png>
+
+LaTeX Warning: Reference `fig:ex4-cons' on page 139 undefined on input line 377
+5.
+
 File: figures/15-fig-06.png Graphic file (type bmp)
 <figures/15-fig-06.png>
-[159]
+
+LaTeX Warning: Reference `fig:concept-eps-shrinkage' on page 139 undefined on i
+nput line 3795.
+
 File: figures/15-fig-07.png Graphic file (type bmp)
 <figures/15-fig-07.png>
-[160]
+[139]
+
+LaTeX Warning: Reference `fig:perfect-fit' on page 140 undefined on input line 
+3807.
+
+
+LaTeX Warning: Reference `fig:perfect-fit' on page 140 undefined on input line 
+3807.
+
 File: figures/15-fig-08.png Graphic file (type bmp)
 <figures/15-fig-08.png>
+
+LaTeX Warning: Reference `fig:1comp-2comp' on page 140 undefined on input line 
+3815.
+
+
+LaTeX Warning: Reference `fig:linear-sigmoidal' on page 140 undefined on input 
+line 3815.
+
 File: figures/15-fig-09.png Graphic file (type bmp)
 <figures/15-fig-09.png>
 File: figures/15-fig-10.png Graphic file (type bmp)
 <figures/15-fig-10.png>
+
+LaTeX Warning: Reference `fig:low-IWRES' on page 140 undefined on input line 38
+29.
+
 File: figures/15-fig-11.png Graphic file (type bmp)
 <figures/15-fig-11.png>
-[161] [162] [163] [164] [165] [166]
-Underfull \vbox (badness 10000) detected at line 3813
+[140] [141] [142] [143] [144]
+Underfull \vbox (badness 10000) detected at line 3838
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3813
+Overfull \hbox (395.75pt too wide) detected at line 3838
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3813
+Underfull \vbox (badness 10000) detected at line 3838
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3813
+Overfull \hbox (395.75pt too wide) detected at line 3838
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3813
+Underfull \vbox (badness 10000) detected at line 3838
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3813
+Overfull \hbox (395.75pt too wide) detected at line 3838
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3813
+Underfull \vbox (badness 10000) detected at line 3838
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3813
+Overfull \hbox (395.75pt too wide) detected at line 3838
 []
  []
 
 Chapter 16.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3813
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3838
 .
+
+
+LaTeX Warning: Reference `tab:purpose-eval' on page 145 undefined on input line
+ 3873.
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[167
+[145
 
 
-] [168]
+]
+
+LaTeX Warning: Reference `fig:boot95' on page 146 undefined on input line 3889.
+
+
+
+LaTeX Warning: Reference `fig:bootstrap-table' on page 146 undefined on input l
+ine 3889.
+
+[146]
 File: figures/16-fig-01.png Graphic file (type bmp)
 <figures/16-fig-01.png>
 File: figures/16-fig-02.jpg Graphic file (type bmp)
 <figures/16-fig-02.jpg>
-[169] [170]
+[147]
+
+LaTeX Warning: Reference `fig:ppc' on page 148 undefined on input line 3911.
+
 File: figures/16-fig-03.png Graphic file (type bmp)
 <figures/16-fig-03.png>
-[171]
+
+LaTeX Warning: Reference `fig:scatter-vpc' on page 148 undefined on input line 
+3925.
+
+[148]
 File: figures/16-fig-04.png Graphic file (type bmp)
 <figures/16-fig-04.png>
 File: figures/16-fig-05.png Graphic file (type bmp)
 <figures/16-fig-05.png>
-[172]
+
+LaTeX Warning: Reference `fig:ci-vpc' on page 149 undefined on input line 3947.
+
+
+
+LaTeX Warning: Reference `fig:ci-vpc' on page 149 undefined on input line 3947.
+
+
+[149] [150]
+
+LaTeX Warning: Reference `fig:strat-vpc' on page 151 undefined on input line 39
+63.
+
 File: figures/16-fig-06.png Graphic file (type bmp)
 <figures/16-fig-06.png>
-[173] [174]
+[151]
+
+LaTeX Warning: Reference `fig:npc' on page 152 undefined on input line 3979.
+
 File: figures/16-fig-07.png Graphic file (type bmp)
 <figures/16-fig-07.png>
-[175] [176]
-Underfull \vbox (badness 10000) detected at line 3961
+[152]
+Underfull \vbox (badness 10000) detected at line 3988
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3961
+Overfull \hbox (395.75pt too wide) detected at line 3988
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3961
+Underfull \vbox (badness 10000) detected at line 3988
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3961
+Overfull \hbox (395.75pt too wide) detected at line 3988
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3961
+Underfull \vbox (badness 10000) detected at line 3988
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3961
+Overfull \hbox (395.75pt too wide) detected at line 3988
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3961
+Underfull \vbox (badness 10000) detected at line 3988
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3961
+Overfull \hbox (395.75pt too wide) detected at line 3988
 []
  []
 
 Chapter 17.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3961
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3988
 .
 
 File: figures/17-fig-01.png Graphic file (type bmp)
@@ -4596,59 +4882,116 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[177
+[153
 
 
 ]
-Overfull \vbox (36.0pt too high) detected at line 4018
+
+LaTeX Warning: Reference `tab:pd-data-property' on page 154 undefined on input 
+line 4015.
+
+
+Overfull \vbox (36.0pt too high) detected at line 4045
  []
+
+
+LaTeX Warning: Reference `fig:pd-time-course' on page 154 undefined on input li
+ne 4050.
 
 File: figures/17-fig-02.png Graphic file (type bmp)
 <figures/17-fig-02.png>
-[178] [179] [180]
+[154] [155]
+
+LaTeX Warning: Reference `fig:conc-hysteresis' on page 156 undefined on input l
+ine 4077.
+
+[156]
 File: figures/17-fig-03.png Graphic file (type bmp)
 <figures/17-fig-03.png>
-[181] [182]
-Underfull \vbox (badness 10000) detected at line 4065
- []
+[157]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4065
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4065
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4065
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4065
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4065
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4065
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4065
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[158
+
+]
+Underfull \vbox (badness 10000) detected at line 4092
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4092
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4092
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4092
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4092
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4092
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4092
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4092
 []
  []
 
 Chapter 18.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4065
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4092
 .
+
+
+LaTeX Warning: Reference `fig:pkpd-link' on page 159 undefined on input line 41
+00.
 
 File: figures/18-fig-01.png Graphic file (type bmp)
 <figures/18-fig-01.png>
@@ -4657,226 +5000,399 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[183
+[159
 
+]
 
-] [184]
+LaTeX Warning: Reference `fig:clopidogrel' on page 160 undefined on input line 
+4124.
+
 File: figures/18-fig-02.png Graphic file (type bmp)
 <figures/18-fig-02.png>
-[185]
-Overfull \hbox (38.11217pt too wide) in paragraph at lines 4128--4144
+[160] [161]
+
+LaTeX Warning: Reference `tab:pk-pd-link-methods' on page 162 undefined on inpu
+t line 4149.
+
+
+Overfull \hbox (38.11217pt too wide) in paragraph at lines 4155--4171
  [][] 
  []
+
+
+LaTeX Warning: Reference `fig:level-info' on page 162 undefined on input line 4
+173.
 
 File: figures/18-fig-03.png Graphic file (type bmp)
 <figures/18-fig-03.png>
-[186] [187]
+[162]
+
+LaTeX Warning: Reference `fig:SIM-dataset' on page 163 undefined on input line 
+4191.
+
+
+LaTeX Warning: Reference `exm:SIM-control' on page 163 undefined on input line 
+4193.
+
 File: ./assets/media-18/image5.png Graphic file (type bmp)
 <./assets/media-18/image5.png>
-[188]
-Underfull \vbox (badness 10000) detected at line 4209
+
+Overfull \hbox (4.3563pt too wide) has occurred while \output is active
+ [][][][]  \TU/NanumMyeongjo(0)/m/up/10 18.4 직 접 효 과 PK-PD 모 델 의 예 (Examples of
+ direct effect PK-PD model) {#direct-pkpd}  163
+ []
+
+[163]
+Underfull \vbox (badness 10000) detected at line 4236
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4209
+Underfull \vbox (badness 10000) detected at line 4236
  []
 
-[189] [190]
+[164]
+
+LaTeX Warning: Reference `exm:SIM-control' on page 165 undefined on input line 
+4256.
+
+
+Overfull \hbox (4.3563pt too wide) has occurred while \output is active
+ [][][][]  \TU/NanumMyeongjo(0)/m/up/10 18.4 직 접 효 과 PK-PD 모 델 의 예 (Examples of
+ direct effect PK-PD model) {#direct-pkpd}  165
+ []
+
+[165]
+
+LaTeX Warning: Reference `fig:pppd' on page 166 undefined on input line 4283.
+
+
+LaTeX Warning: Reference `exm:pppd-code' on page 166 undefined on input line 42
+83.
+
 File: ./assets/media-18/image6.png Graphic file (type bmp)
 <./assets/media-18/image6.png>
-[191] [192]
+[166]
+
+LaTeX Warning: Reference `fig:PPP-dataset' on page 167 undefined on input line 
+4337.
+
+
+LaTeX Warning: Reference `exm:control-ppp' on page 167 undefined on input line 
+4337.
+
 File: ./assets/media-18/image7.png Graphic file (type bmp)
 <./assets/media-18/image7.png>
-[193]
+
+Overfull \hbox (4.3563pt too wide) has occurred while \output is active
+ [][][][]  \TU/NanumMyeongjo(0)/m/up/10 18.4 직 접 효 과 PK-PD 모 델 의 예 (Examples of
+ direct effect PK-PD model) {#direct-pkpd}  167
+ []
+
+[167] [168]
+
+LaTeX Warning: Reference `fig:ipp-dataset-ex' on page 169 undefined on input li
+ne 4392.
+
+
+LaTeX Warning: Reference `exm:IPP-example' on page 169 undefined on input line 
+4392.
+
 File: ./assets/media-18/image8.png Graphic file (type bmp)
 <./assets/media-18/image8.png>
-[194]
-Underfull \vbox (badness 1629) detected at line 4401
+
+Overfull \hbox (4.3563pt too wide) has occurred while \output is active
+ [][][][]  \TU/NanumMyeongjo(0)/m/up/10 18.4 직 접 효 과 PK-PD 모 델 의 예 (Examples of
+ direct effect PK-PD model) {#direct-pkpd}  169
  []
 
-[195]
+[169]
+
+LaTeX Warning: Reference `fig:sim-pppd-dataset' on page 170 undefined on input 
+line 4442.
+
 File: ./assets/media-18/image9.png Graphic file (type bmp)
 <./assets/media-18/image9.png>
-[196] [197] [198]
+
+LaTeX Warning: Reference `exm:sim-pppd-similarity' on page 170 undefined on inp
+ut line 4450.
+
+[170]
+Underfull \vbox (badness 10000) detected at line 4489
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4489
+ []
+
+[171]
+
+LaTeX Warning: Reference `fig:ppp-pkpd-dataset' on page 172 undefined on input 
+line 4498.
+
+
+LaTeX Warning: Reference `exm:sim-pppd-similarity' on page 172 undefined on inp
+ut line 4500.
+
 File: ./assets/media-18/image13.png Graphic file (type bmp)
 <./assets/media-18/image13.png>
+
+LaTeX Warning: Reference `fig:ipp-dataset' on page 172 undefined on input line 
+4511.
+
+
+LaTeX Warning: Reference `exm:ipp-control-stream' on page 172 undefined on inpu
+t line 4513.
+
+[172]
 File: ./assets/media-18/image14.png Graphic file (type bmp)
 <./assets/media-18/image14.png>
-[199]
-Underfull \vbox (badness 10000) detected at line 4530
- []
+[173] [174]
 
+LaTeX Warning: Reference `fig:time-comparison' on page 175 undefined on input l
+ine 4582.
 
-Underfull \vbox (badness 10000) detected at line 4530
- []
-
-[200] [201]
 File: figures/18-fig-11.png Graphic file (type bmp)
 <figures/18-fig-11.png>
+
+LaTeX Warning: Reference `fig:absolute-signed' on page 175 undefined on input l
+ine 4593.
+
 File: figures/18-fig-12.png Graphic file (type bmp)
 <figures/18-fig-12.png>
-[202] [203]
-Overfull \hbox (103.85352pt too wide) in paragraph at lines 4589--4598
+[175] [176]
+
+LaTeX Warning: Reference `tab:pkpd-link-summary' on page 177 undefined on input
+ line 4610.
+
+
+Overfull \hbox (103.85352pt too wide) in paragraph at lines 4616--4625
  [][] 
  []
 
-[204]
-Underfull \vbox (badness 10000) detected at line 4603
- []
+[177]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4603
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4603
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4603
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4603
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4603
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4603
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (395.75pt too wide) has occurred while \output is active
+[]
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4603
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[178
+
+]
+Underfull \vbox (badness 10000) detected at line 4630
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4630
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4630
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4630
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4630
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4630
+[]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4630
+ []
+
+
+Overfull \hbox (395.75pt too wide) detected at line 4630
 []
  []
 
 Chapter 19.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4603
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4630
 .
 
+File: figures/19-fig-01.png Graphic file (type bmp)
+<figures/19-fig-01.png>
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[205
-
+[179
 
 ]
-File: figures/19-fig-01.png Graphic file (type bmp)
-<figures/19-fig-01.png>
-[206]
 File: ./assets/media-19/image2.png Graphic file (type bmp)
 <./assets/media-19/image2.png>
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 4651.
+
+LaTeX Warning: Reference `fig:log-linear-model' on page 180 undefined on input 
+line 4677.
+
+[180]
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 11.96344pt on input line 4651.
+(Font)              scaled to size 11.96344pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.37436pt on input line 4651.
+(Font)              scaled to size 8.37436pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.98172pt on input line 4651.
+(Font)              scaled to size 5.98172pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 11.0pt on input line 4651.
+(Font)              scaled to size 11.0pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 7.69997pt on input line 4651.
+(Font)              scaled to size 7.69997pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 5.5pt on input line 4651.
+(Font)              scaled to size 5.5pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.96461pt on input line 4651.
+(Font)              scaled to size 11.96461pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.37518pt on input line 4651.
+(Font)              scaled to size 8.37518pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.9823pt on input line 4651.
+(Font)              scaled to size 5.9823pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.96227pt on input line 4651.
+(Font)              scaled to size 11.96227pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.37354pt on input line 4651.
+(Font)              scaled to size 8.37354pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.98112pt on input line 4651.
+(Font)              scaled to size 5.98112pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 11.0pt on input line 4651.
+(Font)              scaled to size 11.0pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 7.69997pt on input line 4651.
+(Font)              scaled to size 7.69997pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 5.5pt on input line 4651.
+(Font)              scaled to size 5.5pt on input line 4680.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 7.69997pt on input line 4651.
-[207]
+(Font)              scaled to size 7.69997pt on input line 4680.
 File: images/tip.png Graphic file (type bmp)
 <images/tip.png>
 File: ./assets/media-19/box1.png Graphic file (type bmp)
 <./assets/media-19/box1.png>
 
-Underfull \hbox (badness 10000) detected at line 4672
+Underfull \hbox (badness 10000) detected at line 4701
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4672
+Underfull \hbox (badness 10000) detected at line 4701
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4674
+Underfull \hbox (badness 10000) detected at line 4703
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4674
+Underfull \hbox (badness 10000) detected at line 4703
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4676
+Underfull \hbox (badness 10000) detected at line 4705
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 4676
+Underfull \hbox (badness 10000) detected at line 4705
 [][][]
  []
 
 
-Underfull \vbox (badness 6625) detected at line 4722
+Overfull \vbox (7.22644pt too high) detected at line 4751
  []
 
-[208]
+[181]
 File: ./assets/media-19/image5.png Graphic file (type bmp)
 <./assets/media-19/image5.png>
-[209]
+
+LaTeX Warning: Reference `fig:emax-model' on page 182 undefined on input line 4
+759.
+
+[182]
+
+LaTeX Warning: Reference `fig:emax-comparison' on page 183 undefined on input l
+ine 4769.
+
 File: figures/19-fig-04.png Graphic file (type bmp)
 <figures/19-fig-04.png>
 File: ./assets/media-19/image7.png Graphic file (type bmp)
 <./assets/media-19/image7.png>
-[210]
+
+LaTeX Warning: Reference `fig:anta-emax' on page 183 undefined on input line 47
+83.
+
+[183]
 File: figures/19-fig-06.png Graphic file (type bmp)
 <figures/19-fig-06.png>
-[211]
+
+LaTeX Warning: Reference `fig:sigmoid-emax' on page 184 undefined on input line
+ 4804.
+
+File: figures/19-fig-sigmoid-emax.png Graphic file (type bmp)
+<figures/19-fig-sigmoid-emax.png>
 File: images/tip.png Graphic file (type bmp)
 <images/tip.png>
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 7.0pt on input line 4778.
-File: figures/19-fig-sigmoid-emax.png Graphic file (type bmp)
-<figures/19-fig-sigmoid-emax.png>
+(Font)              scaled to size 7.0pt on input line 4813.
 
-Overfull \vbox (11.12035pt too high) detected at line 4799
+LaTeX Warning: Reference `fig:sigmoid-emax-block2' on page 184 undefined on inp
+ut line 4815.
+
+
+Underfull \vbox (badness 4752) detected at line 4832
  []
 
-[212]
+[184]
+
+LaTeX Warning: Reference `fig:sigmoid-imax' on page 185 undefined on input line
+ 4843.
+
 File: figures/19-fig-07.png Graphic file (type bmp)
 <figures/19-fig-07.png>
-[213]
+[185]
+
+LaTeX Warning: Reference `fig:K2' on page 186 undefined on input line 4871.
+
 File: figures/19-fig-08.png Graphic file (type bmp)
 <figures/19-fig-08.png>
-[214] [215]
+[186] [187]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4913,351 +5429,116 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[216
+[188
 
 ]
-Underfull \vbox (badness 10000) detected at line 4852
+Underfull \vbox (badness 10000) detected at line 4885
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4852
+Overfull \hbox (395.75pt too wide) detected at line 4885
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4852
+Underfull \vbox (badness 10000) detected at line 4885
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4852
+Overfull \hbox (395.75pt too wide) detected at line 4885
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4852
+Underfull \vbox (badness 10000) detected at line 4885
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4852
+Overfull \hbox (395.75pt too wide) detected at line 4885
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4852
+Underfull \vbox (badness 10000) detected at line 4885
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4852
+Overfull \hbox (395.75pt too wide) detected at line 4885
 []
  []
 
 Chapter 20.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4852
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4885
 .
 
 
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
+LaTeX Warning: Reference `fig:pkpd-relationship' on page 189 undefined on input
+ line 4901.
 
-[217
-
-]
 File: figures/20-fig-01.png Graphic file (type bmp)
 <figures/20-fig-01.png>
-[218]
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[189
+
+]
+
+LaTeX Warning: Reference `fig:hys-proteresis' on page 190 undefined on input li
+ne 4909.
+
 File: figures/20-fig-02.png Graphic file (type bmp)
 <figures/20-fig-02.png>
+
+LaTeX Warning: Reference `fig:effect-comp' on page 190 undefined on input line 
+4922.
+
+[190]
 File: figures/20-fig-03.png Graphic file (type bmp)
 <figures/20-fig-03.png>
-[219] [220] [221]
+
+LaTeX Warning: Reference `exm:effect-model-code' on page 191 undefined on input
+ line 4930.
+
+[191]
+
+LaTeX Warning: Reference `exm:effect-comp-advan6' on page 192 undefined on inpu
+t line 4958.
+
+[192]
+
+LaTeX Warning: Reference `fig:direct-indirect' on page 193 undefined on input l
+ine 4994.
+
 File: figures/20-fig-04.png Graphic file (type bmp)
 <figures/20-fig-04.png>
-[222]
+[193]
+
+LaTeX Warning: Reference `fig:turnover-4' on page 194 undefined on input line 5
+012.
+
 File: figures/20-fig-05.png Graphic file (type bmp)
 <figures/20-fig-05.png>
+
+LaTeX Warning: Reference `fig:model-i' on page 194 undefined on input line 5023
+.
+
 File: figures/20-fig-06.png Graphic file (type bmp)
 <figures/20-fig-06.png>
-[223]
-File: figures/20-fig-07.png Graphic file (type bmp)
-<figures/20-fig-07.png>
-[224]
-File: figures/20-fig-08.png Graphic file (type bmp)
-<figures/20-fig-08.png>
-[225]
-File: figures/20-fig-09.png Graphic file (type bmp)
-<figures/20-fig-09.png>
-[226] [227]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[228
-
-]
-Underfull \vbox (badness 10000) detected at line 5102
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5102
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5102
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5102
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5102
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5102
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5102
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5102
-[]
- []
-
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 5102
-.
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[229
-
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[230
-
-]
-Underfull \vbox (badness 10000) detected at line 5107
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5107
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5107
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5107
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5107
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5107
-[]
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5107
- []
-
-
-Overfull \hbox (395.75pt too wide) detected at line 5107
-[]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5107
-[]
- []
-
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 5107
-.
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[231
-
-]
-Missing character: There is no ‐ in font NanumMyeongjo/OT:language=dflt;mapping
-=tex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 5157--5159
-[][]\TU/NanumMyeongjo(0)/m/up/10 Owen, Fiedler‐Kelly, J. 2014. Introduction to 
-Population Pharmacoki-
- []
-
-[232] (./basic.ind [233]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (395.75pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[234
-
-]
-Underfull \hbox (badness 10000) detected at line 1
-[]
- []
-
-
-LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1.
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[235
-
-] [236] [237
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5193.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5193.
-(./basic.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5193.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5193.
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+! Undefined control sequence.
+l.5031 \start
+             {equation} 
 Here is how much of TeX's memory you used:
- 26717 strings out of 479284
- 449450 string characters out of 5884021
- 914201 words of memory out of 5000000
- 43811 multiletter control sequences out of 15000+600000
- 541098 words of font info for 123 fonts, out of 8000000 for 9000
+ 26439 strings out of 479284
+ 441686 string characters out of 5884021
+ 890225 words of memory out of 5000000
+ 43551 multiletter control sequences out of 15000+600000
+ 541082 words of font info for 121 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 61i,19n,125p,1862b,2585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,19n,125p,1918b,2585s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on basic.pdf (251 pages).
+Output written on basic.pdf (203 pages).
