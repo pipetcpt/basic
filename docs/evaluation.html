@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-08" />
+<meta name="date" content="2020-06-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Basic 1 모델 구축의 기초</a></li>
+<li><a href="./">Pharmacometrics Basic</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#IE-role"><i class="fa fa-check"></i><b>8.1</b> 초기 추정값의 의미와 역할</a></li>
 <li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.2</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
-<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#fixed-random-meaning"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
 <li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.4</b> THETA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> OMEGA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> SIGMA의 초기추정값 지정</a></li>
@@ -525,7 +525,7 @@ Numerical Predictive Check (NPC)
 <p>VPC를 생성할때 계급구간화(Binning)가 적절히 행해지면 실제 수행 시간의 변동성이 그림에 과도하게 표현되는 것을 줄이고 계획된 시간(nominal time)이 같은 자료일때 동일한 예측 구간을 표현케 할 수 있으므로, 계급구간화를 올바르게 수행하는 것은 중요하다. PsN에서는 VPC 계급구간화에 대한 다양한 옵션을 제공하고 있으므로 이에 대한 자세한 정보는 PsN User Guide를 참고할 수 있다. <span class="citation">(Harling <a href="#ref-vpcnpc" role="doc-biblioref">2018</a>)</span></p>
 <p></p>
 <p>VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변수간의 차이가 하나로 합쳐져 표현되기 때문에 약물 농도의 패턴이 제대로 표현되지 않을 수 있다. 약물의 용량, 투여경로와 투약간격 등의 공변량 값이 혼합되어 있는 데이터셋에서는 층화(stratification)를 통해 VPC를 수행할 수 있다. PsN을 사용하여 VPC를 수행하는 경우 이러한 층화를 쉽게 할 수 있는데, 다음과 같은 구문을 도스창(터미널창)에서 입력한다.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb44-1"><a href="evaluation.html#cb44-1"></a><span class="ex">vpc</span> bean.CTL -lst=bean.CTL.lst -samples=1000 -stratify_on=DAY -idv=TAD</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb46-1"><a href="evaluation.html#cb46-1"></a><span class="ex">vpc</span> bean.CTL -lst=bean.CTL.lst -samples=1000 -stratify_on=DAY -idv=TAD</span></code></pre></div>
 <p>위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 <a href="evaluation.html#fig:strat-vpc">16.6</a>)</p>
 <div class="figure"><span id="fig:strat-vpc"></span>
 <img src="figures/16-fig-06.png" alt="관찰일(DAY)에 따라 층화(stratification)가 이루어진 VPC." width="100%" />
@@ -624,7 +624,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/16.Rmd",
+"link": "https://github.com/pipetcpt/basic/edit/master/inst/examples/16.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -635,7 +635,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["basic.pdf", "basic.epub", "basic.mobi"],
+"download": ["basic.pdf"],
 "toc": {
 "collapse": "section"
 }

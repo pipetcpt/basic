@@ -110,8 +110,8 @@
 \newif\if@krantzb
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ExecuteOptions{a4paper,10pt,twoside,onecolumn,final,openright} %sungpil
-%\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
+
+\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%
@@ -227,7 +227,7 @@
 \marginparsep   1pc
 \topmargin  12pt %0pt
 \headheight 12pt
-\headsep    18pt %sungpil - originally 12pt 2020-05-21
+\headsep    20pt % shan 2020-06-09 (12pt)
 \footskip   2pc
 %
 % DIMENSION OF TEXT:
@@ -243,19 +243,15 @@
 \newdimen\vtrimtop
 \newdimen\vtrimbot
 
-%\setlength\trimheight{300mm}
-%\setlength\trimwidth{176mm}
-%\setlength\trimheight{9in} % original, sungpil 2020-05-04
-\setlength\trimheight{260mm} % original, sungpil 2020-05-04
-%\setlength\trimwidth{6in}  % original, sungpil 2020-05-04
-\setlength\trimwidth{190mm}  % original, sungpil 2020-05-04
+\setlength\trimheight{9in}
+\setlength\trimwidth{6in}
 %
 %
 \if@krantza
-\textheight = 210mm % http://wiki.ktug.org/wiki/wiki.php/KTSConference/2009?action=download&value=pub_with_TeX.pdf
+\textheight = 45pc
   %\advance\textheight by \topskip
 \addtolength\textheight{3pt}
-  \textwidth 135mm
+  \textwidth 28pc
 \addtolength\textwidth{.5pt}
   \topmargin0in
   \oddsidemargin1.1875in
@@ -266,8 +262,7 @@
   \hoffset-15pt
   \voffset39pt
 \let\normaltextheight\textheight
-
-\else\if@krantzb % 170mm x 242mm
+\else\if@krantzb
   \textheight = 51pc
 %  \advance\textheight by \topskip
   \textwidth 33pc
@@ -281,24 +276,23 @@
   \voffset-.15in%.04in
 \let\normaltextheight\textheight
 \else
-
 %%%Uncomment to get 6x9 trim
-%\textheight = 43pc
-%  %\advance\textheight by \topskip
-%\addtolength\textheight{3pt}
-%  \textwidth 26pc
-%\addtolength\textwidth{.5pt}
-% \topmargin0in
-%  \oddsidemargin1.1875in
-%  \evensidemargin1.1875in
-%  \htrim5.05pc
-%  \vtrimtop7.7pc
-%  \vtrimbot5.44pc
-%%  \hoffset-5pt
-%  \voffset45pt
-%\let\normaltextheight\textheight
+%%%%\textheight = 43pc
+%%%%  %\advance\textheight by \topskip
+%%%%\addtolength\textheight{3pt}
+%%%%  \textwidth 26pc
+%%%%\addtolength\textwidth{.5pt}
+%%%% \topmargin0in
+%%%%  \oddsidemargin1.1875in
+%%%%  \evensidemargin1.1875in
+%%%%  \htrim5.05pc
+%%%%  \vtrimtop7.7pc
+%%%%  \vtrimbot5.44pc
+%%%%%  \hoffset-5pt
+%%%%  \voffset45pt
+%%%%\let\normaltextheight\textheight
 
-%%%Original
+% shan 2020-06-09: commented out 
 %\textheight = 45pc
 %  %\advance\textheight by \topskip
 %\addtolength\textheight{3pt}
@@ -1495,7 +1489,7 @@
       \endlist}
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
-\newcommand\indexname{찾아보기} % sungpil
+\newcommand\indexname{Index}
 \newenvironment{theindex}
                {\cleardoublepage\if@twocolumn
                   \@restonecolfalse
@@ -1537,7 +1531,7 @@
 \newcommand\tablename{표}
 \newcommand\partname{Part}
 \newcommand\chaptername{Chapter}
-\newcommand\appendixname{Appendix}
+\newcommand\appendixname{별첨}
 \def\today{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi

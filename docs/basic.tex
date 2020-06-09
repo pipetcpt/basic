@@ -269,7 +269,7 @@
 
 \title{PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초}
 \author{임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필}
-\date{2020-06-08}
+\date{2020-06-09}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1956,7 +1956,7 @@ IE이 필요한 이유는 NONMEM이 파라미터 추정을 위해 Newton-Raphson
   더 이상 유의한 수준의 목적함수값 감소가 없는 때까지 3., 4.의 작업을 반복한다. (최종 지점에서는 이계도함수값이 양의 값을 가져야만 최소값을 구할 수 있다.)\index{목적함수 / objective function}\index{objective function / 목적함수}
 \end{enumerate}
 
-3., 4.의 과정에서 업데이트 되는 파라미터값을 수식으로 표현하면 다음과 같다. (식 \eqref{eq:updateparam})
+3., 4.의 과정에서 업데이트 되는 파라미터값을 수식으로 표현하면 식 \eqref{eq:updateparam}과 같다.
 \begin{equation}
 x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 \label{eq:updateparam}
@@ -1988,44 +1988,31 @@ Y = 5x^6 - 36x^5 + \frac{165}{2}x^4 - 60x^3 + 36
 
 \caption{\label{tab:final-destination}초기값에 따른 최종 도달지점의 변화 (Han, Jeon, and Yim \protect\hyperlink{ref-han2016tips}{2016})}
 \centering
-\begin{tabular}[t]{l|l|r|r|r}
-\hline
+\begin{tabular}[t]{llrrr}
+\toprule
 i & $x_i$ & $\frac{dY}{dx_i}$ & $\frac{dY}{d^2x_i}$ & $x_{i+1}$\\
-\hline
+\midrule
 Starting & Value: 0.70 &  &  & \\
-\hline
 1 & 0.7 & -13.19 & 22.16 & 1.30\\
-\hline
 2 & 1.3 & 17.85 & 52.24 & 0.95\\
-\hline
 3 & 0.95 & -2.72 & 56.64 & 1.00\\
-\hline
 4 & 1 & 0.09 & 60.09 & 1.00\\
-\hline
+\addlinespace
 Starting & Value: 1.60 &  &  & \\
-\hline
 1 & 1.6 & 25.80 & -7.68 & 4.96\\
-\hline
 2 & 4.96 & 16956.16 & 25498.56 & 4.30\\
-\hline
 3 & 4.3 & 5419.61 & 10714.92 & 3.79\\
-\hline
 4 & 3.79 & 1696.52 & 4601.51 & 3.42\\
-\hline
+\addlinespace
 5 & 3.42 & 507.53 & 2070.60 & 3.18\\
-\hline
 6 & 3.18 & 135.68 & 1036.75 & 3.04\\
-\hline
 7 & 3.04 & 26.45 & 649.51 & 3.00\\
-\hline
 8 & 3 & 2.08 & 548.97 & 3.00\\
-\hline
 9 & 3 & 0.02 & 540.07 & 3.00\\
-\hline
+\addlinespace
 10 & 3 & 0.00 & 540.00 & 3.00\\
-\hline
 11 & 3 & 0.00 & 540.00 & 3.00\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2033,8 +2020,8 @@ Starting & Value: 1.60 &  &  & \\
 
 이 사례에서 초기값을 0.70으로 선택하면 Newton--Raphson 방법에 의해 추정되는 극값은 x가 1.00일 때이다. 그러나 이 값은 전체 함수의 실제 최소값이 아닌 극값(local minima)이므로, 극값의 위치를 찾았다 하더라고 실제 최소값을 찾는 데에는 실패한 것이다. 최소값에 해당하는 극값의 위치를 정확히 추정하기 위해서는 그러한 위치에 보다 가까운 초기값을 선택해야 한다. 이에 따라, 초기값을 1.60으로 잡았을 때, 그 최종 추정 지점이 3.00으로서 실제 최소값에 해당하는 극값의 위치(global minima)가 된다. 많은 PK-PD 모델링 시에도 마찬가지로, 각 파라미터가 가질 수 있는 타당한 값에 가까운 값을 초기값으로 선택하여야 적절한 FPE를 얻을 수 있을 것이다. 모델이 간단하거나, 모델을 지지하는 데이터의 양이 많은 경우에는, 비교적 덜 정확한 IE 값을 지정하더라도 안정적으로 최적의 FPE를 찾을 수 있는 경우가 있지만, 이러한 경우라도 모델링을 수행하는 전문가는 각 파라미터의 의미와 설명하려고 하는 데이터의 관계를 정확하게 파악하여 가급적 예상되는 FPE에 근접한 값을 사용하는 것이 추천된다.
 
-\hypertarget{uxace0uxc815uxd6a8uxacfc-uxc784uxc758uxd6a8uxacfc-uxd30cuxb77cuxbbf8uxd130uxc758-uxc758uxbbf8uxc640-uxcd08uxae30uxcd94uxc815uxac12uxc758-uxc9c0uxc815}{%
-\section{고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정}\label{uxace0uxc815uxd6a8uxacfc-uxc784uxc758uxd6a8uxacfc-uxd30cuxb77cuxbbf8uxd130uxc758-uxc758uxbbf8uxc640-uxcd08uxae30uxcd94uxc815uxac12uxc758-uxc9c0uxc815}}
+\hypertarget{fixed-random-meaning}{%
+\section{고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정}\label{fixed-random-meaning}}
 
 집단 내 약동-약력학 파라미터의 분포를 설명할 때에는, 각 파라미터 별로 두 개의 특성을 제시해야 한다. 하나는 집단의 대표값이며, 다른 하나는 그러한 대표값과 각 개인 파라미터의 차이(변이)가 얼마나 큰가를 나타내는 값(분산, 표준편차 등)이다. 집단의 대표값은 THETA (\emph{θ})를 사용하여 정의되며, 이는 해당 인구집단에 속한 개인이라면 이 대표값과 유사한 파라미터 값을 가져야 함을 의미한다. 따라서, 이 값은 고정효과(각 개인 혹은 측정값에 따라 달라지지 않는 값)로 처리된다. \emph{θ}에 대한 IE는 \$THETA 블록에 제시하며, \emph{θ}의 개수보다 적은 수의 값을 지정하면 NONMEM은 에러 메시지를 출력하고 실행되지 않는다. 각 파라미터의 개인 간 변이(between-subject variability, BSV)의 크기를 설명하는 값은 ω\textsuperscript{2}을 이용하여 표현된다. BSV와 관련된 내용은 제어구문을 처음 배우는 사람이 가장 혼란스러워 하는 부분이기도 한데, 이는 THETA와 달리 ω\textsuperscript{2}이라는 용어가 모델의 구조를 표현하는 부분에서는 전혀 등장하지 않기 때문이다. 모델의 구조에서는 하나의 파라미터에 대해 집단의 대표값과 각 개인 값 간의 편차를 ETA (\emph{η})를 이용하여 표현한다. 예를 들면, \emph{P}\textsubscript{ij} = \emph{θ}\textsubscript{i} + \emph{η}\textsubscript{ij} (\emph{P}\textsubscript{ij}는 j번째 개인의 파라미터 값)와 같은 형태이다. 즉, 대상자 별로 다른 \emph{η} 값을 부여함으로써, 개인 별로 서로 다른 파라미터 값을 만들어 내는 것이다. 중요한 것은 이러한 편차의 원인이 모델에 제시되지 않기 때문에 이 \emph{η}는 임의효과로 처리된다는 것이다. NONMEM에서 임의효과를 나타내는 값들은 공통적으로 특정한 분포를 갖는다. 임의효과는 말 그대로 임의적 효과이며, 따라서, 한 집단에서 이러한 효과가 어느 한 방향(양 또는 음)으로 치우쳐 나타나지 않는다.(특정한 방향으로 치우치는 변인이 있다면 이는 임의효과로 처리할 수 없음) 따라서, 모든 \emph{η}의 평균은 0이다. 이 원리를 이용해 \emph{P}\textsubscript{ij} = \emph{θ}\textsubscript{i} + \emph{η}\textsubscript{ij}와 같은 구조에서 집단의 대표값이 \emph{θ}값이 될 수 있는 것이다. 또한, \emph{θ}값은 단순히 하나의 값이기 때문에, 결국 \emph{η}\textsubscript{ij}의 변이가 \emph{P}\textsubscript{ij}의 변이를 대변하게 된다. 이러한 상황에서 사용자가 지정할 수 있는 초기값은 이 변이의 크기를 나타내는 값이며, 이 값이 바로 \emph{ω}\textsubscript{i2}으로 \emph{η\textsubscript{ij}}의 분산을 뜻한다. 즉, \emph{η}\textsubscript{ij} \textasciitilde{} N(0, \emph{ω}\textsubscript{i2})이며, 모델 구조를 표현할 때는 \emph{η}\textsubscript{ij}를 사용하여 관계를 정의하지만, 이에 대해 실제로 지정해야 하는 IE는 \emph{η}\textsubscript{ij}에 해당하는 \emph{ω}\textsubscript{i2}인 것이다. 이 값은 \$OMEGA 블록에 제시하며, 사용된 \emph{η}의 개수보다 적은 수의 값을 지정하면 NONMEM은 에러 메시지를 출력하고 실행되지 않는다.
 
@@ -2043,9 +2030,9 @@ Starting & Value: 1.60 &  &  & \\
 \hypertarget{thetauxc758-uxcd08uxae30uxcd94uxc815uxac12-uxc9c0uxc815}{%
 \section{THETA의 초기추정값 지정}\label{thetauxc758-uxcd08uxae30uxcd94uxc815uxac12-uxc9c0uxc815}}
 
-일반적으로 IE 정확성이 문제가 되는 것은 주로 고정효과 파라미터(\emph{θ})이다. 집단 약동-약력학 분석에서 1차적인 관심사는 집단의 대표적인 약동-약력학 파라미터 값을 추정하는 것이기 때문이다. 또한, 임의효과 파라미터에 대해 IE를 제시하는 것은 추정의 시작점을 제시한다기보다는 해당 파라미터의 추정을 허용한다는 의미가 더 큰 것이며(뒤에 추가로 설명함), 실제로는 고정효과 파라미터의 IE가 이러한 시작점 역할을 하기에 IE가 적절치 않을 때 위 3절에서 제시한 문제를 유발하는 것도 고정효과 파라미터라고 보는 것이 옳다.
+일반적으로 IE 정확성이 문제가 되는 것은 주로 고정효과 파라미터(\emph{θ})이다. 집단 약동-약력학 분석에서 1차적인 관심사는 집단의 대표적인 약동-약력학 파라미터 값을 추정하는 것이기 때문이다. 또한, 임의효과 파라미터에 대해 IE를 제시하는 것은 추정의 시작점을 제시한다기보다는 해당 파라미터의 추정을 허용한다는 의미가 더 큰 것이며(뒤에 추가로 설명함), 실제로는 고정효과 파라미터의 IE가 이러한 시작점 역할을 하기에 IE가 적절치 않을 때 위 \protect\hyperlink{fixed-random-meaning}{8.3}에서 제시한 문제를 유발하는 것도 고정효과 파라미터라고 보는 것이 옳다.
 
-고정효과의 IE는 FPE에 대한 대략적인 사용자의 추정값이라고 할 수 있다. 이러한 추정의 정확성을 높여 좋은 IE를 제시하기 위해 사용자는 각 파라미터가 가지는 생리학적인 의미를 파악할 수 있어야 하며, 이에 비추어 특정한 파라미터 값이 타당한 값인가를 판단할 수 있어야 한다. 이를 고려할 때, 많은 의약품에서 \emph{CL}, \emph{V\textsubscript{d}}, 그리고 1차 속도론적 흡수속도상수(\emph{ka})는 1--100 L/h, 10--1000 L, and 0.1--10 h\textsubscript{−1} 정도의 범위에 있는 것이 타당하다. 또한, 혈관 내 투여에 대한 정보 없이 혈관 외 투여 후의 약동학 데이터를 다룰 때는 생체이용률(\emph{F}, 0-1 범위에 있음)로 나누어진 \emph{CL}, \emph{V\textsubscript{d}} 등의 값이 구해진다는 것 역시 염두에 두어야 한다. 이러한 이해를 기반으로 문헌 등에 제시된 유사 사례에서의 고정효과 파라미터 값을 참고할 수 있으며, 그 값이 타당한 경우 IE 값으로 사용할 수 있다. 문헌과 분석용 데이터 간의 인구집단 특성, 질병 관련 요인, 제형의 차이 등을 고려하여 그러한 변인들의 약동-약력학적 영향을 파악할 수 있다면, 보다 적절한 IE 값을 선택할 수 있을 것이다.
+고정효과의 IE는 FPE에 대한 대략적인 사용자의 추정값이라고 할 수 있다. 이러한 추정의 정확성을 높여 좋은 IE를 제시하기 위해 사용자는 각 파라미터가 가지는 생리학적인 의미를 파악할 수 있어야 하며, 이에 비추어 특정한 파라미터 값이 타당한 값인가를 판단할 수 있어야 한다. 이를 고려할 때, 많은 의약품에서 \emph{CL}, \emph{V\textsubscript{d}}, 그리고 1차 속도론적 흡수속도상수(\emph{ka})는 1--100 L/h, 10--1000 L, and 0.1--10 h\textsuperscript{−1} 정도의 범위에 있는 것이 타당하다. 또한, 혈관 내 투여에 대한 정보 없이 혈관 외 투여 후의 약동학 데이터를 다룰 때는 생체이용률(\emph{F}, 0-1 범위에 있음)로 나누어진 \emph{CL}, \emph{V\textsubscript{d}} 등의 값이 구해진다는 것 역시 염두에 두어야 한다. 이러한 이해를 기반으로 문헌 등에 제시된 유사 사례에서의 고정효과 파라미터 값을 참고할 수 있으며, 그 값이 타당한 경우 IE 값으로 사용할 수 있다. 문헌과 분석용 데이터 간의 인구집단 특성, 질병 관련 요인, 제형의 차이 등을 고려하여 그러한 변인들의 약동-약력학적 영향을 파악할 수 있다면, 보다 적절한 IE 값을 선택할 수 있을 것이다.
 
 보다 정교한 IE 값의 선택을 위해서는 탐색적 데이터 분석(exploratory data analysis) 과정을 철저히 수행하는 것을 추천한다. FPE는 제시된 구조 모형과 사용된 파라미터 등을 고려할 때, 주어진 데이터셋에 가장 적절한 파라미터 값이다. 다시 말해, 확보한 데이터가 FPE를 결정하는 것이며, 데이터셋을 보다 면밀히 파악함으로써 사용자는 더 좋은 IE 값을 제시할 수 있다. 간단히 y축을 로그 척도로 하여 시간에 따른 집단의 평균 농도를 그려 보는 것만으로도 매우 중요한 정보들을 얻을 수 있는데, 그림 \ref{fig:eda-ie}을 통해 이를 설명하도록 하겠다.
 
@@ -3221,17 +3208,21 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 
 양변을 \(\theta\)에 대해 미분하면
 \begin{equation}
+\begin{split}
 \int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0 \\
 E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack = 0
+\end{split}
 \label{eq:theta-differential}
 \end{equation}
 
 한 번 더 미분하면
 
 \begin{equation}
+\begin{split}
 \int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
 E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
 I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\end{split}
 \label{eq:diff-diff}
 \end{equation}
 
@@ -3246,16 +3237,18 @@ I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\thet
 수식으로 표현하자면 다음과 같다. 여기에서 \(O_{i}\)는 개인(i)의 목적함수 값이며, \(O\)는 전체 목적함수 값이다.\index{목적함수 / objective function}\index{objective function / 목적함수}
 
 \begin{equation}
+\begin{split}
 O = \sum_{i}^{}O_{i} \\
 S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
 R = \frac{\partial^{2}O}{\partial\theta^{2}}
+\end{split}
 \label{eq:o-s-r}
 \end{equation}
 
 \hypertarget{ruxc5d0uxc11cuxc758-uxad6cuxd604}{%
 \section{R에서의 구현}\label{ruxc5d0uxc11cuxc758-uxad6cuxd604}}
 
-\protect\hyperlink{actual-example}{14.1}의 예제를 R로 풀이하면 다음과 같다. 우선 \textbf{nmw} package를 설치한다. (Bae \protect\hyperlink{ref-R-nmw}{2018})
+\protect\hyperlink{actual-example}{14.1}의 예제를 R로 풀이하면 다음과 같다. 우선 CRAN에 올라와 있는 nmw package를 설치한다. (Bae \protect\hyperlink{ref-R-nmw}{2018})
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3263,64 +3256,69 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{Highlighting}
 \end{Shaded}
 
-다음 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.\index{covariance / 공분산}
+\texttt{nmw::CovStep()} 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.\index{covariance / 공분산}
 
-\begin{verbatim}
-## function () 
-## {
-##     e$STEP = "COV"
-##     StartTime = Sys.time()
-##     Rmat = hessian(Obj, e$FinalPara)/2
-##     Smat = CalcSmat()
-##     if (is.nan(Smat[1, 1])) 
-##         stop("Error - NaN produced")
-##     invR = solve(Rmat)
-##     Cov = invR %*% Smat %*% invR
-##     SE = sqrt(diag(Cov))
-##     Correl = cov2cor(Cov)
-##     InvCov = Rmat %*% solve(Smat) %*% Rmat
-##     EigenVal = sort(eigen(Correl)$values)
-##     RunTime = difftime(Sys.time(), StartTime)
-##     Result = list(RunTime, SE, Cov, Correl, InvCov, EigenVal, 
-##         Rmat, Smat)
-##     names(Result) = list("Time", "Standard Error", "Covariance Matrix of Estimates", 
-##         "Correlation Matrix of Estimates", "Inverse Covariance Matrix of Estimates", 
-##         "Eigen Values", "R Matrix", "S Matrix")
-##     return(Result)
-## }
-## <bytecode: 0x000000002548dab0>
-## <environment: namespace:nmw>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# nmw::CovStep}
+\ControlFlowTok{function}\NormalTok{ () }
+\NormalTok{\{}
+\NormalTok{  e}\OperatorTok{$}\NormalTok{STEP =}\StringTok{ "COV"}
+\NormalTok{  StartTime =}\StringTok{ }\KeywordTok{Sys.time}\NormalTok{()}
+\NormalTok{  Rmat =}\StringTok{ }\KeywordTok{hessian}\NormalTok{(Obj, e}\OperatorTok{$}\NormalTok{FinalPara)}\OperatorTok{/}\DecValTok{2}
+\NormalTok{  Smat =}\StringTok{ }\KeywordTok{CalcSmat}\NormalTok{()}
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{is.nan}\NormalTok{(Smat[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{])) }
+    \KeywordTok{stop}\NormalTok{(}\StringTok{"Error {-} NaN produced"}\NormalTok{)}
+\NormalTok{  invR =}\StringTok{ }\KeywordTok{solve}\NormalTok{(Rmat)}
+\NormalTok{  Cov =}\StringTok{ }\NormalTok{invR }\OperatorTok{\%*\%}\StringTok{ }\NormalTok{Smat }\OperatorTok{\%*\%}\StringTok{ }\NormalTok{invR}
+\NormalTok{  SE =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{diag}\NormalTok{(Cov))}
+\NormalTok{  Correl =}\StringTok{ }\KeywordTok{cov2cor}\NormalTok{(Cov)}
+\NormalTok{  InvCov =}\StringTok{ }\NormalTok{Rmat }\OperatorTok{\%*\%}\StringTok{ }\KeywordTok{solve}\NormalTok{(Smat) }\OperatorTok{\%*\%}\StringTok{ }\NormalTok{Rmat}
+\NormalTok{  EigenVal =}\StringTok{ }\KeywordTok{sort}\NormalTok{(}\KeywordTok{eigen}\NormalTok{(Correl)}\OperatorTok{$}\NormalTok{values)}
+\NormalTok{  RunTime =}\StringTok{ }\KeywordTok{difftime}\NormalTok{(}\KeywordTok{Sys.time}\NormalTok{(), StartTime)}
+\NormalTok{  Result =}\StringTok{ }\KeywordTok{list}\NormalTok{(RunTime, SE, Cov, Correl, InvCov, EigenVal, }
+\NormalTok{                Rmat, Smat)}
+  \KeywordTok{names}\NormalTok{(Result) =}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{"Time"}\NormalTok{, }\StringTok{"Standard Error"}\NormalTok{, }
+                       \StringTok{"Covariance Matrix of Estimates"}\NormalTok{, }
+                       \StringTok{"Correlation Matrix of Estimates"}\NormalTok{, }
+                       \StringTok{"Inverse Covariance Matrix of Estimates"}\NormalTok{, }
+                       \StringTok{"Eigen Values"}\NormalTok{, }
+                       \StringTok{"R Matrix"}\NormalTok{, }\StringTok{"S Matrix"}\NormalTok{)}
+  \KeywordTok{return}\NormalTok{(Result)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
-S matrix를 계산하는 함수는 다음과 같다.
+S matrix를 계산하는 internal obj functions 함수 \texttt{nmw::CalcSmat()}는 다음과 같다.
 
-\begin{verbatim}
-## function () 
-## {
-##     Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
-##         ncol = e$nPara)
-##     for (i in 1:e$nID) {
-##         e$DATAi = e$DataRef[[i]]
-##         e$ETAi = e$EBE[i, e$EtaNames]
-##         e$nReci = e$Oi[i, "nRec"]
-##         if (e$METHOD == "ZERO") {
-##             gr = grad(OiS0, e$FinalPara)
-##         }
-##         else {
-##             gr = grad(OiS1, e$FinalPara)
-##         }
-##         Smat = Smat + gr %*% t(gr)
-##     }
-##     return(Smat/4)
-## }
-## <bytecode: 0x00000000163ce698>
-## <environment: namespace:nmw>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# nmw::CalcSmat}
+\ControlFlowTok{function}\NormalTok{ () }
+\NormalTok{\{}
+\NormalTok{  Smat =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, e}\OperatorTok{$}\NormalTok{nPara }\OperatorTok{*}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{nPara), }\DataTypeTok{nrow =}\NormalTok{ e}\OperatorTok{$}\NormalTok{nPara, }
+                \DataTypeTok{ncol =}\NormalTok{ e}\OperatorTok{$}\NormalTok{nPara)}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{e}\OperatorTok{$}\NormalTok{nID) \{}
+\NormalTok{    e}\OperatorTok{$}\NormalTok{DATAi =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{DataRef[[i]]}
+\NormalTok{    e}\OperatorTok{$}\NormalTok{ETAi =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{EBE[i, e}\OperatorTok{$}\NormalTok{EtaNames]}
+\NormalTok{    e}\OperatorTok{$}\NormalTok{nReci =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{Oi[i, }\StringTok{"nRec"}\NormalTok{]}
+    \ControlFlowTok{if}\NormalTok{ (e}\OperatorTok{$}\NormalTok{METHOD }\OperatorTok{==}\StringTok{ "ZERO"}\NormalTok{) \{}
+\NormalTok{      gr =}\StringTok{ }\KeywordTok{grad}\NormalTok{(OiS0, e}\OperatorTok{$}\NormalTok{FinalPara)}
+\NormalTok{    \}}
+    \ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{      gr =}\StringTok{ }\KeywordTok{grad}\NormalTok{(OiS1, e}\OperatorTok{$}\NormalTok{FinalPara)}
+\NormalTok{    \}}
+\NormalTok{    Smat =}\StringTok{ }\NormalTok{Smat }\OperatorTok{+}\StringTok{ }\NormalTok{gr }\OperatorTok{\%*\%}\StringTok{ }\KeywordTok{t}\NormalTok{(gr)}
+\NormalTok{  \}}
+  \KeywordTok{return}\NormalTok{(Smat}\OperatorTok{/}\DecValTok{4}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{Theoph}{%
 \section{Theophylline 예제 데이터셋}\label{Theoph}}
 
-R에는 기본적으로 \textbf{nlme} 패키지(Pinheiro, Bates, and R-core \protect\hyperlink{ref-R-nlme}{2020})가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다. Theophylline데이터를 그리면 다음과 같다.
+R에는 기본적으로 nlme 패키지(Pinheiro, Bates, and R-core \protect\hyperlink{ref-R-nlme}{2020})가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다. Theophylline 데이터를 그리면 다음과 같다.
 
 
 
@@ -3391,9 +3389,10 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(nmw)}
 \CommentTok{\# First Order Approximation Method}
-\KeywordTok{InitStep}\NormalTok{(DataAll, }\DataTypeTok{THETAinit=}\NormalTok{THETAinit, }\DataTypeTok{OMinit=}\NormalTok{OMinit, }\DataTypeTok{SGinit=}\NormalTok{SGinit, }\DataTypeTok{LB=}\NormalTok{LB, }\DataTypeTok{UB=}\NormalTok{UB,}
-         \DataTypeTok{Pred=}\NormalTok{PRED1, }\DataTypeTok{METHOD=}\StringTok{"ZERO"}\NormalTok{)}
+\KeywordTok{InitStep}\NormalTok{(DataAll, }\DataTypeTok{THETAinit=}\NormalTok{THETAinit, }\DataTypeTok{OMinit=}\NormalTok{OMinit, }\DataTypeTok{SGinit=}\NormalTok{SGinit, }
+         \DataTypeTok{LB=}\NormalTok{LB, }\DataTypeTok{UB=}\NormalTok{UB, }\DataTypeTok{Pred=}\NormalTok{PRED1, }\DataTypeTok{METHOD=}\StringTok{"ZERO"}\NormalTok{)}
 \NormalTok{(}\DataTypeTok{EstRes1 =} \KeywordTok{EstStep}\NormalTok{())}
 \CommentTok{\#\# $\textasciigrave{}Initial OFV\textasciigrave{}}
 \CommentTok{\#\# [1] 141.3076}
@@ -3425,6 +3424,13 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \CommentTok{\#\#  [1]  3.16946754 38.25213460  0.10501808  1.19823325  0.13747849}
 \CommentTok{\#\#  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782}
 \CommentTok{\#\# [11]  0.05427434}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{InitStep()}과 \texttt{EstStep()}을 마친 후 \texttt{CovStep()}을 실행하면 아래와 같은 표준오차와 분산 행렬을 계산할 수 있다.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{(}\DataTypeTok{CovRes1 =} \KeywordTok{CovStep}\NormalTok{())}
 \CommentTok{\#\# $Time}
 \CommentTok{\#\# Time difference of 1.0468 secs}
@@ -3616,6 +3622,13 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \CommentTok{\#\#  [9,]   2358.45500}
 \CommentTok{\#\# [10,]  18067.42672}
 \CommentTok{\#\# [11,]  24042.66052}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{PostHocEta()}, \texttt{TabStep()}의 실행화면은 아래와 같다.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{(}\DataTypeTok{EBE1 =} \KeywordTok{PostHocEta}\NormalTok{()) }\CommentTok{\# Using e$FinalPara from EstStep()}
 \CommentTok{\#\#       ID       ETA1         ETA2        ETA3}
 \CommentTok{\#\#  [1,]  1 {-}0.6367109 {-}0.232258352 {-}0.73648224}
@@ -3637,7 +3650,7 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \hypertarget{uxace0uxc720uxac12eigenvalue}{%
 \section{\texorpdfstring{고유값(Eigenvalue)\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}}{고유값(Eigenvalue)}}\label{uxace0uxc720uxac12eigenvalue}}
 
-공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}
+공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}
 
 어떤 행렬 A를 스칼라 \(\lambda\)와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,
 
@@ -3662,7 +3675,7 @@ Minimization에서 고유값을 출력하는 이유는 minimization 과정이 �
 \hypertarget{uxacb0uxb860}{%
 \section{결론}\label{uxacb0uxb860}}
 
-NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.\index{대체 / imputation}\index{imputation / 대체}
+NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3673,7 +3686,7 @@ NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현
   속도가 적어도 수 십에서 수 백 배 느리다.
 \end{enumerate}
 
-나머지 FOCE나 Laplacian에 대해서는 \textbf{nmw} 패키지의 도움말을 보고 실행하면 알 수 있다.
+나머지 FOCE나 Laplacian에 대해서는 nmw 패키지의 도움말\footnote{\url{https://cran.r-project.org/web/packages/nmw/nmw.pdf}}을 보고 실행하면 알 수 있다. (Bae \protect\hyperlink{ref-R-nmw}{2018})
 
 \hypertarget{parameters}{%
 \chapter{모델 파라미터의 적절성}\label{parameters}}
@@ -3955,7 +3968,7 @@ NPC는 VPC와 유사한 방식으로 모델 진단을 수행하며, 그 논리�
 약효가 용량과 상관관계가 있다는 것은 정확히 말한다면 혈장 약물농도나 농도곡선하면적 등으로 표현되는 약물노출(exposure)과 약효가 상관 있고, 그 약물노출은 또 외부에서 투여한 약의 용량에 의해 결정된다는 것이다. 이는 너무도 당연한 것이라고 볼 수도 있으나, 용량-노출, 노출-약효의 상관관계가 단순한 정비례 관계가 아니라, 인체의 약물제거 능력, 수용체와 약물의 복잡한 상호작용(약력학), 시간이라는 변수 등이 관련되고 또 개인간의 차이까지 관여되므로 이 관계를 잘 파악하고 정량화하는 것은 적절한 효과를 얻기 위해 얼마의 용량을 얼마 간격으로 주어야 하는가를 결정하기 위해 반드시 필요한 과정이다.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/17-fig-01} \caption{용량-노출, 노출-약효의 상관관계}\label{fig:unnamed-chunk-23}
+\includegraphics[width=1\linewidth]{figures/17-fig-01} \caption{용량-노출, 노출-약효의 상관관계}\label{fig:unnamed-chunk-21}
 \end{figure}
 
 신약개발에 있어 임상약리학의 핵심적 역할은 최적의 약효를 얻기 위한 용량용법을 찾는 것이라 할 수 있다. 용량과 노출의 관련성을 탐구하는 것이 약동학이고, 넓게 정의한다면 약물의 효과를 탐구하는 모든 연구분야를 약력학이라 할 수 있겠지만, 임상약리학에서는 약물노출과 생체에서 측정된 약효의 관련성을 탐구하는 것이 약력학(pharmacodynamics)이다. 이러한 약동학과 약력학을 연결하여 설명할 수 있다면 적절한 용량용법을 찾아낼 수 있는 것이다.
@@ -4051,7 +4064,9 @@ NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농�
 \hypertarget{pkpd-link}{%
 \chapter{PK-PD 연결 방법과 적합법}\label{pkpd-link}}
 
-\emph{이소진}
+이소진
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 약물의 개발과 임상적 활용에 있어 궁극적으로 얻고자 하는 정보는 약물의 안전성과 유효성에 대한 정보이며, PK-PD 모델링을 통해 우리가 임상에서 알고자 하는 관심 질문에 대한 답변을 얻을 수 있다. 내가 가진 데이터의 특성과 얻고자 하는 답변이 무엇인가에 따라 모델을 구현하는 방법이 정해지며, 대표적으로 약물의 유효용량 범위 또는 시간에 따른 약물의 효과를 예측하고자 하는 경우 PK-PD 모델링 및 시뮬레이션을 많이 사용한다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 

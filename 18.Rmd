@@ -1,6 +1,8 @@
 # PK-PD 연결 방법과 적합법 {#pkpd-link}
 
-*이소진*
+이소진
+
+---
 
 약물의 개발과 임상적 활용에 있어 궁극적으로 얻고자 하는 정보는 약물의 안전성과 유효성에 대한 정보이며, PK-PD 모델링을 통해 우리가 임상에서 알고자 하는 관심 질문에 대한 답변을 얻을 수 있다. 내가 가진 데이터의 특성과 얻고자 하는 답변이 무엇인가에 따라 모델을 구현하는 방법이 정해지며, 대표적으로 약물의 유효용량 범위 또는 시간에 따른 약물의 효과를 예측하고자 하는 경우 PK-PD 모델링 및 시뮬레이션을 많이 사용한다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
@@ -25,7 +27,7 @@ PD 모델링을 위해서 PD 데이터의 특성을 파악하는 것이 중요�
 
 PK-PD 모델링을 수행하는 과정에서 우리는 PK 와 PD 데이터를 모두 다루게 된다. 이 경우, 주의해야할 점이 몇 가지 있다.  데이터셋에 구획 정보를 포함하여 두 종류의 데이터를 구분하여 주어야 한다.
 
-예를 들어 아래의 clopidogrel PK-PD 모델의 구조를 살펴보면, ‘Central’ 구획에서 관측되는 값은 clopidogrel의 PK 데이터이고, ‘Effect’ 구획에서 관측되는 값은 PD 데이터로, 이 경우 platelet aggregation을 나타낸다(그림 \@ref(fig:clopidogrel)). [@lee2012population] 구획 번호는 모델의 구조에 맞추어 변경하여 진행한다.
+예를 들어 아래의 clopidogrel PK-PD 모델의 구조를 살펴보면, 'Central' 구획에서 관측되는 값은 clopidogrel의 PK 데이터이고, 'Effect' 구획에서 관측되는 값은 PD 데이터로, 이 경우 platelet aggregation을 나타낸다(그림 \@ref(fig:clopidogrel)). [@lee2012population] 구획 번호는 모델의 구조에 맞추어 변경하여 진행한다.
 
 또한 PK 와 PD 가 같은 대상자(또는 같은 질환 모델 개체)에서 얻어진 값인지 파악해야 한다. PK 데이터와 PD 데이터는 다른 시간에서 얻어질 수 있으며, 각각의 관측치의 차이의 폭(scale)이 다를 수 있음을 염두해야 두어야 한다.
 
@@ -59,10 +61,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>%
   collapse_rows(1, valign = "top")
 ```
 
-
-
 아래의 그림은 각 방법이 가지는 PK 정보의 정도(level of information)를 도식화한 그림이다(그림 \@ref(fig:level-info)).  순차적합법 중 PPP\&D 와 PPP는 PK 모델에서 얻은 PK 파라미터 추정치(θ, ω, σ)에 대한 정보를 담고 있다. IPP 방법은 집단 PK 파라미터 추정치에서 한 단계 더 나아가 posthoc 파라미터라고 불리는 개인 PK 파라미터 추정치(CL, V2, V3 등)에 대한 정보를 담고 있다.\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
-
 
 ```{r level-info, fig.cap="(ref:level-info)"}
 knitr::include_graphics("figures/18-fig-03.png") # fig 3

@@ -113,17 +113,21 @@ MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1�
 
 양변을 $\theta$에 대해 미분하면
 \begin{equation}
+\begin{split}
 \int\left\{ \frac{\partial}{\partial\theta}lnf(x;\theta) \right\} exp(lnf(x;\theta))dx = 0 \\
 E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack = 0
+\end{split}
 (\#eq:theta-differential)
 \end{equation}
 
 한 번 더 미분하면
 
 \begin{equation}
+\begin{split}
 \int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
 E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
 I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\end{split}
 (\#eq:diff-diff)
 \end{equation}
 
@@ -138,35 +142,80 @@ I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\thet
 수식으로 표현하자면 다음과 같다. 여기에서 \(O_{i}\)는 개인(i)의 목적함수 값이며, \(O\)는 전체 목적함수 값이다.\index{목적함수 / objective function}\index{objective function / 목적함수}
 
 \begin{equation}
+\begin{split}
 O = \sum_{i}^{}O_{i} \\
 S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
 R = \frac{\partial^{2}O}{\partial\theta^{2}}
+\end{split}
 (\#eq:o-s-r)
 \end{equation}
 
 ## R에서의 구현
 
-[14.1](#actual-example)의 예제를 R로 풀이하면 다음과 같다. 우선 **nmw** package를 설치한다. [@R-nmw]
+[14.1](#actual-example)의 예제를 R로 풀이하면 다음과 같다. 우선 CRAN에 올라와 있는 nmw package를 설치한다. [@R-nmw]
 
 ```r
 if (!require(nmw)) install.packages("nmw")
 ```
 
-다음 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.\index{covariance / 공분산}
+`nmw::CovStep()` 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.\index{covariance / 공분산}
 
-```{r}
-nmw::CovStep
+```r
+# nmw::CovStep
+function () 
+{
+  e$STEP = "COV"
+  StartTime = Sys.time()
+  Rmat = hessian(Obj, e$FinalPara)/2
+  Smat = CalcSmat()
+  if (is.nan(Smat[1, 1])) 
+    stop("Error - NaN produced")
+  invR = solve(Rmat)
+  Cov = invR %*% Smat %*% invR
+  SE = sqrt(diag(Cov))
+  Correl = cov2cor(Cov)
+  InvCov = Rmat %*% solve(Smat) %*% Rmat
+  EigenVal = sort(eigen(Correl)$values)
+  RunTime = difftime(Sys.time(), StartTime)
+  Result = list(RunTime, SE, Cov, Correl, InvCov, EigenVal, 
+                Rmat, Smat)
+  names(Result) = list("Time", "Standard Error", 
+                       "Covariance Matrix of Estimates", 
+                       "Correlation Matrix of Estimates", 
+                       "Inverse Covariance Matrix of Estimates", 
+                       "Eigen Values", 
+                       "R Matrix", "S Matrix")
+  return(Result)
+}
 ```
 
-S matrix를 계산하는 함수는 다음과 같다.
+S matrix를 계산하는 internal obj functions 함수 `nmw::CalcSmat()`는 다음과 같다.
 
-```{r}
-nmw::CalcSmat
+```r
+# nmw::CalcSmat
+function () 
+{
+  Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
+                ncol = e$nPara)
+  for (i in 1:e$nID) {
+    e$DATAi = e$DataRef[[i]]
+    e$ETAi = e$EBE[i, e$EtaNames]
+    e$nReci = e$Oi[i, "nRec"]
+    if (e$METHOD == "ZERO") {
+      gr = grad(OiS0, e$FinalPara)
+    }
+    else {
+      gr = grad(OiS1, e$FinalPara)
+    }
+    Smat = Smat + gr %*% t(gr)
+  }
+  return(Smat/4)
+}
 ```
 
 ## Theophylline 예제 데이터셋 {#Theoph}
 
-R에는 기본적으로 **nlme** 패키지[@R-nlme]가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다. Theophylline데이터를 그리면 다음과 같다.
+R에는 기본적으로 nlme 패키지[@R-nlme]가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다. Theophylline 데이터를 그리면 다음과 같다.
 
 (ref:theophconctime) Theophylline 경구 복용 후 농도-시간 곡선
 
@@ -234,9 +283,10 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
 이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.
 
 ```r
+library(nmw)
 # First Order Approximation Method
-InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=UB,
-         Pred=PRED1, METHOD="ZERO")
+InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, 
+         LB=LB, UB=UB, Pred=PRED1, METHOD="ZERO")
 (EstRes1 = EstStep())
 ## $`Initial OFV`
 ## [1] 141.3076
@@ -268,6 +318,12 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 ##  [1]  3.16946754 38.25213460  0.10501808  1.19823325  0.13747849
 ##  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782
 ## [11]  0.05427434
+```
+
+`InitStep()`과 `EstStep()`을 마친 후 `CovStep()`을 실행하면 아래와 같은 표준오차와 분산 행렬을 계산할 수 있다. 
+
+
+```r
 (CovRes1 = CovStep())
 ## $Time
 ## Time difference of 1.0468 secs
@@ -459,6 +515,11 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 ##  [9,]   2358.45500
 ## [10,]  18067.42672
 ## [11,]  24042.66052
+```
+
+`PostHocEta()`, `TabStep()`의 실행화면은 아래와 같다.
+
+```r
 (EBE1 = PostHocEta()) # Using e$FinalPara from EstStep()
 ##       ID       ETA1         ETA2        ETA3
 ##  [1,]  1 -0.6367109 -0.232258352 -0.73648224
@@ -478,7 +539,7 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, LB=LB, UB=U
 
 ## 고유값(Eigenvalue)\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
 
-공분산단계 에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}
+공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}
 
 어떤 행렬 A를 스칼라 \(\lambda\)와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,
 
@@ -502,12 +563,12 @@ Minimization에서 고유값을 출력하는 이유는 minimization 과정이 �
 
 ## 결론
 
-NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.\index{대체 / imputation}\index{imputation / 대체}
+NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현해 보았다. 그러나, R이 NONMEM을 대체할 수 없는 이유 두 가지는 다음과 같다.
 
 1.  NMTRAN의 역할을 해줄 함수들이 없다.
 2.  속도가 적어도 수 십에서 수 백 배 느리다.
 
-나머지 FOCE나 Laplacian에 대해서는 **nmw** 패키지의 도움말을 보고 실행하면 알 수 있다.
+나머지 FOCE나 Laplacian에 대해서는 nmw 패키지의 도움말^[https://cran.r-project.org/web/packages/nmw/nmw.pdf]을 보고 실행하면 알 수 있다. [@R-nmw]
 
 <!--
 참고문헌
@@ -515,3 +576,4 @@ NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현
 1.  NONMEM User’s Guide I - VIII
 2.  김우철. 수리통계학. 민영사. 2012
 -->
+

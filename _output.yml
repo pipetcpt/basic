@@ -8,11 +8,11 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Basic 1 모델 구축의 기초</a></li>
+        <li><a href="./">Pharmacometrics Basic</a></li>
       after: |
         <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
-    download: [pdf, epub, mobi]
-    edit: https://github.com/pipetcpt/book-basic-1/edit/master/inst/examples/%s
+    download: [pdf] #download: [pdf, epub, mobi]
+    edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
     sharing:
       github: yes
       facebook: no
