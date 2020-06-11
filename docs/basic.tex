@@ -223,10 +223,14 @@
 
 \urlstyle{tt}
 
+\usepackage{framed}
+\setlength{\OuterFrameSep}{0pt}
+
 \usepackage{amsthm}
 \makeatletter
 \def\thm@space@setup{%
-  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@preskip=0pt
+  %\thm@preskip=1pt plus 1pt minus 1pt
   \thm@postskip=\thm@preskip
 }
 \makeatother
@@ -464,11 +468,7 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 \$INPUT 레코드에는 데이터셋에 기재된 데이터 아이템의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 아이템이 있을 경우, 변수 뒤에 \texttt{=DROP} 이라는 한정어를 써주어 해당 아이템을 제거할 수 있다. \$DATA 레코드에서 ``IGNORE'' 또는 ``ACCEPT'' 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 \$INPUT 에서 \texttt{=DROP}을 사용하여 불필요한 아이템을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 아이템 레이블 이외의 다른 이름을 사용할 경우, ``내장된 변수명=새 이름'' (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:input}{}{\label{exm:input} }\$PROB, \$DATA, \$INPUT 제어구문 작성의 예
-
-\end{example}
 \end{example}
 
 \begin{Shaded}
@@ -612,11 +612,7 @@ TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:date-dataset-chunk}{}{\label{exm:date-dataset-chunk} }DATE label and its format
-
-\end{example}
 \end{example}
 
 \hypertarget{amt}{%
@@ -760,11 +756,7 @@ NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 �
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:one-comp}{}{\label{exm:one-comp} }1구획 약동학 모델의 제어구문
-
-\end{example}
 \end{example}
 
 \index{conditional weighted residuals / 조건부 가중 잔차}
@@ -908,11 +900,7 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:two-comp-pk}{}{\label{exm:two-comp-pk} }2구획 경구 약동학 모델의 \$PK 레코드
-
-\end{example}
 \end{example}
 
 \$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S\textsubscript{n})로 단위를 통일시켜야 한다.\index{종속변수(DV) / dependent variable(DV)}\index{dependent variable(DV) / 종속변수(DV)}\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}
@@ -1116,11 +1104,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
-
-\end{example}
 \end{example}
 
 \index{conditional weighted residuals / 조건부 가중 잔차}
@@ -1182,11 +1166,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:advan4}{}{\label{exm:advan4} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
-
-\end{example}
 \end{example}
 
 동일한 데이터를 일반 ADVAN을 사용하여 분석할 경우, 일반 선형 ADVAN 또는 비선형 ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, \$MODEL 레코드에서 모델 분석에 사용할 구획의 수와 각 구획의 역할에 대하여 결정하여야 한다. (코드 \ref{exm:advan5}) DEFDOSE와 DEFOBS는 NONMEM에 내장되어 있는 옵션으로 각각 용량 구획과 관찰값 구획을 지정할 때 사용한다. 각 구획의 물질 이동은 1차 이동속도를 따르는 선형 ADVAN이므로, \$DES를 사용하지 않아도 된다.
@@ -1224,11 +1204,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:advan5}{}{\label{exm:advan5} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
-
-\end{example}
 \end{example}
 
 2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \ref{exm:advan6}처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, \$DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 \texttt{TOL=}을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.
@@ -1270,11 +1246,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
-
-\end{example}
 \end{example}
 
 \hypertarget{uxc77cuxbc18-uxbe44uxc120uxd615-uxbaa8uxb378}{%
@@ -1333,11 +1305,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:parent-metabolite}{}{\label{exm:parent-metabolite} }모약물과 대사체의 약동학 동시 분석 모델의 제어구문
-
-\end{example}
 \end{example}
 
 \hypertarget{pred-uxbaa8uxb378}{%
@@ -1367,19 +1335,17 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:linear-model}{}{\label{exm:linear-model} }\$PRED를 이용한 간단한 선형 모델
-
-\end{example}
 \end{example}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 3장은 다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
 
-\hypertarget{uxd2b9uxc218-advanuxc744-uxc774uxc6a9uxd55c-control-streamuxc758-uxcf54uxb529-specific-advan}{%
-\chapter{\texorpdfstring{특수 ADVAN을 이용한 control stream의 코딩 \{\#specific-advan\}\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}}{특수 ADVAN을 이용한 control stream의 코딩 \{\#specific-advan\}}}\label{uxd2b9uxc218-advanuxc744-uxc774uxc6a9uxd55c-control-streamuxc758-uxcf54uxb529-specific-advan}}
+\hypertarget{specific-advan}{%
+\chapter{특수 ADVAN을 이용한 control stream의 코딩}\label{specific-advan}}
+
+\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
 
 전상일
 
@@ -1460,19 +1426,19 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
 \caption{\label{tab:standard-pk-models}Standard Pharmacokinetic Models and Parameters}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{6cm}}
+\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{6cm}}
 \toprule
-  & Alternative Parameters & Detail & Reparameterization Lines\\
+ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 \midrule
  & CL & Clearance & K=CL/V\\
 
-\multirow[t]{-2}{2cm}{\raggedright\arraybackslash ADVAN1 TRANS2} & V & Volume of distribution & \\
+\multirow[t]{-2}{*}{\raggedright\arraybackslash ADVAN1 TRANS2} & V & Volume of distribution & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
  & V & Volume of distribution & KA=KA\\
 
-\multirow[t]{-3}{2cm}{\raggedright\arraybackslash ADVAN2 TRANS2} & KA & Absorption rate & \\
+\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN2 TRANS2} & KA & Absorption rate & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
@@ -1480,7 +1446,7 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
  & Q & Intercompartmental clearance & K21=Q/(VSS-V)\\
 
-\multirow[t]{-4}{2cm}{\raggedright\arraybackslash ADVAN3 TRANS3} & VSS & Volume of distrlbution at steady state & \\
+\multirow[t]{-4}{*}{\raggedright\arraybackslash ADVAN3 TRANS3} & VSS & Volume of distrlbution at steady state & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V1\\
 
@@ -1488,19 +1454,19 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
  & Q & Intercompartmental clearance & K21=Q/V2\\
 
-\multirow[t]{-4}{2cm}{\raggedright\arraybackslash ADVAN3 TRANS4} & V2 & Peripheral volume & \\
+\multirow[t]{-4}{*}{\raggedright\arraybackslash ADVAN3 TRANS4} & V2 & Peripheral volume & \\
 \cmidrule{1-4}
  & AOB & A/B & K21=(AOB*BETA+ALPHA)/(AOB+1)\\
 
  & ALPHA & alpha & K=ALPHA*BETA/K21\\
 
-\multirow[t]{-3}{2cm}{\raggedright\arraybackslash ADVAN3 TRANS5} & BETA & beta & K12=ALPHA+BETA-K21-K\\
+\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN3 TRANS5} & BETA & beta & K12=ALPHA+BETA-K21-K\\
 \cmidrule{1-4}
  & ALPHA & alpha & K=ALPHA*BETA/K21\\
 
  & BETA & beta & K12=ALPHA+BETA-K21-K\\
 
-\multirow[t]{-3}{2cm}{\raggedright\arraybackslash ADVAN3 TRANS6} & K21 & Rate constant from periph. to central & K21=K21\\
+\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN3 TRANS6} & K21 & Rate constant from periph. to central & K21=K21\\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
@@ -1510,7 +1476,7 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
  & VSS & Volume of distrlbution at steady state & KA=KA\\
 
-\multirow[t]{-5}{2cm}{\raggedright\arraybackslash ADVAN4 TRANS3} & KA & Absorption rate & \\
+\multirow[t]{-5}{*}{\raggedright\arraybackslash ADVAN4 TRANS3} & KA & Absorption rate & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V2\\
 
@@ -1520,7 +1486,7 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
  & V3 & Peripheral volume & KA=KA\\
 
-\multirow[t]{-5}{2cm}{\raggedright\arraybackslash ADVAN4 TRANS4} & KA & Absorption rate & \\
+\multirow[t]{-5}{*}{\raggedright\arraybackslash ADVAN4 TRANS4} & KA & Absorption rate & \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1567,11 +1533,7 @@ ALAGn & Absorption lag parameter for compartment n\\
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:code-example-advan4}{}{\label{exm:code-example-advan4} }공변량 수식 작성에 수월한 제어구문
-
-\end{example}
 \end{example}
 
 ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
@@ -1600,11 +1562,7 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:code-if}{}{\label{exm:code-if} }상대생체이용률을 위한 제어구문
-
-\end{example}
 \end{example}
 
 척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, control stream에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 \ref{tab:basic-additional}를 참고하도록 하자. (Beal \protect\hyperlink{ref-nonmem}{2018})\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}
@@ -1845,11 +1803,7 @@ Method & Runge-Kutta method & Gear method\\
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:advan5-example}{}{\label{exm:advan5-example} }2구획 경구모델을 ADVAN5로 구현한 코드 예시
-
-\end{example}
 \end{example}
 
 동일한 2구획 경구모델(그림 \ref{fig:2comp-oral})을 일반 선형(ADVAN5, 코드 \ref{exm:advan5-example}) 및 비선형(ADVAN6, 코드 \ref{exm:advan6-example}) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
@@ -1882,11 +1836,7 @@ Method & Runge-Kutta method & Gear method\\
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:advan6-example}{}{\label{exm:advan6-example} }2구획 경구모델을 ADVAN6로 구현한 코드 예시
-
-\end{example}
 \end{example}
 
 \hypertarget{newer-advan}{%
@@ -1973,11 +1923,7 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:formula}{}{\label{exm:formula} }약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
-
-\end{example}
 \end{example}
 
 \hypertarget{IE}{%
@@ -2379,11 +2325,7 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:table-example}{}{\label{exm:table-example} }\$TABLE의 예
-
-\end{example}
 \end{example}
 
 Sdtab은 Standard Table, patab은 Parameter Table, catab은 Categorical Covariates Table을 의미하며, cotab은 Continuous Covariates Table을 의미한다. 이 네 개의 테이블 이름은 xpose4 package에서 미리 약속된 이름으로 그대로 사용하여야 하며, 그 뒤에 숫자(Run Number라고 한다)만 바꾸어 사용하게 된다. \$TABLE의 옵션들은 앞에서 설명하였으니 생략하기로 하고, 추가적인 옵션들은 NONMEM 설치 폴더의 help 폴더 안에 있는 \$table.ctl 파일을 참고하도록 하자.
@@ -3061,11 +3003,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:combined-upper}{}{\label{exm:combined-upper} }\$ERROR structure in NONMEM control stream: 기본형태
-
-\end{example}
 \end{example}
 
 \begin{Shaded}
@@ -3080,12 +3018,8 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:combined-lower}{}{\label{exm:combined-lower} }\$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
 이고, 비례오차모델의 표준편차를 반영
-
-\end{example}
 \end{example}
 
 Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 \ref{fig:run-test})\index{잔차 / residual error}\index{residual error / 잔차}
@@ -4311,11 +4245,7 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:SIM-control}{}{\label{exm:SIM-control} }SIM 방법의 제어구문의 예
-
-\end{example}
 \end{example}
 
 아래의 제어구문은 NONMEM을 기본적으로 수행시키기 위해 \$PK 위에 들어가는 명령어라고 볼 수 있다.
@@ -4405,11 +4335,7 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:pppd-code}{}{\label{exm:pppd-code} }PPP\&D 방법의 제어구문의 예
-
-\end{example}
 \end{example}
 
 \hypertarget{ppp-population-pk-parameters}{%
@@ -4460,11 +4386,7 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:control-ppp}{}{\label{exm:control-ppp} }Example of control file for PPP
-
-\end{example}
 \end{example}
 
 \hypertarget{ipp-individual-pk-parameters}{%
@@ -4515,11 +4437,7 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:IPP-example}{}{\label{exm:IPP-example} }IPP 방법의 제어구문의 예
-
-\end{example}
 \end{example}
 
 \hypertarget{indirect-pkpd}{%
@@ -4580,12 +4498,10 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
-\protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }(ref:sim-pppd-similarity) SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
-
+\protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
 \end{example}
-\end{example}
+
+
 
 \hypertarget{pppuxc758-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}{%
 \subsection{PPP의 데이터셋 및 제어구문}\label{pppuxc758-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}}
@@ -4652,11 +4568,7 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:ipp-control-stream}{}{\label{exm:ipp-control-stream} }IPP 방법의 제어구문의 예
-
-\end{example}
 \end{example}
 
 \hypertarget{pk-pd-uxc5f0uxacb0uxbc29uxbc95uxc801uxd569uxbc95-uxbe44uxad50}{%
@@ -4788,9 +4700,9 @@ E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
 E\textsubscript{max} 모델을 이용하여 약물(또는 리간드)과 수용체의 결합에 따른 약효를 설명할 수 있다. E\textsubscript{max} 모델의 수식 유도과정은 약물-수용체 결합을 참고 바란다.
 
 \begin{rmdtip}
-\begin{rmdtip}
-
 \textbf{약물-수용체 결합}
+
+\includegraphics{./assets/media-19/box1.png}
 
 수용체-리간드 반응을 통해 약효를 나타내며, 이 과정에는 몇 가지 가정이 존재한다.
 
@@ -4805,11 +4717,49 @@ E\textsubscript{max} 모델을 이용하여 약물(또는 리간드)과 수용�
   약물-수용체 복합체 {[}R*{]}은 약효(E)와 비례한다.
 \end{enumerate}
 
+가정 1.에 의해,
+\begin{equation}
+\begin{split}
+  C \cdot R \cdot k_{on} & = R \cdot k_{off} \\
+  K_D & = \frac{k_{off}}{k_{on}} = \frac{[C][R]}{[R^*]} \\
+  \frac{dR^*}{dt} & = k_{on} \cdot C \cdot R - k_{off} \cdot R^*
+\end{split}
+\label{eq:rate}
+\end{equation}
+
+(K\textsubscript{D}: 평형상태에서 약물-수용체 복합체의 해리상수)
+
+가정 2.에 의하여 \([R^*]=[CR]\) 이며, \([R_T] = [R] + [R^*]\)이며,
+\begin{equation}
+\begin{split}
+  k_{on} \cdot C \cdot (R_T - R^*) - k_{off} \cdot R^* &= 0 \\
+  C \cdot R_T - C \cdot R^* - K_D \cdot R^* &= 0 \\
+  R^* = \frac{C \cdot R_T}{C + K_D} & 
+\end{split}
+\label{eq:rstar}
+\end{equation}
+
+가정 3.에 의하여 \(E=\alpha \cdot [R^*]\)이므로,
+\begin{equation}
+E = \alpha \cdot R^* = \frac{\alpha \cdot R_T \cdot C}{C + K_D}
+\end{equation}
+
+\(E_{max} = \alpha \cdot [R_T]\)라 하면,
+\begin{equation}
+E = \frac{E_{max} \cdot C}{C + K_D}
+\end{equation}
+
+여기서, K\textsubscript{D}의 단위는 농도이며 (C와 동일), 약물 수용체의 50\%가 결합한 상태에서의 약효(EC\textsubscript{50})는 Emax/2 가 된다. 이를 위의 식에 대입하면,
+\begin{equation}
+\frac{E_{max}}{2} = \frac{E_{max} \cdot EC_{50}}{K_D + EC_{50}}
+\end{equation}
+
+이고 이를 정리하면, \(K_D = EC_{50}\)이다. 결국 다시 정리하면, Emax 모델은 다음과 같다.
+\begin{equation}
+E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
+\end{equation}
+
 C는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, C는 C\textsubscript{T} (특정조직에서의 약물농도)로 대체할 수 있다.
-
-\includegraphics{./assets/media-19/box1.png}
-
-\end{rmdtip}
 \end{rmdtip}
 
 약물농도가 EC\textsubscript{50}에 비하여 매우 작으면 (EC\textsubscript{50} \textgreater\textgreater C), 약효는 혈중 약물농도에 비례하지만 (E = (E\textsubscript{max}/EC\textsubscript{50}) · C), 약물농도가 EC\textsubscript{50}보다 크면(EC\textsubscript{50} \textless\textless{} C), 약효는 포화되어, 약물농도에 관계없이 일정한 값을 가진다(E\textsubscript{max}). 그림 \ref{fig:emax-model}에서 E\textsubscript{max}는 약물의 효능(efficacy)을 나타내며, EC\textsubscript{50}은 약물의 효력(potency)를 나타내는 지표이다. 또한, 약물농도를 로그로 치환하면 EC\textsubscript{50}을 명확하게 확인할 수 있으며, 데이터에 기저치가 존재하면 다음과 같이 나타낼 수 있다.
@@ -4872,8 +4822,6 @@ Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도�
 \end{figure}
 
 \begin{rmdtip}
-\begin{rmdtip}
-
 \textbf{Sigmoid E\textsubscript{max} model에서 n 구하기}
 
 로그농도 그래프(그림 \ref{fig:sigmoid-emax-block2})에서
@@ -4893,8 +4841,6 @@ E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 \end{split}
 \label{eq:ec50-m}
 \end{equation}
-
-\end{rmdtip}
 \end{rmdtip}
 
 \hypertarget{pd-uxbaa8uxb378uxc758-uxc801uxc6a9}{%
@@ -5016,11 +4962,7 @@ K_2 &= k_2 / k_{-2}
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:effect-model-code}{}{\label{exm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})
-
-\end{example}
 \end{example}
 
 
@@ -5053,11 +4995,7 @@ K_2 &= k_2 / k_{-2}
 \end{Shaded}
 
 \begin{example}
-\begin{example}
-
 \protect\hypertarget{exm:effect-comp-advan6}{}{\label{exm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})
-
-\end{example}
 \end{example}
 
 \hypertarget{uxc9c1uxc811uxd6a8uxacfc-vs.-uxac04uxc811uxd6a8uxacfc}{%

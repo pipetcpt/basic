@@ -3,6 +3,7 @@ kmong*.zip
 _bookdown_files
 pdf-*.pdf
 zip
+./basic.log
 
 # History files
 .Rhistory

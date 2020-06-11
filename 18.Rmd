@@ -368,8 +368,10 @@ $PK
   KE   = CL/V2
 ```
 ```{example, sim-pppd-similarity, echo = TRUE}
-(ref:sim-pppd-similarity) SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분 <!--fig13-->
+(ref:sim-pppd-similarity)
 ```
+
+(ref:sim-pppd-similarity) SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분 <!--fig13-->
 
 ### PPP의 데이터셋 및 제어구문
 

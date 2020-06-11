@@ -1,4 +1,6 @@
-# 특수 ADVAN을 이용한 control stream의 코딩 {#specific-advan}\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
+# 특수 ADVAN을 이용한 control stream의 코딩 {#specific-advan}
+
+\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
 
 전상일
 
@@ -55,14 +57,14 @@ tibble::tribble(
 
 ```{r standard-pk-models}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
-  rename(` ` = 1) %>%	
+  rename(`ADVAN TRANS` = 1) %>%	
   kable(booktabs = TRUE, align = "l", escape = FALSE,
 		caption = "Standard Pharmacokinetic Models and Parameters") %>% 
-  column_spec(1, width = "2cm") %>%
+  #column_spec(1, width = "2cm") %>%
   column_spec(2, width = "1.5cm") %>%
   column_spec(3, width = "3cm") %>%
   column_spec(4, width = "6cm") %>%
-  collapse_rows(columns=1, latex_hline="major", valign = "top")
+  collapse_rows(1, latex_hline="major", valign = "top")
 ```
 
 ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 \@ref(tab:additional-param)에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. [@nonmem]
