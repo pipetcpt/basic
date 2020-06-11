@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 18 PK-PD 연결 방법과 적합법 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 18 PK-PD 연결 방법과 적합법 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-09" />
+<meta name="date" content="2020-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -442,64 +442,64 @@ parameter
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 3cm; ">
+<td style="text-align:left;width: 2cm; ">
 Simultaneous PK-PD analysis
 </td>
-<td style="text-align:left;width: 3cm; ">
+<td style="text-align:left;width: 4cm; ">
 SIM (Simultaneous)
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 1cm; ">
 O
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 2cm; ">
 Estimate
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 4cm; ">
 Estimate
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 3cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 2cm; vertical-align: top !important;" rowspan="3">
 Sequential PK-PD analysis
 </td>
-<td style="text-align:left;width: 3cm; ">
+<td style="text-align:left;width: 4cm; ">
 PPP&amp;D (Population PK Parameter &amp; Data)
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 1cm; ">
 O
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 2cm; ">
 Fix
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 4cm; ">
 Estimate (by PK data)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 3cm; ">
+<td style="text-align:left;width: 4cm; ">
 PPP (Population PK Parameters)
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 1cm; ">
 X
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 2cm; ">
 Fix
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 4cm; ">
 Estimate (by PD data)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 3cm; ">
+<td style="text-align:left;width: 4cm; ">
 IPP (Individual PK Parameters)
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 1cm; ">
 X
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 2cm; ">
 (not considered)
 </td>
-<td style="text-align:left;width: 2.5cm; ">
+<td style="text-align:left;width: 4cm; ">
 Fix (as given by the PK model)
 </td>
 </tr>
@@ -909,53 +909,53 @@ IPP
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-<strong>Population PK parameter estimation</strong>
+<td style="text-align:left;width: 6cm; ">
+Population PK parameter estimation
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 Y
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 N
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 N
 </td>
-<td style="text-align:left;">
-N
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>Use of PK data</strong>: needs 2 types of DV
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-Y
-</td>
-<td style="text-align:left;">
-N
-</td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 N
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-<strong>Individual PK parameter estimation</strong>: Ind. parameter estimates are not included
+<td style="text-align:left;width: 6cm; ">
+Use of PK data: needs 2 types of DV
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 Y
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
 Y
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
+N
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+N
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 6cm; ">
+Individual PK parameter estimation: Ind. parameter estimates are not included
+</td>
+<td style="text-align:left;width: 1.5cm; ">
 Y
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 1.5cm; ">
+Y
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+Y
+</td>
+<td style="text-align:left;width: 1.5cm; ">
 N
 </td>
 </tr>

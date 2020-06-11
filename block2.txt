@@ -1,0 +1,42 @@
+가정 1.에 의해,
+\begin{equation}
+\begin{split}
+  C \cdot R \cdot k_{on} & = R \cdot k_{off} \\
+  K_D & = \frac{k_{off}}{k_{on}} = \frac{[C][R]}{[R^*]} \\
+  \frac{dR^*}{dt} & = k_{on} \cdot C \cdot R - k_{off} \cdot R^*
+\end{split}
+(\#eq:rate)
+\end{equation}
+
+(K~D~: 평형상태에서 약물-수용체 복합체의 해리상수)
+
+가정 2.에 의하여 $[R^*]=[CR]$  이며, $[R_T] = [R] + [R^*]$이며, 
+\begin{equation}
+\begin{split}
+  k_{on} \cdot C \cdot (R_T - R^*) - k_{off} \cdot R^* &= 0 \\
+  C \cdot R_T - C \cdot R^* - K_D \cdot R^* &= 0 \\
+  R^* = \frac{C \cdot R_T}{C + K_D} & 
+\end{split}
+(\#eq:rstar)
+\end{equation}
+
+가정 3.에 의하여 $E=\alpha \cdot [R^*]$이므로,
+\begin{equation}
+E = \alpha \cdot R^* = \frac{\alpha \cdot R_T \cdot C}{C + K_D}
+\end{equation}
+
+$E_{max} = \alpha \cdot [R_T]$라 하면,
+\begin{equation}
+E = \frac{E_{max} \cdot C}{C + K_D}
+\end{equation}
+
+여기서, K~D~의 단위는 농도이며 (C와 동일), 약물 수용체의 50%가 결합한 상태에서의 약효(EC~50~)는 Emax/2 가 된다. 이를 위의 식에 대입하면,
+\begin{equation}
+\frac{E_{max}}{2} = \frac{E_{max} \cdot EC_{50}}{K_D + EC_{50}}
+\end{equation}
+
+이고 이를 정리하면, $K_D = EC_{50}$이다. 결국 다시 정리하면, Emax 모델은 다음과 같다.
+\begin{equation}
+E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
+\end{equation}
+

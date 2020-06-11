@@ -56,8 +56,11 @@ PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적
 ```{r pk-pd-link-methods}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>% 
   kable(booktabs=TRUE, caption = "PK-PD 연결 방법들") %>% 
-  column_spec(c(1,2), width = "3cm") %>%
-  column_spec(3:5, width = "2.5cm") %>%
+  column_spec(1, width = "2cm") %>%
+  column_spec(2, width = "4cm") %>%
+  column_spec(3, width = "1cm") %>%
+  column_spec(4, width = "2cm") %>%
+  column_spec(5, width = "4cm") %>%
   collapse_rows(1, valign = "top")
 ```
 
@@ -481,10 +484,12 @@ include_graphics("figures/18-fig-12.png")
 ```{r pkpd-link-summary}
 tibble::tribble(
 ~Method, ~SIM, ~"PPP&D", ~PPP, ~IPP,
-'**Population PK parameter estimation**', 'Y', 'N', 'N', 'N',
-'**Use of PK data**: needs 2 types of DV', 'Y', 'Y', 'N', 'N',
-'**Individual PK parameter estimation**: Ind. parameter estimates are not included', "Y", 'Y', "Y", "N") %>% 
-  kable(caption = "PK-PD 연결 방법의 요약", booktabs=TRUE, escape=TRUE)
+'Population PK parameter estimation', 'Y', 'N', 'N', 'N',
+'Use of PK data: needs 2 types of DV', 'Y', 'Y', 'N', 'N',
+'Individual PK parameter estimation: Ind. parameter estimates are not included', "Y", 'Y', "Y", "N") %>% 
+  kable(caption = "PK-PD 연결 방법의 요약", booktabs=TRUE, escape=TRUE) %>%
+  column_spec(1, width = "6cm") %>%
+  column_spec(2:5, width = "1.5cm")
 ```
 
 우리는 이와 같은 다양한 PK-PD 모델링 방법을 사용하여 궁극적으로 PD 파라미터 값을 얻을 수 있다. 내가 가진 데이터의 성격을 탐색하여 상황에 따라 적절한 PK-PD 연결방법을 선택하여 사용하는 것이 가장 이상적이라고 할 수 있다. PK-PD 모델링을 통해 얻은 PD 파라미터 값을 기반으로 시뮬레이션을 하여 다양한 용량 별 시간에 따른 효과의 변화를 예측할 수 있다. 결론적으로, 이 결과를 가지고 우리는 임상에서 알고자 하는 약물의 효과에 대한 질문의 답을 얻을 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}

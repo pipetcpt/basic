@@ -42,7 +42,6 @@ include_graphics("figures/20-fig-03.png")
 
 이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의 관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는 방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때, 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량(K12=0.001\*K)이어서 혈장농도 모델링에 영향이 극히 미미하고,효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(코드 \@ref(exm:effect-model-code)) 
 
-(ref:effect-model-code) 효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) [@nonmem]
 
 
 ```r
@@ -62,13 +61,15 @@ $ERROR
   Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
   ENDIF
 ```
+
+
 ```{example, effect-model-code, echo=TRUE}
 (ref:effect-model-code)
 ```
 
+(ref:effect-model-code) 효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) [@nonmem]
+
 또다른 방식으로는 아래 코드 \@ref(exm:effect-comp-advan6)와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．  
-
-
 
 ```r
 $SUBROUTINES ADVAN6 TOL=5
@@ -92,6 +93,7 @@ $ERROR
   Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
   ENDIF
 ```
+
 ```{example, effect-comp-advan6, echo=TRUE}
 효과구획 모델 코드: Using General Nonlinear model (ADVAN6) [@nonmem]
 ```
@@ -111,7 +113,6 @@ include_graphics("figures/20-fig-04.png")
 ## Turnover 모델
 
 약물 투여 후 관찰된 반응 자체가 아닌 이를 조절하는 대상이 약물의 직접적인 목표이고 이를 통해 궁극적으로 반응이 증가되거나 감소되는 간접효과 양상은 turnover 모델로 설명할 수 있다. 아래 미분방정식에서 R은 특정 시점에서 관찰된 반응을 뜻하고, Kin은 반응을 증가시키는 속도를 설명하는 0차 속도상수이며, kout은 반응을 감소시키는데 관여하는 1차 속도상수를 의미한다.
-
 \begin{equation}
 \frac{dR}{dt} = k_{in}^0\ - k_{out} \cdot R
 (\#eq:turnovereq)
@@ -128,13 +129,6 @@ include_graphics("figures/20-fig-05.png")
 ### Inhibition on production (Model I)
 
 관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-i))
-
-```{r model-i, fig.cap="(ref:model-i)", out.width='50%'}
-include_graphics("figures/20-fig-06.png")
-```
-
-(ref:model-i) Inhibition on production [@sharma1998characteristics]
-
 \begin{equation}
 \begin{split}
 \frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
@@ -150,16 +144,15 @@ DADT(1)=-K*A(1)
 DADT(2)=KIN*(1-IMAX*C1/(IC50+C1))-KOUT*A(2)
 ```
 
+```{r model-i, fig.cap="(ref:model-i)", out.width='50%'}
+include_graphics("figures/20-fig-06.png")
+```
+
+(ref:model-i) Inhibition on production [@sharma1998characteristics]
+
 ### Inhibition on loss (Model II)
 
 관찰된 반응이 감소되는 걸 약물이 억제하는 경우를 말하며, 혈중 acetylcholine 농도 증가를 위해 cholinesterase 길항제를 투여하는 것이 이에 해당된다. 신경전달물질 역할을 하는 acetylcholine은 cholinesterase에 의해 분해되지만, 이 분해 효소의 기능을 억제함으로써 acetylcholine 농도를 높일 수 있다.  이런 간접효과 모델은 반응 감소와 관련된 Kout에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-ii))
-
-```{r model-ii, fig.cap="(ref:model-ii)", out.width='50%'}
-include_graphics("figures/20-fig-07.png")
-```
-
-(ref:model-ii) Inhibition on loss [@sharma1998characteristics]
-
 \begin{equation}
 \begin{split}
 \frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
@@ -175,16 +168,15 @@ DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1-IMAX*C1/(IC50+C1))*A(2)
 ```
 
+```{r model-ii, fig.cap="(ref:model-ii)", out.width='50%'}
+include_graphics("figures/20-fig-07.png")
+```
+
+(ref:model-ii) Inhibition on loss [@sharma1998characteristics]
+
 ### Stimulation on production (Model III)
 
 관찰된 반응이 증가되는 걸 약물이 촉진하는 경우를 말하며, erythropoietin이 혈중 적혈구의 전구물질을 증가시켜 궁극적으로 적혈구를 증가시키는 현상이 이에 부합한다. 실제 관측한 것은 적혈구 수치인데 erythropoietin은 직접적으로 이 수치를 증가시키는 것이 아니라, 그 전구물질의 양을 증가시킴으로써 궁극적으로 적혈구 수치를 증가시키게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-iii))
-
-```{r model-iii, fig.cap="(ref:model-iii)", out.width='50%'}
-include_graphics("figures/20-fig-08.png")
-```
-
-(ref:model-iii) Stimulation on production [@sharma1998characteristics]
-
 \begin{equation}
 \begin{split}
 \frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
@@ -200,16 +192,15 @@ DADT(1)=-K*A(1)
 DADT(2)=KIN*(1+SMAX*C1/(SC50+C1))-KOUT*A(2)
 ```
 
+```{r model-iii, fig.cap="(ref:model-iii)", out.width='50%'}
+include_graphics("figures/20-fig-08.png")
+```
+(ref:model-iii) Stimulation on production [@sharma1998characteristics]
+
+
 ### Stimulation on loss (Model IV)
 
 관찰된 반응이 감소되는 걸 약물이 촉진하는 경우를 말하며, PPARγ 작용제 투여로 인한 혈당 감소가 이에 해당된다고 볼 수 있다. PPARγ 주요 약리작용은 혈당을 직접 감소시키는 insulin의 작용을 증강시키는 것이다. 이런 간접효과 모델은 반응 감소와 관련된 Kout에 촉진 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다.  (그림 \@ref(fig:model-iv))
-
-```{r model-iv, fig.cap="(ref:model-iv)", out.width='50%'}
-include_graphics("figures/20-fig-09.png")
-```
-
-(ref:model-iv) Stimulation on loss [@sharma1998characteristics]
-
 \begin{equation}
 \begin{split}
 \frac{dR}{dt} & = k_{in} - k_{out} \cdot R \\
@@ -224,6 +215,13 @@ C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1+SMAX*C1/(SC50+C1))*A(2)
 ```
+
+```{r model-iv, fig.cap="(ref:model-iv)", out.width='50%'}
+include_graphics("figures/20-fig-09.png")
+```
+
+(ref:model-iv) Stimulation on loss [@sharma1998characteristics]
+
 
 ### 기저값
 

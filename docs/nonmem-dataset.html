@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 NONMEM 데이터셋 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 NONMEM 데이터셋 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-09" />
+<meta name="date" content="2020-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -379,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지 있다. 그 중에 가장 우선적으로 만들어야 하는 파일은 데이터셋 또는 데이터 파일이다. 이 단원에서는 컨트롤 파일에서 데이터셋을 어떻게 불러들여오는지에 대한 필수 제어구문 작성 방법, 데이터셋 작성 방법, 그리고 각각의 구성 요소들 (항목 또는 데이터 아이템)에 대해 설명하고자 한다.</p>
 <div id="필수-제어구문-작성-방법" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> 필수 제어구문 작성 방법</h2>
-<p>컨트롤 파일의 작성시 모델링을 위한 본격적인 제어구문 작성에 앞서, 기본적으로 파일의 제목과 사용할 데이터셋, 그리고 데이터셋의 구성 내용을 설명해주는 제어구문이 필요하다. 이는 각각 $PROB, $DATA, $INPUT 레코드에 작성하며, 이는 컨트롤 파일의 맨 앞 세 줄로 각각 한 줄씩 기입한다. (코드 <a href="#exm:input"><strong>??</strong></a>)</p>
+<p>컨트롤 파일의 작성시 모델링을 위한 본격적인 제어구문 작성에 앞서, 기본적으로 파일의 제목과 사용할 데이터셋, 그리고 데이터셋의 구성 내용을 설명해주는 제어구문이 필요하다. 이는 각각 $PROB, $DATA, $INPUT 레코드에 작성하며, 이는 컨트롤 파일의 맨 앞 세 줄로 각각 한 줄씩 기입한다. (코드 <a href="nonmem-dataset.html#exm:input">2.1</a>)</p>
 <div id="prob-레코드-작성" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> $PROB 레코드 작성</h3>
 <p>컨트롤파일 첫 줄의 필수 제어구문은 $PROBLEM 으로 사용자가 전체 파일에 대한 제목 또는 서술적 명칭을 붙이는 공간이다. 모델을 점점 더 복잡하게 만드는 과정에서 컨트롤 파일마다 $PROBLEM 레코드에 새로운 목적 또는 모델에 대한 설명을 남겨놓는 것이 모델링 과정을 정리함에 있어 도움이 된다.</p>
@@ -391,13 +391,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="input-레코드-작성" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> $INPUT 레코드 작성</h3>
 <p>$INPUT 레코드에는 데이터셋에 기재된 데이터 아이템의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 아이템이 있을 경우, 변수 뒤에 <code>=DROP</code> 이라는 한정어를 써주어 해당 아이템을 제거할 수 있다. $DATA 레코드에서 “IGNORE” 또는 “ACCEPT” 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 $INPUT 에서 <code>=DROP</code>을 사용하여 불필요한 아이템을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 아이템 레이블 이외의 다른 이름을 사용할 경우, “내장된 변수명=새 이름” (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.</p>
+
+<div class="example">
+<span id="exm:input" class="example"><strong>코드 2.1  </strong></span>$PROB, $DATA, $INPUT 제어구문 작성의 예
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1"></a><span class="op">$</span>PROB HO_IV_1comp</span>
 <span id="cb1-2"><a href="nonmem-dataset.html#cb1-2"></a><span class="op">$</span>DATA ..<span class="op">/</span>HOdata_IV.csv IGNORE=<span class="er">@</span></span>
 <span id="cb1-3"><a href="nonmem-dataset.html#cb1-3"></a><span class="er">$</span>INPUT ID TIME AMT DV MDV SEX AGE WT HT</span></code></pre></div>
-
-<div class="solution">
- <span class="solution"><em>Solution. </em></span> 1. $PROB, $DATA, $INPUT 제어구문 작성의 예
-</div>
 <table>
 <caption>
 <span id="tab:tab">표 2.1: </span>제어구문에 적합한 데이터셋의 예
@@ -779,7 +779,7 @@ Compartment
 <h3><span class="header-section-number">2.5.5</span> TIME</h3>
 <p>TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기재해 주어야하는 변수이다. 이전에는 음의 값을 가질 수 없었지만, NONMEM 7.4부터는 음의 값을 가질 수 있다. 그림 <a href="nonmem-dataset.html#fig:time-dataset">2.5</a>와 같이 데이터셋 작성 시 대상자 별로 시간이 순차적으로 증가하는 순서로 기입해야 하며, 감소하거나 뒤섞인 순서로 기입을 해서는 안된다(다만, 재설정 되는 투약 이벤트가 있는 경우는 예외일 수 있다).</p>
 <p>TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.</p>
-<p>TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 <a href="#exm:date-dataset-chunk"><strong>??</strong></a>과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 ‘/’ 또는 ‘-’ 사용) 컨트롤 파일의 $INPUT에 반드시 <code>DATE=DROP</code>이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.</p>
+<p>TIME 외에 DATE라는 날짜를 기입하는 데이터 아이템을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 아이템 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 <a href="nonmem-dataset.html#exm:date-dataset-chunk">2.2</a>과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 ‘/’ 또는 ‘-’ 사용) 컨트롤 파일의 $INPUT에 반드시 <code>DATE=DROP</code>이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.</p>
 <div class="figure"><span id="fig:time-dataset"></span>
 <img src="figures/02-fig-07.png" alt="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)" width="90%" />
 <p class="caption">
@@ -791,8 +791,8 @@ Compartment
 <span id="cb2-3"><a href="nonmem-dataset.html#cb2-3"></a>DAT2  year month day</span>
 <span id="cb2-4"><a href="nonmem-dataset.html#cb2-4"></a>DAT3  year day month</span></code></pre></div>
 
-<div class="solution">
- <span class="solution"><em>Solution. </em></span> 2. DATE label and its format
+<div class="example">
+<span id="exm:date-dataset-chunk" class="example"><strong>코드 2.2  </strong></span>DATE label and its format
 </div>
 </div>
 <div id="amt" class="section level3" number="2.5.6">
