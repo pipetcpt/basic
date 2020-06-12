@@ -67,7 +67,7 @@ $COVARIANCE
 
  DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -75,11 +75,11 @@ $COVARIANCE
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be |\index{standard errors of the estimates / 추정값의 표준오차}
-      more consistent with other nonlinear regression  software  imple- |
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
+      more consistent with other nonlinear regression  software  imple-
       mentations.
 
  PRINT=[E][R][S]
@@ -91,6 +91,9 @@ $COVARIANCE
  REFERENCES: Guide V, section 9.4.2 , 10.6
 ```
 
+\index{standard errors of the estimates / 추정값의 표준오차}
+\index{standard errors of the estimates / 추정값의 표준오차}
+\index{R matrix / R 행렬}
 \index{correlation matrix / 상관행렬}\index{eigenvalues / 고유값}
 
 ## 이론적 배경 - MLE
