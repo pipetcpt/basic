@@ -155,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#predpp에-쓰는-데이터셋"><i class="fa fa-check"></i><b>2.2</b> PREDPP에 쓰는 데이터셋</a></li>
 <li class="chapter" data-level="2.3" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-소개"><i class="fa fa-check"></i><b>2.3</b> 데이터셋 소개</a></li>
 <li class="chapter" data-level="2.4" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#데이터셋-배열"><i class="fa fa-check"></i><b>2.4</b> 데이터셋 배열</a></li>
-<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-아이템-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 아이템 레이블 Reserved Labels</a>
+<li class="chapter" data-level="2.5" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#지정된-데이터-항목-레이블-reserved-labels"><i class="fa fa-check"></i><b>2.5</b> 지정된 데이터 항목 레이블 Reserved Labels</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#id"><i class="fa fa-check"></i><b>2.5.1</b> ID</a></li>
 <li class="chapter" data-level="2.5.2" data-path="nonmem-dataset.html"><a href="nonmem-dataset.html#dv"><i class="fa fa-check"></i><b>2.5.2</b> DV</a></li>
@@ -189,8 +189,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4.3" data-path="control-stream.html"><a href="control-stream.html#pred-모델"><i class="fa fa-check"></i><b>3.4.3</b> PRED 모델</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 control stream의 코딩</a></li>
-<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 control stream의 코딩</a>
+<li class="chapter" data-level="4" data-path="specific-advan.html"><a href="specific-advan.html"><i class="fa fa-check"></i><b>4</b> 특수 ADVAN을 이용한 제어구문의 코딩</a></li>
+<li class="chapter" data-level="5" data-path="general-advan.html"><a href="general-advan.html"><i class="fa fa-check"></i><b>5</b> 일반 ADVAN을 이용한 제어구문의 코딩</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="general-advan.html"><a href="general-advan.html#일반-선형-advan"><i class="fa fa-check"></i><b>5.1</b> 일반 선형 ADVAN</a></li>
 <li class="chapter" data-level="5.2" data-path="general-advan.html"><a href="general-advan.html#일반-비선형-advan"><i class="fa fa-check"></i><b>5.2</b> 일반 비선형 ADVAN</a></li>
@@ -398,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>평가(evaluation): 최종 모델의 신뢰성을 입증하여 모델링-시뮬레이션의 타당성을 확보하자고자 수행하는 절차</li>
 </ul>
 <p>다시 말해, 진단은 최종 모델을 구현하기 위한 일련의 과정 중 수행하는 것이며, 평가는 최종 모델을 확보하고 난 후 수행하는 것이라고 구분하고자 한다.</p>
-<p>이제부터는 진단/평가라는 용어와 연결하여 그 구성 요소를 설명한다. 현재 대부분의 계량약리학 워크샵이나 교재 등은 모델링-시뮬레이션의 수행 절차에 그 초점을 두고 있다. 따라서, 절차적인 특성들을 기준으로 내용이 구성될 수밖에 없는데, 모델을 진단하거나 평가하는 것은 앞서 언급한 것처럼 의도는 다르지만, 각각의 구성 요소와 수행 절차가 같기 때문에 함께 진단/평가라는 용어로 합쳐서 설명하는 것이다. 이는 마치 임상시험 등에서 사용하는 QC/QA의 개념과 유사하다. 두 작업에서는 유사하게 근거 문서 대조 작업이나 표준작업지침서(standard operating procedure, SOP) 검토 등이 이루어지지만, 전자의 경우는 부족한 부분을 보완하여 시험이 적절하게 수행되도록 하는 데에 반해 후자의 경우는 해당 임상시험이 적절하게 수행되었음을 보증하는 데에 그 목적이 있다. 따라서, 모델의 진단/평가와 관련된 절차는 서로 다른 것이 아님을 이해해야 하며, 이보다는 최종 모델 확보 이전의 모델링 단계에서는 필요에 따라 적절한 진단 기법을 사용하고, 최종 모델 확보 이후에는 이것이 정당하다는 것을 가능한 모든 기법을 통해 입증해야 한다는 것이 보다 옳은 설명일 것이다(표 <a href="diag-eval.html#tab:diag-eval-property">12.1</a><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>).</p>
+<p>이제부터는 진단/평가라는 용어와 연결하여 그 구성 요소를 설명한다. 현재 대부분의 계량약리학 워크샵이나 교재 등은 모델링-시뮬레이션의 수행 절차에 그 초점을 두고 있다. 따라서, 절차적인 특성들을 기준으로 내용이 구성될 수밖에 없는데, 모델을 진단하거나 평가하는 것은 앞서 언급한 것처럼 의도는 다르지만, 각각의 구성 요소와 수행 절차가 같기 때문에 함께 진단/평가라는 용어로 합쳐서 설명하는 것이다. 이는 마치 임상시험 등에서 사용하는 QC/QA의 개념과 유사하다. 두 작업에서는 유사하게 근거 문서 대조 작업이나 표준작업지침서(standard operating procedure, SOP) 검토 등이 이루어지지만, 전자의 경우는 부족한 부분을 보완하여 시험이 적절하게 수행되도록 하는 데에 반해 후자의 경우는 해당 임상시험이 적절하게 수행되었음을 보증하는 데에 그 목적이 있다. 따라서, 모델의 진단/평가와 관련된 절차는 서로 다른 것이 아님을 이해해야 하며, 이보다는 최종 모델 확보 이전의 모델링 단계에서는 필요에 따라 적절한 진단 기법을 사용하고, 최종 모델 확보 이후에는 이것이 정당하다는 것을 가능한 모든 기법을 통해 입증해야 한다는 것이 보다 옳은 설명일 것이다(표 <a href="diag-eval.html#tab:diag-eval-property">12.1</a><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>).</p>
 <p></p>
 <table>
 <caption>
@@ -617,8 +617,8 @@ AIC = -2LL + 2k \ \ \text{(k = number of parameters)}
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>Modified from the contents from <a href="https://www.tutor2u.net/business/blog/qa-which-is-best-quality-control-or-quality-assurance" class="uri">https://www.tutor2u.net/business/blog/qa-which-is-best-quality-control-or-quality-assurance</a><a href="diag-eval.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="6">
+<li id="fn6"><p>Modified from the contents from <a href="https://www.tutor2u.net/business/blog/qa-which-is-best-quality-control-or-quality-assurance" class="uri">https://www.tutor2u.net/business/blog/qa-which-is-best-quality-control-or-quality-assurance</a><a href="diag-eval.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -123,7 +123,7 @@ include_graphics("figures/11-fig-07.png") # fig7
 \index{GAM, generalized additive modeling}
 \index{xpose4}
 
-수치적 스크리닝의 대표적인 방법은 GAM(Generalized Additive Modeling)이다. GAM은 파라미터의 종류 별로 이루어진다. 또한, GAM은 우리가 직접 수행하는 것이 아니며, 컴퓨터가 파라미터 별로 최적의 모델을 찾을 때까지 자동으로 수행하는 절차이다. 따라서, 우리는 GAM을 실행할 수 있는 환경에서 파라미터를 선택하기만 하면 된다. 이는, Xpose4의 6: Covariate model \> 7. GAM을 선택한 후, 파라미터 이름을 입력하는 것이다. 단, base model control stream에서 $TABLE에 지정한 파라미터명으로 입력해야만 실행이 가능하다.(개인 별 파라미터를 파라미터명(e.g. *CL*, *V* ...)으로 출력했다면 파라미터명을, 각 파라미터에 대한 EBE 값(e.g. ETA1, ETA2 ...)으로 출력했다면 EBE명을 입력한다.
+수치적 스크리닝의 대표적인 방법은 GAM(Generalized Additive Modeling)이다. GAM은 파라미터의 종류 별로 이루어진다. 또한, GAM은 우리가 직접 수행하는 것이 아니며, 컴퓨터가 파라미터 별로 최적의 모델을 찾을 때까지 자동으로 수행하는 절차이다. 따라서, 우리는 GAM을 실행할 수 있는 환경에서 파라미터를 선택하기만 하면 된다. 이는, Xpose4의 6: Covariate model \> 7. GAM을 선택한 후, 파라미터 이름을 입력하는 것이다. 단, base model 제어구문에서 $TABLE에 지정한 파라미터명으로 입력해야만 실행이 가능하다.(개인 별 파라미터를 파라미터명(e.g. *CL*, *V* ...)으로 출력했다면 파라미터명을, 각 파라미터에 대한 EBE 값(e.g. ETA1, ETA2 ...)으로 출력했다면 EBE명을 입력한다.
 
 GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 다음과 같은 작업을 수행한다.
 
@@ -165,7 +165,7 @@ include_graphics("./figures/11-fig-09.png") # fig9
 
 ### 공변량 평가: 전진선택(forward-selection)\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
-이 절의 논의에 앞서 다시 한번 주지하고자 하는 것은 본격적인 공변량 평가 방법은 시간이 많이 걸리는 작업이라는 것이다. 이는 개별 파라미터-공변량 관계를 실제 제어 구문에 반영한 후, 이를 실행하여 그러한 관계가 모델에 긍정적인 영향을 주는가를 평가하는 작업이 파라미터-공변량 관계 별로 일일이 이루어져야 하기 때문이다. 따라서, 효과적인 평가 계획을 수립하는 것이 무엇보다도 중요하며, [11.2.1](#variable-eval) ~ [11.2.3](#colinearity)의 절차가 올바르게 수행되었다면, 이 절에서 수행하고자 하는 공변량 평가 과정에 투입되는 시간과 노력을 절감할 수 있을 것이다. 이제부터는 공변량 평가의 첫 단계인 전진선택법에 대해 알아보도록 하겠다.\index{전진선택 / forward selection}\index{forward selection / 전진선택}
+이 절의 논의에 앞서 다시 한번 주지하고자 하는 것은 본격적인 공변량 평가 방법은 시간이 많이 걸리는 작업이라는 것이다. 이는 개별 파라미터-공변량 관계를 실제 제어구문에 반영한 후, 이를 실행하여 그러한 관계가 모델에 긍정적인 영향을 주는가를 평가하는 작업이 파라미터-공변량 관계 별로 일일이 이루어져야 하기 때문이다. 따라서, 효과적인 평가 계획을 수립하는 것이 무엇보다도 중요하며, [11.2.1](#variable-eval) ~ [11.2.3](#colinearity)의 절차가 올바르게 수행되었다면, 이 절에서 수행하고자 하는 공변량 평가 과정에 투입되는 시간과 노력을 절감할 수 있을 것이다. 이제부터는 공변량 평가의 첫 단계인 전진선택법에 대해 알아보도록 하겠다.\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
 #### 전진선택이란? {#forward-sel-def}\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
