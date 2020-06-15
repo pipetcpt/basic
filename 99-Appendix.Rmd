@@ -1,22 +1,5 @@
 \backmatter
 
-# (APPENDIX) 별첨 {-}
-
-# 별첨 1
-
-14장 NONMEM 아웃풋 파일
-
-<!--
-```{r eval=FALSE}
-tibble(txt = read_lines("assets/nonmem-output.txt")) %>% 
-  mutate(txt = sprintf("`%s`", txt)) %>% 
-  kable(booktabs = TRUE, longtable = TRUE) %>% 
-  kable_styling(latex_options = c("scale_down"))
-```
--->
-
-<!-- `r if (knitr::is_html_output()) ''` -->
-
 # 참고문헌 {-}
 
 ```{r include=FALSE}

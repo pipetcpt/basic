@@ -136,7 +136,8 @@ read_csv('data-raw/media-13-tab-1.csv', col_types="cccc") %>%
   rename(`Fitted $\\hat{Y}_i$` = 3,
          `$X_{ji}$ values` = 4) %>% 
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:diag-response)") %>% 
-  kable_styling("striped") %>% 
+  column_spec(1:4, width = "3cm") %>%
+  #kable_styling("striped") %>%  
   add_header_above(c(" " = 1, "Plot of $\\varepsilon_i$ Versus" = 3))
 ```
 

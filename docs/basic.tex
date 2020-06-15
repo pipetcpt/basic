@@ -223,9 +223,6 @@
 
 \urlstyle{tt}
 
-\usepackage{framed}
-\setlength{\OuterFrameSep}{0pt}
-
 \usepackage{amsthm}
 \makeatletter
 \def\thm@space@setup{%
@@ -273,7 +270,7 @@
 
 \title{PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초}
 \author{임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필}
-\date{2020-06-11}
+\date{2020-06-15}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2264,7 +2261,7 @@ NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장
 
 \includegraphics{./assets/media-10/image4.png}
 
-185행부터는 모델의 구조(ADVAN4)와 그 구조를 설명하기 위해 사용된 파라미터(TRANS4)에 대해 나와있으며, 195\textasciitilde200행에는 현재 모델 구조에서의 각 구획 별 설명이 나와있다. ADVAN4에서 `DOSE'에 대한 구획은 1구획, `OBSERVATION'은 2구획이 기본값으로 되어있으며, 1\textasciitilde3구획까지 모두 `DOSE'가 허용된다고 되어 있다(DOSE ALLOWED: YES). 이 때문에 정맥투여와 경구투여 데이터가 같이 있는 2구획 모델의 경우 ADVAN4를 사용하여 하나의 모델로 설명할 수 있는데, 이 때는 투여 경로를 명시해주어야 하므로 CMT를 데이터셋에 추가해야 한다. 아래 표 \ref{tab:basic-data-format}와 같이, 경구투여인 경우 CMT를 1로, 정맥투여인 경우 CMT를 2로 주면 된다.
+185행부터는 모델의 구조(ADVAN4)와 그 구조를 설명하기 위해 사용된 파라미터(TRANS4)에 대해 나와있으며, 195\textasciitilde200행에는 현재 모델 구조에서의 각 구획 별 설명이 나와있다. ADVAN4에서 `DOSE'에 대한 구획은 1구획, `OBSERVATION'은 2구획이 기본값으로 되어있으며, 1\textasciitilde3구획까지 모두 `DOSE'가 허용된다고 되어 있다(DOSE ALLOWED: YES). 이 때문에 정맥투여와 경구투여 데이터가 같이 있는 2구획 모델의 경우 ADVAN4를 사용하여 하나의 모델로 설명할 수 있는데, 이 때는 투여 경로를 명시해주어야 하므로 CMT를 데이터셋에 추가해야 한다. 표 \ref{tab:basic-data-format}와 같이, 경구투여인 경우 CMT를 1로, 정맥투여인 경우 CMT를 2로 주면 된다.
 
 \begin{table}
 
@@ -2315,9 +2312,11 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 
 다음으로, \$TABLE을 통해 생성된 표 파일들을 이용하여 진단 플롯을 그리는 방법을 알아보도록 하자. \$TABLE은 코드 \ref{exm:table-example}와 같이 많이 쓰는데, 이를 통해 생성되는 표 파일들과 R의 xpose4 package를 이용하여 진단 플롯을 그릴 수 있다. (Hooker et al. \protect\hyperlink{ref-R-xpose4}{2020})
 
+\index{conditional weighted residuals / 조건부 가중 잔차}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3\textbackslash{}index\{conditional weighted residuals }\OperatorTok{/}\StringTok{ }\NormalTok{조건부 가중 잔차\}}
+\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3}
 \OperatorTok{$}\NormalTok{TABLE ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)                        ONEHEADER NOPRINT FILE=patab3}
 \OperatorTok{$}\NormalTok{TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3}
 \OperatorTok{$}\NormalTok{TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3}
@@ -2336,7 +2335,6 @@ Xpose4 package 가 설치되어 있다면, R 실행 후 아래와 같이 입력�
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(xpose4)}
 \KeywordTok{xpose4}\NormalTok{()}
-
 \CommentTok{\# Run number 입력 (위의 경우 3)}
 \CommentTok{\# Selection: 4}
 \CommentTok{\# Selection: 2 or 5}
@@ -3096,7 +3094,7 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 
 \caption{\label{tab:diag-response}진단 결과에 따른 모델 개선 방안 (Draper \protect\hyperlink{ref-draper1998applied}{1998})}
 \centering
-\begin{tabular}[t]{llll}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of \$\textbackslash{}varepsilon\_i\$ Versus} \\
 \cmidrule(l{3pt}r{3pt}){2-4}
@@ -3184,7 +3182,7 @@ $COVARIANCE
 
  DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -3192,11 +3190,11 @@ $COVARIANCE
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be |\index{standard errors of the estimates / 추정값의 표준오차}
-      more consistent with other nonlinear regression  software  imple- |
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
+      more consistent with other nonlinear regression  software  imple-
       mentations.
 
  PRINT=[E][R][S]
@@ -3208,6 +3206,9 @@ $COVARIANCE
  REFERENCES: Guide V, section 9.4.2 , 10.6
 \end{verbatim}
 
+\index{standard errors of the estimates / 추정값의 표준오차}
+\index{standard errors of the estimates / 추정값의 표준오차}
+\index{R matrix / R 행렬}
 \index{correlation matrix / 상관행렬}\index{eigenvalues / 고유값}
 
 \hypertarget{uxc774uxb860uxc801-uxbc30uxacbd---mle}{%
@@ -3381,18 +3382,19 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \NormalTok{LB =}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, nTheta) }\CommentTok{\# Lower bound}
 \NormalTok{UB =}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{1000000}\NormalTok{, nTheta) }\CommentTok{\# Upper bound}
 
-\NormalTok{FGD1 =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{DOSE}\OperatorTok{/}\NormalTok{(TH2}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA2))}\OperatorTok{*}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{/}\NormalTok{(TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1) }\OperatorTok{{-}}\StringTok{ }\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3))}\OperatorTok{*}
+\NormalTok{FGD1 =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{DOSE}\OperatorTok{/}\NormalTok{(TH2}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA2))}\OperatorTok{*}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{/}
+\StringTok{             }\NormalTok{(TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1) }\OperatorTok{{-}}\StringTok{ }\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3))}\OperatorTok{*}
 \StringTok{             }\NormalTok{(}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3)}\OperatorTok{*}\NormalTok{TIME)}\OperatorTok{{-}}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{*}\NormalTok{TIME)),}
              \KeywordTok{c}\NormalTok{(}\StringTok{"ETA1"}\NormalTok{,}\StringTok{"ETA2"}\NormalTok{,}\StringTok{"ETA3"}\NormalTok{),}
-             \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"TH1"}\NormalTok{, }\StringTok{"TH2"}\NormalTok{, }\StringTok{"TH3"}\NormalTok{, }\StringTok{"ETA1"}\NormalTok{, }\StringTok{"ETA2"}\NormalTok{, }\StringTok{"ETA3"}\NormalTok{, }\StringTok{"DOSE"}\NormalTok{,}
-                           \StringTok{"TIME"}\NormalTok{),}
+             \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"TH1"}\NormalTok{, }\StringTok{"TH2"}\NormalTok{, }\StringTok{"TH3"}\NormalTok{, }\StringTok{"ETA1"}\NormalTok{, }\StringTok{"ETA2"}\NormalTok{, }\StringTok{"ETA3"}\NormalTok{, }
+                            \StringTok{"DOSE"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{),}
              \DataTypeTok{func=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{hessian=}\OtherTok{FALSE}\NormalTok{)}
 
 \NormalTok{H =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{F }\OperatorTok{+}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{EPS1 }\OperatorTok{+}\StringTok{ }\NormalTok{EPS2, }\KeywordTok{c}\NormalTok{(}\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), }
           \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), }
           \DataTypeTok{func=}\OtherTok{TRUE}\NormalTok{)}
 
-\NormalTok{PRED1 =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(THETA, ETA, DATAi)  }\CommentTok{\# for FO and FOCE\textbackslash{}index\{1차 조건부 추정방법(FOCE) / first{-}order conditional estimation method(FOCE)\}\textbackslash{}index\{1차추정법 / first{-}order method(FO)\}\textbackslash{}index\{first{-}order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)\}\textbackslash{}index\{first{-}order method(FO) / 1차추정법\}}
+\NormalTok{PRED1 =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(THETA, ETA, DATAi)  }\CommentTok{\# for FO and FOCE}
 \NormalTok{\{}
 \NormalTok{  FGDres =}\StringTok{ }\KeywordTok{FGD1}\NormalTok{(THETA[}\DecValTok{1}\NormalTok{], THETA[}\DecValTok{2}\NormalTok{], THETA[}\DecValTok{3}\NormalTok{], ETA[}\DecValTok{1}\NormalTok{], ETA[}\DecValTok{2}\NormalTok{], ETA[}\DecValTok{3}\NormalTok{], }\DataTypeTok{DOSE=}\DecValTok{320}\NormalTok{, }
 \NormalTok{                DATAi[,}\StringTok{"TIME"}\NormalTok{])}
@@ -3404,6 +3406,8 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+
+\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}
 
 위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 \textbf{nmtran}이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{잔차 / residual error}\index{residual error / 잔차}
 
@@ -5149,15 +5153,6 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
 
 \backmatter
-
-\hypertarget{appendix-uxbcc4uxcca8}{%
-\appendix \addcontentsline{toc}{chapter}{\appendixname}}
-
-
-\hypertarget{uxbcc4uxcca8-1}{%
-\chapter{별첨 1}\label{uxbcc4uxcca8-1}}
-
-14장 NONMEM 아웃풋 파일
 
 \hypertarget{uxcc38uxace0uxbb38uxd5cc}{%
 \chapter*{참고문헌}\label{uxcc38uxace0uxbb38uxd5cc}}

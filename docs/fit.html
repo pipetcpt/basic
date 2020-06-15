@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-11" />
+<meta name="date" content="2020-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,8 +349,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
 </ul></li>
 </ul></li>
-<li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -489,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>추가로, 잔차 플롯들의 다양한 형태에 따른 개선 방안을 살펴보면(표 <a href="fit.html#tab:diag-response">13.1</a>) 크게 두 가지 경우로 요약할 수 있는데, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우와 잔차의 모양이 특정 경향성을 나타내는 경우이다. 첫째로, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우, 시간이나 농도에 따른 잔차 플롯이 깔때기 모양이 되며, 이 경우 잔차에 가중치를 줄 수 있는 모델을 써야 한다. 둘째로, 잔차값들이 흩어져 있는 정도는 일정하지만 그 모양이 상승 또는 하강하는 띠 모양이거나 휘어지는 띠 모양을 나타내는 경우에는 구조모델 자체를 다른 것으로 바꾸어 이 현상을 해결해야 한다. 자세한 내용은 아래 표를 참고하도록 하자.</p>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<table>
 <caption>
 <span id="tab:diag-response">표 13.1: </span>진단 결과에 따른 모델 개선 방안 <span class="citation">(Draper <a href="#ref-draper1998applied" role="doc-biblioref">1998</a>)</span>
 </caption>
@@ -520,44 +518,44 @@ Fitted <span class="math inline">\(\hat{Y}_i\)</span>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Funnel indicating nonconstant variance
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Use weighted least squares
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Use weighted least squares or transform the Yi
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Used weighted least squares or transform the Yi
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Ascending or descending band
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Consider adding first-order term in time
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Error in analysis or wrongful omission of β0
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Error in the calculations; first-order effect of Xi not removed
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Curved band
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Consider adding first- and second- order terms in time
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Consider adding extra terms to the model or transform the Yi
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 3cm; ">
 Consider adding extra terms to the model or transform the Yi
 </td>
 </tr>

@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-11" />
+<meta name="date" content="2020-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -349,8 +349,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
 </ul></li>
 </ul></li>
-<li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -422,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
  DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -430,11 +428,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be |\index{standard errors of the estimates / 추정값의 표준오차}
-      more consistent with other nonlinear regression  software  imple- |
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
+      more consistent with other nonlinear regression  software  imple-
       mentations.
 
  PRINT=[E][R][S]
@@ -444,7 +442,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
  REFERENCES: Guide IV, section III.B.15
  REFERENCES: Guide V, section 9.4.2 , 10.6</code></pre>
-<p></p>
+<p>
+
+
+</p>
 </div>
 <div id="이론적-배경---mle" class="section level2" number="14.3">
 <h2><span class="header-section-number">14.3</span> 이론적 배경 - MLE</h2>
@@ -582,27 +583,29 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <span id="cb41-14"><a href="cov.html#cb41-14"></a>LB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, nTheta) <span class="co"># Lower bound</span></span>
 <span id="cb41-15"><a href="cov.html#cb41-15"></a>UB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1000000</span>, nTheta) <span class="co"># Upper bound</span></span>
 <span id="cb41-16"><a href="cov.html#cb41-16"></a></span>
-<span id="cb41-17"><a href="cov.html#cb41-17"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span>(TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
-<span id="cb41-18"><a href="cov.html#cb41-18"></a><span class="st">             </span>(<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
-<span id="cb41-19"><a href="cov.html#cb41-19"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
-<span id="cb41-20"><a href="cov.html#cb41-20"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, <span class="st">&quot;DOSE&quot;</span>,</span>
-<span id="cb41-21"><a href="cov.html#cb41-21"></a>                           <span class="st">&quot;TIME&quot;</span>),</span>
-<span id="cb41-22"><a href="cov.html#cb41-22"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
-<span id="cb41-23"><a href="cov.html#cb41-23"></a></span>
-<span id="cb41-24"><a href="cov.html#cb41-24"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
-<span id="cb41-25"><a href="cov.html#cb41-25"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
-<span id="cb41-26"><a href="cov.html#cb41-26"></a>          <span class="dt">func=</span><span class="ot">TRUE</span>)</span>
-<span id="cb41-27"><a href="cov.html#cb41-27"></a></span>
-<span id="cb41-28"><a href="cov.html#cb41-28"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}</span></span>
-<span id="cb41-29"><a href="cov.html#cb41-29"></a>{</span>
-<span id="cb41-30"><a href="cov.html#cb41-30"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, </span>
-<span id="cb41-31"><a href="cov.html#cb41-31"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])</span>
-<span id="cb41-32"><a href="cov.html#cb41-32"></a>  Gres =<span class="st"> </span><span class="kw">attr</span>(FGDres, <span class="st">&quot;gradient&quot;</span>)</span>
-<span id="cb41-33"><a href="cov.html#cb41-33"></a>  Hres =<span class="st"> </span><span class="kw">attr</span>(<span class="kw">H</span>(FGDres, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;gradient&quot;</span>)</span>
-<span id="cb41-34"><a href="cov.html#cb41-34"></a>  Res =<span class="st"> </span><span class="kw">cbind</span>(FGDres, Gres, Hres)</span>
-<span id="cb41-35"><a href="cov.html#cb41-35"></a>  <span class="kw">colnames</span>(Res) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;H1&quot;</span>, <span class="st">&quot;H2&quot;</span>)</span>
-<span id="cb41-36"><a href="cov.html#cb41-36"></a>  <span class="kw">return</span>(Res)</span>
-<span id="cb41-37"><a href="cov.html#cb41-37"></a>}</span></code></pre></div>
+<span id="cb41-17"><a href="cov.html#cb41-17"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span></span>
+<span id="cb41-18"><a href="cov.html#cb41-18"></a><span class="st">             </span>(TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
+<span id="cb41-19"><a href="cov.html#cb41-19"></a><span class="st">             </span>(<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
+<span id="cb41-20"><a href="cov.html#cb41-20"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
+<span id="cb41-21"><a href="cov.html#cb41-21"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, </span>
+<span id="cb41-22"><a href="cov.html#cb41-22"></a>                            <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),</span>
+<span id="cb41-23"><a href="cov.html#cb41-23"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
+<span id="cb41-24"><a href="cov.html#cb41-24"></a></span>
+<span id="cb41-25"><a href="cov.html#cb41-25"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
+<span id="cb41-26"><a href="cov.html#cb41-26"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
+<span id="cb41-27"><a href="cov.html#cb41-27"></a>          <span class="dt">func=</span><span class="ot">TRUE</span>)</span>
+<span id="cb41-28"><a href="cov.html#cb41-28"></a></span>
+<span id="cb41-29"><a href="cov.html#cb41-29"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE</span></span>
+<span id="cb41-30"><a href="cov.html#cb41-30"></a>{</span>
+<span id="cb41-31"><a href="cov.html#cb41-31"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, </span>
+<span id="cb41-32"><a href="cov.html#cb41-32"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])</span>
+<span id="cb41-33"><a href="cov.html#cb41-33"></a>  Gres =<span class="st"> </span><span class="kw">attr</span>(FGDres, <span class="st">&quot;gradient&quot;</span>)</span>
+<span id="cb41-34"><a href="cov.html#cb41-34"></a>  Hres =<span class="st"> </span><span class="kw">attr</span>(<span class="kw">H</span>(FGDres, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;gradient&quot;</span>)</span>
+<span id="cb41-35"><a href="cov.html#cb41-35"></a>  Res =<span class="st"> </span><span class="kw">cbind</span>(FGDres, Gres, Hres)</span>
+<span id="cb41-36"><a href="cov.html#cb41-36"></a>  <span class="kw">colnames</span>(Res) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;H1&quot;</span>, <span class="st">&quot;H2&quot;</span>)</span>
+<span id="cb41-37"><a href="cov.html#cb41-37"></a>  <span class="kw">return</span>(Res)</span>
+<span id="cb41-38"><a href="cov.html#cb41-38"></a>}</span></code></pre></div>
+<p></p>
 <p>위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 <strong>nmtran</strong>이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.</p>
 <p>이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="cov.html#cb42-1"></a><span class="kw">library</span>(nmw)</span>
