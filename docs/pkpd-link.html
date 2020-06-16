@@ -576,17 +576,17 @@ Fix (as given by the PK model)
 <p>추가적으로 R 소프트웨어의 xpose4 패키지를 사용하여 적합도 플롯(goodness of fit plot)을 그리고자 하는 경우, IWRES 값이 필요하며, 코드 <a href="pkpd-link.html#exm:SIM-control">18.1</a>에서 제시한 단순화된 오차모델 대신 아래와 같은 오차모델을 사용하여 PK-PD 모델링을 진행할 수 있다. 아래의 예시에는 PK 오차모델에는 가법오차와 비례오차를 모두 주었고, PD 오차모델에는 가법오차 만을 주었다.</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="pkpd-link.html#cb49-1"></a><span class="op">$</span>ERROR </span>
 <span id="cb49-2"><a href="pkpd-link.html#cb49-2"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.1</span>) THEN </span>
-<span id="cb49-3"><a href="pkpd-link.html#cb49-3"></a>IPRED =<span class="st"> </span>CP </span>
-<span id="cb49-4"><a href="pkpd-link.html#cb49-4"></a>W =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">10</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">11</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>) </span>
-<span id="cb49-5"><a href="pkpd-link.html#cb49-5"></a>IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
-<span id="cb49-6"><a href="pkpd-link.html#cb49-6"></a>IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
-<span id="cb49-7"><a href="pkpd-link.html#cb49-7"></a>Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>) </span>
+<span id="cb49-3"><a href="pkpd-link.html#cb49-3"></a>  IPRED =<span class="st"> </span>CP </span>
+<span id="cb49-4"><a href="pkpd-link.html#cb49-4"></a>  W =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">10</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">11</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>) </span>
+<span id="cb49-5"><a href="pkpd-link.html#cb49-5"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
+<span id="cb49-6"><a href="pkpd-link.html#cb49-6"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
+<span id="cb49-7"><a href="pkpd-link.html#cb49-7"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>) </span>
 <span id="cb49-8"><a href="pkpd-link.html#cb49-8"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN </span>
-<span id="cb49-9"><a href="pkpd-link.html#cb49-9"></a>IPRED =<span class="st"> </span>EMAX<span class="op">*</span>CP<span class="op">/</span>(EC50<span class="op">+</span>CP) </span>
-<span id="cb49-10"><a href="pkpd-link.html#cb49-10"></a>W =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">12</span>) </span>
-<span id="cb49-11"><a href="pkpd-link.html#cb49-11"></a>IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
-<span id="cb49-12"><a href="pkpd-link.html#cb49-12"></a>IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
-<span id="cb49-13"><a href="pkpd-link.html#cb49-13"></a>Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>) </span>
+<span id="cb49-9"><a href="pkpd-link.html#cb49-9"></a>  IPRED =<span class="st"> </span>EMAX<span class="op">*</span>CP<span class="op">/</span>(EC50<span class="op">+</span>CP) </span>
+<span id="cb49-10"><a href="pkpd-link.html#cb49-10"></a>  W =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">12</span>) </span>
+<span id="cb49-11"><a href="pkpd-link.html#cb49-11"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
+<span id="cb49-12"><a href="pkpd-link.html#cb49-12"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
+<span id="cb49-13"><a href="pkpd-link.html#cb49-13"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>) </span>
 <span id="cb49-14"><a href="pkpd-link.html#cb49-14"></a>ENDIF</span></code></pre></div>
 </div>
 <div id="순차적합법-sequential-fitting" class="section level3" number="18.4.2">
@@ -686,11 +686,7 @@ Fix (as given by the PK model)
 </div>
 <div id="ipp-individual-pk-parameters" class="section level3" number="18.4.3">
 <h3><span class="header-section-number">18.4.3</span> IPP (Individual PK Parameters)</h3>
-<p>순차적합법 중 마지막으로 소개할 방법은 IPP이며 이는 개인 PK 파라미터 추정치를 데이터셋 상에서 고정하여 PD 모델에 대한
-입력값으로 사용하여 PD파라미터를 추정한다. IPP에서 사용하는 데이터셋은 PPP 데이터셋 구조와 기본적으로 동일하며 PD
-데이터를 포함한다. 데이터셋에서 추가되는 부분은 PK 모델링을 통해 얻은 개인의 파라미터 추정치로 이 경우 각 해당 대상자의
-CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어구문 파일의 $TABLE
-블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.</p>
+<p>순차적합법 중 마지막으로 소개할 방법은 IPP이며 이는 개인 PK 파라미터 추정치를 데이터셋 상에서 고정하여 PD 모델에 대한 입력값으로 사용하여 PD파라미터를 추정한다. IPP에서 사용하는 데이터셋은 PPP 데이터셋 구조와 기본적으로 동일하며 PD 데이터를 포함한다. 데이터셋에서 추가되는 부분은 PK 모델링을 통해 얻은 개인의 파라미터 추정치로 이 경우 각 해당 대상자의 CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어구문 파일의 $TABLE 블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.</p>
 <p>그림 <a href="pkpd-link.html#fig:ipp-dataset-ex">18.7</a>에서 CL 와 V1에 해당하는 데이터 항목 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어구문 파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 <a href="pkpd-link.html#exm:IPP-example">18.4</a>).</p>
 <div class="figure"><span id="fig:ipp-dataset-ex"></span>
 <img src="assets/media-18/image8.png" alt="IPP 방법의 데이터셋의 예" width="50%" />
