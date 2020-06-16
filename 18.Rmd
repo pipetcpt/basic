@@ -80,19 +80,23 @@ knitr::include_graphics("figures/18-fig-03.png") # fig 3
 
 \index{동시적합법 / simulatneous fitting}\index{simulatneous fitting / 동시적합법}
 
-PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.
+PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어구문 파일의 구조를 살펴보도록 하겠다.
 
 [18.5](#direct-pkpd)의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 \@ref(fig:SIM-dataset)).
 
-제어파일을 살펴보면, \$PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. \$DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 \$ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 \$THETA 이하의 제어구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \@ref(exm:SIM-control)).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
+제어구문 파일을 살펴보면, \$PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. \$DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 \$ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 \$THETA 이하의 제어구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \@ref(exm:SIM-control)).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 ```{r SIM-dataset, fig.cap = "(ref:SIM-dataset)", out.width='50%'}
 include_graphics("./assets/media-18/image5.png") # fig4
 ```
 
 (ref:SIM-dataset) SIM 방법의 데이터셋의 예
+
+```{example, SIM-control, echo = TRUE}
+SIM 방법의 제어구문의 예 <!--fig5-->
+```
 
 ```r
 $PK 
@@ -127,9 +131,6 @@ $OMEGA
 $SIGMA 
 0.025 
 0.04
-```
-```{example, SIM-control, echo = TRUE}
-SIM 방법의 제어구문의 예 <!--fig5-->
 ```
 
 아래의 제어구문은 NONMEM을 기본적으로 수행시키기 위해 \$PK 위에 들어가는 명령어라고 볼 수 있다.
@@ -176,6 +177,9 @@ knitr::include_graphics("./assets/media-18/image6.png") # fig 6
 (ref:pppd) PPP&D 방법의 데이터셋의 예
 
 
+```{example, pppd-code, echo=TRUE}
+PPP\&D 방법의 제어구문의 예
+```
 
 ```r
 $PK 
@@ -211,9 +215,6 @@ $SIGMA
 0.025 FIX
 0.04
 ```
-```{example, pppd-code, echo=TRUE}
-PPP\&D 방법의 제어구문의 예
-```
 
 
 #### PPP (Population PK Parameters)
@@ -229,6 +230,10 @@ include_graphics("./assets/media-18/image7.png") # fig 8
 (ref:PPP-dataset) Example of dataset for PPP
 
 
+
+```{example, control-ppp, echo=TRUE}
+Example of control file for PPP
+```
 
 ```r
 $PK 
@@ -261,26 +266,26 @@ $OMEGA
 $SIGMA 
 0.04
 ```
-```{example, control-ppp, echo=TRUE}
-Example of control file for PPP
-```
-
 
 ### IPP (Individual PK Parameters)
 
 순차적합법 중 마지막으로 소개할 방법은 IPP이며 이는 개인 PK 파라미터 추정치를 데이터셋 상에서 고정하여 PD 모델에 대한\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
 입력값으로 사용하여 PD파라미터를 추정한다. IPP에서 사용하는 데이터셋은 PPP 데이터셋 구조와 기본적으로 동일하며 PD
 데이터를 포함한다. 데이터셋에서 추가되는 부분은 PK 모델링을 통해 얻은 개인의 파라미터 추정치로 이 경우 각 해당 대상자의
-CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어파일의 $TABLE
+CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어구문 파일의 $TABLE
 블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.
 
-그림 \@ref(fig:ipp-dataset-ex)에서 CL 와 V1에 해당하는 데이터 항목 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 \@ref(exm:IPP-example)).
+그림 \@ref(fig:ipp-dataset-ex)에서 CL 와 V1에 해당하는 데이터 항목 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어구문 파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 \@ref(exm:IPP-example)).
 
 ```{r ipp-dataset-ex, fig.cap = "(ref:ipp-dataset-ex)", out.width='50%'}
 include_graphics("./assets/media-18/image8.png")
 ```
 
 (ref:ipp-dataset-ex) IPP 방법의 데이터셋의 예
+
+```{example, IPP-example, echo = TRUE}
+IPP 방법의 제어구문의 예
+```
 
 ```r
 $PK
@@ -309,15 +314,12 @@ $OMEGA
 $SIGMA
   0.04
 ```
-```{example, IPP-example, echo = TRUE}
-IPP 방법의 제어구문의 예
-```
 
 ## 간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response) {#indirect-pkpd}
 
 ### SIM과 PPP\&D 데이터셋 및 제어구문
 
-이 장에서는 앞서 소개한 [18.5](#direct-pkpd) 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.
+이 장에서는 앞서 소개한 [18.5](#direct-pkpd) 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어구문 파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.
 
 SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 \@ref(fig:sim-pppd-dataset)). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.
 
@@ -329,9 +331,13 @@ include_graphics("./assets/media-18/image9.png") # fig 12
 
 
 
-이전 제어파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(코드 \@ref(exm:sim-pppd-similarity)).
+이전 제어구문 파일 예시와 다른 점은 $DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(코드 \@ref(exm:sim-pppd-similarity)).
 
-제어파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 $ERROR 뒤에 이어지는 $THETA, $OMEGA, $SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP\&D 방법이라고 할 수 있다.
+제어구문 파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 $ERROR 뒤에 이어지는 $THETA, $OMEGA, $SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP\&D 방법이라고 할 수 있다.
+
+```{example, sim-pppd-similarity, echo = TRUE}
+(ref:sim-pppd-similarity)
+```
 
 ```r
 $PROB HO_PO_2comp
@@ -367,15 +373,12 @@ $PK
   K32  = Q/V3
   KE   = CL/V2
 ```
-```{example, sim-pppd-similarity, echo = TRUE}
-(ref:sim-pppd-similarity)
-```
 
 (ref:sim-pppd-similarity) SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분 <!--fig13-->
 
 ### PPP의 데이터셋 및 제어구문
 
-PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ppp-pkpd-dataset)). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 \@ref:sim-pppd-dataset)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
+PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ppp-pkpd-dataset)). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 \@ref:sim-pppd-dataset)을 활용하고자 한다면, 제어구문 파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
 
 PPP의 제어구문은 위의 코드 \@ref(exm:sim-pppd-similarity)과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.
 
@@ -389,13 +392,17 @@ include_graphics("./assets/media-18/image13.png") # fig14
 
 IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이터를 포함한다. 다만, PK 모델을 통해 얻은 개인의 파라미터 추정치(예를 들어, CL, V2, V3, KA)를 바로 데이터셋에 기입해 준다. IPP에 적합한 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ipp-dataset)).
 
-이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \@ref(exm:ipp-control-stream)). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.
+이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어구문 파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \@ref(exm:ipp-control-stream)). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.
 
 ```{r ipp-dataset, fig.cap="(ref:ipp-dataset)"}
 include_graphics("./assets/media-18/image14.png")
 ```
 
 (ref:ipp-dataset) IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
+
+```{example, ipp-control-stream, echo = TRUE}
+IPP 방법의 제어구문의 예
+```
 
 ```r
 $PROB HO_PO_2comp
@@ -433,10 +440,6 @@ $PK
   KOUT  = KIN/BASE
 
 ```
-```{example, ipp-control-stream, echo = TRUE}
-IPP 방법의 제어구문의 예
-```
-
 
 ## PK-PD 연결방법(적합법) 비교
 

@@ -5,12 +5,16 @@
 ---
 
 
-NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{standard errors of the estimates / 추정값의 표준오차}
+NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어구문 파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{standard errors of the estimates / 추정값의 표준오차}
 
 ## 실제 사례 {#actual-example}
 
-다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 `THEO` 라는 파일 이름으로 포함되어 있다. 그림은 \@ref(Theoph)절을 참고한다.\index{공분산 / covariance}\index{covariance / 공분산}
-  
+다음은 공분산단계의 결과물을 이해하기 위한 예제 제어구문 파일의 내용이다. (코드 \@ref(exm:theoph-control-stream)) Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM 설치시에 `THEO` 라는 파일 이름으로 포함되어 있다. 그림은 \@ref(Theoph)절을 참고한다.\index{공분산 / covariance}\index{covariance / 공분산}
+ 
+```{example, theoph-control-stream, echo=TRUE}
+Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
+```
+
 ```r
 $PROB THEOPHYLLINE ORAL
 $INPUT ID AMT=DROP TIME DV BWT
@@ -236,7 +240,7 @@ plot(Theoph)
 (\#eq:onecompfit)
 \end{equation}
 
-NONMEM 제어파일의 내용은 \@ref(actual-example)절에서 표시한 것과 같다.
+NONMEM 제어구문 파일의 내용은 \@ref(actual-example)절에서 표시한 것과 같다.
 
 R에서는 다음과 같은 준비 작업이 필요하다.
 

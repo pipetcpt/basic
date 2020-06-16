@@ -98,7 +98,7 @@ VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변
 vpc bean.CTL -lst=bean.CTL.lst -samples=1000 -stratify_on=DAY -idv=TAD
 ```
 
-위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \@ref(fig:strat-vpc))\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}
+위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어구문 파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \@ref(fig:strat-vpc))\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}
 
 ```{r strat-vpc, fig.cap="(ref:strat-vpc)"}
 include_graphics("figures/16-fig-06.png")

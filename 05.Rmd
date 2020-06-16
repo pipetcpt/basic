@@ -110,6 +110,10 @@ knitr::include_graphics("./figures/05-fig-05.png")
 knitr::include_graphics("figures/05-fig-06.png")
 ```
 
+```{example, advan5-example, echo = TRUE}
+2구획 경구모델을 ADVAN5로 구현한 코드 예시
+```
+
 ```r
 $SUBROUTINE ADVAN5
 $MODEL
@@ -132,12 +136,12 @@ $ERROR
   Y  = F*(1+EPS(1)) 
 ```
 
-```{example, advan5-example, echo = TRUE}
-2구획 경구모델을 ADVAN5로 구현한 코드 예시
-```
-
 
 동일한 2구획 경구모델(그림 \@ref(fig:2comp-oral))을 일반 선형(ADVAN5, 코드 \@ref(exm:advan5-example)) 및 비선형(ADVAN6, 코드 \@ref(exm:advan6-example)) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
+
+```{example, advan6-example, echo = TRUE}
+2구획 경구모델을 ADVAN6로 구현한 코드 예시
+```
 
 ```r
 $SUBROUTINE ADVAN6 TOL=4
@@ -162,10 +166,6 @@ $DES ; Define differential equations
   DADT(3) = A(2)*K23 - A(3)*K32
 $ERROR
   Y  = F*(1+EPS(1)) 
-```
-
-```{example, advan6-example, echo = TRUE}
-2구획 경구모델을 ADVAN6로 구현한 코드 예시
 ```
 
 <!--

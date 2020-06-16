@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-15" />
+<meta name="date" content="2020-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -449,26 +449,31 @@ E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
 \tag{19.5}
 \end{equation}\]</span></p>
 <p>가정 3.에 의하여 <span class="math inline">\(E=\alpha \cdot [R^*]\)</span>이므로,
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:alpha-rt">\[\begin{equation}
 E = \alpha \cdot R^* = \frac{\alpha \cdot R_T \cdot C}{C + K_D}
+\tag{19.6}
 \end{equation}\]</span></p>
 <p><span class="math inline">\(E_{max} = \alpha \cdot [R_T]\)</span>라 하면,
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:emax-alpha-rt">\[\begin{equation}
 E = \frac{E_{max} \cdot C}{C + K_D}
+\tag{19.7}
 \end{equation}\]</span></p>
 <p>여기서, K<sub>D</sub>의 단위는 농도이며 (C와 동일), 약물 수용체의 50%가 결합한 상태에서의 약효(EC<sub>50</sub>)는 Emax/2 가 된다. 이를 위의 식에 대입하면,
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:ec50-emax-half">\[\begin{equation}
 \frac{E_{max}}{2} = \frac{E_{max} \cdot EC_{50}}{K_D + EC_{50}}
+\tag{19.8}
 \end{equation}\]</span></p>
 <p>이고 이를 정리하면, <span class="math inline">\(K_D = EC_{50}\)</span>이다. 결국 다시 정리하면, Emax 모델은 다음과 같다.
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:final-emax-model">\[\begin{equation}
 E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
+\tag{19.9}
 \end{equation}\]</span></p>
 <p>C는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, C는 C<sub>T</sub> (특정조직에서의 약물농도)로 대체할 수 있다.</p>
 </div>
 <p>약물농도가 EC<sub>50</sub>에 비하여 매우 작으면 (EC<sub>50</sub> &gt;&gt;C), 약효는 혈중 약물농도에 비례하지만 (E = (E<sub>max</sub>/EC<sub>50</sub>) · C), 약물농도가 EC<sub>50</sub>보다 크면(EC<sub>50</sub> &lt;&lt; C), 약효는 포화되어, 약물농도에 관계없이 일정한 값을 가진다(E<sub>max</sub>). 그림 <a href="effect-model.html#fig:emax-model">19.3</a>에서 E<sub>max</sub>는 약물의 효능(efficacy)을 나타내며, EC<sub>50</sub>은 약물의 효력(potency)를 나타내는 지표이다. 또한, 약물농도를 로그로 치환하면 EC<sub>50</sub>을 명확하게 확인할 수 있으며, 데이터에 기저치가 존재하면 다음과 같이 나타낼 수 있다.
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:base-final-emax-model">\[\begin{equation}
 E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
+\tag{19.10}
 \end{equation}\]</span></p>
 <div class="figure"><span id="fig:emax-model"></span>
 <img src="assets/media-19/image5.png" alt="Emax model (좌)선형농도, (우)로그농도" width="90%" />
@@ -478,14 +483,15 @@ E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
 </div>
 
 <p>이 때, R<sub>max</sub> = E<sub>0</sub>+100이며, EC<sub>50</sub>일 때 약물반응은 E<sub>0</sub>+50 이다. 만약, E<sub>max</sub> 모델을 다음과 같이 나타내면,
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:rmax-e0">\[\begin{equation}
 E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})
+\tag{19.11}
 \end{equation}\]</span></p>
 <p>R<sub>max</sub> = E<sub>0</sub>+100일때, 모델의 최대약물효과는 E<sub>0</sub>·E<sub>max</sub>가 된다 (그림 <a href="effect-model.html#fig:emax-comparison">19.4</a> (우)).</p>
 <div class="figure"><span id="fig:emax-comparison"></span>
-<img src="figures/19-fig-04.png" alt="Emax 모델의 비교 (좌) \(\text{E} \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}\) (우) \(\text{E} \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{\text{EC}_{50} + \left\lbrack C \right\rbrack})\)" width="90%" />
+<img src="figures/19-fig-04.png" alt="Emax 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)" width="90%" />
 <p class="caption">
-그림 19.4: E<sub>max</sub> 모델의 비교 (좌) <span class="math inline">\(\text{E} \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}\)</span> (우) <span class="math inline">\(\text{E} \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{\text{EC}_{50} + \left\lbrack C \right\rbrack})\)</span>
+그림 19.4: E<sub>max</sub> 모델의 비교 (좌) <span class="math inline">\(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\)</span> (우) <span class="math inline">\(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)</span>
 </p>
 </div>
 
@@ -497,15 +503,17 @@ E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50}
 </p>
 </div>
 <p>PD 모델에 사용되는 약물이 길항제로 작용하는 약물이라면, 혈중약물농도와 약효와의 관계는 그림 <a href="effect-model.html#fig:anta-emax">19.5</a>와 같으며, 그때의 약효(E)는 다음과 같다.
-<span class="math display">\[\begin{equation}
-\text{E} \approx E_{0} - \frac{\ I_{\max}\lbrack C\rbrack}{\text{IC}_{50} + \lbrack C\rbrack}
+<span class="math display" id="eq:anta-emax-effect">\[\begin{equation}
+E \approx E_{0} - \frac{\ I_{\max}\lbrack C\rbrack}{IC_{50} + \lbrack C\rbrack}
+\tag{19.12}
 \end{equation}\]</span></p>
 </div>
 <div id="sigmoid-emax-model-hill-방정식" class="section level3" number="19.1.4">
 <h3><span class="header-section-number">19.1.4</span> Sigmoid E<sub>max</sub> model (Hill 방정식)</h3>
 <p>Sigmoid E<sub>max</sub> model은 여러 결합부위를 가지고 있는 수용체와 약물 간의 관계를 설명하기 위해 사용된다. 약물과 수용체의 1:1 결합을 가정하는 일반적인 E<sub>max</sub> model과 달리 n개의 약물 분자가 수용체의 작용부위와 결합한다.
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:hill-n-molecule">\[\begin{equation}
 E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}}
+\tag{19.13}
 \end{equation}\]</span></p>
 <p>여기서 n은 수용체와 결합하는 약물분자의 수를 의미하며, Hill 계수(Hill coefficient, H)라고도 한다.</p>
 <div class="figure"><span id="fig:sigmoid-emax"></span>
@@ -532,7 +540,7 @@ E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}
 E &amp;= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 \frac{dE}{dln ( C )} &amp;= \frac{\ n \cdot E_{max}  \cdot EC_{50}^{n} \cdot C^{n}}{\left( EC_{50}^{n} + C^{n} \right)^{2}}
 \end{split}
-\tag{19.6}
+\tag{19.14}
 \end{equation}\]</span></p>
 <p>직선부위의 기울기를 m이라고 하고, C=EC<sub>50</sub>일 때의 m을 계산하면,
 <span class="math display" id="eq:ec50-m">\[\begin{equation}
@@ -540,7 +548,7 @@ E &amp;= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}}
   m &amp;= \frac{{dE}}{{dln}\left( C \right)}\ = \frac{\ n \cdot E_{max } \cdot {EC}_{50}^{2n}}{\left( {EC}_{50}^{n} + {EC}_{50}^{n} \right)^{2}} = \ \frac{n \cdot E_{\max}}{4} \\
   n &amp;= \frac{4 \cdot m}{E_{\max}}
 \end{split}
-\tag{19.7}
+\tag{19.15}
 \end{equation}\]</span></p>
 </div>
 </div>
@@ -562,10 +570,10 @@ E &amp;= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}}
 </div>
 <div id="다중-약물결합-모델multiple-binding-site-model" class="section level3" number="19.2.2">
 <h3><span class="header-section-number">19.2.2</span> 다중 약물결합 모델(multiple binding site model)</h3>
-<p>약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.</p>
-<p><span class="math display" id="eq:multiplebinding">\[\begin{equation}
+<p>약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.
+<span class="math display" id="eq:multiplebinding">\[\begin{equation}
 [C] + [R] \xrightarrow[k_{-1}]{k_1} [CR] + [C] \xrightarrow[k_{-2}]{k_2} [C2R]
-\tag{19.8}
+\tag{19.16}
 \end{equation}\]</span></p>
 <p><span class="math display" id="eq:multiplebinding2">\[\begin{equation}
 \begin{split}
@@ -574,7 +582,7 @@ R_T &amp;= total receptor content \\
 k_D &amp;= k_{-1} / k_1 \\ 
 K_2 &amp;= k_2 / k_{-2}
 \end{split}
-\tag{19.9}
+\tag{19.17}
 \end{equation}\]</span></p>
 <p>여기서 R<sub>T</sub>는 총 수용체 수, K<sub>d</sub>는 약물-1차 수용체 복합체 해리상수(k<sub>-1</sub>/k<sub>1</sub>), K<sub>2</sub>는 약물-2차 수용체 복합체 결합상수(k<sub>2</sub>/k<sub>-2</sub>)를 의미한다. K<sub>2</sub>=0이면, 위의 식은 E<sub>max</sub> model과 동일하며, K<sub>2</sub>의 값이 커질수록 2차 결합이 빨라지므로, E<sub>peak</sub>값이 작아지며, 농도가 증가할수록 효과(E)의 크기도 더 많이 감소한다 (그림 <a href="effect-model.html#fig:K2">19.9</a>).</p>
 <div class="figure"><span id="fig:K2"></span>

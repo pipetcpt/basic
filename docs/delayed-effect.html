@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-15" />
+<meta name="date" content="2020-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -410,6 +410,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p>이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의 관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는 방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때, 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량(K12=0.001*K)이어서 혈장농도 모델링에 영향이 극히 미미하고,효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(코드 <a href="delayed-effect.html#exm:effect-model-code">20.1</a>)</p>
+
+
+<div class="example">
+<span id="exm:effect-model-code" class="example"><strong>코드 20.1  </strong></span>효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+</div>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="delayed-effect.html#cb55-1"></a><span class="op">$</span>SUBROUTINES ADVAN3</span>
 <span id="cb55-2"><a href="delayed-effect.html#cb55-2"></a><span class="op">$</span>PK</span>
 <span id="cb55-3"><a href="delayed-effect.html#cb55-3"></a>  K   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))        ; TRIVIAL LOSS TO EFFECT CMPT</span>
@@ -425,12 +430,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb55-13"><a href="delayed-effect.html#cb55-13"></a>  ELSE</span>
 <span id="cb55-14"><a href="delayed-effect.html#cb55-14"></a>  Y   =<span class="st"> </span>F<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">1</span>))               ; DV =<span class="st"> </span>CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
 <span id="cb55-15"><a href="delayed-effect.html#cb55-15"></a>  ENDIF</span></code></pre></div>
+<p>또다른 방식으로는 아래 코드 <a href="delayed-effect.html#exm:effect-comp-advan6">20.2</a>와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．</p>
 
 <div class="example">
-<span id="exm:effect-model-code" class="example"><strong>코드 20.1  </strong></span>효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+<span id="exm:effect-comp-advan6" class="example"><strong>코드 20.2  </strong></span>효과구획 모델 코드: Using General Nonlinear model (ADVAN6) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
 </div>
-
-<p>또다른 방식으로는 아래 코드 <a href="delayed-effect.html#exm:effect-comp-advan6">20.2</a>와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="delayed-effect.html#cb56-1"></a><span class="op">$</span>SUBROUTINES ADVAN6 TOL=<span class="dv">5</span></span>
 <span id="cb56-2"><a href="delayed-effect.html#cb56-2"></a><span class="op">$</span>MODEL</span>
 <span id="cb56-3"><a href="delayed-effect.html#cb56-3"></a>  COMP=(CENTRAL,DEFDOSE,DEFOBS)</span>
@@ -451,10 +455,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-18"><a href="delayed-effect.html#cb56-18"></a>  ELSE</span>
 <span id="cb56-19"><a href="delayed-effect.html#cb56-19"></a>  Y   =<span class="st"> </span>F<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">1</span>))               ; DV =<span class="st"> </span>CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
 <span id="cb56-20"><a href="delayed-effect.html#cb56-20"></a>  ENDIF</span></code></pre></div>
-
-<div class="example">
-<span id="exm:effect-comp-advan6" class="example"><strong>코드 20.2  </strong></span>효과구획 모델 코드: Using General Nonlinear model (ADVAN6) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
-</div>
 </div>
 <div id="직접효과-vs.-간접효과" class="section level2" number="20.4">
 <h2><span class="header-section-number">20.4</span> 직접효과 vs. 간접효과</h2>

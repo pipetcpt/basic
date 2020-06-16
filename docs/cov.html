@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-15" />
+<meta name="date" content="2020-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -374,10 +374,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 14</span> NONMEM의 $COVARIANCE</h1>
 <p>배균섭</p>
 <hr />
-<p>NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.</p>
+<p>NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV 절을 제어구문 파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.</p>
 <div id="actual-example" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> 실제 사례</h2>
-<p>다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 <code>THEO</code> 라는 파일 이름으로 포함되어 있다. 그림은 <a href="cov.html#Theoph">14.5</a>절을 참고한다.</p>
+<p>다음은 공분산단계의 결과물을 이해하기 위한 예제 제어구문 파일의 내용이다. (코드 <a href="cov.html#exm:theoph-control-stream">14.1</a>) Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM 설치시에 <code>THEO</code> 라는 파일 이름으로 포함되어 있다. 그림은 <a href="cov.html#Theoph">14.5</a>절을 참고한다.</p>
+
+<div class="example">
+<span id="exm:theoph-control-stream" class="example"><strong>코드 14.1  </strong></span>Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
+</div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cov.html#cb36-1"></a><span class="op">$</span>PROB THEOPHYLLINE ORAL</span>
 <span id="cb36-2"><a href="cov.html#cb36-2"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT</span>
 <span id="cb36-3"><a href="cov.html#cb36-3"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO</span>
@@ -565,7 +569,7 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{split}
 \tag{14.5}
 \end{equation}\]</span></p>
-<p>NONMEM 제어파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
+<p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
 <p>R에서는 다음과 같은 준비 작업이 필요하다.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cov.html#cb41-1"></a>DataAll =<span class="st"> </span>Theoph</span>
 <span id="cb41-2"><a href="cov.html#cb41-2"></a><span class="kw">colnames</span>(DataAll) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>, <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)</span>
