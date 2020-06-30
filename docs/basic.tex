@@ -41,7 +41,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초},
+  pdftitle={PIPET / Q-fitter Pharmacometrics Course: Basic},
   pdfauthor={임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필},
   colorlinks=true,
   linkcolor=Maroon,
@@ -268,9 +268,9 @@
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
   {\par}
 
-\title{PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초}
+\title{PIPET / Q-fitter Pharmacometrics Course: Basic}
 \author{임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필}
-\date{2020-06-15}
+\date{2020-06-30}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -328,6 +328,9 @@ PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실�
 \hfill 대표저자 임동석 拜
 
 \mainmatter
+
+\hypertarget{part-uxbaa8uxb378-uxad6cuxcd95uxc758-uxae30uxcd08}{%
+\part{모델 구축의 기초}\label{part-uxbaa8uxb378-uxad6cuxcd95uxc758-uxae30uxcd08}}
 
 \hypertarget{intro}{%
 \chapter{계량약리학과 관련 개념들}\label{intro}}
@@ -448,22 +451,22 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지 있다. 그 중에 가장 우선적으로 만들어야 하는 파일은 데이터셋 또는 데이터 파일이다. 이 단원에서는 제어 파일에서 데이터셋을 어떻게 불러들여오는지에 대한 필수 제어구문 작성 방법, 데이터셋 작성 방법, 그리고 각각의 구성 요소들 (항목 또는 데이터 항목)에 대해 설명하고자 한다.
+NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지 있다. 그 중에 가장 우선적으로 만들어야 하는 파일은 데이터셋 또는 데이터 파일이다. 이 단원에서는 제어구문 파일에서 데이터셋을 어떻게 불러들여오는지에 대한 필수 제어구문 작성 방법, 데이터셋 작성 방법, 그리고 각각의 구성 요소들 (항목 또는 데이터 항목)에 대해 설명하고자 한다.
 
 \hypertarget{uxd544uxc218-uxc81cuxc5b4uxad6cuxbb38-uxc791uxc131-uxbc29uxbc95}{%
 \section{필수 제어구문 작성 방법}\label{uxd544uxc218-uxc81cuxc5b4uxad6cuxbb38-uxc791uxc131-uxbc29uxbc95}}
 
-제어 파일의 작성시 모델링을 위한 본격적인 제어구문 작성에 앞서, 기본적으로 파일의 제목과 사용할 데이터셋, 그리고 데이터셋의 구성 내용을 설명해주는 제어구문이 필요하다. 이는 각각 \$PROB, \$DATA, \$INPUT 레코드에 작성하며, 이는 제어 파일의 맨 앞 세 줄로 각각 한 줄씩 기입한다. (코드 \ref{exm:input})
+제어구문 파일의 작성시 모델링을 위한 본격적인 제어구문 작성에 앞서, 기본적으로 파일의 제목과 사용할 데이터셋, 그리고 데이터셋의 구성 내용을 설명해주는 제어구문이 필요하다. 이는 각각 \$PROB, \$DATA, \$INPUT 레코드에 작성하며, 이는 제어구문 파일의 맨 앞 세 줄로 각각 한 줄씩 기입한다. (코드 \ref{exm:input})
 
 \hypertarget{prob-uxb808uxcf54uxb4dc-uxc791uxc131}{%
 \subsection{\$PROB 레코드 작성}\label{prob-uxb808uxcf54uxb4dc-uxc791uxc131}}
 
-컨트롤파일 첫 줄의 필수 제어구문은 \$PROBLEM 으로 사용자가 전체 파일에 대한 제목 또는 서술적 명칭을 붙이는 공간이다. 모델을 점점 더 복잡하게 만드는 과정에서 제어 파일마다 \$PROBLEM 레코드에 새로운 목적 또는 모델에 대한 설명을 남겨놓는 것이 모델링 과정을 정리함에 있어 도움이 된다.
+제어구문 파일 첫 줄의 필수 제어구문은 \$PROBLEM 으로 사용자가 전체 파일에 대한 제목 또는 서술적 명칭을 붙이는 공간이다. 모델을 점점 더 복잡하게 만드는 과정에서 제어구문 파일마다 \$PROBLEM 레코드에 새로운 목적 또는 모델에 대한 설명을 남겨놓는 것이 모델링 과정을 정리함에 있어 도움이 된다.
 
 \hypertarget{data-uxb808uxcf54uxb4dc-uxc791uxc131}{%
 \subsection{\$DATA 레코드 작성}\label{data-uxb808uxcf54uxb4dc-uxc791uxc131}}
 
-\$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 \texttt{../} 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, \texttt{../} 가 없이 바로 파일 이름을 기입할 경우, 이는 제어 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 항목 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 \texttt{IGNORE=@} 또는 \texttt{IGNORE=\#}을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, \texttt{IGNORE=(GEN.EQ.1,AGE.GE.60)} 구문을 사용하여 가능하다).
+\$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 \texttt{../} 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, \texttt{../} 가 없이 바로 파일 이름을 기입할 경우, 이는 제어구문 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 항목 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 \texttt{IGNORE=@} 또는 \texttt{IGNORE=\#}을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, \texttt{IGNORE=(GEN.EQ.1,AGE.GE.60)} 구문을 사용하여 가능하다).
 
 \hypertarget{input-uxb808uxcf54uxb4dc-uxc791uxc131}{%
 \subsection{\$INPUT 레코드 작성}\label{input-uxb808uxcf54uxb4dc-uxc791uxc131}}
@@ -532,9 +535,9 @@ NONMEM은 아스키코드를 인식하기 때문에 데이터 레코드 입력 �
 \includegraphics[width=0.5\linewidth]{figures/02-fig-04} \caption{Example of dataset}\label{fig:example-dataset}
 \end{figure}
 
-데이터 항목 레이블 명명 시 간단한 규칙이 있다. NONMEM 7 에서부터 레이블은 알파벳 1-24 자 (A-Z), 숫자 (0-9), 그리고 ``\_''를 사용해서 만들 수 있다. 단, 첫째 글자는 알파벳이 라야 한다. 데이터셋 상의 데이터 항목 순서는 사실 중요하지 않다(예를 들어, ID를 첫 열에 기입할지 또는 TIME을 첫 열에 기입할지 등). 다만 모든 데이터 레코드는 사용자에 의해 일정하게 약속된 데이터 항목 순으로 기입되어야 하며, 제어 파일의 \$INPUT 레코드 작성 시 해당 순서에 따라 데이터 항목 레이블을 기입해주면 된다. 데이터 항목 레이블 행은 각 열을 명시함으로써 사용자가 입장에서 데이터를 알아보기 편하도록 삽입한 것이라고 볼 수 있다.
+데이터 항목 레이블 명명 시 간단한 규칙이 있다. NONMEM 7 에서부터 레이블은 알파벳 1-24 자 (A-Z), 숫자 (0-9), 그리고 ``\_''를 사용해서 만들 수 있다. 단, 첫째 글자는 알파벳이 라야 한다. 데이터셋 상의 데이터 항목 순서는 사실 중요하지 않다(예를 들어, ID를 첫 열에 기입할지 또는 TIME을 첫 열에 기입할지 등). 다만 모든 데이터 레코드는 사용자에 의해 일정하게 약속된 데이터 항목 순으로 기입되어야 하며, 제어구문 파일의 \$INPUT 레코드 작성 시 해당 순서에 따라 데이터 항목 레이블을 기입해주면 된다. 데이터 항목 레이블 행은 각 열을 명시함으로써 사용자가 입장에서 데이터를 알아보기 편하도록 삽입한 것이라고 볼 수 있다.
 
-NONMEM 실행 시 데이터셋을 불러들여올 때, 데이터 항목 레이블 행 (첫 행)은 불러들이지 않으며, 이는 크게 두 가지 방법으로 가능하다. 첫째로, 데이터셋의 데이터 항목 레이블 행의 첫 열에 \#를 추가 (예를 들어, \#ID)하여 데이터 항목 레이블 행을 제거할 수 있다. 이 경우, 제어 파일에 별도의 제어구문을 작성할 필요는 없다. 두번째로 제어 파일 \$DATA 레코드에 IGNORE 구문을 사용하여 데이터 항목 레이블 행을 제거할 수 있다. \texttt{IGNORE=@}을 사용하면 알파벳으로 시작되는 데이터 레코드 행이 제거되며, \texttt{IGNORE=\#} 명령문을 삽입하고, 데이터셋에 \#을 데이터 항목 레이블 행의 첫 열에 추가(예를 들어, \#ID)하면 데이터 항목 레이블 행을 제거할 수 있다.
+NONMEM 실행 시 데이터셋을 불러들여올 때, 데이터 항목 레이블 행 (첫 행)은 불러들이지 않으며, 이는 크게 두 가지 방법으로 가능하다. 첫째로, 데이터셋의 데이터 항목 레이블 행의 첫 열에 \#를 추가 (예를 들어, \#ID)하여 데이터 항목 레이블 행을 제거할 수 있다. 이 경우, 제어구문 파일에 별도의 제어구문을 작성할 필요는 없다. 두번째로 제어구문 파일 \$DATA 레코드에 IGNORE 구문을 사용하여 데이터 항목 레이블 행을 제거할 수 있다. \texttt{IGNORE=@}을 사용하면 알파벳으로 시작되는 데이터 레코드 행이 제거되며, \texttt{IGNORE=\#} 명령문을 삽입하고, 데이터셋에 \#을 데이터 항목 레이블 행의 첫 열에 추가(예를 들어, \#ID)하면 데이터 항목 레이블 행을 제거할 수 있다.
 
 각각의 데이터 항목에 대해 아래 설명되어 있다. 데이터 항목은 NONMEM이 인식하는 이미 지정 된 이름으로 설정하여 작성한다. 이와 같은 변수의 이름은 사용자와 NONMEM이 이미 약속하여 사용하는 것이며, 데이터셋에 새 변수를 추가하고자 할 때 이미 지정된 이름은 사용하지 않는 것을 추천한다.
 
@@ -599,11 +602,15 @@ TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기�
 
 TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.
 
-TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 `/' 또는 `-' 사용) 제어 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
+TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 `/' 또는 `-' 사용) 제어구문 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{figures/02-fig-07} \caption{Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)}\label{fig:time-dataset}
 \end{figure}
+
+\begin{example}
+\protect\hypertarget{exm:date-dataset-chunk}{}{\label{exm:date-dataset-chunk} }DATE label and its format
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -614,10 +621,6 @@ TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 �
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:date-dataset-chunk}{}{\label{exm:date-dataset-chunk} }DATE label and its format
-\end{example}
-
 \hypertarget{amt}{%
 \subsection{AMT}\label{amt}}
 
@@ -627,7 +630,7 @@ AMT는 Amount를 의미하며 투여된 양을 나타내는 변수로서, 투여
 
 AMT는 양의 숫자로 기입되야 하며, 모든 투여 레코드에 대해 일관된 단위로 기입되어야 한다. 투여 레코드에는 투여된 용량이 존재함으로 AMT 값이 항상 존재하지만, 관측 레코드에서는 AMT 값은 존재하지 않는 결측치로 표시되어야 한다 (즉, 결측지를 의미하는 ``.'' 또는 빈칸으로 처리해야 한다).
 
-AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 통일시켜야 한다. 이는 크게 두가지 방법으로 가능하다. 첫번째로, 데이터셋 안에서 AMT와 DV의 단위를 통일시키는 방법이 있다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 투여 용량에 1000을 곱하여 데이터셋 AMT에 바로 기재할 수 있다. 두번째 방법은 제어 파일 작성 시 scaling factor 를 사용하여 수식을 기입하여 단위를 통일하는 방법이다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 제어 파일에 \texttt{S=V/1000}을 기입하여 사용할 수 있다.\index{scaling parameter / 척도 파라미터}
+AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 통일시켜야 한다. 이는 크게 두가지 방법으로 가능하다. 첫번째로, 데이터셋 안에서 AMT와 DV의 단위를 통일시키는 방법이 있다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 투여 용량에 1000을 곱하여 데이터셋 AMT에 바로 기재할 수 있다. 두번째 방법은 제어구문 파일 작성 시 scaling factor 를 사용하여 수식을 기입하여 단위를 통일하는 방법이다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 제어구문 파일에 \texttt{S=V/1000}을 기입하여 사용할 수 있다.\index{scaling parameter / 척도 파라미터}
 
 \hypertarget{rate}{%
 \subsection{RATE}\label{rate}}
@@ -638,7 +641,7 @@ RATE 은 단위 시간 당 주입된 양(AMT per unit TIME)을 나타내며, 즉
 \includegraphics[width=0.9\linewidth]{figures/02-fig-09} \caption{Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h}\label{fig:AMT-RATE}
 \end{figure}
 
-그 외 RATE는 0, -1, -2 의 값을 가질 수 있다. RATE가 0 인 경우는 투여경로가 정맥 주입이 아니라는 뜻이다. 만약, 정맥주사(bolus)와 정맥주입(infusion)이 함께 이뤄진 경우, 정맥주사 투약 레코드의 RATE는 0으로 기입한다. RATE가 -1 인 경우는 투여 속도를 예측하는 경우이며, 제어 파일 \$PK 부분 작성 시 해당 파라미터를 표현하는 제어구문을 작성해야 한다(예를 들어, \texttt{R1=THETA(1)}). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로 제어 파일 작성 시 \$PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를들어, \texttt{D1=THETA(1)}). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate) 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.
+그 외 RATE는 0, -1, -2 의 값을 가질 수 있다. RATE가 0 인 경우는 투여경로가 정맥 주입이 아니라는 뜻이다. 만약, 정맥주사(bolus)와 정맥주입(infusion)이 함께 이뤄진 경우, 정맥주사 투약 레코드의 RATE는 0으로 기입한다. RATE가 -1 인 경우는 투여 속도를 예측하는 경우이며, 제어구문 파일 \$PK 부분 작성 시 해당 파라미터를 표현하는 제어구문을 작성해야 한다(예를 들어, \texttt{R1=THETA(1)}). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로 제어구문 파일 작성 시 \$PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를들어, \texttt{D1=THETA(1)}). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate) 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.
 
 예를 들어, 시간에 따라 직선적으로 빠르게 증가하는 약물의 농도가 관측될 경우, 이는 0차 흡수를 보인다고 설명될 수 있으며 이를 설명하기 위해 데이터셋 상의 RATE를 -2로 기입하여, 투여 지속시간을 추정하는 경우가 많다.
 
@@ -720,6 +723,10 @@ NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 �
 
 코드 \ref{exm:one-comp}은 1구획 약동학 모델 분석을 위한 제어구문의 예이다. 위의 제어구문은 각 레코드의 정의와 사용 규칙을 이해하는데 도움이 될 것이다.
 
+\begin{example}
+\protect\hypertarget{exm:one-comp}{}{\label{exm:one-comp} }1구획 약동학 모델의 제어구문
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB }\DecValTok{1}\OperatorTok{{-}}\NormalTok{compartment model}
@@ -757,10 +764,6 @@ NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 �
 \NormalTok{       ONEHEADER NOPRINT FILE=cotab1001}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:one-comp}{}{\label{exm:one-comp} }1구획 약동학 모델의 제어구문
-\end{example}
 
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
@@ -883,6 +886,10 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 
 특수 ADVAN과 그에 따른 TRAN를 선택을 통해 이미 분석하고자 하는 모델과 파라미터를 결정하였기 때문에, \$MODEL과 \$DES 레코드는 사용하지 않으며, \$PK를 통해 각 파라미터의 대표값과 개인간 변이, 그리고 각 파라미터와 관계있는 공변량을 정의한다. \$PK는 코드 \ref{exm:two-comp-pk}과 같이 작성한다.\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
 
+\begin{example}
+\protect\hypertarget{exm:two-comp-pk}{}{\label{exm:two-comp-pk} }2구획 경구 약동학 모델의 \$PK 레코드
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{SUBROUTINE ADVAN4 TRANS4}
@@ -901,10 +908,6 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \NormalTok{  K21 =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:two-comp-pk}{}{\label{exm:two-comp-pk} }2구획 경구 약동학 모델의 \$PK 레코드
-\end{example}
 
 \$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S\textsubscript{n})로 단위를 통일시켜야 한다.\index{종속변수(DV) / dependent variable(DV)}\index{dependent variable(DV) / 종속변수(DV)}\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}
 \begin{equation}
@@ -1075,6 +1078,10 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 \ref{exm:table-record}처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (Hooker et al. (\protect\hyperlink{ref-R-xpose4}{2020})) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.\index{dependent variable(DV) / 종속변수(DV)}
 
+\begin{example}
+\protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{THETA}
@@ -1106,10 +1113,6 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
-\end{example}
-
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
 \hypertarget{uxbaa8uxb378-uxc885uxb958uxbcc4-uxc81cuxc5b4uxad6cuxbb38}{%
@@ -1121,6 +1124,10 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \subsection{\texorpdfstring{특수 ADVAN과 일반 ADVAN\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}}{특수 ADVAN과 일반 ADVAN}}\label{uxd2b9uxc218-advanuxacfc-uxc77cuxbc18-advan}}
 
 2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특수 ADVAN을 사용할 경우 \$SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선택하고, \$PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다. ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 \$MODEL과 \$DES 레코드는 사용할 필요가 없다. (코드 \ref{exm:advan4})\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
+
+\begin{example}
+\protect\hypertarget{exm:advan4}{}{\label{exm:advan4} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1168,11 +1175,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:advan4}{}{\label{exm:advan4} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
-\end{example}
-
 동일한 데이터를 일반 ADVAN을 사용하여 분석할 경우, 일반 선형 ADVAN 또는 비선형 ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, \$MODEL 레코드에서 모델 분석에 사용할 구획의 수와 각 구획의 역할에 대하여 결정하여야 한다. (코드 \ref{exm:advan5}) DEFDOSE와 DEFOBS는 NONMEM에 내장되어 있는 옵션으로 각각 용량 구획과 관찰값 구획을 지정할 때 사용한다. 각 구획의 물질 이동은 1차 이동속도를 따르는 선형 ADVAN이므로, \$DES를 사용하지 않아도 된다.
+
+\begin{example}
+\protect\hypertarget{exm:advan5}{}{\label{exm:advan5} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1206,11 +1213,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:advan5}{}{\label{exm:advan5} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
-\end{example}
-
 2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \ref{exm:advan6}처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, \$DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 \texttt{TOL=}을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.
+
+\begin{example}
+\protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1248,10 +1255,6 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
-\end{example}
-
 \hypertarget{uxc77cuxbc18-uxbe44uxc120uxd615-uxbaa8uxb378}{%
 \subsection{일반 비선형 모델}\label{uxc77cuxbc18-uxbe44uxc120uxd615-uxbaa8uxb378}}
 
@@ -1275,6 +1278,10 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{equation}
 
 여기서 MPR은 대사체와 모약물의 분자량의 비(metabolite-to-parent ratio)를 의미하며, Vmax는 대사체가 생성되는 최대반응속도이며, Km은 대사체 생성 최대반응속도가 절반일때의 두번째 구획의 양을 뜻한다. 이 모델을 제어구문으로 나타내면 코드 \ref{exm:parent-metabolite}와 같다. 모약물과 대사체의 농도 데이터(DV)를 전부 사용하여 파라미터를 추정하였고, 데이터셋에서 모약물의 농도는 CMT=2 대사체의 농도는 CMT=3이다. \$DES에서 각 구획의 이동을 정의하였으며, \$ERROR에서 모약물과 대사체의 관찰값의 변이를 각각 추정하였다. (코드 \ref{exm:parent-metabolite})
+
+\begin{example}
+\protect\hypertarget{exm:parent-metabolite}{}{\label{exm:parent-metabolite} }모약물과 대사체의 약동학 동시 분석 모델의 제어구문
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1307,14 +1314,14 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:parent-metabolite}{}{\label{exm:parent-metabolite} }모약물과 대사체의 약동학 동시 분석 모델의 제어구문
-\end{example}
-
 \hypertarget{pred-uxbaa8uxb378}{%
 \subsection{PRED 모델}\label{pred-uxbaa8uxb378}}
 
 \$PRED를 사용한 모델을 살펴보자. 코드 \ref{exm:linear-model}는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.
+
+\begin{example}
+\protect\hypertarget{exm:linear-model}{}{\label{exm:linear-model} }\$PRED를 이용한 간단한 선형 모델
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1337,10 +1344,6 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:linear-model}{}{\label{exm:linear-model} }\$PRED를 이용한 간단한 선형 모델
-\end{example}
-
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 3장은 다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
@@ -1354,7 +1357,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어파일의 구조 중 \$SUBROUTINES 와 \$PK 부분에 대해 주로 설명하고자 한다. 전형적인 \$SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 \ref{tab:specific-advan}). 그림 \ref{fig:1comp-ex}, \ref{fig:2comp-ex}를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 \ref{fig:1comp-ex}은 약물농도가 하나의 직선으로, 그림 \ref{fig:2comp-ex}는 약물농도가 두개의 직선으로 나타나 있다. 그림 \ref{fig:1comp-ex}과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 \ref{fig:2comp-ex}와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
+본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어구문 파일의 구조 중 \$SUBROUTINES 와 \$PK 부분에 대해 주로 설명하고자 한다. 전형적인 \$SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 \ref{tab:specific-advan}). 그림 \ref{fig:1comp-ex}, \ref{fig:2comp-ex}를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 \ref{fig:1comp-ex}은 약물농도가 하나의 직선으로, 그림 \ref{fig:2comp-ex}는 약물농도가 두개의 직선으로 나타나 있다. 그림 \ref{fig:1comp-ex}과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 \ref{fig:2comp-ex}와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}
 
 \begin{longtable}[]{@{}ccc@{}}
 \caption{\label{tab:specific-advan} 구획 모델별 특정 ADVAN의 종류}\tabularnewline
@@ -1515,6 +1518,10 @@ ALAGn & Absorption lag parameter for compartment n\\
 
 앞서 언급된 ADVAN \& TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. \$SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. \$PK block에는 \$SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 \texttt{CL\ =\ THETA(1)\ *\ EXP(ETA(1))} 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 \protect\hyperlink{covariate-analysis}{공변량 분석}에서 다뤄질 예정이다.
 
+\begin{example}
+\protect\hypertarget{exm:code-example-advan4}{}{\label{exm:code-example-advan4} }공변량 수식 작성에 수월한 제어구문
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{SUBROUTINES ADVAN4 TRANS4}
@@ -1535,10 +1542,6 @@ ALAGn & Absorption lag parameter for compartment n\\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:code-example-advan4}{}{\label{exm:code-example-advan4} }공변량 수식 작성에 수월한 제어구문
-\end{example}
-
 ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은\index{저장구획 / depot compartment}\index{depot compartment / 저장구획}
 3구획이다.
@@ -1556,6 +1559,10 @@ Intercompartmental clearance, KA는 흡수속도상수를 의미하며, 부가 �
 만약에 IV와 PO 데이터가 같이 있다면, 약물의 절대생체이용률을 구할 수 있는데, F1 = THETA(7) *
 EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획의 번호를 붙이는데, 여기서는 저장구획이 1구획이니 F1을 사용하면 된다. IV 데이터는 없고 PO 데이터의 용량군이 여러 개라면 아래처럼 하나의 용량군을 1로 고정하고, 다른 용량군의 THETA를 다르게 주어 상대생체이용률을 구할 수 있다. (코드 \ref{exm:code-if})\index{저장구획 / depot compartment}\index{depot compartment / 저장구획}
 
+\begin{example}
+\protect\hypertarget{exm:code-if}{}{\label{exm:code-if} }상대생체이용률을 위한 제어구문
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{IF}\NormalTok{ (DOSE.EQ}\FloatTok{.50}\NormalTok{) F1 =}\StringTok{ }\DecValTok{1}
@@ -1563,10 +1570,6 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 \KeywordTok{IF}\NormalTok{ (DOSE.EQ}\FloatTok{.200}\NormalTok{) F1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:code-if}{}{\label{exm:code-if} }상대생체이용률을 위한 제어구문
-\end{example}
 
 척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 \ref{tab:basic-additional}를 참고하도록 하자. (Beal \protect\hyperlink{ref-nonmem}{2018})\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}
 
@@ -1781,6 +1784,10 @@ Method & Runge-Kutta method & Gear method\\
 \includegraphics[width=0.9\linewidth]{figures/05-fig-06} \caption{2구획 경구모델}\label{fig:2comp-oral}
 \end{figure}
 
+\begin{example}
+\protect\hypertarget{exm:advan5-example}{}{\label{exm:advan5-example} }2구획 경구모델을 ADVAN5로 구현한 코드 예시
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{SUBROUTINE ADVAN5}
@@ -1805,11 +1812,11 @@ Method & Runge-Kutta method & Gear method\\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:advan5-example}{}{\label{exm:advan5-example} }2구획 경구모델을 ADVAN5로 구현한 코드 예시
-\end{example}
-
 동일한 2구획 경구모델(그림 \ref{fig:2comp-oral})을 일반 선형(ADVAN5, 코드 \ref{exm:advan5-example}) 및 비선형(ADVAN6, 코드 \ref{exm:advan6-example}) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, \$SUBROUTINE 구문에 TOL 명령어를 작성하고 \$DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.
+
+\begin{example}
+\protect\hypertarget{exm:advan6-example}{}{\label{exm:advan6-example} }2구획 경구모델을 ADVAN6로 구현한 코드 예시
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1837,10 +1844,6 @@ Method & Runge-Kutta method & Gear method\\
 \NormalTok{  Y  =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:advan6-example}{}{\label{exm:advan6-example} }2구획 경구모델을 ADVAN6로 구현한 코드 예시
-\end{example}
 
 \hypertarget{newer-advan}{%
 \chapter{기타 ADVAN}\label{newer-advan}}
@@ -1883,12 +1886,12 @@ NONMEM 7.12 버전에 추가된 SUBROUTINE으로서 LSODA라는 기법을 사용
 
 PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델의 구조를 만들어 볼 수 있는 \$PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터셋의 칼럼 이름들을 정의해주는 \$INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만 특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 \$PRED를 쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론 \$DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는 모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 \$PRED와는 다르다.\index{dependent variable(DV) / 종속변수(DV)}
 
-제어파일의 맨 앞에 \$PROBLEM으로 프로젝트 이름을 쓰고 \$DATA, \$INPUT에서 데이터셋을 불러 들여오고, 그 다음에 \$SUBROUTINE, \$MODEL, \$PK, \$DES, \$ERROR들을 적절히 골라 적었으나 \$PRED를 쓸 때는 이들이 필요 없게 된다. 그림 \ref{fig:first-order-pred}의 예는 1분획 모델을 ADVAN2 대신 \$PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 \$PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 \ref{fig:pred-dataset}와 같이 차이가 난다.
+제어구문 파일의 맨 앞에 \$PROBLEM으로 프로젝트 이름을 쓰고 \$DATA, \$INPUT에서 데이터셋을 불러 들여오고, 그 다음에 \$SUBROUTINE, \$MODEL, \$PK, \$DES, \$ERROR들을 적절히 골라 적었으나 \$PRED를 쓸 때는 이들이 필요 없게 된다. 그림 \ref{fig:first-order-pred}의 예는 1분획 모델을 ADVAN2 대신 \$PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 \$PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 \ref{fig:pred-dataset}와 같이 차이가 난다.
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/07-fig-01} \caption{1구획 모델의 ADVAN2, \$PRED 제어파일 비교}\label{fig:first-order-pred}
+\includegraphics[width=0.9\linewidth]{figures/07-fig-01} \caption{1구획 모델의 ADVAN2, \$PRED 제어구문 파일 비교}\label{fig:first-order-pred}
 \end{figure}
 
 
@@ -1905,6 +1908,10 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \section{\$PRED를 써야 하는 경우}\label{preduxb97c-uxc368uxc57c-uxd558uxb294-uxacbduxc6b0}}
 
 편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 \$PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 \ref{exm:formula})
+
+\begin{example}
+\protect\hypertarget{exm:formula}{}{\label{exm:formula} }약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1924,10 +1931,6 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \NormalTok{...}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:formula}{}{\label{exm:formula} }약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
-\end{example}
 
 \hypertarget{IE}{%
 \chapter{초기추정값}\label{IE}}
@@ -2251,7 +2254,7 @@ f(x) = \sum_{n = 0}^{\infty}\frac{f^{\left( n \right)}\left( \alpha \right)}{n!}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장에서는 도출된 보고파일들 중 실행결과(output) 파일에 대해 설명하고, table 파일들을 이용하여 진단 플롯을 그리는 방법에 대해 다루고자 한다. 실행결과 파일은 제어 파일과 파일 이름은 같지만, 확장자가 .out인 파일이다. 실행결과 파일을 보면 데이터셋과 제어구문의 내용이 요약되어 나오고 실행의 결과와 추정한 파라미터 값 등을 확인할 수 있는데, 구성을 크게 3개로 나누어 살펴보면, 전체 결과 요약 부분, 추정 단계 부분, 공변량 부분으로 구분할 수가 있다. 결과 요약 부분에는 제어구문의 내용, NONMEM을 실행한 날짜와 시간, 제목, 읽어 들인 데이터 요약 등이 나와 있고, 추정 단계 부분에는 최소화의 성공여부와 목적함수값(OFV, Objective Function Value), 최종 파라미터 추정치 등이 나와 있다. 공변량 부분은 제어구문에 \$COVARIANCE 를 추가한 경우에만 나오게 되며 추정치의 표준오차, 공분산 행렬, 상관 행렬 등이 나와 있다. 제어구문의 파일명을 만들 때 영문 8글자 이하로 만드는 것을 추천하는데, 이는 제어구문의 파일명이 영문 8글자를 넘어가게 되면 실행결과 파일명의 뒷부분이 물결(\textasciitilde) 모양으로 표시되어 어떤 파일을 실행시켰는지 한눈에 알아보기가 어렵기 때문이다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{실행결과 파일 / output files}\index{covariance / 공분산}\index{objective function / 목적함수}\index{output files / 실행결과 파일}
+NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장에서는 도출된 보고파일들 중 실행결과(output) 파일에 대해 설명하고, table 파일들을 이용하여 진단 플롯을 그리는 방법에 대해 다루고자 한다. 실행결과 파일은 제어구문 파일과 파일 이름은 같지만, 확장자가 .out인 파일이다. 실행결과 파일을 보면 데이터셋과 제어구문의 내용이 요약되어 나오고 실행의 결과와 추정한 파라미터 값 등을 확인할 수 있는데, 구성을 크게 3개로 나누어 살펴보면, 전체 결과 요약 부분, 추정 단계 부분, 공변량 부분으로 구분할 수가 있다. 결과 요약 부분에는 제어구문의 내용, NONMEM을 실행한 날짜와 시간, 제목, 읽어 들인 데이터 요약 등이 나와 있고, 추정 단계 부분에는 최소화의 성공여부와 목적함수값(OFV, Objective Function Value), 최종 파라미터 추정치 등이 나와 있다. 공변량 부분은 제어구문에 \$COVARIANCE 를 추가한 경우에만 나오게 되며 추정치의 표준오차, 공분산 행렬, 상관 행렬 등이 나와 있다. 제어구문의 파일명을 만들 때 영문 8글자 이하로 만드는 것을 추천하는데, 이는 제어구문의 파일명이 영문 8글자를 넘어가게 되면 실행결과 파일명의 뒷부분이 물결(\textasciitilde) 모양으로 표시되어 어떤 파일을 실행시켰는지 한눈에 알아보기가 어렵기 때문이다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{실행결과 파일 / output files}\index{covariance / 공분산}\index{objective function / 목적함수}\index{output files / 실행결과 파일}
 
 \index{xpose4}
 
@@ -2320,6 +2323,10 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
+\begin{example}
+\protect\hypertarget{exm:table-example}{}{\label{exm:table-example} }\$TABLE의 예
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3}
@@ -2328,10 +2335,6 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 \OperatorTok{$}\NormalTok{TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:table-example}{}{\label{exm:table-example} }\$TABLE의 예
-\end{example}
 
 Sdtab은 Standard Table, patab은 Parameter Table, catab은 Categorical Covariates Table을 의미하며, cotab은 Continuous Covariates Table을 의미한다. 이 네 개의 테이블 이름은 xpose4 package에서 미리 약속된 이름으로 그대로 사용하여야 하며, 그 뒤에 숫자(Run Number라고 한다)만 바꾸어 사용하게 된다. \$TABLE의 옵션들은 앞에서 설명하였으니 생략하기로 하고, 추가적인 옵션들은 NONMEM 설치 폴더의 help 폴더 안에 있는 \$table.ctl 파일을 참고하도록 하자.
 
@@ -2778,6 +2781,9 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 
 공변량이 포함된 모델에 대한 평가(evaluation) 시에는 주요 공변량의 수준 별로 Visual Predictive Check (VPC)를 수행하는 것이 필수적이다. 앞서 특정 개인에게는 일반화된 고정 효과로서의 공변량-파라미터 관계가 잘 적용되지 않을 수도 있다고 설명하였는데, 이는 해당 공변량의 특정 수준에 대해서도 마찬가지이다. 가장 흔하게 접하는 경우는 여러 개의 용량이 포함된 데이터셋을 모델링하는 경우에, 용량-생체이용률 간 관계를 도입하는 경우이다. 또는, 연령이 광범위하게 분포하는 데이터셋에서 연령-청소율 간의 관계도 유사한 경향성을 가진다. 모델링 과정에서 OFV의 감소가 가장 구조로서 공변량-파라미터 관계를 표현하게 되는데, 이러한 방법의 가장 큰 문제는 측정값의 개수가 충분치 않은 공변량의 특정 수준을 잘 반영하지 못할 수 있다는 것이다. 이에 따라, 공변량 수준(특정 용량 또는 연령 범위 등)에 따라 VPC를 수행하면, 모든 수준에서 측정값과 모델 예측값이 적절히 대응하고 있는지를 평가할 수 있음과 동시에 앞서 언급한 문제에 의해 잘 예측되지 않은 수준이 어느 것인지도 확인할 수 있다. 심지어 공변량 모델링 시 간과한 부적절한 공변량-파라미터 관계까지도 확인할 수 있으므로, 이러한 평가 과정은 반드시 수행되어야 할 것이다.
 
+\hypertarget{part-uxbaa8uxb378-uxc9c4uxb2e8-uxbc0f-uxc57duxb3d9uxd559-uxc57duxb825uxd559-uxc5f0uxacc4-uxbaa8uxb378}{%
+\part{모델 진단 및 약동학-약력학 연계 모델}\label{part-uxbaa8uxb378-uxc9c4uxb2e8-uxbc0f-uxc57duxb3d9uxd559-uxc57duxb825uxd559-uxc5f0uxacc4-uxbaa8uxb378}}
+
 \hypertarget{diag-eval}{%
 \chapter{모델 진단/평가 개론}\label{diag-eval}}
 
@@ -2996,7 +3002,11 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \includegraphics[width=0.9\linewidth]{./figures/13-fig-03} \caption{Relationship between standard deviation of residual variability and predicted concentrations}\label{fig:pred-sd}
 \end{figure}
 
-실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \ref{exm:combined-upper}, \ref{exm:combined-lower}와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 \ref{exm:combined-upper}은 가장 기본적인 형태이고, 코드 \ref{exm:combined-lower}의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 (\$SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, 0.0001 FIX)하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}
+실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \ref{exm:combined-upper}, \ref{exm:combined-lower}와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 \ref{exm:combined-upper}은 가장 기본적인 형태이고, 코드 \ref{exm:combined-lower}의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 (\$SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, \texttt{0.0001\ FIX})하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}
+
+\begin{example}
+\protect\hypertarget{exm:combined-upper}{}{\label{exm:combined-upper} }\$ERROR structure in NONMEM control stream: 기본형태
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3007,7 +3017,8 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \end{Shaded}
 
 \begin{example}
-\protect\hypertarget{exm:combined-upper}{}{\label{exm:combined-upper} }\$ERROR structure in NONMEM control stream: 기본형태
+\protect\hypertarget{exm:combined-lower}{}{\label{exm:combined-lower} }\$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
+이고, 비례오차모델의 표준편차를 반영
 \end{example}
 
 \begin{Shaded}
@@ -3020,11 +3031,6 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:combined-lower}{}{\label{exm:combined-lower} }\$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
-이고, 비례오차모델의 표준편차를 반영
-\end{example}
 
 Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 \ref{fig:run-test})\index{잔차 / residual error}\index{residual error / 잔차}
 
@@ -3122,12 +3128,16 @@ Curved band & Consider adding first- and second- order terms in time & Consider 
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{standard errors of the estimates / 추정값의 표준오차}
+NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, \$COV 절을 제어구문 파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 \$COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{standard errors of the estimates / 추정값의 표준오차}
 
 \hypertarget{actual-example}{%
 \section{실제 사례}\label{actual-example}}
 
-다음은 공분산단계의 결과물을 이해하기 위한 예제 제어파일의 내용이다. Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM설치시에 \texttt{THEO} 라는 파일 이름으로 포함되어 있다. 그림은 \ref{Theoph}절을 참고한다.\index{공분산 / covariance}\index{covariance / 공분산}
+다음은 공분산단계의 결과물을 이해하기 위한 예제 제어구문 파일의 내용이다. (코드 \ref{exm:theoph-control-stream}) Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM 설치시에 \texttt{THEO} 라는 파일 이름으로 포함되어 있다. 그림은 \ref{Theoph}절을 참고한다.\index{공분산 / covariance}\index{covariance / 공분산}
+
+\begin{example}
+\protect\hypertarget{exm:theoph-control-stream}{}{\label{exm:theoph-control-stream} }Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3366,7 +3376,7 @@ R에는 기본적으로 nlme 패키지(Pinheiro, Bates, and R-core \protect\hype
 \label{eq:onecompfit}
 \end{equation}
 
-NONMEM 제어파일의 내용은 \ref{actual-example}절에서 표시한 것과 같다.
+NONMEM 제어구문 파일의 내용은 \ref{actual-example}절에서 표시한 것과 같다.
 
 R에서는 다음과 같은 준비 작업이 필요하다.
 
@@ -3856,7 +3866,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-모델을 구축하고 나서 가장 먼저 해야할 일은 모델이 자료를 잘 설명하고 있는지 살펴보고, 모델이 의도대로 예측하고 있는지를 파악하는 것이다. 이를 위해서 객관적, 통계적으로 모델 예측 능력과 성능을 측정할 수 있어야 하고(모델평가, model evaluation), 모델을 만드는데 사용된 데이터셋에서와 같이 모델이 앞으로 사용될 환경에서도 잘 작동할 수 있다는 것을 보장(모델검증, model validation)해야 한다.
+모델을 구축하고 나서 가장 먼저 해야할 일은 모델이 자료를 잘 설명하고 있는지 살펴보고, 모델이 의도대로 예측하고 있는지를 파악하는 것이다. 이를 위해서 객관적, 통계적으로 모델 예측 능력과 성능을 측정할 수 있어야 하고(모델평가, model evaluation), 모델을 만드는데 사용된 데이터셋에서와 같이 모델이 앞으로 사용될 환경에서도 잘 작동할 수 있다는 것을 보장해야(모델검증, model validation) 한다.
 
 \begin{table}
 
@@ -3885,10 +3895,12 @@ Purpose & Numerical & Visual\\
 \end{tabular}
 \end{table}
 
-모델을 수치적, 시각적, 통계적으로 평가하는 다양한 방법들이 제시되어 있으며 (Brendel et al. \protect\hyperlink{ref-pmid17328581}{2007}), 이것을 표 \ref{tab:purpose-eval}에서 목적과 표현방식에 따라 정리하였다. 이 중 계량약리학 분야에서 재현성(reproducibility)에 초점을 맞춘 방법들을 통칭하여 흔히 모델검증(model validation)이라 한다. 모델검증의 목적은 타당성(validation) 검증 데이터셋에서 모델이 잘 작동되며 잘 적용되는지 여부를 검토하는 것이다. 이러한 모델검증 절차는 분석계획서에 통합적으로 함께 기술되는 것이 추천된다. 이번 장에서는 모델의 예측성능 평가를 목적으로 쓰이는 다양한 기법의 목적과 방법에 대해 논할 것이다.
+모델을 수치적, 시각적, 통계적으로 평가하는 다양한 방법들이 제시되어 있으며 (Brendel et al. \protect\hyperlink{ref-pmid17328581}{2007}), 이것을 표 \ref{tab:purpose-eval}에서 목적과 표현방식에 따라 정리하였다. 이 중 계량약리학 분야에서 재현성(reproducibility)에 초점을 맞춘 방법들을 통칭하여 흔히 모델검증(model validation)이라 한다. 모델검증의 목적은 타당성(validation) 검증 데이터셋에서 모델이 잘 작동되며 잘 적용되는지 여부를 검토하는 것이다. 이러한 모델검증 절차는 분석계획서에 통합적으로 기술되는 것이 추천된다. 이 장에서는 모델의 예측성능 평가를 위해 사용되는 다양한 기법의 목적과 방법에 대해 논할 것이다.
 
 \hypertarget{uxc678uxbd80uxac80uxc99dexternal-validationuxb0b4uxbd80uxac80uxc99dinternal-validation}{%
-\section{\texorpdfstring{외부검증(External validation)/내부검증(Internal validation)\index{내부검증 / internal validation}\index{internal validation / 내부검증}\index{외부검증 / external validation}\index{external validation / 외부검증}}{외부검증(External validation)/내부검증(Internal validation)}}\label{uxc678uxbd80uxac80uxc99dexternal-validationuxb0b4uxbd80uxac80uxc99dinternal-validation}}
+\section{외부검증(External validation)/내부검증(Internal validation)}\label{uxc678uxbd80uxac80uxc99dexternal-validationuxb0b4uxbd80uxac80uxc99dinternal-validation}}
+
+\index{내부검증 / internal validation}\index{internal validation / 내부검증}\index{외부검증 / external validation}\index{external validation / 외부검증}
 
 모델 검증의 종류로 크게 외부검증과 내부검증으로 나눌 수 있다. 어떤 검증이 보다 더 설득력이 있다고 할 수 있을지에 대해서 이견이 있을 수 있지만 일반적으로 모델로 예측한 값들을 별도의 데이터셋과 비교하는 외부검증을 만족하는 경우 보다 높은 수준의 검증이 이루어졌다고 할 수 있다. 외부검증에서는 별도의 자료가 생성될 시의 통제되지 않은 요인이 검증 결과에 영향을 미칠 수 있다. 그러나 외부검증에 의해 만족스러운 예측성능이 검증될 경우 연구자는 개발된 모델이 새로운 자료에서도 적절히 예측할 수 있다는 자신감을 가질 수 있다. 그러나 외부검증이 어렵거나 불가능한 경우가 있기 때문에, 내부검증을 철저히 하는 것이 중요하다.\index{내부검증 / internal validation}\index{internal validation / 내부검증}\index{외부검증 / external validation}\index{external validation / 외부검증}
 
@@ -3975,7 +3987,7 @@ VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변
 \end{Highlighting}
 \end{Shaded}
 
-위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \ref{fig:strat-vpc})\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}
+위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어구문 파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \ref{fig:strat-vpc})\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{figures/16-fig-06} \caption{관찰일(DAY)에 따라 층화(stratification)가 이루어진 VPC.}\label{fig:strat-vpc}
@@ -4203,19 +4215,23 @@ Simultaneous PK-PD analysis & SIM (Simultaneous) & O & Estimate & Estimate\\
 
 \index{동시적합법 / simulatneous fitting}\index{simulatneous fitting / 동시적합법}
 
-PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어파일의 구조를 살펴보도록 하겠다.
+PK-PD 모델링을 수행을 위해 각 적합법에 따라 필요한 데이터셋 구성과 제어구문 파일의 구조를 살펴보도록 하겠다.
 
 \protect\hyperlink{direct-pkpd}{18.5}의 예시는 약물을 IV 로 투여 시 약동학이 1 구획 PK 모델을 따르고, 약력학은 Emax 모델을 따르는 경우이다. PK 와 PD가 시간지연 양상을 보이지 않으며, 직접효과를 나타내는 모델로 설명되었다.\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD 데이터가 모두 포함되어 있어야 한다. CMT 칼럼의 값이 1이면 PK 데이터, 2이면 PD 데이터가 기재되어 있다. IV 투여로 용량 정보는 CMT 1에 들어가 있다. PK 와 PD 데이터가 다른 구획에서 관측된 것이라는 것을 이와 같이 CMT로 구분한다(그림 \ref{fig:SIM-dataset}).
 
-제어파일을 살펴보면, \$PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. \$DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 \$ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 \$THETA 이하의 제어구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \ref{exm:SIM-control}).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
+제어구문 파일을 살펴보면, \$PK 제어구문에는 하나의 구획으로 구성된 PK 모델 구조를 확인할 수 있으며, PD 도메인에 해당되는 EC50 및 Emax 값을 추정한다. \$DES는 ADVAN 6 이상(ADVAN 6, 8, 9, 13)에서 nonlinear ADVAN을 사용할 때 쓰는 제어구문으로, 구획 하나 당 하나의 미분방정식을 기재한다. PK-PD가 직접 효과를 나타내어, CMT 1에서 만들어지는 혈중농도에 따라 EMAX 양상으로 바로 효과가 나타난다고 생각할 수 있다. 이 경우 PD 모델(Emax 모델)을 \$ERROR 블록 내 표현할 수 있다. 오차 모델(Error model)은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지로 나뉘어져 있다. SIMULTANEOUS 방법에서는 PK, PD 파라미터를 동시에 추정하기 때문에 \$THETA 이하의 제어구문에서 어떠한 파라미터 값도 고정하지 않고 모델링을 진행한다(코드 \ref{exm:SIM-control}).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{./assets/media-18/image5} \caption{SIM 방법의 데이터셋의 예}\label{fig:SIM-dataset}
 \end{figure}
 
 
+
+\begin{example}
+\protect\hypertarget{exm:SIM-control}{}{\label{exm:SIM-control} }SIM 방법의 제어구문의 예
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4254,10 +4270,6 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:SIM-control}{}{\label{exm:SIM-control} }SIM 방법의 제어구문의 예
-\end{example}
-
 아래의 제어구문은 NONMEM을 기본적으로 수행시키기 위해 \$PK 위에 들어가는 명령어라고 볼 수 있다.
 
 \begin{Shaded}
@@ -4278,17 +4290,17 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{ERROR }
 \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.1}\NormalTok{) THEN }
-\NormalTok{IPRED =}\StringTok{ }\NormalTok{CP }
-\NormalTok{W =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{10}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{11}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{) }
-\NormalTok{IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
-\NormalTok{IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
-\NormalTok{Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{CP }
+\NormalTok{  W =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{10}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{11}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{) }
+\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
+\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
+\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
 \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN }
-\NormalTok{IPRED =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP}\OperatorTok{/}\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
-\NormalTok{W =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{12}\NormalTok{) }
-\NormalTok{IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
-\NormalTok{IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
-\NormalTok{Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{) }
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP}\OperatorTok{/}\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
+\NormalTok{  W =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{12}\NormalTok{) }
+\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
+\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
+\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{) }
 \NormalTok{ENDIF}
 \end{Highlighting}
 \end{Shaded}
@@ -4306,6 +4318,10 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 \end{figure}
 
 
+
+\begin{example}
+\protect\hypertarget{exm:pppd-code}{}{\label{exm:pppd-code} }PPP\&D 방법의 제어구문의 예
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4344,10 +4360,6 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:pppd-code}{}{\label{exm:pppd-code} }PPP\&D 방법의 제어구문의 예
-\end{example}
-
 \hypertarget{ppp-population-pk-parameters}{%
 \subsubsection{PPP (Population PK Parameters)}\label{ppp-population-pk-parameters}}
 
@@ -4360,6 +4372,10 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \end{figure}
 
 
+
+\begin{example}
+\protect\hypertarget{exm:control-ppp}{}{\label{exm:control-ppp} }Example of control file for PPP
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4395,26 +4411,22 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:control-ppp}{}{\label{exm:control-ppp} }Example of control file for PPP
-\end{example}
-
 \hypertarget{ipp-individual-pk-parameters}{%
 \subsection{IPP (Individual PK Parameters)}\label{ipp-individual-pk-parameters}}
 
-순차적합법 중 마지막으로 소개할 방법은 IPP이며 이는 개인 PK 파라미터 추정치를 데이터셋 상에서 고정하여 PD 모델에 대한\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
-입력값으로 사용하여 PD파라미터를 추정한다. IPP에서 사용하는 데이터셋은 PPP 데이터셋 구조와 기본적으로 동일하며 PD
-데이터를 포함한다. 데이터셋에서 추가되는 부분은 PK 모델링을 통해 얻은 개인의 파라미터 추정치로 이 경우 각 해당 대상자의
-CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어파일의 \$TABLE
-블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.
+순차적합법 중 마지막으로 소개할 방법은 IPP이며 이는 개인 PK 파라미터 추정치를 데이터셋 상에서 고정하여 PD 모델에 대한\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법} 입력값으로 사용하여 PD파라미터를 추정한다. IPP에서 사용하는 데이터셋은 PPP 데이터셋 구조와 기본적으로 동일하며 PD 데이터를 포함한다. 데이터셋에서 추가되는 부분은 PK 모델링을 통해 얻은 개인의 파라미터 추정치로 이 경우 각 해당 대상자의 CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값은 PK 모델링 수행 시 제어구문 파일의 \$TABLE 블록 내에 IPRED를 기재하여 생성된 표에서 IPRED 결과를 얻을 수 있다.
 
-그림 \ref{fig:ipp-dataset-ex}에서 CL 와 V1에 해당하는 데이터 항목 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 \ref{exm:IPP-example}).
+그림 \ref{fig:ipp-dataset-ex}에서 CL 와 V1에 해당하는 데이터 항목 레이블 (데이터셋 첫 행)은 ICL 과 IV이며, 기존 NONMEM이 지정하여 사용하는 파라미터 이름과 혼동되지 않도록 구분된 명칭을 써야 한다. 예시에서 우리는 Individual의 첫 알파벳 I를 파라미터 앞에 붙여 ICL 및 IV 로 명명하여 데이터셋 및 제어구문 파일에 사용하였다. IPP 역시 PPP 와 마찬가지로 PD 데이터 만을 데이터셋에 포함시키므로, 오차 모델 또한 PD에 대한 오차모델만을 가진다(그림 \ref{exm:IPP-example}).
 
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{./assets/media-18/image8} \caption{IPP 방법의 데이터셋의 예}\label{fig:ipp-dataset-ex}
 \end{figure}
 
 
+
+\begin{example}
+\protect\hypertarget{exm:IPP-example}{}{\label{exm:IPP-example} }IPP 방법의 제어구문의 예
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4446,17 +4458,13 @@ CL, V1 값에 해당된다. 개인의 CL, V1과 같은 posthoc 파라미터 값�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:IPP-example}{}{\label{exm:IPP-example} }IPP 방법의 제어구문의 예
-\end{example}
-
 \hypertarget{indirect-pkpd}{%
 \section{간접효과 PK-PD 모델의 예 (Examples of PK-PD model with Indirect response)}\label{indirect-pkpd}}
 
 \hypertarget{simuxacfc-pppd-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}{%
 \subsection{SIM과 PPP\&D 데이터셋 및 제어구문}\label{simuxacfc-pppd-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}}
 
-이 장에서는 앞서 소개한 \protect\hyperlink{direct-pkpd}{18.5} 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.
+이 장에서는 앞서 소개한 \protect\hyperlink{direct-pkpd}{18.5} 예시보다는 조금 복잡한 경우의 PK-PD 모델링에 필요한 데이터셋과 제어구문 파일의 구조를 살펴보자. 본 예시는 약물이 경구투여되어 나타나는 PK, PD 양상을 2구획 PK모델과 효과구획이 포함된 PD모델로 설명하였다. 따라서, 구획은 흡수, 중심, 말초, 효과의 총 4개의 구획으로 나뉘어지며, PD는 단순 Emax 모델을 따르고, PK 와 PD 간의 간접효과 모델을 사용(시간지연이 보인다고 가정)하여 약물의 농도가 효과 생성에 억제(Kin을 inhibit 시키는 것을 가정) 시키는 것을 나타냈다.
 
 SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 \ref{fig:sim-pppd-dataset}). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.
 
@@ -4466,9 +4474,13 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 
 
 
-이전 제어파일 예시와 다른 점은 \$DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(코드 \ref{exm:sim-pppd-similarity}).
+이전 제어구문 파일 예시와 다른 점은 \$DES 블록 내에 시간에 따른 PD 관측값의 변화를 설명하는 미분방정식(DADT(4))이 포함되어 있으며, 약물의 효과를 단순 Emax와 간접효과 모델로 설명하고 있다. SIM과 PPP\&D 방법은 PK 데이터 및 PD 데이터를 모두 활용하기 때문에 오차모델은 PK에 대한 오차모델과 PD에 대한 오차모델 두가지를 포함한다(코드 \ref{exm:sim-pppd-similarity}).
 
-제어파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 \$ERROR 뒤에 이어지는 \$THETA, \$OMEGA, \$SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP\&D 방법이라고 할 수 있다.
+제어구문 파일에서 SIM과 PPP\&D를 구분할 수 있게 해 주는 부분은 \$ERROR 뒤에 이어지는 \$THETA, \$OMEGA, \$SIGMA제어구문이며, 이 때 집단 PK 파라미터 추정치를 고정하지 않고 진행하는 것이 SIM방법이고, 고정하여 진행하는 것이 PPP\&D 방법이라고 할 수 있다.
+
+\begin{example}
+\protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4507,16 +4519,12 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
-\end{example}
-
 
 
 \hypertarget{pppuxc758-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}{%
 \subsection{PPP의 데이터셋 및 제어구문}\label{pppuxc758-uxb370uxc774uxd130uxc14b-uxbc0f-uxc81cuxc5b4uxad6cuxbb38}}
 
-PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \ref{fig:ppp-pkpd-dataset}). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 @ref:sim-pppd-dataset)을 활용하고자 한다면, 제어파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 `ignore'이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
+PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \ref{fig:ppp-pkpd-dataset}). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 @ref:sim-pppd-dataset)을 활용하고자 한다면, 제어구문 파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 `ignore'이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.
 
 PPP의 제어구문은 위의 코드 \ref{exm:sim-pppd-similarity}과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 \$ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.
 
@@ -4531,13 +4539,17 @@ PPP의 제어구문은 위의 코드 \ref{exm:sim-pppd-similarity}과 동일한 
 
 IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이터를 포함한다. 다만, PK 모델을 통해 얻은 개인의 파라미터 추정치(예를 들어, CL, V2, V3, KA)를 바로 데이터셋에 기입해 준다. IPP에 적합한 데이터셋 형태는 아래와 같다(그림 \ref{fig:ipp-dataset}).
 
-이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어파일에 \$PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \ref{exm:ipp-control-stream}). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 `I'를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.
+이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어구문 파일에 \$PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \ref{exm:ipp-control-stream}). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 `I'를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{./assets/media-18/image14} \caption{IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조}\label{fig:ipp-dataset}
 \end{figure}
 
 
+
+\begin{example}
+\protect\hypertarget{exm:ipp-control-stream}{}{\label{exm:ipp-control-stream} }IPP 방법의 제어구문의 예
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4576,10 +4588,6 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 \NormalTok{  KOUT  =}\StringTok{ }\NormalTok{KIN}\OperatorTok{/}\NormalTok{BASE}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:ipp-control-stream}{}{\label{exm:ipp-control-stream} }IPP 방법의 제어구문의 예
-\end{example}
 
 \hypertarget{pk-pd-uxc5f0uxacb0uxbc29uxbc95uxc801uxd569uxbc95-uxbe44uxad50}{%
 \section{PK-PD 연결방법(적합법) 비교}\label{pk-pd-uxc5f0uxacb0uxbc29uxbc95uxc801uxd569uxbc95-uxbe44uxad50}}
@@ -4752,21 +4760,25 @@ E\textsubscript{max} 모델을 이용하여 약물(또는 리간드)과 수용�
 가정 3.에 의하여 \(E=\alpha \cdot [R^*]\)이므로,
 \begin{equation}
 E = \alpha \cdot R^* = \frac{\alpha \cdot R_T \cdot C}{C + K_D}
+\label{eq:alpha-rt}
 \end{equation}
 
 \(E_{max} = \alpha \cdot [R_T]\)라 하면,
 \begin{equation}
 E = \frac{E_{max} \cdot C}{C + K_D}
+\label{eq:emax-alpha-rt}
 \end{equation}
 
 여기서, K\textsubscript{D}의 단위는 농도이며 (C와 동일), 약물 수용체의 50\%가 결합한 상태에서의 약효(EC\textsubscript{50})는 Emax/2 가 된다. 이를 위의 식에 대입하면,
 \begin{equation}
 \frac{E_{max}}{2} = \frac{E_{max} \cdot EC_{50}}{K_D + EC_{50}}
+\label{eq:ec50-emax-half}
 \end{equation}
 
 이고 이를 정리하면, \(K_D = EC_{50}\)이다. 결국 다시 정리하면, Emax 모델은 다음과 같다.
 \begin{equation}
 E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
+\label{eq:final-emax-model}
 \end{equation}
 
 C는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 특정 부위의 약물농도를 직접적으로 측정하기 어려우므로, 혈중 약물농도와 상관관계가 있다고 가정하고 혈중약물농도 C로 대체한다. 경우에 따라, 수용체와 결합하는 조직의 약물농도를 설명하는 구획(compartment)을 PD 모델에 반영하면, C는 C\textsubscript{T} (특정조직에서의 약물농도)로 대체할 수 있다.
@@ -4775,6 +4787,7 @@ C는 수용체와 결합하는 약물 농도이나, 수용체가 존재하는 �
 약물농도가 EC\textsubscript{50}에 비하여 매우 작으면 (EC\textsubscript{50} \textgreater\textgreater C), 약효는 혈중 약물농도에 비례하지만 (E = (E\textsubscript{max}/EC\textsubscript{50}) · C), 약물농도가 EC\textsubscript{50}보다 크면(EC\textsubscript{50} \textless\textless{} C), 약효는 포화되어, 약물농도에 관계없이 일정한 값을 가진다(E\textsubscript{max}). 그림 \ref{fig:emax-model}에서 E\textsubscript{max}는 약물의 효능(efficacy)을 나타내며, EC\textsubscript{50}은 약물의 효력(potency)를 나타내는 지표이다. 또한, 약물농도를 로그로 치환하면 EC\textsubscript{50}을 명확하게 확인할 수 있으며, 데이터에 기저치가 존재하면 다음과 같이 나타낼 수 있다.
 \begin{equation}
 E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
+\label{eq:base-final-emax-model}
 \end{equation}
 
 \begin{figure}
@@ -4786,12 +4799,13 @@ E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
 이 때, R\textsubscript{max} = E\textsubscript{0}+100이며, EC\textsubscript{50}일 때 약물반응은 E\textsubscript{0}+50 이다. 만약, E\textsubscript{max} 모델을 다음과 같이 나타내면,
 \begin{equation}
 E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})
+\label{eq:rmax-e0}
 \end{equation}
 
 R\textsubscript{max} = E\textsubscript{0}+100일때, 모델의 최대약물효과는 E\textsubscript{0}·E\textsubscript{max}가 된다 (그림 \ref{fig:emax-comparison} (우)).
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/19-fig-04} \caption{E\textsubscript{max} 모델의 비교 (좌) \(\text{E} \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{\text{EC}_{50} + \lbrack C\rbrack}\) (우) \(\text{E} \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{\text{EC}_{50} + \left\lbrack C \right\rbrack})\)}\label{fig:emax-comparison}
+\includegraphics[width=0.9\linewidth]{figures/19-fig-04} \caption{E\textsubscript{max} 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)}\label{fig:emax-comparison}
 \end{figure}
 
 
@@ -4804,7 +4818,8 @@ R\textsubscript{max} = E\textsubscript{0}+100일때, 모델의 최대약물효�
 
 PD 모델에 사용되는 약물이 길항제로 작용하는 약물이라면, 혈중약물농도와 약효와의 관계는 그림 \ref{fig:anta-emax}와 같으며, 그때의 약효(E)는 다음과 같다.
 \begin{equation}
-\text{E} \approx E_{0} - \frac{\ I_{\max}\lbrack C\rbrack}{\text{IC}_{50} + \lbrack C\rbrack}
+E \approx E_{0} - \frac{\ I_{\max}\lbrack C\rbrack}{IC_{50} + \lbrack C\rbrack}
+\label{eq:anta-emax-effect}
 \end{equation}
 
 \hypertarget{sigmoid-emax-model-hill-uxbc29uxc815uxc2dd}{%
@@ -4813,6 +4828,7 @@ PD 모델에 사용되는 약물이 길항제로 작용하는 약물이라면, �
 Sigmoid E\textsubscript{max} model은 여러 결합부위를 가지고 있는 수용체와 약물 간의 관계를 설명하기 위해 사용된다. 약물과 수용체의 1:1 결합을 가정하는 일반적인 E\textsubscript{max} model과 달리 n개의 약물 분자가 수용체의 작용부위와 결합한다.
 \begin{equation}
 E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}}
+\label{eq:hill-n-molecule}
 \end{equation}
 
 여기서 n은 수용체와 결합하는 약물분자의 수를 의미하며, Hill 계수(Hill coefficient, H)라고도 한다.
@@ -4874,7 +4890,6 @@ E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 \subsection{다중 약물결합 모델(multiple binding site model)}\label{uxb2e4uxc911-uxc57duxbb3cuxacb0uxd569-uxbaa8uxb378multiple-binding-site-model}}
 
 약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.
-
 \begin{equation}
 [C] + [R] \xrightarrow[k_{-1}]{k_1} [CR] + [C] \xrightarrow[k_{-2}]{k_2} [C2R]
 \label{eq:multiplebinding}
@@ -4951,6 +4966,12 @@ K_2 &= k_2 / k_{-2}
 
 이 효과구획 모델에서 시간에 따른 혈중 농도와 효과의 관계는 지연효과가 있어 보이지만, 약물의 실제 작용 부위 농도와 효과의 관계는 지연이 없는 즉시효과 양상을 보이는 경우가 많다. 이 모델을 NONMEM에서 구현하는 방법은 여러 가지가 있는데 １구획 모델로 분포하는 약이라고 가정할 때, 두 가지 예를 소개한다． 아래 코드의 핵심은 중앙구획에서 효과구획으로의 약물의 이동이 극히 소량(K12=0.001*K)이어서 혈장농도 모델링에 영향이 극히 미미하고,효과구획으로의 분포가 완료되면 혈장과 효과구획에서의 약물농도가 동일하게 된다는 것이다．(코드 \ref{exm:effect-model-code})
 
+
+
+\begin{example}
+\protect\hypertarget{exm:effect-model-code}{}{\label{exm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})
+\end{example}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{SUBROUTINES ADVAN3}
@@ -4971,13 +4992,11 @@ K_2 &= k_2 / k_{-2}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{example}
-\protect\hypertarget{exm:effect-model-code}{}{\label{exm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})
-\end{example}
-
-
-
 또다른 방식으로는 아래 코드 \ref{exm:effect-comp-advan6}와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다．
+
+\begin{example}
+\protect\hypertarget{exm:effect-comp-advan6}{}{\label{exm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5003,10 +5022,6 @@ K_2 &= k_2 / k_{-2}
 \NormalTok{  ENDIF}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{example}
-\protect\hypertarget{exm:effect-comp-advan6}{}{\label{exm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})
-\end{example}
 
 \hypertarget{uxc9c1uxc811uxd6a8uxacfc-vs.-uxac04uxc811uxd6a8uxacfc}{%
 \section{직접효과 vs.~간접효과}\label{uxc9c1uxc811uxd6a8uxacfc-vs.-uxac04uxc811uxd6a8uxacfc}}

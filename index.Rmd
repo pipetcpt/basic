@@ -1,5 +1,5 @@
 --- 
-title: "PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초"
+title: "PIPET / Q-fitter Pharmacometrics Course: Basic"
 author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"

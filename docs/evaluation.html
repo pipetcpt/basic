@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</title>
+  <title>Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta property="og:title" content="Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://pipetcpt.github.io/basic" />
   <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="pipetcpt/basic" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초" />
+  <meta name="twitter:title" content="Chapter 16 모델의 예측성능 평가 | PIPET / Q-fitter Pharmacometrics Course: Basic" />
   
   <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
@@ -24,7 +24,7 @@
 <meta name="author" content="임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필" />
 
 
-<meta name="date" content="2020-06-16" />
+<meta name="date" content="2020-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>서문</a></li>
+<li class="part"><span><b>I 모델 구축의 기초</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#소개"><i class="fa fa-check"></i><b>1.1</b> 소개</a></li>
@@ -249,6 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
 </ul></li>
+<li class="part"><span><b>II 모델 진단 및 약동학-약력학 연계 모델</b></span></li>
 <li class="chapter" data-level="12" data-path="diag-eval.html"><a href="diag-eval.html"><i class="fa fa-check"></i><b>12</b> 모델 진단/평가 개론</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="diag-eval.html"><a href="diag-eval.html#모델-진단과-평가의-일반-특성"><i class="fa fa-check"></i><b>12.1</b> 모델 진단과 평가의 일반 특성</a></li>
@@ -362,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic 모델 구축의 기초</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PIPET / Q-fitter Pharmacometrics Course: Basic</a>
           </h1>
         </div>
 
@@ -374,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 16</span> 모델의 예측성능 평가</h1>
 <p>한성필</p>
 <hr />
-<p>모델을 구축하고 나서 가장 먼저 해야할 일은 모델이 자료를 잘 설명하고 있는지 살펴보고, 모델이 의도대로 예측하고 있는지를 파악하는 것이다. 이를 위해서 객관적, 통계적으로 모델 예측 능력과 성능을 측정할 수 있어야 하고(모델평가, model evaluation), 모델을 만드는데 사용된 데이터셋에서와 같이 모델이 앞으로 사용될 환경에서도 잘 작동할 수 있다는 것을 보장(모델검증, model validation)해야 한다.</p>
+<p>모델을 구축하고 나서 가장 먼저 해야할 일은 모델이 자료를 잘 설명하고 있는지 살펴보고, 모델이 의도대로 예측하고 있는지를 파악하는 것이다. 이를 위해서 객관적, 통계적으로 모델 예측 능력과 성능을 측정할 수 있어야 하고(모델평가, model evaluation), 모델을 만드는데 사용된 데이터셋에서와 같이 모델이 앞으로 사용될 환경에서도 잘 작동할 수 있다는 것을 보장해야(모델검증, model validation) 한다.</p>
 <table>
 <caption>
 <span id="tab:purpose-eval">표 16.1: </span>목적과 표현방식에 따라 분류한 모델 평가 방법
@@ -456,9 +458,10 @@ Numerical Predictive Check (NPC)
 </tr>
 </tbody>
 </table>
-<p>모델을 수치적, 시각적, 통계적으로 평가하는 다양한 방법들이 제시되어 있으며 <span class="citation">(Brendel et al. <a href="#ref-pmid17328581" role="doc-biblioref">2007</a>)</span>, 이것을 표 <a href="evaluation.html#tab:purpose-eval">16.1</a>에서 목적과 표현방식에 따라 정리하였다. 이 중 계량약리학 분야에서 재현성(reproducibility)에 초점을 맞춘 방법들을 통칭하여 흔히 모델검증(model validation)이라 한다. 모델검증의 목적은 타당성(validation) 검증 데이터셋에서 모델이 잘 작동되며 잘 적용되는지 여부를 검토하는 것이다. 이러한 모델검증 절차는 분석계획서에 통합적으로 함께 기술되는 것이 추천된다. 이번 장에서는 모델의 예측성능 평가를 목적으로 쓰이는 다양한 기법의 목적과 방법에 대해 논할 것이다.</p>
+<p>모델을 수치적, 시각적, 통계적으로 평가하는 다양한 방법들이 제시되어 있으며 <span class="citation">(Brendel et al. <a href="#ref-pmid17328581" role="doc-biblioref">2007</a>)</span>, 이것을 표 <a href="evaluation.html#tab:purpose-eval">16.1</a>에서 목적과 표현방식에 따라 정리하였다. 이 중 계량약리학 분야에서 재현성(reproducibility)에 초점을 맞춘 방법들을 통칭하여 흔히 모델검증(model validation)이라 한다. 모델검증의 목적은 타당성(validation) 검증 데이터셋에서 모델이 잘 작동되며 잘 적용되는지 여부를 검토하는 것이다. 이러한 모델검증 절차는 분석계획서에 통합적으로 기술되는 것이 추천된다. 이 장에서는 모델의 예측성능 평가를 위해 사용되는 다양한 기법의 목적과 방법에 대해 논할 것이다.</p>
 <div id="외부검증external-validation내부검증internal-validation" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> 외부검증(External validation)/내부검증(Internal validation)</h2>
+<p></p>
 <p>모델 검증의 종류로 크게 외부검증과 내부검증으로 나눌 수 있다. 어떤 검증이 보다 더 설득력이 있다고 할 수 있을지에 대해서 이견이 있을 수 있지만 일반적으로 모델로 예측한 값들을 별도의 데이터셋과 비교하는 외부검증을 만족하는 경우 보다 높은 수준의 검증이 이루어졌다고 할 수 있다. 외부검증에서는 별도의 자료가 생성될 시의 통제되지 않은 요인이 검증 결과에 영향을 미칠 수 있다. 그러나 외부검증에 의해 만족스러운 예측성능이 검증될 경우 연구자는 개발된 모델이 새로운 자료에서도 적절히 예측할 수 있다는 자신감을 가질 수 있다. 그러나 외부검증이 어렵거나 불가능한 경우가 있기 때문에, 내부검증을 철저히 하는 것이 중요하다.</p>
 <p>올바른 외부검증/내부검증은 사전계획에서부터 시작된다. 즉, 모델링을 시작하기 전에 계획을 세워 편향성을 제거하는 것이 필요하다. 모델을 비교하기 위해 사용되는 통계량에 대한 기준값을 미리부터 분석계획에 명시하는 것이 추천되며, 내부검증 혹은 외부검증에서 계산된 통계량이 애초에 설정된 기준을 만족시키지 않는 경우 모델의 개선이 필요하다.</p>
 <p>데이터 분할 기법(data splitting method)은 모델 평가를 위해 새로운 자료를 수집하는 것이 어려울 경우에 검증 자료를 만들어내는 유용한 내부검증 방법으로 분석 데이터셋의 일부분을 임의로 추출하여 검사용 데이터셋을 만들고, 실제 개발 데이터셋에서 이를 제거한다. 이 방법의 단점은 모델의 예측 정확도가 자료를 나누는데 사용된 표본의 크기에 따라 좌우된다는 것이다. 또 다른 내부검증 기법은 재추출 방법(resampling)으로 교차 타당성 검증(cross-validation)과 붓스트랩(bootstrap)의 두 가지 방법이 포함된다. 교차 타당성 검증은 데어터 분할(data splitting)을 반복하여 사용하는 방법이고 모형 구축을 위해 사용되는 자료 세트의 크기가 다른 방법에 비해 크고 이로 인해 추정과정에서 무시되는 자료가 작다는 장점이 있고, 단일 샘플의 분할에 의존하지 않기 때문에 변이성이 감소하게 된다. <span class="citation">(식품의약품안전평가원 의약품심사부 종양약품과 <a href="#ref-poppk" role="doc-biblioref">2015</a>)</span></p>
