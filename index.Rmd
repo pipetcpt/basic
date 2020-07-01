@@ -1,7 +1,8 @@
 --- 
-title: "PIPET / Q-fitter Pharmacometrics Course: Basic"
+title: "계량약리학 워크샵 - 초급 과정"
+#PIPET / Q-fitter Pharmacometrics Course: Basic
 author: "임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
-date: "`r Sys.Date()`"
+date: "`r Sys.Date()` (v0.9.0)"
 knit: "bookdown::render_book"
 bibliography: ["references/references.bib", "references/packages.bib"]
 biblio-style: apalike
@@ -99,7 +100,7 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 #options(knitr.graphics.auto_pdf = FALSE)
 ```
 
-# 서문 {-}
+# 머리말 {-}
 
 `r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:20%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="Github repo" />](http://pipet.or.kr/books/basic) '`
 
