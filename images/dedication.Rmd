@@ -1,0 +1,11 @@
+---
+header-includes:
+  - \usepackage{kotex}
+---
+
+
+임동석  
+가톨릭대학교 약리학교실
+
+한성필  
+가톨릭대학교 약리학교실
