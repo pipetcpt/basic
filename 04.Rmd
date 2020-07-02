@@ -57,9 +57,9 @@ tibble::tribble(
 
 ```{r standard-pk-models}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
-  rename(`ADVAN TRANS` = 1) %>%	
+  rename(`ADVAN TRANS` = 1) %>%  
   kable(booktabs = TRUE, align = "l", escape = FALSE,
-		caption = "Standard Pharmacokinetic Models and Parameters") %>% 
+        caption = "Standard Pharmacokinetic Models and Parameters") %>% 
   #column_spec(1, width = "2cm") %>%
   column_spec(2, width = "1.5cm") %>%
   column_spec(3, width = "3cm") %>%
@@ -91,20 +91,19 @@ read_csv(txt) %>%
 ```r
 $SUBROUTINES ADVAN4 TRANS4
 $PK 
-  TVCL  = THETA(1)
-  TVV2  = THETA(2)
-  TVV3  = THETA(3)
-  TVQ  	= THETA(4)
-  TVKA 	= THETA(5)
-  CL 	=	TVCL * EXP(ETA(1))
-  V2 	=	TVV2 * EXP(ETA(2))
-  V3 	=	TVV3 * EXP(ETA(3))
-  Q  	=	TVQ  * EXP(ETA(4))
-  KA 	=	TVKA * EXP(ETA(5))
-  		
-  ALAG1	=	THETA(6) * EXP(ETA(6))
-  S2 	=	V2 / 1000
-
+  TVCL = THETA(1)
+  TVV2 = THETA(2)
+  TVV3 = THETA(3)
+  TVQ  = THETA(4)
+  TVKA = THETA(5)
+  CL   =  TVCL * EXP(ETA(1))
+  V2   =  TVV2 * EXP(ETA(2))
+  V3   =  TVV3 * EXP(ETA(3))
+  Q    =  TVQ  * EXP(ETA(4))
+  KA   =  TVKA * EXP(ETA(5))
+      
+  ALAG1=  THETA(6) * EXP(ETA(6))
+  S2   =  V2 / 1000
 ```
 ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은\index{저장구획 / depot compartment}\index{depot compartment / 저장구획}
@@ -141,8 +140,8 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="50", range="B2:E36") %>%
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:basic-additional)") %>% 
   column_spec(1, width = "2cm") %>%
   column_spec(2, width = "2.5cm") %>%
-  column_spec(3, width = "1cm") %>%
-  column_spec(4, width = "7.5cm") %>%
+  column_spec(3, width = "1.5cm") %>%
+  column_spec(4, width = "7.0cm") %>%
   collapse_rows(1:2, valign = "top")
 ```
 

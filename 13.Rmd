@@ -138,8 +138,7 @@ read_csv('data-raw/media-13-tab-1.csv', col_types="cccc") %>%
          `$X_{ji}$ values` = 4) %>% 
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:diag-response)") %>% 
   column_spec(1:4, width = "3cm") %>%
-  #kable_styling("striped") %>%  
-  add_header_above(c(" " = 1, "Plot of $\\varepsilon_i$ Versus" = 3))
+  add_header_above(c(" " = 1, `Plot of $\\varepsilon_{i}$ versus` = 3), escape = FALSE)
 ```
 
 (ref:diag-response) 진단 결과에 따른 모델 개선 방안 [@draper1998applied]

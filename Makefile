@@ -10,7 +10,8 @@ gitbook:
 
 pdf:
 	Rscript --quiet _render.R "bookdown::pdf_book" ;\
-	cp docs/basic.pdf ./pdf-"$$(date +"%H-%M")".pdf
+	cp docs/basic.pdf ./pdf-"$$(date +"%H-%M")".pdf ;\
+	ls *.pdf
 
 epub:
 	Rscript --quiet _render.R "bookdown::epub_book"

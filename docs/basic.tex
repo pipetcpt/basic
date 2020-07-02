@@ -1531,19 +1531,19 @@ ALAGn & Absorption lag parameter for compartment n\\
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{SUBROUTINES ADVAN4 TRANS4}
 \OperatorTok{$}\NormalTok{PK }
-\NormalTok{  TVCL  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\NormalTok{  TVV2  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}
-\NormalTok{  TVV3  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\NormalTok{  TVQ  	=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}
-\NormalTok{  TVKA 	=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}
-\NormalTok{  CL 	=	TVCL }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2 	=	TVV2 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3 	=	TVV3 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q  	=	TVQ  }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA 	=	TVKA }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
-  		
-\NormalTok{  ALAG1	=	}\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}
-\NormalTok{  S2 	=	V2 }\OperatorTok{/}\StringTok{ }\DecValTok{1000}
+\NormalTok{  TVCL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  TVV2 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{  TVV3 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{  TVQ  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\NormalTok{  TVKA =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{  CL   =}\StringTok{  }\NormalTok{TVCL }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2   =}\StringTok{  }\NormalTok{TVV2 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3   =}\StringTok{  }\NormalTok{TVV3 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q    =}\StringTok{  }\NormalTok{TVQ  }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA   =}\StringTok{  }\NormalTok{TVKA }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+      
+\NormalTok{  ALAG1=}\StringTok{  }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}
+\NormalTok{  S2   =}\StringTok{  }\NormalTok{V2 }\OperatorTok{/}\StringTok{ }\DecValTok{1000}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1584,7 +1584,7 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 
 \caption{\label{tab:basic-additional}Basic and additional pharmacokinetic parameters}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{7.5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{7.0cm}}
 \toprule
 ADVAN & Compartments & Parameters & Description\\
 \midrule
@@ -3113,7 +3113,7 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of \$\textbackslash{}varepsilon\_i\$ Versus} \\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of $varepsilon_{i}$ versus} \\
 \cmidrule(l{3pt}r{3pt}){2-4}
 Unsatisfactory Plot & Time order & Fitted $\hat{Y}_i$ & $X_{ji}$ values\\
 \midrule
@@ -3189,7 +3189,7 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 
 \$COV 출력의 마지막 부분은 S matrix이다. 이는 개별 대상자의 log likelihood를 파라미터들로 일계미분값(gradient vector)에 대한 cross product(n by 1 열벡터를 그것의 transpose(1 by n vector)와 곱한 것으로 n by n matrix가 된다)들을 모두 합한 것이다. MLE 이론에 따르면 이상적인 상황에서 S matrix와 R matrix의 기대값은 같다. 하지만, 실제로는 상당히 다를 수 있고, 정규분포 가정도 어긋날 수 있으므로 NONMEM은 \(R^{- 1}SR^{- 1}\) 를 분산-공분산행렬로 삼는다.\index{공분산 / covariance}\index{covariance / 공분산}\index{gradient / 기울기}\index{likelihood / 가능도}\index{R matrix / R 행렬}\index{S matrix / S 행렬}
 
-만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 \$COV에서 MATRIX=R 또는 MATRIX=S 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.\index{공분산 / covariance}\index{covariance / 공분산}
+만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 \$COV에서 \texttt{MATRIX=R} 또는 \texttt{MATRIX=S} 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.\index{공분산 / covariance}\index{covariance / 공분산}
 
 \$COV step이 실패하는 경우에는 먼저 파라미터 추정값에 이상이 없는지 살펴보고, 이상이 없어 보이면 붓스트랩이나 profile-likelihood등의 다른 방법을 이용하여 신뢰구간을 구하면 된다. 이 때 신뢰구간이 비대칭일 가능성이 크므로 표준오차는 제시하기 어려워진다. 혹자는 \$COV에 의한 표준오차 보다 붓스트랩에 의한 신뢰구간이 (시간은 훨씬 많이 걸리지만) 더 좋다고 한다. 붓스트랩을 할 때는 \$COV 절을 삭제하는 것이 시간을 절약하는 방법이다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}\index{likelihood / 가능도}
 
@@ -3753,7 +3753,7 @@ NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현
 개인 파라미터의 추정 시, 이에 대한 정보를 제공하는 데이터가 적거나 없을 때, 그 파라미터의 값은 종종 대표값으로 축소(shrinkage)된다. 반대로, 해당 파라미터를 설명하는 데 필요한 관찰값이 많이 존재한다면 모델의 적합을 향상시키는 방향, 즉 개인 파라미터를 집단의 대표값으로부터 더 멀어진 값으로 정할 가능성이 커지게 된다(그림 \ref{fig:eta-shrinkage}). 데이터가 충분치 않은 경우에는 개인별 η를 구할 수 없기 때문에 개인 파라미터 추정값을 구할 수 없고, 이때 각 개인의 모델은 해당 파라미터의 대표값을 이용하게 된다.\index{개인 파라미터 추정값 / individual parameter estimates}\index{individual parameter estimates / 개인 파라미터 추정값}\index{축소 / shrinkage}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/15-fig-02} \caption{Concept of η shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:eta-shrinkage}
+\includegraphics[width=0.5\linewidth]{figures/15-fig-02} \caption{Concept of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:eta-shrinkage}
 \end{figure}
 
 \index{shrinkage / 축소}
@@ -3773,7 +3773,7 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 첫째로, 분포 모양의 변화이다. ETA shrinkage가 큰 상황에서는 ω값이 작게 추정되거나, ETA의 분포가 비정규분포를 보일 수도 있다(그림 \ref{fig:eta-shrinkage-plot}).\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{./figures/15-fig-03} \caption{Example 1 - Consequences of η shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:eta-shrinkage-plot}
+\includegraphics[width=0.5\linewidth]{./figures/15-fig-03} \caption{Example 1 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:eta-shrinkage-plot}
 \end{figure}
 
 \index{shrinkage / 축소}
@@ -3783,7 +3783,7 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 둘째로, ETA 평균값의 유의한 변화이다. ETA shrinkage로 인해 아래와 같이 ETABAR가 0과 유의하게 다르다는 결과가 나올 수 있다. 그림 \ref{fig:ex2-cons}의 아래 그림을 보면, 첫번째 관측치와 마지막 관측치가 어느 시점인지에 따라, 즉 해당 파라미터를 설명할 수 있는 데이터의 양이 얼마나 있느냐에 따라 POSTHOC Ka와 CL의 분포 및 ETABAR 값이 어떻게 변화하는지를 확인할 수 있는데, 데이터가 충분하지 못한 경우 ETABAR가 0과 유의하게 다를 가능성이 높다는 것을 보여준다.\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-04} \caption{Example 2 - Consequences of η shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex2-cons}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-04} \caption{Example 2 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex2-cons}
 \end{figure}
 
 
@@ -3791,13 +3791,13 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 셋째로, 파라미터간 상관관계가 소실되거나 유발(Hidden or induced parameter correlation)될 수 있다. 그림 \ref{fig:ex3-cons}의 좌측처럼 파라미터(CL vs Vc)간의 상관관계가 소실되는 경우가 생길 수 있고, 우측 그림처럼 파라미터 (E\textsubscript{max} vs EC\textsubscript{50}) 간의 상관관계가 유발되는 경우가 생길 수 있다. 그림 \ref{fig:induced-corr}에서도 ETA shrinkage(\%)가 커지면서 상관관계가 유발 또는 소실되는 것을 확인할 수 있다.\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-05} \caption{Example 3 - Consequences of η shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex3-cons}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-05} \caption{Example 3 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex3-cons}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-15/image8} \caption{Induced or hidden correlation according to average shrinkage (\%) (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:induced-corr}
+\includegraphics[width=0.9\linewidth]{./assets/media-15/image8} \caption{Induced or hidden correlation according to average shrinkage (\%) (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:induced-corr}
 \end{figure}
 
 
@@ -3805,7 +3805,7 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 마지막으로, 공변량에 대해서도 마찬가지 결과가 나타날 수 있으며, 파라미터 또는 EBE와 공변량 사이의 상관관계가 소실되거나 유발될 수 있다(그림 \ref{fig:ex4-cons}).
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-06} \caption{Example 4 - Consequences of η shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex4-cons}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-06} \caption{Example 4 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:ex4-cons}
 \end{figure}
 
 
@@ -3825,7 +3825,7 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 희박한 자료의 경우 그림 \ref{fig:concept-eps-shrinkage}처럼 IPRED가 DV를 향해 축소되는 현상이 나타나게 되는데, IPRED가 DV에 가까워질수록 IWRES는 0에 가까워지며, EPSILON shrinkage는 커지게 된다.\index{dependent variable(DV) / 종속변수(DV)}\index{축소 / shrinkage}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/15-fig-07} \caption{Concept of ε shrinkage (Uppsala University \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:concept-eps-shrinkage}
+\includegraphics[width=0.5\linewidth]{figures/15-fig-07} \caption{Concept of ε shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}}\label{fig:concept-eps-shrinkage}
 \end{figure}
 
 \index{shrinkage / 축소}
@@ -3837,7 +3837,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 첫째로, 구조모델의 오지정(misspecification)을 찾아내는데 어려움을 겪을 수 있다. 아래 그림 \ref{fig:perfect-fit} 우측을 보면, 예측이 매우 잘된 것으로 보이지만, 실제는 EPSILON shrinkage로 인해 IPRED가 DV로 향해 축소되는 이른바 ``Perfect fit phenomenon''이 나타난 것이다. 원래 모델은 0차 흡수 모델이고, 이를 1차 흡수모델로 설명한 경우인데, 흡수를 설명할 수 있는 데이터가 충분히 있는 경우 (그림 \ref{fig:perfect-fit} 좌측) 모델 오지정을 찾아낼 수 있지만, 데이터가 부족한 경우 이를 찾아내기가 어렵다.\index{모델 오지정 / model misspecification}\index{model misspecification / 모델 오지정}\index{축소 / shrinkage}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-08} \caption{Perfect fit phenomenon (Uppsala University \protect\hyperlink{ref-uppsala}{2007})}\label{fig:perfect-fit}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-08} \caption{Perfect fit phenomenon (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:perfect-fit}
 \end{figure}
 
 
@@ -3845,13 +3845,13 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 2구획 모델을 1구획 모델로 설명한 경우(그림 \ref{fig:1comp-2comp}), Sigmoid Emax 모델을 Linear Emax 모델로 설명한 경우(그림 \ref{fig:linear-sigmoidal}) 등에서도 데이터가 부족한 경우 EPSILON shrinkage가 커지고, 모델의 오지정을 찾아내기가 어렵게 된다.\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-09} \caption{1-compartment model fitted to data simulated with a 2-compartment model (Uppsala University \protect\hyperlink{ref-uppsala}{2007})}\label{fig:1comp-2comp}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-09} \caption{1-compartment model fitted to data simulated with a 2-compartment model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:1comp-2comp}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-10} \caption{Linear Emax model fitted to data simulated with a sigmoidal Emax model (Uppsala University \protect\hyperlink{ref-uppsala}{2007})}\label{fig:linear-sigmoidal}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-10} \caption{Linear Emax model fitted to data simulated with a sigmoidal Emax model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:linear-sigmoidal}
 \end{figure}
 
 
@@ -3859,7 +3859,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 둘째로, IWRES를 활용하여 잔차모델의 오지정을 확인하는 것이 어려울 수 있다. 그림 \ref{fig:low-IWRES}에 나타난 것처럼 관측치가 많은 경우 IWRES 플롯을 통해 잔차 분포의 경향성을 확인할 수 있는데, 관측치가 적은 경우 EPSILON shrinkage가 커지면서 잔차 분포의 경향성이 점점 사라지는 것을 확인할 수 있다.\index{잔차 / residual error}\index{residual error / 잔차}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-11} \caption{Low power of IWRES to diagnose Residual error misspecification (Uppsala University \protect\hyperlink{ref-uppsala}{2007})}\label{fig:low-IWRES}
+\includegraphics[width=0.9\linewidth]{figures/15-fig-11} \caption{Low power of IWRES to diagnose Residual error misspecification (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:low-IWRES}
 \end{figure}
 
 
@@ -4050,31 +4050,21 @@ PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형
 
 \caption{\label{tab:pd-data-property}PD 데이터의 종류}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{4cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
 \toprule
 PD 데이터의 종류 & 특징 & 모델링할 때의 주의점\\
 \midrule
- & 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능 & \\
-\cmidrule{2-2}
- & 1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음) & \\
-\cmidrule{2-2}
-\multirow[t]{-3}{4cm}{\raggedright\arraybackslash Continuous response (interval or ratio)} & 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음) & \multirow[t]{-3}{4cm}{\raggedright\arraybackslash IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)}\\
-\cmidrule{1-3}
- & 이진(binary): 증상의 유/무 등 & \\
-\cmidrule{2-2}
- & 3가지 이상 범주(categorical): & \\
-\cmidrule{2-2}
- & -Simple categorical: 인종, 혈액형 등 & \\
-\cmidrule{2-2}
- & -Ordered categorical: 병기(stage), VAS(visual analog scale) & \\
-\cmidrule{2-2}
- & 관찰값들 간의 간격의 크기를 알 수 없어 비교 불가 & \\
-\cmidrule{2-2}
-\multirow[t]{-6}{4cm}{\raggedright\arraybackslash Binary / categorical response} & Mean, SD 등으로 나타내기 부적절 & \\
-\cmidrule{1-2}
+Continuous response (interval or ratio) & 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능
+1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)
+2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음) & IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)\\
+Binary / categorical response & 이진(binary): 증상의 유/무 등
+3가지 이상 범주(categorical): 
+-Simple categorical: 인종, 혈액형 등
+-Ordered categorical: 병기(stage), VAS(visual analog scale)
+관찰값들 간의 간격의 크기를 알 수 없어 비교 불가
+Mean, SD 등으로 나타내기 부적절 (! ?) & 관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음.\\
 Count data & 질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등) & \\
-\cmidrule{1-2}
-Time to event data & 예) 수면유도제의 효과: 잠들 때까지의 시간 & \multirow[t]{-8}{4cm}{\raggedright\arraybackslash 관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음}\\
+Time to event data & 예) 수면유도제의 효과: 잠들 때까지의 시간 & \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -5232,7 +5222,7 @@ Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. 
 Lee, Joomi, Yangha Hwang, Wonku Kang, Sook Jin Seong, Mi-sun Lim, Hae Won Lee, Dong-Seok Yim, Dong Ryul Sohn, Seunghoon Han, and Young-Ran Yoon. 2012. ``Population Pharmacokinetic/Pharmacodynamic Modeling of Clopidogrel in Korean Healthy Volunteers and Stroke Patients.'' \emph{The Journal of Clinical Pharmacology} 52 (7): 985--95.
 
 \leavevmode\hypertarget{ref-kelly}{}%
-Owen, Fiedler‐Kelly, J. 2014. \emph{Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models}. Hoboken, New Jersey: Wiley. \url{https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860}.
+Owen, Fiedler-Kelly, J. 2014. \emph{Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models}. Hoboken, New Jersey: Wiley. \url{https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860}.
 
 \leavevmode\hypertarget{ref-R-nlme}{}%
 Pinheiro, Jose, Douglas Bates, and R-core. 2020. \emph{Nlme: Linear and Nonlinear Mixed Effects Models}. \url{https://CRAN.R-project.org/package=nlme}.
@@ -5243,11 +5233,11 @@ Post, Teun M, Jan I Freijer, Bart A Ploeger, and Meindert Danhof. 2008. ``Extens
 \leavevmode\hypertarget{ref-dementia}{}%
 Primary Psychiatry. 2013. \emph{From Symptom Palliation to Disease Modification: Implications for Dementia Care}. \url{http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/}.
 
+\leavevmode\hypertarget{ref-uppsala}{}%
+Savic, Karlsson, R. M. 2007. \emph{Shrinkage in Empirical Bayes Estimates for Diagnostics and Estimation: Problems and Solutions}. Uppsala, Sweden: Uppsala University; Uppsala University. \url{https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf}.
+
 \leavevmode\hypertarget{ref-sharma1998characteristics}{}%
 Sharma, A, and W J Jusko. 1998. ``Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.'' \emph{British Journal of Clinical Pharmacology} 45 (3): 229--39. \url{https://doi.org/10.1046/j.1365-2125.1998.00676.x}.
-
-\leavevmode\hypertarget{ref-uppsala}{}%
-Uppsala University. 2007. \emph{Empirical Bayes Estimate(EBE)-Based Diagnostics}. Uppsala, Sweden: Uppsala University; Uppsala University.
 
 \leavevmode\hypertarget{ref-yano2001evaluating}{}%
 Yano, Yoshitaka, Stuart L Beal, and Lewis B Sheiner. 2001. ``Evaluating Pharmacokinetic/Pharmacodynamic Models Using the Posterior Predictive Check.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 28 (2): 171--92.
