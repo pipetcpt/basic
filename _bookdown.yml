@@ -1,5 +1,4 @@
 book_filename: basic
-before_chapter_script: ["_setup.R"]
 repo: https://github.com/pipetcpt/basic/
 output_dir: docs
 delete_merged_file: true
@@ -36,3 +35,5 @@ language:
     #"20.Rmd",
     #"99-Appendix.Rmd"]
     #
+
+# before_chapter_script: ["_setup.R"]

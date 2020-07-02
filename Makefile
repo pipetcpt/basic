@@ -1,5 +1,7 @@
 all: gitbook pdf
 
+soclean: clean del
+
 clean:
 	rm -rf docs _bookdown_files basic.* basic-*.pdf
 
