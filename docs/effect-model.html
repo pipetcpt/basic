@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 19 다양한 약물효과 모델링 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 19 다양한 약물효과 모델링 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block/empty-anchor.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 
 
@@ -133,10 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Pharmacometrics Basic</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#저자"><i class="fa fa-check"></i>저자</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a></li>
 <li class="part"><span><b>I 모델 구축의 기초</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
@@ -336,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -598,7 +596,7 @@ K_2 &amp;= k_2 / k_{-2}
 
 </div>
 </div>
-<div id="결론-1" class="section level2" number="19.3">
+<div id="결론" class="section level2" number="19.3">
 <h2><span class="header-section-number">19.3</span> 결론</h2>
 <p>올바른 PD 모델의 선정을 위해서는 무엇보다도 모델 구축에 사용될 데이터의 특성을 잘 파악해야 한다. 작용기전에 따른 약물반응의 관계를 명확하게 알고 있다면, PD 모델 선정이 비교적 쉬울 수 있으나, 그렇지 않은 경우이거나 희박 데이터(sparse data)를 사용할 경우, 잘못된 모델 선정을 통해 오류를 범하지 않도록 주의하여야 한다. 또한, 적절한 PD 모델을 선정하였다 하더라도 혈중농도와 약물반응의 관계에 시간지연 등이 있는지를 고려하여, 궁극적으로 가장 적절한 PK/PD 모델링을 수행해야 할 것이다.</p>
 <!--

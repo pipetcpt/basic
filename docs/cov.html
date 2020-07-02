@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 NONMEM의 $COVARIANCE | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 NONMEM의 $COVARIANCE | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block/empty-anchor.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 
 
@@ -133,10 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Pharmacometrics Basic</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#저자"><i class="fa fa-check"></i>저자</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a></li>
 <li class="part"><span><b>I 모델 구축의 기초</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
@@ -336,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -593,10 +591,10 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <span id="cb41-16"><a href="cov.html#cb41-16"></a></span>
 <span id="cb41-17"><a href="cov.html#cb41-17"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span></span>
 <span id="cb41-18"><a href="cov.html#cb41-18"></a><span class="st">             </span>(TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
-<span id="cb41-19"><a href="cov.html#cb41-19"></a><span class="st">             </span>(<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
+<span id="cb41-19"><a href="cov.html#cb41-19"></a>			 (<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
 <span id="cb41-20"><a href="cov.html#cb41-20"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
 <span id="cb41-21"><a href="cov.html#cb41-21"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, </span>
-<span id="cb41-22"><a href="cov.html#cb41-22"></a>                            <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),</span>
+<span id="cb41-22"><a href="cov.html#cb41-22"></a>			                <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),</span>
 <span id="cb41-23"><a href="cov.html#cb41-23"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
 <span id="cb41-24"><a href="cov.html#cb41-24"></a></span>
 <span id="cb41-25"><a href="cov.html#cb41-25"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>

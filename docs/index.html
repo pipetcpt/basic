@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block/empty-anchor.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 
 
@@ -133,10 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Pharmacometrics Basic</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#저자"><i class="fa fa-check"></i>저자</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a></li>
 <li class="part"><span><b>I 모델 구축의 기초</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
@@ -336,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -388,33 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>학계의 PK/PD 전문가들이 우리나라의 신약개발에 기여하는 방법 중의 하나는 신약개발의 최전선에서 일하고 있는 제약/바이오 업계의 풀뿌리 연구자들에 대한 지속적인 교육과 훈련 기회를 제공하는 것입니다. 그러한 사명감으로 맨땅에서 시작한 이 코스를 지난 십 수년간 오늘의 수준으로 끌어올릴 수 있게 해 준, PIPET을 거쳐간 귀한 젊은 연구자들의 공헌에 깊이 감사드립니다. 이름난 분들을 초빙해서 청중을 모으고 신문에 내는 행사를 수십 번을 한들, 젊은이들의 앞날을 염려하고, 이들을 제대로 가르치겠다는 의지가 없다면 그저 남들에게 보여주기 위한 이벤트에 지나지 않습니다. 그런 곳에 사람과 돈이 몰릴지는 몰라도, 한편에서는 세상의 각광과는 무관하게 소신대로 제 갈 길을 가는 소수가 있기 마련입니다. 매년 열던 워크샵을 책으로 엮어 내는 이 번거로운 작업도 그런 소신을 실천하는 것이며, 한국의 신약개발을 위해 작은 밑거름이라도 된다면 저자들은 큰 보람을 느낄 것입니다.</p>
 <p>2020년 여름 성의교정 연구실에서</p>
 <p>대표저자 임동석 拜</p>
-<div id="저자" class="section level2 unnumbered" number="">
-<h2>저자</h2>
-<p>Ver. 20200702</p>
-<p>임동석, MD, PhD<br />
-<em>가톨릭의대 약리학교실</em></p>
-<p>이소진, PharmD<br />
-<em>Q-fitter</em></p>
-<p>배수현, PhD<br />
-<em>Q-fitter</em></p>
-<p>전상일, MD, PhD<br />
-<em>Q-fitter</em></p>
-<p>홍태곤, MD, PhD<br />
-<em>연세대학교 약리학교실</em></p>
-<p>한승훈, MD, PhD<br />
-<em>가톨릭의대 약리학교실</em></p>
-<p>김정렬, MD, PhD<br />
-<em>삼성서울병원 임상약리학과</em></p>
-<p>배균섭, MD, PhD<br />
-<em>서울아산병원 임상약리학과</em></p>
-<p>한성필, MD, PhD<br />
-<em>가톨릭의대 약리학교실</em></p>
 
-<div class="rmdtip">
-인용한 그림은 모두 새로 그렸고, 출서를 명시하였습니다.
-</div>
-
-</div>
 </div>
 
 

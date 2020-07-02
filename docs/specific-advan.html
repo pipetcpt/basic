@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 특수 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
-  <meta name="generator" content="bookdown 0.19.1 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 특수 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block/empty-anchor.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 
 
@@ -133,10 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Pharmacometrics Basic</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#저자"><i class="fa fa-check"></i>저자</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a></li>
 <li class="part"><span><b>I 모델 구축의 기초</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 계량약리학과 관련 개념들</a>
 <ul>
@@ -336,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -994,16 +992,16 @@ Absorption lag parameter for compartment n
 <span id="cb25-3"><a href="specific-advan.html#cb25-3"></a>  TVCL  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
 <span id="cb25-4"><a href="specific-advan.html#cb25-4"></a>  TVV2  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
 <span id="cb25-5"><a href="specific-advan.html#cb25-5"></a>  TVV3  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
-<span id="cb25-6"><a href="specific-advan.html#cb25-6"></a>  TVQ   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
-<span id="cb25-7"><a href="specific-advan.html#cb25-7"></a>  TVKA  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
-<span id="cb25-8"><a href="specific-advan.html#cb25-8"></a>  CL    =<span class="st">   </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb25-9"><a href="specific-advan.html#cb25-9"></a>  V2    =<span class="st">   </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb25-10"><a href="specific-advan.html#cb25-10"></a>  V3    =<span class="st">   </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb25-11"><a href="specific-advan.html#cb25-11"></a>  Q     =<span class="st">   </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb25-12"><a href="specific-advan.html#cb25-12"></a>  KA    =<span class="st">   </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb25-13"><a href="specific-advan.html#cb25-13"></a>        </span>
-<span id="cb25-14"><a href="specific-advan.html#cb25-14"></a>  ALAG1 =<span class="st">   </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">6</span>))</span>
-<span id="cb25-15"><a href="specific-advan.html#cb25-15"></a>  S2    =<span class="st">   </span>V2 <span class="op">/</span><span class="st"> </span><span class="dv">1000</span></span></code></pre></div>
+<span id="cb25-6"><a href="specific-advan.html#cb25-6"></a>  TVQ  	=<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
+<span id="cb25-7"><a href="specific-advan.html#cb25-7"></a>  TVKA 	=<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
+<span id="cb25-8"><a href="specific-advan.html#cb25-8"></a>  CL 	=	TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb25-9"><a href="specific-advan.html#cb25-9"></a>  V2 	=	TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb25-10"><a href="specific-advan.html#cb25-10"></a>  V3 	=	TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb25-11"><a href="specific-advan.html#cb25-11"></a>  Q  	=	TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb25-12"><a href="specific-advan.html#cb25-12"></a>  KA 	=	TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb25-13"><a href="specific-advan.html#cb25-13"></a>  		</span>
+<span id="cb25-14"><a href="specific-advan.html#cb25-14"></a>  ALAG1	=	<span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">6</span>))</span>
+<span id="cb25-15"><a href="specific-advan.html#cb25-15"></a>  S2 	=	V2 <span class="op">/</span><span class="st"> </span><span class="dv">1000</span></span></code></pre></div>
 <p>ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은
 3구획이다.</p>

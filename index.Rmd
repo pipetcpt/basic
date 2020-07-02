@@ -49,7 +49,7 @@ url: 'https\://pipetcpt.github.io/basic'
 github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
 header-includes:
-  - \usepackage{xeCJK}
+#  - \usepackage{xeCJK}
   - \usepackage{kotex}
   - \usepackage{booktabs}
   - \usepackage{longtable}
@@ -119,40 +119,5 @@ PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실�
 \hfill 2020년 여름 성의교정 연구실에서  
 
 \hfill 대표저자 임동석 拜
-
-## 저자 {-}
-
-\hfill Ver. `r gsub('-', '', Sys.Date())`
-
-임동석, MD, PhD  
-*가톨릭의대 약리학교실*
-
-이소진, PharmD  
-*Q-fitter*
-
-배수현, PhD  
-*Q-fitter*
-
-전상일, MD, PhD  
-*Q-fitter*
-
-홍태곤, MD, PhD  
-*연세대학교 약리학교실*
-
-한승훈, MD, PhD  
-*가톨릭의대 약리학교실*
-
-김정렬, MD, PhD   
-*삼성서울병원 임상약리학과*
-
-배균섭, MD, PhD   
-*서울아산병원 임상약리학과*
-
-한성필, MD, PhD   
-*가톨릭의대 약리학교실*
-
-```{block2, fig-redrawn, type='rmdtip', echo=TRUE}
-인용한 그림은 모두 새로 그렸고, 출서를 명시하였습니다.
-```
 
 \mainmatter
