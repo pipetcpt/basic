@@ -110,10 +110,14 @@
 \usepackage{amsthm}
 \makeatletter
 \def\example@space@setup{%
-  \example@preskip=0.1cm
+  \example@preskip=0.001cm
   \example@postskip=\thm@preskip
 }
 \makeatother
 
+%https://github.com/rstudio/bookdown/issues/901
+\usepackage{caption}
+\captionsetup[figure]{labelsep=period}
+\captionsetup[table]{labelsep=period}
 
 \frontmatter

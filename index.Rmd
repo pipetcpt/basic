@@ -19,7 +19,10 @@ classoption:
 linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
 #monofont: "Source Code Pro"
-#monofontoptions: "Scale=0.8"
+monofont: "Latin Modern Mono"
+monofontoptions:
+  - Scale=MatchLowercase
+  - ScaleAgain=0.8 # https://tex.stackexchange.com/questions/453405/how-can-i-scale-mono-font-to-90-of-matchlowercase
 #https://www.overleaf.com/gallery/tagged/book/page/5
 #https://pandoc.org/MANUAL.html#variables-for-latex
 #documentclass: extarticle
@@ -28,7 +31,7 @@ mainfont: NanumMyeongjo
 #hyperrefoptions:
 #- linktoc=all
 #mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
-fontsize: 10pt
+fontsize: 11pt
 #http://ftp.harukasan.org/CTAN/macros/latex/contrib/geometry/geometry.pdf
 #geometry: "height=10in,b5paper"
 #geometry: "b5paper"

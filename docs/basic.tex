@@ -4,7 +4,7 @@
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[
-  10pt,
+  11pt,
   krantz2,
   a4paper]{krantz}
 \usepackage{lmodern}
@@ -20,6 +20,7 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
   \setmainfont[]{NanumMyeongjo}
+  \setmonofont[Scale=MatchLowercase,ScaleAgain=0.8]{Latin Modern Mono}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -228,11 +229,15 @@
 \usepackage{amsthm}
 \makeatletter
 \def\example@space@setup{%
-  \example@preskip=0.1cm
+  \example@preskip=0.001cm
   \example@postskip=\thm@preskip
 }
 \makeatother
 
+%https://github.com/rstudio/bookdown/issues/901
+\usepackage{caption}
+\captionsetup[figure]{labelsep=period}
+\captionsetup[table]{labelsep=period}
 
 \frontmatter
 \usepackage{kotex}
@@ -609,7 +614,7 @@ TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기�
 
 TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.
 
-TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 `/' 또는 `-' 사용) 제어구문 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
+TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 \texttt{/\textquotesingle{}\ 또는}-' 사용) 제어구문 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{figures/02-fig-07} \caption{Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)}\label{fig:time-dataset}
@@ -635,7 +640,7 @@ AMT, RATE, ADDL, II, SS는 용량과 관련된 데이터 항목들이다.
 
 AMT는 Amount를 의미하며 투여된 양을 나타내는 변수로서, 투여 레코드에 기록한다. 용량 정보를 표현하기 위해 AMT 와 함께 RATE, ADDL, SS, II 와 같은 데이터 항목을 사용하여 용량 정보를 구체적으로 나타낼 수 있다(투여 경로는 CMT 데이터 항목을 사용하여 나타낼 수 있다).
 
-AMT는 양의 숫자로 기입되야 하며, 모든 투여 레코드에 대해 일관된 단위로 기입되어야 한다. 투여 레코드에는 투여된 용량이 존재함으로 AMT 값이 항상 존재하지만, 관측 레코드에서는 AMT 값은 존재하지 않는 결측치로 표시되어야 한다 (즉, 결측지를 의미하는 ``.'' 또는 빈칸으로 처리해야 한다).
+AMT는 양의 숫자로 기입되야 하며, 모든 투여 레코드에 대해 일관된 단위로 기입되어야 한다. 투여 레코드에는 투여된 용량이 존재함으로 AMT 값이 항상 존재하지만, 관측 레코드에서는 AMT 값은 존재하지 않는 결측치로 표시되어야 한다 (즉, 결측치를 의미하는 \texttt{.} 또는 빈칸으로 처리해야 한다).
 
 AMT 작성 시, 투여 용량의 단위와 관측된 약물 농도의 단위를 통일시켜야 한다. 이는 크게 두가지 방법으로 가능하다. 첫번째로, 데이터셋 안에서 AMT와 DV의 단위를 통일시키는 방법이 있다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 투여 용량에 1000을 곱하여 데이터셋 AMT에 바로 기재할 수 있다. 두번째 방법은 제어구문 파일 작성 시 scaling factor 를 사용하여 수식을 기입하여 단위를 통일하는 방법이다. 예를 들어, 투여 용량 단위가 mg이고, 약물 농도 단위가 ng/mL 인 경우, 제어구문 파일에 \texttt{S=V/1000}을 기입하여 사용할 수 있다.\index{scaling parameter / 척도 파라미터}
 
@@ -710,7 +715,7 @@ Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영�
 \hypertarget{uxc81cuxc5b4uxad6cuxbb38uxc758-uxad6cuxc131}{%
 \section{제어구문의 구성}\label{uxc81cuxc5b4uxad6cuxbb38uxc758-uxad6cuxc131}}
 
-NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 코드 블록으로 이루어져 있다. 블록의 첫 시작은 '\$'기호를 사용하여 사용할 레코드를 명시하고, 그와 관련된 코드를 나열하면 된다. 레코드의 명칭은 최소 세글자 이상이면 사용할 수 있다. 예를 들어, \$PROBLEM은 \$PROB, \$PRO로 줄여서 사용할 수 있다. 또한, NONMEM 7.2 이전 버전에서는 제어구문의 모든 부분을 대문자로 작성해야만 했으나, 7.2 이상 버전에서는 대문자와 소문자를 혼용하여 작성이 가능하다. 제어구문 내에서 세미콜론을 사용하여, 부연 설명을 작성할 수 있다. 세미콜론을 사용한 행은 텍스트로 간주되어, 모델 실행시 NM-TRAN이 읽어들이지 않는다.\index{NM-TRAN 제어구문 / NM-TRAN control stream}\index{NM-TRAN control stream / NM-TRAN 제어구문}
+NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 코드 블록으로 이루어져 있다. 블록의 첫 시작은 \texttt{\$}기호를 사용하여 사용할 레코드를 명시하고, 그와 관련된 코드를 나열하면 된다. 레코드의 명칭은 최소 세글자 이상이면 사용할 수 있다. 예를 들어, \$PROBLEM은 \$PROB, \$PRO로 줄여서 사용할 수 있다. 또한, NONMEM 7.2 이전 버전에서는 제어구문의 모든 부분을 대문자로 작성해야만 했으나, 7.2 이상 버전에서는 대문자와 소문자를 혼용하여 작성이 가능하다. 제어구문 내에서 세미콜론을 사용하여, 부연 설명을 작성할 수 있다. 세미콜론을 사용한 행은 텍스트로 간주되어, 모델 실행시 NM-TRAN이 읽어들이지 않는다.\index{NM-TRAN 제어구문 / NM-TRAN control stream}\index{NM-TRAN control stream / NM-TRAN 제어구문}
 
 제어구문은 그림 \ref{fig:nm-tran}처럼 프로젝트의 제목을 기입하는 \$PROBLEM, 분석할 데이터셋 파일의 경로를 표시하는 \$DATA와 각 데이터의 특성을 정의하는 \$INPUT, 집단 약동학 모델링 또는 PK/PD 모델링을 위한 PREDDPP (\$SUBROUTINE, \$MODEL, \$PK, \$ERROR) 또는 \$PRED, 모델 파라미터 추정을 위한 초기 추정값을 설정하는 \$THETA, \$OMEGA, \$SIGMA, 추정방법을 명시하는 \$ESTIMATION 또는 \$SIMULATION 모델 실행 후 결과 출력을 표시하는 \$COVARIANCE와 \$TABLE로 이루어져 있다. 각 부분에 대해서는 \ref{control-record}절에서 자세히 다루기로 한다.
 
@@ -3115,13 +3120,13 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of $varepsilon_{i}$ versus} \\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of $epsilon_{i}$ versus} \\
 \cmidrule(l{3pt}r{3pt}){2-4}
 Unsatisfactory Plot & Time order & Fitted $\hat{Y}_i$ & $X_{ji}$ values\\
 \midrule
-Funnel indicating nonconstant variance & Use weighted least squares & Use weighted least squares or transform the Yi & Used weighted least squares or transform the Yi\\
-Ascending or descending band & Consider adding first-order term in time & Error in analysis or wrongful omission of β0 & Error in the calculations; first-order effect of Xi not removed\\
-Curved band & Consider adding first- and second- order terms in time & Consider adding extra terms to the model or transform the Yi & Consider adding extra terms to the model or transform the Yi\\
+Funnel indicating nonconstant variance & Use weighted least squares & Use weighted least squares or transform the $Y_i$ & Used weighted least squares or transform the $Y_i$\\
+Ascending or descending band & Consider adding first-order term in time & Error in analysis or wrongful omission of $\beta_0$ & Error in the calculations; first-order effect of Xi not removed\\
+Curved band & Consider adding first- and second- order terms in time & Consider adding extra terms to the model or transform the $Y_i$ & Consider adding extra terms to the model or transform the $Y_i$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -3168,7 +3173,7 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 \OperatorTok{$}\NormalTok{SIGMA }\FloatTok{0.1}  \FloatTok{0.1}
 \OperatorTok{$}\NormalTok{EST MAX=}\DecValTok{9999}\NormalTok{ METHOD=ZERO POSTHOC}
 \OperatorTok{$}\NormalTok{COV PRINT=ERS}
-\OperatorTok{$}\NormalTok{TAB ID TIME IPRE CWRES\textbackslash{}index\{conditional weighted residuals }\OperatorTok{/}\StringTok{ }\NormalTok{조건부 가중 잔차\}}
+\OperatorTok{$}\NormalTok{TAB ID TIME IPRE CWRES}
 \NormalTok{     FILE=sdtab NOPRINT ONEHEADER}
 \OperatorTok{$}\NormalTok{TAB ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \NormalTok{     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY}
@@ -5181,10 +5186,10 @@ Beal, Sheiner, S. L. 2018. \emph{NONMEM 7.4 Users Guides}. Gaithersburg, Marylan
 Bonate, Peter. 2011. \emph{Pharmacokinetic-Pharmacodynamic Modeling and Simulation}. New York: Springer. \url{https://www.springer.com/gp/book/9781441994844}.
 
 \leavevmode\hypertarget{ref-pmid17328581}{}%
-Brendel, K., C. Dartois, E. Comets, A. Lemenuel-Diot, C. Laveille, B. Tranchand, P. Girard, C. M. Laffont, and F. Mentr? 2007. ``Are population pharmacokinetic and/or pharmacodynamic models adequately evaluated? A survey of the literature from 2002 to 2004.'' \emph{Clin Pharmacokinet} 46 (3): 221--34.
+Brendel, K., C. Dartois, E. Comets, A. Lemenuel-Diot, C. Laveille, B. Tranchand, P. Girard, C. M. Laffont, and F. Mentre. 2007. ``Are population pharmacokinetic and/or pharmacodynamic models adequately evaluated? A survey of the literature from 2002 to 2004.'' \emph{Clin Pharmacokinet} 46 (3): 221--34.
 
 \leavevmode\hypertarget{ref-derendorf1999modeling}{}%
-Derendorf, H, and B Meibohm. 1999. ``Modeling of Pharmacokinetic/Pharmacodynamic (Pk/Pd) Relationships: Concepts and Perspectives.'' \emph{Pharmaceutical Research} 16 (2): 176--85. \url{https://doi.org/10.1023/a:1011907920641}.
+Derendorf, H, and B Meibohm. 1999. ``Modeling of Pharmacokinetic/Pharmacodynamic (PK/PD) Relationships: Concepts and Perspectives.'' \emph{Pharmaceutical Research} 16 (2): 176--85. \url{https://doi.org/10.1023/a:1011907920641}.
 
 \leavevmode\hypertarget{ref-draper1998applied}{}%
 Draper, Norman. 1998. \emph{Applied Regression Analysis}. New York: Wiley.
@@ -5238,10 +5243,10 @@ Sharma, A, and W J Jusko. 1998. ``Characteristics of Indirect Pharmacodynamic Mo
 Yano, Yoshitaka, Stuart L Beal, and Lewis B Sheiner. 2001. ``Evaluating Pharmacokinetic/Pharmacodynamic Models Using the Posterior Predictive Check.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 28 (2): 171--92.
 
 \leavevmode\hypertarget{ref-zhang1}{}%
-Zhang, Liping, Stuart L Beal, and Lewis B Sheiner. 2003a. ``Simultaneous Vs. Sequential Analysis for Population Pk/Pd Data I: Best-Case Performance.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 30 (6): 387--404.
+Zhang, Liping, Stuart L Beal, and Lewis B Sheiner. 2003a. ``Simultaneous vs. Sequential Analysis for Population PK/PD Data I: Best-Case Performance.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 30 (6): 387--404.
 
 \leavevmode\hypertarget{ref-zhang2}{}%
----------. 2003b. ``Simultaneous Vs. Sequential Analysis for Population Pk/Pd Data Ii: Robustness of Methods.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 30 (6): 405--16.
+---------. 2003b. ``Simultaneous vs. Sequential Analysis for Population PK/PD Data II: Robustness of Methods.'' \emph{Journal of Pharmacokinetics and Pharmacodynamics} 30 (6): 405--16.
 
 \leavevmode\hypertarget{ref-kim}{}%
 김우철. 2012. \emph{수리통계학}. 민영사. \url{https://books.google.co.kr/books?id=yBOWtwAACAAJ}.

@@ -243,10 +243,8 @@
 \newdimen\vtrimtop
 \newdimen\vtrimbot
 
-%\setlength\trimheight{9in}
-\setlength\trimheight{1in}
-%\setlength\trimwidth{6in}
-\setlength\trimwidth{1in}
+\setlength\trimheight{9in}
+\setlength\trimwidth{6in}
 %
 %
 \if@krantza
@@ -293,22 +291,20 @@
 %%%%%  \hoffset-5pt
 %%%%  \voffset45pt
 %%%%\let\normaltextheight\textheight
-
-% shan 2020-06-09: commented out 
-%\textheight = 45pc
-%  %\advance\textheight by \topskip
-%\addtolength\textheight{3pt}
-%  \textwidth 28pc
-%\addtolength\textwidth{.5pt}
-%  \topmargin0in
-%  \oddsidemargin1.1875in
-%  \evensidemargin1.1875in
-%  \htrim.7365in
-%  \vtrimtop1.068in
-%  \vtrimbot1.068in
-%  \hoffset-15pt
-%  \voffset39pt
-%\let\normaltextheight\textheight
+\textheight = 45pc
+  %\advance\textheight by \topskip
+\addtolength\textheight{3pt}
+  \textwidth 28pc
+\addtolength\textwidth{.5pt}
+  \topmargin0in
+  \oddsidemargin1.1875in
+  \evensidemargin1.1875in
+  \htrim.7365in
+  \vtrimtop1.068in
+  \vtrimbot1.068in
+  \hoffset-15pt
+  \voffset39pt
+\let\normaltextheight\textheight
 
   \fi
 \fi
@@ -1491,7 +1487,7 @@
       \endlist}
 \newcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
 \let\@openbib@code\@empty
-\newcommand\indexname{Index}
+\newcommand\indexname{색인}
 \newenvironment{theindex}
                {\cleardoublepage\if@twocolumn
                   \@restonecolfalse
@@ -1525,7 +1521,7 @@
     \parindent 1em%
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
-\newcommand\contentsname{차례}
+\newcommand\contentsname{차례} % shan 2020-06-09
 \newcommand\listfigurename{그림 목록}
 \newcommand\listtablename{표 목록}
 \newcommand\bibname{참고문헌}
@@ -1533,7 +1529,7 @@
 \newcommand\tablename{표}
 \newcommand\partname{Part}
 \newcommand\chaptername{Chapter}
-\newcommand\appendixname{별첨}
+\newcommand\appendixname{Appendix}
 \def\today{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi
