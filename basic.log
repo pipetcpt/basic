@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.7.1)  2 JUL 2020 18:59
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.7.1)  7 JUL 2020 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -792,36 +792,36 @@ LaTeX Warning: Label `uxacb0uxb860' multiply defined.
 )
 \openout1 = `basic.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 290.
-LaTeX Font Info:    ... okay on input line 290.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 292.
+LaTeX Font Info:    ... okay on input line 292.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 290.
+(Font)              scaled to size 6.0pt on input line 292.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 290.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 292.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/b/n on input line 290.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/b/n on input line 292.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 290.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 292.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/b/n on input line 290.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/b/n on input line 292.
 
 Package fontspec Info: latinmodern-math scale = 1.087583772627018.
 
@@ -850,7 +850,7 @@ t=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.87585pt on input line 290.
+(Font)              scaled to size 10.87585pt on input line 292.
 
 Package fontspec Info: latinmodern-math scale = 1.087583772627018.
 
@@ -889,18 +889,18 @@ t=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.87585pt on input line 290.
+(Font)              scaled to size 10.87585pt on input line 292.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 290.
+(Font)              `operators' in the math version `normal' on input line 292.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 290.
+ line 292.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 290.
+(Font)              `operators' in the math version `bold' on input line 292.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 290.
+t line 292.
 
 Package fontspec Info: latinmodern-math scale = 1.087583772627018.
 
@@ -987,15 +987,15 @@ t=math;language=dflt;"
 (fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 290.
+(Font)              `symbols' in the math version `normal' on input line 292.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 290.
+t line 292.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 290.
+(Font)              `symbols' in the math version `bold' on input line 292.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 290.
+t line 292.
 
 Package fontspec Info: latinmodern-math scale = 1.087583772627018.
 
@@ -1065,17 +1065,17 @@ t=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 2
-90.
+92.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 290.
+t line 292.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 290
+(Font)              `largesymbols' in the math version `bold' on input line 292
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 290.
-LaTeX Info: Redefining \microtypecontext on input line 290.
+t line 292.
+LaTeX Info: Redefining \microtypecontext on input line 292.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1716,7 +1716,7 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
 \AtBeginShipoutBox=\box95
-Package hyperref Info: Link coloring ON on input line 290.
+Package hyperref Info: Link coloring ON on input line 292.
 (d:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (d:/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1726,9 +1726,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count324
 )
-LaTeX Info: Redefining \ref on input line 290.
-LaTeX Info: Redefining \pageref on input line 290.
-LaTeX Info: Redefining \nameref on input line 290.
+LaTeX Info: Redefining \ref on input line 292.
+LaTeX Info: Redefining \pageref on input line 292.
+LaTeX Info: Redefining \nameref on input line 292.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: threeparttable package is loaded.
@@ -1768,10 +1768,10 @@ dflt;mapping=tex-text;"
 \symmathhangul=\mathgroup6
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/it' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/n' instead on input line 292.
+(Font)              using `TU/NanumMyeongjo(0)/m/n' instead on input line 294.
 
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
-(Font)              scaled to size 10.0pt on input line 292.
+(Font)              scaled to size 10.0pt on input line 294.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1779,7 +1779,7 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/it/10'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 292.
+(Font)              scaled to size 8.0pt on input line 294.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1788,13 +1788,13 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 292.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 294.
 
 
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
-(Font)              scaled to size 24.0pt on input line 292.
+(Font)              scaled to size 24.0pt on input line 294.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/it' will be
-(Font)              scaled to size 24.0pt on input line 292.
+(Font)              scaled to size 24.0pt on input line 294.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1914,55 +1914,55 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [4]
-Underfull \vbox (badness 10000) detected at line 314
+Underfull \vbox (badness 10000) detected at line 316
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 314
+Overfull \hbox (395.75pt too wide) detected at line 316
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 314
+Underfull \vbox (badness 10000) detected at line 316
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 314
+Overfull \hbox (395.75pt too wide) detected at line 316
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 314
+Underfull \vbox (badness 10000) detected at line 316
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 314
+Overfull \hbox (395.75pt too wide) detected at line 316
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 314
+Underfull \vbox (badness 10000) detected at line 316
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 314
+Overfull \hbox (395.75pt too wide) detected at line 316
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 314
+Underfull \hbox (badness 10000) detected at line 316
 []
  []
 
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 314.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 316.
 
 
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
-(Font)              scaled to size 18.0pt on input line 314.
+(Font)              scaled to size 18.0pt on input line 316.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/it' will be
-(Font)              scaled to size 18.0pt on input line 314.
+(Font)              scaled to size 18.0pt on input line 316.
 (./basic.toc
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
 (Font)              scaled to size 10.0pt on input line 2.
@@ -2353,49 +2353,49 @@ Overfull \hbox (0.11195pt too wide) detected at line 171
 \openout5 = `basic.toc'.
 
 [8]
-Underfull \vbox (badness 10000) detected at line 316
+Underfull \vbox (badness 10000) detected at line 318
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 316
+Overfull \hbox (395.75pt too wide) detected at line 318
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 316
+Underfull \vbox (badness 10000) detected at line 318
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 316
+Overfull \hbox (395.75pt too wide) detected at line 318
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 316
+Underfull \vbox (badness 10000) detected at line 318
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 316
+Overfull \hbox (395.75pt too wide) detected at line 318
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 316
+Underfull \vbox (badness 10000) detected at line 318
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 316
+Overfull \hbox (395.75pt too wide) detected at line 318
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 316
+Underfull \hbox (badness 10000) detected at line 318
 []
  []
 
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 316.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 318.
 
 
 
@@ -2453,49 +2453,49 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [10
 
 ]
-Underfull \vbox (badness 10000) detected at line 317
+Underfull \vbox (badness 10000) detected at line 319
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 317
+Overfull \hbox (395.75pt too wide) detected at line 319
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 317
+Underfull \vbox (badness 10000) detected at line 319
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 317
+Overfull \hbox (395.75pt too wide) detected at line 319
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 317
+Underfull \vbox (badness 10000) detected at line 319
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 317
+Overfull \hbox (395.75pt too wide) detected at line 319
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 317
+Underfull \vbox (badness 10000) detected at line 319
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 317
+Overfull \hbox (395.75pt too wide) detected at line 319
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 317
+Underfull \hbox (badness 10000) detected at line 319
 []
  []
 
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 317.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 319.
 
 
 (./basic.lof
@@ -2562,57 +2562,57 @@ LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
 \openout7 = `basic.lof'.
 
 [14]
-Underfull \vbox (badness 10000) detected at line 320
+Underfull \vbox (badness 10000) detected at line 322
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 320
+Overfull \hbox (395.75pt too wide) detected at line 322
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 320
+Underfull \vbox (badness 10000) detected at line 322
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 320
+Overfull \hbox (395.75pt too wide) detected at line 322
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 320
+Underfull \vbox (badness 10000) detected at line 322
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 320
+Overfull \hbox (395.75pt too wide) detected at line 322
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 320
+Underfull \vbox (badness 10000) detected at line 322
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 320
+Overfull \hbox (395.75pt too wide) detected at line 322
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 320
+Underfull \hbox (badness 10000) detected at line 322
 []
  []
 
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 320.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 322.
 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.70068pt on input line 325.
+(Font)              scaled to size 8.70068pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.52551pt on input line 325.
+(Font)              scaled to size 6.52551pt on input line 327.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 325.
+(Font)              scaled to size 8.0pt on input line 327.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(1)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2620,17 +2620,17 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(1)/m/n/8'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 325.
+(Font)              scaled to size 6.0pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.70154pt on input line 325.
+(Font)              scaled to size 8.70154pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.52615pt on input line 325.
+(Font)              scaled to size 6.52615pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.69983pt on input line 325.
+(Font)              scaled to size 8.69983pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.52487pt on input line 325.
+(Font)              scaled to size 6.52487pt on input line 327.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 8.0pt on input line 325.
+(Font)              scaled to size 8.0pt on input line 327.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/up/8'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2638,9 +2638,9 @@ Package microtype Info: Character `\quotedblbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/up/8'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 6.0pt on input line 325.
+(Font)              scaled to size 6.0pt on input line 327.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 10.0pt on input line 327.
+(Font)              scaled to size 10.0pt on input line 329.
 Package microtype Info: Character `\quotesinglbase ' is missing
 (microtype)             in font `\TU/NanumMyeongjo(0)/m/up/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2659,47 +2659,47 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 Missing character: There is no 拜 in font NanumMyeongjo/OT:language=dflt;mapping
 =tex-text;!
 [16]
-Underfull \vbox (badness 10000) detected at line 338
+Underfull \vbox (badness 10000) detected at line 340
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 338
+Overfull \hbox (395.75pt too wide) detected at line 340
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 338
+Underfull \vbox (badness 10000) detected at line 340
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 338
+Overfull \hbox (395.75pt too wide) detected at line 340
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 338
+Underfull \vbox (badness 10000) detected at line 340
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 338
+Overfull \hbox (395.75pt too wide) detected at line 340
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 338
+Underfull \vbox (badness 10000) detected at line 340
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 338
+Overfull \hbox (395.75pt too wide) detected at line 340
 []
  []
 
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 20.74pt on input line 338.
+(Font)              scaled to size 20.74pt on input line 340.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 20.74pt on input line 338.
+(Font)              scaled to size 20.74pt on input line 340.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 24.88pt on input line 338.
+(Font)              scaled to size 24.88pt on input line 340.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2778,49 +2778,49 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [2]
-Underfull \vbox (badness 10000) detected at line 341
+Underfull \vbox (badness 10000) detected at line 343
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 341
+Overfull \hbox (395.75pt too wide) detected at line 343
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 341
+Underfull \vbox (badness 10000) detected at line 343
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 341
+Overfull \hbox (395.75pt too wide) detected at line 343
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 341
+Underfull \vbox (badness 10000) detected at line 343
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 341
+Overfull \hbox (395.75pt too wide) detected at line 343
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 341
+Underfull \vbox (badness 10000) detected at line 343
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 341
+Overfull \hbox (395.75pt too wide) detected at line 343
 []
  []
 
 Chapter 1.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 24.0pt on input line 341.
+(Font)              scaled to size 24.0pt on input line 343.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 24.0pt on input line 341.
+(Font)              scaled to size 24.0pt on input line 343.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 341.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 343.
 
 
 File: figures/01-fig-01.png Graphic file (type bmp)
@@ -2840,7 +2840,7 @@ File: figures/01-fig-02.png Graphic file (type bmp)
 File: figures/01-fig-03.png Graphic file (type bmp)
 <figures/01-fig-03.png>
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 11.0pt on input line 384.
+(Font)              scaled to size 11.0pt on input line 386.
 File: figures/01-fig-04.png Graphic file (type bmp)
 <figures/01-fig-04.png>
 [5] [6] [7] [8]
@@ -2850,45 +2850,45 @@ File: figures/01-fig-05.png Graphic file (type bmp)
 File: figures/01-fig-06.png Graphic file (type bmp)
 <figures/01-fig-06.png>
 [10]
-Underfull \vbox (badness 10000) detected at line 453
+Underfull \vbox (badness 10000) detected at line 455
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 453
+Overfull \hbox (395.75pt too wide) detected at line 455
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 453
+Underfull \vbox (badness 10000) detected at line 455
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 453
+Overfull \hbox (395.75pt too wide) detected at line 455
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 453
+Underfull \vbox (badness 10000) detected at line 455
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 453
+Overfull \hbox (395.75pt too wide) detected at line 455
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 453
+Underfull \vbox (badness 10000) detected at line 455
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 453
+Overfull \hbox (395.75pt too wide) detected at line 455
 []
  []
 
 Chapter 2.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 453.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 455.
 
 
 
@@ -2901,7 +2901,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 487.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 489.
 [12]
 File: figures/02-fig-02.png Graphic file (type bmp)
 <figures/02-fig-02.png>
@@ -2924,45 +2924,45 @@ File: figures/02-fig-09.png Graphic file (type bmp)
 File: figures/02-fig-10.png Graphic file (type bmp)
 <figures/02-fig-10.png>
 [21] [22]
-Underfull \vbox (badness 10000) detected at line 700
+Underfull \vbox (badness 10000) detected at line 702
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 700
+Overfull \hbox (395.75pt too wide) detected at line 702
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 700
+Underfull \vbox (badness 10000) detected at line 702
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 700
+Overfull \hbox (395.75pt too wide) detected at line 702
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 700
+Underfull \vbox (badness 10000) detected at line 702
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 700
+Overfull \hbox (395.75pt too wide) detected at line 702
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 700
+Underfull \vbox (badness 10000) detected at line 702
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 700
+Overfull \hbox (395.75pt too wide) detected at line 702
 []
  []
 
 Chapter 3.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 700.
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 702.
 
 
 
@@ -2977,90 +2977,90 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 File: ./figures/03-fig-01.png Graphic file (type bmp)
 <./figures/03-fig-01.png>
 [24] [25] [26] [27]
-Overfull \hbox (5.15291pt too wide) in paragraph at lines 873--873
+Overfull \hbox (5.15291pt too wide) in paragraph at lines 875--875
 []|\TU/NanumMyeongjo(0)/m/up/10 ADVAN10|  
  []
 
 
-Overfull \hbox (5.15291pt too wide) in paragraph at lines 879--879
+Overfull \hbox (5.15291pt too wide) in paragraph at lines 881--881
 []|\TU/NanumMyeongjo(0)/m/up/10 ADVAN11|  
  []
 
 
-Overfull \hbox (5.15291pt too wide) in paragraph at lines 885--885
+Overfull \hbox (5.15291pt too wide) in paragraph at lines 887--887
 []|\TU/NanumMyeongjo(0)/m/up/10 ADVAN12|  
  []
 
 
-Overfull \vbox (12.0pt too high) detected at line 885
+Overfull \vbox (12.0pt too high) detected at line 887
  []
 
 
-Overfull \hbox (13.8858pt too wide) in paragraph at lines 841--888
+Overfull \hbox (13.8858pt too wide) in paragraph at lines 843--890
  [][] 
  []
 
 [28]
-Underfull \hbox (badness 1184) in paragraph at lines 923--924
+Underfull \hbox (badness 1184) in paragraph at lines 925--926
 [] \TU/NanumMyeongjo(0)/m/up/10 위 의 식 @red(eq:scalingparam) 에 서 좌 변 에 1000 을 곱 
 하 면 단 위 가 DV 와 통 일 된 다.
  []
 
 [29] [30] [31] [32] [33]
-Underfull \vbox (badness 5345) detected at line 1119
+Underfull \vbox (badness 5345) detected at line 1121
  []
 
 [34]
-Underfull \vbox (badness 3701) detected at line 1181
+Underfull \vbox (badness 3701) detected at line 1183
  []
 
 [35] [36] [37]
-Underfull \vbox (badness 5345) detected at line 1261
+Underfull \vbox (badness 5345) detected at line 1263
  []
 
 [38]
 File: ./figures/03-fig-02.png Graphic file (type bmp)
 <./figures/03-fig-02.png>
 [39] [40] [41] [42]
-Underfull \vbox (badness 10000) detected at line 1357
+Underfull \vbox (badness 10000) detected at line 1359
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1357
+Overfull \hbox (395.75pt too wide) detected at line 1359
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1357
+Underfull \vbox (badness 10000) detected at line 1359
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1357
+Overfull \hbox (395.75pt too wide) detected at line 1359
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1357
+Underfull \vbox (badness 10000) detected at line 1359
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1357
+Overfull \hbox (395.75pt too wide) detected at line 1359
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1357
+Underfull \vbox (badness 10000) detected at line 1359
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1357
+Overfull \hbox (395.75pt too wide) detected at line 1359
 []
  []
 
 Chapter 4.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1357
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1359
 .
 
 File: figures/04-fig-01.png Graphic file (type bmp)
@@ -3076,59 +3076,59 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ]
-Overfull \hbox (4.9576pt too wide) in paragraph at lines 1442--1442
+Overfull \hbox (4.9576pt too wide) in paragraph at lines 1444--1444
 []|\TU/NanumMyeongjo(0)/m/up/10 Alternative 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1458--1458
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1460--1460
 []|\TU/NanumMyeongjo(0)/m/up/10 Intercompartmental 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1466--1466
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1468--1468
 []|\TU/NanumMyeongjo(0)/m/up/10 Intercompartmental 
  []
 
 
-Overfull \hbox (0.9534pt too wide) in paragraph at lines 1470--1471
+Overfull \hbox (0.9534pt too wide) in paragraph at lines 1472--1473
 []|\TU/NanumMyeongjo(0)/m/up/10 K21=(AOB*BETA+ALPHA)/(AOB+1)|  
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1486--1486
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1488--1488
 []|\TU/NanumMyeongjo(0)/m/up/10 Intercompartmental 
  []
 
 
-Overfull \hbox (1.00893pt too wide) in paragraph at lines 1496--1496
+Overfull \hbox (1.00893pt too wide) in paragraph at lines 1498--1498
 []|\TU/NanumMyeongjo(0)/m/up/10 Intercompartmental 
  []
 
 
-Overfull \hbox (28.33984pt too wide) in paragraph at lines 1440--1503
+Overfull \hbox (28.33984pt too wide) in paragraph at lines 1442--1505
  [][] 
  []
 
 [44]
-Overfull \vbox (0.31914pt too high) detected at line 1548
+Overfull \vbox (0.31914pt too high) detected at line 1550
  []
 
 [45] [46]
 File: figures/04-fig-03.png Graphic file (type bmp)
 <figures/04-fig-03.png>
 [47]
-Overfull \hbox (5.09431pt too wide) in paragraph at lines 1589--1589
+Overfull \hbox (5.09431pt too wide) in paragraph at lines 1591--1591
 []|\TU/NanumMyeongjo(0)/m/up/10 Parameters|  
  []
 
 
-Overfull \hbox (13.88579pt too wide) in paragraph at lines 1587--1660
+Overfull \hbox (13.88579pt too wide) in paragraph at lines 1589--1662
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 14.26315pt on input line 1660.
+LaTeX Warning: Float too large for page by 14.26315pt on input line 1662.
 
 [48] [49]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -3170,45 +3170,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [50
 
 ]
-Underfull \vbox (badness 10000) detected at line 1663
+Underfull \vbox (badness 10000) detected at line 1665
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1663
+Overfull \hbox (395.75pt too wide) detected at line 1665
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1663
+Underfull \vbox (badness 10000) detected at line 1665
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1663
+Overfull \hbox (395.75pt too wide) detected at line 1665
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1663
+Underfull \vbox (badness 10000) detected at line 1665
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1663
+Overfull \hbox (395.75pt too wide) detected at line 1665
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1663
+Underfull \vbox (badness 10000) detected at line 1665
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1663
+Overfull \hbox (395.75pt too wide) detected at line 1665
 []
  []
 
 Chapter 5.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1663
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1665
 .
 
 File: ./figures/05-fig-01.png Graphic file (type bmp)
@@ -3236,49 +3236,49 @@ File: ./figures/05-fig-05.png Graphic file (type bmp)
 File: figures/05-fig-06.png Graphic file (type bmp)
 <figures/05-fig-06.png>
 
-Underfull \vbox (badness 3536) detected at line 1818
+Underfull \vbox (badness 3536) detected at line 1820
  []
 
 [56] [57] [58]
-Underfull \vbox (badness 10000) detected at line 1854
+Underfull \vbox (badness 10000) detected at line 1856
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1854
+Overfull \hbox (395.75pt too wide) detected at line 1856
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1854
+Underfull \vbox (badness 10000) detected at line 1856
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1854
+Overfull \hbox (395.75pt too wide) detected at line 1856
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1854
+Underfull \vbox (badness 10000) detected at line 1856
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1854
+Overfull \hbox (395.75pt too wide) detected at line 1856
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1854
+Underfull \vbox (badness 10000) detected at line 1856
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1854
+Overfull \hbox (395.75pt too wide) detected at line 1856
 []
  []
 
 Chapter 6.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1854
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1856
 .
 
 
@@ -3332,45 +3332,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [62
 
 ]
-Underfull \vbox (badness 10000) detected at line 1885
+Underfull \vbox (badness 10000) detected at line 1887
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1885
+Overfull \hbox (395.75pt too wide) detected at line 1887
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1885
+Underfull \vbox (badness 10000) detected at line 1887
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1885
+Overfull \hbox (395.75pt too wide) detected at line 1887
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1885
+Underfull \vbox (badness 10000) detected at line 1887
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1885
+Overfull \hbox (395.75pt too wide) detected at line 1887
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1885
+Underfull \vbox (badness 10000) detected at line 1887
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1885
+Overfull \hbox (395.75pt too wide) detected at line 1887
 []
  []
 
 Chapter 7.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1885
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1887
 .
 
 File: figures/07-fig-01.png Graphic file (type bmp)
@@ -3424,45 +3424,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [66
 
 ]
-Underfull \vbox (badness 10000) detected at line 1941
+Underfull \vbox (badness 10000) detected at line 1943
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1941
+Overfull \hbox (395.75pt too wide) detected at line 1943
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1941
+Underfull \vbox (badness 10000) detected at line 1943
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1941
+Overfull \hbox (395.75pt too wide) detected at line 1943
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1941
+Underfull \vbox (badness 10000) detected at line 1943
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1941
+Overfull \hbox (395.75pt too wide) detected at line 1943
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1941
+Underfull \vbox (badness 10000) detected at line 1943
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 1941
+Overfull \hbox (395.75pt too wide) detected at line 1943
 []
  []
 
 Chapter 8.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1941
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 1943
 .
 
 
@@ -3473,16 +3473,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [67
 
 ]
-Underfull \hbox (badness 10000) detected at line 1964
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 1964
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 1966
  [][]
  []
@@ -3519,6 +3509,16 @@ Underfull \hbox (badness 10000) detected at line 1972
 
 
 Underfull \hbox (badness 10000) detected at line 1972
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1974
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1974
 [][][]
  []
 
@@ -3530,7 +3530,7 @@ File: figures/08-fig-02.png Graphic file (type bmp)
 <figures/08-fig-02.png>
 [70]
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 2042.
+(Font)              scaled to size 7.0pt on input line 2044.
 [71] [72]
 Missing character: There is no − in font NanumMyeongjo/OT:language=dflt;mapping
 =tex-text;!
@@ -3577,45 +3577,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [78
 
 ]
-Underfull \vbox (badness 10000) detected at line 2093
+Underfull \vbox (badness 10000) detected at line 2095
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2093
+Overfull \hbox (395.75pt too wide) detected at line 2095
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2093
+Underfull \vbox (badness 10000) detected at line 2095
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2093
+Overfull \hbox (395.75pt too wide) detected at line 2095
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2093
+Underfull \vbox (badness 10000) detected at line 2095
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2093
+Overfull \hbox (395.75pt too wide) detected at line 2095
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2093
+Underfull \vbox (badness 10000) detected at line 2095
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2093
+Overfull \hbox (395.75pt too wide) detected at line 2095
 []
  []
 
 Chapter 9.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2093
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2095
 .
 
 
@@ -3633,50 +3633,50 @@ File: ./figures/09-fig-02.png Graphic file (type bmp)
 <./figures/09-fig-02.png>
 [82]
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 2192.
+(Font)              scaled to size 5.0pt on input line 2194.
 [83]
 File: ./figures/09-fig-03.png Graphic file (type bmp)
 <./figures/09-fig-03.png>
 [84] [85] [86]
-Underfull \vbox (badness 10000) detected at line 2256
+Underfull \vbox (badness 10000) detected at line 2258
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2256
+Overfull \hbox (395.75pt too wide) detected at line 2258
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2256
+Underfull \vbox (badness 10000) detected at line 2258
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2256
+Overfull \hbox (395.75pt too wide) detected at line 2258
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2256
+Underfull \vbox (badness 10000) detected at line 2258
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2256
+Overfull \hbox (395.75pt too wide) detected at line 2258
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2256
+Underfull \vbox (badness 10000) detected at line 2258
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2256
+Overfull \hbox (395.75pt too wide) detected at line 2258
 []
  []
 
 Chapter 10.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2256
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2258
 .
 
 File: ./assets/media-10/image1.png Graphic file (type bmp)
@@ -3715,28 +3715,18 @@ File: ./assets/media-10/image9.png Graphic file (type bmp)
 [94]
 
 LaTeX Font Warning: Font shape `TU/UnDotum.ttf(0)/m/it' undefined
-(Font)              using `TU/UnDotum.ttf(0)/m/n' instead on input line 2352.
+(Font)              using `TU/UnDotum.ttf(0)/m/n' instead on input line 2354.
 
 LaTeX Font Info:    Font shape `TU/UnDotum.ttf(0)/m/n' will be
-(Font)              scaled to size 9.2273pt on input line 2352.
+(Font)              scaled to size 9.2273pt on input line 2354.
 LaTeX Font Info:    Font shape `TU/UnDotum.ttf(0)/m/it' will be
-(Font)              scaled to size 9.2273pt on input line 2352.
+(Font)              scaled to size 9.2273pt on input line 2354.
 File: ./assets/media-10/image11.png Graphic file (type bmp)
 <./assets/media-10/image11.png>
 [95]
 File: ./assets/media-10/image12.png Graphic file (type bmp)
 <./assets/media-10/image12.png>
 [96]
-Underfull \hbox (badness 10000) detected at line 2382
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2382
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2384
  [][]
  []
@@ -3803,60 +3793,70 @@ Underfull \hbox (badness 10000) detected at line 2396
 
 
 Underfull \hbox (badness 10000) detected at line 2396
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2398
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2398
 [][][]
  []
 
 [97] [98]
-Underfull \vbox (badness 10000) detected at line 2400
+Underfull \vbox (badness 10000) detected at line 2402
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2400
+Overfull \hbox (395.75pt too wide) detected at line 2402
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2400
+Underfull \vbox (badness 10000) detected at line 2402
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2400
+Overfull \hbox (395.75pt too wide) detected at line 2402
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2400
+Underfull \vbox (badness 10000) detected at line 2402
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2400
+Overfull \hbox (395.75pt too wide) detected at line 2402
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2400
+Underfull \vbox (badness 10000) detected at line 2402
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2400
+Overfull \hbox (395.75pt too wide) detected at line 2402
 []
  []
 
 Chapter 11.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2400
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2402
 .
 
 File: figures/11-fig-01.png Graphic file (type bmp)
 <figures/11-fig-01.png>
 
-Underfull \hbox (badness 10000) detected at line 2422
+Underfull \hbox (badness 10000) detected at line 2424
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2422
+Underfull \hbox (badness 10000) detected at line 2424
 [][][]
  []
 
@@ -3869,16 +3869,6 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ]
-Underfull \hbox (badness 10000) detected at line 2424
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2424
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2426
  [][]
  []
@@ -3895,6 +3885,16 @@ Underfull \hbox (badness 10000) detected at line 2428
 
 
 Underfull \hbox (badness 10000) detected at line 2428
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2430
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2430
 [][][]
  []
 
@@ -3902,44 +3902,44 @@ Underfull \hbox (badness 10000) detected at line 2428
 File: ./figures/11-fig-02.png Graphic file (type bmp)
 <./figures/11-fig-02.png>
 
-Underfull \hbox (badness 10000) detected at line 2458
+Underfull \hbox (badness 10000) detected at line 2460
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2458
+Underfull \hbox (badness 10000) detected at line 2460
 [][][]
  []
 
 [101]
-Underfull \hbox (badness 10000) detected at line 2460
+Underfull \hbox (badness 10000) detected at line 2462
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2460
+Underfull \hbox (badness 10000) detected at line 2462
 [][][]
  []
 
 File: ./figures/11-fig-03.png Graphic file (type bmp)
 <./figures/11-fig-03.png>
 
-Underfull \hbox (badness 10000) detected at line 2489
+Underfull \hbox (badness 10000) detected at line 2491
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2489
+Underfull \hbox (badness 10000) detected at line 2491
 [][][]
  []
 
 [102]
-Underfull \hbox (badness 10000) detected at line 2491
+Underfull \hbox (badness 10000) detected at line 2493
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2491
+Underfull \hbox (badness 10000) detected at line 2493
 [][][]
  []
 
@@ -3954,16 +3954,6 @@ File: ./figures/11-fig-06.png Graphic file (type bmp)
 File: figures/11-fig-07.png Graphic file (type bmp)
 <figures/11-fig-07.png>
 [106] [107]
-Underfull \hbox (badness 10000) detected at line 2561
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2561
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2563
  [][]
  []
@@ -3980,6 +3970,16 @@ Underfull \hbox (badness 10000) detected at line 2565
 
 
 Underfull \hbox (badness 10000) detected at line 2565
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2567
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2567
 [][][]
  []
 
@@ -3989,16 +3989,6 @@ File: ./figures/11-fig-08.png Graphic file (type bmp)
 File: ./figures/11-fig-09.png Graphic file (type bmp)
 <./figures/11-fig-09.png>
 [109]
-Underfull \hbox (badness 10000) detected at line 2599
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2599
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2601
  [][]
  []
@@ -4015,20 +4005,20 @@ Underfull \hbox (badness 10000) detected at line 2603
 
 
 Underfull \hbox (badness 10000) detected at line 2603
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2605
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2605
 [][][]
  []
 
 [110]
-Underfull \hbox (badness 10000) detected at line 2626
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2626
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2628
  [][]
  []
@@ -4045,6 +4035,16 @@ Underfull \hbox (badness 10000) detected at line 2630
 
 
 Underfull \hbox (badness 10000) detected at line 2630
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2632
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2632
 [][][]
  []
 
@@ -4052,58 +4052,58 @@ Underfull \hbox (badness 10000) detected at line 2630
 File: ./figures/11-fig-10.png Graphic file (type bmp)
 <./figures/11-fig-10.png>
 [112] [113] [114]
-Underfull \hbox (badness 10000) detected at line 2775
+Underfull \hbox (badness 10000) detected at line 2777
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2775
+Underfull \hbox (badness 10000) detected at line 2777
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2777
+Underfull \hbox (badness 10000) detected at line 2779
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2777
+Underfull \hbox (badness 10000) detected at line 2779
 [][][]
  []
 
 [115] [116]
-Underfull \vbox (badness 10000) detected at line 2790
+Underfull \vbox (badness 10000) detected at line 2792
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2790
+Overfull \hbox (395.75pt too wide) detected at line 2792
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2790
+Underfull \vbox (badness 10000) detected at line 2792
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2790
+Overfull \hbox (395.75pt too wide) detected at line 2792
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2790
+Underfull \vbox (badness 10000) detected at line 2792
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2790
+Overfull \hbox (395.75pt too wide) detected at line 2792
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2790
+Underfull \vbox (badness 10000) detected at line 2792
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2790
+Overfull \hbox (395.75pt too wide) detected at line 2792
 []
  []
 
@@ -4221,60 +4221,50 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [120]
-Underfull \vbox (badness 10000) detected at line 2793
+Underfull \vbox (badness 10000) detected at line 2795
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2793
+Overfull \hbox (395.75pt too wide) detected at line 2795
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2793
+Underfull \vbox (badness 10000) detected at line 2795
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2793
+Overfull \hbox (395.75pt too wide) detected at line 2795
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2793
+Underfull \vbox (badness 10000) detected at line 2795
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2793
+Overfull \hbox (395.75pt too wide) detected at line 2795
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2793
+Underfull \vbox (badness 10000) detected at line 2795
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2793
+Overfull \hbox (395.75pt too wide) detected at line 2795
 []
  []
 
 Chapter 12.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2793
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2795
 .
 
 File: ./figures/12-fig-01.png Graphic file (type bmp)
 <./figures/12-fig-01.png>
 
-Underfull \hbox (badness 10000) detected at line 2813
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2813
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 2815
  [][]
  []
@@ -4291,6 +4281,16 @@ Underfull \hbox (badness 10000) detected at line 2817
 
 
 Underfull \hbox (badness 10000) detected at line 2817
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2819
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2819
 [][][]
  []
 
@@ -4303,50 +4303,50 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ] [122]
-Overfull \hbox (22.33856pt too wide) in paragraph at lines 2847--2860
+Overfull \hbox (22.33856pt too wide) in paragraph at lines 2849--2862
  [][] 
  []
 
 [123] [124] [125] [126] [127] [128]
-Underfull \vbox (badness 10000) detected at line 2966
+Underfull \vbox (badness 10000) detected at line 2968
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2966
+Overfull \hbox (395.75pt too wide) detected at line 2968
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2966
+Underfull \vbox (badness 10000) detected at line 2968
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2966
+Overfull \hbox (395.75pt too wide) detected at line 2968
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2966
+Underfull \vbox (badness 10000) detected at line 2968
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2966
+Overfull \hbox (395.75pt too wide) detected at line 2968
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 2966
+Underfull \vbox (badness 10000) detected at line 2968
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 2966
+Overfull \hbox (395.75pt too wide) detected at line 2968
 []
  []
 
 Chapter 13.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2966
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 2968
 .
 
 File: ./figures/13-fig-01.png Graphic file (type bmp)
@@ -4370,42 +4370,42 @@ File: ./figures/13-fig-04.png Graphic file (type bmp)
 File: ./figures/13-fig-05.png Graphic file (type bmp)
 <./figures/13-fig-05.png>
 
-Underfull \hbox (badness 10000) detected at line 3063
+Underfull \hbox (badness 10000) detected at line 3065
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3063
+Underfull \hbox (badness 10000) detected at line 3065
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3065
+Underfull \hbox (badness 10000) detected at line 3067
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3065
+Underfull \hbox (badness 10000) detected at line 3067
 [][][]
  []
 
 [132]
-Underfull \hbox (badness 10000) detected at line 3067
+Underfull \hbox (badness 10000) detected at line 3069
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3067
+Underfull \hbox (badness 10000) detected at line 3069
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3069
+Underfull \hbox (badness 10000) detected at line 3071
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3069
+Underfull \hbox (badness 10000) detected at line 3071
 [][][]
  []
 
@@ -4461,45 +4461,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [138
 
 ]
-Underfull \vbox (badness 10000) detected at line 3130
+Underfull \vbox (badness 10000) detected at line 3132
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3130
+Overfull \hbox (395.75pt too wide) detected at line 3132
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3130
+Underfull \vbox (badness 10000) detected at line 3132
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3130
+Overfull \hbox (395.75pt too wide) detected at line 3132
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3130
+Underfull \vbox (badness 10000) detected at line 3132
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3130
+Overfull \hbox (395.75pt too wide) detected at line 3132
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3130
+Underfull \vbox (badness 10000) detected at line 3132
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3130
+Overfull \hbox (395.75pt too wide) detected at line 3132
 []
  []
 
 Chapter 14.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3130
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3132
 .
 
 
@@ -4510,81 +4510,81 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [139
 
 ] [140] [141] [142] [143] [144]
-Underfull \vbox (badness 6396) detected at line 3360
+Underfull \vbox (badness 6396) detected at line 3362
  []
 
 [145]
 File: basic_files/figure-latex/theophconctime-1.pdf Graphic file (type pdf)
 <use basic_files/figure-latex/theophconctime-1.pdf>
 [146] [147]
-Underfull \vbox (badness 1975) detected at line 3475
+Underfull \vbox (badness 1975) detected at line 3477
  []
 
 [148]
-Underfull \vbox (badness 4193) detected at line 3673
+Underfull \vbox (badness 4193) detected at line 3675
  []
 
 [149]
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 [150]
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 [151]
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 [152]
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 [153]
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3673
+Underfull \vbox (badness 10000) detected at line 3675
  []
 
 [154]
-Underfull \vbox (badness 4193) detected at line 3695
+Underfull \vbox (badness 4193) detected at line 3697
  []
 
 [155] [156]
-Underfull \hbox (badness 10000) detected at line 3731
+Underfull \hbox (badness 10000) detected at line 3733
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3731
+Underfull \hbox (badness 10000) detected at line 3733
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3733
+Underfull \hbox (badness 10000) detected at line 3735
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3733
+Underfull \hbox (badness 10000) detected at line 3735
 [][][]
  []
 
@@ -4628,45 +4628,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [158
 
 ]
-Underfull \vbox (badness 10000) detected at line 3739
+Underfull \vbox (badness 10000) detected at line 3741
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3739
+Overfull \hbox (395.75pt too wide) detected at line 3741
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3739
+Underfull \vbox (badness 10000) detected at line 3741
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3739
+Overfull \hbox (395.75pt too wide) detected at line 3741
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3739
+Underfull \vbox (badness 10000) detected at line 3741
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3739
+Overfull \hbox (395.75pt too wide) detected at line 3741
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3739
+Underfull \vbox (badness 10000) detected at line 3741
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3739
+Overfull \hbox (395.75pt too wide) detected at line 3741
 []
  []
 
 Chapter 15.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3739
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3741
 .
 
 File: figures/15-fig-01.png Graphic file (type bmp)
@@ -4743,45 +4743,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [168
 
 ]
-Underfull \vbox (badness 10000) detected at line 3868
+Underfull \vbox (badness 10000) detected at line 3870
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3868
+Overfull \hbox (395.75pt too wide) detected at line 3870
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3868
+Underfull \vbox (badness 10000) detected at line 3870
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3868
+Overfull \hbox (395.75pt too wide) detected at line 3870
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3868
+Underfull \vbox (badness 10000) detected at line 3870
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3868
+Overfull \hbox (395.75pt too wide) detected at line 3870
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 3868
+Underfull \vbox (badness 10000) detected at line 3870
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 3868
+Overfull \hbox (395.75pt too wide) detected at line 3870
 []
  []
 
 Chapter 16.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3868
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 3870
 .
 
 
@@ -4850,45 +4850,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [178
 
 ]
-Underfull \vbox (badness 10000) detected at line 4020
+Underfull \vbox (badness 10000) detected at line 4022
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4020
+Overfull \hbox (395.75pt too wide) detected at line 4022
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4020
+Underfull \vbox (badness 10000) detected at line 4022
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4020
+Overfull \hbox (395.75pt too wide) detected at line 4022
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4020
+Underfull \vbox (badness 10000) detected at line 4022
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4020
+Overfull \hbox (395.75pt too wide) detected at line 4022
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4020
+Underfull \vbox (badness 10000) detected at line 4022
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4020
+Overfull \hbox (395.75pt too wide) detected at line 4022
 []
  []
 
 Chapter 17.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4020
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4022
 .
 
 File: figures/17-fig-01.png Graphic file (type bmp)
@@ -4901,51 +4901,51 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [179
 
 ]
-File: figures/17-fig-02.png Graphic file (type bmp)
-<figures/17-fig-02.png>
+File: figures/17-fig-02.jpg Graphic file (type bmp)
+<figures/17-fig-02.jpg>
 [180] [181] [182]
 File: figures/17-fig-03.png Graphic file (type bmp)
 <figures/17-fig-03.png>
 [183] [184]
-Underfull \vbox (badness 10000) detected at line 4114
+Underfull \vbox (badness 10000) detected at line 4116
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4114
+Overfull \hbox (395.75pt too wide) detected at line 4116
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4114
+Underfull \vbox (badness 10000) detected at line 4116
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4114
+Overfull \hbox (395.75pt too wide) detected at line 4116
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4114
+Underfull \vbox (badness 10000) detected at line 4116
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4114
+Overfull \hbox (395.75pt too wide) detected at line 4116
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4114
+Underfull \vbox (badness 10000) detected at line 4116
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4114
+Overfull \hbox (395.75pt too wide) detected at line 4116
 []
  []
 
 Chapter 18.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4114
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4116
 .
 
 File: figures/18-fig-01.png Graphic file (type bmp)
@@ -4962,12 +4962,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 File: figures/18-fig-02.png Graphic file (type bmp)
 <figures/18-fig-02.png>
 [187]
-Overfull \hbox (1.07301pt too wide) in paragraph at lines 4184--4184
+Overfull \hbox (1.07301pt too wide) in paragraph at lines 4186--4186
 []|\TU/NanumMyeongjo(0)/m/up/10 Simultaneous 
  []
 
 
-Overfull \hbox (23.88579pt too wide) in paragraph at lines 4177--4193
+Overfull \hbox (23.88579pt too wide) in paragraph at lines 4179--4195
  [][] 
  []
 
@@ -4983,11 +4983,11 @@ File: ./assets/media-18/image6.png Graphic file (type bmp)
 File: ./assets/media-18/image7.png Graphic file (type bmp)
 <./assets/media-18/image7.png>
 [194]
-Underfull \vbox (badness 10000) detected at line 4407
+Underfull \vbox (badness 10000) detected at line 4409
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4407
+Underfull \vbox (badness 10000) detected at line 4409
  []
 
 [195]
@@ -5002,11 +5002,11 @@ File: ./assets/media-18/image13.png Graphic file (type bmp)
 File: ./assets/media-18/image14.png Graphic file (type bmp)
 <./assets/media-18/image14.png>
 [200]
-Underfull \vbox (badness 10000) detected at line 4585
+Underfull \vbox (badness 10000) detected at line 4587
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4585
+Underfull \vbox (badness 10000) detected at line 4587
  []
 
 [201] [202]
@@ -5054,45 +5054,45 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [206
 
 ]
-Underfull \vbox (badness 10000) detected at line 4654
+Underfull \vbox (badness 10000) detected at line 4656
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4654
+Overfull \hbox (395.75pt too wide) detected at line 4656
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4654
+Underfull \vbox (badness 10000) detected at line 4656
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4654
+Overfull \hbox (395.75pt too wide) detected at line 4656
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4654
+Underfull \vbox (badness 10000) detected at line 4656
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4654
+Overfull \hbox (395.75pt too wide) detected at line 4656
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4654
+Underfull \vbox (badness 10000) detected at line 4656
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4654
+Overfull \hbox (395.75pt too wide) detected at line 4656
 []
  []
 
 Chapter 19.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4654
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4656
 .
 
 
@@ -5108,54 +5108,44 @@ File: figures/19-fig-01.png Graphic file (type bmp)
 File: ./assets/media-19/image2.png Graphic file (type bmp)
 <./assets/media-19/image2.png>
 [208]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 4704.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 11.96344pt on input line 4704.
+(Font)              scaled to size 11.96344pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.37436pt on input line 4704.
+(Font)              scaled to size 8.37436pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.98172pt on input line 4704.
+(Font)              scaled to size 5.98172pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 11.0pt on input line 4704.
+(Font)              scaled to size 11.0pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 7.69997pt on input line 4704.
+(Font)              scaled to size 7.69997pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(1)/m/n' will be
-(Font)              scaled to size 5.5pt on input line 4704.
+(Font)              scaled to size 5.5pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.96461pt on input line 4704.
+(Font)              scaled to size 11.96461pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.37518pt on input line 4704.
+(Font)              scaled to size 8.37518pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.9823pt on input line 4704.
+(Font)              scaled to size 5.9823pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.96227pt on input line 4704.
+(Font)              scaled to size 11.96227pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.37354pt on input line 4704.
+(Font)              scaled to size 8.37354pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.98112pt on input line 4704.
+(Font)              scaled to size 5.98112pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 11.0pt on input line 4704.
+(Font)              scaled to size 11.0pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 7.69997pt on input line 4704.
+(Font)              scaled to size 7.69997pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/m/up' will be
-(Font)              scaled to size 5.5pt on input line 4704.
+(Font)              scaled to size 5.5pt on input line 4706.
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 7.69997pt on input line 4704.
+(Font)              scaled to size 7.69997pt on input line 4706.
 File: images/tip.png Graphic file (type bmp)
 <images/tip.png>
 File: ./assets/media-19/box1.png Graphic file (type bmp)
 <./assets/media-19/box1.png>
 
-Underfull \hbox (badness 10000) detected at line 4726
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4726
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) detected at line 4728
  [][]
  []
@@ -5176,11 +5166,21 @@ Underfull \hbox (badness 10000) detected at line 4730
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4780
+Underfull \hbox (badness 10000) detected at line 4732
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4732
+[][][]
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4782
  []
 
 [209]
-Underfull \vbox (badness 1371) detected at line 4780
+Underfull \vbox (badness 1371) detected at line 4782
  []
 
 [210]
@@ -5199,7 +5199,7 @@ File: figures/19-fig-sigmoid-emax.png Graphic file (type bmp)
 File: images/tip.png Graphic file (type bmp)
 <images/tip.png>
 LaTeX Font Info:    Font shape `TU/NanumMyeongjo(0)/b/n' will be
-(Font)              scaled to size 7.0pt on input line 4846.
+(Font)              scaled to size 7.0pt on input line 4848.
 [214]
 File: figures/19-fig-07.png Graphic file (type bmp)
 <figures/19-fig-07.png>
@@ -5207,45 +5207,45 @@ File: figures/19-fig-07.png Graphic file (type bmp)
 File: figures/19-fig-08.png Graphic file (type bmp)
 <figures/19-fig-08.png>
 [216]
-Underfull \vbox (badness 10000) detected at line 4917
+Underfull \vbox (badness 10000) detected at line 4919
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4917
+Overfull \hbox (395.75pt too wide) detected at line 4919
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4917
+Underfull \vbox (badness 10000) detected at line 4919
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4917
+Overfull \hbox (395.75pt too wide) detected at line 4919
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4917
+Underfull \vbox (badness 10000) detected at line 4919
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4917
+Overfull \hbox (395.75pt too wide) detected at line 4919
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4917
+Underfull \vbox (badness 10000) detected at line 4919
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 4917
+Overfull \hbox (395.75pt too wide) detected at line 4919
 []
  []
 
 Chapter 20.
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4917
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 4919
 .
 
 
@@ -5283,49 +5283,49 @@ File: figures/20-fig-08.png Graphic file (type bmp)
 File: figures/20-fig-09.png Graphic file (type bmp)
 <figures/20-fig-09.png>
 [226]
-Underfull \vbox (badness 10000) detected at line 5174
+Underfull \vbox (badness 10000) detected at line 5176
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 5174
+Overfull \hbox (395.75pt too wide) detected at line 5176
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5174
+Underfull \vbox (badness 10000) detected at line 5176
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 5174
+Overfull \hbox (395.75pt too wide) detected at line 5176
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5174
+Underfull \vbox (badness 10000) detected at line 5176
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 5174
+Overfull \hbox (395.75pt too wide) detected at line 5176
 []
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5174
+Underfull \vbox (badness 10000) detected at line 5176
  []
 
 
-Overfull \hbox (395.75pt too wide) detected at line 5174
+Overfull \hbox (395.75pt too wide) detected at line 5176
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 5174
+Underfull \hbox (badness 10000) detected at line 5176
 []
  []
 
 
 LaTeX Font Warning: Font shape `TU/NanumMyeongjo(0)/m/sl' undefined
-(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 5174
+(Font)              using `TU/NanumMyeongjo(0)/m/it' instead on input line 5176
 .
 
 
@@ -5338,7 +5338,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 5224--5226
+Underfull \hbox (badness 10000) in paragraph at lines 5226--5228
 [][]\TU/NanumMyeongjo(0)/m/up/10 Owen, Fiedler-Kelly, J. 2014. Introduction to 
 Population Pharmacoki-
  []
@@ -5399,11 +5399,11 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [231
 
 ] [232] [233] [234])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5260.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5260.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5262.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5262.
 (./basic.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5260.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5260.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5262.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5262.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -5412,10 +5412,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 26762 strings out of 479277
- 450882 string characters out of 5883836
- 915571 words of memory out of 5000000
- 43858 multiletter control sequences out of 15000+600000
+ 26767 strings out of 479277
+ 450974 string characters out of 5883836
+ 915581 words of memory out of 5000000
+ 43863 multiletter control sequences out of 15000+600000
  541130 words of font info for 127 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  61i,19n,125p,1918b,2585s stack positions out of 5000i,500n,10000p,200000b,80000s

@@ -105,13 +105,15 @@
 
 \urlstyle{tt}
 
+%https://tex.stackexchange.com/questions/85400/how-to-change-space-around-theorem-environments
+
 \usepackage{amsthm}
 \makeatletter
-\def\thm@space@setup{%
-  \thm@preskip=0pt
-  %\thm@preskip=1pt plus 1pt minus 1pt
-  \thm@postskip=\thm@preskip
+\def\example@space@setup{%
+  \example@preskip=0.1cm
+  \example@postskip=\thm@preskip
 }
 \makeatother
+
 
 \frontmatter

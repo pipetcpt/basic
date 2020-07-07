@@ -50,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block/empty-anchor.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 
 
@@ -413,83 +412,59 @@ PD 데이터의 종류
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 3.5cm; ">
 Continuous response (interval or ratio)
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능
+1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)
+2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)
 </td>
-<td style="text-align:left;width: 4cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 3.5cm; ">
 IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
-1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
-2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; vertical-align: top !important;" rowspan="6">
+<td style="text-align:left;width: 3.5cm; ">
 Binary / categorical response
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 이진(binary): 증상의 유/무 등
-</td>
-<td style="text-align:left;width: 4cm; vertical-align: top !important;" rowspan="8">
-관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 $ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
 3가지 이상 범주(categorical):
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
 -Simple categorical: 인종, 혈액형 등
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
 -Ordered categorical: 병기(stage), VAS(visual analog scale)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
 관찰값들 간의 간격의 크기를 알 수 없어 비교 불가
+Mean, SD 등으로 나타내기 부적절 (! ?)
+</td>
+<td style="text-align:left;width: 3.5cm; ">
+관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 $ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
-Mean, SD 등으로 나타내기 부적절
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Count data
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등)
+</td>
+<td style="text-align:left;width: 3.5cm; ">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Time to event data
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 예) 수면유도제의 효과: 잠들 때까지의 시간
+</td>
+<td style="text-align:left;width: 3.5cm; ">
 </td>
 </tr>
 </tbody>
 </table>
 <p>PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을 주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은 시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는 약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의 영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림 <a href="basic-pkpd.html#fig:pd-time-course">17.2</a>)</p>
 <div class="figure"><span id="fig:pd-time-course"></span>
-<img src="figures/17-fig-02.png" alt="PD의 시간에 따른 변화의 사례 (Primary Psychiatry 2013)" width="90%" />
+<img src="figures/17-fig-02.jpg" alt="PD의 시간에 따른 변화의 사례 (Primary Psychiatry 2013)" width="90%" />
 <p class="caption">
 그림 17.2: PD의 시간에 따른 변화의 사례 <span class="citation">(Primary Psychiatry <a href="#ref-dementia" role="doc-biblioref">2013</a>)</span>
 </p>

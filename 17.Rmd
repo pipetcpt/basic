@@ -55,7 +55,7 @@ tribble(~"PD 데이터의 종류", ~'특징', ~'모델링할 때의 주의점',
 PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을 주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은 시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는 약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의 영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림 \@ref(fig:pd-time-course))
 
 ```{r pd-time-course, fig.cap="(ref:pd-time-course)"}
-knitr::include_graphics("figures/17-fig-02.png")
+knitr::include_graphics("figures/17-fig-02.jpg")
 ```
 
 (ref:pd-time-course) PD의 시간에 따른 변화의 사례 [@dementia]
