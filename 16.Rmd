@@ -29,7 +29,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="16-1", range="B2:D10") %>%
 
 검사용 데이터셋이 없거나 분석 시작시 작성되지 않은 경우에는 붓스트랩 접근법을 사용하는 것이 적절하다. 붓스트랩은 교차 타당성 검증과 같이 모형 구축에 모든 자료를 사용한다는 장점이 있다. 희귀질환이나 소아환자의 자료 등과 같이 표본 크기가 제한적일 수밖에 없는 경우, 집단모형을 평가하는데 매우 유용할 수 있다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}
 
-적당한 횟수(적어도 200회 이상)로 반복하여 얻어지는 붓스트랩 복제 값에 최종 모델을 반복적으로 적합(fitting)시켜서 얻어진 파라미터의 평균값들을 붓스트랩 없이 얻어진 최종 집단모델 파라미터 추정치와 비교하는 것이다. 이는 모델을 다양한 데이터셋에 적합(fitting)시키는 방법을 지칭하며, 각 데이터셋은 최종 모델의 데이터셋으로부터 반복 재추출된 대상자들에 대한 자료로 구성되어 있다. 붓스트랩에 의해 얻어진 결과를 보고하기 위해 중앙값과 95% 신뢰구간이 흔히 사용되며 이 값들을 어떻게 계산하는지 모식도(그림 \@ref(fig:boot95))로 표현하였다. 붓스트랩에 의해 얻어진 결과를 정리하여 보고하는 일반적인 방법을 그림 \@ref(fig:bootstrap-table)에 나타내었다. 흔하게 쓰이는 방법으로는, 1000개의 재추출된 데이터셋을 통해 얻어진 붓스트랩 중앙값과 최종예측값을 비교하는 것인데, 큰 차이가 없음을 알 수 있고, %RSE(relative standard error)로 계산된 신뢰구간과 붓스트랩 95% 신뢰구간을 비교하여 예측된 변동성 정도에 대한 검증도 할 수 있다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}\index{집단모델 / population model}\index{population model / 집단모델}\index{standard errors of the estimates / 추정값의 표준오차}
+적당한 횟수(적어도 200회 이상)로 반복하여 얻어지는 붓스트랩 복제 값에 최종 모델을 반복적으로 적합(fitting)시켜서 얻어진 파라미터의 평균값들을 붓스트랩 없이 얻어진 최종 집단모델 파라미터 추정치와 비교하는 것이다. 이는 모델을 다양한 데이터셋에 적합(fitting)시키는 방법을 지칭하며, 각 데이터셋은 최종 모델의 데이터셋으로부터 반복 재추출된 대상자들에 대한 자료로 구성되어 있다. 붓스트랩에 의해 얻어진 결과를 보고하기 위해 중앙값과 95% 신뢰구간이 흔히 사용되며 이 값들을 어떻게 계산하는지 모식도(그림 \@ref(fig:boot95))로 표현하였다. 붓스트랩에 의해 얻어진 결과를 정리하여 보고하는 일반적인 방법을 그림 \@ref(fig:bootstrap-table)에 나타내었다. 흔하게 쓰이는 방법으로는, 1000개의 재추출된 데이터셋을 통해 얻어진 붓스트랩 중앙값과 최종예측값을 비교하는 것인데, 큰 차이가 없음을 알 수 있고, %RSE(relative standard error)로 계산된 신뢰구간과 붓스트랩 95% 신뢰구간을 비교하여 예측된 변동성 정도에 대한 검증도 할 수 있다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}\index{집단모델 / population model}\index{population model / 집단모델}\index{standard errors of the estimates / 추정값의 표준오차}\index{standard errors of the estimates / 추정값의 표준오차}
 
 
 ```{r boot95, fig.cap = "(ref:bootstrap-process)"}
@@ -64,7 +64,7 @@ include_graphics("figures/16-fig-03.png") # 3
 
 VPC로 생성된 그림은 관찰값과 시뮬레이션에 의한 예측구간을 겹쳐서 그림 형태로 제시한다.(그림 \@ref(fig:scatter-vpc)) 시각적으로 표현된 자료는 빠르고 직관적으로 모델의 예측성능을 평가할 수 있다는 큰 장점을 갖기에 현재 가장 널리 쓰이고 있는 방법이다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
-모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, \$PK 또는 \$PRED는 손대지 않고 \$THETA, \$OMEGA, \$SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 \$MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. \$EST, \$COV는 삭제하고 \$SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. \index{모델 규격파일(MSF) / model specification file}\index{시드값 / seed value}\index{시뮬레이션 / simulation}\index{model specification file / 모델 규격파일(MSF)}\index{seed value / 시드값}\index{simulation / 시뮬레이션}
+모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, \$PK 또는 \$PRED는 손대지 않고 \$THETA, \$OMEGA, \$SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 \$MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. \$EST, \$COV는 삭제하고 \$SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. \index{모델 규격파일(MSF) / model specification file}\index{시드값 / seed value}\index{시뮬레이션 / simulation}\index{model specification file / 모델 규격파일(MSF)}\index{seed value / 시드값}\index{simulation / 시뮬레이션}\index{$COVARIANCE ($COV, $COVAR)}
 
 ```
 $SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000
@@ -98,7 +98,7 @@ VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변
 vpc bean.CTL -lst=bean.CTL.lst -samples=1000 -stratify_on=DAY -idv=TAD
 ```
 
-위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어구문 파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \@ref(fig:strat-vpc))\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}
+위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어구문 파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \@ref(fig:strat-vpc))\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}\index{time after dose / time after dose}
 
 ```{r strat-vpc, fig.cap="(ref:strat-vpc)"}
 include_graphics("figures/16-fig-06.png")

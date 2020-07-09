@@ -22,11 +22,15 @@ crop:
 
 allindex: indexko indexen
 
+index:
+	Rscript _index/_make_index.R
+print:
+	cat _shell/_index_en.sh
 indexko:
 	sh -x _index.sh
 
 indexen:
-	sh -x _index_en.sh
+	sh -x _shell/_index_en.sh
 
 soclean: clean del
 

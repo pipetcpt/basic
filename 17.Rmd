@@ -41,7 +41,7 @@ tribble(~"PD 데이터의 종류", ~'특징', ~'모델링할 때의 주의점',
 1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)
 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)',
 'IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)',
-'Binary / categorical response', "이진(binary): 증상의 유/무 등\n3가지 이상 범주(categorical): \n-Simple categorical: 인종, 혈액형 등\n-Ordered categorical: 병기(stage), VAS(visual analog scale)\n관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\nMean, SD 등으로 나타내기 부적절 (! ?)", "관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \\$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음. ",
+'Binary / categorical response', "이진(binary): 증상의 유/무 등\n3가지 이상 범주(categorical): \n-Simple categorical: 인종, 혈액형 등\n-Ordered categorical: 병기(stage), VAS(visual analog scale)\n관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\nMean, SD 등으로 나타내기 부적절 (! ?)", "관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \\$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음. ",\index{-2LL}
 "Count data", "질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등)", "",
 "Time to event data", "예) 수면유도제의 효과: 잠들 때까지의 시간", "") %>% 
   mutate_all(linebreak) %>%
@@ -74,7 +74,7 @@ NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농�
 
 앞에서도 나왔듯이 PD 데이터의 기저치와 개일리듬(circadian rhythm)의 존재여부, 농도와 효과 간의 이미 알려진 작용기전의 존재여부, 시간차(time delay), 설명할 수 있는 모델의 선택 등을 먼저 고려해야 한다. 또한 PK와 PD 모델링을 PK를 먼저, PD는 다음에 하는 식으로 순차적으로 수행할지, 동시에 할지, 순차적으로 한다면 PK 모델의 정보를 어느 선까지 PD 모델링 단계에서 쓸지 등을 고려해야 한다.
 
-데이터셋을 만들 때 PK와 PD 자료를 한꺼번에 넣으려 하면 혼란이 생길 수 있어서 Dosing 데이터셋, PK 데이터셋, PD 데이터셋을 각각 만든 후 병합하는 것을 추천한다. 또 실제 관찰한 시간 이외에도 이후 모델 진단 등을 위해 time after dose(TAD, 여러 번 투약 시 직전 투약시간 이후 경과시간을 표시한 것) 칼럼도 함께 넣어주는 것이 좋다.\index{time after dose / time after dose}
+데이터셋을 만들 때 PK와 PD 자료를 한꺼번에 넣으려 하면 혼란이 생길 수 있어서 Dosing 데이터셋, PK 데이터셋, PD 데이터셋을 각각 만든 후 병합하는 것을 추천한다. 또 실제 관찰한 시간 이외에도 이후 모델 진단 등을 위해 time after dose(TAD, 여러 번 투약 시 직전 투약시간 이후 경과시간을 표시한 것) 칼럼도 함께 넣어주는 것이 좋다.\index{time after dose / time after dose}\index{time after dose / time after dose}
 
 ## PK와 PD의 관계
 
