@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="diag-eval.html"/>
-<link rel="next" href="cov.html"/>
+<link rel="next" href="nonmem의-covariance-cov.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -177,10 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.3</b> 제어구문에 쓰이는 레코드</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.3.1</b> $PROBLEM, $DATA, $INPUT</a></li>
-<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
+<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-desindexdes"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, <span class="math inline">\(DES\index{\)</span>DES}</a></li>
 <li class="chapter" data-level="3.3.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.3.3</b> $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, $SIMULATION</a></li>
-<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, $TABLE</a></li>
+<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulationindexestimation-estindexsimulation-sim"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, <span class="math inline">\(SIMULATION\index{\)</span>ESTIMATION (<span class="math inline">\(EST)}\index{\)</span>SIMULATION ($SIM)}</a></li>
+<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-tableindexcovariance-cov-covarindextable"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, <span class="math inline">\(TABLE\index{\)</span>COVARIANCE ($COV, <span class="math inline">\(COVAR)}\index{\)</span>TABLE}</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.4</b> 모델 종류별 제어구문</a>
 <ul>
@@ -199,13 +199,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.1" data-path="newer-advan.html"><a href="newer-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments"><i class="fa fa-check"></i><b>6.1</b> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</a></li>
 <li class="chapter" data-level="6.2" data-path="newer-advan.html"><a href="newer-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination"><i class="fa fa-check"></i><b>6.2</b> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</a></li>
-<li class="chapter" data-level="6.3" data-path="newer-advan.html"><a href="newer-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</a></li>
+<li class="chapter" data-level="6.3" data-path="newer-advan.html"><a href="newer-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption"><i class="fa fa-check"></i><b>6.3</b> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption) </a></li>
 <li class="chapter" data-level="6.4" data-path="newer-advan.html"><a href="newer-advan.html#advan13---general-nonlinear-model-using-lsoda"><i class="fa fa-check"></i><b>6.4</b> ADVAN13 - General Nonlinear Model using LSODA</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="PRED.html"><a href="PRED.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩</a>
+<li class="chapter" data-level="7" data-path="pred-advan을-쓰지-않는-코딩-pred.html"><a href="pred-advan을-쓰지-않는-코딩-pred.html"><i class="fa fa-check"></i><b>7</b> $PRED: ADVAN을 쓰지 않는 코딩 {#PRED}</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="PRED.html"><a href="PRED.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
-<li class="chapter" data-level="7.2" data-path="PRED.html"><a href="PRED.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
+<li class="chapter" data-level="7.1" data-path="pred-advan을-쓰지-않는-코딩-pred.html"><a href="pred-advan을-쓰지-않는-코딩-pred.html#pred와-predpp-library사용할-때의-차이"><i class="fa fa-check"></i><b>7.1</b> $PRED와 PREDPP library사용할 때의 차이</a></li>
+<li class="chapter" data-level="7.2" data-path="pred-advan을-쓰지-않는-코딩-pred.html"><a href="pred-advan을-쓰지-않는-코딩-pred.html#pred를-써야-하는-경우"><i class="fa fa-check"></i><b>7.2</b> $PRED를 써야 하는 경우</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="IE.html"><a href="IE.html"><i class="fa fa-check"></i><b>8</b> 초기추정값</a>
 <ul>
@@ -262,15 +262,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3" data-path="diag-eval.html"><a href="diag-eval.html#맺음말"><i class="fa fa-check"></i><b>12.3</b> 맺음말</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
-<li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
+<li class="chapter" data-level="14" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE {#cov}</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
-<li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
-<li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
-<li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
-<li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
-<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
-<li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
+<li class="chapter" data-level="14.1" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.2" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
+<li class="chapter" data-level="14.3" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
+<li class="chapter" data-level="14.4" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
+<li class="chapter" data-level="14.5" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
+<li class="chapter" data-level="14.6" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.7" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="parameters.html"><a href="parameters.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
 <li class="chapter" data-level="16" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i><b>16</b> 모델의 예측성능 평가</a>
@@ -333,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="nonmem의-covariance-cov.html"><a href="nonmem의-covariance-cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -406,25 +406,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 그림 13.3: Relationship between standard deviation of residual variability and predicted concentrations
 </p>
 </div>
-<p>실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 <a href="fit.html#exm:combined-upper">13.1</a>, <a href="fit.html#exm:combined-lower">13.2</a>와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 <a href="fit.html#exm:combined-upper">13.1</a>은 가장 기본적인 형태이고, 코드 <a href="fit.html#exm:combined-lower">13.2</a>의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, <code>0.0001 FIX</code>)하면 된다.</p>
+<p>실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 <a href="fit.html#exm:combined-upper">13.1</a>, <a href="fit.html#exm:combined-lower">13.2</a>와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 <a href="fit.html#exm:combined-upper">13.1</a>은 가장 기본적인 형태이고, 코드 <a href="fit.html#exm:combined-lower">13.2</a>의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 (<span class="math inline">\(SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, `0.0001 FIX`)하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{\)</span>SIGMA}</p>
 
 <div class="example">
-<span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span>$ERROR structure in NONMEM control stream: 기본형태
+<span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span><span class="math inline">\(ERROR structure in NONMEM control stream: 기본형태\index{\)</span>ERROR}
 </div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="fit.html#cb34-1" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
-<span id="cb34-2"><a href="fit.html#cb34-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F</span>
-<span id="cb34-3"><a href="fit.html#cb34-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fit.html#cb46-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{<span class="op">$</span>ERROR}</span>
+<span id="cb46-2"><a href="fit.html#cb46-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
+<span id="cb46-3"><a href="fit.html#cb46-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
 
 <div class="example">
-<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span>$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
+<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span><span class="math inline">\(ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\)</span>ERROR}
 이고, 비례오차모델의 표준편차를 반영
 </div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fit.html#cb35-1" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
-<span id="cb35-2"><a href="fit.html#cb35-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F</span>
-<span id="cb35-3"><a href="fit.html#cb35-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb35-4"><a href="fit.html#cb35-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED</span>
-<span id="cb35-5"><a href="fit.html#cb35-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W</span>
-<span id="cb35-6"><a href="fit.html#cb35-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fit.html#cb47-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{<span class="op">$</span>ERROR}</span>
+<span id="cb47-2"><a href="fit.html#cb47-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
+<span id="cb47-3"><a href="fit.html#cb47-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)\index{IPRED}\index{PRED}</span>
+<span id="cb47-4"><a href="fit.html#cb47-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}</span>
+<span id="cb47-5"><a href="fit.html#cb47-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W\index{IRES}\index{IWRES}\index{RES}\index{WRES}</span>
+<span id="cb47-6"><a href="fit.html#cb47-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
 <p>Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 <a href="fit.html#fig:run-test">13.4</a>)</p>
 <div class="figure"><span id="fig:run-test"></span>
 <img src="figures/13-fig-04.png" alt="Example of Run test (Gabrielsson 2006)" width="90%" />
@@ -580,7 +580,7 @@ Consider adding extra terms to the model or transform the <span class="math inli
         </div>
       </div>
 <a href="diag-eval.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cov.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="nonmem의-covariance-cov.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

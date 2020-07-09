@@ -40,3 +40,5 @@ clean:
 del:
 	rm pdf-*.pdf tmp-*.pdf
 
+check:
+	sh _shell/_check.sh

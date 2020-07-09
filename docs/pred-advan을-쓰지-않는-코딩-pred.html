@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 | 계량약리학 워크샵 - 초급 과정</title>
+  <title>Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 {#PRED} | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 | 계량약리학 워크샵 - 초급 과정" />
+  <meta property="og:title" content="Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 {#PRED} | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://pipetcpt.github.io/basic" />
   <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="pipetcpt/basic" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 | 계량약리학 워크샵 - 초급 과정" />
+  <meta name="twitter:title" content="Chapter 7 $PRED: ADVAN을 쓰지 않는 코딩 {#PRED} | 계량약리학 워크샵 - 초급 과정" />
   
   <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
   <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="evaluation.html"/>
-<link rel="next" href="pkpd-link.html"/>
+<link rel="prev" href="newer-advan.html"/>
+<link rel="next" href="IE.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -371,76 +371,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-pkpd" class="section level1" number="17">
-<h1><span class="header-section-number">Chapter 17</span> 약동-약력(PK-PD) 모델링의 이론적 기초</h1>
+<div id="pred-advan을-쓰지-않는-코딩-pred" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> $PRED: ADVAN을 쓰지 않는 코딩 {#PRED}</h1>
 <p>임동석</p>
-<div id="관련-개념" class="section level2" number="17.1">
-<h2><span class="header-section-number">17.1</span> 관련 개념</h2>
-<p>약효가 용량과 상관관계가 있다는 것은 정확히 말한다면 혈장 약물농도나 농도곡선하면적 등으로 표현되는 약물노출(exposure)과 약효가 상관 있고, 그 약물노출은 또 외부에서 투여한 약의 용량에 의해 결정된다는 것이다. 이는 너무도 당연한 것이라고 볼 수도 있으나, 용량-노출, 노출-약효의 상관관계가 단순한 정비례 관계가 아니라, 인체의 약물제거 능력, 수용체와 약물의 복잡한 상호작용(약력학), 시간이라는 변수 등이 관련되고 또 개인간의 차이까지 관여되므로 이 관계를 잘 파악하고 정량화하는 것은 적절한 효과를 얻기 위해 얼마의 용량을 얼마 간격으로 주어야 하는가를 결정하기 위해 반드시 필요한 과정이다.</p>
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="figures/17-fig-01.png" alt="용량-노출, 노출-약효의 상관관계" width="90%" />
+<div id="pred와-predpp-library사용할-때의-차이" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> $PRED와 PREDPP library사용할 때의 차이</h2>
+<p>PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델의 구조를 만들어 볼 수 있는 $PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터셋의 칼럼 이름들을 정의해주는 $INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만 특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 $PRED를 쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론 $DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는 모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 $PRED와는 다르다.</p>
+<p>제어구문 파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
+
+<div class="figure"><span id="fig:first-order-pred"></span>
+<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, \(PRED 제어구문 파일 비교\index{\)PRED}" width="90%" />
 <p class="caption">
-그림 17.1: 용량-노출, 노출-약효의 상관관계
-</p>
-</div>
-<p>신약개발에 있어 임상약리학의 핵심적 역할은 최적의 약효를 얻기 위한 용량용법을 찾는 것이라 할 수 있다. 용량과 노출의 관련성을 탐구하는 것이 약동학이고, 넓게 정의한다면 약물의 효과를 탐구하는 모든 연구분야를 약력학이라 할 수 있겠지만, 임상약리학에서는 약물노출과 생체에서 측정된 약효의 관련성을 탐구하는 것이 약력학(pharmacodynamics)이다. 이러한 약동학과 약력학을 연결하여 설명할 수 있다면 적절한 용량용법을 찾아낼 수 있는 것이다.</p>
-<p>여기서 약효와 관련된 다양한 용어들을 살펴볼 필요가 있다.</p>
-<p>약에 대한 response란 약을 주고 나서 측정할 수 있는 모든 종류의 값들(혈당치, EFV1.0)을 포괄적으로 의미한다면 effect란 response 값이 약 주기 전의 기저값으로부터 얼마나 변했는지 그 크기를 따지는 것이다. 이에 반해 efficacy는 약으로부터 얻을 수 있는 최대의 effect를 말한다. Potency는 최대효과의 50%를 나타내게 해 주는 용량이나 농도를 의미하며 이 값이 낮을수록 potency가 높다고 한다. Effectiveness 란 효과가 있다 없다와 같이 이분법으로 구분한 판단이며 정량적인 의미는 없다.</p>
-</div>
-<div id="약력학pd-및-약동-약력pk-pd-데이터의-특성" class="section level2" number="17.2">
-<h2><span class="header-section-number">17.2</span> 약력학(PD) 및 약동-약력(PK-PD) 데이터의 특성</h2>
-<div id="pd-데이터" class="section level3" number="17.2.1">
-<h3><span class="header-section-number">17.2.1</span> PD 데이터</h3>
-<p>많은 경우 PD 데이터는 약동학 데이터(혈장약물농도)에 비해 숫자가 적고, 잔차(측정오차 등)가 크고, 측정된 시점도 사람마다 차이가 날 수 있다. 또 혈장약물농도는 측정된 최고 값과 최저 값이 수 백 배 이상 차이 나는 경우가 많지만, 약력학 데이터는 그보다는 변동범위가 훨씬 좁은 편이다. (대게 수 십 배 이하) 따라서 혼합효과 모델링할 때 잔차에 대하여 가법오차(additive error) 모델을 쓰는 편이다.</p>
-<p>PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형, 범주형 변수와 기타 다른 형태의 변수들이 있다.(표 <a href="#tab:pd-data-property"><strong>??</strong></a>) 변수의 성격에 따라 NONMEM에서의 <span class="math inline">\(ESTIMATION 의 옵션도 달라져야 한다.\index{\)</span>ESTIMATION ($EST)}</p>
-<pre><code>## Error: &lt;text&gt;:15:76: unexpected input
-## 14: 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)&#39;,
-## 15: &#39;IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)&#39;,\
-##                                                                                ^</code></pre>
-<p>PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을 주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은 시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는 약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의 영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림 <a href="basic-pkpd.html#fig:pd-time-course">17.2</a>)</p>
-<div class="figure"><span id="fig:pd-time-course"></span>
-<img src="figures/17-fig-02.jpg" alt="PD의 시간에 따른 변화의 사례 (Primary Psychiatry 2013)" width="90%" />
-<p class="caption">
-그림 17.2: PD의 시간에 따른 변화의 사례 <span class="citation">(Primary Psychiatry <a href="#ref-dementia" role="doc-biblioref">2013</a>)</span>
+그림 7.1: 1구획 모델의 ADVAN2, <span class="math inline">\(PRED 제어구문 파일 비교\index{\)</span>PRED}
 </p>
 </div>
 
-<p><em>왼쪽: 혈압강하제의 약효와 혈압 자체의 일중변동을 모두 반영한 모델 <span class="citation">(Lee et al. <a href="#ref-lee2013pharmacokinetic" role="doc-biblioref">2013</a>)</span>, 오른쪽: 알츠하이머병의 평생에 걸친 따른 질병악화와 치료제의 기전에 따른 변화. 시간에 따른 질병의 진행을 모델에 반영하여야 약효를 정확히 기술할 수 있다.</em></p>
-</div>
-<div id="pk-pd-데이터" class="section level3" number="17.2.2">
-<h3><span class="header-section-number">17.2.2</span> PK-PD 데이터</h3>
-<p>NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농도(PK)와 PD 데이터의 두 가지로 나뉜다. 따라서 데이터셋에도 두 종류의 DV를 구분해 넣어주어야 하므로 주로 구획(compartment)의 번호를 달리하는 방법을 쓴다. 물론 구획의 번호는 모델 구조에 따라 적절히 넣어주면 된다. 한 번 채혈한 말초혈액 시료에서 혈장약물농도도 측정하고, 어떤 바이오마커도 측정하여 이를 PK와 PD 데이터로 쓴다면, 측정시간이 동일하겠지만, 많은 경우 PD 데이터들을 얻는 시점은 혈장약물농도를 얻기 위한 채혈과는 다르다. 이는 연구자가 PD 데이터로 간주할 수 있는 데이터의 종류가 혈액검사로서 측정되는 바이오마커 이외에도 매우 다양하고, 이를 측정할 수 있는 적절한 간격이 PK 채혈을 위한 시간간격보다는 훨씬 긴 경우가 많아서이다. 예컨데, 만성적 질병상태를 의사가 종합적으로 평가한 임상적 점수, CT검사로 측정한 종양의 크기 등은 한 달에 한 번 정도 이상 빈번히 측정해야 할 필요가 없기 때문이다.</p>
-<p>또, 두 데이터의 종류가 다르므로 단위도 다르고 구체적으로 기입되는 수치의 단위도 몇 자리 이상 차이가 나는 경우도 흔하다. 따라서 개인간차, 잔차 등도 PK와 PD 데이터에 대해 제각기 다른 Ω와 Σ값들을 주고 모델링해야 한다.</p>
-</div>
-<div id="pd-데이터를-모델링할-때-고려할-점" class="section level3" number="17.2.3">
-<h3><span class="header-section-number">17.2.3</span> PD 데이터를 모델링할 때 고려할 점</h3>
-<p>앞에서도 나왔듯이 PD 데이터의 기저치와 개일리듬(circadian rhythm)의 존재여부, 농도와 효과 간의 이미 알려진 작용기전의 존재여부, 시간차(time delay), 설명할 수 있는 모델의 선택 등을 먼저 고려해야 한다. 또한 PK와 PD 모델링을 PK를 먼저, PD는 다음에 하는 식으로 순차적으로 수행할지, 동시에 할지, 순차적으로 한다면 PK 모델의 정보를 어느 선까지 PD 모델링 단계에서 쓸지 등을 고려해야 한다.</p>
-<p>데이터셋을 만들 때 PK와 PD 자료를 한꺼번에 넣으려 하면 혼란이 생길 수 있어서 Dosing 데이터셋, PK 데이터셋, PD 데이터셋을 각각 만든 후 병합하는 것을 추천한다. 또 실제 관찰한 시간 이외에도 이후 모델 진단 등을 위해 time after dose(TAD, 여러 번 투약 시 직전 투약시간 이후 경과시간을 표시한 것) 칼럼도 함께 넣어주는 것이 좋다.</p>
-</div>
-</div>
-<div id="pk와-pd의-관계" class="section level2" number="17.3">
-<h2><span class="header-section-number">17.3</span> PK와 PD의 관계</h2>
-<p>혈장약물농도와 약효(또는 바이오마커)의 관계는 이 책의 다음 장들에서 자세히 나와 있다. 약물농도와 약효의 관계는 시험관내 실험에서 약효가 포화되는 Emax, sigmoid Emax, 또는 비례적인 선형관계 등이 있지만, 이와 같은 관계만으로 생체 내에서의 혈장약물농도와 약효의 관계를 설명하기에 충분치 않다. 이 책의 이어지는 장들에서 자세히 나오겠지만, 많은 약들의 경우 그림 <a href="basic-pkpd.html#fig:conc-hysteresis">17.3</a>와 같이 혈장농도의 상승, 하강보다 약효의 상승, 하강이 더 늦게 나타나는 현상이 나타나고 이를 설명하고 예측하기 위한 다양한 모델들 중 가장 적절한 것을 선택하는 것이 PK-PD 모델링의 핵심이다. 이 중에서 많이 쓰이는 것들이 생리학적 모델(또는 turnover 모델)과 약효구획모델(effect compartment 모델)이다.</p>
-<p>일정하게 유지되고 있던 물질의 인체 내에서의 생성속도와 제거속도에 약이 영향을 미쳐서 그 물질의 농도가 높아지거나 낮아지게 만들 수 있는데 그 물질의 농도 자체를 약효(또는 약효를 반영하는 바이오마커)라고 간주한다면, 그러한 새로운 평형상태에 도달하는데 걸리는 시간으로 인해 농도-약효 간의 시간차가 발생하는 것을 설명하는 것이 PK-PD 모델 중 생리학적 모델이다. Warfarin의 예를 들면 혈액응고를 저해하는 효과는 간에서 비타민 K를 억제하여 응고인자 생성을 막는 것인데 이미 만들어져 있는 응고인자들이 소모되어 없어져야 warfarin의 약효가 완전히 나타나게 되어 INR 값이 최대가 될 것이다. 응고인자는 간에서 일정한 속도로 만들어지고, 일정한 속도로 제거되면서 인체의 혈액응고기능이 일정한 수준으로 유지되는데, 그 생성속도를 떨어뜨려 혈액응고기능을 떨어뜨리는 방향으로 새로운 균형을 찾기까지 시간이 걸리는 것이다.</p>
-<p>이에 반해 약효구획모델은 이러한 내인성 물질들의 turnover로 설명되지 않는, 이유를 모르는 약효의 시간적 뒤쳐짐을 설명하기 위해 쓸 수 있다. 약효변화가 혈장농도의 변화보다 늦어지는 이유를 약이 중심구획(혈장)에서부터 약효 구획이라는 가상의 구획으로 분포하는데 걸리는 시간 때문으로 설명하고자 하는 방법이며 그 구획으로 이동하는 약의 양은 실제 중심구획에 있는 약의 양에 영향을 미치지 않는 극히 소량이라고 가정한다.</p>
-<div class="figure"><span id="fig:conc-hysteresis"></span>
-<img src="figures/17-fig-03.png" alt="혈장약물농도와 약효의 시간적 관계 (Primary Psychiatry 2013)" width="90%" />
+<div class="figure"><span id="fig:pred-dataset"></span>
+<img src="figures/07-fig-02.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="90%" />
 <p class="caption">
-그림 17.3: 혈장약물농도와 약효의 시간적 관계 <span class="citation">(Primary Psychiatry <a href="#ref-dementia" role="doc-biblioref">2013</a>)</span>
+그림 7.2: ADVAN과 $PRED의 데이터셋 차이
 </p>
 </div>
+<p>AMT와 같은 용어는 PREDPP library를 사용할 경우($SUBROUTINE 쓸 때) 한번의 투여간격 사이에 주는 용량이라는 의미로 약속되어 있어서 $INPUT에서 데이터셋의 칼럼 이름으로 명시해 주어야 하고, 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:pred-dataset">7.2</a>의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영향을 주는 값으로 약속되어 있다. 그러나 $PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼 그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:first-order-pred">7.1</a>의 제어구문에서 <code>IPRED = D*COEF*KA/(KA-EXPO)*(EXP(-EXPO*T)-EXP(-KA*T))</code>의 용량을 나타내는 변수 <code>D</code>에 해당된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 $INPUT 뒤에 적어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 $INPUT 뒤에 AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제목이라는 의미만을 가진다. 단지 $PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:first-order-pred">7.1</a>의 예에서는 $INPUT 뒤에 나오는 네번째 칼럼 이름은 “D” 라고 써주면 될 것이다. </p>
+<p>미분방정식으로 각 분획간의 물질이동의 식만 주면 알아서 각 분획 별 물질의 양을 구해주는 $DES와는 달리 $PRED를 쓸 경우 우리가 얻고자 하는 값(예컨데 특정 분획에서의 약물 농도)을 라플라스 변환을 이용하든지 하여 수식으로 풀어서 넣어 주어야 한다.</p>
+</div>
+<div id="pred를-써야-하는-경우" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> $PRED를 써야 하는 경우</h2>
+<p>편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 $PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 <a href="pred-advan을-쓰지-않는-코딩-pred.html#exm:formula">7.1</a>)</p>
 
-<p>약효의 변화가 약물농도의 변화보다 늦게 나타날 경우 오른쪽 아래 그림과 같은 반시계방향 히스테레시스 현상이 나타나게 된다.</p>
+<div class="example">
+<span id="exm:formula" class="example"><strong>코드 7.1  </strong></span>약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
+</div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
+<span id="cb36-2"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span>\index{<span class="op">$</span>DATA}\index{IGNORE}</span>
+<span id="cb36-3"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-3" aria-hidden="true"></a><span class="op">$</span>INPUT ID CP RESP=DV\index{<span class="op">$</span>INPUT}\index{ID}\index{RES}</span>
+<span id="cb36-4"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{<span class="op">$</span>PRED}\index{PRED}</span>
+<span id="cb36-5"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-5" aria-hidden="true"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
+<span id="cb36-6"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-6" aria-hidden="true"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
+<span id="cb36-7"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-7" aria-hidden="true"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
+<span id="cb36-8"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-8" aria-hidden="true"></a>  ; only parameter with interindividual variability</span>
+<span id="cb36-9"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-9" aria-hidden="true"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
+<span id="cb36-10"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-10" aria-hidden="true"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
+<span id="cb36-11"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-11" aria-hidden="true"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
+<span id="cb36-12"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-12" aria-hidden="true"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
+<span id="cb36-13"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-13" aria-hidden="true"></a><span class="op">$</span>THETA\index{<span class="op">$</span>THETA}</span>
+<span id="cb36-14"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-14" aria-hidden="true"></a>...</span></code></pre></div>
 
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-lee2013pharmacokinetic">
-<p>Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. “Pharmacokinetic–Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.” <em>European Journal of Clinical Pharmacology</em> 69 (1): 11–20.</p>
-</div>
-<div id="ref-dementia">
-<p>Primary Psychiatry. 2013. <em>From Symptom Palliation to Disease Modification: Implications for Dementia Care</em>. <a href="http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/">http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/</a>.</p>
 </div>
 </div>
             </section>
@@ -448,8 +424,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="evaluation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pkpd-link.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="newer-advan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="IE.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -480,7 +456,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/pipetcpt/basic/edit/master/inst/examples/17.Rmd",
+"link": "https://github.com/pipetcpt/basic/edit/master/inst/examples/07.Rmd",
 "text": "Edit"
 },
 "history": {

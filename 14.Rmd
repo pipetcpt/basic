@@ -17,29 +17,29 @@ Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 
 
 ```r
 $PROB THEOPHYLLINE ORAL
-$INPUT ID AMT=DROP TIME DV BWT
-$DATA ../THEO
-$PRED
+$INPUT ID AMT=DROP TIME DV BWT\index{$INPUT}\index{AMT}\index{DROP}\index{ID}\index{TIME}
+$DATA ../THEO\index{$DATA}
+$PRED\index{$PRED}\index{PRED}
   DOSE = 320
   KA   = THETA(1) * EXP(ETA(1))
   V    = THETA(2) * EXP(ETA(2))
   K    = THETA(3) * EXP(ETA(3))
-  F    = DOSE/V*KA/(KA - K)*(EXP(-K*TIME) - EXP(-KA*TIME))
+  F    = DOSE/V*KA/(KA - K)*(EXP(-K*TIME) - EXP(-KA*TIME))\index{TIME}
   IPRE = F
   Y    = F + F*EPS(1) + EPS(2)
 
-$THETA (0, 2) (0, 50) (0, 0.1)
-$OMEGA BLOCK(3)
+$THETA (0, 2) (0, 50) (0, 0.1)\index{$THETA}
+$OMEGA BLOCK(3)\index{$OMEGA}\index{$OMEGA BLOCK}
   0.2
   0.1  0.2
   0.1  0.1  0.2
-$SIGMA 0.1  0.1
-$EST MAX=9999 METHOD=ZERO POSTHOC
-$COV PRINT=ERS\index{$COVARIANCE ($COV, $COVAR)}
-$TAB ID TIME IPRE CWRES
-     FILE=sdtab NOPRINT ONEHEADER
-$TAB ID ETA(1) ETA(2) ETA(3)
-     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY
+$SIGMA 0.1  0.1\index{$SIGMA}
+$EST MAX=9999 METHOD=ZERO POSTHOC\index{$ESTIMATION ($EST)}\index{POSTHOC}
+$COV PRINT=ERS\index{$COVARIANCE ($COV, $COVAR)}\index{PRINT=E}
+$TAB ID TIME IPRE CWRES\index{CWRES}\index{ID}\index{RES}\index{TIME}\index{WRES}
+     FILE=sdtab NOPRINT ONEHEADER\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
+$TAB ID ETA(1) ETA(2) ETA(3)\index{ID}
+     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY\index{FILE=}\index{FIRSTONLY}\index{NOAPPEND}\index{ONEHEADER}
 ```
 
 위의 \$COV STEP에 의해 생성된 부분은 별첨 1과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.\index{$COVARIANCE ($COV, $COVAR)}
@@ -69,7 +69,7 @@ NONMEM User’s guide와 help file에는 \$COV를 다음과 같이 설명한다.
 ```
 $COVARIANCE\index{$COVARIANCE ($COV, $COVAR)}
 
- DISCUSSION:
+ DISCUSSION:\index{SS}
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
  This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
  ance  matrix,  and the correlation form of the covariance matrix.
@@ -203,15 +203,15 @@ function ()
 {
   Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
                 ncol = e$nPara)
-  for (i in 1:e$nID) {
-    e$DATAi = e$DataRef[[i]]
+  for (i in 1:e$nID) {\index{ID}
+    e$DATAi = e$DataRef[[i]]\index{$DATA}
     e$ETAi = e$EBE[i, e$EtaNames]
     e$nReci = e$Oi[i, "nRec"]
     if (e$METHOD == "ZERO") {
       gr = grad(OiS0, e$FinalPara)
     }
     else {
-      gr = grad(OiS1, e$FinalPara)
+      gr = grad(OiS1, e$FinalPara)\index{S1}
     }
     Smat = Smat + gr %*% t(gr)
   }
@@ -246,8 +246,8 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 
 ```r
 DataAll = Theoph
-colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")
-DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))
+colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")\index{ID}\index{TIME}
+DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))\index{ID}
 
 nTheta = 3
 nEta = 3
@@ -261,22 +261,22 @@ SGinit = diag(c(0.1, 0.1))
 LB = rep(0, nTheta) # Lower bound
 UB = rep(1000000, nTheta) # Upper bound
 
-FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/
+FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/\index{D1}
              (TH1*exp(ETA1) - TH3*exp(ETA3))*
-			 (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),
+			 (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),\index{TIME}
              c("ETA1","ETA2","ETA3"),
              function.arg=c("TH1", "TH2", "TH3", "ETA1", "ETA2", "ETA3", 
-			                "DOSE", "TIME"),
+			                "DOSE", "TIME"),\index{TIME}
              func=TRUE, hessian=FALSE)
 
-H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), 
-          function.arg=c("F", "EPS1", "EPS2"), 
+H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), \index{S1}
+          function.arg=c("F", "EPS1", "EPS2"), \index{S1}
           func=TRUE)
 
-PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}
+PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{D1}\index{FOCE}\index{FO}\index{PRED}
 {
-  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, 
-                DATAi[,"TIME"])
+  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, \index{D1}
+                DATAi[,"TIME"])\index{TIME}
   Gres = attr(FGDres, "gradient")
   Hres = attr(H(FGDres, 0, 0), "gradient")
   Res = cbind(FGDres, Gres, Hres)
@@ -285,9 +285,9 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditi
 }
 ```
 
-\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}
+\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{FOCE}\index{FO}
 
-위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{잔차 / residual error}\index{residual error / 잔차}
+위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{잔차 / residual error}\index{residual error / 잔차}\index{PRED}
 
 이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.\index{NONMEM 보고 파일 / NONMEM report file}\index{NONMEM report file / NONMEM 보고 파일}\index{NONMEM report file / NONMEM 보고 파일}
 
@@ -295,7 +295,7 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditi
 library(nmw)
 # First Order Approximation Method
 InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, 
-         LB=LB, UB=UB, Pred=PRED1, METHOD="ZERO")
+         LB=LB, UB=UB, Pred=PRED1, METHOD="ZERO")\index{D1}\index{PRED}
 (EstRes1 = EstStep())
 ## $`Initial OFV`
 ## [1] 141.3076
@@ -530,7 +530,7 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 
 ```r
 (EBE1 = PostHocEta()) # Using e$FinalPara from EstStep()
-##       ID       ETA1         ETA2        ETA3
+##       ID       ETA1         ETA2        ETA3\index{ID}
 ##  [1,]  1 -0.6367109 -0.232258352 -0.73648224
 ##  [2,]  2 -0.5895843 -0.153341805 -0.06619115
 ##  [3,]  3 -0.3083755 -0.124816676 -0.21013190
@@ -577,7 +577,7 @@ NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현
 1.  NMTRAN의 역할을 해줄 함수들이 없다.
 2.  속도가 적어도 수 십에서 수 백 배 느리다.
 
-나머지 FOCE나 Laplacian에 대해서는 nmw 패키지의 도움말^[https://cran.r-project.org/web/packages/nmw/nmw.pdf]을 보고 실행하면 알 수 있다. [@R-nmw]\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}
+나머지 FOCE나 Laplacian에 대해서는 nmw 패키지의 도움말^[https://cran.r-project.org/web/packages/nmw/nmw.pdf]을 보고 실행하면 알 수 있다. [@R-nmw]\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{FOCE}\index{FO}
 
 <!--
 참고문헌
