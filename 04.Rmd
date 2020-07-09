@@ -61,9 +61,10 @@ tibble::tribble(
   collapse_rows(columns=1, latex_hline="major", valign = "top")
 ```
 
+\index{TRANS}
 ```{r standard-pk-models}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
-  rename(`ADVAN TRANS` = 1) %>%  \index{TRANS}
+  rename(`ADVAN TRANS` = 1) %>% 
   kable(booktabs = TRUE, align = "l", escape = FALSE,
         caption = "Standard Pharmacokinetic Models and Parameters") %>% 
   #column_spec(1, width = "2cm") %>%

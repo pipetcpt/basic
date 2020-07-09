@@ -544,7 +544,31 @@ Gear method
 <div class="example">
 <span id="exm:advan5-example" class="example"><strong>코드 5.1  </strong></span>2구획 경구모델을 ADVAN5로 구현한 코드 예시
 </div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="general-advan.html#cb30-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN5\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN5}</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="general-advan.html#cb29-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN5\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN5}</span>
+<span id="cb29-2"><a href="general-advan.html#cb29-2" aria-hidden="true"></a><span class="op">$</span>MODEL\index{\<span class="op">$</span>MODEL}</span>
+<span id="cb29-3"><a href="general-advan.html#cb29-3" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}</span>
+<span id="cb29-4"><a href="general-advan.html#cb29-4" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENTRAL, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}</span>
+<span id="cb29-5"><a href="general-advan.html#cb29-5" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERIPH)\index{COMP}</span>
+<span id="cb29-6"><a href="general-advan.html#cb29-6" aria-hidden="true"></a><span class="op">$</span>PK ; Define basic PK relationships\index{\<span class="op">$</span>PK}</span>
+<span id="cb29-7"><a href="general-advan.html#cb29-7" aria-hidden="true"></a>  CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb29-8"><a href="general-advan.html#cb29-8" aria-hidden="true"></a>  V2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb29-9"><a href="general-advan.html#cb29-9" aria-hidden="true"></a>  V3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb29-10"><a href="general-advan.html#cb29-10" aria-hidden="true"></a>  Q  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb29-11"><a href="general-advan.html#cb29-11" aria-hidden="true"></a>  KA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb29-12"><a href="general-advan.html#cb29-12" aria-hidden="true"></a>  </span>
+<span id="cb29-13"><a href="general-advan.html#cb29-13" aria-hidden="true"></a>  S2 =<span class="st"> </span>V2</span>
+<span id="cb29-14"><a href="general-advan.html#cb29-14" aria-hidden="true"></a>  K12=<span class="st"> </span>KA</span>
+<span id="cb29-15"><a href="general-advan.html#cb29-15" aria-hidden="true"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb29-16"><a href="general-advan.html#cb29-16" aria-hidden="true"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb29-17"><a href="general-advan.html#cb29-17" aria-hidden="true"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb29-18"><a href="general-advan.html#cb29-18" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
+<span id="cb29-19"><a href="general-advan.html#cb29-19" aria-hidden="true"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
+<p>동일한 2구획 경구모델(그림 <a href="general-advan.html#fig:2comp-oral">5.6</a>)을 일반 선형(ADVAN5, 코드 <a href="general-advan.html#exm:advan5-example">5.1</a>) 및 비선형(ADVAN6, 코드 <a href="general-advan.html#exm:advan6-example">5.2</a>) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.</p>
+
+<div class="example">
+<span id="exm:advan6-example" class="example"><strong>코드 5.2  </strong></span>2구획 경구모델을 ADVAN6로 구현한 코드 예시
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="general-advan.html#cb30-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">4</span>\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN6}\index{TOL}</span>
 <span id="cb30-2"><a href="general-advan.html#cb30-2" aria-hidden="true"></a><span class="op">$</span>MODEL\index{\<span class="op">$</span>MODEL}</span>
 <span id="cb30-3"><a href="general-advan.html#cb30-3" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}</span>
 <span id="cb30-4"><a href="general-advan.html#cb30-4" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENTRAL, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}</span>
@@ -557,39 +581,15 @@ Gear method
 <span id="cb30-11"><a href="general-advan.html#cb30-11" aria-hidden="true"></a>  KA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
 <span id="cb30-12"><a href="general-advan.html#cb30-12" aria-hidden="true"></a>  </span>
 <span id="cb30-13"><a href="general-advan.html#cb30-13" aria-hidden="true"></a>  S2 =<span class="st"> </span>V2</span>
-<span id="cb30-14"><a href="general-advan.html#cb30-14" aria-hidden="true"></a>  K12=<span class="st"> </span>KA</span>
-<span id="cb30-15"><a href="general-advan.html#cb30-15" aria-hidden="true"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
-<span id="cb30-16"><a href="general-advan.html#cb30-16" aria-hidden="true"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
-<span id="cb30-17"><a href="general-advan.html#cb30-17" aria-hidden="true"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
-<span id="cb30-18"><a href="general-advan.html#cb30-18" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
-<span id="cb30-19"><a href="general-advan.html#cb30-19" aria-hidden="true"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
-<p>동일한 2구획 경구모델(그림 <a href="general-advan.html#fig:2comp-oral">5.6</a>)을 일반 선형(ADVAN5, 코드 <a href="general-advan.html#exm:advan5-example">5.1</a>) 및 비선형(ADVAN6, 코드 <a href="general-advan.html#exm:advan6-example">5.2</a>) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.</p>
-
-<div class="example">
-<span id="exm:advan6-example" class="example"><strong>코드 5.2  </strong></span>2구획 경구모델을 ADVAN6로 구현한 코드 예시
-</div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="general-advan.html#cb31-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">4</span>\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN6}\index{TOL}</span>
-<span id="cb31-2"><a href="general-advan.html#cb31-2" aria-hidden="true"></a><span class="op">$</span>MODEL\index{\<span class="op">$</span>MODEL}</span>
-<span id="cb31-3"><a href="general-advan.html#cb31-3" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}</span>
-<span id="cb31-4"><a href="general-advan.html#cb31-4" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENTRAL, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}</span>
-<span id="cb31-5"><a href="general-advan.html#cb31-5" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERIPH)\index{COMP}</span>
-<span id="cb31-6"><a href="general-advan.html#cb31-6" aria-hidden="true"></a><span class="op">$</span>PK ; Define basic PK relationships\index{\<span class="op">$</span>PK}</span>
-<span id="cb31-7"><a href="general-advan.html#cb31-7" aria-hidden="true"></a>  CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb31-8"><a href="general-advan.html#cb31-8" aria-hidden="true"></a>  V2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb31-9"><a href="general-advan.html#cb31-9" aria-hidden="true"></a>  V3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb31-10"><a href="general-advan.html#cb31-10" aria-hidden="true"></a>  Q  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb31-11"><a href="general-advan.html#cb31-11" aria-hidden="true"></a>  KA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb31-12"><a href="general-advan.html#cb31-12" aria-hidden="true"></a>  </span>
-<span id="cb31-13"><a href="general-advan.html#cb31-13" aria-hidden="true"></a>  S2 =<span class="st"> </span>V2</span>
-<span id="cb31-14"><a href="general-advan.html#cb31-14" aria-hidden="true"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
-<span id="cb31-15"><a href="general-advan.html#cb31-15" aria-hidden="true"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
-<span id="cb31-16"><a href="general-advan.html#cb31-16" aria-hidden="true"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
-<span id="cb31-17"><a href="general-advan.html#cb31-17" aria-hidden="true"></a><span class="op">$</span>DES ; Define differential equations\index{\<span class="op">$</span>DES}</span>
-<span id="cb31-18"><a href="general-advan.html#cb31-18" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA</span>
-<span id="cb31-19"><a href="general-advan.html#cb31-19" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">2</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>(K23<span class="op">+</span>K20) <span class="op">+</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
-<span id="cb31-20"><a href="general-advan.html#cb31-20" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">3</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>K23 <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
-<span id="cb31-21"><a href="general-advan.html#cb31-21" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
-<span id="cb31-22"><a href="general-advan.html#cb31-22" aria-hidden="true"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
+<span id="cb30-14"><a href="general-advan.html#cb30-14" aria-hidden="true"></a>  K20=<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb30-15"><a href="general-advan.html#cb30-15" aria-hidden="true"></a>  K23=<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb30-16"><a href="general-advan.html#cb30-16" aria-hidden="true"></a>  K32=<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb30-17"><a href="general-advan.html#cb30-17" aria-hidden="true"></a><span class="op">$</span>DES ; Define differential equations\index{\<span class="op">$</span>DES}</span>
+<span id="cb30-18"><a href="general-advan.html#cb30-18" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA</span>
+<span id="cb30-19"><a href="general-advan.html#cb30-19" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">2</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)<span class="op">*</span>KA <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>(K23<span class="op">+</span>K20) <span class="op">+</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
+<span id="cb30-20"><a href="general-advan.html#cb30-20" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">3</span>) =<span class="st"> </span><span class="kw">A</span>(<span class="dv">2</span>)<span class="op">*</span>K23 <span class="op">-</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">3</span>)<span class="op">*</span>K32</span>
+<span id="cb30-21"><a href="general-advan.html#cb30-21" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
+<span id="cb30-22"><a href="general-advan.html#cb30-22" aria-hidden="true"></a>  Y  =<span class="st"> </span>F<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) </span></code></pre></div>
 <!--
 참고문헌
 

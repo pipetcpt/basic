@@ -418,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 
-<p>TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1~4에서 사용하는 TRANS 서브루틴을 표 <a href="specific-advan.html#tab:required-param-subroutine">4.2</a>에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1~4 까지의 내용을 표 <a href="#tab:standard-pk-models"><strong>??</strong></a>에서 확인할 수 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<p>TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1~4에서 사용하는 TRANS 서브루틴을 표 <a href="specific-advan.html#tab:required-param-subroutine">4.2</a>에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1~4 까지의 내용을 표 <a href="specific-advan.html#tab:standard-pk-models">4.3</a>에서 확인할 수 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
 <p>
 
 
@@ -568,15 +568,372 @@ ALPHA, BETA, K32, KA
 </tr>
 </tbody>
 </table>
-<pre><code>## Error: &lt;text&gt;:2:34: unexpected input
-## 1: readxl::read_excel(&quot;data-raw/fig-tab.xlsx&quot;, sheet=&quot;47&quot;, range=&quot;A2:D31&quot;) %&gt;%
-## 2:   rename(`ADVAN TRANS` = 1) %&gt;%  \
-##                                     ^</code></pre>
-ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 <a href="specific-advan.html#tab:additional-param">4.3</a>에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
 
 <table>
 <caption>
-<span id="tab:additional-param">표 4.3: </span>Additional PK parameters
+<span id="tab:standard-pk-models">표 4.3: </span>Standard Pharmacokinetic Models and Parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ADVAN TRANS
+</th>
+<th style="text-align:left;">
+Alternative Parameters
+</th>
+<th style="text-align:left;">
+Detail
+</th>
+<th style="text-align:left;">
+Reparameterization Lines
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="2">
+ADVAN1 TRANS2
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V
+</td>
+<td style="text-align:left;width: 3cm; ">
+Volume of distribution
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="3">
+ADVAN2 TRANS2
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V
+</td>
+<td style="text-align:left;width: 3cm; ">
+Volume of distribution
+</td>
+<td style="text-align:left;width: 6cm; ">
+KA=KA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+KA
+</td>
+<td style="text-align:left;width: 3cm; ">
+Absorption rate
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="4">
+ADVAN3 TRANS3
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V
+</td>
+<td style="text-align:left;width: 3cm; ">
+Central Volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+K12=Q/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+Q
+</td>
+<td style="text-align:left;width: 3cm; ">
+Intercompartmental clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K21=Q/(VSS-V)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+VSS
+</td>
+<td style="text-align:left;width: 3cm; ">
+Volume of distrlbution at steady state
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="4">
+ADVAN3 TRANS4
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V1
+</td>
+<td style="text-align:left;width: 3cm; ">
+Central Volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+K12=Q/V1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+Q
+</td>
+<td style="text-align:left;width: 3cm; ">
+Intercompartmental clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K21=Q/V2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V2
+</td>
+<td style="text-align:left;width: 3cm; ">
+Peripheral volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="3">
+ADVAN3 TRANS5
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+AOB
+</td>
+<td style="text-align:left;width: 3cm; ">
+A/B
+</td>
+<td style="text-align:left;width: 6cm; ">
+K21=(AOB*BETA+ALPHA)/(AOB+1)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+ALPHA
+</td>
+<td style="text-align:left;width: 3cm; ">
+alpha
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=ALPHA*BETA/K21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+BETA
+</td>
+<td style="text-align:left;width: 3cm; ">
+beta
+</td>
+<td style="text-align:left;width: 6cm; ">
+K12=ALPHA+BETA-K21-K
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="3">
+ADVAN3 TRANS6
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+ALPHA
+</td>
+<td style="text-align:left;width: 3cm; ">
+alpha
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=ALPHA*BETA/K21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+BETA
+</td>
+<td style="text-align:left;width: 3cm; ">
+beta
+</td>
+<td style="text-align:left;width: 6cm; ">
+K12=ALPHA+BETA-K21-K
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+K21
+</td>
+<td style="text-align:left;width: 3cm; ">
+Rate constant from periph. to central
+</td>
+<td style="text-align:left;width: 6cm; ">
+K21=K21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="5">
+ADVAN4 TRANS3
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V
+</td>
+<td style="text-align:left;width: 3cm; ">
+Central Volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+K23=Q/V
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+Q
+</td>
+<td style="text-align:left;width: 3cm; ">
+Intercompartmental clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K32=Q/(VSS-V)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+VSS
+</td>
+<td style="text-align:left;width: 3cm; ">
+Volume of distrlbution at steady state
+</td>
+<td style="text-align:left;width: 6cm; ">
+KA=KA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+KA
+</td>
+<td style="text-align:left;width: 3cm; ">
+Absorption rate
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;vertical-align: top !important;" rowspan="5">
+ADVAN4 TRANS4
+</td>
+<td style="text-align:left;width: 1.5cm; ">
+CL
+</td>
+<td style="text-align:left;width: 3cm; ">
+Clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K=CL/V2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V2
+</td>
+<td style="text-align:left;width: 3cm; ">
+Central Volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+K23=Q/V2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+Q
+</td>
+<td style="text-align:left;width: 3cm; ">
+Intercompartmental clearance
+</td>
+<td style="text-align:left;width: 6cm; ">
+K32=Q/V3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+V3
+</td>
+<td style="text-align:left;width: 3cm; ">
+Peripheral volume
+</td>
+<td style="text-align:left;width: 6cm; ">
+KA=KA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 1.5cm; ">
+KA
+</td>
+<td style="text-align:left;width: 3cm; ">
+Absorption rate
+</td>
+<td style="text-align:left;width: 6cm; ">
+</td>
+</tr>
+</tbody>
+</table>
+ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 <a href="specific-advan.html#tab:additional-param">4.4</a>에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+
+<table>
+<caption>
+<span id="tab:additional-param">표 4.4: </span>Additional PK parameters
 </caption>
 <thead>
 <tr>
@@ -636,21 +993,21 @@ Absorption lag parameter for compartment n
 <div class="example">
 <span id="exm:code-example-advan4" class="example"><strong>코드 4.1  </strong></span>공변량 수식 작성에 수월한 제어구문
 </div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="specific-advan.html#cb27-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINES ADVAN4 TRANS4\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN4}\index{TRANS}</span>
-<span id="cb27-2"><a href="specific-advan.html#cb27-2" aria-hidden="true"></a><span class="op">$</span>PK \index{\<span class="op">$</span>PK}</span>
-<span id="cb27-3"><a href="specific-advan.html#cb27-3" aria-hidden="true"></a>  TVCL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
-<span id="cb27-4"><a href="specific-advan.html#cb27-4" aria-hidden="true"></a>  TVV2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
-<span id="cb27-5"><a href="specific-advan.html#cb27-5" aria-hidden="true"></a>  TVV3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
-<span id="cb27-6"><a href="specific-advan.html#cb27-6" aria-hidden="true"></a>  TVQ  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
-<span id="cb27-7"><a href="specific-advan.html#cb27-7" aria-hidden="true"></a>  TVKA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
-<span id="cb27-8"><a href="specific-advan.html#cb27-8" aria-hidden="true"></a>  CL   =<span class="st">  </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb27-9"><a href="specific-advan.html#cb27-9" aria-hidden="true"></a>  V2   =<span class="st">  </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb27-10"><a href="specific-advan.html#cb27-10" aria-hidden="true"></a>  V3   =<span class="st">  </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb27-11"><a href="specific-advan.html#cb27-11" aria-hidden="true"></a>  Q    =<span class="st">  </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb27-12"><a href="specific-advan.html#cb27-12" aria-hidden="true"></a>  KA   =<span class="st">  </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb27-13"><a href="specific-advan.html#cb27-13" aria-hidden="true"></a>      </span>
-<span id="cb27-14"><a href="specific-advan.html#cb27-14" aria-hidden="true"></a>  ALAG1=<span class="st">  </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">6</span>))\index{ALAG}</span>
-<span id="cb27-15"><a href="specific-advan.html#cb27-15" aria-hidden="true"></a>  S2   =<span class="st">  </span>V2 <span class="op">/</span><span class="st"> </span><span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="specific-advan.html#cb26-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINES ADVAN4 TRANS4\index{\<span class="op">$</span>SUBROUTINE}\index{ADVAN4}\index{TRANS}</span>
+<span id="cb26-2"><a href="specific-advan.html#cb26-2" aria-hidden="true"></a><span class="op">$</span>PK \index{\<span class="op">$</span>PK}</span>
+<span id="cb26-3"><a href="specific-advan.html#cb26-3" aria-hidden="true"></a>  TVCL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="specific-advan.html#cb26-4" aria-hidden="true"></a>  TVV2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
+<span id="cb26-5"><a href="specific-advan.html#cb26-5" aria-hidden="true"></a>  TVV3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
+<span id="cb26-6"><a href="specific-advan.html#cb26-6" aria-hidden="true"></a>  TVQ  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
+<span id="cb26-7"><a href="specific-advan.html#cb26-7" aria-hidden="true"></a>  TVKA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
+<span id="cb26-8"><a href="specific-advan.html#cb26-8" aria-hidden="true"></a>  CL   =<span class="st">  </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb26-9"><a href="specific-advan.html#cb26-9" aria-hidden="true"></a>  V2   =<span class="st">  </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb26-10"><a href="specific-advan.html#cb26-10" aria-hidden="true"></a>  V3   =<span class="st">  </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb26-11"><a href="specific-advan.html#cb26-11" aria-hidden="true"></a>  Q    =<span class="st">  </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb26-12"><a href="specific-advan.html#cb26-12" aria-hidden="true"></a>  KA   =<span class="st">  </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb26-13"><a href="specific-advan.html#cb26-13" aria-hidden="true"></a>      </span>
+<span id="cb26-14"><a href="specific-advan.html#cb26-14" aria-hidden="true"></a>  ALAG1=<span class="st">  </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">6</span>))\index{ALAG}</span>
+<span id="cb26-15"><a href="specific-advan.html#cb26-15" aria-hidden="true"></a>  S2   =<span class="st">  </span>V2 <span class="op">/</span><span class="st"> </span><span class="dv">1000</span></span></code></pre></div>
 <p>ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은
 3구획이다.</p>
@@ -670,14 +1027,14 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 <div class="example">
 <span id="exm:code-if" class="example"><strong>코드 4.2  </strong></span>상대생체이용률을 위한 제어구문
 </div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="specific-advan.html#cb28-1" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.50</span>) F1 =<span class="st"> </span><span class="dv">1</span>\index{F1}</span>
-<span id="cb28-2"><a href="specific-advan.html#cb28-2" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.100</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">7</span>)\index{F1}</span>
-<span id="cb28-3"><a href="specific-advan.html#cb28-3" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.200</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">8</span>)\index{F1}</span></code></pre></div>
-<p>척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 <a href="specific-advan.html#tab:basic-additional">4.4</a>를 참고하도록 하자. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="specific-advan.html#cb27-1" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.50</span>) F1 =<span class="st"> </span><span class="dv">1</span>\index{F1}</span>
+<span id="cb27-2"><a href="specific-advan.html#cb27-2" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.100</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">7</span>)\index{F1}</span>
+<span id="cb27-3"><a href="specific-advan.html#cb27-3" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.200</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">8</span>)\index{F1}</span></code></pre></div>
+<p>척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 <a href="specific-advan.html#tab:basic-additional">4.5</a>를 참고하도록 하자. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
 
 <table>
 <caption>
-<span id="tab:basic-additional">표 4.4: </span>Basic and additional pharmacokinetic parameters
+<span id="tab:basic-additional">표 4.5: </span>Basic and additional pharmacokinetic parameters
 </caption>
 <thead>
 <tr>
