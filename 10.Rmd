@@ -22,9 +22,10 @@ NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장
 
 185행부터는 모델의 구조(ADVAN4)와 그 구조를 설명하기 위해 사용된 파라미터(TRANS4)에 대해 나와있으며, 195\~200행에는 현재 모델 구조에서의 각 구획 별 설명이 나와있다. ADVAN4에서 ‘DOSE’에 대한 구획은 1구획, ‘OBSERVATION’은 2구획이 기본값으로 되어있으며, 1\~3구획까지 모두 ‘DOSE’가 허용된다고 되어 있다(DOSE ALLOWED: YES). 이 때문에 정맥투여와 경구투여 데이터가 같이 있는 2구획 모델의 경우 ADVAN4를 사용하여 하나의 모델로 설명할 수 있는데, 이 때는 투여 경로를 명시해주어야 하므로 CMT를 데이터셋에 추가해야 한다. 표 \@ref(tab:basic-data-format)와 같이, 경구투여인 경우 CMT를 1로, 정맥투여인 경우 CMT를 2로 주면 된다.\index{ADVAN4}\index{CMT}\index{TRANS}
 
+\index{CMT}
 ```{r basic-data-format}
 read_csv('data-raw/media-10-tab-1.csv', col_types="cccccc") %>% 
-  kable(booktabs=TRUE, caption = "투여경로에 따라 CMT가 기록된 데이터셋")\index{CMT}
+  kable(booktabs=TRUE, caption = "투여경로에 따라 CMT가 기록된 데이터셋")
 ```
 
 ![](./assets/media-10/image5.png) <!--no-num-->

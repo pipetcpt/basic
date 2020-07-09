@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#IE-role"><i class="fa fa-check"></i><b>8.1</b> 초기 추정값의 의미와 역할</a></li>
 <li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.2</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
-<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정-fixed-random-meaning"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정 {#fixed-random-meaning}</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#fixed-random-meaning"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
 <li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.4</b> THETA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> OMEGA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> SIGMA의 초기추정값 지정</a></li>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -373,9 +373,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="PRED" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> $PRED: ADVAN을 쓰지 않는 코딩</h1>
+<p></p>
 <p>임동석</p>
 <div id="pred와-predpp-library사용할-때의-차이" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> $PRED와 PREDPP library사용할 때의 차이</h2>
+<p></p>
 <p>PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델의 구조를 만들어 볼 수 있는 $PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터셋의 칼럼 이름들을 정의해주는 $INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만 특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 $PRED를 쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론 $DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는 모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 $PRED와는 다르다.</p>
 <p>제어구문 파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="PRED.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
 
@@ -397,25 +399,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="pred를-써야-하는-경우" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> $PRED를 써야 하는 경우</h2>
+<p></p>
 <p>편리한 ADVAN들이 이미 여러 가지가 나와 있는데 똑같은 모델을 굳이 복잡한 수식을 풀어서 열거하는 $PRED로 처리해야 할 필요는 없다. 그러나 지금까지 나와 있는 PREDPP의 ADVAN들 만으로 표현할 수 없는 모델을 써야 할 경우는 자주 있다. PK/PD 모델들 역시 ADVAN만으로 처리할 수 있는 것들도 있으나 그 성격이 다양하여 연구자가 직접 모델을 만들어 테스트해야 하는 경우도 많다. (코드 <a href="PRED.html#exm:formula">7.1</a>)</p>
 
 <div class="example">
 <span id="exm:formula" class="example"><strong>코드 7.1  </strong></span>약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
 </div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="PRED.html#cb29-1" aria-hidden="true"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
-<span id="cb29-2"><a href="PRED.html#cb29-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span></span>
-<span id="cb29-3"><a href="PRED.html#cb29-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID CP RESP=DV</span>
-<span id="cb29-4"><a href="PRED.html#cb29-4" aria-hidden="true"></a><span class="op">$</span>PRED</span>
-<span id="cb29-5"><a href="PRED.html#cb29-5" aria-hidden="true"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
-<span id="cb29-6"><a href="PRED.html#cb29-6" aria-hidden="true"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
-<span id="cb29-7"><a href="PRED.html#cb29-7" aria-hidden="true"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
-<span id="cb29-8"><a href="PRED.html#cb29-8" aria-hidden="true"></a>  ; only parameter with interindividual variability</span>
-<span id="cb29-9"><a href="PRED.html#cb29-9" aria-hidden="true"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
-<span id="cb29-10"><a href="PRED.html#cb29-10" aria-hidden="true"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
-<span id="cb29-11"><a href="PRED.html#cb29-11" aria-hidden="true"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
-<span id="cb29-12"><a href="PRED.html#cb29-12" aria-hidden="true"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
-<span id="cb29-13"><a href="PRED.html#cb29-13" aria-hidden="true"></a><span class="op">$</span>THETA</span>
-<span id="cb29-14"><a href="PRED.html#cb29-14" aria-hidden="true"></a>...</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="PRED.html#cb32-1" aria-hidden="true"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
+<span id="cb32-2"><a href="PRED.html#cb32-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span>\index{\<span class="op">$</span>DATA}\index{IGNORE}</span>
+<span id="cb32-3"><a href="PRED.html#cb32-3" aria-hidden="true"></a><span class="op">$</span>INPUT ID CP RESP=DV\index{\<span class="op">$</span>INPUT}\index{ID}\index{RES}</span>
+<span id="cb32-4"><a href="PRED.html#cb32-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{\<span class="op">$</span>PRED}\index{PRED}</span>
+<span id="cb32-5"><a href="PRED.html#cb32-5" aria-hidden="true"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
+<span id="cb32-6"><a href="PRED.html#cb32-6" aria-hidden="true"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
+<span id="cb32-7"><a href="PRED.html#cb32-7" aria-hidden="true"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
+<span id="cb32-8"><a href="PRED.html#cb32-8" aria-hidden="true"></a>  ; only parameter with interindividual variability</span>
+<span id="cb32-9"><a href="PRED.html#cb32-9" aria-hidden="true"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
+<span id="cb32-10"><a href="PRED.html#cb32-10" aria-hidden="true"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
+<span id="cb32-11"><a href="PRED.html#cb32-11" aria-hidden="true"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
+<span id="cb32-12"><a href="PRED.html#cb32-12" aria-hidden="true"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
+<span id="cb32-13"><a href="PRED.html#cb32-13" aria-hidden="true"></a><span class="op">$</span>THETA\index{\<span class="op">$</span>THETA}</span>
+<span id="cb32-14"><a href="PRED.html#cb32-14" aria-hidden="true"></a>...</span></code></pre></div>
 
 </div>
 </div>

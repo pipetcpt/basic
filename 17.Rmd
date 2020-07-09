@@ -24,9 +24,10 @@ include_graphics('figures/17-fig-01.png')
 
 PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형, 범주형 변수와 기타 다른 형태의 변수들이 있다.(표 \@ref(tab:pd-data-property)) 변수의 성격에 따라 NONMEM에서의 $ESTIMATION 의 옵션도 달라져야 한다.\index{\$ESTIMATION (\$EST)}
 
+\index{-2LL}\index{\$ESTIMATION (\$EST)}\index{IPRED}\index{LAPLACIAN}\index{LIKELIHOOD}\index{PRED}\index{IPRED}\index{PRED}
 
 ```{r pd-data-property}
-#readxl::read_excel("data-raw/fig-tab.xlsx", sheet="pd-data", range="B2:D13") %>% \index{D1}
+#readxl::read_excel("data-raw/fig-tab.xlsx", sheet="pd-data", range="B2:D13") %>% 
 #read_csv('data-raw/media-17-tab-1.csv') %>% 
 #  kable(caption = "PD 데이터의 종류", booktabs=TRUE, align = "c", linesep = "") #%>% 
 #  column_spec(1, width = "3.5cm") %>% 
@@ -40,8 +41,8 @@ tribble(~"PD 데이터의 종류", ~'특징', ~'모델링할 때의 주의점',
 '관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능
 1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)
 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)',
-'IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)',\index{IPRED}\index{PRED}
-'Binary / categorical response', "이진(binary): 증상의 유/무 등\n3가지 이상 범주(categorical): \n-Simple categorical: 인종, 혈액형 등\n-Ordered categorical: 병기(stage), VAS(visual analog scale)\n관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\nMean, SD 등으로 나타내기 부적절 (! ?)", "관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \\$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음. ",\index{-2LL}\index{\$ESTIMATION (\$EST)}\index{IPRED}\index{LAPLACIAN}\index{LIKELIHOOD}\index{PRED}
+'IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)',
+'Binary / categorical response', "이진(binary): 증상의 유/무 등\n3가지 이상 범주(categorical): \n-Simple categorical: 인종, 혈액형 등\n-Ordered categorical: 병기(stage), VAS(visual analog scale)\n관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\nMean, SD 등으로 나타내기 부적절 (! ?)", "관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \\$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음. ",
 "Count data", "질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등)", "",
 "Time to event data", "예) 수면유도제의 효과: 잠들 때까지의 시간", "") %>% 
   mutate_all(linebreak) %>%

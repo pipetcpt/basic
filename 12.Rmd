@@ -67,6 +67,7 @@ read_csv(txt) %>%
 
 적합도는 제시한 모델 구조를 통해 데이터의 전체적 경향과 개별 데이터가 만족스럽게 설명되는가에 관한 요소이며, 파라미터 정확성/정밀성은 제시한 모델로 데이터를 적합하였을 때 추정되는 파라미터의 신뢰성과 관련된 요소이다. 재현성이란, 원본 데이터에 준하는 상황에 대한 시뮬레이션을 수행하였을 때, 전체적인 경향이 원본 데이터와 유사한가에 관한 요소인데, 모델링-시뮬레이션 초보자 입장에서는 적합도와 재현성 간의 차이를 직관적으로 이해하기 어려울 수 있다. 이는 이후 내용에서 보다 구체적으로 다루도록 한다. 각각의 요소는 시각적인 방법과 수치적인 방법으로 확인할 수 있으며, 표 \@ref(tab:eval-summary)로 구체적인 방법론을 요약하였다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
+\index{shrinkage / 축소}
 ```{r eval-summary}
 tibble::tribble(~" ", ~"Numerical", ~"Visual",
                 
@@ -75,7 +76,7 @@ tibble::tribble(~" ", ~"Numerical", ~"Visual",
                 "Goodness-of-fit plot, Individual plot",
                 
                 "파라미터 정확성(accuracy) / 정밀성(precision)",
-                "Parameter estimates, Parameter imprecision estimates (by NONMEM), EBE shrinkage, Bootstrap median and confidence interval",\index{shrinkage / 축소}
+                "Parameter estimates, Parameter imprecision estimates (by NONMEM), EBE shrinkage, Bootstrap median and confidence interval",
                 "Empirical Bayes Estimate (EBE) distribution",
                 
                 "재현성(reproducibility)",
@@ -91,7 +92,8 @@ tibble::tribble(~" ", ~"Numerical", ~"Visual",
 \index{shrinkage / 축소}\index{shrinkage / 축소}
 \index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
-### 적합도의 확인 방법\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
+### 적합도의 확인 방법
+\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
 적합도를 확인하는 가장 대표적인 척도는 목적함수값(objective function value)이다. Basic-1 과정을 이수한 독자라면 목적함수값에 대해 어느 정도 이해하고 있을 것이며, 이 값이 작을수록 적합도가 좋다는 것 역시 인지하고 있을 것이다. 이는 모델 전체의 적합도를 나타내는 대리자 역할을 하는데 이를 이용한 적합도 확인에 대해 설명하기 전에 중요한 전제조건 세 가지를 먼저 언급하고자 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
@@ -99,16 +101,18 @@ tibble::tribble(~" ", ~"Numerical", ~"Visual",
 
 두 번째 전제조건은 목적함수값이 포함 관계를 갖는 모델(nested model) 간의 상대평가의 척도라는 것이다. 간단히 말해, 목적함수값은 데이터 레코드의 개수나 잔차모델의 구조에 따라 영향을 받는다. 따라서, ‘목적함수값이 OOO’라는 문구만을 통해서는 그 모델의 적합도가 좋다거나 나쁘다는 결론을 내릴 수 없다. 목적함수값을 이용해 적합도를 진단할 때에는 비교 대상이 되는 모델이 반드시 존재해야 하며, ‘목적함수값으로 판단할 때 A모델이 B모델보다 적합도가 좋다.’라는 식의 해석이 이루어져야 한다. 또한, 비교 대상이 되는 모델 간에는 포함(nested)관계가 존재해야 하는데, 한 모델의 구성 요소를 삭제하지 않은 상태에서 새로운 모델의 요소가 부가되어야 한다. 예를 들어, 2구획 모델은 1구획 모델을 포함하는 모델이다. 그러나, 같은 2구획 모델이라도 약물 제거에 관한 구조(linear vs non-linear)가 아예 다르거나, 보다 복잡한 흡수 모델 간에 포함 관계가 없는 경우 등에는 목적함수값만으로 두 모델을 비교해서는 안 되며, 이 경우에는 Akaike Information Criterion (AIC)이라는 값을 이용한다. 이는 아래와 같이 계산된다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{잔차 / residual error}\index{적합도 / goodness of fit}\index{residual error / 잔차}\index{goodness of fit / 적합도}
 \begin{equation}
-AIC = -2LL + 2k \ \ \text{(k = number of parameters)}\index{-2LL}
+AIC = -2LL + 2k \ \ \text{(k = number of parameters)}
 (\#eq:aic)
 \end{equation}
+
+\index{-2LL}
 
 여기서 -2LL은 일반적으로 NONMEM에서 사용하는 OFV 값에 해당하므로, 서로 포함관계가 없는 모델에서 파라미터 수가 더 많은 경우 그만큼 더 불리한 값(더 큰 값)을 만들어 주는 척도라 이해할 수 있다. 중요한 점은 잔차모델(error model) 역시도 이런 포함관계에 고려하여야 한다는 것이다. 일반적은 가법잔차(additive error) 모델과 비례잔차(proportional error) 모델은 서로 포함관계에 있지 않다. 가법잔차와 비례잔차 간에 변환을 하기 위해서는 기존의 가법 요소 또는 비례 요소를 지우고 새로운 잔차구조를 정의해야 하기 때문이다. 따라서, 같은 구조모델을 가지고 있다하더라도 가법잔차와 비례잔차를 가진 두 모델을 OFV 값으로 비교하는 것은 옳지 않다.\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}\index{-2LL}
 
 세 번째 전제조건은 데이터셋의 관찰 레코드(observation record) 값이 같아야 한다는 것이다. OFV는 개별 관찰값을 적합하면서 나타난 예측값과 관찰값 간의 차이를 반영하는 값이다. 따라서, 관찰값의 개수가 많아지면 자연히 OFV값 역시 증가하는 경향을 가진다. 그러므로 동일한 데이터셋을 대상으로 서로 다른 모델의 적합도를 비교하는 경우에만 OFV를 사용해야 한다.\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
 이런 전제 조건들을 만족한 상황에서, 특정한 모델 요소를 더함으로써 OFV 값을 기준으로 통계학적으로 유의하게 모델이 개선되었다(p=0.05)고 결론짓기 위해서는 다음과 같은 기준보다 더 큰 OFV 값의 감소가 관찰되어야 한다.
-
+\index{-2LL}
 ```{r}
 txt <- "param,2ll
 1, 3.84
@@ -117,7 +121,7 @@ txt <- "param,2ll
 4, 9.49"
 read_csv(txt) %>% 
   mutate_all(as.character) %>% 
-  rename(`$\\Delta$Parameters`= 1, `$\\Delta$-2LL` = 2) %>% \index{-2LL}
+  rename(`$\\Delta$Parameters`= 1, `$\\Delta$-2LL` = 2) %>% 
   kable(escape=FALSE, 
         caption = "증가된 파라미터 개수 별로 통계학적으로 유의(p=0.05)한 OFV값 감소의 cutpoint",
         booktabs=TRUE)

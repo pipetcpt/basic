@@ -24,7 +24,8 @@ knitr::include_graphics("./figures/03-fig-01.png") # 3.1
 
 (ref:nm-tran) NM-TRAN 제어구문의 구성\index{NM-TRAN 제어구문 / NM-TRAN control stream}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN}
 
-## PREDPP와 PRED\index{PRED}\index{PREDPP}
+## PREDPP와 PRED
+\index{PRED}\index{PREDPP}
 
 제어구문에 사용되는 각 레코드의 자세한 설명에 앞서, PREDPP와 PRED에 대하여 알아보자. PRED는 'prediction'의 약자로 추정값을 얻기위한 서브루틴을 일컫는다. PK와 PK/PD 모델 분석 뿐만 아니라, 어떠한 값이라도 수식만 주어진다면 PRED를 사용하여 추정할 수 있다. PRED는 NONMEM 내에 구축되어 있는 모델이나 시간 또는 구획에 대한 약속된 처리 구문이 정해져 있지 않기 때문에, 모델의 유연성(flexibility)이 높으며, 사용자가 원하는 식을 이용하여 원하는 파라미터의 값을 추정할 수 있다. PREDPP는 'PRED for population pharmacokinetics'의 줄임말로 집단 약동학 분석을 위한 PRED 서브루틴으로 NONMEM에 내장되어 있다. PREDPP를 사용하여 모델 파라미터를 추정할 경우 \$SUBROUTINE과 사용하고자 하는 ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)를 결정하여야 하며, 사용하고자 하는 ADVAN에 따라 \$MODEL, \$PK, \$ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED 서브루틴을 사용하는 경우에는 \$PRED를 이용하여 모델을 정의할 수 있다. 자세한 내용은 다음 장에서부터 차례로 다루기로 한다.\index{\$ERROR}\index{\$MODEL}\index{\$PK}\index{\$PRED}\index{\$SUBROUTINE}\index{PRED}\index{PREDPP}\index{TRANS}
 
@@ -73,7 +74,8 @@ $TABLE ID WT AGE SEX HT ALB CLCR \index{\$TABLE}\index{ID}
 ```
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
-### \$PROBLEM, \$DATA, \$INPUT\index{\$DATA}\index{\$INPUT}\index{\$PROBLEM}
+### \$PROBLEM, \$DATA, \$INPUT
+\index{\$DATA}\index{\$INPUT}\index{\$PROBLEM}
 
 \$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 \$PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.\index{\$PROBLEM}
 
@@ -114,19 +116,21 @@ $DATA test.csv IGNORE = # IGNORE=(WEIGHT.LE.40, SEX.EQ.1)\index{\$DATA}\index{IG
 \$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV, ADDL, II, RATE, CMT, SS 등이 있다. `=DROP`구문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, \$INPUT에서 변수명을 `CON=DV` 또는 DV로\index{dependent variable(DV) / 종속변수(DV)}\index{\$INPUT}\index{ADDL}\index{AMT}\index{CMT}\index{DROP}\index{ID}\index{MDV}\index{RATE}\index{SS}\index{TIME}
 작성하여야 한다.
 
-### \$SUBROUTINE, \$MODEL, \$PK, $DES\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}
+### \$SUBROUTINE, \$MODEL, \$PK, $DES
+\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}
 
 \$SUBROUTINE은 PREDPP에 내장되어 있는 ADVAN 루틴을 선택하여 원하는 모델과 파라미터를 추정할 수 있게 한다. ADVAN 서브루틴은 특수 ADVAN과 일반 ADVAN으로 구성되어 있으며, ADVAN의 선택에 따라 \$MODEL, \$DES를 사용해야 하거나 그렇지 않을 수 있다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{\$DES}\index{\$MODEL}\index{\$SUBROUTINE}\index{PRED}\index{PREDPP}
 
-#### 특수 ADVAN\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}
+#### 특수 ADVAN
+\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}
 
 특수 ADVAN은 1,2,3 구획 약동학 분석에 최적화 되어있는 서브루틴이다. ADVAN1, ADVAN2, ADVAN10은 1구획 약동학 모델을 따르는 경우, ADVAN3과 ADVAN4는 2구획 약동학 모델, ADVAN11과 ADVAN12는 3구획 약동학 모델에 각각 사용한다. 특수 ADVAN을 사용할 경우, 추정하고자 하는 파라미터에 따라 TRANS를 선택하여야 한다. 각 ADVAN에 따른 TRANS 서브루틴은 표 \@ref(tab:advan-trans)에 자세히 나와있다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{ADVAN1}\index{ADVAN2}\index{ADVAN3}\index{ADVAN4}\index{ADVAN10}\index{ADVAN11}\index{ADVAN12}\index{TRANS}
-
+\index{TRANS}
 ```{r advan-trans}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet='28', range="B2:E23") %>% 
   #kable(booktabs=TRUE, longtable=TRUE, align = 'l',
   kable(booktabs=TRUE, align = 'l',
-        caption = "특수 ADVAN과 그에 따른 TRANS 서브루틴") %>%\index{TRANS}
+        caption = "특수 ADVAN과 그에 따른 TRANS 서브루틴") %>%
   column_spec(3:4, width = "5cm") %>% 
   column_spec(1:2, width = "1.5cm") %>% 
   collapse_rows(columns = c(1,4), latex_hline = "major", valign = "top")
@@ -185,7 +189,8 @@ readr::read_csv(txt) %>%
 
 일반 ADVAN은 사용자가 직접 모델을 제시할 수 있는 서브루틴이다. 구획의 수와 흡수 및 제거 모델을 사용자가 결정하여 \$MODEL과 \$DES에 정의할 수 있다. 주로, 복잡한 흡수모델, 비선형 약동학, 장간순환, 모약물–대사체 동시 분석, 그리고 PD 데이터 분석을 위해 사용된다. 선형 또는 비선형 모델과 파라미터 추정 계산 방식에 따라 ADVAN 5,6,7,8,9,13,14,15 (NONMEM 7.4 기준)로 나뉘며, 특히, 선형모델인 ADVAN5와 ADVAN7은 구획간 물질이동과 구획으로의 흡수와 제거를 1차 이동속도로 정의하기 때문에, \$PK에서 구획간 약물의 이동에 대한 속도상수를 정의하고 \$DES 블록을 사용하지 않는다. ADVAN5와 ADVAN7을 제외한 일반 비선형 ADVAN은 \$DES 레코드를 사용하여 각 구획간의 이동에 대한 관계를 미분방정식을 사용하여 기술하여야 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}\index{ADVAN5}\index{ADVAN7}
 
-### \$THETA, \$OMEGA, \$SIGMA\index{\$OMEGA}\index{\$SIGMA}\index{\$THETA}
+### \$THETA, \$OMEGA, \$SIGMA
+\index{\$OMEGA}\index{\$SIGMA}\index{\$THETA}
 
 \$THETA, \$OMEGA, \$SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는 블록들이다. \$THETA는 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. \$PK에서 정의된 번호 순서대로 초기값을 제시하면 된다.\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}\index{\$THETA}
 
@@ -267,7 +272,8 @@ $SIGMA 1 FIX\index{\$SIGMA}
 
 여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 \$ERROR 레코드에서 사용한 EPS(1)은 \$SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 \$THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{잔차 / residual error}\index{residual error / 잔차}\index{\$ERROR}\index{\$SIGMA}\index{\$THETA}
 
-### $ESTIMATION, $SIMULATION\index{\$ESTIMATION (\$EST)}\index{\$SIMULATION (\$SIM)}
+### $ESTIMATION, $SIMULATION
+\index{\$ESTIMATION (\$EST)}\index{\$SIMULATION (\$SIM)}
 
 $ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것인지를 명시하는 레코드이다.\index{\$ESTIMATION (\$EST)} 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (first-order conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다. 추정방법에 대한 이론적인 설명은 [9장](#estimation-methods)에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는 기본적인 코드와 용어에 대해서 설명한다.
 
@@ -290,7 +296,8 @@ $SIMULATION (seed) ONLYSIM NSUB=1000\index{\$SIMULATION (\$SIM)}\index{NSUB}\ind
 
 'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$SIMULATION (\$SIM)}\index{NSUB}
 
-### $COVARIANCE, $TABLE\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$TABLE}
+### $COVARIANCE, $TABLE
+\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$TABLE}
 
 $COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{variance-covariance matrix / 분산-공분산 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
@@ -343,7 +350,8 @@ $TABLE ID ETA(1) ETA(2)
 
 앞 단원에서는 NONMEM 실행에 필요한 제어구문의 각 레코드에 대하여 알아보았다. 이 단원에서는 모델 종류에 따른 제어구문의 예를 살펴보기로 한다.
 
-### 특수 ADVAN과 일반 ADVAN\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}
+### 특수 ADVAN과 일반 ADVAN
+\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}
 
 2구획 경구 약동학 데이터를 각각 특수 ADVAN과 일반 ADVAN을 사용하여 분석해보자. 특수 ADVAN을 사용할 경우 \$SUBROUTINE에서 ADVAN4와 그에 따른 TRANS 서브루틴을 선택하고, \$PK에서 추정하고자 하는 각 파라미터의 대표값과 개인간 변이 모델을 결정하면 된다. ADVAN4를 선택함으로써, 이미 모델을 결정하였기 때문에 \$MODEL과 \$DES 레코드는 사용할 필요가 없다. (코드 \@ref(exm:advan4))\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN4}\index{TRANS}
 
@@ -529,7 +537,8 @@ Y = F*EPS(1) * (1-TYPE)
 ```
 <!-- (ref:parent-metabolite) 모약물과 대사체의 약동학 동시 분석 모델의 제어구문 -->
 
-### PRED 모델\index{PRED}
+### PRED 모델
+\index{PRED}
 
 
 \$PRED를 사용한 모델을 살펴보자. 코드 \@ref(exm:linear-model)는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.\index{\$ERROR}\index{\$PRED}\index{PRED}

@@ -32,25 +32,31 @@ knitr::include_graphics("figures/04-fig-02.png") #4
 
 TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1\~4에서 사용하는 TRANS 서브루틴을 표 \@ref(tab:required-param-subroutine)에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1\~4 까지의 내용을 표 \@ref(tab:standard-pk-models)에서 확인할 수 있다. [@nonmem]\index{ADVAN1}\index{S1}\index{TRANS}\index{TRANS2}
 
+\index{ADVAN1}
+\index{ADVAN2}
+\index{ADVAN3}
+\index{ADVAN4}
+\index{TRANS}
+
 ```{r required-param-subroutine}
 tibble::tribble(
-  ~`ADVAN subroutine`, ~`TRANS subroutine`, ~`Required parameters`,\index{TRANS}
-  "ADVAN1", "TRANS1", "K",\index{ADVAN1}\index{S1}\index{TRANS}
+  ~`ADVAN subroutine`, ~`TRANS subroutine`, ~`Required parameters`,
+  "ADVAN1", "TRANS1", "K",
   "ADVAN1", "TRANS2", "CL, V", # bold: \\textbf{TRANS2}\index{ADVAN1}\index{TRANS}\index{TRANS2}
-  "ADVAN2", "TRANS1", "K, KA",\index{ADVAN2}\index{S1}\index{TRANS}
+  "ADVAN2", "TRANS1", "K, KA",
   "ADVAN2", "TRANS2", "CL, V, KA", # bold: \\textbf{TRANS2}\index{ADVAN2}\index{TRANS}\index{TRANS2}
-  "ADVAN3", "TRANS1", "K, K12, K21",\index{ADVAN3}\index{S1}\index{TRANS}
-  "ADVAN3", "TRANS3", "CL, V, Q, VSS",\index{ADVAN3}\index{SS}\index{TRANS}
+  "ADVAN3", "TRANS1", "K, K12, K21",
+  "ADVAN3", "TRANS3", "CL, V, Q, VSS",
   "ADVAN3", "TRANS4", "CL, V1, Q, V2", # bold: \\textbf{TRANS4}\index{ADVAN3}\index{TRANS}
-  "ADVAN3", "TRANS5", "AOB, ALPHA, BETA",\index{ADVAN3}\index{TRANS}
-  "ADVAN3", "TRANS6", "ALPHA, BETA, K21",\index{ADVAN3}\index{TRANS}
-  "ADVAN4", "TRANS1", "K, K23, K32, KA",\index{ADVAN4}\index{S1}\index{TRANS}
-  "ADVAN4", "TRANS3", "CL, V, Q, VSS, KA",\index{ADVAN4}\index{SS}\index{TRANS}
+  "ADVAN3", "TRANS5", "AOB, ALPHA, BETA",
+  "ADVAN3", "TRANS6", "ALPHA, BETA, K21",
+  "ADVAN4", "TRANS1", "K, K23, K32, KA",
+  "ADVAN4", "TRANS3", "CL, V, Q, VSS, KA",
   "ADVAN4", "TRANS4", "CL, V2, Q, V3, KA", # bold: \\textbf{TRANS4}\index{ADVAN4}\index{TRANS}
-  "ADVAN4", "TRANS5", "AOB, ALPHA, BETA, KA",\index{ADVAN4}\index{TRANS}
-  "ADVAN4", "TRANS6", "ALPHA, BETA, K32, KA"\index{ADVAN4}\index{TRANS}
+  "ADVAN4", "TRANS5", "AOB, ALPHA, BETA, KA",
+  "ADVAN4", "TRANS6", "ALPHA, BETA, K32, KA"
 ) %>% 
-  kable(booktabs = TRUE, align = "l", escape = FALSE, caption = "ADVAN과 TRANS 서브루틴 조합에 따른 필수 파라미터") %>% \index{TRANS}
+  kable(booktabs = TRUE, align = "l", escape = FALSE, caption = "ADVAN과 TRANS 서브루틴 조합에 따른 필수 파라미터") %>% 
   column_spec(1, bold=TRUE) %>% 
   collapse_rows(columns=1, latex_hline="major", valign = "top")
 ```
@@ -68,14 +74,14 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
 ```
 
 ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 \@ref(tab:additional-param)에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. [@nonmem]\index{TRANS}
-
+\index{ALAG}
 ```{r additional-param}
 txt <- "Name, Parameter
 Sn, Scaling parameter for compartment number n
 Fn, Bioavailability fraction for compartment n
 Rn, Rate parameter for compartment n
 Dn, Duration parameter for compartment n
-ALAGn, Absorption lag parameter for compartment n"\index{ALAG}
+ALAGn, Absorption lag parameter for compartment n"
 read_csv(txt) %>% 
   kable(booktabs= TRUE,
         caption = "Additional PK parameters")

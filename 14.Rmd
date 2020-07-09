@@ -1,4 +1,5 @@
-# NONMEM의 \$COVARIANCE {#cov}\index{\$COVARIANCE (\$COV, \$COVAR)}
+# NONMEM의 \$COVARIANCE {#cov}
+\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 배균섭
 
@@ -528,9 +529,10 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 
 `PostHocEta()`, `TabStep()`의 실행화면은 아래와 같다.
 
+\index{ID}
 ```r
 (EBE1 = PostHocEta()) # Using e$FinalPara from EstStep()
-##       ID       ETA1         ETA2        ETA3\index{ID}
+##       ID       ETA1         ETA2        ETA3
 ##  [1,]  1 -0.6367109 -0.232258352 -0.73648224
 ##  [2,]  2 -0.5895843 -0.153341805 -0.06619115
 ##  [3,]  3 -0.3083755 -0.124816676 -0.21013190
@@ -546,7 +548,8 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 # (Tab1 = TabStep())
 ```
 
-## 고유값(Eigenvalue)\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
+## 고유값(Eigenvalue)
+\index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
 
 공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}
 

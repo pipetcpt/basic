@@ -164,7 +164,8 @@ IF (CMT.EQ.2) THEN \index{CMT}
 ENDIF
 ```
 
-### 순차적합법 (Sequential fitting)\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
+### 순차적합법 (Sequential fitting)
+\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
 
 #### PPP\&D (Population PK Parameters & Data)
 

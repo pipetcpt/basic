@@ -25,7 +25,8 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="16-1", range="B2:D10") %>% \i
 
 데이터 분할 기법(data splitting method)은 모델 평가를 위해 새로운 자료를 수집하는 것이 어려울 경우에 검증 자료를 만들어내는 유용한 내부검증 방법으로 분석 데이터셋의 일부분을 임의로 추출하여 검사용 데이터셋을 만들고, 실제 개발 데이터셋에서 이를 제거한다. 이 방법의 단점은 모델의 예측 정확도가 자료를 나누는데 사용된 표본의 크기에 따라 좌우된다는 것이다. 또 다른 내부검증 기법은 재추출 방법(resampling)으로 교차 타당성 검증(cross-validation)과 붓스트랩(bootstrap)의 두 가지 방법이 포함된다. 교차 타당성 검증은 데어터 분할(data splitting)을 반복하여 사용하는 방법이고 모형 구축을 위해 사용되는 자료 세트의 크기가 다른 방법에 비해 크고 이로 인해 추정과정에서 무시되는 자료가 작다는 장점이 있고, 단일 샘플의 분할에 의존하지 않기 때문에 변이성이 감소하게 된다. [@poppk]\index{내부검증 / internal validation}\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}\index{internal validation / 내부검증}
 
-## 붓스트랩 (Bootstrap)\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}
+## 붓스트랩 (Bootstrap)
+\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}
 
 검사용 데이터셋이 없거나 분석 시작시 작성되지 않은 경우에는 붓스트랩 접근법을 사용하는 것이 적절하다. 붓스트랩은 교차 타당성 검증과 같이 모형 구축에 모든 자료를 사용한다는 장점이 있다. 희귀질환이나 소아환자의 자료 등과 같이 표본 크기가 제한적일 수밖에 없는 경우, 집단모형을 평가하는데 매우 유용할 수 있다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}
 
@@ -47,7 +48,8 @@ include_graphics("figures/16-fig-02.jpg") #fig2
 
 시뮬레이션에 기반한 예측성능 평가 과정인 사후예측점검(PPC), VPC와 NPC은 모두 관찰값과 모델에 의해 시뮬레이션된 값들의 분포를 비교하는 것이다. [@yano2001evaluating; @post2008extensions] 시뮬레이션 데이터가 관찰 데이터의 분포특징을 적절히 반영하고 있음을 시각적, 수치적으로 확인할 수 있다면 모델의 예측성능 평가가 잘 이루어졌다고 말할 수 있다.\index{사후예측점검(PPC) / posterior predictive check(PPC)}\index{시뮬레이션 / simulation}\index{posterior predictive check(PPC) / 사후예측점검(PPC)}\index{simulation / 시뮬레이션}
 
-### 사후 예측 점검 (posterior predictive check)\index{posterior predictive check(PPC) / 사후예측점검(PPC)}
+### 사후 예측 점검 (posterior predictive check)
+\index{posterior predictive check(PPC) / 사후예측점검(PPC)}
 
 사후 예측 점검을 통해 현재와 미래 자료 세트의 중요한 임상적 특성이 모델에 의해 충실히 재현이 되는가를 결정하는데 유용할 수 있다. [@post2008extensions] 이 방법은 특정 요약 통계량을 원본 데이터셋에서 계산하고 이를 시뮬레이션으로부터 발생된 사후 예측 분포와 비교하는 것이다. (그림 \@ref(fig:ppc)) 사후값(posterior)은 불확실성(uncertainty)과 잔류변이(residual variability)를 반영하고 있으며 이것이 특정 분포를 따르지 않는 경우, 또는 관찰값과 큰 차이가 나는 경우 자신의 모델을 점검할 수 있다. 시뮬레이션의 반복 데이터셋을 생성하여 통계량의 분포와 상응하는 유의확률값을 얻어낼 수도 있다. 그러나 현재로서는 이러한 접근법이 널리 통용되고 있지는 않다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
@@ -57,7 +59,8 @@ include_graphics("figures/16-fig-03.png") # 3
  
 (ref:ppc) 사후 예측 점검의 예. 시뮬레이션된 Cmax의 분포에서 관찰값(검정색 실선)의 위치를 파악할 수 있음\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
-### 시각적 예측 점검 (visual predictive check)\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
+### 시각적 예측 점검 (visual predictive check)
+\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
 
 \index{시각적 예측 점검}\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
 \index{VPC, visual predictive check}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
@@ -108,7 +111,8 @@ include_graphics("figures/16-fig-06.png")
 
 VPC가 직관적이고 많은 상황에서 흔히 쓰이고 있으나 일부 유용성이 떨어지는 상황이 있을 수도 있기에 사용에 주의를 요한다. 결측치 (BQL, below quantification limit) 자료가 많은 경우 시뮬레이션이 잘 안될 수 있기 때문에 주의해야 하며, BQL 있는 부분과 아닌 부분을 층화로 나누어 그리기도 한다. 계획서 위반(protocol violation)이 많은 경우, 약물 복용 비준수(nonadherence)가 많은 경우에도 VPC 적용에 주의를 기울여야 한다. 또한 적응적 설계(adaptive design), 용량 조정 시험 등에서 사용하는 경우에도 VPC를 적용하는 것이 어려울 것이다. 용량 변화의 모든 상황을 층화로 나누어서 그리는 것이 필요하겠지만 경우의 수가 많아지는 경우 모든 상황을 VPC로 표현하는 것이 어려울 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
-### 수치적 예측 점검 (numerical predictive check)\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
+### 수치적 예측 점검 (numerical predictive check)
+\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
 
 \index{수치적 예측 점검}\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
 \index{NPC, numerical predictive check}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}

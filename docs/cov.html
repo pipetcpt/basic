@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="IE.html"><a href="IE.html#IE-role"><i class="fa fa-check"></i><b>8.1</b> 초기 추정값의 의미와 역할</a></li>
 <li class="chapter" data-level="8.2" data-path="IE.html"><a href="IE.html#왜-좋은-초기추정값을-선택해야-하는가"><i class="fa fa-check"></i><b>8.2</b> 왜 좋은 초기추정값을 선택해야 하는가?</a></li>
-<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#고정효과-임의효과-파라미터의-의미와-초기추정값의-지정-fixed-random-meaning"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정 {#fixed-random-meaning}</a></li>
+<li class="chapter" data-level="8.3" data-path="IE.html"><a href="IE.html#fixed-random-meaning"><i class="fa fa-check"></i><b>8.3</b> 고정효과, 임의효과 파라미터의 의미와 초기추정값의 지정</a></li>
 <li class="chapter" data-level="8.4" data-path="IE.html"><a href="IE.html#theta의-초기추정값-지정"><i class="fa fa-check"></i><b>8.4</b> THETA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.5" data-path="IE.html"><a href="IE.html#omega의-초기추정값-지정"><i class="fa fa-check"></i><b>8.5</b> OMEGA의 초기추정값 지정</a></li>
 <li class="chapter" data-level="8.6" data-path="IE.html"><a href="IE.html#sigma의-초기추정값-지정"><i class="fa fa-check"></i><b>8.6</b> SIGMA의 초기추정값 지정</a></li>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -373,6 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="cov" class="section level1" number="14">
 <h1><span class="header-section-number">Chapter 14</span> NONMEM의 $COVARIANCE</h1>
+<p></p>
 <p>배균섭</p>
 <hr />
 <p>NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV 절을 제어구문 파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.</p>
@@ -383,30 +384,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <span id="exm:theoph-control-stream" class="example"><strong>코드 14.1  </strong></span>Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cov.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>PROB THEOPHYLLINE ORAL</span>
-<span id="cb36-2"><a href="cov.html#cb36-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT</span>
-<span id="cb36-3"><a href="cov.html#cb36-3" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO</span>
-<span id="cb36-4"><a href="cov.html#cb36-4" aria-hidden="true"></a><span class="op">$</span>PRED</span>
-<span id="cb36-5"><a href="cov.html#cb36-5" aria-hidden="true"></a>  DOSE =<span class="st"> </span><span class="dv">320</span></span>
-<span id="cb36-6"><a href="cov.html#cb36-6" aria-hidden="true"></a>  KA   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb36-7"><a href="cov.html#cb36-7" aria-hidden="true"></a>  V    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb36-8"><a href="cov.html#cb36-8" aria-hidden="true"></a>  K    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb36-9"><a href="cov.html#cb36-9" aria-hidden="true"></a>  F    =<span class="st"> </span>DOSE<span class="op">/</span>V<span class="op">*</span>KA<span class="op">/</span>(KA <span class="op">-</span><span class="st"> </span>K)<span class="op">*</span>(<span class="kw">EXP</span>(<span class="op">-</span>K<span class="op">*</span>TIME) <span class="op">-</span><span class="st"> </span><span class="kw">EXP</span>(<span class="op">-</span>KA<span class="op">*</span>TIME))</span>
-<span id="cb36-10"><a href="cov.html#cb36-10" aria-hidden="true"></a>  IPRE =<span class="st"> </span>F</span>
-<span id="cb36-11"><a href="cov.html#cb36-11" aria-hidden="true"></a>  Y    =<span class="st"> </span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span><span class="kw">EPS</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span>
-<span id="cb36-12"><a href="cov.html#cb36-12" aria-hidden="true"></a></span>
-<span id="cb36-13"><a href="cov.html#cb36-13" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)</span>
-<span id="cb36-14"><a href="cov.html#cb36-14" aria-hidden="true"></a><span class="op">$</span>OMEGA <span class="kw">BLOCK</span>(<span class="dv">3</span>)</span>
-<span id="cb36-15"><a href="cov.html#cb36-15" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
-<span id="cb36-16"><a href="cov.html#cb36-16" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
-<span id="cb36-17"><a href="cov.html#cb36-17" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
-<span id="cb36-18"><a href="cov.html#cb36-18" aria-hidden="true"></a><span class="op">$</span>SIGMA <span class="fl">0.1</span>  <span class="fl">0.1</span></span>
-<span id="cb36-19"><a href="cov.html#cb36-19" aria-hidden="true"></a><span class="op">$</span>EST MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC</span>
-<span id="cb36-20"><a href="cov.html#cb36-20" aria-hidden="true"></a><span class="op">$</span>COV PRINT=ERS</span>
-<span id="cb36-21"><a href="cov.html#cb36-21" aria-hidden="true"></a><span class="op">$</span>TAB ID TIME IPRE CWRES</span>
-<span id="cb36-22"><a href="cov.html#cb36-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER</span>
-<span id="cb36-23"><a href="cov.html#cb36-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)</span>
-<span id="cb36-24"><a href="cov.html#cb36-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cov.html#cb39-1" aria-hidden="true"></a><span class="op">$</span>PROB THEOPHYLLINE ORAL</span>
+<span id="cb39-2"><a href="cov.html#cb39-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT\index{\<span class="op">$</span>INPUT}\index{AMT}\index{DROP}\index{ID}\index{TIME}</span>
+<span id="cb39-3"><a href="cov.html#cb39-3" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO\index{\<span class="op">$</span>DATA}</span>
+<span id="cb39-4"><a href="cov.html#cb39-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{\<span class="op">$</span>PRED}\index{PRED}</span>
+<span id="cb39-5"><a href="cov.html#cb39-5" aria-hidden="true"></a>  DOSE =<span class="st"> </span><span class="dv">320</span></span>
+<span id="cb39-6"><a href="cov.html#cb39-6" aria-hidden="true"></a>  KA   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb39-7"><a href="cov.html#cb39-7" aria-hidden="true"></a>  V    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb39-8"><a href="cov.html#cb39-8" aria-hidden="true"></a>  K    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb39-9"><a href="cov.html#cb39-9" aria-hidden="true"></a>  F    =<span class="st"> </span>DOSE<span class="op">/</span>V<span class="op">*</span>KA<span class="op">/</span>(KA <span class="op">-</span><span class="st"> </span>K)<span class="op">*</span>(<span class="kw">EXP</span>(<span class="op">-</span>K<span class="op">*</span>TIME) <span class="op">-</span><span class="st"> </span><span class="kw">EXP</span>(<span class="op">-</span>KA<span class="op">*</span>TIME))\index{TIME}</span>
+<span id="cb39-10"><a href="cov.html#cb39-10" aria-hidden="true"></a>  IPRE =<span class="st"> </span>F</span>
+<span id="cb39-11"><a href="cov.html#cb39-11" aria-hidden="true"></a>  Y    =<span class="st"> </span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span><span class="kw">EPS</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span>
+<span id="cb39-12"><a href="cov.html#cb39-12" aria-hidden="true"></a></span>
+<span id="cb39-13"><a href="cov.html#cb39-13" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)\index{\<span class="op">$</span>THETA}</span>
+<span id="cb39-14"><a href="cov.html#cb39-14" aria-hidden="true"></a><span class="op">$</span>OMEGA <span class="kw">BLOCK</span>(<span class="dv">3</span>)\index{\<span class="op">$</span>OMEGA}\index{\<span class="op">$</span>OMEGA BLOCK}</span>
+<span id="cb39-15"><a href="cov.html#cb39-15" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
+<span id="cb39-16"><a href="cov.html#cb39-16" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
+<span id="cb39-17"><a href="cov.html#cb39-17" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
+<span id="cb39-18"><a href="cov.html#cb39-18" aria-hidden="true"></a><span class="op">$</span>SIGMA <span class="fl">0.1</span>  <span class="fl">0.1</span>\index{\<span class="op">$</span>SIGMA}</span>
+<span id="cb39-19"><a href="cov.html#cb39-19" aria-hidden="true"></a><span class="op">$</span>EST MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC\index{\<span class="op">$</span><span class="kw">ESTIMATION</span> (\<span class="op">$</span>EST)}\index{POSTHOC}</span>
+<span id="cb39-20"><a href="cov.html#cb39-20" aria-hidden="true"></a><span class="op">$</span>COV PRINT=ERS\index{\<span class="op">$</span><span class="kw">COVARIANCE</span> (\<span class="op">$</span>COV, \<span class="op">$</span>COVAR)}\index{PRINT=E}</span>
+<span id="cb39-21"><a href="cov.html#cb39-21" aria-hidden="true"></a><span class="op">$</span>TAB ID TIME IPRE CWRES\index{CWRES}\index{ID}\index{RES}\index{TIME}\index{WRES}</span>
+<span id="cb39-22"><a href="cov.html#cb39-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER\index{FILE=}\index{NOPRINT}\index{ONEHEADER}</span>
+<span id="cb39-23"><a href="cov.html#cb39-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)\index{ID}</span>
+<span id="cb39-24"><a href="cov.html#cb39-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY\index{FILE=}\index{FIRSTONLY}\index{NOAPPEND}\index{ONEHEADER}</span></code></pre></div>
 <p>위의 $COV STEP에 의해 생성된 부분은 별첨 1과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
 <p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.</p>
 <p>$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
@@ -421,11 +422,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="nonmem-document" class="section level2" number="14.2">
 <h2><span class="header-section-number">14.2</span> NONMEM document</h2>
 <p>NONMEM User’s guide와 help file에는 $COV를 다음과 같이 설명한다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
-<pre><code>$COVARIANCE
+<pre><code>$COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
 
- DISCUSSION:
+ DISCUSSION:\index{SS}
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari
+ This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -433,10 +434,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be
+      ces,  respectively.)   With  MATRIX=R the standard errors will be\index{standard errors of the estimates / 추정값의 표준오차}
       more consistent with other nonlinear regression  software  imple-
       mentations.
 
@@ -501,54 +502,54 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <div id="r에서의-구현" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> R에서의 구현</h2>
 <p><a href="cov.html#actual-example">14.1</a>의 예제를 R로 풀이하면 다음과 같다. 우선 CRAN에 올라와 있는 nmw package를 설치한다. <span class="citation">(Bae <a href="#ref-R-nmw" role="doc-biblioref">2018</a>)</span></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cov.html#cb38-1" aria-hidden="true"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(nmw)) <span class="kw">install.packages</span>(<span class="st">&quot;nmw&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cov.html#cb41-1" aria-hidden="true"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(nmw)) <span class="kw">install.packages</span>(<span class="st">&quot;nmw&quot;</span>)</span></code></pre></div>
 <p><code>nmw::CovStep()</code> 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cov.html#cb39-1" aria-hidden="true"></a><span class="co"># nmw::CovStep</span></span>
-<span id="cb39-2"><a href="cov.html#cb39-2" aria-hidden="true"></a><span class="cf">function</span> () </span>
-<span id="cb39-3"><a href="cov.html#cb39-3" aria-hidden="true"></a>{</span>
-<span id="cb39-4"><a href="cov.html#cb39-4" aria-hidden="true"></a>  e<span class="op">$</span>STEP =<span class="st"> &quot;COV&quot;</span></span>
-<span id="cb39-5"><a href="cov.html#cb39-5" aria-hidden="true"></a>  StartTime =<span class="st"> </span><span class="kw">Sys.time</span>()</span>
-<span id="cb39-6"><a href="cov.html#cb39-6" aria-hidden="true"></a>  Rmat =<span class="st"> </span><span class="kw">hessian</span>(Obj, e<span class="op">$</span>FinalPara)<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb39-7"><a href="cov.html#cb39-7" aria-hidden="true"></a>  Smat =<span class="st"> </span><span class="kw">CalcSmat</span>()</span>
-<span id="cb39-8"><a href="cov.html#cb39-8" aria-hidden="true"></a>  <span class="cf">if</span> (<span class="kw">is.nan</span>(Smat[<span class="dv">1</span>, <span class="dv">1</span>])) </span>
-<span id="cb39-9"><a href="cov.html#cb39-9" aria-hidden="true"></a>    <span class="kw">stop</span>(<span class="st">&quot;Error - NaN produced&quot;</span>)</span>
-<span id="cb39-10"><a href="cov.html#cb39-10" aria-hidden="true"></a>  invR =<span class="st"> </span><span class="kw">solve</span>(Rmat)</span>
-<span id="cb39-11"><a href="cov.html#cb39-11" aria-hidden="true"></a>  Cov =<span class="st"> </span>invR <span class="op">%*%</span><span class="st"> </span>Smat <span class="op">%*%</span><span class="st"> </span>invR</span>
-<span id="cb39-12"><a href="cov.html#cb39-12" aria-hidden="true"></a>  SE =<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(Cov))</span>
-<span id="cb39-13"><a href="cov.html#cb39-13" aria-hidden="true"></a>  Correl =<span class="st"> </span><span class="kw">cov2cor</span>(Cov)</span>
-<span id="cb39-14"><a href="cov.html#cb39-14" aria-hidden="true"></a>  InvCov =<span class="st"> </span>Rmat <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(Smat) <span class="op">%*%</span><span class="st"> </span>Rmat</span>
-<span id="cb39-15"><a href="cov.html#cb39-15" aria-hidden="true"></a>  EigenVal =<span class="st"> </span><span class="kw">sort</span>(<span class="kw">eigen</span>(Correl)<span class="op">$</span>values)</span>
-<span id="cb39-16"><a href="cov.html#cb39-16" aria-hidden="true"></a>  RunTime =<span class="st"> </span><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), StartTime)</span>
-<span id="cb39-17"><a href="cov.html#cb39-17" aria-hidden="true"></a>  Result =<span class="st"> </span><span class="kw">list</span>(RunTime, SE, Cov, Correl, InvCov, EigenVal, </span>
-<span id="cb39-18"><a href="cov.html#cb39-18" aria-hidden="true"></a>                Rmat, Smat)</span>
-<span id="cb39-19"><a href="cov.html#cb39-19" aria-hidden="true"></a>  <span class="kw">names</span>(Result) =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>, </span>
-<span id="cb39-20"><a href="cov.html#cb39-20" aria-hidden="true"></a>                       <span class="st">&quot;Covariance Matrix of Estimates&quot;</span>, </span>
-<span id="cb39-21"><a href="cov.html#cb39-21" aria-hidden="true"></a>                       <span class="st">&quot;Correlation Matrix of Estimates&quot;</span>, </span>
-<span id="cb39-22"><a href="cov.html#cb39-22" aria-hidden="true"></a>                       <span class="st">&quot;Inverse Covariance Matrix of Estimates&quot;</span>, </span>
-<span id="cb39-23"><a href="cov.html#cb39-23" aria-hidden="true"></a>                       <span class="st">&quot;Eigen Values&quot;</span>, </span>
-<span id="cb39-24"><a href="cov.html#cb39-24" aria-hidden="true"></a>                       <span class="st">&quot;R Matrix&quot;</span>, <span class="st">&quot;S Matrix&quot;</span>)</span>
-<span id="cb39-25"><a href="cov.html#cb39-25" aria-hidden="true"></a>  <span class="kw">return</span>(Result)</span>
-<span id="cb39-26"><a href="cov.html#cb39-26" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="cov.html#cb42-1" aria-hidden="true"></a><span class="co"># nmw::CovStep</span></span>
+<span id="cb42-2"><a href="cov.html#cb42-2" aria-hidden="true"></a><span class="cf">function</span> () </span>
+<span id="cb42-3"><a href="cov.html#cb42-3" aria-hidden="true"></a>{</span>
+<span id="cb42-4"><a href="cov.html#cb42-4" aria-hidden="true"></a>  e<span class="op">$</span>STEP =<span class="st"> &quot;COV&quot;</span></span>
+<span id="cb42-5"><a href="cov.html#cb42-5" aria-hidden="true"></a>  StartTime =<span class="st"> </span><span class="kw">Sys.time</span>()</span>
+<span id="cb42-6"><a href="cov.html#cb42-6" aria-hidden="true"></a>  Rmat =<span class="st"> </span><span class="kw">hessian</span>(Obj, e<span class="op">$</span>FinalPara)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb42-7"><a href="cov.html#cb42-7" aria-hidden="true"></a>  Smat =<span class="st"> </span><span class="kw">CalcSmat</span>()</span>
+<span id="cb42-8"><a href="cov.html#cb42-8" aria-hidden="true"></a>  <span class="cf">if</span> (<span class="kw">is.nan</span>(Smat[<span class="dv">1</span>, <span class="dv">1</span>])) </span>
+<span id="cb42-9"><a href="cov.html#cb42-9" aria-hidden="true"></a>    <span class="kw">stop</span>(<span class="st">&quot;Error - NaN produced&quot;</span>)</span>
+<span id="cb42-10"><a href="cov.html#cb42-10" aria-hidden="true"></a>  invR =<span class="st"> </span><span class="kw">solve</span>(Rmat)</span>
+<span id="cb42-11"><a href="cov.html#cb42-11" aria-hidden="true"></a>  Cov =<span class="st"> </span>invR <span class="op">%*%</span><span class="st"> </span>Smat <span class="op">%*%</span><span class="st"> </span>invR</span>
+<span id="cb42-12"><a href="cov.html#cb42-12" aria-hidden="true"></a>  SE =<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(Cov))</span>
+<span id="cb42-13"><a href="cov.html#cb42-13" aria-hidden="true"></a>  Correl =<span class="st"> </span><span class="kw">cov2cor</span>(Cov)</span>
+<span id="cb42-14"><a href="cov.html#cb42-14" aria-hidden="true"></a>  InvCov =<span class="st"> </span>Rmat <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(Smat) <span class="op">%*%</span><span class="st"> </span>Rmat</span>
+<span id="cb42-15"><a href="cov.html#cb42-15" aria-hidden="true"></a>  EigenVal =<span class="st"> </span><span class="kw">sort</span>(<span class="kw">eigen</span>(Correl)<span class="op">$</span>values)</span>
+<span id="cb42-16"><a href="cov.html#cb42-16" aria-hidden="true"></a>  RunTime =<span class="st"> </span><span class="kw">difftime</span>(<span class="kw">Sys.time</span>(), StartTime)</span>
+<span id="cb42-17"><a href="cov.html#cb42-17" aria-hidden="true"></a>  Result =<span class="st"> </span><span class="kw">list</span>(RunTime, SE, Cov, Correl, InvCov, EigenVal, </span>
+<span id="cb42-18"><a href="cov.html#cb42-18" aria-hidden="true"></a>                Rmat, Smat)</span>
+<span id="cb42-19"><a href="cov.html#cb42-19" aria-hidden="true"></a>  <span class="kw">names</span>(Result) =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Standard Error&quot;</span>, </span>
+<span id="cb42-20"><a href="cov.html#cb42-20" aria-hidden="true"></a>                       <span class="st">&quot;Covariance Matrix of Estimates&quot;</span>, </span>
+<span id="cb42-21"><a href="cov.html#cb42-21" aria-hidden="true"></a>                       <span class="st">&quot;Correlation Matrix of Estimates&quot;</span>, </span>
+<span id="cb42-22"><a href="cov.html#cb42-22" aria-hidden="true"></a>                       <span class="st">&quot;Inverse Covariance Matrix of Estimates&quot;</span>, </span>
+<span id="cb42-23"><a href="cov.html#cb42-23" aria-hidden="true"></a>                       <span class="st">&quot;Eigen Values&quot;</span>, </span>
+<span id="cb42-24"><a href="cov.html#cb42-24" aria-hidden="true"></a>                       <span class="st">&quot;R Matrix&quot;</span>, <span class="st">&quot;S Matrix&quot;</span>)</span>
+<span id="cb42-25"><a href="cov.html#cb42-25" aria-hidden="true"></a>  <span class="kw">return</span>(Result)</span>
+<span id="cb42-26"><a href="cov.html#cb42-26" aria-hidden="true"></a>}</span></code></pre></div>
 <p>S matrix를 계산하는 internal obj functions 함수 <code>nmw::CalcSmat()</code>는 다음과 같다.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cov.html#cb40-1" aria-hidden="true"></a><span class="co"># nmw::CalcSmat</span></span>
-<span id="cb40-2"><a href="cov.html#cb40-2" aria-hidden="true"></a><span class="cf">function</span> () </span>
-<span id="cb40-3"><a href="cov.html#cb40-3" aria-hidden="true"></a>{</span>
-<span id="cb40-4"><a href="cov.html#cb40-4" aria-hidden="true"></a>  Smat =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">0</span>, e<span class="op">$</span>nPara <span class="op">*</span><span class="st"> </span>e<span class="op">$</span>nPara), <span class="dt">nrow =</span> e<span class="op">$</span>nPara, </span>
-<span id="cb40-5"><a href="cov.html#cb40-5" aria-hidden="true"></a>                <span class="dt">ncol =</span> e<span class="op">$</span>nPara)</span>
-<span id="cb40-6"><a href="cov.html#cb40-6" aria-hidden="true"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>e<span class="op">$</span>nID) {</span>
-<span id="cb40-7"><a href="cov.html#cb40-7" aria-hidden="true"></a>    e<span class="op">$</span>DATAi =<span class="st"> </span>e<span class="op">$</span>DataRef[[i]]</span>
-<span id="cb40-8"><a href="cov.html#cb40-8" aria-hidden="true"></a>    e<span class="op">$</span>ETAi =<span class="st"> </span>e<span class="op">$</span>EBE[i, e<span class="op">$</span>EtaNames]</span>
-<span id="cb40-9"><a href="cov.html#cb40-9" aria-hidden="true"></a>    e<span class="op">$</span>nReci =<span class="st"> </span>e<span class="op">$</span>Oi[i, <span class="st">&quot;nRec&quot;</span>]</span>
-<span id="cb40-10"><a href="cov.html#cb40-10" aria-hidden="true"></a>    <span class="cf">if</span> (e<span class="op">$</span>METHOD <span class="op">==</span><span class="st"> &quot;ZERO&quot;</span>) {</span>
-<span id="cb40-11"><a href="cov.html#cb40-11" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS0, e<span class="op">$</span>FinalPara)</span>
-<span id="cb40-12"><a href="cov.html#cb40-12" aria-hidden="true"></a>    }</span>
-<span id="cb40-13"><a href="cov.html#cb40-13" aria-hidden="true"></a>    <span class="cf">else</span> {</span>
-<span id="cb40-14"><a href="cov.html#cb40-14" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS1, e<span class="op">$</span>FinalPara)</span>
-<span id="cb40-15"><a href="cov.html#cb40-15" aria-hidden="true"></a>    }</span>
-<span id="cb40-16"><a href="cov.html#cb40-16" aria-hidden="true"></a>    Smat =<span class="st"> </span>Smat <span class="op">+</span><span class="st"> </span>gr <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(gr)</span>
-<span id="cb40-17"><a href="cov.html#cb40-17" aria-hidden="true"></a>  }</span>
-<span id="cb40-18"><a href="cov.html#cb40-18" aria-hidden="true"></a>  <span class="kw">return</span>(Smat<span class="op">/</span><span class="dv">4</span>)</span>
-<span id="cb40-19"><a href="cov.html#cb40-19" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cov.html#cb43-1" aria-hidden="true"></a><span class="co"># nmw::CalcSmat</span></span>
+<span id="cb43-2"><a href="cov.html#cb43-2" aria-hidden="true"></a><span class="cf">function</span> () </span>
+<span id="cb43-3"><a href="cov.html#cb43-3" aria-hidden="true"></a>{</span>
+<span id="cb43-4"><a href="cov.html#cb43-4" aria-hidden="true"></a>  Smat =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">0</span>, e<span class="op">$</span>nPara <span class="op">*</span><span class="st"> </span>e<span class="op">$</span>nPara), <span class="dt">nrow =</span> e<span class="op">$</span>nPara, </span>
+<span id="cb43-5"><a href="cov.html#cb43-5" aria-hidden="true"></a>                <span class="dt">ncol =</span> e<span class="op">$</span>nPara)</span>
+<span id="cb43-6"><a href="cov.html#cb43-6" aria-hidden="true"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>e<span class="op">$</span>nID) {\index{ID}</span>
+<span id="cb43-7"><a href="cov.html#cb43-7" aria-hidden="true"></a>    e<span class="op">$</span>DATAi =<span class="st"> </span>e<span class="op">$</span>DataRef[[i]]\index{\<span class="op">$</span>DATA}</span>
+<span id="cb43-8"><a href="cov.html#cb43-8" aria-hidden="true"></a>    e<span class="op">$</span>ETAi =<span class="st"> </span>e<span class="op">$</span>EBE[i, e<span class="op">$</span>EtaNames]</span>
+<span id="cb43-9"><a href="cov.html#cb43-9" aria-hidden="true"></a>    e<span class="op">$</span>nReci =<span class="st"> </span>e<span class="op">$</span>Oi[i, <span class="st">&quot;nRec&quot;</span>]</span>
+<span id="cb43-10"><a href="cov.html#cb43-10" aria-hidden="true"></a>    <span class="cf">if</span> (e<span class="op">$</span>METHOD <span class="op">==</span><span class="st"> &quot;ZERO&quot;</span>) {</span>
+<span id="cb43-11"><a href="cov.html#cb43-11" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS0, e<span class="op">$</span>FinalPara)</span>
+<span id="cb43-12"><a href="cov.html#cb43-12" aria-hidden="true"></a>    }</span>
+<span id="cb43-13"><a href="cov.html#cb43-13" aria-hidden="true"></a>    <span class="cf">else</span> {</span>
+<span id="cb43-14"><a href="cov.html#cb43-14" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS1, e<span class="op">$</span>FinalPara)\index{S1}</span>
+<span id="cb43-15"><a href="cov.html#cb43-15" aria-hidden="true"></a>    }</span>
+<span id="cb43-16"><a href="cov.html#cb43-16" aria-hidden="true"></a>    Smat =<span class="st"> </span>Smat <span class="op">+</span><span class="st"> </span>gr <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(gr)</span>
+<span id="cb43-17"><a href="cov.html#cb43-17" aria-hidden="true"></a>  }</span>
+<span id="cb43-18"><a href="cov.html#cb43-18" aria-hidden="true"></a>  <span class="kw">return</span>(Smat<span class="op">/</span><span class="dv">4</span>)</span>
+<span id="cb43-19"><a href="cov.html#cb43-19" aria-hidden="true"></a>}</span></code></pre></div>
 </div>
 <div id="Theoph" class="section level2" number="14.5">
 <h2><span class="header-section-number">14.5</span> Theophylline 예제 데이터셋</h2>
@@ -572,293 +573,295 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{equation}\]</span></p>
 <p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
 <p>R에서는 다음과 같은 준비 작업이 필요하다.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cov.html#cb41-1" aria-hidden="true"></a>DataAll =<span class="st"> </span>Theoph</span>
-<span id="cb41-2"><a href="cov.html#cb41-2" aria-hidden="true"></a><span class="kw">colnames</span>(DataAll) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>, <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)</span>
-<span id="cb41-3"><a href="cov.html#cb41-3" aria-hidden="true"></a>DataAll[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(DataAll[,<span class="st">&quot;ID&quot;</span>]))</span>
-<span id="cb41-4"><a href="cov.html#cb41-4" aria-hidden="true"></a></span>
-<span id="cb41-5"><a href="cov.html#cb41-5" aria-hidden="true"></a>nTheta =<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb41-6"><a href="cov.html#cb41-6" aria-hidden="true"></a>nEta =<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb41-7"><a href="cov.html#cb41-7" aria-hidden="true"></a>nEps =<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb41-8"><a href="cov.html#cb41-8" aria-hidden="true"></a></span>
-<span id="cb41-9"><a href="cov.html#cb41-9" aria-hidden="true"></a>THETAinit =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</span>
-<span id="cb41-10"><a href="cov.html#cb41-10" aria-hidden="true"></a>OMinit =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>), </span>
-<span id="cb41-11"><a href="cov.html#cb41-11" aria-hidden="true"></a>                <span class="dt">nrow=</span>nEta, <span class="dt">ncol=</span>nEta)</span>
-<span id="cb41-12"><a href="cov.html#cb41-12" aria-hidden="true"></a>SGinit =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb41-13"><a href="cov.html#cb41-13" aria-hidden="true"></a></span>
-<span id="cb41-14"><a href="cov.html#cb41-14" aria-hidden="true"></a>LB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, nTheta) <span class="co"># Lower bound</span></span>
-<span id="cb41-15"><a href="cov.html#cb41-15" aria-hidden="true"></a>UB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1000000</span>, nTheta) <span class="co"># Upper bound</span></span>
-<span id="cb41-16"><a href="cov.html#cb41-16" aria-hidden="true"></a></span>
-<span id="cb41-17"><a href="cov.html#cb41-17" aria-hidden="true"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span></span>
-<span id="cb41-18"><a href="cov.html#cb41-18" aria-hidden="true"></a><span class="st">             </span>(TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
-<span id="cb41-19"><a href="cov.html#cb41-19" aria-hidden="true"></a>			 (<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
-<span id="cb41-20"><a href="cov.html#cb41-20" aria-hidden="true"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
-<span id="cb41-21"><a href="cov.html#cb41-21" aria-hidden="true"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, </span>
-<span id="cb41-22"><a href="cov.html#cb41-22" aria-hidden="true"></a>			                <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),</span>
-<span id="cb41-23"><a href="cov.html#cb41-23" aria-hidden="true"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
-<span id="cb41-24"><a href="cov.html#cb41-24" aria-hidden="true"></a></span>
-<span id="cb41-25"><a href="cov.html#cb41-25" aria-hidden="true"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
-<span id="cb41-26"><a href="cov.html#cb41-26" aria-hidden="true"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
-<span id="cb41-27"><a href="cov.html#cb41-27" aria-hidden="true"></a>          <span class="dt">func=</span><span class="ot">TRUE</span>)</span>
-<span id="cb41-28"><a href="cov.html#cb41-28" aria-hidden="true"></a></span>
-<span id="cb41-29"><a href="cov.html#cb41-29" aria-hidden="true"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE</span></span>
-<span id="cb41-30"><a href="cov.html#cb41-30" aria-hidden="true"></a>{</span>
-<span id="cb41-31"><a href="cov.html#cb41-31" aria-hidden="true"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, </span>
-<span id="cb41-32"><a href="cov.html#cb41-32" aria-hidden="true"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])</span>
-<span id="cb41-33"><a href="cov.html#cb41-33" aria-hidden="true"></a>  Gres =<span class="st"> </span><span class="kw">attr</span>(FGDres, <span class="st">&quot;gradient&quot;</span>)</span>
-<span id="cb41-34"><a href="cov.html#cb41-34" aria-hidden="true"></a>  Hres =<span class="st"> </span><span class="kw">attr</span>(<span class="kw">H</span>(FGDres, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;gradient&quot;</span>)</span>
-<span id="cb41-35"><a href="cov.html#cb41-35" aria-hidden="true"></a>  Res =<span class="st"> </span><span class="kw">cbind</span>(FGDres, Gres, Hres)</span>
-<span id="cb41-36"><a href="cov.html#cb41-36" aria-hidden="true"></a>  <span class="kw">colnames</span>(Res) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;H1&quot;</span>, <span class="st">&quot;H2&quot;</span>)</span>
-<span id="cb41-37"><a href="cov.html#cb41-37" aria-hidden="true"></a>  <span class="kw">return</span>(Res)</span>
-<span id="cb41-38"><a href="cov.html#cb41-38" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cov.html#cb44-1" aria-hidden="true"></a>DataAll =<span class="st"> </span>Theoph</span>
+<span id="cb44-2"><a href="cov.html#cb44-2" aria-hidden="true"></a><span class="kw">colnames</span>(DataAll) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>, <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)\index{ID}\index{TIME}</span>
+<span id="cb44-3"><a href="cov.html#cb44-3" aria-hidden="true"></a>DataAll[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(DataAll[,<span class="st">&quot;ID&quot;</span>]))\index{ID}</span>
+<span id="cb44-4"><a href="cov.html#cb44-4" aria-hidden="true"></a></span>
+<span id="cb44-5"><a href="cov.html#cb44-5" aria-hidden="true"></a>nTheta =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb44-6"><a href="cov.html#cb44-6" aria-hidden="true"></a>nEta =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb44-7"><a href="cov.html#cb44-7" aria-hidden="true"></a>nEps =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb44-8"><a href="cov.html#cb44-8" aria-hidden="true"></a></span>
+<span id="cb44-9"><a href="cov.html#cb44-9" aria-hidden="true"></a>THETAinit =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">50</span>, <span class="fl">0.1</span>)</span>
+<span id="cb44-10"><a href="cov.html#cb44-10" aria-hidden="true"></a>OMinit =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>), </span>
+<span id="cb44-11"><a href="cov.html#cb44-11" aria-hidden="true"></a>                <span class="dt">nrow=</span>nEta, <span class="dt">ncol=</span>nEta)</span>
+<span id="cb44-12"><a href="cov.html#cb44-12" aria-hidden="true"></a>SGinit =<span class="st"> </span><span class="kw">diag</span>(<span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb44-13"><a href="cov.html#cb44-13" aria-hidden="true"></a></span>
+<span id="cb44-14"><a href="cov.html#cb44-14" aria-hidden="true"></a>LB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, nTheta) <span class="co"># Lower bound</span></span>
+<span id="cb44-15"><a href="cov.html#cb44-15" aria-hidden="true"></a>UB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1000000</span>, nTheta) <span class="co"># Upper bound</span></span>
+<span id="cb44-16"><a href="cov.html#cb44-16" aria-hidden="true"></a></span>
+<span id="cb44-17"><a href="cov.html#cb44-17" aria-hidden="true"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span>\index{D1}</span>
+<span id="cb44-18"><a href="cov.html#cb44-18" aria-hidden="true"></a>             (TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
+<span id="cb44-19"><a href="cov.html#cb44-19" aria-hidden="true"></a>			 (<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),\index{TIME}</span>
+<span id="cb44-20"><a href="cov.html#cb44-20" aria-hidden="true"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
+<span id="cb44-21"><a href="cov.html#cb44-21" aria-hidden="true"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, </span>
+<span id="cb44-22"><a href="cov.html#cb44-22" aria-hidden="true"></a>			                <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),\index{TIME}</span>
+<span id="cb44-23"><a href="cov.html#cb44-23" aria-hidden="true"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
+<span id="cb44-24"><a href="cov.html#cb44-24" aria-hidden="true"></a></span>
+<span id="cb44-25"><a href="cov.html#cb44-25" aria-hidden="true"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), \index{S1}</span>
+<span id="cb44-26"><a href="cov.html#cb44-26" aria-hidden="true"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), \index{S1}</span>
+<span id="cb44-27"><a href="cov.html#cb44-27" aria-hidden="true"></a>          <span class="dt">func=</span><span class="ot">TRUE</span>)</span>
+<span id="cb44-28"><a href="cov.html#cb44-28" aria-hidden="true"></a></span>
+<span id="cb44-29"><a href="cov.html#cb44-29" aria-hidden="true"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{D1}\index{FOCE}\index{FO}\index{PRED}</span></span>
+<span id="cb44-30"><a href="cov.html#cb44-30" aria-hidden="true"></a>{</span>
+<span id="cb44-31"><a href="cov.html#cb44-31" aria-hidden="true"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, \index{D1}</span>
+<span id="cb44-32"><a href="cov.html#cb44-32" aria-hidden="true"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])\index{TIME}</span>
+<span id="cb44-33"><a href="cov.html#cb44-33" aria-hidden="true"></a>  Gres =<span class="st"> </span><span class="kw">attr</span>(FGDres, <span class="st">&quot;gradient&quot;</span>)</span>
+<span id="cb44-34"><a href="cov.html#cb44-34" aria-hidden="true"></a>  Hres =<span class="st"> </span><span class="kw">attr</span>(<span class="kw">H</span>(FGDres, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;gradient&quot;</span>)</span>
+<span id="cb44-35"><a href="cov.html#cb44-35" aria-hidden="true"></a>  Res =<span class="st"> </span><span class="kw">cbind</span>(FGDres, Gres, Hres)</span>
+<span id="cb44-36"><a href="cov.html#cb44-36" aria-hidden="true"></a>  <span class="kw">colnames</span>(Res) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;G1&quot;</span>, <span class="st">&quot;G2&quot;</span>, <span class="st">&quot;G3&quot;</span>, <span class="st">&quot;H1&quot;</span>, <span class="st">&quot;H2&quot;</span>)</span>
+<span id="cb44-37"><a href="cov.html#cb44-37" aria-hidden="true"></a>  <span class="kw">return</span>(Res)</span>
+<span id="cb44-38"><a href="cov.html#cb44-38" aria-hidden="true"></a>}</span></code></pre></div>
 <p></p>
 <p>위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 <strong>nmtran</strong>이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.</p>
 <p>이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="cov.html#cb42-1" aria-hidden="true"></a><span class="kw">library</span>(nmw)</span>
-<span id="cb42-2"><a href="cov.html#cb42-2" aria-hidden="true"></a><span class="co"># First Order Approximation Method</span></span>
-<span id="cb42-3"><a href="cov.html#cb42-3" aria-hidden="true"></a><span class="kw">InitStep</span>(DataAll, <span class="dt">THETAinit=</span>THETAinit, <span class="dt">OMinit=</span>OMinit, <span class="dt">SGinit=</span>SGinit, </span>
-<span id="cb42-4"><a href="cov.html#cb42-4" aria-hidden="true"></a>         <span class="dt">LB=</span>LB, <span class="dt">UB=</span>UB, <span class="dt">Pred=</span>PRED1, <span class="dt">METHOD=</span><span class="st">&quot;ZERO&quot;</span>)</span>
-<span id="cb42-5"><a href="cov.html#cb42-5" aria-hidden="true"></a>(<span class="dt">EstRes1 =</span> <span class="kw">EstStep</span>())</span>
-<span id="cb42-6"><a href="cov.html#cb42-6" aria-hidden="true"></a><span class="co">## $`Initial OFV`</span></span>
-<span id="cb42-7"><a href="cov.html#cb42-7" aria-hidden="true"></a><span class="co">## [1] 141.3076</span></span>
-<span id="cb42-8"><a href="cov.html#cb42-8" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-9"><a href="cov.html#cb42-9" aria-hidden="true"></a><span class="co">## $Time</span></span>
-<span id="cb42-10"><a href="cov.html#cb42-10" aria-hidden="true"></a><span class="co">## Time difference of 2.999814 secs</span></span>
-<span id="cb42-11"><a href="cov.html#cb42-11" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-12"><a href="cov.html#cb42-12" aria-hidden="true"></a><span class="co">## $Optim</span></span>
-<span id="cb42-13"><a href="cov.html#cb42-13" aria-hidden="true"></a><span class="co">## $Optim$par</span></span>
-<span id="cb42-14"><a href="cov.html#cb42-14" aria-hidden="true"></a><span class="co">##  [1]  0.560417594 -0.167835388  0.148962362  0.995143048  0.056166719</span></span>
-<span id="cb42-15"><a href="cov.html#cb42-15" aria-hidden="true"></a><span class="co">##  [6]  0.151227211 -1.032468525  0.005776729  0.110936464 -0.956899772</span></span>
-<span id="cb42-16"><a href="cov.html#cb42-16" aria-hidden="true"></a><span class="co">## [11] -0.205559310</span></span>
-<span id="cb42-17"><a href="cov.html#cb42-17" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-18"><a href="cov.html#cb42-18" aria-hidden="true"></a><span class="co">## $Optim$value</span></span>
-<span id="cb42-19"><a href="cov.html#cb42-19" aria-hidden="true"></a><span class="co">## [1] 57.32106</span></span>
-<span id="cb42-20"><a href="cov.html#cb42-20" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-21"><a href="cov.html#cb42-21" aria-hidden="true"></a><span class="co">## $Optim$counts</span></span>
-<span id="cb42-22"><a href="cov.html#cb42-22" aria-hidden="true"></a><span class="co">## function gradient </span></span>
-<span id="cb42-23"><a href="cov.html#cb42-23" aria-hidden="true"></a><span class="co">##       74       74 </span></span>
-<span id="cb42-24"><a href="cov.html#cb42-24" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-25"><a href="cov.html#cb42-25" aria-hidden="true"></a><span class="co">## $Optim$convergence</span></span>
-<span id="cb42-26"><a href="cov.html#cb42-26" aria-hidden="true"></a><span class="co">## [1] 0</span></span>
-<span id="cb42-27"><a href="cov.html#cb42-27" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-28"><a href="cov.html#cb42-28" aria-hidden="true"></a><span class="co">## $Optim$message</span></span>
-<span id="cb42-29"><a href="cov.html#cb42-29" aria-hidden="true"></a><span class="co">## [1] &quot;CONVERGENCE: REL_REDUCTION_OF_F &lt;= FACTR*EPSMCH&quot;</span></span>
-<span id="cb42-30"><a href="cov.html#cb42-30" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-31"><a href="cov.html#cb42-31" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb42-32"><a href="cov.html#cb42-32" aria-hidden="true"></a><span class="co">## $`Final Estimates`</span></span>
-<span id="cb42-33"><a href="cov.html#cb42-33" aria-hidden="true"></a><span class="co">##  [1]  3.16946754 38.25213460  0.10501808  1.19823325  0.13747849</span></span>
-<span id="cb42-34"><a href="cov.html#cb42-34" aria-hidden="true"></a><span class="co">##  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782</span></span>
-<span id="cb42-35"><a href="cov.html#cb42-35" aria-hidden="true"></a><span class="co">## [11]  0.05427434</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cov.html#cb45-1" aria-hidden="true"></a><span class="kw">library</span>(nmw)</span>
+<span id="cb45-2"><a href="cov.html#cb45-2" aria-hidden="true"></a><span class="co"># First Order Approximation Method</span></span>
+<span id="cb45-3"><a href="cov.html#cb45-3" aria-hidden="true"></a><span class="kw">InitStep</span>(DataAll, <span class="dt">THETAinit=</span>THETAinit, <span class="dt">OMinit=</span>OMinit, <span class="dt">SGinit=</span>SGinit, </span>
+<span id="cb45-4"><a href="cov.html#cb45-4" aria-hidden="true"></a>         <span class="dt">LB=</span>LB, <span class="dt">UB=</span>UB, <span class="dt">Pred=</span>PRED1, <span class="dt">METHOD=</span><span class="st">&quot;ZERO&quot;</span>)\index{D1}\index{PRED}</span>
+<span id="cb45-5"><a href="cov.html#cb45-5" aria-hidden="true"></a>(<span class="dt">EstRes1 =</span> <span class="kw">EstStep</span>())</span>
+<span id="cb45-6"><a href="cov.html#cb45-6" aria-hidden="true"></a><span class="co">## $`Initial OFV`</span></span>
+<span id="cb45-7"><a href="cov.html#cb45-7" aria-hidden="true"></a><span class="co">## [1] 141.3076</span></span>
+<span id="cb45-8"><a href="cov.html#cb45-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-9"><a href="cov.html#cb45-9" aria-hidden="true"></a><span class="co">## $Time</span></span>
+<span id="cb45-10"><a href="cov.html#cb45-10" aria-hidden="true"></a><span class="co">## Time difference of 2.999814 secs</span></span>
+<span id="cb45-11"><a href="cov.html#cb45-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-12"><a href="cov.html#cb45-12" aria-hidden="true"></a><span class="co">## $Optim</span></span>
+<span id="cb45-13"><a href="cov.html#cb45-13" aria-hidden="true"></a><span class="co">## $Optim$par</span></span>
+<span id="cb45-14"><a href="cov.html#cb45-14" aria-hidden="true"></a><span class="co">##  [1]  0.560417594 -0.167835388  0.148962362  0.995143048  0.056166719</span></span>
+<span id="cb45-15"><a href="cov.html#cb45-15" aria-hidden="true"></a><span class="co">##  [6]  0.151227211 -1.032468525  0.005776729  0.110936464 -0.956899772</span></span>
+<span id="cb45-16"><a href="cov.html#cb45-16" aria-hidden="true"></a><span class="co">## [11] -0.205559310</span></span>
+<span id="cb45-17"><a href="cov.html#cb45-17" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-18"><a href="cov.html#cb45-18" aria-hidden="true"></a><span class="co">## $Optim$value</span></span>
+<span id="cb45-19"><a href="cov.html#cb45-19" aria-hidden="true"></a><span class="co">## [1] 57.32106</span></span>
+<span id="cb45-20"><a href="cov.html#cb45-20" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-21"><a href="cov.html#cb45-21" aria-hidden="true"></a><span class="co">## $Optim$counts</span></span>
+<span id="cb45-22"><a href="cov.html#cb45-22" aria-hidden="true"></a><span class="co">## function gradient </span></span>
+<span id="cb45-23"><a href="cov.html#cb45-23" aria-hidden="true"></a><span class="co">##       74       74 </span></span>
+<span id="cb45-24"><a href="cov.html#cb45-24" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-25"><a href="cov.html#cb45-25" aria-hidden="true"></a><span class="co">## $Optim$convergence</span></span>
+<span id="cb45-26"><a href="cov.html#cb45-26" aria-hidden="true"></a><span class="co">## [1] 0</span></span>
+<span id="cb45-27"><a href="cov.html#cb45-27" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-28"><a href="cov.html#cb45-28" aria-hidden="true"></a><span class="co">## $Optim$message</span></span>
+<span id="cb45-29"><a href="cov.html#cb45-29" aria-hidden="true"></a><span class="co">## [1] &quot;CONVERGENCE: REL_REDUCTION_OF_F &lt;= FACTR*EPSMCH&quot;</span></span>
+<span id="cb45-30"><a href="cov.html#cb45-30" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-31"><a href="cov.html#cb45-31" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-32"><a href="cov.html#cb45-32" aria-hidden="true"></a><span class="co">## $`Final Estimates`</span></span>
+<span id="cb45-33"><a href="cov.html#cb45-33" aria-hidden="true"></a><span class="co">##  [1]  3.16946754 38.25213460  0.10501808  1.19823325  0.13747849</span></span>
+<span id="cb45-34"><a href="cov.html#cb45-34" aria-hidden="true"></a><span class="co">##  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782</span></span>
+<span id="cb45-35"><a href="cov.html#cb45-35" aria-hidden="true"></a><span class="co">## [11]  0.05427434</span></span></code></pre></div>
 <p><code>InitStep()</code>과 <code>EstStep()</code>을 마친 후 <code>CovStep()</code>을 실행하면 아래와 같은 표준오차와 분산 행렬을 계산할 수 있다.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cov.html#cb43-1" aria-hidden="true"></a>(<span class="dt">CovRes1 =</span> <span class="kw">CovStep</span>())</span>
-<span id="cb43-2"><a href="cov.html#cb43-2" aria-hidden="true"></a><span class="co">## $Time</span></span>
-<span id="cb43-3"><a href="cov.html#cb43-3" aria-hidden="true"></a><span class="co">## Time difference of 1.0468 secs</span></span>
-<span id="cb43-4"><a href="cov.html#cb43-4" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-5"><a href="cov.html#cb43-5" aria-hidden="true"></a><span class="co">## $`Standard Error`</span></span>
-<span id="cb43-6"><a href="cov.html#cb43-6" aria-hidden="true"></a><span class="co">##  [1] 0.641076544 1.685217844 0.023072024 0.420617306 0.082197497</span></span>
-<span id="cb43-7"><a href="cov.html#cb43-7" aria-hidden="true"></a><span class="co">##  [6] 0.019812976 0.340273208 0.023052142 0.289524327 0.003576926</span></span>
-<span id="cb43-8"><a href="cov.html#cb43-8" aria-hidden="true"></a><span class="co">## [11] 0.032078283</span></span>
-<span id="cb43-9"><a href="cov.html#cb43-9" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-10"><a href="cov.html#cb43-10" aria-hidden="true"></a><span class="co">## $`Covariance Matrix of Estimates`</span></span>
-<span id="cb43-11"><a href="cov.html#cb43-11" aria-hidden="true"></a><span class="co">##                [,1]         [,2]          [,3]          [,4]          [,5]</span></span>
-<span id="cb43-12"><a href="cov.html#cb43-12" aria-hidden="true"></a><span class="co">##  [1,]  0.4109791347  0.339158144  5.746694e-03  0.2058089645  2.003772e-03</span></span>
-<span id="cb43-13"><a href="cov.html#cb43-13" aria-hidden="true"></a><span class="co">##  [2,]  0.3391581437  2.839959182  5.032613e-03  0.3376028346  3.490465e-02</span></span>
-<span id="cb43-14"><a href="cov.html#cb43-14" aria-hidden="true"></a><span class="co">##  [3,]  0.0057466939  0.005032613  5.323183e-04  0.0016294512 -1.041991e-03</span></span>
-<span id="cb43-15"><a href="cov.html#cb43-15" aria-hidden="true"></a><span class="co">##  [4,]  0.2058089645  0.337602835  1.629451e-03  0.1769189182  1.951490e-02</span></span>
-<span id="cb43-16"><a href="cov.html#cb43-16" aria-hidden="true"></a><span class="co">##  [5,]  0.0020037724  0.034904655 -1.041991e-03  0.0195149026  6.756428e-03</span></span>
-<span id="cb43-17"><a href="cov.html#cb43-17" aria-hidden="true"></a><span class="co">##  [6,] -0.0021925236  0.012804811 -2.503963e-04  0.0032072246  1.504690e-03</span></span>
-<span id="cb43-18"><a href="cov.html#cb43-18" aria-hidden="true"></a><span class="co">##  [7,]  0.1215890847  0.149089319  7.111900e-03  0.0575731487 -1.010198e-02</span></span>
-<span id="cb43-19"><a href="cov.html#cb43-19" aria-hidden="true"></a><span class="co">##  [8,]  0.0009971098  0.023865634  6.271266e-05  0.0042158445  8.584714e-04</span></span>
-<span id="cb43-20"><a href="cov.html#cb43-20" aria-hidden="true"></a><span class="co">##  [9,]  0.0669924083  0.057326151  6.226096e-03  0.0179862543 -1.309239e-02</span></span>
-<span id="cb43-21"><a href="cov.html#cb43-21" aria-hidden="true"></a><span class="co">## [10,]  0.0010500117  0.001807746  5.805488e-05  0.0005143569 -7.516774e-05</span></span>
-<span id="cb43-22"><a href="cov.html#cb43-22" aria-hidden="true"></a><span class="co">## [11,] -0.0049728997 -0.009950377 -4.790610e-04 -0.0010145003  9.532948e-04</span></span>
-<span id="cb43-23"><a href="cov.html#cb43-23" aria-hidden="true"></a><span class="co">##                [,6]          [,7]         [,8]          [,9]         [,10]</span></span>
-<span id="cb43-24"><a href="cov.html#cb43-24" aria-hidden="true"></a><span class="co">##  [1,] -2.192524e-03  0.1215890847 9.971098e-04  0.0669924083  1.050012e-03</span></span>
-<span id="cb43-25"><a href="cov.html#cb43-25" aria-hidden="true"></a><span class="co">##  [2,]  1.280481e-02  0.1490893190 2.386563e-02  0.0573261514  1.807746e-03</span></span>
-<span id="cb43-26"><a href="cov.html#cb43-26" aria-hidden="true"></a><span class="co">##  [3,] -2.503963e-04  0.0071119003 6.271266e-05  0.0062260963  5.805488e-05</span></span>
-<span id="cb43-27"><a href="cov.html#cb43-27" aria-hidden="true"></a><span class="co">##  [4,]  3.207225e-03  0.0575731487 4.215844e-03  0.0179862543  5.143569e-04</span></span>
-<span id="cb43-28"><a href="cov.html#cb43-28" aria-hidden="true"></a><span class="co">##  [5,]  1.504690e-03 -0.0101019780 8.584714e-04 -0.0130923877 -7.516774e-05</span></span>
-<span id="cb43-29"><a href="cov.html#cb43-29" aria-hidden="true"></a><span class="co">##  [6,]  3.925540e-04 -0.0028272756 2.326326e-04 -0.0032697941 -2.051327e-05</span></span>
-<span id="cb43-30"><a href="cov.html#cb43-30" aria-hidden="true"></a><span class="co">##  [7,] -2.827276e-03  0.1157858558 3.116262e-03  0.0940102394  9.767199e-04</span></span>
-<span id="cb43-31"><a href="cov.html#cb43-31" aria-hidden="true"></a><span class="co">##  [8,]  2.326326e-04  0.0031162617 5.314013e-04  0.0018656807  2.786064e-05</span></span>
-<span id="cb43-32"><a href="cov.html#cb43-32" aria-hidden="true"></a><span class="co">##  [9,] -3.269794e-03  0.0940102394 1.865681e-03  0.0838243357  8.055388e-04</span></span>
-<span id="cb43-33"><a href="cov.html#cb43-33" aria-hidden="true"></a><span class="co">## [10,] -2.051327e-05  0.0009767199 2.786064e-05  0.0008055388  1.279440e-05</span></span>
-<span id="cb43-34"><a href="cov.html#cb43-34" aria-hidden="true"></a><span class="co">## [11,]  1.806783e-04 -0.0038608273 2.199601e-04 -0.0033970159 -2.824858e-05</span></span>
-<span id="cb43-35"><a href="cov.html#cb43-35" aria-hidden="true"></a><span class="co">##               [,11]</span></span>
-<span id="cb43-36"><a href="cov.html#cb43-36" aria-hidden="true"></a><span class="co">##  [1,] -4.972900e-03</span></span>
-<span id="cb43-37"><a href="cov.html#cb43-37" aria-hidden="true"></a><span class="co">##  [2,] -9.950377e-03</span></span>
-<span id="cb43-38"><a href="cov.html#cb43-38" aria-hidden="true"></a><span class="co">##  [3,] -4.790610e-04</span></span>
-<span id="cb43-39"><a href="cov.html#cb43-39" aria-hidden="true"></a><span class="co">##  [4,] -1.014500e-03</span></span>
-<span id="cb43-40"><a href="cov.html#cb43-40" aria-hidden="true"></a><span class="co">##  [5,]  9.532948e-04</span></span>
-<span id="cb43-41"><a href="cov.html#cb43-41" aria-hidden="true"></a><span class="co">##  [6,]  1.806783e-04</span></span>
-<span id="cb43-42"><a href="cov.html#cb43-42" aria-hidden="true"></a><span class="co">##  [7,] -3.860827e-03</span></span>
-<span id="cb43-43"><a href="cov.html#cb43-43" aria-hidden="true"></a><span class="co">##  [8,]  2.199601e-04</span></span>
-<span id="cb43-44"><a href="cov.html#cb43-44" aria-hidden="true"></a><span class="co">##  [9,] -3.397016e-03</span></span>
-<span id="cb43-45"><a href="cov.html#cb43-45" aria-hidden="true"></a><span class="co">## [10,] -2.824858e-05</span></span>
-<span id="cb43-46"><a href="cov.html#cb43-46" aria-hidden="true"></a><span class="co">## [11,]  1.029016e-03</span></span>
-<span id="cb43-47"><a href="cov.html#cb43-47" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-48"><a href="cov.html#cb43-48" aria-hidden="true"></a><span class="co">## $`Correlation Matrix of Estimates`</span></span>
-<span id="cb43-49"><a href="cov.html#cb43-49" aria-hidden="true"></a><span class="co">##              [,1]       [,2]       [,3]        [,4]        [,5]       [,6]</span></span>
-<span id="cb43-50"><a href="cov.html#cb43-50" aria-hidden="true"></a><span class="co">##  [1,]  1.00000000  0.3139325  0.3885281  0.76325079  0.03802594 -0.1726174</span></span>
-<span id="cb43-51"><a href="cov.html#cb43-51" aria-hidden="true"></a><span class="co">##  [2,]  0.31393253  1.0000000  0.1294350  0.47628061  0.25198153  0.3835018</span></span>
-<span id="cb43-52"><a href="cov.html#cb43-52" aria-hidden="true"></a><span class="co">##  [3,]  0.38852814  0.1294350  1.0000000  0.16790689 -0.54943908 -0.5477629</span></span>
-<span id="cb43-53"><a href="cov.html#cb43-53" aria-hidden="true"></a><span class="co">##  [4,]  0.76325079  0.4762806  0.1679069  1.00000000  0.56444374  0.3848509</span></span>
-<span id="cb43-54"><a href="cov.html#cb43-54" aria-hidden="true"></a><span class="co">##  [5,]  0.03802594  0.2519815 -0.5494391  0.56444374  1.00000000  0.9239295</span></span>
-<span id="cb43-55"><a href="cov.html#cb43-55" aria-hidden="true"></a><span class="co">##  [6,] -0.17261745  0.3835018 -0.5477629  0.38485092  0.92392947  1.0000000</span></span>
-<span id="cb43-56"><a href="cov.html#cb43-56" aria-hidden="true"></a><span class="co">##  [7,]  0.55738714  0.2599936  0.9058832  0.40225837 -0.36117699 -0.4193635</span></span>
-<span id="cb43-57"><a href="cov.html#cb43-57" aria-hidden="true"></a><span class="co">##  [8,]  0.06747173  0.6143355  0.1179121  0.43479661  0.45306025  0.5093422</span></span>
-<span id="cb43-58"><a href="cov.html#cb43-58" aria-hidden="true"></a><span class="co">##  [9,]  0.36093637  0.1174929  0.9320626  0.14769593 -0.55014251 -0.5700142</span></span>
-<span id="cb43-59"><a href="cov.html#cb43-59" aria-hidden="true"></a><span class="co">## [10,]  0.45790382  0.2998965  0.7034659  0.34187510 -0.25566008 -0.2894510</span></span>
-<span id="cb43-60"><a href="cov.html#cb43-60" aria-hidden="true"></a><span class="co">## [11,] -0.24181804 -0.1840655 -0.6472826 -0.07518893  0.36154098  0.2842792</span></span>
-<span id="cb43-61"><a href="cov.html#cb43-61" aria-hidden="true"></a><span class="co">##             [,7]       [,8]       [,9]      [,10]       [,11]</span></span>
-<span id="cb43-62"><a href="cov.html#cb43-62" aria-hidden="true"></a><span class="co">##  [1,]  0.5573871 0.06747173  0.3609364  0.4579038 -0.24181804</span></span>
-<span id="cb43-63"><a href="cov.html#cb43-63" aria-hidden="true"></a><span class="co">##  [2,]  0.2599936 0.61433553  0.1174929  0.2998965 -0.18406548</span></span>
-<span id="cb43-64"><a href="cov.html#cb43-64" aria-hidden="true"></a><span class="co">##  [3,]  0.9058832 0.11791205  0.9320626  0.7034659 -0.64728263</span></span>
-<span id="cb43-65"><a href="cov.html#cb43-65" aria-hidden="true"></a><span class="co">##  [4,]  0.4022584 0.43479661  0.1476959  0.3418751 -0.07518893</span></span>
-<span id="cb43-66"><a href="cov.html#cb43-66" aria-hidden="true"></a><span class="co">##  [5,] -0.3611770 0.45306025 -0.5501425 -0.2556601  0.36154098</span></span>
-<span id="cb43-67"><a href="cov.html#cb43-67" aria-hidden="true"></a><span class="co">##  [6,] -0.4193635 0.50934216 -0.5700142 -0.2894510  0.28427925</span></span>
-<span id="cb43-68"><a href="cov.html#cb43-68" aria-hidden="true"></a><span class="co">##  [7,]  1.0000000 0.39727833  0.9542504  0.8024764 -0.35370524</span></span>
-<span id="cb43-69"><a href="cov.html#cb43-69" aria-hidden="true"></a><span class="co">##  [8,]  0.3972783 1.00000000  0.2795381  0.3378856  0.29745513</span></span>
-<span id="cb43-70"><a href="cov.html#cb43-70" aria-hidden="true"></a><span class="co">##  [9,]  0.9542504 0.27953807  1.0000000  0.7778421 -0.36576437</span></span>
-<span id="cb43-71"><a href="cov.html#cb43-71" aria-hidden="true"></a><span class="co">## [10,]  0.8024764 0.33788563  0.7778421  1.0000000 -0.24619292</span></span>
-<span id="cb43-72"><a href="cov.html#cb43-72" aria-hidden="true"></a><span class="co">## [11,] -0.3537052 0.29745513 -0.3657644 -0.2461929  1.00000000</span></span>
-<span id="cb43-73"><a href="cov.html#cb43-73" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-74"><a href="cov.html#cb43-74" aria-hidden="true"></a><span class="co">## $`Inverse Covariance Matrix of Estimates`</span></span>
-<span id="cb43-75"><a href="cov.html#cb43-75" aria-hidden="true"></a><span class="co">##              [,1]         [,2]        [,3]        [,4]        [,5]</span></span>
-<span id="cb43-76"><a href="cov.html#cb43-76" aria-hidden="true"></a><span class="co">##  [1,]   106.16085    -68.57396    6449.005    335.8698   -2554.409</span></span>
-<span id="cb43-77"><a href="cov.html#cb43-77" aria-hidden="true"></a><span class="co">##  [2,]   -68.57396     58.03937   -4878.746   -302.1420    2175.297</span></span>
-<span id="cb43-78"><a href="cov.html#cb43-78" aria-hidden="true"></a><span class="co">##  [3,]  6449.00514  -4878.74594  589180.809  26966.6055 -188642.065</span></span>
-<span id="cb43-79"><a href="cov.html#cb43-79" aria-hidden="true"></a><span class="co">##  [4,]   335.86981   -302.14199   26966.605   1681.5577  -11681.346</span></span>
-<span id="cb43-80"><a href="cov.html#cb43-80" aria-hidden="true"></a><span class="co">##  [5,] -2554.40932   2175.29716 -188642.065 -11681.3456   84767.297</span></span>
-<span id="cb43-81"><a href="cov.html#cb43-81" aria-hidden="true"></a><span class="co">##  [6,]  -386.87894    570.22260  -66147.099  -3404.8900   13635.511</span></span>
-<span id="cb43-82"><a href="cov.html#cb43-82" aria-hidden="true"></a><span class="co">##  [7,] -1202.16352    939.99684  -90186.464  -5086.8917   35747.140</span></span>
-<span id="cb43-83"><a href="cov.html#cb43-83" aria-hidden="true"></a><span class="co">##  [8,] 10794.57609  -8973.04621  795473.397  47387.2333 -336778.082</span></span>
-<span id="cb43-84"><a href="cov.html#cb43-84" aria-hidden="true"></a><span class="co">##  [9,]   -49.38187     87.68163  -10522.263   -442.6127    3308.451</span></span>
-<span id="cb43-85"><a href="cov.html#cb43-85" aria-hidden="true"></a><span class="co">## [10,] 11656.77324 -10122.84537  899033.055  53311.6422 -378718.161</span></span>
-<span id="cb43-86"><a href="cov.html#cb43-86" aria-hidden="true"></a><span class="co">## [11,] -1043.11500   1001.74635  -47225.438  -4879.5431   35063.038</span></span>
-<span id="cb43-87"><a href="cov.html#cb43-87" aria-hidden="true"></a><span class="co">##               [,6]         [,7]        [,8]         [,9]      [,10]</span></span>
-<span id="cb43-88"><a href="cov.html#cb43-88" aria-hidden="true"></a><span class="co">##  [1,]    -386.8789   -1202.1635   10794.576    -49.38187   11656.77</span></span>
-<span id="cb43-89"><a href="cov.html#cb43-89" aria-hidden="true"></a><span class="co">##  [2,]     570.2226     939.9968   -8973.046     87.68163  -10122.85</span></span>
-<span id="cb43-90"><a href="cov.html#cb43-90" aria-hidden="true"></a><span class="co">##  [3,]  -66147.0986  -90186.4639  795473.397 -10522.26321  899033.06</span></span>
-<span id="cb43-91"><a href="cov.html#cb43-91" aria-hidden="true"></a><span class="co">##  [4,]   -3404.8900   -5086.8917   47387.233   -442.61268   53311.64</span></span>
-<span id="cb43-92"><a href="cov.html#cb43-92" aria-hidden="true"></a><span class="co">##  [5,]   13635.5106   35747.1396 -336778.082   3308.45066 -378718.16</span></span>
-<span id="cb43-93"><a href="cov.html#cb43-93" aria-hidden="true"></a><span class="co">##  [6,]   72186.1449   10923.7488 -116902.668   2827.92008 -138707.39</span></span>
-<span id="cb43-94"><a href="cov.html#cb43-94" aria-hidden="true"></a><span class="co">##  [7,]   10923.7488   16640.0641 -149635.854    965.72182 -166637.08</span></span>
-<span id="cb43-95"><a href="cov.html#cb43-95" aria-hidden="true"></a><span class="co">##  [8,] -116902.6684 -149635.8536 1416416.077 -14025.69870 1587796.18</span></span>
-<span id="cb43-96"><a href="cov.html#cb43-96" aria-hidden="true"></a><span class="co">##  [9,]    2827.9201     965.7218  -14025.699    954.65511  -20047.21</span></span>
-<span id="cb43-97"><a href="cov.html#cb43-97" aria-hidden="true"></a><span class="co">## [10,] -138707.3931 -166637.0784 1587796.183 -20047.20949 2031529.82</span></span>
-<span id="cb43-98"><a href="cov.html#cb43-98" aria-hidden="true"></a><span class="co">## [11,]   15687.7641   14275.7793 -151936.736    935.29881 -170271.34</span></span>
-<span id="cb43-99"><a href="cov.html#cb43-99" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
-<span id="cb43-100"><a href="cov.html#cb43-100" aria-hidden="true"></a><span class="co">##  [1,]   -1043.1150</span></span>
-<span id="cb43-101"><a href="cov.html#cb43-101" aria-hidden="true"></a><span class="co">##  [2,]    1001.7464</span></span>
-<span id="cb43-102"><a href="cov.html#cb43-102" aria-hidden="true"></a><span class="co">##  [3,]  -47225.4381</span></span>
-<span id="cb43-103"><a href="cov.html#cb43-103" aria-hidden="true"></a><span class="co">##  [4,]   -4879.5431</span></span>
-<span id="cb43-104"><a href="cov.html#cb43-104" aria-hidden="true"></a><span class="co">##  [5,]   35063.0376</span></span>
-<span id="cb43-105"><a href="cov.html#cb43-105" aria-hidden="true"></a><span class="co">##  [6,]   15687.7641</span></span>
-<span id="cb43-106"><a href="cov.html#cb43-106" aria-hidden="true"></a><span class="co">##  [7,]   14275.7793</span></span>
-<span id="cb43-107"><a href="cov.html#cb43-107" aria-hidden="true"></a><span class="co">##  [8,] -151936.7362</span></span>
-<span id="cb43-108"><a href="cov.html#cb43-108" aria-hidden="true"></a><span class="co">##  [9,]     935.2988</span></span>
-<span id="cb43-109"><a href="cov.html#cb43-109" aria-hidden="true"></a><span class="co">## [10,] -170271.3406</span></span>
-<span id="cb43-110"><a href="cov.html#cb43-110" aria-hidden="true"></a><span class="co">## [11,]   28036.5550</span></span>
-<span id="cb43-111"><a href="cov.html#cb43-111" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-112"><a href="cov.html#cb43-112" aria-hidden="true"></a><span class="co">## $`Eigen Values`</span></span>
-<span id="cb43-113"><a href="cov.html#cb43-113" aria-hidden="true"></a><span class="co">##  [1] 0.0002519304 0.0096729015 0.0108358602 0.0233184643 0.0520725533</span></span>
-<span id="cb43-114"><a href="cov.html#cb43-114" aria-hidden="true"></a><span class="co">##  [6] 0.2982375053 0.5047779131 0.9114702297 1.2088053283 3.2082379737</span></span>
-<span id="cb43-115"><a href="cov.html#cb43-115" aria-hidden="true"></a><span class="co">## [11] 4.7723193401</span></span>
-<span id="cb43-116"><a href="cov.html#cb43-116" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-117"><a href="cov.html#cb43-117" aria-hidden="true"></a><span class="co">## $`R Matrix`</span></span>
-<span id="cb43-118"><a href="cov.html#cb43-118" aria-hidden="true"></a><span class="co">##              [,1]         [,2]         [,3]         [,4]         [,5]</span></span>
-<span id="cb43-119"><a href="cov.html#cb43-119" aria-hidden="true"></a><span class="co">##  [1,]   17.924787   -1.3343223  -162.767654   -4.1309683    21.546405</span></span>
-<span id="cb43-120"><a href="cov.html#cb43-120" aria-hidden="true"></a><span class="co">##  [2,]   -1.334322    0.5507357    -7.672315    0.1118322    -1.462878</span></span>
-<span id="cb43-121"><a href="cov.html#cb43-121" aria-hidden="true"></a><span class="co">##  [3,] -162.767654   -7.6723148 34333.363150   86.0269293   433.962384</span></span>
-<span id="cb43-122"><a href="cov.html#cb43-122" aria-hidden="true"></a><span class="co">##  [4,]   -4.130968    0.1118322    86.026929   28.6263094  -177.270130</span></span>
-<span id="cb43-123"><a href="cov.html#cb43-123" aria-hidden="true"></a><span class="co">##  [5,]   21.546405   -1.4628778   433.962384 -177.2701302  1930.445843</span></span>
-<span id="cb43-124"><a href="cov.html#cb43-124" aria-hidden="true"></a><span class="co">##  [6,]   10.225928  -16.5210396    13.387686  272.9370786 -4270.878832</span></span>
-<span id="cb43-125"><a href="cov.html#cb43-125" aria-hidden="true"></a><span class="co">##  [7,]  -11.022690    2.9849069   -90.741373  -52.9261900   210.709300</span></span>
-<span id="cb43-126"><a href="cov.html#cb43-126" aria-hidden="true"></a><span class="co">##  [8,]   52.304346  -18.2457139   956.482064  164.3158075 -1421.957500</span></span>
-<span id="cb43-127"><a href="cov.html#cb43-127" aria-hidden="true"></a><span class="co">##  [9,]    7.044855   -2.2338946 -1350.939646   24.4536958   -43.763546</span></span>
-<span id="cb43-128"><a href="cov.html#cb43-128" aria-hidden="true"></a><span class="co">## [10,]  248.456482 -120.7991176 -7033.212482   50.2328789 -1013.856688</span></span>
-<span id="cb43-129"><a href="cov.html#cb43-129" aria-hidden="true"></a><span class="co">## [11,]   -1.752135   -5.2052276 -1992.414213    6.0120604   124.417556</span></span>
-<span id="cb43-130"><a href="cov.html#cb43-130" aria-hidden="true"></a><span class="co">##              [,6]        [,7]        [,8]         [,9]        [,10]</span></span>
-<span id="cb43-131"><a href="cov.html#cb43-131" aria-hidden="true"></a><span class="co">##  [1,]    10.22593  -11.022690    52.30435     7.044855    248.45648</span></span>
-<span id="cb43-132"><a href="cov.html#cb43-132" aria-hidden="true"></a><span class="co">##  [2,]   -16.52104    2.984907   -18.24571    -2.233895   -120.79912</span></span>
-<span id="cb43-133"><a href="cov.html#cb43-133" aria-hidden="true"></a><span class="co">##  [3,]    13.38769  -90.741373   956.48206 -1350.939646  -7033.21248</span></span>
-<span id="cb43-134"><a href="cov.html#cb43-134" aria-hidden="true"></a><span class="co">##  [4,]   272.93708  -52.926190   164.31581    24.453696     50.23288</span></span>
-<span id="cb43-135"><a href="cov.html#cb43-135" aria-hidden="true"></a><span class="co">##  [5,] -4270.87883  210.709300 -1421.95750   -43.763546  -1013.85669</span></span>
-<span id="cb43-136"><a href="cov.html#cb43-136" aria-hidden="true"></a><span class="co">##  [6,] 16610.43942 -139.814385  1113.59904    18.726078   4680.59998</span></span>
-<span id="cb43-137"><a href="cov.html#cb43-137" aria-hidden="true"></a><span class="co">##  [7,]  -139.81438  213.228947  -555.99366  -151.083275     96.25915</span></span>
-<span id="cb43-138"><a href="cov.html#cb43-138" aria-hidden="true"></a><span class="co">##  [8,]  1113.59904 -555.993663  4043.51428   130.794770   -555.76917</span></span>
-<span id="cb43-139"><a href="cov.html#cb43-139" aria-hidden="true"></a><span class="co">##  [9,]    18.72608 -151.083275   130.79477   236.875935    -20.42601</span></span>
-<span id="cb43-140"><a href="cov.html#cb43-140" aria-hidden="true"></a><span class="co">## [10,]  4680.59998   96.259149  -555.76917   -20.426010 192857.05263</span></span>
-<span id="cb43-141"><a href="cov.html#cb43-141" aria-hidden="true"></a><span class="co">## [11,]   -46.02961  -62.941133  -201.26760    92.656857   6568.90926</span></span>
-<span id="cb43-142"><a href="cov.html#cb43-142" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
-<span id="cb43-143"><a href="cov.html#cb43-143" aria-hidden="true"></a><span class="co">##  [1,]    -1.752135</span></span>
-<span id="cb43-144"><a href="cov.html#cb43-144" aria-hidden="true"></a><span class="co">##  [2,]    -5.205228</span></span>
-<span id="cb43-145"><a href="cov.html#cb43-145" aria-hidden="true"></a><span class="co">##  [3,] -1992.414213</span></span>
-<span id="cb43-146"><a href="cov.html#cb43-146" aria-hidden="true"></a><span class="co">##  [4,]     6.012060</span></span>
-<span id="cb43-147"><a href="cov.html#cb43-147" aria-hidden="true"></a><span class="co">##  [5,]   124.417556</span></span>
-<span id="cb43-148"><a href="cov.html#cb43-148" aria-hidden="true"></a><span class="co">##  [6,]   -46.029614</span></span>
-<span id="cb43-149"><a href="cov.html#cb43-149" aria-hidden="true"></a><span class="co">##  [7,]   -62.941133</span></span>
-<span id="cb43-150"><a href="cov.html#cb43-150" aria-hidden="true"></a><span class="co">##  [8,]  -201.267605</span></span>
-<span id="cb43-151"><a href="cov.html#cb43-151" aria-hidden="true"></a><span class="co">##  [9,]    92.656857</span></span>
-<span id="cb43-152"><a href="cov.html#cb43-152" aria-hidden="true"></a><span class="co">## [10,]  6568.909257</span></span>
-<span id="cb43-153"><a href="cov.html#cb43-153" aria-hidden="true"></a><span class="co">## [11,]  3974.804398</span></span>
-<span id="cb43-154"><a href="cov.html#cb43-154" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb43-155"><a href="cov.html#cb43-155" aria-hidden="true"></a><span class="co">## $`S Matrix`</span></span>
-<span id="cb43-156"><a href="cov.html#cb43-156" aria-hidden="true"></a><span class="co">##               [,1]         [,2]         [,3]         [,4]        [,5]</span></span>
-<span id="cb43-157"><a href="cov.html#cb43-157" aria-hidden="true"></a><span class="co">##  [1,]    78.316509   -4.6468525  -1295.13192   -11.873085   142.72165</span></span>
-<span id="cb43-158"><a href="cov.html#cb43-158" aria-hidden="true"></a><span class="co">##  [2,]    -4.646852    0.7648878     64.36589     2.623533   -28.61925</span></span>
-<span id="cb43-159"><a href="cov.html#cb43-159" aria-hidden="true"></a><span class="co">##  [3,] -1295.131915   64.3658917 183632.39790  -230.636173   840.38211</span></span>
-<span id="cb43-160"><a href="cov.html#cb43-160" aria-hidden="true"></a><span class="co">##  [4,]   -11.873085    2.6235332   -230.63617    18.368716  -171.71679</span></span>
-<span id="cb43-161"><a href="cov.html#cb43-161" aria-hidden="true"></a><span class="co">##  [5,]   142.721653  -28.6192545    840.38211  -171.716794  2005.81552</span></span>
-<span id="cb43-162"><a href="cov.html#cb43-162" aria-hidden="true"></a><span class="co">##  [6,]  -145.835176   29.4905947   9000.10289   291.779615 -3809.95407</span></span>
-<span id="cb43-163"><a href="cov.html#cb43-163" aria-hidden="true"></a><span class="co">##  [7,]   -26.707401    0.2387057   3794.27704   -19.686952    51.76139</span></span>
-<span id="cb43-164"><a href="cov.html#cb43-164" aria-hidden="true"></a><span class="co">##  [8,]    44.375129   10.7614124 -10813.66435    84.841787  -765.19107</span></span>
-<span id="cb43-165"><a href="cov.html#cb43-165" aria-hidden="true"></a><span class="co">##  [9,]    13.946014   -4.4042212  -6396.75146     3.480210    87.90129</span></span>
-<span id="cb43-166"><a href="cov.html#cb43-166" aria-hidden="true"></a><span class="co">## [10,]  2039.647982 -397.4745827  -4148.02643 -1170.279733  8916.77585</span></span>
-<span id="cb43-167"><a href="cov.html#cb43-167" aria-hidden="true"></a><span class="co">## [11,]   279.500822  -47.3111189 -60483.51062   -22.729230   670.78875</span></span>
-<span id="cb43-168"><a href="cov.html#cb43-168" aria-hidden="true"></a><span class="co">##              [,6]          [,7]         [,8]         [,9]       [,10]</span></span>
-<span id="cb43-169"><a href="cov.html#cb43-169" aria-hidden="true"></a><span class="co">##  [1,]  -145.83518   -26.7074010     44.37513    13.946014   2039.6480</span></span>
-<span id="cb43-170"><a href="cov.html#cb43-170" aria-hidden="true"></a><span class="co">##  [2,]    29.49059     0.2387057     10.76141    -4.404221   -397.4746</span></span>
-<span id="cb43-171"><a href="cov.html#cb43-171" aria-hidden="true"></a><span class="co">##  [3,]  9000.10289  3794.2770370 -10813.66435 -6396.751456  -4148.0264</span></span>
-<span id="cb43-172"><a href="cov.html#cb43-172" aria-hidden="true"></a><span class="co">##  [4,]   291.77961   -19.6869516     84.84179     3.480210  -1170.2797</span></span>
-<span id="cb43-173"><a href="cov.html#cb43-173" aria-hidden="true"></a><span class="co">##  [5,] -3809.95407    51.7613883   -765.19107    87.901295   8916.7758</span></span>
-<span id="cb43-174"><a href="cov.html#cb43-174" aria-hidden="true"></a><span class="co">##  [6,] 12023.28652   188.5688359    667.62858  -711.894529  -3829.1367</span></span>
-<span id="cb43-175"><a href="cov.html#cb43-175" aria-hidden="true"></a><span class="co">##  [7,]   188.56884   129.3349739   -292.66398  -155.764410   1796.9713</span></span>
-<span id="cb43-176"><a href="cov.html#cb43-176" aria-hidden="true"></a><span class="co">##  [8,]   667.62858  -292.6639799   1121.03185   294.247258 -10631.8774</span></span>
-<span id="cb43-177"><a href="cov.html#cb43-177" aria-hidden="true"></a><span class="co">##  [9,]  -711.89453  -155.7644099    294.24726   327.282119   1812.2113</span></span>
-<span id="cb43-178"><a href="cov.html#cb43-178" aria-hidden="true"></a><span class="co">## [10,] -3829.13667  1796.9713202 -10631.87742  1812.211286 419517.6543</span></span>
-<span id="cb43-179"><a href="cov.html#cb43-179" aria-hidden="true"></a><span class="co">## [11,] -3489.01512 -1105.9231026   2773.71160  2358.454995  18067.4267</span></span>
-<span id="cb43-180"><a href="cov.html#cb43-180" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
-<span id="cb43-181"><a href="cov.html#cb43-181" aria-hidden="true"></a><span class="co">##  [1,]    279.50082</span></span>
-<span id="cb43-182"><a href="cov.html#cb43-182" aria-hidden="true"></a><span class="co">##  [2,]    -47.31112</span></span>
-<span id="cb43-183"><a href="cov.html#cb43-183" aria-hidden="true"></a><span class="co">##  [3,] -60483.51062</span></span>
-<span id="cb43-184"><a href="cov.html#cb43-184" aria-hidden="true"></a><span class="co">##  [4,]    -22.72923</span></span>
-<span id="cb43-185"><a href="cov.html#cb43-185" aria-hidden="true"></a><span class="co">##  [5,]    670.78875</span></span>
-<span id="cb43-186"><a href="cov.html#cb43-186" aria-hidden="true"></a><span class="co">##  [6,]  -3489.01512</span></span>
-<span id="cb43-187"><a href="cov.html#cb43-187" aria-hidden="true"></a><span class="co">##  [7,]  -1105.92310</span></span>
-<span id="cb43-188"><a href="cov.html#cb43-188" aria-hidden="true"></a><span class="co">##  [8,]   2773.71160</span></span>
-<span id="cb43-189"><a href="cov.html#cb43-189" aria-hidden="true"></a><span class="co">##  [9,]   2358.45500</span></span>
-<span id="cb43-190"><a href="cov.html#cb43-190" aria-hidden="true"></a><span class="co">## [10,]  18067.42672</span></span>
-<span id="cb43-191"><a href="cov.html#cb43-191" aria-hidden="true"></a><span class="co">## [11,]  24042.66052</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="cov.html#cb46-1" aria-hidden="true"></a>(<span class="dt">CovRes1 =</span> <span class="kw">CovStep</span>())</span>
+<span id="cb46-2"><a href="cov.html#cb46-2" aria-hidden="true"></a><span class="co">## $Time</span></span>
+<span id="cb46-3"><a href="cov.html#cb46-3" aria-hidden="true"></a><span class="co">## Time difference of 1.0468 secs</span></span>
+<span id="cb46-4"><a href="cov.html#cb46-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-5"><a href="cov.html#cb46-5" aria-hidden="true"></a><span class="co">## $`Standard Error`</span></span>
+<span id="cb46-6"><a href="cov.html#cb46-6" aria-hidden="true"></a><span class="co">##  [1] 0.641076544 1.685217844 0.023072024 0.420617306 0.082197497</span></span>
+<span id="cb46-7"><a href="cov.html#cb46-7" aria-hidden="true"></a><span class="co">##  [6] 0.019812976 0.340273208 0.023052142 0.289524327 0.003576926</span></span>
+<span id="cb46-8"><a href="cov.html#cb46-8" aria-hidden="true"></a><span class="co">## [11] 0.032078283</span></span>
+<span id="cb46-9"><a href="cov.html#cb46-9" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-10"><a href="cov.html#cb46-10" aria-hidden="true"></a><span class="co">## $`Covariance Matrix of Estimates`</span></span>
+<span id="cb46-11"><a href="cov.html#cb46-11" aria-hidden="true"></a><span class="co">##                [,1]         [,2]          [,3]          [,4]          [,5]</span></span>
+<span id="cb46-12"><a href="cov.html#cb46-12" aria-hidden="true"></a><span class="co">##  [1,]  0.4109791347  0.339158144  5.746694e-03  0.2058089645  2.003772e-03</span></span>
+<span id="cb46-13"><a href="cov.html#cb46-13" aria-hidden="true"></a><span class="co">##  [2,]  0.3391581437  2.839959182  5.032613e-03  0.3376028346  3.490465e-02</span></span>
+<span id="cb46-14"><a href="cov.html#cb46-14" aria-hidden="true"></a><span class="co">##  [3,]  0.0057466939  0.005032613  5.323183e-04  0.0016294512 -1.041991e-03</span></span>
+<span id="cb46-15"><a href="cov.html#cb46-15" aria-hidden="true"></a><span class="co">##  [4,]  0.2058089645  0.337602835  1.629451e-03  0.1769189182  1.951490e-02</span></span>
+<span id="cb46-16"><a href="cov.html#cb46-16" aria-hidden="true"></a><span class="co">##  [5,]  0.0020037724  0.034904655 -1.041991e-03  0.0195149026  6.756428e-03</span></span>
+<span id="cb46-17"><a href="cov.html#cb46-17" aria-hidden="true"></a><span class="co">##  [6,] -0.0021925236  0.012804811 -2.503963e-04  0.0032072246  1.504690e-03</span></span>
+<span id="cb46-18"><a href="cov.html#cb46-18" aria-hidden="true"></a><span class="co">##  [7,]  0.1215890847  0.149089319  7.111900e-03  0.0575731487 -1.010198e-02</span></span>
+<span id="cb46-19"><a href="cov.html#cb46-19" aria-hidden="true"></a><span class="co">##  [8,]  0.0009971098  0.023865634  6.271266e-05  0.0042158445  8.584714e-04</span></span>
+<span id="cb46-20"><a href="cov.html#cb46-20" aria-hidden="true"></a><span class="co">##  [9,]  0.0669924083  0.057326151  6.226096e-03  0.0179862543 -1.309239e-02</span></span>
+<span id="cb46-21"><a href="cov.html#cb46-21" aria-hidden="true"></a><span class="co">## [10,]  0.0010500117  0.001807746  5.805488e-05  0.0005143569 -7.516774e-05</span></span>
+<span id="cb46-22"><a href="cov.html#cb46-22" aria-hidden="true"></a><span class="co">## [11,] -0.0049728997 -0.009950377 -4.790610e-04 -0.0010145003  9.532948e-04</span></span>
+<span id="cb46-23"><a href="cov.html#cb46-23" aria-hidden="true"></a><span class="co">##                [,6]          [,7]         [,8]          [,9]         [,10]</span></span>
+<span id="cb46-24"><a href="cov.html#cb46-24" aria-hidden="true"></a><span class="co">##  [1,] -2.192524e-03  0.1215890847 9.971098e-04  0.0669924083  1.050012e-03</span></span>
+<span id="cb46-25"><a href="cov.html#cb46-25" aria-hidden="true"></a><span class="co">##  [2,]  1.280481e-02  0.1490893190 2.386563e-02  0.0573261514  1.807746e-03</span></span>
+<span id="cb46-26"><a href="cov.html#cb46-26" aria-hidden="true"></a><span class="co">##  [3,] -2.503963e-04  0.0071119003 6.271266e-05  0.0062260963  5.805488e-05</span></span>
+<span id="cb46-27"><a href="cov.html#cb46-27" aria-hidden="true"></a><span class="co">##  [4,]  3.207225e-03  0.0575731487 4.215844e-03  0.0179862543  5.143569e-04</span></span>
+<span id="cb46-28"><a href="cov.html#cb46-28" aria-hidden="true"></a><span class="co">##  [5,]  1.504690e-03 -0.0101019780 8.584714e-04 -0.0130923877 -7.516774e-05</span></span>
+<span id="cb46-29"><a href="cov.html#cb46-29" aria-hidden="true"></a><span class="co">##  [6,]  3.925540e-04 -0.0028272756 2.326326e-04 -0.0032697941 -2.051327e-05</span></span>
+<span id="cb46-30"><a href="cov.html#cb46-30" aria-hidden="true"></a><span class="co">##  [7,] -2.827276e-03  0.1157858558 3.116262e-03  0.0940102394  9.767199e-04</span></span>
+<span id="cb46-31"><a href="cov.html#cb46-31" aria-hidden="true"></a><span class="co">##  [8,]  2.326326e-04  0.0031162617 5.314013e-04  0.0018656807  2.786064e-05</span></span>
+<span id="cb46-32"><a href="cov.html#cb46-32" aria-hidden="true"></a><span class="co">##  [9,] -3.269794e-03  0.0940102394 1.865681e-03  0.0838243357  8.055388e-04</span></span>
+<span id="cb46-33"><a href="cov.html#cb46-33" aria-hidden="true"></a><span class="co">## [10,] -2.051327e-05  0.0009767199 2.786064e-05  0.0008055388  1.279440e-05</span></span>
+<span id="cb46-34"><a href="cov.html#cb46-34" aria-hidden="true"></a><span class="co">## [11,]  1.806783e-04 -0.0038608273 2.199601e-04 -0.0033970159 -2.824858e-05</span></span>
+<span id="cb46-35"><a href="cov.html#cb46-35" aria-hidden="true"></a><span class="co">##               [,11]</span></span>
+<span id="cb46-36"><a href="cov.html#cb46-36" aria-hidden="true"></a><span class="co">##  [1,] -4.972900e-03</span></span>
+<span id="cb46-37"><a href="cov.html#cb46-37" aria-hidden="true"></a><span class="co">##  [2,] -9.950377e-03</span></span>
+<span id="cb46-38"><a href="cov.html#cb46-38" aria-hidden="true"></a><span class="co">##  [3,] -4.790610e-04</span></span>
+<span id="cb46-39"><a href="cov.html#cb46-39" aria-hidden="true"></a><span class="co">##  [4,] -1.014500e-03</span></span>
+<span id="cb46-40"><a href="cov.html#cb46-40" aria-hidden="true"></a><span class="co">##  [5,]  9.532948e-04</span></span>
+<span id="cb46-41"><a href="cov.html#cb46-41" aria-hidden="true"></a><span class="co">##  [6,]  1.806783e-04</span></span>
+<span id="cb46-42"><a href="cov.html#cb46-42" aria-hidden="true"></a><span class="co">##  [7,] -3.860827e-03</span></span>
+<span id="cb46-43"><a href="cov.html#cb46-43" aria-hidden="true"></a><span class="co">##  [8,]  2.199601e-04</span></span>
+<span id="cb46-44"><a href="cov.html#cb46-44" aria-hidden="true"></a><span class="co">##  [9,] -3.397016e-03</span></span>
+<span id="cb46-45"><a href="cov.html#cb46-45" aria-hidden="true"></a><span class="co">## [10,] -2.824858e-05</span></span>
+<span id="cb46-46"><a href="cov.html#cb46-46" aria-hidden="true"></a><span class="co">## [11,]  1.029016e-03</span></span>
+<span id="cb46-47"><a href="cov.html#cb46-47" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-48"><a href="cov.html#cb46-48" aria-hidden="true"></a><span class="co">## $`Correlation Matrix of Estimates`</span></span>
+<span id="cb46-49"><a href="cov.html#cb46-49" aria-hidden="true"></a><span class="co">##              [,1]       [,2]       [,3]        [,4]        [,5]       [,6]</span></span>
+<span id="cb46-50"><a href="cov.html#cb46-50" aria-hidden="true"></a><span class="co">##  [1,]  1.00000000  0.3139325  0.3885281  0.76325079  0.03802594 -0.1726174</span></span>
+<span id="cb46-51"><a href="cov.html#cb46-51" aria-hidden="true"></a><span class="co">##  [2,]  0.31393253  1.0000000  0.1294350  0.47628061  0.25198153  0.3835018</span></span>
+<span id="cb46-52"><a href="cov.html#cb46-52" aria-hidden="true"></a><span class="co">##  [3,]  0.38852814  0.1294350  1.0000000  0.16790689 -0.54943908 -0.5477629</span></span>
+<span id="cb46-53"><a href="cov.html#cb46-53" aria-hidden="true"></a><span class="co">##  [4,]  0.76325079  0.4762806  0.1679069  1.00000000  0.56444374  0.3848509</span></span>
+<span id="cb46-54"><a href="cov.html#cb46-54" aria-hidden="true"></a><span class="co">##  [5,]  0.03802594  0.2519815 -0.5494391  0.56444374  1.00000000  0.9239295</span></span>
+<span id="cb46-55"><a href="cov.html#cb46-55" aria-hidden="true"></a><span class="co">##  [6,] -0.17261745  0.3835018 -0.5477629  0.38485092  0.92392947  1.0000000</span></span>
+<span id="cb46-56"><a href="cov.html#cb46-56" aria-hidden="true"></a><span class="co">##  [7,]  0.55738714  0.2599936  0.9058832  0.40225837 -0.36117699 -0.4193635</span></span>
+<span id="cb46-57"><a href="cov.html#cb46-57" aria-hidden="true"></a><span class="co">##  [8,]  0.06747173  0.6143355  0.1179121  0.43479661  0.45306025  0.5093422</span></span>
+<span id="cb46-58"><a href="cov.html#cb46-58" aria-hidden="true"></a><span class="co">##  [9,]  0.36093637  0.1174929  0.9320626  0.14769593 -0.55014251 -0.5700142</span></span>
+<span id="cb46-59"><a href="cov.html#cb46-59" aria-hidden="true"></a><span class="co">## [10,]  0.45790382  0.2998965  0.7034659  0.34187510 -0.25566008 -0.2894510</span></span>
+<span id="cb46-60"><a href="cov.html#cb46-60" aria-hidden="true"></a><span class="co">## [11,] -0.24181804 -0.1840655 -0.6472826 -0.07518893  0.36154098  0.2842792</span></span>
+<span id="cb46-61"><a href="cov.html#cb46-61" aria-hidden="true"></a><span class="co">##             [,7]       [,8]       [,9]      [,10]       [,11]</span></span>
+<span id="cb46-62"><a href="cov.html#cb46-62" aria-hidden="true"></a><span class="co">##  [1,]  0.5573871 0.06747173  0.3609364  0.4579038 -0.24181804</span></span>
+<span id="cb46-63"><a href="cov.html#cb46-63" aria-hidden="true"></a><span class="co">##  [2,]  0.2599936 0.61433553  0.1174929  0.2998965 -0.18406548</span></span>
+<span id="cb46-64"><a href="cov.html#cb46-64" aria-hidden="true"></a><span class="co">##  [3,]  0.9058832 0.11791205  0.9320626  0.7034659 -0.64728263</span></span>
+<span id="cb46-65"><a href="cov.html#cb46-65" aria-hidden="true"></a><span class="co">##  [4,]  0.4022584 0.43479661  0.1476959  0.3418751 -0.07518893</span></span>
+<span id="cb46-66"><a href="cov.html#cb46-66" aria-hidden="true"></a><span class="co">##  [5,] -0.3611770 0.45306025 -0.5501425 -0.2556601  0.36154098</span></span>
+<span id="cb46-67"><a href="cov.html#cb46-67" aria-hidden="true"></a><span class="co">##  [6,] -0.4193635 0.50934216 -0.5700142 -0.2894510  0.28427925</span></span>
+<span id="cb46-68"><a href="cov.html#cb46-68" aria-hidden="true"></a><span class="co">##  [7,]  1.0000000 0.39727833  0.9542504  0.8024764 -0.35370524</span></span>
+<span id="cb46-69"><a href="cov.html#cb46-69" aria-hidden="true"></a><span class="co">##  [8,]  0.3972783 1.00000000  0.2795381  0.3378856  0.29745513</span></span>
+<span id="cb46-70"><a href="cov.html#cb46-70" aria-hidden="true"></a><span class="co">##  [9,]  0.9542504 0.27953807  1.0000000  0.7778421 -0.36576437</span></span>
+<span id="cb46-71"><a href="cov.html#cb46-71" aria-hidden="true"></a><span class="co">## [10,]  0.8024764 0.33788563  0.7778421  1.0000000 -0.24619292</span></span>
+<span id="cb46-72"><a href="cov.html#cb46-72" aria-hidden="true"></a><span class="co">## [11,] -0.3537052 0.29745513 -0.3657644 -0.2461929  1.00000000</span></span>
+<span id="cb46-73"><a href="cov.html#cb46-73" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-74"><a href="cov.html#cb46-74" aria-hidden="true"></a><span class="co">## $`Inverse Covariance Matrix of Estimates`</span></span>
+<span id="cb46-75"><a href="cov.html#cb46-75" aria-hidden="true"></a><span class="co">##              [,1]         [,2]        [,3]        [,4]        [,5]</span></span>
+<span id="cb46-76"><a href="cov.html#cb46-76" aria-hidden="true"></a><span class="co">##  [1,]   106.16085    -68.57396    6449.005    335.8698   -2554.409</span></span>
+<span id="cb46-77"><a href="cov.html#cb46-77" aria-hidden="true"></a><span class="co">##  [2,]   -68.57396     58.03937   -4878.746   -302.1420    2175.297</span></span>
+<span id="cb46-78"><a href="cov.html#cb46-78" aria-hidden="true"></a><span class="co">##  [3,]  6449.00514  -4878.74594  589180.809  26966.6055 -188642.065</span></span>
+<span id="cb46-79"><a href="cov.html#cb46-79" aria-hidden="true"></a><span class="co">##  [4,]   335.86981   -302.14199   26966.605   1681.5577  -11681.346</span></span>
+<span id="cb46-80"><a href="cov.html#cb46-80" aria-hidden="true"></a><span class="co">##  [5,] -2554.40932   2175.29716 -188642.065 -11681.3456   84767.297</span></span>
+<span id="cb46-81"><a href="cov.html#cb46-81" aria-hidden="true"></a><span class="co">##  [6,]  -386.87894    570.22260  -66147.099  -3404.8900   13635.511</span></span>
+<span id="cb46-82"><a href="cov.html#cb46-82" aria-hidden="true"></a><span class="co">##  [7,] -1202.16352    939.99684  -90186.464  -5086.8917   35747.140</span></span>
+<span id="cb46-83"><a href="cov.html#cb46-83" aria-hidden="true"></a><span class="co">##  [8,] 10794.57609  -8973.04621  795473.397  47387.2333 -336778.082</span></span>
+<span id="cb46-84"><a href="cov.html#cb46-84" aria-hidden="true"></a><span class="co">##  [9,]   -49.38187     87.68163  -10522.263   -442.6127    3308.451</span></span>
+<span id="cb46-85"><a href="cov.html#cb46-85" aria-hidden="true"></a><span class="co">## [10,] 11656.77324 -10122.84537  899033.055  53311.6422 -378718.161</span></span>
+<span id="cb46-86"><a href="cov.html#cb46-86" aria-hidden="true"></a><span class="co">## [11,] -1043.11500   1001.74635  -47225.438  -4879.5431   35063.038</span></span>
+<span id="cb46-87"><a href="cov.html#cb46-87" aria-hidden="true"></a><span class="co">##               [,6]         [,7]        [,8]         [,9]      [,10]</span></span>
+<span id="cb46-88"><a href="cov.html#cb46-88" aria-hidden="true"></a><span class="co">##  [1,]    -386.8789   -1202.1635   10794.576    -49.38187   11656.77</span></span>
+<span id="cb46-89"><a href="cov.html#cb46-89" aria-hidden="true"></a><span class="co">##  [2,]     570.2226     939.9968   -8973.046     87.68163  -10122.85</span></span>
+<span id="cb46-90"><a href="cov.html#cb46-90" aria-hidden="true"></a><span class="co">##  [3,]  -66147.0986  -90186.4639  795473.397 -10522.26321  899033.06</span></span>
+<span id="cb46-91"><a href="cov.html#cb46-91" aria-hidden="true"></a><span class="co">##  [4,]   -3404.8900   -5086.8917   47387.233   -442.61268   53311.64</span></span>
+<span id="cb46-92"><a href="cov.html#cb46-92" aria-hidden="true"></a><span class="co">##  [5,]   13635.5106   35747.1396 -336778.082   3308.45066 -378718.16</span></span>
+<span id="cb46-93"><a href="cov.html#cb46-93" aria-hidden="true"></a><span class="co">##  [6,]   72186.1449   10923.7488 -116902.668   2827.92008 -138707.39</span></span>
+<span id="cb46-94"><a href="cov.html#cb46-94" aria-hidden="true"></a><span class="co">##  [7,]   10923.7488   16640.0641 -149635.854    965.72182 -166637.08</span></span>
+<span id="cb46-95"><a href="cov.html#cb46-95" aria-hidden="true"></a><span class="co">##  [8,] -116902.6684 -149635.8536 1416416.077 -14025.69870 1587796.18</span></span>
+<span id="cb46-96"><a href="cov.html#cb46-96" aria-hidden="true"></a><span class="co">##  [9,]    2827.9201     965.7218  -14025.699    954.65511  -20047.21</span></span>
+<span id="cb46-97"><a href="cov.html#cb46-97" aria-hidden="true"></a><span class="co">## [10,] -138707.3931 -166637.0784 1587796.183 -20047.20949 2031529.82</span></span>
+<span id="cb46-98"><a href="cov.html#cb46-98" aria-hidden="true"></a><span class="co">## [11,]   15687.7641   14275.7793 -151936.736    935.29881 -170271.34</span></span>
+<span id="cb46-99"><a href="cov.html#cb46-99" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
+<span id="cb46-100"><a href="cov.html#cb46-100" aria-hidden="true"></a><span class="co">##  [1,]   -1043.1150</span></span>
+<span id="cb46-101"><a href="cov.html#cb46-101" aria-hidden="true"></a><span class="co">##  [2,]    1001.7464</span></span>
+<span id="cb46-102"><a href="cov.html#cb46-102" aria-hidden="true"></a><span class="co">##  [3,]  -47225.4381</span></span>
+<span id="cb46-103"><a href="cov.html#cb46-103" aria-hidden="true"></a><span class="co">##  [4,]   -4879.5431</span></span>
+<span id="cb46-104"><a href="cov.html#cb46-104" aria-hidden="true"></a><span class="co">##  [5,]   35063.0376</span></span>
+<span id="cb46-105"><a href="cov.html#cb46-105" aria-hidden="true"></a><span class="co">##  [6,]   15687.7641</span></span>
+<span id="cb46-106"><a href="cov.html#cb46-106" aria-hidden="true"></a><span class="co">##  [7,]   14275.7793</span></span>
+<span id="cb46-107"><a href="cov.html#cb46-107" aria-hidden="true"></a><span class="co">##  [8,] -151936.7362</span></span>
+<span id="cb46-108"><a href="cov.html#cb46-108" aria-hidden="true"></a><span class="co">##  [9,]     935.2988</span></span>
+<span id="cb46-109"><a href="cov.html#cb46-109" aria-hidden="true"></a><span class="co">## [10,] -170271.3406</span></span>
+<span id="cb46-110"><a href="cov.html#cb46-110" aria-hidden="true"></a><span class="co">## [11,]   28036.5550</span></span>
+<span id="cb46-111"><a href="cov.html#cb46-111" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-112"><a href="cov.html#cb46-112" aria-hidden="true"></a><span class="co">## $`Eigen Values`</span></span>
+<span id="cb46-113"><a href="cov.html#cb46-113" aria-hidden="true"></a><span class="co">##  [1] 0.0002519304 0.0096729015 0.0108358602 0.0233184643 0.0520725533</span></span>
+<span id="cb46-114"><a href="cov.html#cb46-114" aria-hidden="true"></a><span class="co">##  [6] 0.2982375053 0.5047779131 0.9114702297 1.2088053283 3.2082379737</span></span>
+<span id="cb46-115"><a href="cov.html#cb46-115" aria-hidden="true"></a><span class="co">## [11] 4.7723193401</span></span>
+<span id="cb46-116"><a href="cov.html#cb46-116" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-117"><a href="cov.html#cb46-117" aria-hidden="true"></a><span class="co">## $`R Matrix`</span></span>
+<span id="cb46-118"><a href="cov.html#cb46-118" aria-hidden="true"></a><span class="co">##              [,1]         [,2]         [,3]         [,4]         [,5]</span></span>
+<span id="cb46-119"><a href="cov.html#cb46-119" aria-hidden="true"></a><span class="co">##  [1,]   17.924787   -1.3343223  -162.767654   -4.1309683    21.546405</span></span>
+<span id="cb46-120"><a href="cov.html#cb46-120" aria-hidden="true"></a><span class="co">##  [2,]   -1.334322    0.5507357    -7.672315    0.1118322    -1.462878</span></span>
+<span id="cb46-121"><a href="cov.html#cb46-121" aria-hidden="true"></a><span class="co">##  [3,] -162.767654   -7.6723148 34333.363150   86.0269293   433.962384</span></span>
+<span id="cb46-122"><a href="cov.html#cb46-122" aria-hidden="true"></a><span class="co">##  [4,]   -4.130968    0.1118322    86.026929   28.6263094  -177.270130</span></span>
+<span id="cb46-123"><a href="cov.html#cb46-123" aria-hidden="true"></a><span class="co">##  [5,]   21.546405   -1.4628778   433.962384 -177.2701302  1930.445843</span></span>
+<span id="cb46-124"><a href="cov.html#cb46-124" aria-hidden="true"></a><span class="co">##  [6,]   10.225928  -16.5210396    13.387686  272.9370786 -4270.878832</span></span>
+<span id="cb46-125"><a href="cov.html#cb46-125" aria-hidden="true"></a><span class="co">##  [7,]  -11.022690    2.9849069   -90.741373  -52.9261900   210.709300</span></span>
+<span id="cb46-126"><a href="cov.html#cb46-126" aria-hidden="true"></a><span class="co">##  [8,]   52.304346  -18.2457139   956.482064  164.3158075 -1421.957500</span></span>
+<span id="cb46-127"><a href="cov.html#cb46-127" aria-hidden="true"></a><span class="co">##  [9,]    7.044855   -2.2338946 -1350.939646   24.4536958   -43.763546</span></span>
+<span id="cb46-128"><a href="cov.html#cb46-128" aria-hidden="true"></a><span class="co">## [10,]  248.456482 -120.7991176 -7033.212482   50.2328789 -1013.856688</span></span>
+<span id="cb46-129"><a href="cov.html#cb46-129" aria-hidden="true"></a><span class="co">## [11,]   -1.752135   -5.2052276 -1992.414213    6.0120604   124.417556</span></span>
+<span id="cb46-130"><a href="cov.html#cb46-130" aria-hidden="true"></a><span class="co">##              [,6]        [,7]        [,8]         [,9]        [,10]</span></span>
+<span id="cb46-131"><a href="cov.html#cb46-131" aria-hidden="true"></a><span class="co">##  [1,]    10.22593  -11.022690    52.30435     7.044855    248.45648</span></span>
+<span id="cb46-132"><a href="cov.html#cb46-132" aria-hidden="true"></a><span class="co">##  [2,]   -16.52104    2.984907   -18.24571    -2.233895   -120.79912</span></span>
+<span id="cb46-133"><a href="cov.html#cb46-133" aria-hidden="true"></a><span class="co">##  [3,]    13.38769  -90.741373   956.48206 -1350.939646  -7033.21248</span></span>
+<span id="cb46-134"><a href="cov.html#cb46-134" aria-hidden="true"></a><span class="co">##  [4,]   272.93708  -52.926190   164.31581    24.453696     50.23288</span></span>
+<span id="cb46-135"><a href="cov.html#cb46-135" aria-hidden="true"></a><span class="co">##  [5,] -4270.87883  210.709300 -1421.95750   -43.763546  -1013.85669</span></span>
+<span id="cb46-136"><a href="cov.html#cb46-136" aria-hidden="true"></a><span class="co">##  [6,] 16610.43942 -139.814385  1113.59904    18.726078   4680.59998</span></span>
+<span id="cb46-137"><a href="cov.html#cb46-137" aria-hidden="true"></a><span class="co">##  [7,]  -139.81438  213.228947  -555.99366  -151.083275     96.25915</span></span>
+<span id="cb46-138"><a href="cov.html#cb46-138" aria-hidden="true"></a><span class="co">##  [8,]  1113.59904 -555.993663  4043.51428   130.794770   -555.76917</span></span>
+<span id="cb46-139"><a href="cov.html#cb46-139" aria-hidden="true"></a><span class="co">##  [9,]    18.72608 -151.083275   130.79477   236.875935    -20.42601</span></span>
+<span id="cb46-140"><a href="cov.html#cb46-140" aria-hidden="true"></a><span class="co">## [10,]  4680.59998   96.259149  -555.76917   -20.426010 192857.05263</span></span>
+<span id="cb46-141"><a href="cov.html#cb46-141" aria-hidden="true"></a><span class="co">## [11,]   -46.02961  -62.941133  -201.26760    92.656857   6568.90926</span></span>
+<span id="cb46-142"><a href="cov.html#cb46-142" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
+<span id="cb46-143"><a href="cov.html#cb46-143" aria-hidden="true"></a><span class="co">##  [1,]    -1.752135</span></span>
+<span id="cb46-144"><a href="cov.html#cb46-144" aria-hidden="true"></a><span class="co">##  [2,]    -5.205228</span></span>
+<span id="cb46-145"><a href="cov.html#cb46-145" aria-hidden="true"></a><span class="co">##  [3,] -1992.414213</span></span>
+<span id="cb46-146"><a href="cov.html#cb46-146" aria-hidden="true"></a><span class="co">##  [4,]     6.012060</span></span>
+<span id="cb46-147"><a href="cov.html#cb46-147" aria-hidden="true"></a><span class="co">##  [5,]   124.417556</span></span>
+<span id="cb46-148"><a href="cov.html#cb46-148" aria-hidden="true"></a><span class="co">##  [6,]   -46.029614</span></span>
+<span id="cb46-149"><a href="cov.html#cb46-149" aria-hidden="true"></a><span class="co">##  [7,]   -62.941133</span></span>
+<span id="cb46-150"><a href="cov.html#cb46-150" aria-hidden="true"></a><span class="co">##  [8,]  -201.267605</span></span>
+<span id="cb46-151"><a href="cov.html#cb46-151" aria-hidden="true"></a><span class="co">##  [9,]    92.656857</span></span>
+<span id="cb46-152"><a href="cov.html#cb46-152" aria-hidden="true"></a><span class="co">## [10,]  6568.909257</span></span>
+<span id="cb46-153"><a href="cov.html#cb46-153" aria-hidden="true"></a><span class="co">## [11,]  3974.804398</span></span>
+<span id="cb46-154"><a href="cov.html#cb46-154" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb46-155"><a href="cov.html#cb46-155" aria-hidden="true"></a><span class="co">## $`S Matrix`</span></span>
+<span id="cb46-156"><a href="cov.html#cb46-156" aria-hidden="true"></a><span class="co">##               [,1]         [,2]         [,3]         [,4]        [,5]</span></span>
+<span id="cb46-157"><a href="cov.html#cb46-157" aria-hidden="true"></a><span class="co">##  [1,]    78.316509   -4.6468525  -1295.13192   -11.873085   142.72165</span></span>
+<span id="cb46-158"><a href="cov.html#cb46-158" aria-hidden="true"></a><span class="co">##  [2,]    -4.646852    0.7648878     64.36589     2.623533   -28.61925</span></span>
+<span id="cb46-159"><a href="cov.html#cb46-159" aria-hidden="true"></a><span class="co">##  [3,] -1295.131915   64.3658917 183632.39790  -230.636173   840.38211</span></span>
+<span id="cb46-160"><a href="cov.html#cb46-160" aria-hidden="true"></a><span class="co">##  [4,]   -11.873085    2.6235332   -230.63617    18.368716  -171.71679</span></span>
+<span id="cb46-161"><a href="cov.html#cb46-161" aria-hidden="true"></a><span class="co">##  [5,]   142.721653  -28.6192545    840.38211  -171.716794  2005.81552</span></span>
+<span id="cb46-162"><a href="cov.html#cb46-162" aria-hidden="true"></a><span class="co">##  [6,]  -145.835176   29.4905947   9000.10289   291.779615 -3809.95407</span></span>
+<span id="cb46-163"><a href="cov.html#cb46-163" aria-hidden="true"></a><span class="co">##  [7,]   -26.707401    0.2387057   3794.27704   -19.686952    51.76139</span></span>
+<span id="cb46-164"><a href="cov.html#cb46-164" aria-hidden="true"></a><span class="co">##  [8,]    44.375129   10.7614124 -10813.66435    84.841787  -765.19107</span></span>
+<span id="cb46-165"><a href="cov.html#cb46-165" aria-hidden="true"></a><span class="co">##  [9,]    13.946014   -4.4042212  -6396.75146     3.480210    87.90129</span></span>
+<span id="cb46-166"><a href="cov.html#cb46-166" aria-hidden="true"></a><span class="co">## [10,]  2039.647982 -397.4745827  -4148.02643 -1170.279733  8916.77585</span></span>
+<span id="cb46-167"><a href="cov.html#cb46-167" aria-hidden="true"></a><span class="co">## [11,]   279.500822  -47.3111189 -60483.51062   -22.729230   670.78875</span></span>
+<span id="cb46-168"><a href="cov.html#cb46-168" aria-hidden="true"></a><span class="co">##              [,6]          [,7]         [,8]         [,9]       [,10]</span></span>
+<span id="cb46-169"><a href="cov.html#cb46-169" aria-hidden="true"></a><span class="co">##  [1,]  -145.83518   -26.7074010     44.37513    13.946014   2039.6480</span></span>
+<span id="cb46-170"><a href="cov.html#cb46-170" aria-hidden="true"></a><span class="co">##  [2,]    29.49059     0.2387057     10.76141    -4.404221   -397.4746</span></span>
+<span id="cb46-171"><a href="cov.html#cb46-171" aria-hidden="true"></a><span class="co">##  [3,]  9000.10289  3794.2770370 -10813.66435 -6396.751456  -4148.0264</span></span>
+<span id="cb46-172"><a href="cov.html#cb46-172" aria-hidden="true"></a><span class="co">##  [4,]   291.77961   -19.6869516     84.84179     3.480210  -1170.2797</span></span>
+<span id="cb46-173"><a href="cov.html#cb46-173" aria-hidden="true"></a><span class="co">##  [5,] -3809.95407    51.7613883   -765.19107    87.901295   8916.7758</span></span>
+<span id="cb46-174"><a href="cov.html#cb46-174" aria-hidden="true"></a><span class="co">##  [6,] 12023.28652   188.5688359    667.62858  -711.894529  -3829.1367</span></span>
+<span id="cb46-175"><a href="cov.html#cb46-175" aria-hidden="true"></a><span class="co">##  [7,]   188.56884   129.3349739   -292.66398  -155.764410   1796.9713</span></span>
+<span id="cb46-176"><a href="cov.html#cb46-176" aria-hidden="true"></a><span class="co">##  [8,]   667.62858  -292.6639799   1121.03185   294.247258 -10631.8774</span></span>
+<span id="cb46-177"><a href="cov.html#cb46-177" aria-hidden="true"></a><span class="co">##  [9,]  -711.89453  -155.7644099    294.24726   327.282119   1812.2113</span></span>
+<span id="cb46-178"><a href="cov.html#cb46-178" aria-hidden="true"></a><span class="co">## [10,] -3829.13667  1796.9713202 -10631.87742  1812.211286 419517.6543</span></span>
+<span id="cb46-179"><a href="cov.html#cb46-179" aria-hidden="true"></a><span class="co">## [11,] -3489.01512 -1105.9231026   2773.71160  2358.454995  18067.4267</span></span>
+<span id="cb46-180"><a href="cov.html#cb46-180" aria-hidden="true"></a><span class="co">##              [,11]</span></span>
+<span id="cb46-181"><a href="cov.html#cb46-181" aria-hidden="true"></a><span class="co">##  [1,]    279.50082</span></span>
+<span id="cb46-182"><a href="cov.html#cb46-182" aria-hidden="true"></a><span class="co">##  [2,]    -47.31112</span></span>
+<span id="cb46-183"><a href="cov.html#cb46-183" aria-hidden="true"></a><span class="co">##  [3,] -60483.51062</span></span>
+<span id="cb46-184"><a href="cov.html#cb46-184" aria-hidden="true"></a><span class="co">##  [4,]    -22.72923</span></span>
+<span id="cb46-185"><a href="cov.html#cb46-185" aria-hidden="true"></a><span class="co">##  [5,]    670.78875</span></span>
+<span id="cb46-186"><a href="cov.html#cb46-186" aria-hidden="true"></a><span class="co">##  [6,]  -3489.01512</span></span>
+<span id="cb46-187"><a href="cov.html#cb46-187" aria-hidden="true"></a><span class="co">##  [7,]  -1105.92310</span></span>
+<span id="cb46-188"><a href="cov.html#cb46-188" aria-hidden="true"></a><span class="co">##  [8,]   2773.71160</span></span>
+<span id="cb46-189"><a href="cov.html#cb46-189" aria-hidden="true"></a><span class="co">##  [9,]   2358.45500</span></span>
+<span id="cb46-190"><a href="cov.html#cb46-190" aria-hidden="true"></a><span class="co">## [10,]  18067.42672</span></span>
+<span id="cb46-191"><a href="cov.html#cb46-191" aria-hidden="true"></a><span class="co">## [11,]  24042.66052</span></span></code></pre></div>
 <p><code>PostHocEta()</code>, <code>TabStep()</code>의 실행화면은 아래와 같다.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cov.html#cb44-1" aria-hidden="true"></a>(<span class="dt">EBE1 =</span> <span class="kw">PostHocEta</span>()) <span class="co"># Using e$FinalPara from EstStep()</span></span>
-<span id="cb44-2"><a href="cov.html#cb44-2" aria-hidden="true"></a><span class="co">##       ID       ETA1         ETA2        ETA3</span></span>
-<span id="cb44-3"><a href="cov.html#cb44-3" aria-hidden="true"></a><span class="co">##  [1,]  1 -0.6367109 -0.232258352 -0.73648224</span></span>
-<span id="cb44-4"><a href="cov.html#cb44-4" aria-hidden="true"></a><span class="co">##  [2,]  2 -0.5895843 -0.153341805 -0.06619115</span></span>
-<span id="cb44-5"><a href="cov.html#cb44-5" aria-hidden="true"></a><span class="co">##  [3,]  3 -0.3083755 -0.124816676 -0.21013190</span></span>
-<span id="cb44-6"><a href="cov.html#cb44-6" aria-hidden="true"></a><span class="co">##  [4,]  4 -1.0305984 -0.186821177 -0.21195510</span></span>
-<span id="cb44-7"><a href="cov.html#cb44-7" aria-hidden="true"></a><span class="co">##  [5,]  5 -0.8235560 -0.302352128 -0.24453948</span></span>
-<span id="cb44-8"><a href="cov.html#cb44-8" aria-hidden="true"></a><span class="co">##  [6,]  6 -1.0025271  0.068181532 -0.08745089</span></span>
-<span id="cb44-9"><a href="cov.html#cb44-9" aria-hidden="true"></a><span class="co">##  [7,]  7 -1.4316285 -0.097903076 -0.13802639</span></span>
-<span id="cb44-10"><a href="cov.html#cb44-10" aria-hidden="true"></a><span class="co">##  [8,]  8 -0.7541785 -0.039239022 -0.19621190</span></span>
-<span id="cb44-11"><a href="cov.html#cb44-11" aria-hidden="true"></a><span class="co">##  [9,]  9  0.7875803  0.010757282 -0.19937965</span></span>
-<span id="cb44-12"><a href="cov.html#cb44-12" aria-hidden="true"></a><span class="co">## [10,] 10 -1.4555649 -0.369057237 -0.40057582</span></span>
-<span id="cb44-13"><a href="cov.html#cb44-13" aria-hidden="true"></a><span class="co">## [11,] 11  0.1541451 -0.005061315 -0.08005791</span></span>
-<span id="cb44-14"><a href="cov.html#cb44-14" aria-hidden="true"></a><span class="co">## [12,] 12 -1.2863346 -0.388864841 -0.10134440</span></span>
-<span id="cb44-15"><a href="cov.html#cb44-15" aria-hidden="true"></a><span class="co"># (Tab1 = TabStep())</span></span></code></pre></div>
+<p></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cov.html#cb47-1" aria-hidden="true"></a>(<span class="dt">EBE1 =</span> <span class="kw">PostHocEta</span>()) <span class="co"># Using e$FinalPara from EstStep()</span></span>
+<span id="cb47-2"><a href="cov.html#cb47-2" aria-hidden="true"></a><span class="co">##       ID       ETA1         ETA2        ETA3</span></span>
+<span id="cb47-3"><a href="cov.html#cb47-3" aria-hidden="true"></a><span class="co">##  [1,]  1 -0.6367109 -0.232258352 -0.73648224</span></span>
+<span id="cb47-4"><a href="cov.html#cb47-4" aria-hidden="true"></a><span class="co">##  [2,]  2 -0.5895843 -0.153341805 -0.06619115</span></span>
+<span id="cb47-5"><a href="cov.html#cb47-5" aria-hidden="true"></a><span class="co">##  [3,]  3 -0.3083755 -0.124816676 -0.21013190</span></span>
+<span id="cb47-6"><a href="cov.html#cb47-6" aria-hidden="true"></a><span class="co">##  [4,]  4 -1.0305984 -0.186821177 -0.21195510</span></span>
+<span id="cb47-7"><a href="cov.html#cb47-7" aria-hidden="true"></a><span class="co">##  [5,]  5 -0.8235560 -0.302352128 -0.24453948</span></span>
+<span id="cb47-8"><a href="cov.html#cb47-8" aria-hidden="true"></a><span class="co">##  [6,]  6 -1.0025271  0.068181532 -0.08745089</span></span>
+<span id="cb47-9"><a href="cov.html#cb47-9" aria-hidden="true"></a><span class="co">##  [7,]  7 -1.4316285 -0.097903076 -0.13802639</span></span>
+<span id="cb47-10"><a href="cov.html#cb47-10" aria-hidden="true"></a><span class="co">##  [8,]  8 -0.7541785 -0.039239022 -0.19621190</span></span>
+<span id="cb47-11"><a href="cov.html#cb47-11" aria-hidden="true"></a><span class="co">##  [9,]  9  0.7875803  0.010757282 -0.19937965</span></span>
+<span id="cb47-12"><a href="cov.html#cb47-12" aria-hidden="true"></a><span class="co">## [10,] 10 -1.4555649 -0.369057237 -0.40057582</span></span>
+<span id="cb47-13"><a href="cov.html#cb47-13" aria-hidden="true"></a><span class="co">## [11,] 11  0.1541451 -0.005061315 -0.08005791</span></span>
+<span id="cb47-14"><a href="cov.html#cb47-14" aria-hidden="true"></a><span class="co">## [12,] 12 -1.2863346 -0.388864841 -0.10134440</span></span>
+<span id="cb47-15"><a href="cov.html#cb47-15" aria-hidden="true"></a><span class="co"># (Tab1 = TabStep())</span></span></code></pre></div>
 </div>
 <div id="고유값eigenvalue" class="section level2" number="14.6">
 <h2><span class="header-section-number">14.6</span> 고유값(Eigenvalue)</h2>
+<p></p>
 <p>공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.</p>
 <p>어떤 행렬 A를 스칼라 <span class="math inline">\(\lambda\)</span>와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,</p>
 <p><span class="math display" id="eq:au-lu">\[\begin{equation}
