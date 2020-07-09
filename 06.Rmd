@@ -10,7 +10,7 @@ output:
 
 ## ADVAN9 - General Nonlinear Model with Equilibrium Compartments\index{ADVAN9}
 
-ADVAN9는 ADVAN6와 같은 상황에서 쓸 수 있는 또 다른 ADVAN으로 ADVAN6보다 좀 더 robust 한 방법으로 주장되고 있으나 이는 상황 별로 달라서 어떤 것이 낫다고 할 수는 없다. Holford가 제안한 하나의 방법은 $EST 에서 MAXEVAL=0로 한 후 ADVAN6와 9을 각기 돌려보고 둘 중 소요시간이 짧은 것을 선택하여 쓰는 것이다. [@nickholford]\index{$ESTIMATION ($EST)}\index{ADVAN6}\index{ADVAN9}\index{MAXEVAL}\index{MAXEVAL=0}
+ADVAN9는 ADVAN6와 같은 상황에서 쓸 수 있는 또 다른 ADVAN으로 ADVAN6보다 좀 더 robust 한 방법으로 주장되고 있으나 이는 상황 별로 달라서 어떤 것이 낫다고 할 수는 없다. Holford가 제안한 하나의 방법은 $EST 에서 MAXEVAL=0로 한 후 ADVAN6와 9을 각기 돌려보고 둘 중 소요시간이 짧은 것을 선택하여 쓰는 것이다. [@nickholford]\index{\$ESTIMATION (\$EST)}\index{ADVAN6}\index{ADVAN9}\index{MAXEVAL}\index{MAXEVAL=0}
 
 ## ADVAN10 - One Compartment Model with Michaelis-Menten Elimination\index{ADVAN1}\index{ADVAN10}
 

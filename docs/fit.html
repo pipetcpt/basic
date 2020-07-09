@@ -177,10 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.3</b> 제어구문에 쓰이는 레코드</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.3.1</b> $PROBLEM, $DATA, $INPUT</a></li>
-<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-desindexdes"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, <span class="math inline">\(DES\index{\)</span>DES}</a></li>
+<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
 <li class="chapter" data-level="3.3.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.3.3</b> $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulationindexestimation-estindexsimulation-sim"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, <span class="math inline">\(SIMULATION\index{\)</span>ESTIMATION (<span class="math inline">\(EST)}\index{\)</span>SIMULATION ($SIM)}</a></li>
-<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-tableindexcovariance-cov-covarindextable"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, <span class="math inline">\(TABLE\index{\)</span>COVARIANCE ($COV, <span class="math inline">\(COVAR)}\index{\)</span>TABLE}</a></li>
+<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, $TABLE</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.4</b> 모델 종류별 제어구문</a>
 <ul>
@@ -406,25 +406,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 그림 13.3: Relationship between standard deviation of residual variability and predicted concentrations
 </p>
 </div>
-<p>실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 <a href="fit.html#exm:combined-upper">13.1</a>, <a href="fit.html#exm:combined-lower">13.2</a>와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 <a href="fit.html#exm:combined-upper">13.1</a>은 가장 기본적인 형태이고, 코드 <a href="fit.html#exm:combined-lower">13.2</a>의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 (<span class="math inline">\(SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, `0.0001 FIX`)하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{\)</span>SIGMA}</p>
+<p>실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 <a href="fit.html#exm:combined-upper">13.1</a>, <a href="fit.html#exm:combined-lower">13.2</a>와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 <a href="fit.html#exm:combined-upper">13.1</a>은 가장 기본적인 형태이고, 코드 <a href="fit.html#exm:combined-lower">13.2</a>의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, <code>0.0001 FIX</code>)하면 된다.</p>
 
 <div class="example">
-<span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span><span class="math inline">\(ERROR structure in NONMEM control stream: 기본형태\index{\)</span>ERROR}
+<span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span>$ERROR structure in NONMEM control stream: 기본형태
 </div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fit.html#cb46-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{<span class="op">$</span>ERROR}</span>
-<span id="cb46-2"><a href="fit.html#cb46-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
-<span id="cb46-3"><a href="fit.html#cb46-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="fit.html#cb45-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
+<span id="cb45-2"><a href="fit.html#cb45-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
+<span id="cb45-3"><a href="fit.html#cb45-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
 
 <div class="example">
-<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span><span class="math inline">\(ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\)</span>ERROR}
+<span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span>$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
 이고, 비례오차모델의 표준편차를 반영
 </div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fit.html#cb47-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{<span class="op">$</span>ERROR}</span>
-<span id="cb47-2"><a href="fit.html#cb47-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
-<span id="cb47-3"><a href="fit.html#cb47-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)\index{IPRED}\index{PRED}</span>
-<span id="cb47-4"><a href="fit.html#cb47-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}</span>
-<span id="cb47-5"><a href="fit.html#cb47-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W\index{IRES}\index{IWRES}\index{RES}\index{WRES}</span>
-<span id="cb47-6"><a href="fit.html#cb47-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fit.html#cb46-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
+<span id="cb46-2"><a href="fit.html#cb46-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
+<span id="cb46-3"><a href="fit.html#cb46-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)\index{IPRED}\index{PRED}</span>
+<span id="cb46-4"><a href="fit.html#cb46-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}</span>
+<span id="cb46-5"><a href="fit.html#cb46-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W\index{IRES}\index{IWRES}\index{RES}\index{WRES}</span>
+<span id="cb46-6"><a href="fit.html#cb46-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
 <p>Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 <a href="fit.html#fig:run-test">13.4</a>)</p>
 <div class="figure"><span id="fig:run-test"></span>
 <img src="figures/13-fig-04.png" alt="Example of Run test (Gabrielsson 2006)" width="90%" />

@@ -177,10 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.3</b> 제어구문에 쓰이는 레코드</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.3.1</b> $PROBLEM, $DATA, $INPUT</a></li>
-<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-desindexdes"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, <span class="math inline">\(DES\index{\)</span>DES}</a></li>
+<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
 <li class="chapter" data-level="3.3.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.3.3</b> $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulationindexestimation-estindexsimulation-sim"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, <span class="math inline">\(SIMULATION\index{\)</span>ESTIMATION (<span class="math inline">\(EST)}\index{\)</span>SIMULATION ($SIM)}</a></li>
-<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-tableindexcovariance-cov-covarindextable"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, <span class="math inline">\(TABLE\index{\)</span>COVARIANCE ($COV, <span class="math inline">\(COVAR)}\index{\)</span>TABLE}</a></li>
+<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, $TABLE</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.4</b> 모델 종류별 제어구문</a>
 <ul>
@@ -380,9 +380,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>제어구문 파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="pred-advan을-쓰지-않는-코딩-pred.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
 
 <div class="figure"><span id="fig:first-order-pred"></span>
-<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, \(PRED 제어구문 파일 비교\index{\)PRED}" width="90%" />
+<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, $PRED 제어구문 파일 비교" width="90%" />
 <p class="caption">
-그림 7.1: 1구획 모델의 ADVAN2, <span class="math inline">\(PRED 제어구문 파일 비교\index{\)</span>PRED}
+그림 7.1: 1구획 모델의 ADVAN2, $PRED 제어구문 파일 비교
 </p>
 </div>
 
@@ -402,20 +402,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <span id="exm:formula" class="example"><strong>코드 7.1  </strong></span>약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 $PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
-<span id="cb36-2"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span>\index{<span class="op">$</span>DATA}\index{IGNORE}</span>
-<span id="cb36-3"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-3" aria-hidden="true"></a><span class="op">$</span>INPUT ID CP RESP=DV\index{<span class="op">$</span>INPUT}\index{ID}\index{RES}</span>
-<span id="cb36-4"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{<span class="op">$</span>PRED}\index{PRED}</span>
-<span id="cb36-5"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-5" aria-hidden="true"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
-<span id="cb36-6"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-6" aria-hidden="true"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
-<span id="cb36-7"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-7" aria-hidden="true"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
-<span id="cb36-8"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-8" aria-hidden="true"></a>  ; only parameter with interindividual variability</span>
-<span id="cb36-9"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-9" aria-hidden="true"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
-<span id="cb36-10"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-10" aria-hidden="true"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
-<span id="cb36-11"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-11" aria-hidden="true"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
-<span id="cb36-12"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-12" aria-hidden="true"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
-<span id="cb36-13"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-13" aria-hidden="true"></a><span class="op">$</span>THETA\index{<span class="op">$</span>THETA}</span>
-<span id="cb36-14"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb36-14" aria-hidden="true"></a>...</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-1" aria-hidden="true"></a><span class="op">$</span>PROB Sigmoidal PD Model</span>
+<span id="cb35-2"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>sigmoidal_effect.csv IGNORE=<span class="er">@</span>\index{\<span class="op">$</span>DATA}\index{IGNORE}</span>
+<span id="cb35-3"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-3" aria-hidden="true"></a><span class="op">$</span>INPUT ID CP RESP=DV\index{\<span class="op">$</span>INPUT}\index{ID}\index{RES}</span>
+<span id="cb35-4"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{\<span class="op">$</span>PRED}\index{PRED}</span>
+<span id="cb35-5"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-5" aria-hidden="true"></a>  E0=<span class="kw">THETA</span>(<span class="dv">1</span>) ; Baseline</span>
+<span id="cb35-6"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-6" aria-hidden="true"></a>  EMAX=<span class="kw">THETA</span>(<span class="dv">2</span>) ; Max Effect</span>
+<span id="cb35-7"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-7" aria-hidden="true"></a>  C50=<span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) ; C50</span>
+<span id="cb35-8"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-8" aria-hidden="true"></a>  ; only parameter with interindividual variability</span>
+<span id="cb35-9"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-9" aria-hidden="true"></a>  GAM=<span class="kw">THETA</span>(<span class="dv">4</span>) ; Gamma</span>
+<span id="cb35-10"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-10" aria-hidden="true"></a>  ; do not add an ETA to this <span class="op">-</span><span class="st"> </span>very hard to fit</span>
+<span id="cb35-11"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-11" aria-hidden="true"></a>  IPRD=E0<span class="op">+</span>(EMAX<span class="op">-</span>E0)<span class="op">*</span>CP<span class="op">**</span>GAM<span class="op">/</span>(CP<span class="op">**</span>GAM<span class="op">+</span>C50<span class="op">**</span>GAM)</span>
+<span id="cb35-12"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-12" aria-hidden="true"></a>  Y=IPRD<span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)</span>
+<span id="cb35-13"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-13" aria-hidden="true"></a><span class="op">$</span>THETA\index{\<span class="op">$</span>THETA}</span>
+<span id="cb35-14"><a href="pred-advan을-쓰지-않는-코딩-pred.html#cb35-14" aria-hidden="true"></a>...</span></code></pre></div>
 
 </div>
 </div>

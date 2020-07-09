@@ -6,7 +6,7 @@
 
 ---
 
-본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어구문 파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로 설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 \@ref(tab:specific-advan)). 그림 \@ref(fig:1comp-ex), \@ref(fig:2comp-ex)를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 \@ref(fig:1comp-ex)은 약물농도가 하나의 직선으로, 그림 \@ref(fig:2comp-ex)는 약물농도가 두개의 직선으로 나타나 있다. 그림 \@ref(fig:1comp-ex)과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 \@ref(fig:2comp-ex)와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{$PK}\index{$SUBROUTINE}\index{ADVAN1}\index{ADVAN2}\index{ADVAN3}\index{ADVAN4}\index{PRED}\index{PREDPP}\index{TRANS}
+본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어구문 파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로 설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 \@ref(tab:specific-advan)). 그림 \@ref(fig:1comp-ex), \@ref(fig:2comp-ex)를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 \@ref(fig:1comp-ex)은 약물농도가 하나의 직선으로, 그림 \@ref(fig:2comp-ex)는 약물농도가 두개의 직선으로 나타나 있다. 그림 \@ref(fig:1comp-ex)과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 \@ref(fig:2comp-ex)와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN1}\index{ADVAN2}\index{ADVAN3}\index{ADVAN4}\index{PRED}\index{PREDPP}\index{TRANS}
 
 Table: (\#tab:specific-advan) 구획 모델별 특정 ADVAN의 종류
 
@@ -81,7 +81,7 @@ read_csv(txt) %>%
         caption = "Additional PK parameters")
 ```
 
-앞서 언급된 ADVAN & TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 `CL = THETA(1) * EXP(ETA(1))` 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 [공변량 분석](#covariate-analysis)에서 다뤄질 예정이다.\index{$PK}\index{$SUBROUTINE}\index{TRANS}
+앞서 언급된 ADVAN & TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 `CL = THETA(1) * EXP(ETA(1))` 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 [공변량 분석](#covariate-analysis)에서 다뤄질 예정이다.\index{\$PK}\index{\$SUBROUTINE}\index{TRANS}
 
 
 ```{example, code-example-advan4, echo = TRUE}
@@ -89,8 +89,8 @@ read_csv(txt) %>%
 ```
 
 ```r
-$SUBROUTINES ADVAN4 TRANS4\index{$SUBROUTINE}\index{ADVAN4}\index{TRANS}
-$PK \index{$PK}
+$SUBROUTINES ADVAN4 TRANS4\index{\$SUBROUTINE}\index{ADVAN4}\index{TRANS}
+$PK \index{\$PK}
   TVCL = THETA(1)
   TVV2 = THETA(2)
   TVV3 = THETA(3)
@@ -115,7 +115,7 @@ ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)�
 knitr::include_graphics("figures/04-fig-03.png") #4
 ```
 
-$PK 블록에 쓰인 필수 파라미터를 살펴보면 CL은 청소율, V2, V3는 각각 중심구획의 분포용적, 말초구획의 분포용적, Q는\index{$PK}
+$PK 블록에 쓰인 필수 파라미터를 살펴보면 CL은 청소율, V2, V3는 각각 중심구획의 분포용적, 말초구획의 분포용적, Q는\index{\$PK}
 Intercompartmental clearance, KA는 흡수속도상수를 의미하며, 부가 파라미터인 ALAG1은 저장구획의\index{저장구획 / depot compartment}\index{depot compartment / 저장구획}\index{ALAG}
 흡수지연시간, S2는 중심구획에 대한 척도 파라미터를 의미한다.\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}\index{scaling parameter / 척도 파라미터}
 

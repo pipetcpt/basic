@@ -42,27 +42,27 @@ knitr::include_graphics("./figures/13-fig-02.png")
 include_graphics("./figures/13-fig-03.png") # fig 3
 ```
 
-실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \@ref(exm:combined-upper), \@ref(exm:combined-lower)와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드  \@ref(exm:combined-upper)은 가장 기본적인 형태이고,  코드 \@ref(exm:combined-lower)의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, `0.0001 FIX`)하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{$SIGMA}
+실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \@ref(exm:combined-upper), \@ref(exm:combined-lower)와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드  \@ref(exm:combined-upper)은 가장 기본적인 형태이고,  코드 \@ref(exm:combined-lower)의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 ($SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, `0.0001 FIX`)하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{\$SIGMA}
 
 
 ```{example, combined-upper, echo=TRUE}
-$ERROR structure in NONMEM control stream: 기본형태\index{$ERROR}
+$ERROR structure in NONMEM control stream: 기본형태\index{\$ERROR}
 ```
 
 ```r
-$ERROR\index{$ERROR}
+$ERROR\index{\$ERROR}
   IPRED = F\index{IPRED}\index{PRED}
   Y     = IPRED * (1+EPS(1)) + EPS(2)\index{IPRED}\index{PRED}
 ```
 
 
 ```{example, combined-lower, echo=TRUE}
-$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{$ERROR}
+$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\$ERROR}
 이고, 비례오차모델의 표준편차를 반영
 ```
 
 ```r
-$ERROR\index{$ERROR}
+$ERROR\index{\$ERROR}
   IPRED = F\index{IPRED}\index{PRED}
   W     = SQRT(THETA(5)**2 + THETA(6) **2 * IPRED**2)\index{IPRED}\index{PRED}
   IRES  = DV - IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}

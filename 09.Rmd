@@ -4,11 +4,12 @@
 
 ## 추정 방법 및 관련 옵션
 
+\index{\$ESTIMATION (\$EST)}\index{MAXEVAL}\index{NOABORT}\index{SIGDIGITS (SIGDIG)}
 ```r
-$ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3\index{$ESTIMATION ($EST)}\index{MAXEVAL}\index{NOABORT}\index{SIGDIGITS|SIGDIG}
+$ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
 ```
 
-$ESTIMATION 레코드에는 종종 위와 유사한 구문을 쓰게 되고, 이는 NONMEM으로 하여금 어떤 방식으로 파라미터를 추정하고 그 결과를 출력할 것인지에 대한 옵션을 제시하는 것이다. 이중에는 NONMEM이 실행되기 위해 반드시 정의되어야 하는 옵션이 있는 반면, 일부는 생략하더라도 사전에 정해진 값이 적용되어 아무런 문제없이 NONMEM을 실행할 수 있다.\index{$ESTIMATION ($EST)}
+$ESTIMATION 레코드에는 종종 위와 유사한 구문을 쓰게 되고, 이는 NONMEM으로 하여금 어떤 방식으로 파라미터를 추정하고 그 결과를 출력할 것인지에 대한 옵션을 제시하는 것이다. 이중에는 NONMEM이 실행되기 위해 반드시 정의되어야 하는 옵션이 있는 반면, 일부는 생략하더라도 사전에 정해진 값이 적용되어 아무런 문제없이 NONMEM을 실행할 수 있다.\index{\$ESTIMATION (\$EST)}
 
 ### NOABORT\index{NOABORT}
 

@@ -177,10 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="control-stream.html"><a href="control-stream.html#control-record"><i class="fa fa-check"></i><b>3.3</b> 제어구문에 쓰이는 레코드</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="control-stream.html"><a href="control-stream.html#problem-data-input"><i class="fa fa-check"></i><b>3.3.1</b> $PROBLEM, $DATA, $INPUT</a></li>
-<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-desindexdes"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, <span class="math inline">\(DES\index{\)</span>DES}</a></li>
+<li class="chapter" data-level="3.3.2" data-path="control-stream.html"><a href="control-stream.html#subroutine-model-pk-des"><i class="fa fa-check"></i><b>3.3.2</b> $SUBROUTINE, $MODEL, $PK, $DES</a></li>
 <li class="chapter" data-level="3.3.3" data-path="control-stream.html"><a href="control-stream.html#theta-omega-sigma"><i class="fa fa-check"></i><b>3.3.3</b> $THETA, $OMEGA, $SIGMA</a></li>
-<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulationindexestimation-estindexsimulation-sim"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, <span class="math inline">\(SIMULATION\index{\)</span>ESTIMATION (<span class="math inline">\(EST)}\index{\)</span>SIMULATION ($SIM)}</a></li>
-<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-tableindexcovariance-cov-covarindextable"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, <span class="math inline">\(TABLE\index{\)</span>COVARIANCE ($COV, <span class="math inline">\(COVAR)}\index{\)</span>TABLE}</a></li>
+<li class="chapter" data-level="3.3.4" data-path="control-stream.html"><a href="control-stream.html#estimation-simulation"><i class="fa fa-check"></i><b>3.3.4</b> $ESTIMATION, $SIMULATION</a></li>
+<li class="chapter" data-level="3.3.5" data-path="control-stream.html"><a href="control-stream.html#covariance-table"><i class="fa fa-check"></i><b>3.3.5</b> $COVARIANCE, $TABLE</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="control-stream.html"><a href="control-stream.html#모델-종류별-제어구문"><i class="fa fa-check"></i><b>3.4</b> 모델 종류별 제어구문</a>
 <ul>
@@ -392,7 +392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pd-데이터" class="section level3" number="17.2.1">
 <h3><span class="header-section-number">17.2.1</span> PD 데이터</h3>
 <p>많은 경우 PD 데이터는 약동학 데이터(혈장약물농도)에 비해 숫자가 적고, 잔차(측정오차 등)가 크고, 측정된 시점도 사람마다 차이가 날 수 있다. 또 혈장약물농도는 측정된 최고 값과 최저 값이 수 백 배 이상 차이 나는 경우가 많지만, 약력학 데이터는 그보다는 변동범위가 훨씬 좁은 편이다. (대게 수 십 배 이하) 따라서 혼합효과 모델링할 때 잔차에 대하여 가법오차(additive error) 모델을 쓰는 편이다.</p>
-<p>PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형, 범주형 변수와 기타 다른 형태의 변수들이 있다.(표 <a href="#tab:pd-data-property"><strong>??</strong></a>) 변수의 성격에 따라 NONMEM에서의 <span class="math inline">\(ESTIMATION 의 옵션도 달라져야 한다.\index{\)</span>ESTIMATION ($EST)}</p>
+<p>PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형 변수일 수도 있고, 이외 많은 임상적 측정치들의 경우처럼 이진형, 범주형 변수와 기타 다른 형태의 변수들이 있다.(표 <a href="#tab:pd-data-property"><strong>??</strong></a>) 변수의 성격에 따라 NONMEM에서의 $ESTIMATION 의 옵션도 달라져야 한다.</p>
 <pre><code>## Error: &lt;text&gt;:15:76: unexpected input
 ## 14: 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음)&#39;,
 ## 15: &#39;IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)&#39;,\

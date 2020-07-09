@@ -49,8 +49,8 @@ include_graphics("figures/20-fig-03.png")
 ```
 
 ```r
-$SUBROUTINES ADVAN3\index{$SUBROUTINE}\index{ADVAN3}
-$PK\index{$PK}
+$SUBROUTINES ADVAN3\index{\$SUBROUTINE}\index{ADVAN3}
+$PK\index{\$PK}
   K   = THETA(1)*EXP(ETA(1))        ; TRIVIAL LOSS TO EFFECT CMPT\index{SS}
   K12 = .001*K                      ; KEO
   K21 = THETA(2)*EXP(ETA(2))        ; V1 FOR DRUG\index{FO}
@@ -58,7 +58,7 @@ $PK\index{$PK}
   EMAX= THETA(4)*EXP(ETA(4))
   C50 = THETA(5)*EXP(ETA(5))
   S2  = S1*K12/K21                  ; SO THAT CESS = CPSS\index{S1}\index{SS}
-$ERROR\index{$ERROR}
+$ERROR\index{\$ERROR}
   IF (CMT.EQ.2) THEN\index{CMT}
   Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2\index{CMT}
   ELSE
@@ -73,21 +73,21 @@ $ERROR\index{$ERROR}
 ```
 
 ```r
-$SUBROUTINES ADVAN6 TOL=5\index{$SUBROUTINE}\index{ADVAN6}\index{TOL}
-$MODEL\index{$MODEL}
+$SUBROUTINES ADVAN6 TOL=5\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
+$MODEL\index{\$MODEL}
   COMP=(CENTRAL,DEFDOSE,DEFOBS)\index{COMP}\index{DEFDOS}\index{DEFOBS}\index{FO}
   COMP=EFFECT\index{COMP}
-$PK\index{$PK}
+$PK\index{\$PK}
   K10 = THETA(1)*EXP(ETA(1)) 
   V1  = THETA(2)*EXP(ETA(2)) 
   S1  = V1 \index{S1}
   K20 = THETA(3)*EXP(ETA(3))
   C50 = THETA(4)*EXP(ETA(4))
   EMAX= THETA(5)*EXP(ETA(5))
-$DES\index{$DES}
+$DES\index{\$DES}
   DADT(1)=-K10*A(1)                 ; NOTE NO LOSS TO A(2)\index{SS}
   DADT(2)= K20*(A(1)/V1-A(2))       ; A(2) IS CE
-$ERROR\index{$ERROR}
+$ERROR\index{\$ERROR}
   IF (CMT.EQ.2) THEN\index{CMT}
   Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2\index{CMT}
   ELSE
