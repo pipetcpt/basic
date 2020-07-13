@@ -39,38 +39,38 @@ knitr::include_graphics("./figures/03-fig-01.png") # 3.1
 
 ```r
 $PROB 1-compartment model
-$INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR\index{\$INPUT}\index{AMT}\index{ID}\index{MDV}\index{RATE}\index{TIME}
-$DATA test.csv IGNORE=@\index{\$DATA}\index{IGNORE}
-$SUBR ADVAN1 TRANS2\index{ADVAN1}\index{TRANS}\index{TRANS2}
-$PK\index{\$PK}
+$INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR
+$DATA test.csv IGNORE=@
+$SUBR ADVAN1 TRANS2
+$PK
   V  = THETA(1)*EXP(ETA(1))
   CL = THETA(2)*EXP(ETA(2))
-  S1 = V\index{S1}
-$ERROR\index{\$ERROR}
-  IPRED = F\index{IPRED}\index{PRED}
-  W     = SQRT(THETA(3)**2 + THETA(4)**2 * IPRED**2)\index{IPRED}\index{PRED}
-  IRES  = DV - IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}
-  IWRES = IRES / W\index{IRES}\index{IWRES}\index{RES}\index{WRES}
-  Y     = IPRED + W * EPS(1)\index{IPRED}\index{PRED}
-$THETA\index{\$THETA}
+  S1 = V
+$ERROR
+  IPRED = F
+  W     = SQRT(THETA(3)**2 + THETA(4)**2 * IPRED**2)
+  IRES  = DV - IPRED
+  IWRES = IRES / W
+  Y     = IPRED + W * EPS(1)
+$THETA
   (0, 400)
   (0, 100)
   0.0001 FIX
   0.5
-$OMEGA\index{\$OMEGA}
+$OMEGA
   0.02 0.01
   0.02
-$SIGMA\index{\$SIGMA}
+$SIGMA
   1 FIX
-$ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=5\index{\$ESTIMATION (\$EST)}\index{MAXEVAL}\index{NOABORT}
-$TABLE ID TIME AMT RATE MDV DV IPRED IRES CWRES \index{\$TABLE}\index{AMT}\index{CWRES}\index{ID}\index{IPRED}\index{IRES}\index{MDV}\index{PRED}\index{RATE}\index{RES}\index{TIME}\index{WRES}
-       ONEHEADER NOPRINT FILE=sdtab1001\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
-$TABLE ID TIME AMT DV CL V ETA1 ETA2 \index{\$TABLE}\index{AMT}\index{ID}\index{TIME}
-       ONEHEADER NOPRINT FILE=patab1001\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
-$TABLE ID RF SEX \index{\$TABLE}\index{ID}
-       ONEHEADER NOPRINT FILE=catab1001\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
-$TABLE ID WT AGE SEX HT ALB CLCR \index{\$TABLE}\index{ID}
-       ONEHEADER NOPRINT FILE=cotab1001\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
+$ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=5
+$TABLE ID TIME AMT RATE MDV DV IPRED IRES CWRES 
+       ONEHEADER NOPRINT FILE=sdtab1001
+$TABLE ID TIME AMT DV CL V ETA1 ETA2 
+       ONEHEADER NOPRINT FILE=patab1001
+$TABLE ID RF SEX 
+       ONEHEADER NOPRINT FILE=catab1001
+$TABLE ID WT AGE SEX HT ALB CLCR 
+       ONEHEADER NOPRINT FILE=cotab1001
 ```
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
@@ -305,7 +305,7 @@ $COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들�
 $COVARIANCE PRINT=E UNCONTIONAL MATRIX=S\index{\$COVARIANCE (\$COV, \$COVAR)}\index{CONT}\index{PRINT=E}
 ```
 
-PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R~-1~SR~-1~ 행렬이 기본계산에 사용되는데, `MATRIX=S` 또는 `MATRIX=R` 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. `UNCONDITIONAL` 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{eigenvalues / 고유값}\index{variance-covariance matrix / 분산-공분산 행렬}\index{조건수 / condition number}\index{condition number / 조건수}\index{R 행렬 / R matrix}\index{S 행렬 / S matrix}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{PRINT=E}
+PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R~-1~SR~-1~ 행렬이 기본계산에 사용되는데, `MATRIX=S` 또는 `MATRIX=R` 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. `UNCONDITIONAL` 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{eigenvalues / 고유값}\index{variance-covariance matrix / 분산-공분산 행렬}\index{조건수 / condition number}\index{condition number / 조건수}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{PRINT=E}
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 \@ref(exm:table-record)처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (@R-xpose4) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.\index{dependent variable(DV) / 종속변수(DV)}\index{\$TABLE}\index{NOAPPEND}\index{NOHEADER}\index{NOPRINT}\index{ONEHEADER}\index{PRED}\index{RES}\index{WRES}
 

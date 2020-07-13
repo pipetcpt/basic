@@ -99,36 +99,36 @@ SIM 방법의 제어구문의 예 <!--fig5-->
 ```
 
 ```r
-$PK \index{\$PK}
+$PK 
 CL = THETA(1) * EXP(ETA(1)) 
 V1 = THETA(2) * EXP(ETA(2)) 
 K = CL / V1 
 EMAX = THETA(3) * EXP(ETA(3)) 
 EC50 = THETA(4) * EXP(ETA(4))
 
-$DES \index{\$DES}
+$DES 
 CP = A(1) / V1 
 DADT(1) = -K * A(1)
 
-$ERROR \index{\$ERROR}
+$ERROR 
 Y1 = CP 
 Y2 = EMAX*CP / (EC50+CP) 
-IF (CMT.LE.1) Y = Y1 + ERR(1) \index{CMT}
-IF (CMT.EQ.2) Y = Y2 + ERR(2)\index{CMT}
+IF (CMT.LE.1) Y = Y1 + ERR(1) 
+IF (CMT.EQ.2) Y = Y2 + ERR(2)
 
-$THETA \index{\$THETA}
+$THETA 
 (0, 1) 
 (0, 10) 
 (0, 15) 
 (0, 20)
 
-$OMEGA \index{\$OMEGA}
+$OMEGA 
 0.1 
 0.15 
 0.2 
 0.25
 
-$SIGMA \index{\$SIGMA}
+$SIGMA 
 0.025 
 0.04
 ```
@@ -137,30 +137,30 @@ $SIGMA \index{\$SIGMA}
 
 ```r
 $PROB 1 comp IV Emax model 
-$INPUT ID TIME AMT DV MDV CMT \index{\$INPUT}\index{AMT}\index{CMT}\index{ID}\index{MDV}\index{TIME}
-$DATA DATAFILENAME.csv IGNORE=@ \index{\$DATA}\index{IGNORE}
-$SUBROUTIN ADVAN6 TOL=3 \index{ADVAN6}\index{TOL}
-$MODEL \index{\$MODEL}
-COMP (CENT, DEFDOSE, DEFOBS) \index{COMP}\index{DEFDOS}\index{DEFOBS}\index{FO}
-COMP (PD)\index{COMP}
+$INPUT ID TIME AMT DV MDV CMT 
+$DATA DATAFILENAME.csv IGNORE=@ 
+$SUBROUTIN ADVAN6 TOL=3 
+$MODEL 
+COMP (CENT, DEFDOSE, DEFOBS) 
+COMP (PD)
 ```
 
 추가적으로 R 소프트웨어의 xpose4 패키지를 사용하여 적합도 플롯(goodness of fit plot)을 그리고자 하는 경우, IWRES 값이 필요하며, 코드 \@ref(exm:SIM-control)에서 제시한 단순화된 오차모델 대신 아래와 같은 오차모델을 사용하여 PK-PD 모델링을 진행할 수 있다. 아래의 예시에는 PK 오차모델에는 가법오차와 비례오차를 모두 주었고, PD 오차모델에는 가법오차 만을 주었다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}\index{IWRES}\index{RES}\index{WRES}
 
 ```r
-$ERROR \index{\$ERROR}
-IF (CMT.EQ.1) THEN \index{CMT}
-  IPRED = CP \index{IPRED}\index{PRED}
-  W = SQRT(THETA(10)**2 + THETA(11)**2 * IPRED**2) \index{IPRED}\index{PRED}
-  IRES = DV - IPRED \index{IPRED}\index{IRES}\index{PRED}\index{RES}
-  IWRES = IRES / W \index{IRES}\index{IWRES}\index{RES}\index{WRES}
-  Y = IPRED + W * EPS(1) \index{IPRED}\index{PRED}
-IF (CMT.EQ.2) THEN \index{CMT}
-  IPRED = EMAX*CP/(EC50+CP) \index{IPRED}\index{PRED}
+$ERROR 
+IF (CMT.EQ.1) THEN 
+  IPRED = CP 
+  W = SQRT(THETA(10)**2 + THETA(11)**2 * IPRED**2) 
+  IRES = DV - IPRED 
+  IWRES = IRES / W 
+  Y = IPRED + W * EPS(1) 
+IF (CMT.EQ.2) THEN 
+  IPRED = EMAX*CP/(EC50+CP) 
   W = THETA(12) 
-  IRES = DV - IPRED \index{IPRED}\index{IRES}\index{PRED}\index{RES}
-  IWRES = IRES / W \index{IRES}\index{IWRES}\index{RES}\index{WRES}
-  Y = IPRED + W * EPS(2) \index{IPRED}\index{PRED}
+  IRES = DV - IPRED 
+  IWRES = IRES / W 
+  Y = IPRED + W * EPS(2) 
 ENDIF
 ```
 
@@ -183,36 +183,36 @@ PPP\&D 방법의 제어구문의 예
 ```
 
 ```r
-$PK \index{\$PK}
+$PK 
 CL = THETA(1) * EXP(ETA(1)) 
 V1 = THETA(2) * EXP(ETA(2)) 
 K = CL / V1 
 EMAX = THETA(3) * EXP(ETA(3)) 
 EC50 = THETA(4) * EXP(ETA(4))
 
-$DES \index{\$DES}
+$DES 
 CP = A(1) / V1 
 DADT(1) = -K * A(1)
 
-$ERROR \index{\$ERROR}
+$ERROR 
 Y1 = CP 
 Y2 = EMAX*CP / (EC50+CP) 
-IF (CMT.LE.1) Y = Y1 + ERR(1) \index{CMT}
-IF (CMT.EQ.2) Y = Y2 + ERR(2)\index{CMT}
+IF (CMT.LE.1) Y = Y1 + ERR(1) 
+IF (CMT.EQ.2) Y = Y2 + ERR(2)
 
-$THETA \index{\$THETA}
+$THETA 
 1 FIX
 10 FIX
 (0, 15) 
 (0, 20)
 
-$OMEGA \index{\$OMEGA}
+$OMEGA 
 0.1 FIX 
 0.15 FIX
 0.2
 0.25
 
-$SIGMA \index{\$SIGMA}
+$SIGMA 
 0.025 FIX
 0.04
 ```
@@ -237,34 +237,34 @@ Example of control file for PPP
 ```
 
 ```r
-$PK \index{\$PK}
+$PK 
 CL = THETA(1) * EXP(ETA(1)) 
 V1 = THETA(2) * EXP(ETA(2)) 
 K = CL / V1 
 EMAX = THETA(3) * EXP(ETA(3)) 
 EC50 = THETA(4) * EXP(ETA(4))
 
-$DES \index{\$DES}
+$DES 
 CP = A(1) / V1 
 DADT(1) = -K * A(1)
 
-$ERROR \index{\$ERROR}
+$ERROR 
 EFF = EMAX*CP / (EC50+CP) 
 Y = EFF + ERR(1)
 
-$THETA \index{\$THETA}
+$THETA 
 1 FIX 
 10 FIX 
 (0, 15) 
 (0, 20)
 
-$OMEGA \index{\$OMEGA}
+$OMEGA 
 0.1 FIX 
 0.15 FIX 
 0.2 
 0.25
 
-$SIGMA \index{\$SIGMA}
+$SIGMA 
 0.04
 ```
 
@@ -285,30 +285,30 @@ IPP 방법의 제어구문의 예
 ```
 
 ```r
-$PK\index{\$PK}
+$PK
   CL = ICL
   V1 = IV
   K = CL / V1
   EMAX = THETA(3) * EXP(ETA(3))
   EC50 = THETA(4) * EXP(ETA(4))
 
-$DES\index{\$DES}
+$DES
   CP = A(1) / V1
   DADT(1) = -K * A(1)
 
-$ERROR\index{\$ERROR}
+$ERROR
   EFF = EMAX*CP / (EC50+CP)
   Y = EFF + ERR(1)
 
-$THETA\index{\$THETA}
+$THETA
   (0, 15)
   (0, 20)
 
-$OMEGA\index{\$OMEGA}
+$OMEGA
   0.2
   0.25
 
-$SIGMA\index{\$SIGMA}
+$SIGMA
   0.04
 ```
 
@@ -338,19 +338,19 @@ include_graphics("./assets/media-18/image9.png") # fig 12
 
 ```r
 $PROB HO_PO_2comp
-$DATA SIM_S.csv IGNORE=@\index{\$DATA}\index{IGNORE}
-$INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT\index{\$INPUT}\index{AMT}\index{ID}\index{MDV}\index{TIME}
+$DATA SIM_S.csv IGNORE=@
+$INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT
 
-$SUBROUTINE ADVAN6 TOL=3\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
+$SUBROUTINE ADVAN6 TOL=3
 
-$MODEL NCOMP=4\index{\$MODEL}\index{COMP}
-  COMP(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}
-  COMP(CENT)\index{COMP}
-  COMP(PERI)\index{COMP}
-  COMP(EFFE, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}
+$MODEL NCOMP=4
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENT)
+  COMP(PERI)
+  COMP(EFFE, DEFOBS)
 
-$PK\index{\$PK}
-;---- PK FIXED EFFECT ----\index{FIXED}
+$PK
+;---- PK FIXED EFFECT ----
   TVCL = THETA(1)
   TVV2 = THETA(2)
   TVV3 = THETA(3)
@@ -403,18 +403,18 @@ IPP 방법의 제어구문의 예
 
 ```r
 $PROB HO_PO_2comp
-$DATA IPP_S.csv IGNORE=@\index{\$DATA}\index{IGNORE}
-$INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA\index{\$INPUT}\index{AMT}\index{CMT}\index{ID}\index{MDV}\index{TIME}
+$DATA IPP_S.csv IGNORE=@
+$INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA
 
-$SUBROUTINE ADVAN6 TOL=3\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
+$SUBROUTINE ADVAN6 TOL=3
 
-$MODEL NCOMP=4\index{\$MODEL}\index{COMP}
-  COMP(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}
-  COMP(CENT)\index{COMP}
-  COMP(PERI)\index{COMP}
-  COMP(EFFE, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}
+$MODEL NCOMP=4
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENT)
+  COMP(PERI)
+  COMP(EFFE, DEFOBS)
  
-$PK\index{\$PK}
+$PK
 
   CL    = ICL
   V2    = IV2

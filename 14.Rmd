@@ -18,29 +18,29 @@ Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 
 
 ```r
 $PROB THEOPHYLLINE ORAL
-$INPUT ID AMT=DROP TIME DV BWT\index{\$INPUT}\index{AMT}\index{DROP}\index{ID}\index{TIME}
-$DATA ../THEO\index{\$DATA}
-$PRED\index{\$PRED}\index{PRED}
+$INPUT ID AMT=DROP TIME DV BWT
+$DATA ../THEO
+$PRED
   DOSE = 320
   KA   = THETA(1) * EXP(ETA(1))
   V    = THETA(2) * EXP(ETA(2))
   K    = THETA(3) * EXP(ETA(3))
-  F    = DOSE/V*KA/(KA - K)*(EXP(-K*TIME) - EXP(-KA*TIME))\index{TIME}
+  F    = DOSE/V*KA/(KA - K)*(EXP(-K*TIME) - EXP(-KA*TIME))
   IPRE = F
   Y    = F + F*EPS(1) + EPS(2)
 
-$THETA (0, 2) (0, 50) (0, 0.1)\index{\$THETA}
-$OMEGA BLOCK(3)\index{\$OMEGA}\index{\$OMEGA BLOCK}
+$THETA (0, 2) (0, 50) (0, 0.1)
+$OMEGA BLOCK(3)
   0.2
   0.1  0.2
   0.1  0.1  0.2
-$SIGMA 0.1  0.1\index{\$SIGMA}
-$EST MAX=9999 METHOD=ZERO POSTHOC\index{\$ESTIMATION (\$EST)}\index{POSTHOC}
-$COV PRINT=ERS\index{\$COVARIANCE (\$COV, \$COVAR)}\index{PRINT=E}
-$TAB ID TIME IPRE CWRES\index{CWRES}\index{ID}\index{RES}\index{TIME}\index{WRES}
-     FILE=sdtab NOPRINT ONEHEADER\index{FILE=}\index{NOPRINT}\index{ONEHEADER}
-$TAB ID ETA(1) ETA(2) ETA(3)\index{ID}
-     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY\index{FILE=}\index{FIRSTONLY}\index{NOAPPEND}\index{ONEHEADER}
+$SIGMA 0.1  0.1
+$EST MAX=9999 METHOD=ZERO POSTHOC
+$COV PRINT=ERS
+$TAB ID TIME IPRE CWRES
+     FILE=sdtab NOPRINT ONEHEADER
+$TAB ID ETA(1) ETA(2) ETA(3)
+     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY
 ```
 
 위의 \$COV STEP에 의해 생성된 부분은 별첨 1과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.\index{\$COVARIANCE (\$COV, \$COVAR)}
@@ -68,11 +68,11 @@ $COV 출력의 마지막 부분은 S matrix이다. 이는 개별 대상자의 lo
 NONMEM User’s guide와 help file에는 \$COV를 다음과 같이 설명한다. [@nonmem]\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 ```
-$COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
+$COVARIANCE
 
- DISCUSSION:\index{SS}
+ DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -80,10 +80,10 @@ $COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be\index{standard errors of the estimates / 추정값의 표준오차}
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
       more consistent with other nonlinear regression  software  imple-
       mentations.
 
@@ -204,15 +204,15 @@ function ()
 {
   Smat = matrix(rep(0, e$nPara * e$nPara), nrow = e$nPara, 
                 ncol = e$nPara)
-  for (i in 1:e$nID) {\index{ID}
-    e$DATAi = e$DataRef[[i]]\index{\$DATA}
+  for (i in 1:e$nID) {
+    e$DATAi = e$DataRef[[i]]
     e$ETAi = e$EBE[i, e$EtaNames]
     e$nReci = e$Oi[i, "nRec"]
     if (e$METHOD == "ZERO") {
       gr = grad(OiS0, e$FinalPara)
     }
     else {
-      gr = grad(OiS1, e$FinalPara)\index{S1}
+      gr = grad(OiS1, e$FinalPara)
     }
     Smat = Smat + gr %*% t(gr)
   }
@@ -247,8 +247,8 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 
 ```r
 DataAll = Theoph
-colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")\index{ID}\index{TIME}
-DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))\index{ID}
+colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")
+DataAll[,"ID"] = as.numeric(as.character(DataAll[,"ID"]))
 
 nTheta = 3
 nEta = 3
@@ -262,22 +262,22 @@ SGinit = diag(c(0.1, 0.1))
 LB = rep(0, nTheta) # Lower bound
 UB = rep(1000000, nTheta) # Upper bound
 
-FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/\index{D1}
+FGD1 = deriv(~DOSE/(TH2*exp(ETA2))*TH1*exp(ETA1)/
              (TH1*exp(ETA1) - TH3*exp(ETA3))*
-			 (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),\index{TIME}
+			 (exp(-TH3*exp(ETA3)*TIME)-exp(-TH1*exp(ETA1)*TIME)),
              c("ETA1","ETA2","ETA3"),
              function.arg=c("TH1", "TH2", "TH3", "ETA1", "ETA2", "ETA3", 
-			                "DOSE", "TIME"),\index{TIME}
+			                "DOSE", "TIME"),
              func=TRUE, hessian=FALSE)
 
-H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), \index{S1}
-          function.arg=c("F", "EPS1", "EPS2"), \index{S1}
+H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"), 
+          function.arg=c("F", "EPS1", "EPS2"), 
           func=TRUE)
 
-PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{D1}\index{FOCE}\index{FO}\index{PRED}
+PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
 {
-  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, \index{D1}
-                DATAi[,"TIME"])\index{TIME}
+  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, 
+                DATAi[,"TIME"])
   Gres = attr(FGDres, "gradient")
   Hres = attr(H(FGDres, 0, 0), "gradient")
   Res = cbind(FGDres, Gres, Hres)
@@ -296,7 +296,7 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE\index{first-order conditi
 library(nmw)
 # First Order Approximation Method
 InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit, 
-         LB=LB, UB=UB, Pred=PRED1, METHOD="ZERO")\index{D1}\index{PRED}
+         LB=LB, UB=UB, Pred=PRED1, METHOD="ZERO")
 (EstRes1 = EstStep())
 ## $`Initial OFV`
 ## [1] 141.3076

@@ -385,29 +385,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="exm:theoph-control-stream" class="example"><strong>코드 14.1  </strong></span>Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 </div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cov.html#cb38-1" aria-hidden="true"></a><span class="op">$</span>PROB THEOPHYLLINE ORAL</span>
-<span id="cb38-2"><a href="cov.html#cb38-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT\index{\<span class="op">$</span>INPUT}\index{AMT}\index{DROP}\index{ID}\index{TIME}</span>
-<span id="cb38-3"><a href="cov.html#cb38-3" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO\index{\<span class="op">$</span>DATA}</span>
-<span id="cb38-4"><a href="cov.html#cb38-4" aria-hidden="true"></a><span class="op">$</span>PRED\index{\<span class="op">$</span>PRED}\index{PRED}</span>
+<span id="cb38-2"><a href="cov.html#cb38-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT</span>
+<span id="cb38-3"><a href="cov.html#cb38-3" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO</span>
+<span id="cb38-4"><a href="cov.html#cb38-4" aria-hidden="true"></a><span class="op">$</span>PRED</span>
 <span id="cb38-5"><a href="cov.html#cb38-5" aria-hidden="true"></a>  DOSE =<span class="st"> </span><span class="dv">320</span></span>
 <span id="cb38-6"><a href="cov.html#cb38-6" aria-hidden="true"></a>  KA   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
 <span id="cb38-7"><a href="cov.html#cb38-7" aria-hidden="true"></a>  V    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
 <span id="cb38-8"><a href="cov.html#cb38-8" aria-hidden="true"></a>  K    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb38-9"><a href="cov.html#cb38-9" aria-hidden="true"></a>  F    =<span class="st"> </span>DOSE<span class="op">/</span>V<span class="op">*</span>KA<span class="op">/</span>(KA <span class="op">-</span><span class="st"> </span>K)<span class="op">*</span>(<span class="kw">EXP</span>(<span class="op">-</span>K<span class="op">*</span>TIME) <span class="op">-</span><span class="st"> </span><span class="kw">EXP</span>(<span class="op">-</span>KA<span class="op">*</span>TIME))\index{TIME}</span>
+<span id="cb38-9"><a href="cov.html#cb38-9" aria-hidden="true"></a>  F    =<span class="st"> </span>DOSE<span class="op">/</span>V<span class="op">*</span>KA<span class="op">/</span>(KA <span class="op">-</span><span class="st"> </span>K)<span class="op">*</span>(<span class="kw">EXP</span>(<span class="op">-</span>K<span class="op">*</span>TIME) <span class="op">-</span><span class="st"> </span><span class="kw">EXP</span>(<span class="op">-</span>KA<span class="op">*</span>TIME))</span>
 <span id="cb38-10"><a href="cov.html#cb38-10" aria-hidden="true"></a>  IPRE =<span class="st"> </span>F</span>
 <span id="cb38-11"><a href="cov.html#cb38-11" aria-hidden="true"></a>  Y    =<span class="st"> </span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span><span class="kw">EPS</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span>
 <span id="cb38-12"><a href="cov.html#cb38-12" aria-hidden="true"></a></span>
-<span id="cb38-13"><a href="cov.html#cb38-13" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)\index{\<span class="op">$</span>THETA}</span>
-<span id="cb38-14"><a href="cov.html#cb38-14" aria-hidden="true"></a><span class="op">$</span>OMEGA <span class="kw">BLOCK</span>(<span class="dv">3</span>)\index{\<span class="op">$</span>OMEGA}\index{\<span class="op">$</span>OMEGA BLOCK}</span>
+<span id="cb38-13"><a href="cov.html#cb38-13" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb38-14"><a href="cov.html#cb38-14" aria-hidden="true"></a><span class="op">$</span>OMEGA <span class="kw">BLOCK</span>(<span class="dv">3</span>)</span>
 <span id="cb38-15"><a href="cov.html#cb38-15" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
 <span id="cb38-16"><a href="cov.html#cb38-16" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
 <span id="cb38-17"><a href="cov.html#cb38-17" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
-<span id="cb38-18"><a href="cov.html#cb38-18" aria-hidden="true"></a><span class="op">$</span>SIGMA <span class="fl">0.1</span>  <span class="fl">0.1</span>\index{\<span class="op">$</span>SIGMA}</span>
-<span id="cb38-19"><a href="cov.html#cb38-19" aria-hidden="true"></a><span class="op">$</span>EST MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC\index{\<span class="op">$</span><span class="kw">ESTIMATION</span> (\<span class="op">$</span>EST)}\index{POSTHOC}</span>
-<span id="cb38-20"><a href="cov.html#cb38-20" aria-hidden="true"></a><span class="op">$</span>COV PRINT=ERS\index{\<span class="op">$</span><span class="kw">COVARIANCE</span> (\<span class="op">$</span>COV, \<span class="op">$</span>COVAR)}\index{PRINT=E}</span>
-<span id="cb38-21"><a href="cov.html#cb38-21" aria-hidden="true"></a><span class="op">$</span>TAB ID TIME IPRE CWRES\index{CWRES}\index{ID}\index{RES}\index{TIME}\index{WRES}</span>
-<span id="cb38-22"><a href="cov.html#cb38-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER\index{FILE=}\index{NOPRINT}\index{ONEHEADER}</span>
-<span id="cb38-23"><a href="cov.html#cb38-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)\index{ID}</span>
-<span id="cb38-24"><a href="cov.html#cb38-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY\index{FILE=}\index{FIRSTONLY}\index{NOAPPEND}\index{ONEHEADER}</span></code></pre></div>
+<span id="cb38-18"><a href="cov.html#cb38-18" aria-hidden="true"></a><span class="op">$</span>SIGMA <span class="fl">0.1</span>  <span class="fl">0.1</span></span>
+<span id="cb38-19"><a href="cov.html#cb38-19" aria-hidden="true"></a><span class="op">$</span>EST MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC</span>
+<span id="cb38-20"><a href="cov.html#cb38-20" aria-hidden="true"></a><span class="op">$</span>COV PRINT=ERS</span>
+<span id="cb38-21"><a href="cov.html#cb38-21" aria-hidden="true"></a><span class="op">$</span>TAB ID TIME IPRE CWRES</span>
+<span id="cb38-22"><a href="cov.html#cb38-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER</span>
+<span id="cb38-23"><a href="cov.html#cb38-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)</span>
+<span id="cb38-24"><a href="cov.html#cb38-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</span></code></pre></div>
 <p>위의 $COV STEP에 의해 생성된 부분은 별첨 1과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
 <p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.</p>
 <p>$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
@@ -422,11 +422,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="nonmem-document" class="section level2" number="14.2">
 <h2><span class="header-section-number">14.2</span> NONMEM document</h2>
 <p>NONMEM User’s guide와 help file에는 $COV를 다음과 같이 설명한다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
-<pre><code>$COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
+<pre><code>$COVARIANCE
 
- DISCUSSION:\index{SS}
+ DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -434,10 +434,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be\index{standard errors of the estimates / 추정값의 표준오차}
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
       more consistent with other nonlinear regression  software  imple-
       mentations.
 
@@ -536,15 +536,15 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <span id="cb42-3"><a href="cov.html#cb42-3" aria-hidden="true"></a>{</span>
 <span id="cb42-4"><a href="cov.html#cb42-4" aria-hidden="true"></a>  Smat =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">0</span>, e<span class="op">$</span>nPara <span class="op">*</span><span class="st"> </span>e<span class="op">$</span>nPara), <span class="dt">nrow =</span> e<span class="op">$</span>nPara, </span>
 <span id="cb42-5"><a href="cov.html#cb42-5" aria-hidden="true"></a>                <span class="dt">ncol =</span> e<span class="op">$</span>nPara)</span>
-<span id="cb42-6"><a href="cov.html#cb42-6" aria-hidden="true"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>e<span class="op">$</span>nID) {\index{ID}</span>
-<span id="cb42-7"><a href="cov.html#cb42-7" aria-hidden="true"></a>    e<span class="op">$</span>DATAi =<span class="st"> </span>e<span class="op">$</span>DataRef[[i]]\index{\<span class="op">$</span>DATA}</span>
+<span id="cb42-6"><a href="cov.html#cb42-6" aria-hidden="true"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>e<span class="op">$</span>nID) {</span>
+<span id="cb42-7"><a href="cov.html#cb42-7" aria-hidden="true"></a>    e<span class="op">$</span>DATAi =<span class="st"> </span>e<span class="op">$</span>DataRef[[i]]</span>
 <span id="cb42-8"><a href="cov.html#cb42-8" aria-hidden="true"></a>    e<span class="op">$</span>ETAi =<span class="st"> </span>e<span class="op">$</span>EBE[i, e<span class="op">$</span>EtaNames]</span>
 <span id="cb42-9"><a href="cov.html#cb42-9" aria-hidden="true"></a>    e<span class="op">$</span>nReci =<span class="st"> </span>e<span class="op">$</span>Oi[i, <span class="st">&quot;nRec&quot;</span>]</span>
 <span id="cb42-10"><a href="cov.html#cb42-10" aria-hidden="true"></a>    <span class="cf">if</span> (e<span class="op">$</span>METHOD <span class="op">==</span><span class="st"> &quot;ZERO&quot;</span>) {</span>
 <span id="cb42-11"><a href="cov.html#cb42-11" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS0, e<span class="op">$</span>FinalPara)</span>
 <span id="cb42-12"><a href="cov.html#cb42-12" aria-hidden="true"></a>    }</span>
 <span id="cb42-13"><a href="cov.html#cb42-13" aria-hidden="true"></a>    <span class="cf">else</span> {</span>
-<span id="cb42-14"><a href="cov.html#cb42-14" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS1, e<span class="op">$</span>FinalPara)\index{S1}</span>
+<span id="cb42-14"><a href="cov.html#cb42-14" aria-hidden="true"></a>      gr =<span class="st"> </span><span class="kw">grad</span>(OiS1, e<span class="op">$</span>FinalPara)</span>
 <span id="cb42-15"><a href="cov.html#cb42-15" aria-hidden="true"></a>    }</span>
 <span id="cb42-16"><a href="cov.html#cb42-16" aria-hidden="true"></a>    Smat =<span class="st"> </span>Smat <span class="op">+</span><span class="st"> </span>gr <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(gr)</span>
 <span id="cb42-17"><a href="cov.html#cb42-17" aria-hidden="true"></a>  }</span>
@@ -574,8 +574,8 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
 <p>R에서는 다음과 같은 준비 작업이 필요하다.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cov.html#cb43-1" aria-hidden="true"></a>DataAll =<span class="st"> </span>Theoph</span>
-<span id="cb43-2"><a href="cov.html#cb43-2" aria-hidden="true"></a><span class="kw">colnames</span>(DataAll) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>, <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)\index{ID}\index{TIME}</span>
-<span id="cb43-3"><a href="cov.html#cb43-3" aria-hidden="true"></a>DataAll[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(DataAll[,<span class="st">&quot;ID&quot;</span>]))\index{ID}</span>
+<span id="cb43-2"><a href="cov.html#cb43-2" aria-hidden="true"></a><span class="kw">colnames</span>(DataAll) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>, <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)</span>
+<span id="cb43-3"><a href="cov.html#cb43-3" aria-hidden="true"></a>DataAll[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(DataAll[,<span class="st">&quot;ID&quot;</span>]))</span>
 <span id="cb43-4"><a href="cov.html#cb43-4" aria-hidden="true"></a></span>
 <span id="cb43-5"><a href="cov.html#cb43-5" aria-hidden="true"></a>nTheta =<span class="st"> </span><span class="dv">3</span></span>
 <span id="cb43-6"><a href="cov.html#cb43-6" aria-hidden="true"></a>nEta =<span class="st"> </span><span class="dv">3</span></span>
@@ -589,22 +589,22 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <span id="cb43-14"><a href="cov.html#cb43-14" aria-hidden="true"></a>LB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, nTheta) <span class="co"># Lower bound</span></span>
 <span id="cb43-15"><a href="cov.html#cb43-15" aria-hidden="true"></a>UB =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1000000</span>, nTheta) <span class="co"># Upper bound</span></span>
 <span id="cb43-16"><a href="cov.html#cb43-16" aria-hidden="true"></a></span>
-<span id="cb43-17"><a href="cov.html#cb43-17" aria-hidden="true"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span>\index{D1}</span>
-<span id="cb43-18"><a href="cov.html#cb43-18" aria-hidden="true"></a>             (TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
-<span id="cb43-19"><a href="cov.html#cb43-19" aria-hidden="true"></a>			 (<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),\index{TIME}</span>
+<span id="cb43-17"><a href="cov.html#cb43-17" aria-hidden="true"></a>FGD1 =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>DOSE<span class="op">/</span>(TH2<span class="op">*</span><span class="kw">exp</span>(ETA2))<span class="op">*</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">/</span></span>
+<span id="cb43-18"><a href="cov.html#cb43-18" aria-hidden="true"></a><span class="st">             </span>(TH1<span class="op">*</span><span class="kw">exp</span>(ETA1) <span class="op">-</span><span class="st"> </span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3))<span class="op">*</span></span>
+<span id="cb43-19"><a href="cov.html#cb43-19" aria-hidden="true"></a>			 (<span class="kw">exp</span>(<span class="op">-</span>TH3<span class="op">*</span><span class="kw">exp</span>(ETA3)<span class="op">*</span>TIME)<span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>TH1<span class="op">*</span><span class="kw">exp</span>(ETA1)<span class="op">*</span>TIME)),</span>
 <span id="cb43-20"><a href="cov.html#cb43-20" aria-hidden="true"></a>             <span class="kw">c</span>(<span class="st">&quot;ETA1&quot;</span>,<span class="st">&quot;ETA2&quot;</span>,<span class="st">&quot;ETA3&quot;</span>),</span>
 <span id="cb43-21"><a href="cov.html#cb43-21" aria-hidden="true"></a>             <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;TH1&quot;</span>, <span class="st">&quot;TH2&quot;</span>, <span class="st">&quot;TH3&quot;</span>, <span class="st">&quot;ETA1&quot;</span>, <span class="st">&quot;ETA2&quot;</span>, <span class="st">&quot;ETA3&quot;</span>, </span>
-<span id="cb43-22"><a href="cov.html#cb43-22" aria-hidden="true"></a>			                <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),\index{TIME}</span>
+<span id="cb43-22"><a href="cov.html#cb43-22" aria-hidden="true"></a>			                <span class="st">&quot;DOSE&quot;</span>, <span class="st">&quot;TIME&quot;</span>),</span>
 <span id="cb43-23"><a href="cov.html#cb43-23" aria-hidden="true"></a>             <span class="dt">func=</span><span class="ot">TRUE</span>, <span class="dt">hessian=</span><span class="ot">FALSE</span>)</span>
 <span id="cb43-24"><a href="cov.html#cb43-24" aria-hidden="true"></a></span>
-<span id="cb43-25"><a href="cov.html#cb43-25" aria-hidden="true"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), \index{S1}</span>
-<span id="cb43-26"><a href="cov.html#cb43-26" aria-hidden="true"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), \index{S1}</span>
+<span id="cb43-25"><a href="cov.html#cb43-25" aria-hidden="true"></a>H =<span class="st"> </span><span class="kw">deriv</span>(<span class="op">~</span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span>EPS1 <span class="op">+</span><span class="st"> </span>EPS2, <span class="kw">c</span>(<span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
+<span id="cb43-26"><a href="cov.html#cb43-26" aria-hidden="true"></a>          <span class="dt">function.arg=</span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;EPS1&quot;</span>, <span class="st">&quot;EPS2&quot;</span>), </span>
 <span id="cb43-27"><a href="cov.html#cb43-27" aria-hidden="true"></a>          <span class="dt">func=</span><span class="ot">TRUE</span>)</span>
 <span id="cb43-28"><a href="cov.html#cb43-28" aria-hidden="true"></a></span>
-<span id="cb43-29"><a href="cov.html#cb43-29" aria-hidden="true"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{D1}\index{FOCE}\index{FO}\index{PRED}</span></span>
+<span id="cb43-29"><a href="cov.html#cb43-29" aria-hidden="true"></a>PRED1 =<span class="st"> </span><span class="cf">function</span>(THETA, ETA, DATAi)  <span class="co"># for FO and FOCE</span></span>
 <span id="cb43-30"><a href="cov.html#cb43-30" aria-hidden="true"></a>{</span>
-<span id="cb43-31"><a href="cov.html#cb43-31" aria-hidden="true"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, \index{D1}</span>
-<span id="cb43-32"><a href="cov.html#cb43-32" aria-hidden="true"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])\index{TIME}</span>
+<span id="cb43-31"><a href="cov.html#cb43-31" aria-hidden="true"></a>  FGDres =<span class="st"> </span><span class="kw">FGD1</span>(THETA[<span class="dv">1</span>], THETA[<span class="dv">2</span>], THETA[<span class="dv">3</span>], ETA[<span class="dv">1</span>], ETA[<span class="dv">2</span>], ETA[<span class="dv">3</span>], <span class="dt">DOSE=</span><span class="dv">320</span>, </span>
+<span id="cb43-32"><a href="cov.html#cb43-32" aria-hidden="true"></a>                DATAi[,<span class="st">&quot;TIME&quot;</span>])</span>
 <span id="cb43-33"><a href="cov.html#cb43-33" aria-hidden="true"></a>  Gres =<span class="st"> </span><span class="kw">attr</span>(FGDres, <span class="st">&quot;gradient&quot;</span>)</span>
 <span id="cb43-34"><a href="cov.html#cb43-34" aria-hidden="true"></a>  Hres =<span class="st"> </span><span class="kw">attr</span>(<span class="kw">H</span>(FGDres, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">&quot;gradient&quot;</span>)</span>
 <span id="cb43-35"><a href="cov.html#cb43-35" aria-hidden="true"></a>  Res =<span class="st"> </span><span class="kw">cbind</span>(FGDres, Gres, Hres)</span>
@@ -617,7 +617,7 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cov.html#cb44-1" aria-hidden="true"></a><span class="kw">library</span>(nmw)</span>
 <span id="cb44-2"><a href="cov.html#cb44-2" aria-hidden="true"></a><span class="co"># First Order Approximation Method</span></span>
 <span id="cb44-3"><a href="cov.html#cb44-3" aria-hidden="true"></a><span class="kw">InitStep</span>(DataAll, <span class="dt">THETAinit=</span>THETAinit, <span class="dt">OMinit=</span>OMinit, <span class="dt">SGinit=</span>SGinit, </span>
-<span id="cb44-4"><a href="cov.html#cb44-4" aria-hidden="true"></a>         <span class="dt">LB=</span>LB, <span class="dt">UB=</span>UB, <span class="dt">Pred=</span>PRED1, <span class="dt">METHOD=</span><span class="st">&quot;ZERO&quot;</span>)\index{D1}\index{PRED}</span>
+<span id="cb44-4"><a href="cov.html#cb44-4" aria-hidden="true"></a>         <span class="dt">LB=</span>LB, <span class="dt">UB=</span>UB, <span class="dt">Pred=</span>PRED1, <span class="dt">METHOD=</span><span class="st">&quot;ZERO&quot;</span>)</span>
 <span id="cb44-5"><a href="cov.html#cb44-5" aria-hidden="true"></a>(<span class="dt">EstRes1 =</span> <span class="kw">EstStep</span>())</span>
 <span id="cb44-6"><a href="cov.html#cb44-6" aria-hidden="true"></a><span class="co">## $`Initial OFV`</span></span>
 <span id="cb44-7"><a href="cov.html#cb44-7" aria-hidden="true"></a><span class="co">## [1] 141.3076</span></span>

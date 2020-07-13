@@ -37,9 +37,9 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 
 ```r
 $PROB Sigmoidal PD Model
-$DATA ../sigmoidal_effect.csv IGNORE=@\index{\$DATA}\index{IGNORE}
-$INPUT ID CP RESP=DV\index{\$INPUT}\index{ID}\index{RES}
-$PRED\index{\$PRED}\index{PRED}
+$DATA ../sigmoidal_effect.csv IGNORE=@
+$INPUT ID CP RESP=DV
+$PRED
   E0=THETA(1) ; Baseline
   EMAX=THETA(2) ; Max Effect
   C50=THETA(3)*EXP(ETA(1)) ; C50
@@ -48,7 +48,7 @@ $PRED\index{\$PRED}\index{PRED}
   ; do not add an ETA to this - very hard to fit
   IPRD=E0+(EMAX-E0)*CP**GAM/(CP**GAM+C50**GAM)
   Y=IPRD+EPS(1)
-$THETA\index{\$THETA}
+$THETA
 ...
 
 ```

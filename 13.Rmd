@@ -14,7 +14,7 @@ knitr::include_graphics("./figures/13-fig-01.png")
 
 잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \@ref(fig:def-residual), ε (epsilon)으로 표시한다(ε = C~observation~ – C~prediction~). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.\index{잔차 / residual error}\index{residual error / 잔차}
 
-\index{과대예측}
+\index{과대예측, overestimation}
 
 (ref:def-residual) Definition of residual [@gabrielsson]
 
@@ -36,7 +36,7 @@ knitr::include_graphics("./figures/13-fig-02.png")
 
 예측값과 표준편차(σ) 사이의 관계를 그림으로 살펴보면(그림 \@ref(fig:pred-sd)) 가법오차모델의 경우 예측값이 작은 경우와 큰 경우 모두 표준편차가 일정한 반면, 고정변동계수모델의 경우 예측값이 커짐에 따라 표준편차도 커지는데, 이를 CV(변동계수, Coefficient of variation)와 예측값의 관계로 볼 경우 일정하기 때문에 비례오차모델 혹은 고정변동계수(CCV; constant CV)모델이라고 한다. 위 두 모델을 같이 사용하는 경우를, 가법과 CCV를 더한 모델 혹은 혼합오차모델(combined error model)이라고 하는데, 예측값이 작은 경우에는 표준편차가 일정하고, 값이 커질수록 표준편차가 커지는 것을 가정한다.\index{가법오차 / additive error}\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{proportional error / 비례오차}
 
-\index{혼합오차모델}
+\index{혼합오차모델 / combined error model}
 
 ```{r pred-sd, fig.cap="Relationship between standard deviation of residual variability and predicted concentrations"}
 include_graphics("./figures/13-fig-03.png") # fig 3
@@ -50,9 +50,9 @@ $ERROR structure in NONMEM control stream: 기본형태\index{\$ERROR}
 ```
 
 ```r
-$ERROR\index{\$ERROR}
-  IPRED = F\index{IPRED}\index{PRED}
-  Y     = IPRED * (1+EPS(1)) + EPS(2)\index{IPRED}\index{PRED}
+$ERROR
+  IPRED = F
+  Y     = IPRED * (1+EPS(1)) + EPS(2)
 ```
 
 
@@ -62,12 +62,12 @@ $ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\in
 ```
 
 ```r
-$ERROR\index{\$ERROR}
-  IPRED = F\index{IPRED}\index{PRED}
-  W     = SQRT(THETA(5)**2 + THETA(6) **2 * IPRED**2)\index{IPRED}\index{PRED}
-  IRES  = DV - IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}
-  IWRES = IRES / W\index{IRES}\index{IWRES}\index{RES}\index{WRES}
-  Y     = IPRED + W * EPS(1)\index{IPRED}\index{PRED}
+$ERROR
+  IPRED = F
+  W     = SQRT(THETA(5)**2 + THETA(6) **2 * IPRED**2)
+  IRES  = DV - IPRED
+  IWRES = IRES / W
+  Y     = IPRED + W * EPS(1)
 ```
 
 Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 \@ref(fig:run-test))\index{잔차 / residual error}\index{residual error / 잔차}

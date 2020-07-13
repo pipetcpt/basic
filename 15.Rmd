@@ -72,13 +72,13 @@ include_graphics("figures/15-fig-06.png")
 
 데이터가 부족한 경우 EPSILON shrinkage 또한 커질 수 있는데, 이는 다음의 수식으로 구할 수 있다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 \begin{equation}
-\epsilon_{sh} = 1 - SD(IWRES)\index{IWRES}\index{RES}\index{WRES}
+\epsilon_{sh} = 1 - SD(IWRES)
 (\#eq:eps-iwres)
 \end{equation}
 
 EPSILON shrinkage는 1에서 IWRES의 표준편차를 뺀 값으로 이 때 사용되는 IWRES의 수식은 다음과 같다.\index{shrinkage / 축소}\index{shrinkage / 축소}\index{IWRES}\index{RES}\index{WRES}
 \begin{equation}
-IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)\index{IPRED}\index{IWRES}\index{PRED}\index{RES}\index{WRES}
+IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)
 (\#eq:iwres-ipred)
 \end{equation}
 

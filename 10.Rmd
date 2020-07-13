@@ -62,10 +62,10 @@ $TABLE의 예\index{\$TABLE}
 ```
 
 ```r
-$TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3\index{\$TABLE}\index{AMT}\index{CWRES}\index{FILE=}\index{ID}\index{IPRED}\index{IWRES}\index{MDV}\index{NOPRINT}\index{ONEHEADER}\index{PRED}\index{RES}\index{TIME}\index{WRES}
-$TABLE ID ETA(1) ETA(2)                        ONEHEADER NOPRINT FILE=patab3\index{\$TABLE}\index{FILE=}\index{ID}\index{NOPRINT}\index{ONEHEADER}
-$TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3\index{\$TABLE}\index{FILE=}\index{ID}\index{NOPRINT}\index{ONEHEADER}
-$TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3\index{\$TABLE}\index{FILE=}\index{ID}\index{NOPRINT}\index{ONEHEADER}
+$TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3
+$TABLE ID ETA(1) ETA(2)                        ONEHEADER NOPRINT FILE=patab3
+$TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3
+$TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3
 ```
 
 Sdtab은 Standard Table, patab은 Parameter Table, catab은 Categorical Covariates Table을 의미하며, cotab은 Continuous Covariates Table을 의미한다. 이 네 개의 테이블 이름은 xpose4 package에서 미리 약속된 이름으로 그대로 사용하여야 하며, 그 뒤에 숫자(Run Number라고 한다)만 바꾸어 사용하게 된다. \$TABLE의 옵션들은 앞에서 설명하였으니 생략하기로 하고, 추가적인 옵션들은 NONMEM 설치 폴더의 help 폴더 안에 있는 $table.ctl 파일을 참고하도록 하자.\index{\$TABLE}

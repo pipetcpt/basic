@@ -73,25 +73,25 @@ $ERROR\index{\$ERROR}
 ```
 
 ```r
-$SUBROUTINES ADVAN6 TOL=5\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
-$MODEL\index{\$MODEL}
-  COMP=(CENTRAL,DEFDOSE,DEFOBS)\index{COMP}\index{DEFDOS}\index{DEFOBS}\index{FO}
-  COMP=EFFECT\index{COMP}
-$PK\index{\$PK}
+$SUBROUTINES ADVAN6 TOL=5
+$MODEL
+  COMP=(CENTRAL,DEFDOSE,DEFOBS)
+  COMP=EFFECT
+$PK
   K10 = THETA(1)*EXP(ETA(1)) 
   V1  = THETA(2)*EXP(ETA(2)) 
-  S1  = V1 \index{S1}
+  S1  = V1 
   K20 = THETA(3)*EXP(ETA(3))
   C50 = THETA(4)*EXP(ETA(4))
   EMAX= THETA(5)*EXP(ETA(5))
-$DES\index{\$DES}
-  DADT(1)=-K10*A(1)                 ; NOTE NO LOSS TO A(2)\index{SS}
+$DES
+  DADT(1)=-K10*A(1)                 ; NOTE NO LOSS TO A(2)
   DADT(2)= K20*(A(1)/V1-A(2))       ; A(2) IS CE
-$ERROR\index{\$ERROR}
-  IF (CMT.EQ.2) THEN\index{CMT}
-  Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2\index{CMT}
+$ERROR
+  IF (CMT.EQ.2) THEN
+  Y   = EMAX*F/(C50+F)*EXP(ERR(2))  ; DV = EFFECT IF CMT=2
   ELSE
-  Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)\index{CMT}
+  Y   = F*EXP(ERR(1))               ; DV = CP IF CMT=1 (OR 0)
   ENDIF
 ```
 
@@ -160,7 +160,7 @@ H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 \end{equation}
 
 ```r
-C1=A(1)/S1\index{S1}
+C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1-IMAX*C1/(IC50+C1))*A(2)
 ```
@@ -184,7 +184,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 \end{equation}
 
 ```r
-C1=A(1)/S1\index{S1}
+C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN*(1+SMAX*C1/(SC50+C1))-KOUT*A(2)
 ```
@@ -208,7 +208,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 \end{equation}
 
 ```r
-C1=A(1)/S1\index{S1}
+C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1+SMAX*C1/(SC50+C1))*A(2)
 ```

@@ -411,20 +411,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <span id="exm:combined-upper" class="example"><strong>코드 13.1  </strong></span>$ERROR structure in NONMEM control stream: 기본형태
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fit.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
-<span id="cb36-2"><a href="fit.html#cb36-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
-<span id="cb36-3"><a href="fit.html#cb36-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fit.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
+<span id="cb36-2"><a href="fit.html#cb36-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F</span>
+<span id="cb36-3"><a href="fit.html#cb36-3" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span><span class="op">+</span><span class="kw">EPS</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span></code></pre></div>
 
 <div class="example">
 <span id="exm:combined-lower" class="example"><strong>코드 13.2  </strong></span>$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차
 이고, 비례오차모델의 표준편차를 반영
 </div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="fit.html#cb37-1" aria-hidden="true"></a><span class="op">$</span>ERROR\index{\<span class="op">$</span>ERROR}</span>
-<span id="cb37-2"><a href="fit.html#cb37-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F\index{IPRED}\index{PRED}</span>
-<span id="cb37-3"><a href="fit.html#cb37-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)\index{IPRED}\index{PRED}</span>
-<span id="cb37-4"><a href="fit.html#cb37-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED\index{IPRED}\index{IRES}\index{PRED}\index{RES}</span>
-<span id="cb37-5"><a href="fit.html#cb37-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W\index{IRES}\index{IWRES}\index{RES}\index{WRES}</span>
-<span id="cb37-6"><a href="fit.html#cb37-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)\index{IPRED}\index{PRED}</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="fit.html#cb37-1" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
+<span id="cb37-2"><a href="fit.html#cb37-2" aria-hidden="true"></a>  IPRED =<span class="st"> </span>F</span>
+<span id="cb37-3"><a href="fit.html#cb37-3" aria-hidden="true"></a>  W     =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">6</span>) <span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb37-4"><a href="fit.html#cb37-4" aria-hidden="true"></a>  IRES  =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED</span>
+<span id="cb37-5"><a href="fit.html#cb37-5" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W</span>
+<span id="cb37-6"><a href="fit.html#cb37-6" aria-hidden="true"></a>  Y     =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p>Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 <a href="fit.html#fig:run-test">13.4</a>)</p>
 <div class="figure"><span id="fig:run-test"></span>
 <img src="figures/13-fig-04.png" alt="Example of Run test (Gabrielsson 2006)" width="90%" />

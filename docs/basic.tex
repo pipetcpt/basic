@@ -277,7 +277,7 @@
 
 \title{계량약리학 워크샵 - 초급 과정}
 \author{가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)}
-\date{Ver. 20200709}
+\date{Ver. 20200713}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -447,8 +447,6 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 \subsubsection{약동학 자료로 본 혼합효과 모델링의 개념}\label{uxc57duxb3d9uxd559-uxc790uxb8ccuxb85c-uxbcf8-uxd63cuxd569uxd6a8uxacfc-uxbaa8uxb378uxb9c1uxc758-uxac1cuxb150}}
 
 1차식을 따라 주로 신장으로 배설되는 약물의 경우, 사람에서 측정된 혈장 약물농도를 혼합효과 모델로 분석하는 개념이 아래 그림 \ref{fig:nonmem-figure}에 잘 나타나 있다. 앞서 저울의 예는 따로 파라미터라고 할 것이 없지만 어떤 시점에서의 약물 농도를 결정하는 것은 약의 용량, 투여 후 경과시간, 그리고 사람의 몸이 약을 다루는 두 개의 파라미터들인 분포용적(Vd)과 청소율(CL)이다. 그림 \ref{fig:measured-weight}의 사례에서 쓰인 약물은 CL의 경우 GFR과 같은 공변량의 함수로(그림 \ref{fig:nonmem-figure}에서는 선형적으로 비례) 예측할 수 있으나, 실제 어떤 환자 i에서의 CL은 그의 GFR로 예측한 값보다 더 컸고 이는 그 환자에서의 CL의 개인간차(η\textsubscript{CLi})가 양의 값을 가진 것으로 설명한다(그림 \ref{fig:nonmem-figure}의 왼쪽부분). Vd 역시 그의 체중이라는 공변량으로 예측하지만 그의 실제 Vd와는 η\textsubscript{Vdi} 만큼의 차이가 있다. 그림의 오른쪽 아래를 보면 환자 i와 똑 같은 GFR과 체중을 가지는 모든 환자들에서 혈장약물농도 곡선이 위쪽 곡선과 같다고 예측될 것이다. 그런데 실제 환자 i의 CL과 Vd는 그러한 예측과는 조금씩 달랐으므로 개인간차를 반영한 그의 CL과 Vd(CLi과 Vdi)로 예측한 농도가 아래쪽 곡선이다. 그것으로 모든 것이 끝날 것 같지만, 환자 i에서 tij라는 특정 시간에 측정된 실제 농도(흰 네모)는 개인별 파라미터로 예측한 농도 (검은 동그라미)와 또 차이가 난다. 그 차이의 원인은 가정한 1차식(선형약동학)을 따라 제거된다는 PK모델 자체가 실제 이 약의 농도변화를 정확히 반영하지 못해서(model error)일 수도 있고, 농도측정 방법의 정확도/정밀도의 문제일 수도 있으며, PK를 관찰한 기간 동안에 개일리듬에 의해 환자의 파라미터가 바뀌어서일 수도 있는 등 다양하다. 원인을 한가지로 특정할 수 없지만, 까만 원과 흰 네모 사이의 거리는 파라미터의 개인간차로 설명이 안되는 부분이라서 잔차(ε)라고 하며, 실제 모든 사람에서 각 측정치마다 따라다니는 값이므로 각기 다른 사람임을 나타내는 i와 측정횟수를 의미하는 j를 아래첨자로 함께 붙여서 εij로 표기하게 된다. 마찬가지로 Vd 나 CL의 개인간차는 한 사람에서 하나만 존재하므로 \(\eta_{Vdi}\), \(\eta_{CLi}\)와 같이 표기한다.\index{잔차 / residual error}\index{residual error / 잔차}
-
-\index{혼합효과 모델링}
 
 
 
@@ -1127,7 +1125,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 \end{Highlighting}
 \end{Shaded}
 
-PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R\textsubscript{-1}SR\textsubscript{-1} 행렬이 기본계산에 사용되는데, \texttt{MATRIX=S} 또는 \texttt{MATRIX=R} 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. \texttt{UNCONDITIONAL} 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{eigenvalues / 고유값}\index{variance-covariance matrix / 분산-공분산 행렬}\index{조건수 / condition number}\index{condition number / 조건수}\index{R 행렬 / R matrix}\index{S 행렬 / S matrix}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{PRINT=E}
+PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R\textsubscript{-1}SR\textsubscript{-1} 행렬이 기본계산에 사용되는데, \texttt{MATRIX=S} 또는 \texttt{MATRIX=R} 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. \texttt{UNCONDITIONAL} 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{eigenvalues / 고유값}\index{variance-covariance matrix / 분산-공분산 행렬}\index{조건수 / condition number}\index{condition number / 조건수}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{PRINT=E}
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 \ref{exm:table-record}처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (Hooker et al. (\protect\hyperlink{ref-R-xpose4}{2020})) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.\index{dependent variable(DV) / 종속변수(DV)}\index{\$TABLE}\index{NOAPPEND}\index{NOHEADER}\index{NOPRINT}\index{ONEHEADER}\index{PRED}\index{RES}\index{WRES}
 
@@ -1988,9 +1986,9 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB Sigmoidal PD Model}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{sigmoidal\_effect.csv IGNORE=}\ErrorTok{@}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}\textbackslash{}index\{IGNORE\}}
-\OperatorTok{$}\NormalTok{INPUT ID CP RESP=DV\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{INPUT\}\textbackslash{}index\{ID\}\textbackslash{}index\{RES\}}
-\OperatorTok{$}\NormalTok{PRED\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PRED\}\textbackslash{}index\{PRED\}}
+\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{sigmoidal\_effect.csv IGNORE=}\ErrorTok{@}
+\ErrorTok{$}\NormalTok{INPUT ID CP RESP=DV}
+\OperatorTok{$}\NormalTok{PRED}
 \NormalTok{  E0=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) ; Baseline}
 \NormalTok{  EMAX=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) ; Max Effect}
 \NormalTok{  C50=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) ; C50}
@@ -1999,7 +1997,7 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \NormalTok{  ; do not add an ETA to this }\OperatorTok{{-}}\StringTok{ }\NormalTok{very hard to fit}
 \NormalTok{  IPRD=E0}\OperatorTok{+}\NormalTok{(EMAX}\OperatorTok{{-}}\NormalTok{E0)}\OperatorTok{*}\NormalTok{CP}\OperatorTok{**}\NormalTok{GAM}\OperatorTok{/}\NormalTok{(CP}\OperatorTok{**}\NormalTok{GAM}\OperatorTok{+}\NormalTok{C50}\OperatorTok{**}\NormalTok{GAM)}
 \NormalTok{  Y=IPRD}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\OperatorTok{$}\NormalTok{THETA\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
+\OperatorTok{$}\NormalTok{THETA}
 \NormalTok{...}
 \end{Highlighting}
 \end{Shaded}
@@ -2194,8 +2192,6 @@ NONMEM이 목적함수 값(objective function value)을 계산하기 위해 지�
 \subsection{METHOD}\label{method}}
 
 NONMEM이 파라미터를 추정하는 방법은 METHOD 옵션으로 설정한다. 이중 First Order (FO) 방식은 \texttt{METHOD\ =\ FO} 또는 \texttt{METHOD\ =\ 0} 같이 설정하며, 이 값이 기본(default) 설정이므로 FO 방식을 적용하고자 한다면 생략해도 무방하다. 이 방식은 NONMEM이 파라미터를 추정할 때 근사하는 Taylor series 식에 이용되는 개별 η 값의 합을 0으로 가정하여 계산하는 방식을 말하며, 복잡한 계산식이 단순하게 되어 파라미터 추정을 빠르게 할 수 있는 장점이 있다. 그런데 계산이 빨라지는 대신 추정 파라미터에 비뚤림(bias)이 발생하게 되므로, 각 파라미터의 대략의 값을 추정하고자 한다면 FO 방식을 이용할 수 있다.\index{1차추정법 / first-order method(FO)}\index{first-order method(FO) / 1차추정법}\index{first-order method(FO) / 1차추정법}\index{FO}
-
-\index{삐뚤림}
 
 FOCE 방식은 단순 FO가 아닌 Conditional Estimation을 의미하며, 개별 η 값의 합을 0으로 가정하는 FO 방식과 달리 실제 추정한 η 값의 합을 이용하므로 계산식이 복잡해 실행 시간이 오래 걸리는 반면 보다 정확한 값을 얻을 수 있는 것으로 알려져 있다. 이 방식은 \texttt{method\ =\ cond} 또는 \texttt{method\ =\ 1}로 표현할 수 있다. FO 방식에 비해 비뚤림이 적게 발생하기 때문에 개별 값을 좀더 정확하게 추정하기 위해서는 FOCE 방식을 쓴다.(표 \ref{tab:fofoce})\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{FOCE}\index{FO}
 
@@ -2415,10 +2411,10 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{TABLE\}\textbackslash{}index\{AMT\}\textbackslash{}index\{CWRES\}\textbackslash{}index\{FILE=\}\textbackslash{}index\{ID\}\textbackslash{}index\{IPRED\}\textbackslash{}index\{IWRES\}\textbackslash{}index\{MDV\}\textbackslash{}index\{NOPRINT\}\textbackslash{}index\{ONEHEADER\}\textbackslash{}index\{PRED\}\textbackslash{}index\{RES\}\textbackslash{}index\{TIME\}\textbackslash{}index\{WRES\}}
-\OperatorTok{$}\NormalTok{TABLE ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)                        ONEHEADER NOPRINT FILE=patab3\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{TABLE\}\textbackslash{}index\{FILE=\}\textbackslash{}index\{ID\}\textbackslash{}index\{NOPRINT\}\textbackslash{}index\{ONEHEADER\}}
-\OperatorTok{$}\NormalTok{TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{TABLE\}\textbackslash{}index\{FILE=\}\textbackslash{}index\{ID\}\textbackslash{}index\{NOPRINT\}\textbackslash{}index\{ONEHEADER\}}
-\OperatorTok{$}\NormalTok{TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{TABLE\}\textbackslash{}index\{FILE=\}\textbackslash{}index\{ID\}\textbackslash{}index\{NOPRINT\}\textbackslash{}index\{ONEHEADER\}}
+\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3}
+\OperatorTok{$}\NormalTok{TABLE ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)                        ONEHEADER NOPRINT FILE=patab3}
+\OperatorTok{$}\NormalTok{TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3}
+\OperatorTok{$}\NormalTok{TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3075,7 +3071,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 
 잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \ref{fig:def-residual}, ε (epsilon)으로 표시한다(ε = C\textsubscript{observation} -- C\textsubscript{prediction}). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.\index{잔차 / residual error}\index{residual error / 잔차}
 
-\index{과대예측}
+\index{과대예측, overestimation}
 
 
 
@@ -3097,7 +3093,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 
 예측값과 표준편차(σ) 사이의 관계를 그림으로 살펴보면(그림 \ref{fig:pred-sd}) 가법오차모델의 경우 예측값이 작은 경우와 큰 경우 모두 표준편차가 일정한 반면, 고정변동계수모델의 경우 예측값이 커짐에 따라 표준편차도 커지는데, 이를 CV(변동계수, Coefficient of variation)와 예측값의 관계로 볼 경우 일정하기 때문에 비례오차모델 혹은 고정변동계수(CCV; constant CV)모델이라고 한다. 위 두 모델을 같이 사용하는 경우를, 가법과 CCV를 더한 모델 혹은 혼합오차모델(combined error model)이라고 하는데, 예측값이 작은 경우에는 표준편차가 일정하고, 값이 커질수록 표준편차가 커지는 것을 가정한다.\index{가법오차 / additive error}\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{proportional error / 비례오차}
 
-\index{혼합오차모델}
+\index{혼합오차모델 / combined error model}
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{./figures/13-fig-03} \caption{Relationship between standard deviation of residual variability and predicted concentrations}\label{fig:pred-sd}
@@ -3111,9 +3107,9 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F\textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)\textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
+\OperatorTok{$}\NormalTok{ERROR}
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
+\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3124,12 +3120,12 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F\textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{)\textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED\textbackslash{}index\{IPRED\}\textbackslash{}index\{IRES\}\textbackslash{}index\{PRED\}\textbackslash{}index\{RES\}}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W\textbackslash{}index\{IRES\}\textbackslash{}index\{IWRES\}\textbackslash{}index\{RES\}\textbackslash{}index\{WRES\}}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)\textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
+\OperatorTok{$}\NormalTok{ERROR}
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
+\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
+\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
+\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3245,29 +3241,29 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB THEOPHYLLINE ORAL}
-\OperatorTok{$}\NormalTok{INPUT ID AMT=DROP TIME DV BWT\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{INPUT\}\textbackslash{}index\{AMT\}\textbackslash{}index\{DROP\}\textbackslash{}index\{ID\}\textbackslash{}index\{TIME\}}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{THEO\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}}
-\OperatorTok{$}\NormalTok{PRED\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PRED\}\textbackslash{}index\{PRED\}}
+\OperatorTok{$}\NormalTok{INPUT ID AMT=DROP TIME DV BWT}
+\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{THEO}
+\OperatorTok{$}\NormalTok{PRED}
 \NormalTok{  DOSE =}\StringTok{ }\DecValTok{320}
 \NormalTok{  KA   =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
 \NormalTok{  V    =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
 \NormalTok{  K    =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  F    =}\StringTok{ }\NormalTok{DOSE}\OperatorTok{/}\NormalTok{V}\OperatorTok{*}\NormalTok{KA}\OperatorTok{/}\NormalTok{(KA }\OperatorTok{{-}}\StringTok{ }\NormalTok{K)}\OperatorTok{*}\NormalTok{(}\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\NormalTok{TIME) }\OperatorTok{{-}}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{KA}\OperatorTok{*}\NormalTok{TIME))\textbackslash{}index\{TIME\}}
+\NormalTok{  F    =}\StringTok{ }\NormalTok{DOSE}\OperatorTok{/}\NormalTok{V}\OperatorTok{*}\NormalTok{KA}\OperatorTok{/}\NormalTok{(KA }\OperatorTok{{-}}\StringTok{ }\NormalTok{K)}\OperatorTok{*}\NormalTok{(}\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\NormalTok{TIME) }\OperatorTok{{-}}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{KA}\OperatorTok{*}\NormalTok{TIME))}
 \NormalTok{  IPRE =}\StringTok{ }\NormalTok{F}
 \NormalTok{  Y    =}\StringTok{ }\NormalTok{F }\OperatorTok{+}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 
-\OperatorTok{$}\KeywordTok{THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{)\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
-\OperatorTok{$}\NormalTok{OMEGA }\KeywordTok{BLOCK}\NormalTok{(}\DecValTok{3}\NormalTok{)\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA\}\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA BLOCK\}}
+\OperatorTok{$}\KeywordTok{THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\OperatorTok{$}\NormalTok{OMEGA }\KeywordTok{BLOCK}\NormalTok{(}\DecValTok{3}\NormalTok{)}
   \FloatTok{0.2}
   \FloatTok{0.1}  \FloatTok{0.2}
   \FloatTok{0.1}  \FloatTok{0.1}  \FloatTok{0.2}
-\OperatorTok{$}\NormalTok{SIGMA }\FloatTok{0.1}  \FloatTok{0.1}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SIGMA\}}
-\OperatorTok{$}\NormalTok{EST MAX=}\DecValTok{9999}\NormalTok{ METHOD=ZERO POSTHOC\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\KeywordTok{ESTIMATION}\NormalTok{ (\textbackslash{}}\OperatorTok{$}\NormalTok{EST)\}\textbackslash{}index\{POSTHOC\}}
-\OperatorTok{$}\NormalTok{COV PRINT=ERS\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\KeywordTok{COVARIANCE}\NormalTok{ (\textbackslash{}}\OperatorTok{$}\NormalTok{COV, \textbackslash{}}\OperatorTok{$}\NormalTok{COVAR)\}\textbackslash{}index\{PRINT=E\}}
-\OperatorTok{$}\NormalTok{TAB ID TIME IPRE CWRES\textbackslash{}index\{CWRES\}\textbackslash{}index\{ID\}\textbackslash{}index\{RES\}\textbackslash{}index\{TIME\}\textbackslash{}index\{WRES\}}
-\NormalTok{     FILE=sdtab NOPRINT ONEHEADER\textbackslash{}index\{FILE=\}\textbackslash{}index\{NOPRINT\}\textbackslash{}index\{ONEHEADER\}}
-\OperatorTok{$}\NormalTok{TAB ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)\textbackslash{}index\{ID\}}
-\NormalTok{     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY\textbackslash{}index\{FILE=\}\textbackslash{}index\{FIRSTONLY\}\textbackslash{}index\{NOAPPEND\}\textbackslash{}index\{ONEHEADER\}}
+\OperatorTok{$}\NormalTok{SIGMA }\FloatTok{0.1}  \FloatTok{0.1}
+\OperatorTok{$}\NormalTok{EST MAX=}\DecValTok{9999}\NormalTok{ METHOD=ZERO POSTHOC}
+\OperatorTok{$}\NormalTok{COV PRINT=ERS}
+\OperatorTok{$}\NormalTok{TAB ID TIME IPRE CWRES}
+\NormalTok{     FILE=sdtab NOPRINT ONEHEADER}
+\OperatorTok{$}\NormalTok{TAB ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3297,11 +3293,11 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 NONMEM User's guide와 help file에는 \$COV를 다음과 같이 설명한다. (Beal \protect\hyperlink{ref-nonmem}{2018})\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 \begin{verbatim}
-$COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
+$COVARIANCE
 
- DISCUSSION:\index{SS}
+ DISCUSSION:
  Optional.  Requests  that  the  NONMEM Covariance Step be implemented.
- This step outputs: standard errors, covariance matrix, inverse covari\index{standard errors of the estimates / 추정값의 표준오차}
+ This step outputs: standard errors, covariance matrix, inverse covari
  ance  matrix,  and the correlation form of the covariance matrix.
 
  OPTIONS:
@@ -3309,10 +3305,10 @@ $COVARIANCE\index{\$COVARIANCE (\$COV, \$COVAR)}
  MATRIX=c
       Specifies that the covariance matrix will be different  from  the
       default  (R  sup  -1 S R sup -1).  MATRIX=R requests that 2 times
-      the inverse R matrix be used.  MATRIX=S requests that 4 times the\index{R matrix / R 행렬}
+      the inverse R matrix be used.  MATRIX=S requests that 4 times the
       inverse  S  matrix be used.  (R and S are two matrices from  sta-
       tistical theory,  the Hessian and Cross-Product  Gradient  matri-
-      ces,  respectively.)   With  MATRIX=R the standard errors will be\index{standard errors of the estimates / 추정값의 표준오차}
+      ces,  respectively.)   With  MATRIX=R the standard errors will be
       more consistent with other nonlinear regression  software  imple-
       mentations.
 
@@ -3440,15 +3436,15 @@ S matrix를 계산하는 internal obj functions 함수 \texttt{nmw::CalcSmat()}�
 \NormalTok{\{}
 \NormalTok{  Smat =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, e}\OperatorTok{$}\NormalTok{nPara }\OperatorTok{*}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{nPara), }\DataTypeTok{nrow =}\NormalTok{ e}\OperatorTok{$}\NormalTok{nPara, }
                 \DataTypeTok{ncol =}\NormalTok{ e}\OperatorTok{$}\NormalTok{nPara)}
-  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{e}\OperatorTok{$}\NormalTok{nID) \{\textbackslash{}index\{ID\}}
-\NormalTok{    e}\OperatorTok{$}\NormalTok{DATAi =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{DataRef[[i]]\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{e}\OperatorTok{$}\NormalTok{nID) \{}
+\NormalTok{    e}\OperatorTok{$}\NormalTok{DATAi =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{DataRef[[i]]}
 \NormalTok{    e}\OperatorTok{$}\NormalTok{ETAi =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{EBE[i, e}\OperatorTok{$}\NormalTok{EtaNames]}
 \NormalTok{    e}\OperatorTok{$}\NormalTok{nReci =}\StringTok{ }\NormalTok{e}\OperatorTok{$}\NormalTok{Oi[i, }\StringTok{"nRec"}\NormalTok{]}
     \ControlFlowTok{if}\NormalTok{ (e}\OperatorTok{$}\NormalTok{METHOD }\OperatorTok{==}\StringTok{ "ZERO"}\NormalTok{) \{}
 \NormalTok{      gr =}\StringTok{ }\KeywordTok{grad}\NormalTok{(OiS0, e}\OperatorTok{$}\NormalTok{FinalPara)}
 \NormalTok{    \}}
     \ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{      gr =}\StringTok{ }\KeywordTok{grad}\NormalTok{(OiS1, e}\OperatorTok{$}\NormalTok{FinalPara)\textbackslash{}index\{S1\}}
+\NormalTok{      gr =}\StringTok{ }\KeywordTok{grad}\NormalTok{(OiS1, e}\OperatorTok{$}\NormalTok{FinalPara)}
 \NormalTok{    \}}
 \NormalTok{    Smat =}\StringTok{ }\NormalTok{Smat }\OperatorTok{+}\StringTok{ }\NormalTok{gr }\OperatorTok{\%*\%}\StringTok{ }\KeywordTok{t}\NormalTok{(gr)}
 \NormalTok{  \}}
@@ -3486,8 +3482,8 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{DataAll =}\StringTok{ }\NormalTok{Theoph}
-\KeywordTok{colnames}\NormalTok{(DataAll) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"BWT"}\NormalTok{, }\StringTok{"DOSE"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{, }\StringTok{"DV"}\NormalTok{)\textbackslash{}index\{ID\}\textbackslash{}index\{TIME\}}
-\NormalTok{DataAll[,}\StringTok{"ID"}\NormalTok{] =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(DataAll[,}\StringTok{"ID"}\NormalTok{]))\textbackslash{}index\{ID\}}
+\KeywordTok{colnames}\NormalTok{(DataAll) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"BWT"}\NormalTok{, }\StringTok{"DOSE"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{, }\StringTok{"DV"}\NormalTok{)}
+\NormalTok{DataAll[,}\StringTok{"ID"}\NormalTok{] =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(DataAll[,}\StringTok{"ID"}\NormalTok{]))}
 
 \NormalTok{nTheta =}\StringTok{ }\DecValTok{3}
 \NormalTok{nEta =}\StringTok{ }\DecValTok{3}
@@ -3501,22 +3497,22 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \NormalTok{LB =}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, nTheta) }\CommentTok{\# Lower bound}
 \NormalTok{UB =}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{1000000}\NormalTok{, nTheta) }\CommentTok{\# Upper bound}
 
-\NormalTok{FGD1 =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{DOSE}\OperatorTok{/}\NormalTok{(TH2}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA2))}\OperatorTok{*}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{/}\NormalTok{\textbackslash{}index\{D1\}}
-\NormalTok{             (TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1) }\OperatorTok{{-}}\StringTok{ }\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3))}\OperatorTok{*}
-\NormalTok{			 (}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3)}\OperatorTok{*}\NormalTok{TIME)}\OperatorTok{{-}}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{*}\NormalTok{TIME)),\textbackslash{}index\{TIME\}}
+\NormalTok{FGD1 =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{DOSE}\OperatorTok{/}\NormalTok{(TH2}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA2))}\OperatorTok{*}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{/}
+\StringTok{             }\NormalTok{(TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1) }\OperatorTok{{-}}\StringTok{ }\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3))}\OperatorTok{*}
+\NormalTok{			 (}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH3}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA3)}\OperatorTok{*}\NormalTok{TIME)}\OperatorTok{{-}}\KeywordTok{exp}\NormalTok{(}\OperatorTok{{-}}\NormalTok{TH1}\OperatorTok{*}\KeywordTok{exp}\NormalTok{(ETA1)}\OperatorTok{*}\NormalTok{TIME)),}
              \KeywordTok{c}\NormalTok{(}\StringTok{"ETA1"}\NormalTok{,}\StringTok{"ETA2"}\NormalTok{,}\StringTok{"ETA3"}\NormalTok{),}
              \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"TH1"}\NormalTok{, }\StringTok{"TH2"}\NormalTok{, }\StringTok{"TH3"}\NormalTok{, }\StringTok{"ETA1"}\NormalTok{, }\StringTok{"ETA2"}\NormalTok{, }\StringTok{"ETA3"}\NormalTok{, }
-			                \StringTok{"DOSE"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{),\textbackslash{}index\{TIME\}}
+			                \StringTok{"DOSE"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{),}
              \DataTypeTok{func=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{hessian=}\OtherTok{FALSE}\NormalTok{)}
 
-\NormalTok{H =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{F }\OperatorTok{+}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{EPS1 }\OperatorTok{+}\StringTok{ }\NormalTok{EPS2, }\KeywordTok{c}\NormalTok{(}\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), \textbackslash{}index\{S1\}}
-          \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), \textbackslash{}index\{S1\}}
+\NormalTok{H =}\StringTok{ }\KeywordTok{deriv}\NormalTok{(}\OperatorTok{\textasciitilde{}}\NormalTok{F }\OperatorTok{+}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{EPS1 }\OperatorTok{+}\StringTok{ }\NormalTok{EPS2, }\KeywordTok{c}\NormalTok{(}\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), }
+          \DataTypeTok{function.arg=}\KeywordTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"EPS1"}\NormalTok{, }\StringTok{"EPS2"}\NormalTok{), }
           \DataTypeTok{func=}\OtherTok{TRUE}\NormalTok{)}
 
-\NormalTok{PRED1 =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(THETA, ETA, DATAi)  }\CommentTok{\# for FO and FOCE\textbackslash{}index\{first{-}order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)\}\textbackslash{}index\{first{-}order method(FO) / 1차추정법\}\textbackslash{}index\{D1\}\textbackslash{}index\{FOCE\}\textbackslash{}index\{FO\}\textbackslash{}index\{PRED\}}
+\NormalTok{PRED1 =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(THETA, ETA, DATAi)  }\CommentTok{\# for FO and FOCE}
 \NormalTok{\{}
-\NormalTok{  FGDres =}\StringTok{ }\KeywordTok{FGD1}\NormalTok{(THETA[}\DecValTok{1}\NormalTok{], THETA[}\DecValTok{2}\NormalTok{], THETA[}\DecValTok{3}\NormalTok{], ETA[}\DecValTok{1}\NormalTok{], ETA[}\DecValTok{2}\NormalTok{], ETA[}\DecValTok{3}\NormalTok{], }\DataTypeTok{DOSE=}\DecValTok{320}\NormalTok{, \textbackslash{}index\{D1\}}
-\NormalTok{                DATAi[,}\StringTok{"TIME"}\NormalTok{])\textbackslash{}index\{TIME\}}
+\NormalTok{  FGDres =}\StringTok{ }\KeywordTok{FGD1}\NormalTok{(THETA[}\DecValTok{1}\NormalTok{], THETA[}\DecValTok{2}\NormalTok{], THETA[}\DecValTok{3}\NormalTok{], ETA[}\DecValTok{1}\NormalTok{], ETA[}\DecValTok{2}\NormalTok{], ETA[}\DecValTok{3}\NormalTok{], }\DataTypeTok{DOSE=}\DecValTok{320}\NormalTok{, }
+\NormalTok{                DATAi[,}\StringTok{"TIME"}\NormalTok{])}
 \NormalTok{  Gres =}\StringTok{ }\KeywordTok{attr}\NormalTok{(FGDres, }\StringTok{"gradient"}\NormalTok{)}
 \NormalTok{  Hres =}\StringTok{ }\KeywordTok{attr}\NormalTok{(}\KeywordTok{H}\NormalTok{(FGDres, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\StringTok{"gradient"}\NormalTok{)}
 \NormalTok{  Res =}\StringTok{ }\KeywordTok{cbind}\NormalTok{(FGDres, Gres, Hres)}
@@ -3537,7 +3533,7 @@ R에서는 다음과 같은 준비 작업이 필요하다.
 \KeywordTok{library}\NormalTok{(nmw)}
 \CommentTok{\# First Order Approximation Method}
 \KeywordTok{InitStep}\NormalTok{(DataAll, }\DataTypeTok{THETAinit=}\NormalTok{THETAinit, }\DataTypeTok{OMinit=}\NormalTok{OMinit, }\DataTypeTok{SGinit=}\NormalTok{SGinit, }
-         \DataTypeTok{LB=}\NormalTok{LB, }\DataTypeTok{UB=}\NormalTok{UB, }\DataTypeTok{Pred=}\NormalTok{PRED1, }\DataTypeTok{METHOD=}\StringTok{"ZERO"}\NormalTok{)\textbackslash{}index\{D1\}\textbackslash{}index\{PRED\}}
+         \DataTypeTok{LB=}\NormalTok{LB, }\DataTypeTok{UB=}\NormalTok{UB, }\DataTypeTok{Pred=}\NormalTok{PRED1, }\DataTypeTok{METHOD=}\StringTok{"ZERO"}\NormalTok{)}
 \NormalTok{(}\DataTypeTok{EstRes1 =} \KeywordTok{EstStep}\NormalTok{())}
 \CommentTok{\#\# $\textasciigrave{}Initial OFV\textasciigrave{}}
 \CommentTok{\#\# [1] 141.3076}
@@ -3914,13 +3910,13 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 
 데이터가 부족한 경우 EPSILON shrinkage 또한 커질 수 있는데, 이는 다음의 수식으로 구할 수 있다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 \begin{equation}
-\epsilon_{sh} = 1 - SD(IWRES)\index{IWRES}\index{RES}\index{WRES}
+\epsilon_{sh} = 1 - SD(IWRES)
 \label{eq:eps-iwres}
 \end{equation}
 
 EPSILON shrinkage는 1에서 IWRES의 표준편차를 뺀 값으로 이 때 사용되는 IWRES의 수식은 다음과 같다.\index{shrinkage / 축소}\index{shrinkage / 축소}\index{IWRES}\index{RES}\index{WRES}
 \begin{equation}
-IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)\index{IPRED}\index{IWRES}\index{PRED}\index{RES}\index{WRES}
+IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)
 \label{eq:iwres-ipred}
 \end{equation}
 
@@ -4058,16 +4054,14 @@ Purpose & Numerical & Visual\\
 \subsection{시각적 예측 점검 (visual predictive check)}\label{uxc2dcuxac01uxc801-uxc608uxce21-uxc810uxac80-visual-predictive-check}}
 
 \index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
-
-\index{시각적 예측 점검}\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
-\index{VPC, visual predictive check}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
+\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}
 
 VPC로 생성된 그림은 관찰값과 시뮬레이션에 의한 예측구간을 겹쳐서 그림 형태로 제시한다.(그림 \ref{fig:scatter-vpc}) 시각적으로 표현된 자료는 빠르고 직관적으로 모델의 예측성능을 평가할 수 있다는 큰 장점을 갖기에 현재 가장 널리 쓰이고 있는 방법이다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
 모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, \$PK 또는 \$PRED는 손대지 않고 \$THETA, \$OMEGA, \$SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 \$MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. \$EST, \$COV는 삭제하고 \$SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. \index{모델 규격파일(MSF) / model specification file}\index{시드값 / seed value}\index{시뮬레이션 / simulation}\index{model specification file / 모델 규격파일(MSF)}\index{seed value / 시드값}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$MSFI}\index{\$OMEGA}\index{\$PK}\index{\$PRED}\index{\$SIGMA}\index{\$SIMULATION (\$SIM)}\index{\$THETA}\index{MSF}\index{PRED}
 
 \begin{verbatim}
-$SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000\index{\$SIMULATION (\$SIM)}\index{\$SIMULATION ONLYSIM}\index{ONLYSIM}\index{SUBPROBLEMS}
+$SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000
 \end{verbatim}
 
 최소 1000개 이상의 반복 데이터셋이 선호되며 이를 통해 관측값과 시뮬레이션 예측값을 비교하게 된다. 반복 데이터셋을 생성하기 위한 입력 데이터셋은 모델을 구축할 때 사용한 데이터셋과 유사한 형태이나 DV값이 시뮬레이션 값으로 대체된다. 반복수가 커질수록 결과 파일의 용량이 비례적으로 커지게 되고 따라서 자료 처리 속도가 늦어지므로 처음에는 낮은 반복수로 확인 후, 어느정도 확인이 된 후 1000개, 2000개 반복수로 높이는 실용적인 접근법을 택할 수도 있다.\index{대체 / imputation}\index{시뮬레이션 / simulation}\index{imputation / 대체}\index{simulation / 시뮬레이션}
@@ -4086,11 +4080,11 @@ $SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000\index{\$SIMULATION (\$SIM)}\index{
 
 신뢰구간 VPC(confidence interval VPC)는 시뮬레이션된 예측값의 5번째 백분위수, 50번째백분위수(중앙값), 95번째 백분위수에 대한 95\% 신뢰구간을 계산하여 나타낸다.(그림 \ref{fig:ci-vpc}) 각 계급구간에서 예측값의 신뢰구간을 각각 음영(띠)으로 그리고 이 위에 예측값과 관찰값의 5번째, 50번째, 95번째 백분위수에 대한 선을 그려, 모델 오지정 여부를 보다 수월하게 파악할 수 있다. 그림 \ref{fig:ci-vpc}의 VPC에서는 시뮬레이션 예측값의 5번째, 50번째, 95번째 백분위수의 95\% 신뢰구간이 관측값의 각 백분위수를 대체로 포함하고 있어 모델 적합성을 지지하고 있음을 알 수 있다. 그러나 일부 시간 계급구간(bin)에서 5번째 백분위수가 하한 예측구간의 신뢰구간 밖으로 벗어나는 것을 알 수 있어, 이부분에 대한 모델 적합성을 재검토할 필요가 있을 수도 있다.\index{대체 / imputation}\index{모델 오지정 / model misspecification}\index{시뮬레이션 / simulation}\index{imputation / 대체}\index{model misspecification / 모델 오지정}\index{simulation / 시뮬레이션}
 
-\index{계급구간화}\index{계급구간화 / binning}\index{binning / 계급구간화}
+\index{계급구간화 / binning}\index{binning / 계급구간화}
 
 VPC를 생성할때 계급구간화(Binning)가 적절히 행해지면 실제 수행 시간의 변동성이 그림에 과도하게 표현되는 것을 줄이고 계획된 시간(nominal time)이 같은 자료일때 동일한 예측 구간을 표현케 할 수 있으므로, 계급구간화를 올바르게 수행하는 것은 중요하다. PsN에서는 VPC 계급구간화에 대한 다양한 옵션을 제공하고 있으므로 이에 대한 자세한 정보는 PsN User Guide를 참고할 수 있다. (Harling \protect\hyperlink{ref-vpcnpc}{2018})\index{계급구간화 / binning}\index{binning / 계급구간화}
 
-\index{층화}
+\index{층화, stratification}
 
 VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변수간의 차이가 하나로 합쳐져 표현되기 때문에 약물 농도의 패턴이 제대로 표현되지 않을 수 있다. 약물의 용량, 투여경로와 투약간격 등의 공변량 값이 혼합되어 있는 데이터셋에서는 층화(stratification)를 통해 VPC를 수행할 수 있다. PsN을 사용하여 VPC를 수행하는 경우 이러한 층화를 쉽게 할 수 있는데, 다음과 같은 구문을 도스창(터미널창)에서 입력한다.
 
@@ -4114,9 +4108,6 @@ VPC가 직관적이고 많은 상황에서 흔히 쓰이고 있으나 일부 유
 \subsection{수치적 예측 점검 (numerical predictive check)}\label{uxc218uxce58uxc801-uxc608uxce21-uxc810uxac80-numerical-predictive-check}}
 
 \index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
-
-\index{수치적 예측 점검}\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
-\index{NPC, numerical predictive check}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}
 
 NPC는 VPC와 유사한 방식으로 모델 진단을 수행하며, 그 논리나 자료는 앞서 기술된 VPC와 차이가 없다. 즉, 모델이 적절한 방법으로 생성되었다면, 그로부터 시뮬레이션된 값들은 관찰된 자료와 큰 차이가 없을 것이다. (Harling \protect\hyperlink{ref-vpcnpc}{2018}) 설정된 예측 구간에 대해 관측값이 예측 구간 경계인 안쪽 혹은 바깥쪽에 얼마나 위치하는지 살필 수 있다. 5\%의 관측값이 95\% 예측 구간 밖에 위치할 경우(2.5\%는 상한 위쪽에, 2.5\%는 하한 밑 쪽에), 혹은 10\%의 관측값이 90\% 예측 구간 밖에 위치할 경우(5.0\%는 상한 위쪽에, 5.0\%는 하한 밑 쪽에) NPC에 의한 모델 진단이 비교적 잘 이루어졌다고 할 수 있을 것이다. (그림 \ref{fig:npc})\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
@@ -4335,36 +4326,36 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PK \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{PK }
 \NormalTok{CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
 \NormalTok{V1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
 \NormalTok{K =}\StringTok{ }\NormalTok{CL }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \NormalTok{EMAX =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)) }
 \NormalTok{EC50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
 
-\OperatorTok{$}\NormalTok{DES \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DES\}}
+\OperatorTok{$}\NormalTok{DES }
 \NormalTok{CP =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{K }\OperatorTok{*}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{ERROR \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
+\OperatorTok{$}\NormalTok{ERROR }
 \NormalTok{Y1 =}\StringTok{ }\NormalTok{CP }
 \NormalTok{Y2 =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP }\OperatorTok{/}\StringTok{ }\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
-\KeywordTok{IF}\NormalTok{ (CMT.LE}\FloatTok{.1}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y1 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{) \textbackslash{}index\{CMT\}}
-\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y2 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{)\textbackslash{}index\{CMT\}}
+\KeywordTok{IF}\NormalTok{ (CMT.LE}\FloatTok{.1}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y1 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y2 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{THETA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
+\OperatorTok{$}\NormalTok{THETA }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{) }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{) }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA\}}
+\OperatorTok{$}\NormalTok{OMEGA }
 \FloatTok{0.1} 
 \FloatTok{0.15} 
 \FloatTok{0.2} 
 \FloatTok{0.25}
 
-\OperatorTok{$}\NormalTok{SIGMA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SIGMA\}}
+\OperatorTok{$}\NormalTok{SIGMA }
 \FloatTok{0.025} 
 \FloatTok{0.04}
 \end{Highlighting}
@@ -4375,12 +4366,12 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB }\DecValTok{1}\NormalTok{ comp IV Emax model }
-\OperatorTok{$}\NormalTok{INPUT ID TIME AMT DV MDV CMT \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{INPUT\}\textbackslash{}index\{AMT\}\textbackslash{}index\{CMT\}\textbackslash{}index\{ID\}\textbackslash{}index\{MDV\}\textbackslash{}index\{TIME\}}
-\OperatorTok{$}\NormalTok{DATA DATAFILENAME.csv IGNORE=}\ErrorTok{@}\StringTok{ }\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}\textbackslash{}index\{IGNORE\}}
-\OperatorTok{$}\NormalTok{SUBROUTIN ADVAN6 TOL=}\DecValTok{3}\NormalTok{ \textbackslash{}index\{ADVAN6\}\textbackslash{}index\{TOL\}}
-\OperatorTok{$}\NormalTok{MODEL \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{MODEL\}}
-\KeywordTok{COMP}\NormalTok{ (CENT, DEFDOSE, DEFOBS) \textbackslash{}index\{COMP\}\textbackslash{}index\{DEFDOS\}\textbackslash{}index\{DEFOBS\}\textbackslash{}index\{FO\}}
-\KeywordTok{COMP}\NormalTok{ (PD)\textbackslash{}index\{COMP\}}
+\OperatorTok{$}\NormalTok{INPUT ID TIME AMT DV MDV CMT }
+\OperatorTok{$}\NormalTok{DATA DATAFILENAME.csv IGNORE=}\ErrorTok{@}\StringTok{ }
+\ErrorTok{$}\NormalTok{SUBROUTIN ADVAN6 TOL=}\DecValTok{3} 
+\OperatorTok{$}\NormalTok{MODEL }
+\KeywordTok{COMP}\NormalTok{ (CENT, DEFDOSE, DEFOBS) }
+\KeywordTok{COMP}\NormalTok{ (PD)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4388,19 +4379,19 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
-\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.1}\NormalTok{) THEN \textbackslash{}index\{CMT\}}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{CP \textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\NormalTok{  W =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{10}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{11}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{) \textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED \textbackslash{}index\{IPRED\}\textbackslash{}index\{IRES\}\textbackslash{}index\{PRED\}\textbackslash{}index\{RES\}}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W \textbackslash{}index\{IRES\}\textbackslash{}index\{IWRES\}\textbackslash{}index\{RES\}\textbackslash{}index\{WRES\}}
-\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) \textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
-\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN \textbackslash{}index\{CMT\}}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP}\OperatorTok{/}\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) \textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
+\OperatorTok{$}\NormalTok{ERROR }
+\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.1}\NormalTok{) THEN }
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{CP }
+\NormalTok{  W =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{10}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{11}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{) }
+\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
+\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
+\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN }
+\NormalTok{  IPRED =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP}\OperatorTok{/}\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
 \NormalTok{  W =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{12}\NormalTok{) }
-\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED \textbackslash{}index\{IPRED\}\textbackslash{}index\{IRES\}\textbackslash{}index\{PRED\}\textbackslash{}index\{RES\}}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W \textbackslash{}index\{IRES\}\textbackslash{}index\{IWRES\}\textbackslash{}index\{RES\}\textbackslash{}index\{WRES\}}
-\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{) \textbackslash{}index\{IPRED\}\textbackslash{}index\{PRED\}}
+\NormalTok{  IRES =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED }
+\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W }
+\NormalTok{  Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{) }
 \NormalTok{ENDIF}
 \end{Highlighting}
 \end{Shaded}
@@ -4427,36 +4418,36 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PK \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{PK }
 \NormalTok{CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
 \NormalTok{V1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
 \NormalTok{K =}\StringTok{ }\NormalTok{CL }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \NormalTok{EMAX =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)) }
 \NormalTok{EC50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
 
-\OperatorTok{$}\NormalTok{DES \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DES\}}
+\OperatorTok{$}\NormalTok{DES }
 \NormalTok{CP =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{K }\OperatorTok{*}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{ERROR \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
+\OperatorTok{$}\NormalTok{ERROR }
 \NormalTok{Y1 =}\StringTok{ }\NormalTok{CP }
 \NormalTok{Y2 =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP }\OperatorTok{/}\StringTok{ }\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
-\KeywordTok{IF}\NormalTok{ (CMT.LE}\FloatTok{.1}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y1 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{) \textbackslash{}index\{CMT\}}
-\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y2 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{)\textbackslash{}index\{CMT\}}
+\KeywordTok{IF}\NormalTok{ (CMT.LE}\FloatTok{.1}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y1 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) Y =}\StringTok{ }\NormalTok{Y2 }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{THETA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
+\OperatorTok{$}\NormalTok{THETA }
 \DecValTok{1}\NormalTok{ FIX}
 \DecValTok{10}\NormalTok{ FIX}
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{) }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA\}}
+\OperatorTok{$}\NormalTok{OMEGA }
 \FloatTok{0.1}\NormalTok{ FIX }
 \FloatTok{0.15}\NormalTok{ FIX}
 \FloatTok{0.2}
 \FloatTok{0.25}
 
-\OperatorTok{$}\NormalTok{SIGMA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SIGMA\}}
+\OperatorTok{$}\NormalTok{SIGMA }
 \FloatTok{0.025}\NormalTok{ FIX}
 \FloatTok{0.04}
 \end{Highlighting}
@@ -4481,34 +4472,34 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PK \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{PK }
 \NormalTok{CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
 \NormalTok{V1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
 \NormalTok{K =}\StringTok{ }\NormalTok{CL }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \NormalTok{EMAX =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)) }
 \NormalTok{EC50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
 
-\OperatorTok{$}\NormalTok{DES \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DES\}}
+\OperatorTok{$}\NormalTok{DES }
 \NormalTok{CP =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{V1 }
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{K }\OperatorTok{*}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{ERROR \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
+\OperatorTok{$}\NormalTok{ERROR }
 \NormalTok{EFF =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP }\OperatorTok{/}\StringTok{ }\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP) }
 \NormalTok{Y =}\StringTok{ }\NormalTok{EFF }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{THETA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
+\OperatorTok{$}\NormalTok{THETA }
 \DecValTok{1}\NormalTok{ FIX }
 \DecValTok{10}\NormalTok{ FIX }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{) }
 \NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA\}}
+\OperatorTok{$}\NormalTok{OMEGA }
 \FloatTok{0.1}\NormalTok{ FIX }
 \FloatTok{0.15}\NormalTok{ FIX }
 \FloatTok{0.2} 
 \FloatTok{0.25}
 
-\OperatorTok{$}\NormalTok{SIGMA \textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SIGMA\}}
+\OperatorTok{$}\NormalTok{SIGMA }
 \FloatTok{0.04}
 \end{Highlighting}
 \end{Shaded}
@@ -4532,30 +4523,30 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PK\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{PK}
 \NormalTok{  CL =}\StringTok{ }\NormalTok{ICL}
 \NormalTok{  V1 =}\StringTok{ }\NormalTok{IV}
 \NormalTok{  K =}\StringTok{ }\NormalTok{CL }\OperatorTok{/}\StringTok{ }\NormalTok{V1}
 \NormalTok{  EMAX =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
 \NormalTok{  EC50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
 
-\OperatorTok{$}\NormalTok{DES\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DES\}}
+\OperatorTok{$}\NormalTok{DES}
 \NormalTok{  CP =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{V1}
   \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{K }\OperatorTok{*}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{ERROR\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
+\OperatorTok{$}\NormalTok{ERROR}
 \NormalTok{  EFF =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{CP }\OperatorTok{/}\StringTok{ }\NormalTok{(EC50}\OperatorTok{+}\NormalTok{CP)}
 \NormalTok{  Y =}\StringTok{ }\NormalTok{EFF }\OperatorTok{+}\StringTok{ }\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{THETA\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{THETA\}}
+\OperatorTok{$}\NormalTok{THETA}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{OMEGA\}}
+\OperatorTok{$}\NormalTok{OMEGA}
   \FloatTok{0.2}
   \FloatTok{0.25}
 
-\OperatorTok{$}\NormalTok{SIGMA\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SIGMA\}}
+\OperatorTok{$}\NormalTok{SIGMA}
   \FloatTok{0.04}
 \end{Highlighting}
 \end{Shaded}
@@ -4587,20 +4578,20 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB HO\_PO\_2comp}
-\OperatorTok{$}\NormalTok{DATA SIM\_S.csv IGNORE=}\ErrorTok{@}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}\textbackslash{}index\{IGNORE\}}
-\OperatorTok{$}\NormalTok{INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{INPUT\}\textbackslash{}index\{AMT\}\textbackslash{}index\{ID\}\textbackslash{}index\{MDV\}\textbackslash{}index\{TIME\}}
+\OperatorTok{$}\NormalTok{DATA SIM\_S.csv IGNORE=}\ErrorTok{@}
+\ErrorTok{$}\NormalTok{INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT}
 
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{3}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SUBROUTINE\}\textbackslash{}index\{ADVAN6\}\textbackslash{}index\{TOL\}}
+\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{3}
 
-\OperatorTok{$}\NormalTok{MODEL NCOMP=}\DecValTok{4}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{MODEL\}\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)\textbackslash{}index\{COMP\}\textbackslash{}index\{DEFDOS\}}
-  \KeywordTok{COMP}\NormalTok{(CENT)\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(PERI)\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(EFFE, DEFOBS)\textbackslash{}index\{COMP\}\textbackslash{}index\{DEFOBS\}\textbackslash{}index\{FO\}}
+\OperatorTok{$}\NormalTok{MODEL NCOMP=}\DecValTok{4}
+  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
+  \KeywordTok{COMP}\NormalTok{(CENT)}
+  \KeywordTok{COMP}\NormalTok{(PERI)}
+  \KeywordTok{COMP}\NormalTok{(EFFE, DEFOBS)}
 
-\OperatorTok{$}\NormalTok{PK\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
-\NormalTok{;}\OperatorTok{{-}{-}{-}{-}}\StringTok{ }\NormalTok{PK FIXED EFFECT }\OperatorTok{{-}{-}{-}{-}}\NormalTok{\textbackslash{}index\{FIXED\}}
-\NormalTok{  TVCL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\OperatorTok{$}\NormalTok{PK}
+\NormalTok{;}\OperatorTok{{-}{-}{-}{-}}\StringTok{ }\NormalTok{PK FIXED EFFECT }\OperatorTok{{-}{-}{-}{-}}
+\StringTok{  }\NormalTok{TVCL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \NormalTok{  TVV2 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \NormalTok{  TVV3 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \NormalTok{  TVQ  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}
@@ -4656,18 +4647,18 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{$}\NormalTok{PROB HO\_PO\_2comp}
-\OperatorTok{$}\NormalTok{DATA IPP\_S.csv IGNORE=}\ErrorTok{@}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DATA\}\textbackslash{}index\{IGNORE\}}
-\OperatorTok{$}\NormalTok{INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{INPUT\}\textbackslash{}index\{AMT\}\textbackslash{}index\{CMT\}\textbackslash{}index\{ID\}\textbackslash{}index\{MDV\}\textbackslash{}index\{TIME\}}
+\OperatorTok{$}\NormalTok{DATA IPP\_S.csv IGNORE=}\ErrorTok{@}
+\ErrorTok{$}\NormalTok{INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA}
 
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{3}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SUBROUTINE\}\textbackslash{}index\{ADVAN6\}\textbackslash{}index\{TOL\}}
+\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{3}
 
-\OperatorTok{$}\NormalTok{MODEL NCOMP=}\DecValTok{4}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{MODEL\}\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)\textbackslash{}index\{COMP\}\textbackslash{}index\{DEFDOS\}}
-  \KeywordTok{COMP}\NormalTok{(CENT)\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(PERI)\textbackslash{}index\{COMP\}}
-  \KeywordTok{COMP}\NormalTok{(EFFE, DEFOBS)\textbackslash{}index\{COMP\}\textbackslash{}index\{DEFOBS\}\textbackslash{}index\{FO\}}
+\OperatorTok{$}\NormalTok{MODEL NCOMP=}\DecValTok{4}
+  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
+  \KeywordTok{COMP}\NormalTok{(CENT)}
+  \KeywordTok{COMP}\NormalTok{(PERI)}
+  \KeywordTok{COMP}\NormalTok{(EFFE, DEFOBS)}
  
-\OperatorTok{$}\NormalTok{PK\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{PK}
 
 \NormalTok{  CL    =}\StringTok{ }\NormalTok{ICL}
 \NormalTok{  V2    =}\StringTok{ }\NormalTok{IV2}
@@ -5102,25 +5093,25 @@ K_2 &= k_2 / k_{-2}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN6 TOL=}\DecValTok{5}\NormalTok{\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{SUBROUTINE\}\textbackslash{}index\{ADVAN6\}\textbackslash{}index\{TOL\}}
-\OperatorTok{$}\NormalTok{MODEL\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{MODEL\}}
-\NormalTok{  COMP=(CENTRAL,DEFDOSE,DEFOBS)\textbackslash{}index\{COMP\}\textbackslash{}index\{DEFDOS\}\textbackslash{}index\{DEFOBS\}\textbackslash{}index\{FO\}}
-\NormalTok{  COMP=EFFECT\textbackslash{}index\{COMP\}}
-\OperatorTok{$}\NormalTok{PK\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{PK\}}
+\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN6 TOL=}\DecValTok{5}
+\OperatorTok{$}\NormalTok{MODEL}
+\NormalTok{  COMP=(CENTRAL,DEFDOSE,DEFOBS)}
+\NormalTok{  COMP=EFFECT}
+\OperatorTok{$}\NormalTok{PK}
 \NormalTok{  K10 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
 \NormalTok{  V1  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
-\NormalTok{  S1  =}\StringTok{ }\NormalTok{V1 \textbackslash{}index\{S1\}}
+\NormalTok{  S1  =}\StringTok{ }\NormalTok{V1 }
 \NormalTok{  K20 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
 \NormalTok{  C50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
 \NormalTok{  EMAX=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
-\OperatorTok{$}\NormalTok{DES\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{DES\}}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K10}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)                 ; NOTE NO LOSS TO }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)\textbackslash{}index\{SS\}}
+\OperatorTok{$}\NormalTok{DES}
+  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K10}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)                 ; NOTE NO LOSS TO }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
   \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=}\StringTok{ }\NormalTok{K20}\OperatorTok{*}\NormalTok{(}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{V1}\OperatorTok{{-}}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))       ; }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) IS CE}
-\OperatorTok{$}\NormalTok{ERROR\textbackslash{}index\{\textbackslash{}}\OperatorTok{$}\NormalTok{ERROR\}}
-  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN\textbackslash{}index\{CMT\}}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{F}\OperatorTok{/}\NormalTok{(C50}\OperatorTok{+}\NormalTok{F)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{))  ; DV =}\StringTok{ }\NormalTok{EFFECT IF CMT=}\DecValTok{2}\NormalTok{\textbackslash{}index\{CMT\}}
+\OperatorTok{$}\NormalTok{ERROR}
+  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN}
+\NormalTok{  Y   =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{F}\OperatorTok{/}\NormalTok{(C50}\OperatorTok{+}\NormalTok{F)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{))  ; DV =}\StringTok{ }\NormalTok{EFFECT IF CMT=}\DecValTok{2}
 \NormalTok{  ELSE}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{))               ; DV =}\StringTok{ }\NormalTok{CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)\textbackslash{}index\{CMT\}}
+\NormalTok{  Y   =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{))               ; DV =}\StringTok{ }\NormalTok{CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
 \NormalTok{  ENDIF}
 \end{Highlighting}
 \end{Shaded}
@@ -5197,7 +5188,7 @@ H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1\textbackslash{}index\{S1\}}
+\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{IMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(IC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
@@ -5224,7 +5215,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1\textbackslash{}index\{S1\}}
+\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{SMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(SC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
@@ -5251,7 +5242,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1\textbackslash{}index\{S1\}}
+\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{SMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(SC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}

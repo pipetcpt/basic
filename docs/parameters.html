@@ -441,12 +441,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>데이터가 부족한 경우 EPSILON shrinkage 또한 커질 수 있는데, 이는 다음의 수식으로 구할 수 있다.
 <span class="math display" id="eq:eps-iwres">\[\begin{equation}
-\epsilon_{sh} = 1 - SD(IWRES)\index{IWRES}\index{RES}\index{WRES}
+\epsilon_{sh} = 1 - SD(IWRES)
 \tag{15.2}
 \end{equation}\]</span></p>
 <p>EPSILON shrinkage는 1에서 IWRES의 표준편차를 뺀 값으로 이 때 사용되는 IWRES의 수식은 다음과 같다.
 <span class="math display" id="eq:iwres-ipred">\[\begin{equation}
-IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)\index{IPRED}\index{IWRES}\index{PRED}\index{RES}\index{WRES}
+IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \rightarrow \text{DV, IWRES} \rightarrow 0)
 \tag{15.3}
 \end{equation}\]</span></p>
 <p>희박한 자료의 경우 그림 <a href="parameters.html#fig:concept-eps-shrinkage">15.8</a>처럼 IPRED가 DV를 향해 축소되는 현상이 나타나게 되는데, IPRED가 DV에 가까워질수록 IWRES는 0에 가까워지며, EPSILON shrinkage는 커지게 된다.</p>
