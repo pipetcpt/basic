@@ -7,12 +7,12 @@
 일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. \$MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 \$PK구문 다음에 \$DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 이 장에서는 ADVAN 5\~8에 대하여 다루기로 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}
 
 ```{r gen-advan, message = FALSE}
-advan <- c("ADVAN5 (General Linear)",\index{ADVAN5}
-"ADVAN6 (General Nonlinear)",\index{ADVAN6}
-"ADVAN7 (General Linear with Real Eigenvalues)",\index{ADVAN7}
-"ADVAN8 (General Nonlinear Kinetics with Stiff Equations)",\index{ADVAN8}
-"ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)",\index{ADVAN9}
-"ADVAN13 (General Nonlinear Kinetics using LSODA)")\index{ADVAN1}\index{ADVAN13}
+advan <- c("ADVAN5 (General Linear)",
+"ADVAN6 (General Nonlinear)",
+"ADVAN7 (General Linear with Real Eigenvalues)",
+"ADVAN8 (General Nonlinear Kinetics with Stiff Equations)",
+"ADVAN9 (General Nonlinear Kinetics with Equilibrium Compartments)",
+"ADVAN13 (General Nonlinear Kinetics using LSODA)")
 
 knitr::kable(dplyr::tibble(`General ADVAN` = advan), 
              caption = "일반 ADVAN의 종류",
@@ -115,12 +115,12 @@ knitr::include_graphics("figures/05-fig-06.png")
 ```
 
 ```r
-$SUBROUTINE ADVAN5\index{\$SUBROUTINE}\index{ADVAN5}
-$MODEL\index{\$MODEL}
-  COMP(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}
-  COMP(CENTRAL, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}
-  COMP(PERIPH)\index{COMP}
-$PK ; Define basic PK relationships\index{\$PK}
+$SUBROUTINE ADVAN5
+$MODEL
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENTRAL, DEFOBS)
+  COMP(PERIPH)
+$PK ; Define basic PK relationships
   CL = THETA(1)*EXP(ETA(1))
   V2 = THETA(2)*EXP(ETA(2))
   V3 = THETA(3)*EXP(ETA(3))
@@ -132,7 +132,7 @@ $PK ; Define basic PK relationships\index{\$PK}
   K20= CL/V2
   K23= Q/V2
   K32= Q/V3
-$ERROR\index{\$ERROR}
+$ERROR
   Y  = F*(1+EPS(1)) 
 ```
 
@@ -144,12 +144,12 @@ $ERROR\index{\$ERROR}
 ```
 
 ```r
-$SUBROUTINE ADVAN6 TOL=4\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
-$MODEL\index{\$MODEL}
-  COMP(DEPOT, DEFDOSE)\index{COMP}\index{DEFDOS}
-  COMP(CENTRAL, DEFOBS)\index{COMP}\index{DEFOBS}\index{FO}
-  COMP(PERIPH)\index{COMP}
-$PK ; Define basic PK relationships\index{\$PK}
+$SUBROUTINE ADVAN6 TOL=4
+$MODEL
+  COMP(DEPOT, DEFDOSE)
+  COMP(CENTRAL, DEFOBS)
+  COMP(PERIPH)
+$PK ; Define basic PK relationships
   CL = THETA(1)*EXP(ETA(1))
   V2 = THETA(2)*EXP(ETA(2))
   V3 = THETA(3)*EXP(ETA(3))
@@ -160,11 +160,11 @@ $PK ; Define basic PK relationships\index{\$PK}
   K20= CL/V2
   K23= Q/V2
   K32= Q/V3
-$DES ; Define differential equations\index{\$DES}
+$DES ; Define differential equations
   DADT(1) = -A(1)*KA
   DADT(2) = A(1)*KA - A(2)*(K23+K20) + A(3)*K32
   DADT(3) = A(2)*K23 - A(3)*K32
-$ERROR\index{\$ERROR}
+$ERROR
   Y  = F*(1+EPS(1)) 
 ```
 

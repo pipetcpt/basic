@@ -42,17 +42,17 @@ TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브�
 tibble::tribble(
   ~`ADVAN subroutine`, ~`TRANS subroutine`, ~`Required parameters`,
   "ADVAN1", "TRANS1", "K",
-  "ADVAN1", "TRANS2", "CL, V", # bold: \\textbf{TRANS2}\index{ADVAN1}\index{TRANS}\index{TRANS2}
+  "ADVAN1", "TRANS2", "CL, V", # bold: \\textbf{TRANS2}
   "ADVAN2", "TRANS1", "K, KA",
-  "ADVAN2", "TRANS2", "CL, V, KA", # bold: \\textbf{TRANS2}\index{ADVAN2}\index{TRANS}\index{TRANS2}
+  "ADVAN2", "TRANS2", "CL, V, KA", # bold: \\textbf{TRANS2}
   "ADVAN3", "TRANS1", "K, K12, K21",
   "ADVAN3", "TRANS3", "CL, V, Q, VSS",
-  "ADVAN3", "TRANS4", "CL, V1, Q, V2", # bold: \\textbf{TRANS4}\index{ADVAN3}\index{TRANS}
+  "ADVAN3", "TRANS4", "CL, V1, Q, V2", # bold: \\textbf{TRANS4}
   "ADVAN3", "TRANS5", "AOB, ALPHA, BETA",
   "ADVAN3", "TRANS6", "ALPHA, BETA, K21",
   "ADVAN4", "TRANS1", "K, K23, K32, KA",
   "ADVAN4", "TRANS3", "CL, V, Q, VSS, KA",
-  "ADVAN4", "TRANS4", "CL, V2, Q, V3, KA", # bold: \\textbf{TRANS4}\index{ADVAN4}\index{TRANS}
+  "ADVAN4", "TRANS4", "CL, V2, Q, V3, KA", # bold: \\textbf{TRANS4}
   "ADVAN4", "TRANS5", "AOB, ALPHA, BETA, KA",
   "ADVAN4", "TRANS6", "ALPHA, BETA, K32, KA"
 ) %>% 
@@ -96,8 +96,8 @@ read_csv(txt) %>%
 ```
 
 ```r
-$SUBROUTINES ADVAN4 TRANS4\index{\$SUBROUTINE}\index{ADVAN4}\index{TRANS}
-$PK \index{\$PK}
+$SUBROUTINES ADVAN4 TRANS4
+$PK 
   TVCL = THETA(1)
   TVV2 = THETA(2)
   TVV3 = THETA(3)
@@ -109,7 +109,7 @@ $PK \index{\$PK}
   Q    =  TVQ  * EXP(ETA(4))
   KA   =  TVKA * EXP(ETA(5))
       
-  ALAG1=  THETA(6) * EXP(ETA(6))\index{ALAG}
+  ALAG1=  THETA(6) * EXP(ETA(6))
   S2   =  V2 / 1000
 ```
 ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.\index{ADVAN4}\index{TRANS}
@@ -134,9 +134,9 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 ```
 
 ```r
-IF (DOSE.EQ.50) F1 = 1\index{F1}
-IF (DOSE.EQ.100) F1 = THETA(7)\index{F1}
-IF (DOSE.EQ.200) F1 = THETA(8)\index{F1}
+IF (DOSE.EQ.50) F1 = 1
+IF (DOSE.EQ.100) F1 = THETA(7)
+IF (DOSE.EQ.200) F1 = THETA(8)
 ```
 척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 \@ref(tab:basic-additional)를 참고하도록 하자. [@nonmem]\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}\index{scaling parameter / 척도 파라미터}\index{ADVAN1}\index{ADVAN2}\index{AMT}\index{S1}
 
