@@ -320,7 +320,7 @@ $SIGMA
 
 SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아래와 같다(그림 \@ref(fig:sim-pppd-dataset)). 경구투여 시 용량정보는 CMT 1, PK 데이터는 CMT2, PD 데이터는 CMT 4에 기입한다. PK 와 PD 데이터가 다른 구획에서 관측된 값이라는 것을 이와 같이 CMT로 구분한다.\index{CMT}
 
-```{r sim-pppd-dataset, fig.cap = "(ref:sim-pppd-dataset)", out.width='50%'}
+```{r sim-pppd-dataset, fig.cap = "(ref:sim-pppd-dataset)", out.width='100%'}
 include_graphics("./assets/media-18/image9.png") # fig 12
 ```
 
@@ -379,7 +379,7 @@ PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@
 
 PPP의 제어구문은 위의 코드 \@ref(exm:sim-pppd-similarity)과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.\index{\$ERROR}\index{CMT}
 
-```{r ppp-pkpd-dataset, fig.cap ="(ref:ppp-pkpd-dataset)"}
+```{r ppp-pkpd-dataset, fig.cap ="(ref:ppp-pkpd-dataset)", out.width='100%'}
 include_graphics("./assets/media-18/image13.png") # fig14
 ```
 
