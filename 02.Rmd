@@ -123,7 +123,7 @@ TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기�
 
 TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.\index{PRED}\index{PREDPP}\index{TIME}
 
-TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \@ref(exm:date-dataset-chunk)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 `/' 또는 `-' 사용) 제어구문 파일의 \$INPUT에 반드시 `DATE=DROP`이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.\index{\$INPUT}\index{DAT1}\index{DAT2}\index{DAT3}\index{DATE}\index{DATE=DROP}\index{DROP}\index{TIME}
+TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \@ref(exm:date-dataset-chunk)과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 / 또는 - 사용) 제어구문 파일의 \$INPUT에 반드시 `DATE=DROP`이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.\index{\$INPUT}\index{DAT1}\index{DAT2}\index{DAT3}\index{DATE}\index{DATE=DROP}\index{DROP}\index{TIME}
 
 \index{TIME}
 ```{r time-dataset, fig.cap="Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)"}

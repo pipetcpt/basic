@@ -38,7 +38,7 @@ knitr::include_graphics("./figures/13-fig-02.png")
 
 \index{혼합오차모델 / combined error model}
 
-```{r pred-sd, fig.cap="Relationship between standard deviation of residual variability and predicted concentrations"}
+```{r pred-sd, fig.cap="Relationship between standard deviation of residual variability and predicted concentrations", out.width='100%'}
 include_graphics("./figures/13-fig-03.png") # fig 3
 ```
 
@@ -83,7 +83,7 @@ Run count가 너무 크거나 (+/-가 너무 많이 교차되어도), 너무 작
 
 Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 그 중 하나인 basic goodness-of-fit plots에서(그림 \@ref(fig:basic-gof-plot)) 아래쪽 두 개의 그림이 잔차(residual)에 대한 진단 플롯이다. 좌측은 |IWRES| vs Individual predictions (IPRED), 우측은 Conditional weighted residuals (CWRES) vs Time을 나타낸 그림이다. IWRES는 개인 가중잔차(Individual Weighted residuals)이고 |IWRES|는 개인 가중잔차의 절대값이다. 잔차모델이 적절하다면, CWRES 플롯의 모든 점들이 0을 기준으로 대칭으로 분포하게 되며, CWRES 값들의 흩어진 정도가 시간이나 개인 예측 값에 따라 경향성이 없고, 그 범위가 -3과+3 사이에 분포할 것으로 기대된다([10장](#use-of-xpose4) 참고).\index{개인 예측 / individual(specific) prediction(s)}\index{individual(specific) prediction(s) / 개인 예측}\index{잔차 / residual error}\index{residual error / 잔차}\index{conditional weighted residuals / 조건부 가중 잔차}\index{CWRES}\index{IPRED}\index{IWRES}\index{PRED}\index{RES}\index{WRES}
 
-```{r basic-gof-plot, fig.cap = "Basic goodness-of-fit plots"}
+```{r basic-gof-plot, fig.cap = "Basic goodness-of-fit plots", out.width='100%'}
 include_graphics("./figures/13-fig-05.png") # fig 6
 ```
 
@@ -113,20 +113,20 @@ include_graphics("./figures/13-fig-07.png") # fig 8
 
 실제 goodness-of-fit 플롯의 CWRES 플롯에서도 이와 같은 형태를 발견할 수 있으며, 경구흡수의 지연시간을 추가했을 때 (그림 \@ref(fig:lag-gof)) 이런 현상이 해결되는 것을 확인할 수 있다.\index{conditional weighted residuals / 조건부 가중 잔차}\index{CWRES}\index{RES}\index{WRES}
 
-```{r lag-gof, fig.cap="Lag time 추가시의 GOF 변화"}
+```{r lag-gof, fig.cap="Lag time 추가시의 GOF 변화", out.width='100%'}
 include_graphics("./figures/13-fig-08.png") # fig 9
 ```
 \index{goodness of fit / 적합도}
 
 구조 모델이 잘못된 두번째 예시를 살펴보면, U자 형태의 커브가 관찰되는데, 2구획 모델을 1구획 모델로 설명하려고 하는 경우에 이와 같은 잔차 플롯이 흔히 관찰된다. (그림 \@ref(fig:u-curve))\index{잔차 / residual error}\index{residual error / 잔차}
 
-```{r u-curve, fig.cap = "Example of Wrong structure model (2-compartment model)"}
+```{r u-curve, fig.cap = "Example of Wrong structure model (2-compartment model)", out.width='100%'}
 include_graphics("./figures/13-fig-09.png") # fig 10
 ```
 
 세 번째 예시는, 잔차의 모델이 잘못된 경우인데, 혼합오차모델(또는 비례오차모델)을 사용해야 하는 경우에 가법오차모델만 사용한 경우의 예시이다. 앞 시간대에서는 잔차가 크다가 뒤로 갈수록 잔차가 작아지는 형태인데, 약물 농도로 바꾸어 생각해보면, 약물 농도가 높아짐에(앞 시간대 약물 농도가 높으므로)따라 잔차가 커지는 경우이다. 잔차 모델을 가법오차모델에서 혼합오차모델 모델로 변경한 경우의 goodness-of-fit plots을 그림 \@ref(fig:addi-comb-gof)에서 확인할 수 있다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}
 
-```{r addi-comb-gof, fig.cap = "Example of Wrong variance model (error model)"}
+```{r addi-comb-gof, fig.cap = "Example of Wrong variance model (error model)", out.width='100%'}
 include_graphics("./figures/13-fig-10.png") # fig 11
 ```
 
@@ -138,7 +138,7 @@ read_csv('data-raw/media-13-tab-1.csv', col_types="cccc") %>%
          `$X_{ji}$ values` = 4) %>% 
   kable(booktabs=TRUE, escape=FALSE, caption = "(ref:diag-response)") %>% 
   column_spec(1:4, width = "3cm") %>%
-  add_header_above(c(" " = 1, `Plot of $\\epsilon_{i}$ versus` = 3), escape = FALSE)
+  add_header_above(c(" " = 1, `Plot of ε$_{i}$ versus` = 3), escape = FALSE)
 ```
 
 (ref:diag-response) 진단 결과에 따른 모델 개선 방안 [@draper1998applied]

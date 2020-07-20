@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="effect-model.html"/>
-<link rel="next" href="별첨-1.html"/>
+<link rel="next" href="nonmem-아웃풋-파일.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -386,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">20.2</span> 시간에 따른 PK-PD 관계</h2>
 <p>시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를 보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를 보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다. 또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는 현상을 보인다. (그림 <a href="delayed-effect.html#fig:pkpd-relationship">20.1</a>)</p>
 <div class="figure"><span id="fig:pkpd-relationship"></span>
-<img src="figures/20-fig-01.png" alt="PK와 PD의 관련성 (Gabrielsson 2006)" width="90%" />
+<img src="figures/20-fig-01.png" alt="PK와 PD의 관련성 (Gabrielsson 2006)" width="95%" />
 <p class="caption">
 그림 20.1: PK와 PD의 관련성 <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -395,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>이렇게 동일한 농도에서 관찰되는 효과가 농도가 증가하는 시점과 감소하는 시점에서 다르게 관찰되는 현상은 크게 두 종류로 나눌 수 있다. 이중 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 작게 관찰되는 경우를 히스테레시스(hysteresis)라고 하며, 농도-효과 관계의 양상이 시간이 흐름에 따라 반시계방향으로 그려진다. 반면 농도가 증가하는 시점에서의 효과가 감소하는 시점보다 큰 양상을 보이는 경우 프로테레시스(proteresis)라 하며, 농도-효과 관계의 양상이 시계방향으로 그려진다. (그림 <a href="delayed-effect.html#fig:hys-proteresis">20.2</a>)</p>
 <p>약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체 up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나 활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.</p>
 <div class="figure"><span id="fig:hys-proteresis"></span>
-<img src="figures/20-fig-02.png" alt="히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)" width="90%" />
+<img src="figures/20-fig-02.png" alt="히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)" width="95%" />
 <p class="caption">
 그림 20.2: 히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)
 </p>
@@ -406,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">20.3</span> 효과구획 모델</h2>
 <p>약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의 농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를 가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고 한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 bolus로 약을 주사했을 때, 약효구획의 약물농도(Ce)는 천천히 변화하며, 그 Ce와 약효와의 관계가 sigmoid Emax를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림 <a href="delayed-effect.html#fig:effect-comp">20.3</a>)</p>
 <div class="figure"><span id="fig:effect-comp"></span>
-<img src="figures/20-fig-03.png" alt="효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson 2006)" width="90%" />
+<img src="figures/20-fig-03.png" alt="효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson 2006)" width="95%" />
 <p class="caption">
 그림 20.3: 효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -464,7 +464,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 <p>관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 <a href="delayed-effect.html#fig:direct-indirect">20.4</a>).</p>
 <div class="figure"><span id="fig:direct-indirect"></span>
-<img src="figures/20-fig-04.png" alt="직접효과와 간접효과의 모식도 (Gabrielsson 2006)" width="90%" />
+<img src="figures/20-fig-04.png" alt="직접효과와 간접효과의 모식도 (Gabrielsson 2006)" width="95%" />
 <p class="caption">
 그림 20.4: 직접효과와 간접효과의 모식도 <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
@@ -480,7 +480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{equation}\]</span></p>
 <p>관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나 억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 <a href="delayed-effect.html#fig:turnover-4">20.5</a>에서 보듯 4가지 형태로 구분된다.</p>
 <div class="figure"><span id="fig:turnover-4"></span>
-<img src="figures/20-fig-05.png" alt="Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko 1998)" width="90%" />
+<img src="figures/20-fig-05.png" alt="Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko 1998)" width="95%" />
 <p class="caption">
 그림 20.5: Turnover 모델(간접효과 모델)의 네 가지 <span class="citation">(Sharma and Jusko <a href="#ref-sharma1998characteristics" role="doc-biblioref">1998</a>)</span>
 </p>
@@ -607,7 +607,7 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
         </div>
       </div>
 <a href="effect-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="별첨-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="nonmem-아웃풋-파일.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>

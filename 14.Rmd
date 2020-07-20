@@ -128,12 +128,12 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 \end{equation}
 
 한 번 더 미분하면
-
 \begin{equation}
 \begin{split}
-\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
-E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
-I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx &= 0 \\
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &= 0 \\
+I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} & = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
+&= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
 \end{split}
 (\#eq:diff-diff)
 \end{equation}
@@ -226,7 +226,7 @@ R에는 기본적으로 nlme 패키지[@R-nlme]가 설치되어 있으며, NONME
 
 (ref:theophconctime) Theophylline 경구 복용 후 농도-시간 곡선
 
-```{r theophconctime, fig.cap="(ref:theophconctime)"}
+```{r theophconctime, fig.cap="(ref:theophconctime)", out.width = '100%'}
 require(nlme)
 plot(Theoph)
 ```

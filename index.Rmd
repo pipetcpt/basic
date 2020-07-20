@@ -53,6 +53,8 @@ github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
 header-includes:
   - \usepackage{kotex}
+#  - \usepackage{xeCJK}
+#  - \usepackage{CJKutf8}
 #  - \usepackage{dhucs-trivcj}
   - \usepackage{booktabs}
   - \usepackage{longtable}
@@ -95,7 +97,7 @@ pacman::p_load(char = my_packages)
 opts_chunk$set(echo=FALSE, 
                message = FALSE, 
                warning = FALSE,
-               out.width="90%", 
+               out.width="95%", 
                dpi = NA,
                #fig.width = 7,
                error = TRUE)

@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -380,7 +380,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>계량약리학에서 사용하는 다양한 방법론 중 가장 대표적인 것은 혼합효과 모델링-시뮬레이션이며, 이 일련의 과정에서 가장 핵심이 되는 것은 ‘신뢰할 수 있는’, 그리고 신뢰할 수 있으므로 ‘유용하다고 인정되는’ 모델이라고 할 수 있다. 계량약리학자는 이런 모델을 구축하고, 이를 기반으로 경험하지 못한 다양한 상황에 대한 가상 실험(또는 임상시험)을 실시할 수 있다. 다만, ‘신뢰할 수 있는 모델은 이러이러한 것이다.’라는 식으로 정의하는 것은 거의 불가능에 가깝다. 어느 정도의 신뢰가 필요한지, 얼마나 실제 상황을 잘 모사하여야 신뢰할 수 있는 것인지에 대한 객관적이며 절대적인 지표가 없기 때문이다. 따라서, ‘신뢰할 수 있다’고 함은 상황에 따라 가변적인 것이며, 모델링의 대상이나 목적에 따라 사용한 모델이 ‘신뢰할 수 있음’을 적절히 입증하는 절차가 필요하다. 그리고 이런 입증을 위해 활용되는 방법론이 바로 모델의 진단 또는 평가라 하는 절차이다.</p>
 <p>모델 진단/평가의 구체적 내용을 살펴보기 전에, 계량약리학의 본질적인 필요성과 연결 지어 앞서 언급한 ‘신뢰성’이라는 개념에 대해 조금 더 구체적으로 생각해 볼 필요가 있다. 계량약리학 분석은 신약 개발 또는 임상 약물치료 상황에서 제시되는 특정한 질문들에 대한 타당한 해답을 얻기 위해 수행하는 것이다. 예를 들어, “목표 적응증을 가진 환자에서 임상적으로 적용 가능한 최적의 용량-용법은 어떤 것인가?”라는 질문에 대한 답을 얻기 위해서는, 기존에 확보한 약동-약력학 자료(비임상/임상)로부터 최선의 모델을 구현하고, 이를 이용한 다양한 시뮬레이션을 수행함으로써 최대의 유효성과 안전성을 충족하는 용량-용법을 찾게 된다.</p>
 <div class="figure"><span id="fig:ms-workflow"></span>
-<img src="figures/12-fig-01.png" alt="모델링-시뮬레이션 workflow 및 구성 요소" width="90%" />
+<img src="figures/12-fig-01.png" alt="모델링-시뮬레이션 workflow 및 구성 요소" width="95%" />
 <p class="caption">
 그림 12.1: 모델링-시뮬레이션 workflow 및 구성 요소
 </p>
@@ -419,50 +419,50 @@ Model evaluation
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Defects in the model are pointed out
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Quality is established to the model
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 can be implemented as brief procedures
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 A medium to long-term process (e.g. simulations); cannot be implemented quickly
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 focus on outputs - work-in-progress and individual models (NOT the final model)
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 focus on process - how models are developed or established
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Achieved by partial inspection on modeling outcome
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Achieved by full validation on the final model
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Targeted at modeling procedures
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Targeted at model quality
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Emphasis on the standards
 </td>
-<td style="text-align:left;width: 7cm; ">
+<td style="text-align:left;width: 6cm; ">
 Emphasis on the purpose
 </td>
 </tr>
@@ -500,10 +500,10 @@ Visual
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3cm; ">
 적합도 (goodness-of-fit, GoF)
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 Fit statistics (OFV, iOFV), Akaike information criterion (AIC) for non-nested model
 </td>
 <td style="text-align:left;width: 4cm; ">
@@ -511,10 +511,10 @@ Goodness-of-fit plot, Individual plot
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3cm; ">
 파라미터 정확성(accuracy) / 정밀성(precision)
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 Parameter estimates, Parameter imprecision estimates (by NONMEM), EBE shrinkage, Bootstrap median and confidence interval
 </td>
 <td style="text-align:left;width: 4cm; ">
@@ -522,10 +522,10 @@ Empirical Bayes Estimate (EBE) distribution
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3cm; ">
 재현성(reproducibility)
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 5.5cm; ">
 Posterior Predictive Check (PPC), Numerical Predictive Check (NPC)
 </td>
 <td style="text-align:left;width: 4cm; ">

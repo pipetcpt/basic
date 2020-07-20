@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -476,12 +476,13 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 \end{split}
 \tag{14.2}
 \end{equation}\]</span></p>
-<p>한 번 더 미분하면</p>
-<p><span class="math display" id="eq:diff-diff">\[\begin{equation}
+<p>한 번 더 미분하면
+<span class="math display" id="eq:diff-diff">\[\begin{equation}
 \begin{split}
-\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
-E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
-I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx &amp;= 0 \\
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &amp;= 0 \\
+I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} &amp; = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
+&amp;= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
 \end{split}
 \tag{14.3}
 \end{equation}\]</span></p>
@@ -558,7 +559,7 @@ R = \frac{\partial^{2}O}{\partial\theta^{2}}
 <p>R에는 기본적으로 nlme 패키지<span class="citation">(Pinheiro, Bates, and R-core <a href="#ref-R-nlme" role="doc-biblioref">2020</a>)</span>가 설치되어 있으며, NONMEM에도 있는 theophylline 데이터가 포함되어 있다. Theophylline 데이터를 그리면 다음과 같다.</p>
 
 <div class="figure"><span id="fig:theophconctime"></span>
-<img src="basic_files/figure-html/theophconctime-1.svg" alt="Theophylline 경구 복용 후 농도-시간 곡선" width="90%" />
+<img src="basic_files/figure-html/theophconctime-1.svg" alt="Theophylline 경구 복용 후 농도-시간 곡선" width="100%" />
 <p class="caption">
 그림 14.1: Theophylline 경구 복용 후 농도-시간 곡선
 </p>

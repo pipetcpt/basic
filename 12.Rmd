@@ -48,7 +48,7 @@ Targeted at modeling procedures, Targeted at model quality
 Emphasis on the standards, Emphasis on the purpose"
 read_csv(txt) %>% 
   kable(booktabs=TRUE, caption = "(ref:diag-eval-property)") %>%
-  column_spec(1:2, width="7cm")
+  column_spec(1:2, width="6cm")
 ```
 
 (ref:diag-eval-property) 모델 진단과 평가의 특성
@@ -86,7 +86,9 @@ tibble::tribble(~" ", ~"Numerical", ~"Visual",
   knitr::kable(escape = FALSE, 
 			   booktabs = TRUE, 
 			   caption = "모델 진단/평가의 요소 별 수행 방법론 요약") %>%
-  column_spec(1:3, width = "4cm")
+  column_spec(1, width = "3cm") %>%
+  column_spec(2, width = "5.5cm") %>%
+  column_spec(3, width = "4cm")
 ```
 
 \index{shrinkage / 축소}\index{shrinkage / 축소}

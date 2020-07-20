@@ -134,7 +134,8 @@
 \usepackage{longtable}
 \usepackage[bf,singlelinecheck=off]{caption}
 
-%\setmainhanjafont{HCR Batang LVT}
+%\setCJKmainfont{SimSun}
+%\setmainhanjafont{SimSun}
 %\setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
 
 %\setmainhanjafont[
@@ -400,7 +401,7 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 \subsection{집단의 데이터를 처리하는 세가지 방법}\label{uxc9d1uxb2e8uxc758-uxb370uxc774uxd130uxb97c-uxcc98uxb9acuxd558uxb294-uxc138uxac00uxc9c0-uxbc29uxbc95}}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/01-fig-04} \caption{집단의 데이터를 처리하는 세가지 방법 A) 각자에서 얻어진 데이터, B) naive pooled method, C) two-stage method, D) mixed-effects method}\label{fig:three-ways}
+\includegraphics[width=0.95\linewidth]{figures/01-fig-04} \caption{집단의 데이터를 처리하는 세가지 방법 A) 각자에서 얻어진 데이터, B) naive pooled method, C) two-stage method, D) mixed-effects method}\label{fig:three-ways}
 \end{figure}
 
 
@@ -449,7 +450,7 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 개인간차와 잔차의 분산들을 각기 ω\textsuperscript{2}과 σ\textsuperscript{2}으로 이름 붙인 것은 혼합효과 모델링에서 쓰기로 정한 하나의 약속이다. 물론 더 깊이 생각해 본다면 이 열 사람 중에서 품질이 더 심하게 나쁜 저울에 올라선 어떤 이의 체중은 매 측정 시마다 차이가 좀 더 심하게 날 수도 있어서 다른 사람들보다 더 큰 σ\textsuperscript{2}을 쓰는 것이 적절할 수도 있다. 그러나 일반적으로 혼합효과 모델링의 기본 가정은 전체 인구집단에서 σ\textsuperscript{2}은 개인별로 차이가 없다고 가정한다.\index{잔차 / residual error}\index{residual error / 잔차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/01-fig-05} \caption{측정된 체중의 분포}\label{fig:measured-weight}
+\includegraphics[width=0.95\linewidth]{figures/01-fig-05} \caption{측정된 체중의 분포}\label{fig:measured-weight}
 \end{figure}
 
 \hypertarget{uxc57duxb3d9uxd559-uxc790uxb8ccuxb85c-uxbcf8-uxd63cuxd569uxd6a8uxacfc-uxbaa8uxb378uxb9c1uxc758-uxac1cuxb150}{%
@@ -460,7 +461,7 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/01-fig-06} \caption{혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal \protect\hyperlink{ref-nonmem}{2018})의 그림에 수식을 추가한 것}\label{fig:nonmem-figure}
+\includegraphics[width=0.95\linewidth]{figures/01-fig-06} \caption{혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal \protect\hyperlink{ref-nonmem}{2018})의 그림에 수식을 추가한 것}\label{fig:nonmem-figure}
 \end{figure}
 
 \hypertarget{nonmem-dataset}{%
@@ -538,7 +539,7 @@ PREDPP를 사용할 경우, 데이터셋 작성 시 반드시 고려해야하는
 \index{PRED}\index{PREDPP}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-02} \caption{Comparison between dataset for PRED and PREDPP}\label{fig:pred-predpp}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-02} \caption{Comparison between dataset for PRED and PREDPP}\label{fig:pred-predpp}
 \end{figure}
 
 \hypertarget{uxb370uxc774uxd130uxc14b-uxc18cuxac1c}{%
@@ -549,7 +550,7 @@ PREDPP를 사용할 경우, 데이터셋 작성 시 반드시 고려해야하는
 많이 쓰이는 기본적인 데이터셋의 형태는 그림 \ref{fig:NONMEM-dataset}과 같다. 첫 행은 데이터 항목의 이름을 기재하며 이를 데이터 항목 레이블(Data item label)이라고 부른다. 첫 행에는 ID, TIME, AMT, DV, MDV 순으로 데이터 항목이 기재되어 있다. 모든 데이터는 ID 별, TIME 별 오름차순으로 정렬하며, 각각의 이벤트 또는 결과값을 기재하고 이를 데이터 레코드 (Data record) 라고 부른다. 하나의 행에는 한 시점에 해당하는 하나의 이벤트(Event)를 기록한다.\index{dependent variable(DV) / 종속변수(DV)}\index{AMT}\index{ID}\index{MDV}\index{TIME}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-03} \caption{Basic example of dataset for NONMEM}\label{fig:NONMEM-dataset}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-03} \caption{Basic example of dataset for NONMEM}\label{fig:NONMEM-dataset}
 \end{figure}
 
 \hypertarget{uxb370uxc774uxd130uxc14b-uxbc30uxc5f4}{%
@@ -607,7 +608,7 @@ ID는 대상자를 식별하기 위해 반드시 필요한 변수이다. 보통 
 \index{ID}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-06} \caption{Example of dataset with noncontinuous ID arrangement (NOT appropriate)}\label{fig:id-dataset}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-06} \caption{Example of dataset with noncontinuous ID arrangement (NOT appropriate)}\label{fig:id-dataset}
 \end{figure}
 
 \hypertarget{dv}{%
@@ -640,12 +641,12 @@ TIME은 시간을 나타내며, 모든 데이터 레코드에 해당 값을 기�
 
 TIME 은 십진법시간(Nominal time) 또는 시계시간(Clock time) 으로 작성될 수 있으며, 일정한 형식으로 통일하여 작성한다. 시계시간으로 기재 시 NONMEM Data Preprocessor 가 이를 자동적으로 십진법시간으로 변환하여 사용한다. 데이터셋에서 작성되는 TIME의 첫번째 데이터 레코드는 0 또는 0이 아닌 숫자로 기입이 가능하며, 0이 아닐 경우 PREDPP에서는 다른 레코드의 TIME과의 차를 구하여 상대적인 시간(relative time)을 산출하여 사용한다.\index{PRED}\index{PREDPP}\index{TIME}
 
-TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 \texttt{/\textquotesingle{}\ 또는}-' 사용) 제어구문 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.\index{\$INPUT}\index{DAT1}\index{DAT2}\index{DAT3}\index{DATE}\index{DATE=DROP}\index{DROP}\index{TIME}
+TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 사용할 수 있다. 이는 데이터셋 작성 시 필수적인 변수는 아니지만, 여러 날에 거친 이벤트 레코드를 기입하기에 유용하다. 데이터 항목 레이블의 변수 이름은 DATE, DAT1, DAT2, DAT3로 지정되어 있으며, 코드 \ref{exm:date-dataset-chunk}과 같이 해당 변수명에 따라 날짜에 대해 특정 기입 형식을 따른다. DATE 변수를 추가하여 데이터셋에 달력 날짜를 기입하였을 경우(구분자로 / 또는 - 사용) 제어구문 파일의 \$INPUT에 반드시 \texttt{DATE=DROP}이라는 제어구문을 입력해야 한다. 이로써 숫자가 아닌(non-numeric) 구분자가 포함된 DATE를 Data Preprocessor가 받아들이지 않도록 제거해야 한다, 제거하지 않을 경우 에러가 일어난다.\index{\$INPUT}\index{DAT1}\index{DAT2}\index{DAT3}\index{DATE}\index{DATE=DROP}\index{DROP}\index{TIME}
 
 \index{TIME}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-07} \caption{Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)}\label{fig:time-dataset}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-07} \caption{Example of TIME in dataset - Allowed(sequential) vs. NOT allowed(non-sequential)}\label{fig:time-dataset}
 \end{figure}
 
 \begin{example}
@@ -686,7 +687,7 @@ RATE 은 단위 시간 당 주입된 양(AMT per unit TIME)을 나타내며, 즉
 \index{AMT}\index{RATE}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-09} \caption{Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h}\label{fig:AMT-RATE}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-09} \caption{Example of AMT and RATE in dataset - drug 100mg IV infusion over 1 hr vs. 0.5 h}\label{fig:AMT-RATE}
 \end{figure}
 
 그 외 RATE는 0, -1, -2 의 값을 가질 수 있다. RATE가 0 인 경우는 투여경로가 정맥 주입이 아니라는 뜻이다. 만약, 정맥주사(bolus)와 정맥주입(infusion)이 함께 이뤄진 경우, 정맥주사 투약 레코드의 RATE는 0으로 기입한다. RATE가 -1 인 경우는 투여 속도를 예측하는 경우이며, 제어구문 파일 \$PK 부분 작성 시 해당 파라미터를 표현하는 제어구문을 작성해야 한다(예를 들어, \texttt{R1=THETA(1)}). 이 값은 이전 투약 레코드 시간과 현재 투약 레코드 시간 사이에 주입된 약물의 속도를 나타낸다. RATE가 -2 인 경우는 투여시간을 추정하고자 하는 경우이며, 위와 마찬가지로 제어구문 파일 작성 시 \$PK 부분에 해당 파라미터를 나타내는 제어구문을 작성해 주어야 한다(예를들어, \texttt{D1=THETA(1)}). 이 값은 약물의 투여 지속시간을 나타낸다. 이와 같이 약물 투여속도(rate) 와 투여 지속시간 (duration)은 다른 PK 파라미터들과 마찬가지로 모델링을 통해 예측될 수 있다.\index{\$PK}\index{D1}\index{R1}\index{RATE}
@@ -705,7 +706,7 @@ ADDL(Additional Dose)은 이벤트 레코드의 시작시간부터 일정한 투
 \index{ADDL}\index{AMT}\index{TIME}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/02-fig-10} \caption{Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II}\label{fig:dosing-dataset}
+\includegraphics[width=0.95\linewidth]{figures/02-fig-10} \caption{Example of Dosing record in dataset - using TIME, AMT vs. using TIME, AMT, ADDL, II}\label{fig:dosing-dataset}
 \end{figure}
 
 \hypertarget{ss}{%
@@ -764,7 +765,7 @@ NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 �
 제어구문은 그림 \ref{fig:nm-tran}처럼 프로젝트의 제목을 기입하는 \$PROBLEM, 분석할 데이터셋 파일의 경로를 표시하는 \$DATA와 각 데이터의 특성을 정의하는 \$INPUT, 집단 약동학 모델링 또는 PK/PD 모델링을 위한 PREDDPP (\$SUBROUTINE, \$MODEL, \$PK, \$ERROR) 또는 \$PRED, 모델 파라미터 추정을 위한 초기 추정값을 설정하는 \$THETA, \$OMEGA, \$SIGMA, 추정방법을 명시하는 \$ESTIMATION 또는 \$SIMULATION 모델 실행 후 결과 출력을 표시하는 \$COVARIANCE와 \$TABLE로 이루어져 있다. 각 부분에 대해서는 \ref{control-record}절에서 자세히 다루기로 한다.\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$DATA}\index{\$ERROR}\index{\$ESTIMATION (\$EST)}\index{\$INPUT}\index{\$MODEL}\index{\$OMEGA}\index{\$PK}\index{\$PRED}\index{\$PROBLEM}\index{\$SIGMA}\index{\$SIMULATION (\$SIM)}\index{\$SUBROUTINE}\index{\$TABLE}\index{\$THETA}\index{PRED}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/03-fig-01} \caption{NM-TRAN 제어구문의 구성\index{NM-TRAN 제어구문 / NM-TRAN control stream}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN}}\label{fig:nm-tran}
+\includegraphics[width=0.95\linewidth]{./figures/03-fig-01} \caption{NM-TRAN 제어구문의 구성\index{NM-TRAN 제어구문 / NM-TRAN control stream}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN control stream / NM-TRAN 제어구문}\index{NM-TRAN}}\label{fig:nm-tran}
 \end{figure}
 
 
@@ -774,7 +775,9 @@ NM-TRAN 제어구문(이하 제어구문)은 내장된 레코드와 일련의 �
 
 \index{PRED}\index{PREDPP}
 
-제어구문에 사용되는 각 레코드의 자세한 설명에 앞서, PREDPP와 PRED에 대하여 알아보자. PRED는 'prediction'의 약자로 추정값을 얻기위한 서브루틴을 일컫는다. PK와 PK/PD 모델 분석 뿐만 아니라, 어떠한 값이라도 수식만 주어진다면 PRED를 사용하여 추정할 수 있다. PRED는 NONMEM 내에 구축되어 있는 모델이나 시간 또는 구획에 대한 약속된 처리 구문이 정해져 있지 않기 때문에, 모델의 유연성(flexibility)이 높으며, 사용자가 원하는 식을 이용하여 원하는 파라미터의 값을 추정할 수 있다. PREDPP는 'PRED for population pharmacokinetics'의 줄임말로 집단 약동학 분석을 위한 PRED 서브루틴으로 NONMEM에 내장되어 있다. PREDPP를 사용하여 모델 파라미터를 추정할 경우 \$SUBROUTINE과 사용하고자 하는 ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)를 결정하여야 하며, 사용하고자 하는 ADVAN에 따라 \$MODEL, \$PK, \$ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED 서브루틴을 사용하는 경우에는 \$PRED를 이용하여 모델을 정의할 수 있다. 자세한 내용은 다음 장에서부터 차례로 다루기로 한다.\index{\$ERROR}\index{\$MODEL}\index{\$PK}\index{\$PRED}\index{\$SUBROUTINE}\index{PRED}\index{PREDPP}\index{TRANS}
+제어구문에 사용되는 각 레코드의 자세한 설명에 앞서, PREDPP와 PRED에 대하여 알아보자. PRED는 prediction의 약자로 추정값을 얻기위한 서브루틴을 일컫는다. PK와 PK/PD 모델 분석 뿐만 아니라, 어떠한 값이라도 수식만 주어진다면 PRED를 사용하여 추정할 수 있다.
+PRED는 NONMEM 내에 구축되어 있는 모델이나 시간 또는 구획에 대한 약속된 처리 구문이 정해져 있지 않기 때문에, 모델의 유연성(flexibility)이 높으며, 사용자가 원하는 식을 이용하여 원하는 파라미터의 값을 추정할 수 있다.
+PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 분석을 위한 PRED 서브루틴으로 NONMEM에 내장되어 있다. PREDPP를 사용하여 모델 파라미터를 추정할 경우 \$SUBROUTINE과 사용하고자 하는 ADVAN과 TRANS(사용하는 ADVAN에 따라 필수적으로 사용하거나 사용하지 않을 수 있다)를 결정하여야 하며, 사용하고자 하는 ADVAN에 따라 \$MODEL, \$PK, \$ERROR의 레코드를 함께 사용하여야 한다. 반면, PRED 서브루틴을 사용하는 경우에는 \$PRED를 이용하여 모델을 정의할 수 있다. 자세한 내용은 다음 장에서부터 차례로 다루기로 한다.\index{\$ERROR}\index{\$MODEL}\index{\$PK}\index{\$PRED}\index{\$SUBROUTINE}\index{PRED}\index{PREDPP}\index{TRANS}
 
 \hypertarget{control-record}{%
 \section{제어구문에 쓰이는 레코드}\label{control-record}}
@@ -1034,9 +1037,9 @@ D1 & Duration for the first compartment\\
 \end{Highlighting}
 \end{Shaded}
 
-순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 '(하한값, 초기 추정값, 상한값)'을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10\textsuperscript{6}이 기본 상한값이다.
+순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 `(하한값, 초기 추정값, 상한값)'을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10\textsuperscript{6}이 기본 상한값이다.
 
-\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 \texttt{CL=TVCL*EXP(ETA(1))}로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω\textsubscript{CL}\textsuperscript{2}을 따르는 분포 η\textsubscript{1}를 포함한 개인의 CL값이다. 각 개인마다 하나의 η\textsubscript{1}을 가지므로 CL는 개인마다 다르다. 특히, CL\textsubscript{i} = TVCL*\(e^{\eta_{i}}\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{임의효과 / random-effect}\index{random-effect / 임의효과}\index{OMEGA 행렬 / omega matrix}\index{omega matrix / OMEGA 행렬}\index{omega matrix / OMEGA 행렬}\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}
+\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 \texttt{CL=TVCL\textbackslash{}*EXP(ETA(1))}로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω\textsubscript{CL}\textsuperscript{2}을 따르는 분포 η\textsubscript{1}를 포함한 개인의 CL값이다. 각 개인마다 하나의 η\textsubscript{1}을 가지므로 CL는 개인마다 다르다. 특히, CL\textsubscript{i} = TVCL*\(e^{\eta_{i}}\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{임의효과 / random-effect}\index{random-effect / 임의효과}\index{OMEGA 행렬 / omega matrix}\index{omega matrix / OMEGA 행렬}\index{omega matrix / OMEGA 행렬}\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}
 \begin{equation}
 \begin{pmatrix} 
    \omega_{1,1}^2 & 0 & 0 \\
@@ -1132,7 +1135,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 \end{Highlighting}
 \end{Shaded}
 
-'NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$SIMULATION (\$SIM)}\index{NSUB}
+`NSUB='으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. \$SIMULATION을 사용 시 \$ESTIMATION과 \$COVARIANCE는 함께 사용할 수 없다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$SIMULATION (\$SIM)}\index{NSUB}
 
 \hypertarget{covariance-table}{%
 \subsection{\$COVARIANCE, \$TABLE}\label{covariance-table}}
@@ -1339,7 +1342,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 코드 \ref{exm:advan6}처럼 일반 비선형 모델은 미분방정식을 사용하여 각 구획의 이동을 시간에 따른 구획의 질량변화로 표현한다. 미분방정식을 계산하는 방법에 따라 다양한 ADVAN을 선택할 수 있다. 일반 비선형 모델을 이용한 약동학 분석 모델의 예를 모약물과 대사체의 약동학을 동시에 분석하는 모델을 통해 살펴보자. 개발 중인 약이 주대사체로 많이 대사되며, 그 대사체도 약효를 나타내는 경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 \ref{fig:model-parent-metabolite}과 같이 대사체의 생성은 비선형 모델(Michaelis--Menten 모델)을 따른다고 가정하였다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/03-fig-02} \caption{모약물과 대사체의 약동학 동시 분석 모델}\label{fig:model-parent-metabolite}
+\includegraphics[width=0.95\linewidth]{./figures/03-fig-02} \caption{모약물과 대사체의 약동학 동시 분석 모델}\label{fig:model-parent-metabolite}
 \end{figure}
 
 
@@ -1638,7 +1641,7 @@ ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)�
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/04-fig-03} \caption{Structure of 2-compartment extravascular model}\label{fig:2comp-structure}
+\includegraphics[width=0.95\linewidth]{figures/04-fig-03} \caption{Structure of 2-compartment extravascular model}\label{fig:2comp-structure}
 \end{figure}
 
 \$PK 블록에 쓰인 필수 파라미터를 살펴보면 CL은 청소율, V2, V3는 각각 중심구획의 분포용적, 말초구획의 분포용적, Q는\index{\$PK}
@@ -1777,7 +1780,7 @@ ADVAN13 (General Nonlinear Kinetics using LSODA)\\
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-01} \caption{일반 선형 ADVAN을 이용한 코드의 구조}\label{fig:advan-code}
+\includegraphics[width=0.95\linewidth]{./figures/05-fig-01} \caption{일반 선형 ADVAN을 이용한 코드의 구조}\label{fig:advan-code}
 \end{figure}
 
 특수 ADVAN과 비교하였을 때, 일반 선형 ADVAN 코드의 특징은 \$MODEL 구문이 추가되었다는 점이다. \$MODEL 구문을 사용하여 모델에서 사용할 구획의 수와 특성을 정의할 수 있다. 다음에 언급될 비선형 ADVAN과 다르게 선형 ADVAN에서는 구획 사이의 1차 이동만을 가정하기 때문에, \$PK 구문만으로 각 구획 간의 연결 관계와 속도상수를 정의할 수 있다. 구획들 간의 관계는 1차 이동 속도상수를 의미하는 알파벳 K와 구획내의 물질 이동의 시작과 끝의 구획번호를 사용하여 \$PK 구문에서 정의한다. M 구획에서 n 구획으로의 이동상수는 Kmn으로 표현한다. 예를 들어, 파라미터 K12는 구획1에서 구획2로 이동하는 속도를 설명하는 1차 이동 속도상수이다. 따라서 일반 ADVAN 모델에서 추정하는 주된 파라미터는 속도상수가 되며 이러한 추정은 행렬지수(matrix exponential)에 대한 수치적 근사(numerical approximation)를 이용하여, 선형 미분방정식을 푸는 방식으로 이루어진다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{\$MODEL}\index{\$PK}
@@ -1817,7 +1820,7 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-03} \caption{일반 비선형 ADVAN을 이용한 코드의 구조}\label{fig:nonlin-code}
+\includegraphics[width=0.95\linewidth]{./figures/05-fig-03} \caption{일반 비선형 ADVAN을 이용한 코드의 구조}\label{fig:nonlin-code}
 \end{figure}
 
 일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형 관계를 허용하기 때문에 이러한 특성을 설명하기 위하여, 반드시 \$DES 구문을 이용한 미분 방정식을 작성하여야 한다.\index{\$DES}
@@ -1865,11 +1868,11 @@ Method & Runge-Kutta method & Gear method\\
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-05} \caption{\$DES 구문 적용을 위한 코드 예시\index{\$DES}}\label{fig:des-example}
+\includegraphics[width=0.95\linewidth]{./figures/05-fig-05} \caption{\$DES 구문 적용을 위한 코드 예시\index{\$DES}}\label{fig:des-example}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/05-fig-06} \caption{2구획 경구모델}\label{fig:2comp-oral}
+\includegraphics[width=0.95\linewidth]{figures/05-fig-06} \caption{2구획 경구모델}\label{fig:2comp-oral}
 \end{figure}
 
 \begin{example}
@@ -1964,7 +1967,7 @@ ADVAN11의 예를 들면 앞의 장들에서 소개된 것과 마찬가지로 TR
 \index{ADVAN1}\index{ADVAN11}\index{ADVAN12}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/06-fig-01} \caption{ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들}\label{fig:advan1112}
+\includegraphics[width=0.95\linewidth]{figures/06-fig-01} \caption{ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들}\label{fig:advan1112}
 \end{figure}
 
 \hypertarget{advan13---general-nonlinear-model-using-lsoda}{%
@@ -1993,13 +1996,13 @@ PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방�
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/07-fig-01} \caption{1구획 모델의 ADVAN2, \$PRED 제어구문 파일 비교\index{\$PRED}\index{ADVAN2}\index{PRED}}\label{fig:first-order-pred}
+\includegraphics[width=0.95\linewidth]{figures/07-fig-01} \caption{1구획 모델의 ADVAN2, \$PRED 제어구문 파일 비교\index{\$PRED}\index{ADVAN2}\index{PRED}}\label{fig:first-order-pred}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/07-fig-02} \caption{ADVAN과 \$PRED의 데이터셋 차이\index{\$PRED}\index{PRED}}\label{fig:pred-dataset}
+\includegraphics[width=0.95\linewidth]{figures/07-fig-02} \caption{ADVAN과 \$PRED의 데이터셋 차이\index{\$PRED}\index{PRED}}\label{fig:pred-dataset}
 \end{figure}
 
 AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때) 한번의 투여간격 사이에 주는 용량이라는 의미로 약속되어 있어서 \$INPUT에서 데이터셋의 칼럼 이름으로 명시해 주어야 하고, 그림 \ref{fig:pred-dataset}의 A)와 같이 0시간에 한번 주면 몸 속으로 흡수되어 24시간까지 계속 영향을 주는 값으로 약속되어 있다. 그러나 \$PRED를 사용할 때는 B)와 같이 마치 어떤 공변량처럼 그 칼럼에 계속 같은 숫자로 표시해 주어야 하는 것이다. 이는 그림 \ref{fig:first-order-pred}의 제어구문에서 \texttt{IPRED\ =\ D*COEF*KA/(KA-EXPO)*(EXP(-EXPO*T)-EXP(-KA*T))}의 용량을 나타내는 변수 \texttt{D}에 해당된다. 데이터셋 맨 윗줄의 칼럼 이름들은 제어구문에서 읽어 들일 때 무시되고 \$INPUT 뒤에 적어준 칼럼 이름들을 따르게 된다. 앞서 기술한 것처럼 \$INPUT 뒤에 AMT건 DOSE건 D건 무슨 단어를 써도 그냥 칼럼의 제목이라는 의미만을 가진다. 단지 \$PRED 블록 내에서 쓸 때와 동일하여야 하므로, 그림 \ref{fig:first-order-pred}의 예에서는 \$INPUT 뒤에 나오는 네번째 칼럼 이름은 ``D'' 라고 써주면 될 것이다. \index{투여간격 / interdose interval(II)}\index{interdose interval(II) / 투여간격}\index{interdose interval(II) / 투여간격}\index{\$INPUT}\index{\$PRED}\index{\$SUBROUTINE}\index{AMT}\index{IPRED}\index{PRED}\index{PREDPP}
@@ -2079,7 +2082,7 @@ x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 또한, 이러한 일련의 과정을 그림 \ref{fig:newton-minimization}을 통해 보다 쉽게 이해할 수 있다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/08-fig-01} \caption{Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도}\label{fig:newton-minimization}
+\includegraphics[width=0.95\linewidth]{figures/08-fig-01} \caption{Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도}\label{fig:newton-minimization}
 \end{figure}
 
 이러한 과정의 핵심은 파라미터 값의 업데이트이며, 이러한 업데이트 과정을 1회 거치는 것을 1회의 iteration이라고 지칭한다. 물론 NONMEM의 목적함수는 파라미터가 여러 개이며, 함수의 형태 자체도 복잡하므로, 실제 추정작업을 이처럼 단순한 함수 관계로 나타내기는 어렵다. 그러나 기본적인 원리는 이와 유사하기 때문에 이 정도 이해만으로도 충분히 초기값이 파라미터 추정에서 어떠한 역할을 하는지는 파악할 수 있을 것이다.\index{목적함수 / objective function}\index{iteration / 되풀이}\index{objective function / 목적함수}
@@ -2094,7 +2097,7 @@ Y = 5x^6 - 36x^5 + \frac{165}{2}x^4 - 60x^3 + 36
 \end{equation}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/08-fig-02} \caption{복잡한 함수에서 Newton-Raphson 방법의 한계}\label{fig:limitation-newton-rhapson}
+\includegraphics[width=0.95\linewidth]{figures/08-fig-02} \caption{복잡한 함수에서 Newton-Raphson 방법의 한계}\label{fig:limitation-newton-rhapson}
 \end{figure}
 
 위의 그림 \ref{fig:limitation-newton-rhapson}에서 목적함수의 극값은 3개이며, 2개는 극소값, 1개는 극대값이 된다. 이 때, 당연히도 도함수가 0과 교차하는 점은 3개가 되고, 2개는 이계도함수값이 양의 값을, 1개는 이계도함수값이 음의 값을 가지게 되는 것이다. 즉, 2절에서 제시한 요건을 만족하는 지점이 2개가 된다. 그렇다면 이 상황에서 초기 조건은 최종 도달지점에서 어떤 영향을 미칠 것인가? 아래의 표 \ref{tab:final-destination}를 통해 확인할 수 있다.\index{목적함수 / objective function}\index{objective function / 목적함수}
@@ -2154,7 +2157,7 @@ Starting & Value: 1.60 &  &  & \\
 보다 정교한 IE 값의 선택을 위해서는 탐색적 데이터 분석(exploratory data analysis) 과정을 철저히 수행하는 것을 추천한다. FPE는 제시된 구조 모형과 사용된 파라미터 등을 고려할 때, 주어진 데이터셋에 가장 적절한 파라미터 값이다. 다시 말해, 확보한 데이터가 FPE를 결정하는 것이며, 데이터셋을 보다 면밀히 파악함으로써 사용자는 더 좋은 IE 값을 제시할 수 있다. 간단히 y축을 로그 척도로 하여 시간에 따른 집단의 평균 농도를 그려 보는 것만으로도 매우 중요한 정보들을 얻을 수 있는데, 그림 \ref{fig:eda-ie}을 통해 이를 설명하도록 하겠다.\index{탐색적 데이터 분석(EDA) / exploratory data analysis(EDA)}\index{exploratory data analysis(EDA) / 탐색적 데이터 분석(EDA)}\index{exploratory data analysis(EDA) / 탐색적 데이터 분석(EDA)}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/08-fig-03} \caption{탐색적 데이터 분석을 통한 IE 값 결정}\label{fig:eda-ie}
+\includegraphics[width=0.95\linewidth]{figures/08-fig-03} \caption{탐색적 데이터 분석을 통한 IE 값 결정}\label{fig:eda-ie}
 \end{figure}
 
 \index{탐색적 데이터 분석(EDA) / exploratory data analysis(EDA)}\index{exploratory data analysis(EDA) / 탐색적 데이터 분석(EDA)}
@@ -2266,7 +2269,7 @@ NONMEM이 실행되면 파라미터를 추정하기 위해 되풀이(iteration)�
 NONMEM은 목적함수(objective function)를 최적화하는 방식으로 파라미터를 추정하게 되고, 이때 최적화된 목적함수 값(Objective Function Value, OFV)이 산출된다. 개발한 모델로부터 산출된 OFV는 가능도비 검정(Likelihood Ratio Test, LRT) 방법을 이용함으로써 보다 적절한 모델을 선정할 수도 있다. 여기 제시된 내용은 수학자가 아닌 이상 정확하게 이해하기는 쉽지 않지만, 개념적으로 간단히 도식화하면 그림 \ref{fig:obj}과 같다.\index{가능도 / likelihood}\index{가능도비 검정 / likelihood ratio test}\index{목적함수 / objective function}\index{likelihood / 가능도}\index{likelihood ratio test / 가능도비 검정}\index{objective function / 목적함수}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/09-fig-01} \caption{NONMEM 추정 도식화}\label{fig:obj}
+\includegraphics[width=0.95\linewidth]{./figures/09-fig-01} \caption{NONMEM 추정 도식화}\label{fig:obj}
 \end{figure}
 
 일반적으로 우리는 주어진 자료를 설명하기 위해 다양한 파라미터가 포함된 모델을 개발하게 되고 이를 NONMEM으로 실행하게 될 것이다. 이때 NONMEM은 목적함수를 계산하게 되고 이 값이 최소화되는 파라미터 조합을 output 파일을 통해 제시한다. 어떤 형태로 목적함수를 설정하느냐에 따라 OLS, WLS, ELS 방법 여러 가지 방식들이 이용된다.\index{목적함수 / objective function}\index{objective function / 목적함수}
@@ -2279,7 +2282,7 @@ OLS (ordinary least square) 방식은 단순 선형회귀(linear regression)를 
 따른 약동학 파라미터 AUC의 상관관계를 파악하기 위해 그래프를 그리고 가상의 선을 설정하여 ``용량에 따라 AUC는 증가한다''는 결론을 내리는 것이 전형적인 OLS 방식이다.(그림 \ref{fig:OLS})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/09-fig-02} \caption{ordinary least square}\label{fig:OLS}
+\includegraphics[width=0.95\linewidth]{./figures/09-fig-02} \caption{ordinary least square}\label{fig:OLS}
 \end{figure}
 
 회귀를 통해 자료를 설명할 때 관찰값과 예측값 간의 차이를 잔차(residual) 또는 오차(error)라고 표현하는데, OLS 방식에서는 아래 수식 \eqref{eq:OLS}과 같이 이 잔차를 제곱해서 나온 값의 합, 즉 잔차제곱합을 최소화하는 파라미터 조합을 찾게 된다.\index{잔차 / residual error}\index{residual error / 잔차}
@@ -2321,7 +2324,7 @@ OLS 방식에서는 관찰값이 모두 동일한 가치를 지니고 있으므�
 우리가 모델을 통해 확인하고자 하는 파라미터는 NONMEM에서 θ 형태로 표현되며, 약동학에서 청소율, 분포용적 등이 이에 해당하고 앞서 예시의 경우 앞면이 나올 확률이다. 아래 그림 \ref{fig:coin}은 동전을 던져 앞면이 일곱번 나왔을 때 동전 앞면이 나올 확률, 즉 추정하고자 하는 파라미터에 대한 가능도를 나타낸 것이다. 예상한 바와 같이 앞면이 나올 확률이 0.7인 경우 가능도가 가장 크며, 이는 앞면이 나올 확률이 0.7인 동전일 때 관찰 결과를 가장 잘 설명함을 의미한다.\index{가능도 / likelihood}\index{likelihood / 가능도}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/09-fig-03} \caption{동전 앞면이 7회 나올 확률의 가능도}\label{fig:coin}
+\includegraphics[width=0.95\linewidth]{./figures/09-fig-03} \caption{동전 앞면이 7회 나올 확률의 가능도}\label{fig:coin}
 \end{figure}
 
 평균이 μ이고 표준편차가 σ인 정규분포를 따르는 확률변수 x를 가정할 때, 파라미터 θ의 가능도를 구하는 함수는 아래와 같다.\index{가능도 / likelihood}\index{likelihood / 가능도}
@@ -2373,7 +2376,7 @@ NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장
 실행결과 파일의 내용을 구체적으로 살펴보면 아래와 같다.\index{실행결과 파일 / output files}\index{output files / 실행결과 파일}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{assets/media-10/image1} \caption{실행결과 파일의 82-102행}\label{fig:image-01}
+\includegraphics[width=0.95\linewidth]{assets/media-10/image1} \caption{실행결과 파일의 82-102행}\label{fig:image-01}
 \end{figure}
 
 \begin{figure}
@@ -2416,7 +2419,7 @@ ID & TIME & AMT & DV & MDV & CMT\\
 \end{table}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{assets/media-10/image5} \caption{실행결과 파일의 227행-238행}\label{fig:image-05}
+\includegraphics[width=0.95\linewidth]{assets/media-10/image5} \caption{실행결과 파일의 227행-238행}\label{fig:image-05}
 \end{figure}
 
 \begin{figure}
@@ -2487,7 +2490,7 @@ Xpose4 package 가 설치되어 있다면, R 실행 후 아래와 같이 입력�
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-10/image11} \caption{Basic goodness-of-fit Plots}\label{fig:basic-gof}
+\includegraphics[width=0.95\linewidth]{./assets/media-10/image11} \caption{Basic goodness-of-fit Plots}\label{fig:basic-gof}
 \end{figure}
 
 Basic goodness-of-fit plots에서 좌측 위 그림은 observations (DV) vs population predictions (PRED) 그림으로 집단 대표값을 통해 예측된 값(X축)과 관측값(observation, Y축)을 나타낸 그림으로, 개별 값들과 그 추세선(빨간선)이 기울기 1인 직선(일치선, line of identity)과 가까이 붙어있는 것이 가장 좋다. 우측 위 그림은 Observations (DV) vs Individual predictions (IPRED) 그림으로, 파라미터들의 개인간변이(ETA)를 반영하여 예측한 값(개인 예측값, X축)과 관측값(Y축)을 그린 그림으로, 이 역시 개별 값들과 추세선(빨간선)이 일치선과 가까이 붙어있는 것이 좋다. 개인간변이가 모델에 반영이 되어 있다면, PRED로 그린 그림보다 IPRED로 그렸을 때 개별 값들이 일치선에 더욱 밀착되어 있다.\index{개인 예측 / individual(specific) prediction(s)}\index{기울기 / gradient}\index{gradient / 기울기}\index{individual(specific) prediction(s) / 개인 예측}\index{IPRED}\index{PRED}
@@ -2497,7 +2500,7 @@ Basic goodness-of-fit plots에서 좌측 위 그림은 observations (DV) vs popu
 Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 예측값의 적합도를 확인할 수 있으며(그림 \ref{fig:indi-plots}), 파라미터 간의 상관관계 및 공변량에 대한 탐색도 가능하다.\index{개인 예측 / individual(specific) prediction(s)}\index{individual(specific) prediction(s) / 개인 예측}\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-10/image12} \caption{Individual Plots}\label{fig:indi-plots}
+\includegraphics[width=0.95\linewidth]{./assets/media-10/image12} \caption{Individual Plots}\label{fig:indi-plots}
 \end{figure}
 
 
@@ -2537,7 +2540,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 공변량이라 함은 단순히 데이터 수집 단계에서 모아진 정보의 항목들을 의미하는 것이 아니라, 그러한 항목들 중 통계학적인 분석을 통해 모델에 반영하는 것이 적절하다고 입증된 것만을 의미한다. 수집된 데이터 중 약동-약력학 분석에 종속변수로서 사용되는 약물의 농도 또는 작용에 대한 측정값(바이오마커로서 측정되는 경우가 많음)을 제외한 데이터 항목들(인구학적 정보, 질환 특성 등)은 실제 모델에 반영된 공변량과 구분하여, 잠재적 공변량(potential covariate)이라 지칭한다. 즉, 공변량 분석(covariate analysis)이란 잠재적 공변량에 대한 적절한 통계분석을 통해 모델링의 대상이 되는 약물의 약동-약력학 모델에 유의미한 영향을 미치는 공변량을 찾아내는 과정이라 할 수 있으며, 여기에는 데이터 항목 평가(variable evaluation), 스크리닝(covariate screening), 전진선택(forward selection), 후진제거(backward elimination), 검증(validation)의 과정이 포함된다.\index{전진선택 / forward selection}\index{forward selection / 전진선택}\index{종속변수(DV) / dependent variable(DV)}\index{dependent variable(DV) / 종속변수(DV)}\index{후진제거 / backward elimination}\index{backward elimination / 후진제거}\index{backward elimination / 후진제거}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/11-fig-01} \caption{공변량 분석의 workflow}\label{fig:workflow-covariate}
+\includegraphics[width=0.95\linewidth]{figures/11-fig-01} \caption{공변량 분석의 workflow}\label{fig:workflow-covariate}
 \end{figure}
 
 
@@ -2573,7 +2576,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 이 단계의 핵심적 절차는 각 항목이 어떠한 척도로 조사되었는가를 확인하고, 해당 척도에 적합한 방법으로 기술 통계 분석을 실시하는 것이다. 즉, 비척도로 조사된 항목은 평균, 표준편차, 분위 수 등의 값을 산출하여야 하고, 서열척도나 명목척도로 조사된 항목은 각 수준(level) 별로 빈도를 파악한다. 등간척도의 경우에는 상황에 따라 적절한 기술통계 방법을 선택한다. 실제 모델링 수행 시에는 완성된 기반 모델 (base model)의 제어구문 맨 뒤에 \$TABLE로서 잠재적 공변량의 상세 사항을 출력한 후, R package인 xpose4 (ver. 4.5.X 기준) (Hooker et al. \protect\hyperlink{ref-R-xpose4}{2020})를 사용하면, 6: Covariate model \textgreater{} 2. Numerically summarize the covariates 기능을 이용하여 이 과정을 간단히 수행할 수 있다. (구체적인 방법은 xpose4 매뉴얼\footnote{\url{https://cran.r-project.org/web/packages/xpose4/xpose4.pdf}} 참조) 이러한 분석의 결과로는 다음과 같은 표를 얻을 수 있다.\index{\$TABLE}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-02} \caption{항목 평가에 필요한 잠재적 공변량 요약표}\label{fig:covariate-summary}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-02} \caption{항목 평가에 필요한 잠재적 공변량 요약표}\label{fig:covariate-summary}
 \end{figure}
 
 
@@ -2604,7 +2607,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-03} \caption{독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시}\label{fig:gfr}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-03} \caption{독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시}\label{fig:gfr}
 \end{figure}
 
 따라서, 이러한 식을 적용할 수 있는 독립변수의 범위가 어디인가를 설정하는 것은 매우 중요한 일이며, 약동-약력학 모델링에서도 청소율이나 효능 등 파라미터와 비례하는 공변량을 도입할 때 유사한 고려가 이루어져야 한다.\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}
@@ -2623,7 +2626,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 1.의 경우, 잠재적 공변량이 연속형 변수라면, 양극단에 있는 소수의 정보가 약동-약력학 파라미터와 잠재적 공변량 간의 비례 형태에 대한 잘못된 추론을 가능케 할 수 있으므로 이후 공변량 분석에서 이를 주의하여 수행하여야 한다. (그림 \ref{fig:improper-distribution} 좌) 범주형 변수라면, 어느 한 수준의 측정값이 다른 수준에 비해 절대적으로 부족하게 되며(그림 \ref{fig:improper-distribution} 우), 이 경우에는 그러한 수준을 가장 가까운 수준과 병합하거나 그 수준을 제외하고 이후 공변량 분석을 수행하여야 한다. 만약 수준을 단 2개만 가진 항목(예\textgreater{} 성별, 환자 여부 등)이라면 아예 항목 자체를 제외하여야 할 수 있다. 그러나 특정 수준의 데이터 비율이 상대적으로 적은 경우라 할 지라도, 그 데이터 양이 충분(N \textgreater{} 30)하다고 판단된다면 이를 포함할 지 여부를 신중하게 고려하여 결정할 수 있다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-04} \caption{부적절한 데이터 분포}\label{fig:improper-distribution}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-04} \caption{부적절한 데이터 분포}\label{fig:improper-distribution}
 \end{figure}
 
 
@@ -2636,7 +2639,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 본 과정은 다음 \protect\hyperlink{colinearity}{11.2.3}에서 소개할 공선성 분석을 위한 준비 단계로서, 각 대상자 별로 확보된 잠재적 공변량의 값들 간에 나타나는 비례관계 유무를 파악하는 것이다. 우선적으로는 시각적 방법이 활용되며, 통계적 방법을 통해 이를 보강할 수 있다. 이 과정의 핵심적 절차는 각 대상자에서 관찰된 잠재적 공변량 항목들의 값을 그림 \ref{fig:cov-scatter}와 같이 scatterplot matrix로 나타내는 것이다. \protect\hyperlink{variable-eval}{11.2.1.1}에서 언급한 바와 마찬가지로, xpose4 (ver. 4.5.X 기준)의 6: Covariate model \textgreater{} 3. Scatterplot matrix of covariates 기능을 통해 간단히 수행할 수 있다. 그 수행 결과는 아래 그림 \ref{fig:cov-scatter}에 나타난 바와 같다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-05} \caption{공변량 간의 상관 관계 탐색을 위한 scatterplot matrix}\label{fig:cov-scatter}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-05} \caption{공변량 간의 상관 관계 탐색을 위한 scatterplot matrix}\label{fig:cov-scatter}
 \end{figure}
 
 
@@ -2658,7 +2661,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 시각적 스크리닝의 핵심적 절차는 대상자 별로 확보된 잠재적 공변량의 값과 각 파라미터의 ETA 값을 각 조합 별로 하나의 그림에 나타내어 양의 혹은 음의 상관 관계가 보이는가를 시각적으로 판단해 보는 것이다. 이 때, 보통 공변량을 원인 변수로, 파라미터의 ETA 값을 종속 변수로 보기 때문에(약동-약력학적 파라미터는 각 개인의 특성 또는 특정 상황에 따라 발생한 결과값이라 생각함), 잠재적 공변량 값을 x축에, ETA 값을 y축으로 하여 나타내게 된다. 잠재적 공변량이 연속형 변수라면 이를 scatterplot으로 나타내고, 범주형 변수라면 각 수준 별 boxplot으로 나타낸다. 이 절차는 xpose4(ver. 4.5.X 기준) 의 6: Covariate model \textgreater{} 4. Parameters vs covariates 기능을 이용하여 간단히 수행할 수 있다. 그림 \ref{fig:visual-screening}은 그 예시로써, 패널(a), (b)는 scatterplot이며, (c), (d)는 boxplot이다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-06} \caption{시각적 스크리닝을 위한 plot 예시}\label{fig:visual-screening}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-06} \caption{시각적 스크리닝을 위한 plot 예시}\label{fig:visual-screening}
 \end{figure}
 
 
@@ -2666,7 +2669,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 패널 (b)와 (c)에서는 명확한 상관관계를 확인할 수 있으며, (d)는 상관관계가 없는 것으로 보인다. 따라서, 이 경우, 청소율에 대해 CLCR을, 분포용적에 대해 SEX를 실제 모델링을 위한 잠재적 공변량으로 선정하고, ACE는 제외한다. 패널(a)의 추세선은 선형적 상관관계가 없는 것처럼 보이지만, 해당 패널을 좀 더 자세히 보면 불과 1-2개의 관측값이 추세선의 형태를 변형시키고 있다는 것을 알 수 있다. 이는 \protect\hyperlink{improper}{11.2.1.1.2 부적절한 분포를 보이는 항목}에서 언급한 ``특정 독립변수 범위(주로 분포 범위의 양극단)에 대한 정보가 충분치 않음''에 해당하는 것이다. 관측값이 조밀한 영역에서는 분명한 음의 상관관계를 보이고 있음을 알 수 있으므로, AGE 역시 청소율에 대한 유효한 잠재적 공변량으로서 다음 단계의 평가에 포함하는 것이 바람직하며, 이를 제외하는 오류를 범해서는 안 된다. 이러한 오류는 시각적 스크리닝 과정에서 가장 빈번히 일어나는 것이기도 하다. 일부 경우에는 다음과 같이 반드시 선형적 상관관계를 가진다고 단정 짓지 못하는 사례도 있을 수 있다.\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/11-fig-07} \caption{비선형적 상관관계를 가질 가능성이 있는 경우 (Owen \protect\hyperlink{ref-kelly}{2014})}\label{fig:nonlinear-rel}
+\includegraphics[width=0.95\linewidth]{figures/11-fig-07} \caption{비선형적 상관관계를 가질 가능성이 있는 경우 (Owen \protect\hyperlink{ref-kelly}{2014})}\label{fig:nonlinear-rel}
 \end{figure}
 
 
@@ -2697,7 +2700,7 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 이러한 3가지의 절차를 1개의 `step'이라 한다. 하나의 step이 수행된 결과는 아래와 같이 표시되며, 이 사례에서는 CLCR이 최선의 결과로 선택되었다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-08} \caption{GAM에서 1개의 step을 실행한 결과}\label{fig:gam-step}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-08} \caption{GAM에서 1개의 step을 실행한 결과}\label{fig:gam-step}
 \end{figure}
 
 
@@ -2707,7 +2710,7 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 이제 GAM이라는 의미를 다시 살펴보면, `모든 잠재적 공변량에 대해(generalized), 가법적으로(additive), 모델을 수행(modeling)하여, 각 결과를 비교하는 것이다.'라는 것을 알 수 있다. 파라미터 별 GAM 수행 결과는 그림 \ref{fig:gam-step}\footnote{\url{https://uupharmacometrics.github.io/xpose4/reference/xpose.gam.html}}의 결과를 반복적으로 보여 주는 형태로 확인하기도 하지만, 다음의 그림과 같이 모델 구조에 따른 AIC의 변화를 도식적으로 나타내어 선택된 잠재적 공변량들을 한 눈에 확인하는 경우가 많다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-09} \caption{GAM 실행 summary}\label{fig:gam-summary}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-09} \caption{GAM 실행 summary}\label{fig:gam-summary}
 \end{figure}
 
 
@@ -2735,9 +2738,9 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 공선성은 매우 많은 상황에서 다양한 유형으로 발생하기 때문에 공변량 평가를 위한 표준적인 기준을 제시하기는 어렵다. 따라서, 모델링의 목적 등에 대한 고려와 관계된 다양한 전문가들의 의견을 종합하여 궁극적인 평가 계획 및 공변량 포함 여부 등을 결정해야 할 것이다.
 
 \hypertarget{uxacf5uxbcc0uxb7c9-uxd3c9uxac00-uxc804uxc9c4uxc120uxd0ddforward-selection}{%
-\subsection{공변량 평가: 전진선택(forward-selection}\label{uxacf5uxbcc0uxb7c9-uxd3c9uxac00-uxc804uxc9c4uxc120uxd0ddforward-selection}}
+\subsection{공변량 평가: 전진선택(forward-selection)}\label{uxacf5uxbcc0uxb7c9-uxd3c9uxac00-uxc804uxc9c4uxc120uxd0ddforward-selection}}
 
-)\index{전진선택 / forward selection}\index{forward selection / 전진선택}
+\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
 이 절의 논의에 앞서 다시 한번 주지하고자 하는 것은 본격적인 공변량 평가 방법은 시간이 많이 걸리는 작업이라는 것이다. 이는 개별 파라미터-공변량 관계를 실제 제어구문에 반영한 후, 이를 실행하여 그러한 관계가 모델에 긍정적인 영향을 주는가를 평가하는 작업이 파라미터-공변량 관계 별로 일일이 이루어져야 하기 때문이다. 따라서, 효과적인 평가 계획을 수립하는 것이 무엇보다도 중요하며, \protect\hyperlink{variable-eval}{11.2.1} \textasciitilde{} \protect\hyperlink{colinearity}{11.2.3}의 절차가 올바르게 수행되었다면, 이 절에서 수행하고자 하는 공변량 평가 과정에 투입되는 시간과 노력을 절감할 수 있을 것이다. 이제부터는 공변량 평가의 첫 단계인 전진선택법에 대해 알아보도록 하겠다.\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
@@ -2748,7 +2751,7 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 
 전진선택은 \protect\hyperlink{colinearity}{11.2.3}에서 약동-약력학 파라미터와 유의한 상관관계를 가질 가능성이 있다고 평가된 공변량들을 실제 모델의 제어구문에 반영하여 평가하는 것이다. 제어구문에 반영한다 함은 특정 약동-약력학 파라미터를 기반 모델에서와 같이 특정한 THETA에 대응시키는 것이 아니라, 공변량과 가장 가능성 있는 관계로서 표현하는 것을 의미한다.(공변량-파라미터 관계에 대해서는 다음 절에 설명함) 예를 들어, 분포용적과 체중이 선형적 상관관계를 가질 수 있다고 판단한다면, 기반 모델의 제어구문을 다음과 같이 변경하면 된다.\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
-\texttt{V\ =\ THETA(i)} → \texttt{V\ =\ WT\textbackslash{}*THETA(i)\ +\ THETA(i+1)}
+\texttt{V\ =\ THETA(i)} → \texttt{V\ =\ WT*THETA(i)\ +\ THETA(i+1)}
 
 제어구문이 변경되었다면 이제 이를 실행하여, 그러한 변경(공변량의 반영)이 모델의 성능을 개선하는가를 평가하여야 한다. 평가의 요소는 다음의 세 가지이다.(각각에 대해서는 하위 절에서 구체적으로 설명한다.)
 
@@ -2771,7 +2774,7 @@ GAM을 특정 파라미터에 대해 실행하면 컴퓨터는 기본적으로 �
 \centering
 \begin{tabular}[t]{llll}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{\$\textbackslash{}Delta\$-2LL} \\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Δ-2LL} \\
 \cmidrule(l{3pt}r{3pt}){2-4}
 $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 \midrule
@@ -2788,7 +2791,7 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 2.는 매우 중요한 개념으로, ω\textsubscript{i2}의 감소로 판단한다. 이는 임의효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{임의효과 / random-effect}\index{random-effect / 임의효과}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/11-fig-10} \caption{임의효과로 남겨져 있는 설명 불가능한 개인차}\label{fig:unnamed-chunk-1}
+\includegraphics[width=0.95\linewidth]{./figures/11-fig-10} \caption{임의효과로 남겨져 있는 설명 불가능한 개인차}\label{fig:unnamed-chunk-1}
 \end{figure}
 
 \index{임의효과 / random-effect}\index{random-effect / 임의효과}
@@ -2799,7 +2802,7 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 
 왼쪽의 경우와 오른쪽의 경우 ETA(i)의 의미는 어떻게 다르겠는가? 왼쪽의 경우, 분포용적에 대해 제공된 공정효과는 집단의 대표값인 THETA(i) 뿐이다. 따라서, 이 값과 각 개인의 분포용적 값 차이는 모두 ETA(i)로 설명된다. 이제 오른쪽을 보면, 고정효과로서 체중과의 선형적 관계가 제시되었다. 즉, 체중이 큰 사람은 분포용적이 크다는 일반적 경향은 고정효과로 설명이 되는 것이다. 결국 이 경우 ETA(i)는 체중의 차이가 무시된 집단의 대표값과 각 개인 값의 차이가 아닌, 같은 체중을 가진 사람들의 대표값과 각 개인 값의 차이가 된다. 따라서, 각 ETA(i)의 크기는 왼쪽에 비해 오른쪽에서 줄어들게 되고, 이는 궁극적으로 ω\textsubscript{i2}의 감소 효과를 일으키게 되는 것이다. 한 가지 추가할 사항은 시각적 스크리닝에서 본 바와 같은 공변량과 개인 별 파라미터 값 간의 scatterplot에 대한 것이다. 위에서 설명한 이유로 왼쪽의 ETA(i)는 체중과 일관된 경향을 가지는 값이 될 것이나, 오른쪽의 ETA(i)는 체중과 무관한 경향을 가지는 값이 되어야 한다.(체중의 영향은 고정효과로 설명이 되고, 남은 개인 간 차는 체중과는 무관한 차이일 것이므로) 따라서, 오른쪽 상황에서 체중과 ETA(i) 간의 scatterplot을 그리면 경향성이 없게 되는 것이 정상이며, 만일 경향성이 보인다면 공변량-파라미터 관계가 최적의 구조로 구현되지 않았다는 것을 의미하는 결과라 할 수 있다. 이 경우에는, \protect\hyperlink{cov-param}{11.2.4.2}를 참고하여 새로운 공변량-파라미터 구조 모델을 시도해 보아야 한다.
 
-3)은 이상치(outlier)와도 관련이 있는 사항으로서, 대부분의 사람에서 설명력이 개선되는 경우 1), 2)의 조건을 만족하지만, 드물게는 새롭게 반영되는 공변량-파라미터 간의 고정효과와 완전히 다른 trend를 가지는 개인이 있어 잔차가 증가하는 상황이 발생하기도 한다. 따라서, 이 경우에는 추후 진행할 시뮬레이션 등의 목적 등을 고려하여 공변량을 반영할 것인가를 선택해야 할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{이상치 / outlier}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
+3.은 이상치(outlier)와도 관련이 있는 사항으로서, 대부분의 사람에서 설명력이 개선되는 경우 1., 2.의 조건을 만족하지만, 드물게는 새롭게 반영되는 공변량-파라미터 간의 고정효과와 완전히 다른 trend를 가지는 개인이 있어 잔차가 증가하는 상황이 발생하기도 한다. 따라서, 이 경우에는 추후 진행할 시뮬레이션 등의 목적 등을 고려하여 공변량을 반영할 것인가를 선택해야 할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{이상치 / outlier}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
 
 특정 공변량이 위의 세가지 기준을 모두 만족하여 유의미한 공변량으로 확인된다면, 이제 해당 공변량은 모델에 그대로 둔 채로 새로운 공변량을 같은 방법으로 모델에 반영 및 평가하게 된다. 공변량 스크리닝 단계에서 평가 필요성이 제시된 모든 공변량에 대하여 이 과정을 반복 수행한다. 어떤 순서로 공변량을 모델에 반영하여 평가하여야 하는가에 대해 정해진 이론은 없다. 하지만, 일반적으로 공변량 스크리닝 단계에서 시각적으로 좋은 상관관계가 보였거나 GAM 단계에서 AIC의 감소가 컸던 순으로 전진선택을 수행하게 된다. 추가 사항은 J.S.Owen과 J.Fiedler-Kelly가 저술한 Introduction to Population Pharmacokinetic / Pharmacodynamic Analysis with Nonlinear Mixed Effects Models의 5.7.6-7절을 참고할 수 있다. (Owen \protect\hyperlink{ref-kelly}{2014})\index{모든 공변량 / full covariate}\index{full covariate / 모든 공변량}\index{전진선택 / forward selection}\index{forward selection / 전진선택}
 
@@ -2938,7 +2941,7 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 모델 진단/평가의 구체적 내용을 살펴보기 전에, 계량약리학의 본질적인 필요성과 연결 지어 앞서 언급한 `신뢰성'이라는 개념에 대해 조금 더 구체적으로 생각해 볼 필요가 있다. 계량약리학 분석은 신약 개발 또는 임상 약물치료 상황에서 제시되는 특정한 질문들에 대한 타당한 해답을 얻기 위해 수행하는 것이다. 예를 들어, ``목표 적응증을 가진 환자에서 임상적으로 적용 가능한 최적의 용량-용법은 어떤 것인가?''라는 질문에 대한 답을 얻기 위해서는, 기존에 확보한 약동-약력학 자료(비임상/임상)로부터 최선의 모델을 구현하고, 이를 이용한 다양한 시뮬레이션을 수행함으로써 최대의 유효성과 안전성을 충족하는 용량-용법을 찾게 된다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/12-fig-01} \caption{모델링-시뮬레이션 workflow 및 구성 요소}\label{fig:ms-workflow}
+\includegraphics[width=0.95\linewidth]{./figures/12-fig-01} \caption{모델링-시뮬레이션 workflow 및 구성 요소}\label{fig:ms-workflow}
 \end{figure}
 
 이런 일련의 과정(그림 \ref{fig:ms-workflow})을 잘 생각해 보면 궁극적으로 도출되는 결과의 신뢰성에 다음의 영향 요인들이 있음을 알 수 있다.
@@ -2981,7 +2984,7 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 
 \caption{\label{tab:diag-eval-property}모델 진단과 평가의 특성}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{7cm}>{\raggedright\arraybackslash}p{7cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{6cm}}
 \toprule
 Model diagnosis & Model evaluation\\
 \midrule
@@ -3025,7 +3028,7 @@ Emphasis on the standards & Emphasis on the purpose\\
 
 \caption{\label{tab:eval-summary}모델 진단/평가의 요소 별 수행 방법론 요약}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{4cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{4cm}}
 \toprule
   & Numerical & Visual\\
 \midrule
@@ -3118,7 +3121,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-01} \caption{Modeling carousel (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:carousel}
+\includegraphics[width=0.95\linewidth]{./figures/13-fig-01} \caption{Modeling carousel (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:carousel}
 \end{figure}
 
 잔차는 관측 값에서 예측 값을 뺀 값을 의미하며(그림 \ref{fig:def-residual}, ε (epsilon)으로 표시한다(ε = C\textsubscript{observation} -- C\textsubscript{prediction}). 잔차가 양수면, 즉 관측값이 예측곡선보다 위에 있으면 과소예측(underestimation) 되었다고 표현하고, 잔차가 음수이면, 즉 관측값이 예측곡선보다 아래에 있으면 과대예측(overestimation) 되었다고 표현한다.\index{잔차 / residual error}\index{residual error / 잔차}
@@ -3148,7 +3151,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \index{혼합오차모델 / combined error model}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-03} \caption{Relationship between standard deviation of residual variability and predicted concentrations}\label{fig:pred-sd}
+\includegraphics[width=1\linewidth]{./figures/13-fig-03} \caption{Relationship between standard deviation of residual variability and predicted concentrations}\label{fig:pred-sd}
 \end{figure}
 
 실제 NONMEM 제어구문에서는 오차모델 사용 시 코드 \ref{exm:combined-upper}, \ref{exm:combined-lower}와 같은 방식들을 많이 쓰는데, 위 아래 수식 모두 혼합오차모델의 형태이다. 코드 \ref{exm:combined-upper}은 가장 기본적인 형태이고, 코드 \ref{exm:combined-lower}의 수식 형태를 사용하는 경우에는 EPS(1)의 분산을 1로 고정하여 (\$SIGMA 1 FIX) 사용하는데, 이 때는 THETA의 추정값이 각 변이들의 표준편차를 나타내게 된다. 즉, THETA(5)는 가법오차모델의 표준편차이고, THETA(6)는 비례오차모델의 표준편차이다. 가법오차모델만 사용하고 싶다면 THETA(6)을 0으로 고정하면 되고, 비례오차모델만 사용하고 싶다면 THETA(5)를 0과 가까운 매우 작은 값으로 고정(예, \texttt{0.0001\ FIX})하면 된다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{\$SIGMA}
@@ -3184,7 +3187,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 \ref{fig:run-test})\index{잔차 / residual error}\index{residual error / 잔차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-04} \caption{Example of Run test (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:run-test}
+\includegraphics[width=0.95\linewidth]{./figures/13-fig-04} \caption{Example of Run test (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:run-test}
 \end{figure}
 
 
@@ -3195,7 +3198,7 @@ Run count가 너무 크거나 (+/-가 너무 많이 교차되어도), 너무 작
 Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 그 중 하나인 basic goodness-of-fit plots에서(그림 \ref{fig:basic-gof-plot}) 아래쪽 두 개의 그림이 잔차(residual)에 대한 진단 플롯이다. 좌측은 \textbar IWRES\textbar{} vs Individual predictions (IPRED), 우측은 Conditional weighted residuals (CWRES) vs Time을 나타낸 그림이다. IWRES는 개인 가중잔차(Individual Weighted residuals)이고 \textbar IWRES\textbar 는 개인 가중잔차의 절대값이다. 잔차모델이 적절하다면, CWRES 플롯의 모든 점들이 0을 기준으로 대칭으로 분포하게 되며, CWRES 값들의 흩어진 정도가 시간이나 개인 예측 값에 따라 경향성이 없고, 그 범위가 -3과+3 사이에 분포할 것으로 기대된다(\protect\hyperlink{use-of-xpose4}{10장} 참고).\index{개인 예측 / individual(specific) prediction(s)}\index{individual(specific) prediction(s) / 개인 예측}\index{잔차 / residual error}\index{residual error / 잔차}\index{conditional weighted residuals / 조건부 가중 잔차}\index{CWRES}\index{IPRED}\index{IWRES}\index{PRED}\index{RES}\index{WRES}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-05} \caption{Basic goodness-of-fit plots}\label{fig:basic-gof-plot}
+\includegraphics[width=1\linewidth]{./figures/13-fig-05} \caption{Basic goodness-of-fit plots}\label{fig:basic-gof-plot}
 \end{figure}
 
 잔차플롯을 활용하면 \index{잔차 / residual error}\index{residual error / 잔차}
@@ -3218,13 +3221,13 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-06} \caption{Schematic illustration of wrong structural models (upper row) and wrong variance models (lower row) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:wrong-models}
+\includegraphics[width=0.95\linewidth]{./figures/13-fig-06} \caption{Schematic illustration of wrong structural models (upper row) and wrong variance models (lower row) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:wrong-models}
 \end{figure}
 
 우선, 첫째로 구조모델이 잘못된 경우이다. 그림 \ref{fig:wrong-structure}을 보면 시간에 따른 잔차의 모양이 곡선형태를 이루고 있는데, 이는 모델에 지연시간을 반영하지 않은 경우이다. Run test를 통해 +/-를 확인해보면 앞쪽 시간에서는 마이너스, 중간시간대에서는 플러스가 됐다가 이후 다시 마이너스가 되는 현상이 나타나고, 이를 그림으로 보면 말발굽 모양이 된다. (그림 \ref{fig:wrong-structure})\index{잔차 / residual error}\index{residual error / 잔차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-07} \caption{Example of Wrong structure model (lag time) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:wrong-structure}
+\includegraphics[width=0.95\linewidth]{./figures/13-fig-07} \caption{Example of Wrong structure model (lag time) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:wrong-structure}
 \end{figure}
 
 
@@ -3232,7 +3235,7 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 실제 goodness-of-fit 플롯의 CWRES 플롯에서도 이와 같은 형태를 발견할 수 있으며, 경구흡수의 지연시간을 추가했을 때 (그림 \ref{fig:lag-gof}) 이런 현상이 해결되는 것을 확인할 수 있다.\index{conditional weighted residuals / 조건부 가중 잔차}\index{CWRES}\index{RES}\index{WRES}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-08} \caption{Lag time 추가시의 GOF 변화}\label{fig:lag-gof}
+\includegraphics[width=1\linewidth]{./figures/13-fig-08} \caption{Lag time 추가시의 GOF 변화}\label{fig:lag-gof}
 \end{figure}
 
 \index{goodness of fit / 적합도}
@@ -3240,13 +3243,13 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 구조 모델이 잘못된 두번째 예시를 살펴보면, U자 형태의 커브가 관찰되는데, 2구획 모델을 1구획 모델로 설명하려고 하는 경우에 이와 같은 잔차 플롯이 흔히 관찰된다. (그림 \ref{fig:u-curve})\index{잔차 / residual error}\index{residual error / 잔차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-09} \caption{Example of Wrong structure model (2-compartment model)}\label{fig:u-curve}
+\includegraphics[width=1\linewidth]{./figures/13-fig-09} \caption{Example of Wrong structure model (2-compartment model)}\label{fig:u-curve}
 \end{figure}
 
 세 번째 예시는, 잔차의 모델이 잘못된 경우인데, 혼합오차모델(또는 비례오차모델)을 사용해야 하는 경우에 가법오차모델만 사용한 경우의 예시이다. 앞 시간대에서는 잔차가 크다가 뒤로 갈수록 잔차가 작아지는 형태인데, 약물 농도로 바꾸어 생각해보면, 약물 농도가 높아짐에(앞 시간대 약물 농도가 높으므로)따라 잔차가 커지는 경우이다. 잔차 모델을 가법오차모델에서 혼합오차모델 모델로 변경한 경우의 goodness-of-fit plots을 그림 \ref{fig:addi-comb-gof}에서 확인할 수 있다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/13-fig-10} \caption{Example of Wrong variance model (error model)}\label{fig:addi-comb-gof}
+\includegraphics[width=1\linewidth]{./figures/13-fig-10} \caption{Example of Wrong variance model (error model)}\label{fig:addi-comb-gof}
 \end{figure}
 
 추가로, 잔차 플롯들의 다양한 형태에 따른 개선 방안을 살펴보면(표 \ref{tab:diag-response}) 크게 두 가지 경우로 요약할 수 있는데, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우와 잔차의 모양이 특정 경향성을 나타내는 경우이다. 첫째로, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우, 시간이나 농도에 따른 잔차 플롯이 깔때기 모양이 되며, 이 경우 잔차에 가중치를 줄 수 있는 모델을 써야 한다. 둘째로, 잔차값들이 흩어져 있는 정도는 일정하지만 그 모양이 상승 또는 하강하는 띠 모양이거나 휘어지는 띠 모양을 나타내는 경우에는 구조모델 자체를 다른 것으로 바꾸어 이 현상을 해결해야 한다. 자세한 내용은 아래 표를 참고하도록 하자.\index{잔차 / residual error}\index{residual error / 잔차}
@@ -3257,7 +3260,7 @@ Xpose4 package를 이용하여 여러 진단 플롯들을 그릴 수 있는데, 
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}}
 \toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of $epsilon_{i}$ versus} \\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Plot of ε$_{i}$ versus} \\
 \cmidrule(l{3pt}r{3pt}){2-4}
 Unsatisfactory Plot & Time order & Fitted $\hat{Y}_i$ & $X_{ji}$ values\\
 \midrule
@@ -3406,12 +3409,12 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 \end{equation}
 
 한 번 더 미분하면
-
 \begin{equation}
 \begin{split}
-\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx = 0 \\
-E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = 0 \\
-I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} = Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx &= 0 \\
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &= 0 \\
+I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} & = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
+&= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
 \end{split}
 \label{eq:diff-diff}
 \end{equation}
@@ -3513,7 +3516,7 @@ R에는 기본적으로 nlme 패키지(Pinheiro, Bates, and R-core \protect\hype
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{basic_files/figure-latex/theophconctime-1} \caption{Theophylline 경구 복용 후 농도-시간 곡선}\label{fig:theophconctime}
+\includegraphics[width=1\linewidth]{basic_files/figure-latex/theophconctime-1} \caption{Theophylline 경구 복용 후 농도-시간 곡선}\label{fig:theophconctime}
 \end{figure}
 
 위의 자료를 다음과 같이 경구 1 구획모델에 적합시켜 보기로 한다.
@@ -3895,7 +3898,7 @@ NONMEM의 Covariance step을 이해하기 위해 R로 NONMEM의 output을 재현
 본 장에서는 경험적 베이즈 추정값(Empirical Bayes Estimates, EBEs)에 기초한 진단 방법을 소개하고, ETA shrinkage(축소), EPSILON shrinkage의 의미와 그에 따른 여러 결과들을 살펴보고자 한다. 베이즈 추정법은 개인으로부터 관찰된 데이터와 집단에 대한 사전 정보를 함께 이용하여 분석하는 기법이다. NONMEM에서는 집단의 데이터 속에 포함된 개인에 대한 베이즈 파라미터 추정치를 얻을 수 있는데, 이를 경험적 베이즈 추정값이라 한다. POSTHOC 추정값, 개인 파라미터 추정값(individual parameter estimates) 등은 모두 같은 의미로 사용된다. NONMEM에서는 조건부 추정법을 써서 개인 파라미터 추정값을 얻을 수 있으며, 1차추정법(FO)을 사용하는 경우 \$ESTIMATION에서 POSTHOC 옵션을 추가하여 개인 파라미터 추정값을 얻을 수 있다. 이러한 개인 파라미터 추정값은 모델의 진단, 추정 및 결과값의 예측, 시뮬레이션 등에 사용될 수 있고, 그 중 모델의 진단 과정에서는 IPRED vs DV, IWRES vs IPRED, EBE vs EBE, EBE vs Covariate, GAM 등에 활용된다. 그림 \ref{fig:ebe-cov}에는 EBE vs Covariate의 예시가 나와있는데, 여기서는 청소율에 대한 ETA의 분포와 공변량 사이의 경향성을 파악할 수 있다.\index{개인 파라미터 추정값 / individual parameter estimates}\index{베이즈 추정 / Bayesian estimation}\index{시뮬레이션 / simulation}\index{Bayesian estimation / 베이즈 추정}\index{individual parameter estimates / 개인 파라미터 추정값}\index{simulation / 시뮬레이션}\index{조건부 추정법 / conditional estimation method}\index{conditional estimation method / 조건부 추정법}\index{dependent variable(DV) / 종속변수(DV)}\index{축소 / shrinkage}\index{1차추정법 / first-order method(FO)}\index{shrinkage / 축소}\index{first-order method(FO) / 1차추정법}\index{shrinkage / 축소}\index{first-order method(FO) / 1차추정법}\index{\$ESTIMATION (\$EST)}\index{FO}\index{IPRED}\index{IWRES}\index{POSTHOC}\index{PRED}\index{RES}\index{WRES}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-01} \caption{Example of EBE vs Covariates (Bonate \protect\hyperlink{ref-bonate}{2011})}\label{fig:ebe-cov}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-01} \caption{Example of EBE vs Covariates (Bonate \protect\hyperlink{ref-bonate}{2011})}\label{fig:ebe-cov}
 \end{figure}
 
 
@@ -3933,7 +3936,7 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 둘째로, ETA 평균값의 유의한 변화이다. ETA shrinkage로 인해 아래와 같이 ETABAR가 0과 유의하게 다르다는 결과가 나올 수 있다. 그림 \ref{fig:ex2-cons}의 아래 그림을 보면, 첫번째 관측치와 마지막 관측치가 어느 시점인지에 따라, 즉 해당 파라미터를 설명할 수 있는 데이터의 양이 얼마나 있느냐에 따라 POSTHOC Ka와 CL의 분포 및 ETABAR 값이 어떻게 변화하는지를 확인할 수 있는데, 데이터가 충분하지 못한 경우 ETABAR가 0과 유의하게 다를 가능성이 높다는 것을 보여준다.\index{shrinkage / 축소}\index{shrinkage / 축소}\index{ETABAR}\index{POSTHOC}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-04} \caption{Example 2 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex2-cons}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-04} \caption{Example 2 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex2-cons}
 \end{figure}
 
 
@@ -3941,13 +3944,13 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 셋째로, 파라미터간 상관관계가 소실되거나 유발(Hidden or induced parameter correlation)될 수 있다. 그림 \ref{fig:ex3-cons}의 좌측처럼 파라미터(CL vs Vc)간의 상관관계가 소실되는 경우가 생길 수 있고, 우측 그림처럼 파라미터 (E\textsubscript{max} vs EC\textsubscript{50}) 간의 상관관계가 유발되는 경우가 생길 수 있다. 그림 \ref{fig:induced-corr}에서도 ETA shrinkage(\%)가 커지면서 상관관계가 유발 또는 소실되는 것을 확인할 수 있다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-05} \caption{Example 3 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex3-cons}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-05} \caption{Example 3 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex3-cons}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-15/image8} \caption{Induced or hidden correlation according to average shrinkage (\%) (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:induced-corr}
+\includegraphics[width=0.95\linewidth]{./assets/media-15/image8} \caption{Induced or hidden correlation according to average shrinkage (\%) (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:induced-corr}
 \end{figure}
 
 
@@ -3955,7 +3958,7 @@ ETA shrinkage가 커지면 다음과 같은 현상들이 나타날 수 있다.\i
 마지막으로, 공변량에 대해서도 마찬가지 결과가 나타날 수 있으며, 파라미터 또는 EBE와 공변량 사이의 상관관계가 소실되거나 유발될 수 있다(그림 \ref{fig:ex4-cons}).
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-06} \caption{Example 4 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex4-cons}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-06} \caption{Example 4 - Consequences of η shrinkage (Savic \protect\hyperlink{ref-uppsala}{2007})\index{shrinkage / 축소}\index{shrinkage / 축소}}\label{fig:ex4-cons}
 \end{figure}
 
 
@@ -3987,7 +3990,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 첫째로, 구조모델의 오지정(misspecification)을 찾아내는데 어려움을 겪을 수 있다. 아래 그림 \ref{fig:perfect-fit} 우측을 보면, 예측이 매우 잘된 것으로 보이지만, 실제는 EPSILON shrinkage로 인해 IPRED가 DV로 향해 축소되는 이른바 ``Perfect fit phenomenon''이 나타난 것이다. 원래 모델은 0차 흡수 모델이고, 이를 1차 흡수모델로 설명한 경우인데, 흡수를 설명할 수 있는 데이터가 충분히 있는 경우 (그림 \ref{fig:perfect-fit} 좌측) 모델 오지정을 찾아낼 수 있지만, 데이터가 부족한 경우 이를 찾아내기가 어렵다.\index{모델 오지정 / model misspecification}\index{model misspecification / 모델 오지정}\index{축소 / shrinkage}\index{shrinkage / 축소}\index{shrinkage / 축소}\index{IPRED}\index{PRED}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-08} \caption{Perfect fit phenomenon (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:perfect-fit}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-08} \caption{Perfect fit phenomenon (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:perfect-fit}
 \end{figure}
 
 
@@ -3995,13 +3998,13 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 2구획 모델을 1구획 모델로 설명한 경우(그림 \ref{fig:1comp-2comp}), Sigmoid Emax 모델을 Linear Emax 모델로 설명한 경우(그림 \ref{fig:linear-sigmoidal}) 등에서도 데이터가 부족한 경우 EPSILON shrinkage가 커지고, 모델의 오지정을 찾아내기가 어렵게 된다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-09} \caption{1-compartment model fitted to data simulated with a 2-compartment model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:1comp-2comp}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-09} \caption{1-compartment model fitted to data simulated with a 2-compartment model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:1comp-2comp}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-10} \caption{Linear Emax model fitted to data simulated with a sigmoidal Emax model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:linear-sigmoidal}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-10} \caption{Linear Emax model fitted to data simulated with a sigmoidal Emax model (Savic \protect\hyperlink{ref-uppsala}{2007})}\label{fig:linear-sigmoidal}
 \end{figure}
 
 
@@ -4009,7 +4012,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 둘째로, IWRES를 활용하여 잔차모델의 오지정을 확인하는 것이 어려울 수 있다. 그림 \ref{fig:low-IWRES}에 나타난 것처럼 관측치가 많은 경우 IWRES 플롯을 통해 잔차 분포의 경향성을 확인할 수 있는데, 관측치가 적은 경우 EPSILON shrinkage가 커지면서 잔차 분포의 경향성이 점점 사라지는 것을 확인할 수 있다.\index{잔차 / residual error}\index{residual error / 잔차}\index{shrinkage / 축소}\index{shrinkage / 축소}\index{IWRES}\index{RES}\index{WRES}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/15-fig-11} \caption{Low power of IWRES to diagnose Residual error misspecification (Savic \protect\hyperlink{ref-uppsala}{2007})\index{IWRES}\index{RES}\index{WRES}}\label{fig:low-IWRES}
+\includegraphics[width=0.95\linewidth]{figures/15-fig-11} \caption{Low power of IWRES to diagnose Residual error misspecification (Savic \protect\hyperlink{ref-uppsala}{2007})\index{IWRES}\index{RES}\index{WRES}}\label{fig:low-IWRES}
 \end{figure}
 
 
@@ -4073,13 +4076,13 @@ Purpose & Numerical & Visual\\
 적당한 횟수(적어도 200회 이상)로 반복하여 얻어지는 붓스트랩 복제 값에 최종 모델을 반복적으로 적합(fitting)시켜서 얻어진 파라미터의 평균값들을 붓스트랩 없이 얻어진 최종 집단모델 파라미터 추정치와 비교하는 것이다. 이는 모델을 다양한 데이터셋에 적합(fitting)시키는 방법을 지칭하며, 각 데이터셋은 최종 모델의 데이터셋으로부터 반복 재추출된 대상자들에 대한 자료로 구성되어 있다. 붓스트랩에 의해 얻어진 결과를 보고하기 위해 중앙값과 95\% 신뢰구간이 흔히 사용되며 이 값들을 어떻게 계산하는지 모식도(그림 \ref{fig:boot95})로 표현하였다. 붓스트랩에 의해 얻어진 결과를 정리하여 보고하는 일반적인 방법을 그림 \ref{fig:bootstrap-table}에 나타내었다. 흔하게 쓰이는 방법으로는, 1000개의 재추출된 데이터셋을 통해 얻어진 붓스트랩 중앙값과 최종예측값을 비교하는 것인데, 큰 차이가 없음을 알 수 있고, \%RSE(relative standard error)로 계산된 신뢰구간과 붓스트랩 95\% 신뢰구간을 비교하여 예측된 변동성 정도에 대한 검증도 할 수 있다.\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}\index{집단모델 / population model}\index{population model / 집단모델}\index{standard errors of the estimates / 추정값의 표준오차}\index{standard errors of the estimates / 추정값의 표준오차}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-01} \caption{붓스트랩을 사용하여 여러 파라미터의 중앙값과 95\% 신뢰구간을 계산하는 방법에 대한 모식도\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}}\label{fig:boot95}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-01} \caption{붓스트랩을 사용하여 여러 파라미터의 중앙값과 95\% 신뢰구간을 계산하는 방법에 대한 모식도\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}}\label{fig:boot95}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-02} \caption{붓스트랩에 의해 얻어진 결과를 정리하는 방법의 예. 중앙값(95\% 신뢰구간)을 열로 정리하였고 1000개의 재추출된 데이터셋이 사용되었음을 알 수 있음\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}}\label{fig:bootstrap-table}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-02} \caption{붓스트랩에 의해 얻어진 결과를 정리하는 방법의 예. 중앙값(95\% 신뢰구간)을 열로 정리하였고 1000개의 재추출된 데이터셋이 사용되었음을 알 수 있음\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}}\label{fig:bootstrap-table}
 \end{figure}
 
 
@@ -4097,7 +4100,7 @@ Purpose & Numerical & Visual\\
 사후 예측 점검을 통해 현재와 미래 자료 세트의 중요한 임상적 특성이 모델에 의해 충실히 재현이 되는가를 결정하는데 유용할 수 있다. (Post et al. \protect\hyperlink{ref-post2008extensions}{2008}) 이 방법은 특정 요약 통계량을 원본 데이터셋에서 계산하고 이를 시뮬레이션으로부터 발생된 사후 예측 분포와 비교하는 것이다. (그림 \ref{fig:ppc}) 사후값(posterior)은 불확실성(uncertainty)과 잔류변이(residual variability)를 반영하고 있으며 이것이 특정 분포를 따르지 않는 경우, 또는 관찰값과 큰 차이가 나는 경우 자신의 모델을 점검할 수 있다. 시뮬레이션의 반복 데이터셋을 생성하여 통계량의 분포와 상응하는 유의확률값을 얻어낼 수도 있다. 그러나 현재로서는 이러한 접근법이 널리 통용되고 있지는 않다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-03} \caption{사후 예측 점검의 예. 시뮬레이션된 Cmax의 분포에서 관찰값(검정색 실선)의 위치를 파악할 수 있음\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ppc}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-03} \caption{사후 예측 점검의 예. 시뮬레이션된 Cmax의 분포에서 관찰값(검정색 실선)의 위치를 파악할 수 있음\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ppc}
 \end{figure}
 
 
@@ -4119,13 +4122,13 @@ $SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000
 최소 1000개 이상의 반복 데이터셋이 선호되며 이를 통해 관측값과 시뮬레이션 예측값을 비교하게 된다. 반복 데이터셋을 생성하기 위한 입력 데이터셋은 모델을 구축할 때 사용한 데이터셋과 유사한 형태이나 DV값이 시뮬레이션 값으로 대체된다. 반복수가 커질수록 결과 파일의 용량이 비례적으로 커지게 되고 따라서 자료 처리 속도가 늦어지므로 처음에는 낮은 반복수로 확인 후, 어느정도 확인이 된 후 1000개, 2000개 반복수로 높이는 실용적인 접근법을 택할 수도 있다.\index{대체 / imputation}\index{시뮬레이션 / simulation}\index{imputation / 대체}\index{simulation / 시뮬레이션}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-04} \caption{시각적 예측 점검 과정의 대표적인 scatter VPC 의 예 (Harling \protect\hyperlink{ref-vpcnpc}{2018}). 점선은 시뮬레이션 값들의 5, 95 퍼센타일, 실선은 중앙값을 나타냄\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}}\label{fig:scatter-vpc}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-04} \caption{시각적 예측 점검 과정의 대표적인 scatter VPC 의 예 (Harling \protect\hyperlink{ref-vpcnpc}{2018}). 점선은 시뮬레이션 값들의 5, 95 퍼센타일, 실선은 중앙값을 나타냄\index{시각적 예측 점검(VPC) / visual predictive check(VPC)}\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}}\label{fig:scatter-vpc}
 \end{figure}
 
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-05} \caption{신뢰구간 VPC의 예 (Confidence interval VPC). 시뮬레이션된 예측값의 5번째 백분위수와 95번째 백분위수에 대한 95\% 신뢰구간이 파란색 띠로 나타나 있고, 붉은색 점선은 관찰값의 5번쨰, 95번째 백분위수를 나타내며 붉은색 실선은 관찰값의 50번째 백분위수임\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ci-vpc}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-05} \caption{신뢰구간 VPC의 예 (Confidence interval VPC). 시뮬레이션된 예측값의 5번째 백분위수와 95번째 백분위수에 대한 95\% 신뢰구간이 파란색 띠로 나타나 있고, 붉은색 점선은 관찰값의 5번쨰, 95번째 백분위수를 나타내며 붉은색 실선은 관찰값의 50번째 백분위수임\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ci-vpc}
 \end{figure}
 
 
@@ -4149,7 +4152,7 @@ VPC에서 PK 반응 정도가 다른 집단을 합쳐서 그린다면 반응 변
 위 명령어에서 bean.CTL, bean.CTL.lst는 각각 모델 제어구문 파일과 결과파일이고 1000은 반복수, DAY는 층화가 이루어질 자료의 열(column)이름이며, TAD(time after dose)는 독립변수(independent variable, idv)를 지칭한다. DAY 자료에 따라 1일(첫 투약)과 14일(항정상태 투약)의 각기 다른 약물 농도 패턴이 올바르게 표시되었음을 알 수 있다. (그림 \ref{fig:strat-vpc})\index{독립변수 / independent variable}\index{독립변수 / independent variable}\index{independent variable / 독립변수}\index{dependent variable(DV) / 종속변수(DV)}\index{time after dose / time after dose}\index{time after dose / time after dose}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-06} \caption{관찰일(DAY)에 따라 층화(stratification)가 이루어진 VPC.}\label{fig:strat-vpc}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-06} \caption{관찰일(DAY)에 따라 층화(stratification)가 이루어진 VPC.}\label{fig:strat-vpc}
 \end{figure}
 
 
@@ -4164,7 +4167,7 @@ VPC가 직관적이고 많은 상황에서 흔히 쓰이고 있으나 일부 유
 NPC는 VPC와 유사한 방식으로 모델 진단을 수행하며, 그 논리나 자료는 앞서 기술된 VPC와 차이가 없다. 즉, 모델이 적절한 방법으로 생성되었다면, 그로부터 시뮬레이션된 값들은 관찰된 자료와 큰 차이가 없을 것이다. (Harling \protect\hyperlink{ref-vpcnpc}{2018}) 설정된 예측 구간에 대해 관측값이 예측 구간 경계인 안쪽 혹은 바깥쪽에 얼마나 위치하는지 살필 수 있다. 5\%의 관측값이 95\% 예측 구간 밖에 위치할 경우(2.5\%는 상한 위쪽에, 2.5\%는 하한 밑 쪽에), 혹은 10\%의 관측값이 90\% 예측 구간 밖에 위치할 경우(5.0\%는 상한 위쪽에, 5.0\%는 하한 밑 쪽에) NPC에 의한 모델 진단이 비교적 잘 이루어졌다고 할 수 있을 것이다. (그림 \ref{fig:npc})\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/16-fig-07} \caption{수치로 모델의 예측성능을 평가하는 수치적 예측 점검 과정(NPC)\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}}\label{fig:npc}
+\includegraphics[width=0.95\linewidth]{figures/16-fig-07} \caption{수치로 모델의 예측성능을 평가하는 수치적 예측 점검 과정(NPC)\index{수치적 예측 점검(NPC) / numerical predictive check(NPC)}\index{numerical predictive check(NPC) / 수치적 예측 점검(NPC)}}\label{fig:npc}
 \end{figure}
 
 
@@ -4180,7 +4183,7 @@ NPC는 VPC와 유사한 방식으로 모델 진단을 수행하며, 그 논리�
 약효가 용량과 상관관계가 있다는 것은 정확히 말한다면 혈장 약물농도나 농도곡선하면적 등으로 표현되는 약물노출(exposure)과 약효가 상관 있고, 그 약물노출은 또 외부에서 투여한 약의 용량에 의해 결정된다는 것이다. 이는 너무도 당연한 것이라고 볼 수도 있으나, 용량-노출, 노출-약효의 상관관계가 단순한 정비례 관계가 아니라, 인체의 약물제거 능력, 수용체와 약물의 복잡한 상호작용(약력학), 시간이라는 변수 등이 관련되고 또 개인간의 차이까지 관여되므로 이 관계를 잘 파악하고 정량화하는 것은 적절한 효과를 얻기 위해 얼마의 용량을 얼마 간격으로 주어야 하는가를 결정하기 위해 반드시 필요한 과정이다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/17-fig-01} \caption{용량-노출, 노출-약효의 상관관계}\label{fig:unnamed-chunk-3}
+\includegraphics[width=0.95\linewidth]{figures/17-fig-01} \caption{용량-노출, 노출-약효의 상관관계}\label{fig:unnamed-chunk-3}
 \end{figure}
 
 신약개발에 있어 임상약리학의 핵심적 역할은 최적의 약효를 얻기 위한 용량용법을 찾는 것이라 할 수 있다. 용량과 노출의 관련성을 탐구하는 것이 약동학이고, 넓게 정의한다면 약물의 효과를 탐구하는 모든 연구분야를 약력학이라 할 수 있겠지만, 임상약리학에서는 약물노출과 생체에서 측정된 약효의 관련성을 탐구하는 것이 약력학(pharmacodynamics)이다. 이러한 약동학과 약력학을 연결하여 설명할 수 있다면 적절한 용량용법을 찾아낼 수 있는 것이다.
@@ -4209,7 +4212,7 @@ PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형
 \toprule
 PD 데이터의 종류 & 특징 & 모델링할 때의 주의점\\
 \midrule
-Continuous response (interval or ratio) & 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능\newline 1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)\newline 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음) & IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)\\
+Continuous response (interval or ratio) & 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능\newline 1) 간격척도(Interval scale): 체온 등(절대적 0의 값 없음)\newline 2) 비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음) & IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)\\
 Binary / categorical response & 이진(binary): 증상의 유/무 등\newline 3가지 이상 범주(categorical): \newline -Simple categorical: 인종, 혈액형 등\newline -Ordered categorical: 병기(stage), VAS(visual analog scale)\newline 관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\newline Mean, SD 등으로 나타내기 부적절 & 관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음.\\
 Count data & 질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등) & \\
 Time to event data & 예) 수면유도제의 효과: 잠들 때까지의 시간 & \\
@@ -4251,7 +4254,7 @@ NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농�
 이에 반해 약효구획모델은 이러한 내인성 물질들의 turnover로 설명되지 않는, 이유를 모르는 약효의 시간적 뒤쳐짐을 설명하기 위해 쓸 수 있다. 약효변화가 혈장농도의 변화보다 늦어지는 이유를 약이 중심구획(혈장)에서부터 약효 구획이라는 가상의 구획으로 분포하는데 걸리는 시간 때문으로 설명하고자 하는 방법이며 그 구획으로 이동하는 약의 양은 실제 중심구획에 있는 약의 양에 영향을 미치지 않는 극히 소량이라고 가정한다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/17-fig-03} \caption{혈장약물농도와 약효의 시간적 관계 (Primary Psychiatry \protect\hyperlink{ref-dementia}{2013})}\label{fig:conc-hysteresis}
+\includegraphics[width=0.95\linewidth]{figures/17-fig-03} \caption{혈장약물농도와 약효의 시간적 관계 (Primary Psychiatry \protect\hyperlink{ref-dementia}{2013})}\label{fig:conc-hysteresis}
 \end{figure}
 
 
@@ -4272,7 +4275,7 @@ NONMEM으로 PK-PD 모델링을 수행할 경우, 대개 DV는 혈장약물농�
 이 장에서는 PK-PD 모델을 연결하는 다양한 방법(PK-PD linking method)과 각 방법의 특징에 대하여 소개한다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/18-fig-01} \caption{PK-PD의 연결고리}\label{fig:pkpd-link}
+\includegraphics[width=0.95\linewidth]{figures/18-fig-01} \caption{PK-PD의 연결고리}\label{fig:pkpd-link}
 \end{figure}
 
 
@@ -4296,7 +4299,7 @@ PK-PD 모델링을 수행하는 과정에서 우리는 PK 와 PD 데이터를 �
 또한 PK 와 PD 가 같은 대상자(또는 같은 질환 모델 개체)에서 얻어진 값인지 파악해야 한다. PK 데이터와 PD 데이터는 다른 시간에서 얻어질 수 있으며, 각각의 관측치의 차이의 폭(scale)이 다를 수 있음을 염두해야 두어야 한다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/18-fig-02} \caption{Clopidogrel의 PK-PD 모델 구조 (Lee et al. \protect\hyperlink{ref-lee2012population}{2012})}\label{fig:clopidogrel}
+\includegraphics[width=0.95\linewidth]{figures/18-fig-02} \caption{Clopidogrel의 PK-PD 모델 구조 (Lee et al. \protect\hyperlink{ref-lee2012population}{2012})}\label{fig:clopidogrel}
 \end{figure}
 
 
@@ -4343,7 +4346,7 @@ Simultaneous PK-PD analysis & SIM (Simultaneous) & O & Estimate & Estimate\\
 아래의 그림은 각 방법이 가지는 PK 정보의 정도(level of information)를 도식화한 그림이다(그림 \ref{fig:level-info}). 순차적합법 중 PPP\&D 와 PPP는 PK 모델에서 얻은 PK 파라미터 추정치(θ, ω, σ)에 대한 정보를 담고 있다. IPP 방법은 집단 PK 파라미터 추정치에서 한 단계 더 나아가 posthoc 파라미터라고 불리는 개인 PK 파라미터 추정치(CL, V2, V3 등)에 대한 정보를 담고 있다.\index{순차적합법 / sequential fitting}\index{sequential fitting / 순차적합법}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/18-fig-03} \caption{PK-PD 연결 방법과 그에 관련된 정보의 수준}\label{fig:level-info}
+\includegraphics[width=0.95\linewidth]{figures/18-fig-03} \caption{PK-PD 연결 방법과 그에 관련된 정보의 수준}\label{fig:level-info}
 \end{figure}
 
 
@@ -4759,7 +4762,7 @@ SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 
 방법이 성공률이 가장 높은 것으로 나타났다. (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/18-fig-11} \caption{순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})}\label{fig:time-comparison}
+\includegraphics[width=0.95\linewidth]{figures/18-fig-11} \caption{순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})}\label{fig:time-comparison}
 \end{figure}
 
 
@@ -4767,7 +4770,7 @@ SIM 방법과 비교하여 순차적합법 사용 시 NONMEM에서 파라미터 
 그림 \ref{fig:absolute-signed}은 네 가지의 PK-PD 연결방법 사용시 얻은 PD 파라미터 추정치들(Emax, EC50 등)의 각각의 오차의 크기를 보여준다. 이를 통해 전체적으로 SIM 과 PPP\&D 방법으로 얻은 PD 파라미터 추정치들의 오차가 다른 방법에 비해 적은 것을 확인할 수 있다. (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/18-fig-12} \caption{Average absolute (A) and signed error (B) of PD parameter estimates (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})}\label{fig:absolute-signed}
+\includegraphics[width=0.95\linewidth]{figures/18-fig-12} \caption{Average absolute (A) and signed error (B) of PD parameter estimates (Zhang, Beal, and Sheiner \protect\hyperlink{ref-zhang1}{2003}\protect\hyperlink{ref-zhang1}{a})}\label{fig:absolute-signed}
 \end{figure}
 
 
@@ -4843,7 +4846,7 @@ E = m \cdot ln(C+A_0)
 여기서 기저치는 \(E_0 = m \cdot ln(A_0)\)로 쓸 수 있다. 로그-선형모델에서 약효는 지수적으로 증가하며 반응의 최대치(R\textsubscript{max})는 존재하지 않는다. 약물의 기전상 약효가 R\textsubscript{max}에 도달하더라도, 관찰값에서 R\textsubscript{max}를 확인할 수 없으면 선형-로그모델을 사용할 수 있다. 이론상으로 E\textsubscript{max} 모델(19.2.3 참고)을 따르는 경우라도, R\textsubscript{max}의 80\% 범위 이내의 약효 데이터를 이용하여 PD 모델링을 한다면 반응과 농도와의 관계를 선형-로그모델로 설명할 수 있다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-19/image2} \caption{로그-선형 모델 (dots: 관찰값, line: 선형로그모델의 예측값, dotted line: Emax모델의 예측값)}\label{fig:log-linear-model}
+\includegraphics[width=0.95\linewidth]{./assets/media-19/image2} \caption{로그-선형 모델 (dots: 관찰값, line: 선형로그모델의 예측값, dotted line: Emax모델의 예측값)}\label{fig:log-linear-model}
 \end{figure}
 
 
@@ -4936,7 +4939,7 @@ E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
 \end{equation}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-19/image5} \caption{Emax model (좌)선형농도, (우)로그농도}\label{fig:emax-model}
+\includegraphics[width=0.95\linewidth]{./assets/media-19/image5} \caption{Emax model (좌)선형농도, (우)로그농도}\label{fig:emax-model}
 \end{figure}
 
 
@@ -4950,7 +4953,7 @@ E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50}
 R\textsubscript{max} = E\textsubscript{0}+100일때, 모델의 최대약물효과는 E\textsubscript{0}·E\textsubscript{max}가 된다 (그림 \ref{fig:emax-comparison} (우)).
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/19-fig-04} \caption{E\textsubscript{max} 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)}\label{fig:emax-comparison}
+\includegraphics[width=0.95\linewidth]{figures/19-fig-04} \caption{E\textsubscript{max} 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)}\label{fig:emax-comparison}
 \end{figure}
 
 
@@ -4958,7 +4961,7 @@ R\textsubscript{max} = E\textsubscript{0}+100일때, 모델의 최대약물효�
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-19/image7} \caption{길항제의 E\textsubscript{max} 모델}\label{fig:anta-emax}
+\includegraphics[width=0.95\linewidth]{./assets/media-19/image7} \caption{길항제의 E\textsubscript{max} 모델}\label{fig:anta-emax}
 \end{figure}
 
 PD 모델에 사용되는 약물이 길항제로 작용하는 약물이라면, 혈중약물농도와 약효와의 관계는 그림 \ref{fig:anta-emax}와 같으며, 그때의 약효(E)는 다음과 같다.
@@ -4979,7 +4982,7 @@ E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}
 여기서 n은 수용체와 결합하는 약물분자의 수를 의미하며, Hill 계수(Hill coefficient, H)라고도 한다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/19-fig-06} \caption{Sigmoid E\textsubscript{max} model. H에 따른 E\textsubscript{max} model의 형태 변화}\label{fig:sigmoid-emax}
+\includegraphics[width=0.95\linewidth]{figures/19-fig-06} \caption{Sigmoid E\textsubscript{max} model. H에 따른 E\textsubscript{max} model의 형태 변화}\label{fig:sigmoid-emax}
 \end{figure}
 
 
@@ -5026,7 +5029,7 @@ E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 그림 \ref{fig:sigmoid-imax}은 혈중 약물농도의 변화에 따른 저해반응을 그래프로 나타내었다. 동일한 관찰값을 이용하여 각각 I\textsubscript{max} model과 sigmoid I\textsubscript{max} model을 사용하여 각 파라미터를 추정하고, 예측값을 그려보면, 그림에서 알 수 있듯이, sigmoid I\textsubscript{max} model은 좀 더 유연성을 지니며, 데이터의 곡률을 더 잘 포착한다. 데이터의 특성(약물농도와 반응 관계가 약물의 기전상 1:1의 관계인지 아닌지) 등을 잘 파악하여, 모델 구축의 목적에 맞게 모델을 선정해야 할 것이다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/19-fig-07} \caption{일반적인 I\textsubscript{max} model(빨강)과 sigmoid I\textsubscript{max} model(파랑)의 비교}\label{fig:sigmoid-imax}
+\includegraphics[width=0.95\linewidth]{figures/19-fig-07} \caption{일반적인 I\textsubscript{max} model(빨강)과 sigmoid I\textsubscript{max} model(파랑)의 비교}\label{fig:sigmoid-imax}
 \end{figure}
 
 
@@ -5053,7 +5056,7 @@ K_2 &= k_2 / k_{-2}
 여기서 R\textsubscript{T}는 총 수용체 수, K\textsubscript{d}는 약물-1차 수용체 복합체 해리상수(k\textsubscript{-1}/k\textsubscript{1}), K\textsubscript{2}는 약물-2차 수용체 복합체 결합상수(k\textsubscript{2}/k\textsubscript{-2})를 의미한다. K\textsubscript{2}=0이면, 위의 식은 E\textsubscript{max} model과 동일하며, K\textsubscript{2}의 값이 커질수록 2차 결합이 빨라지므로, E\textsubscript{peak}값이 작아지며, 농도가 증가할수록 효과(E)의 크기도 더 많이 감소한다 (그림 \ref{fig:K2}).
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/19-fig-08} \caption{K\textsubscript{2}의 변화에 따른 약물농도-약효와의 관계}\label{fig:K2}
+\includegraphics[width=0.95\linewidth]{figures/19-fig-08} \caption{K\textsubscript{2}의 변화에 따른 약물농도-약효와의 관계}\label{fig:K2}
 \end{figure}
 
 
@@ -5083,7 +5086,7 @@ K_2 &= k_2 / k_{-2}
 시간에 따른 PK-PD 관계가 즉시효과를 보이는 경우, 시간에 따른 농도와 효과간 관계를 도식화하면 최대 농도에서 최대 효과를 보이는 등 변화 양상이 유사하다. 이를 동일한 시점에서의 농도와 효과간 관계로 도식화하면 동일한 농도에서는 동일한 효과를 보이게 된다. 이에 반해, 지연효과를 보이는 약물의 경우 최대 농도와 최대 효과를 보이는 시점간 시간적인 지연이 발생한다. 또한 동일한 농도에서의 효과가 한가지로 정해져 있지 않고 농도가 증가하는 시점과 감소하는 시점에서 각각 다르게 나타나는 현상을 보인다. (그림 \ref{fig:pkpd-relationship})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/20-fig-01} \caption{PK와 PD의 관련성 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:pkpd-relationship}
+\includegraphics[width=0.95\linewidth]{figures/20-fig-01} \caption{PK와 PD의 관련성 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:pkpd-relationship}
 \end{figure}
 
 
@@ -5093,7 +5096,7 @@ K_2 &= k_2 / k_{-2}
 약물이 목표 수용체 부위까지 분포하는데 시간이 걸리거나 기전적으로 약리작용을 나타나는데 지연이 있거나 수용체 up-regulation 현상이 발생하는 경우 hysteresis 현상을 관찰할 수 있다. 한편 해당 약물에 내성이 발생하거나 활성 대사체가 동일 수용체에 길항제로 작용하는 경우 프로테레시스 현상을 관찰할 수 있다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/20-fig-02} \caption{히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)}\label{fig:hys-proteresis}
+\includegraphics[width=0.95\linewidth]{figures/20-fig-02} \caption{히스테레시스(반시계방향 히스테레시스)와 프로테레시스(시계방향 히스테레시스)}\label{fig:hys-proteresis}
 \end{figure}
 
 
@@ -5104,7 +5107,7 @@ K_2 &= k_2 / k_{-2}
 약물의 체내 노출을 대변하는 농도 중에서 혈중 농도는 쉽게 측정할 수 있는 반면 수용체처럼 약물이 실제 작용을 나타내는 부위에서의 농도는 측정하는데 현실적 제약이 많다. 그런데 직접 측정하지 않았더라도 약물이 작용 부위로 분포한다는 점에 착안하여 이 부위를 가상의 공간인 효과구획으로 설정한 모델을 구축할 수 있으며, 이를 효과구획 모델이라고 한다. 약이 혈액에서 효과구획까지 분포되는데 시간이 걸려서 혈중농도의 변화보다 약효의 변화가 느리게 나타나는 반시계방향 히스테레시스가 발생한다고 설명하는 것이 효과구획 모델이다． 예컨데 아래 그림과 같이 말초정맥에 bolus로 약을 주사했을 때, 약효구획의 약물농도(Ce)는 천천히 변화하며, 그 Ce와 약효와의 관계가 sigmoid Emax를 따를 때 관찰되는 약효의 시간에 따른 변화는 맨 우측과 같게 된다．(그림 \ref{fig:effect-comp})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/20-fig-03} \caption{효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:effect-comp}
+\includegraphics[width=0.95\linewidth]{figures/20-fig-03} \caption{효과구획의 도식 (C: plasma concentration (Actually observed), Ce: effect compartment concentration (NOT observed, produced), R: response (Actually observed) (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:effect-comp}
 \end{figure}
 
 
@@ -5176,7 +5179,7 @@ K_2 &= k_2 / k_{-2}
 관찰된 반응이 약물-수용체 상호작용에 의해 직접적으로 설명할 수 있을 때 직접효과 양상이라고 말하고, 상호작용 후 이차적인 작용에 의한 경우라면 간접효과 양상을 보인다고 한다. 특히 간접효과 양상에서는 관찰된 반응 자체가 아닌 그 반응을 증가 또는 감소시키는 역할을 하는 대상이 약물에 의한 약리작용의 직접적인 목표인 경우가 흔하다 (그림 \ref{fig:direct-indirect}).\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/20-fig-04} \caption{직접효과와 간접효과의 모식도 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}}\label{fig:direct-indirect}
+\includegraphics[width=0.95\linewidth]{figures/20-fig-04} \caption{직접효과와 간접효과의 모식도 (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})\index{직접 효과 모델 / direct-effect model}\index{direct-effect model / 직접 효과 모델}}\label{fig:direct-indirect}
 \end{figure}
 
 
@@ -5193,7 +5196,7 @@ K_2 &= k_2 / k_{-2}
 관찰되는 반응을 증가시키거나 감소시키는 두 가지 방향이 있고 이러한 반응이 나타나도록 조절하는 대상에 대하여 각각 촉진하거나 억제하는 두 가지 작용을 생각할 수 있으므로, 이를 조합하면 간접효과 모델은 아래 그림 \ref{fig:turnover-4}에서 보듯 4가지 형태로 구분된다.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/20-fig-05} \caption{Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:turnover-4}
+\includegraphics[width=0.95\linewidth]{figures/20-fig-05} \caption{Turnover 모델(간접효과 모델)의 네 가지 (Sharma and Jusko \protect\hyperlink{ref-sharma1998characteristics}{1998})}\label{fig:turnover-4}
 \end{figure}
 
 
@@ -5318,16 +5321,16 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
 
-\backmatter
+\cleardoublepage
 
 \hypertarget{appendix-uxbcc4uxcca8}{%
 \appendix \addcontentsline{toc}{chapter}{\appendixname}}
 
 
-\hypertarget{uxbcc4uxcca8-1}{%
-\chapter{별첨 1}\label{uxbcc4uxcca8-1}}
+\hypertarget{nonmem-uxc544uxc6c3uxd48b-uxd30cuxc77c}{%
+\chapter{NONMEM 아웃풋 파일}\label{nonmem-uxc544uxc6c3uxd48b-uxd30cuxc77c}}
 
-14장 NONMEM 아웃풋 파일
+\protect\hyperlink{cov}{14장} ``NONMEM의 \$COVARIANCE''의 지면관계상 별첨으로 첨부하였다.
 
 \scriptsize
 
@@ -5594,6 +5597,8 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 \end{Shaded}
 
 \normalsize
+
+\backmatter
 
 \hypertarget{uxcc38uxace0uxbb38uxd5cc}{%
 \chapter*{참고문헌}\label{uxcc38uxace0uxbb38uxd5cc}}

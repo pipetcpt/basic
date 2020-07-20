@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -381,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>첫 단계로 PK 모델링을 수행하는 큰 이유 중 하나는 이를 PD 모델과 연결시켜 약물의 효과를 예측하기 위함이다. 따라서 PD 모델링을 위해서 먼저 PK 데이터와 PK 모델을 확보해야 하며 이를 통합적으로 PK-PD 모델링이라고 부른다. PK-PD 모델링을 통해 용량–약물노출–효과 간의 관계를 정량적으로 설명할 수 있다. (그림 <a href="pkpd-link.html#fig:pkpd-link">18.1</a>)</p>
 <p>이 장에서는 PK-PD 모델을 연결하는 다양한 방법(PK-PD linking method)과 각 방법의 특징에 대하여 소개한다.</p>
 <div class="figure"><span id="fig:pkpd-link"></span>
-<img src="figures/18-fig-01.png" alt="PK-PD의 연결고리" width="90%" />
+<img src="figures/18-fig-01.png" alt="PK-PD의 연결고리" width="95%" />
 <p class="caption">
 그림 18.1: PK-PD의 연결고리
 </p>
@@ -399,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>예를 들어 아래의 clopidogrel PK-PD 모델의 구조를 살펴보면, ‘Central’ 구획에서 관측되는 값은 clopidogrel의 PK 데이터이고, ‘Effect’ 구획에서 관측되는 값은 PD 데이터로, 이 경우 platelet aggregation을 나타낸다(그림 <a href="pkpd-link.html#fig:clopidogrel">18.2</a>). <span class="citation">(Lee et al. <a href="#ref-lee2012population" role="doc-biblioref">2012</a>)</span> 구획 번호는 모델의 구조에 맞추어 변경하여 진행한다.</p>
 <p>또한 PK 와 PD 가 같은 대상자(또는 같은 질환 모델 개체)에서 얻어진 값인지 파악해야 한다. PK 데이터와 PD 데이터는 다른 시간에서 얻어질 수 있으며, 각각의 관측치의 차이의 폭(scale)이 다를 수 있음을 염두해야 두어야 한다.</p>
 <div class="figure"><span id="fig:clopidogrel"></span>
-<img src="figures/18-fig-02.png" alt="Clopidogrel의 PK-PD 모델 구조 (Lee et al. 2012)" width="90%" />
+<img src="figures/18-fig-02.png" alt="Clopidogrel의 PK-PD 모델 구조 (Lee et al. 2012)" width="95%" />
 <p class="caption">
 그림 18.2: Clopidogrel의 PK-PD 모델 구조 <span class="citation">(Lee et al. <a href="#ref-lee2012population" role="doc-biblioref">2012</a>)</span>
 </p>
@@ -508,7 +508,7 @@ Fix (as given by the PK model)
 </table>
 <p>아래의 그림은 각 방법이 가지는 PK 정보의 정도(level of information)를 도식화한 그림이다(그림 <a href="pkpd-link.html#fig:level-info">18.3</a>). 순차적합법 중 PPP&amp;D 와 PPP는 PK 모델에서 얻은 PK 파라미터 추정치(θ, ω, σ)에 대한 정보를 담고 있다. IPP 방법은 집단 PK 파라미터 추정치에서 한 단계 더 나아가 posthoc 파라미터라고 불리는 개인 PK 파라미터 추정치(CL, V2, V3 등)에 대한 정보를 담고 있다.</p>
 <div class="figure"><span id="fig:level-info"></span>
-<img src="figures/18-fig-03.png" alt="PK-PD 연결 방법과 그에 관련된 정보의 수준" width="90%" />
+<img src="figures/18-fig-03.png" alt="PK-PD 연결 방법과 그에 관련된 정보의 수준" width="95%" />
 <p class="caption">
 그림 18.3: PK-PD 연결 방법과 그에 관련된 정보의 수준
 </p>
@@ -861,7 +861,7 @@ Fix (as given by the PK model)
 <p>또한, PD 파라미터 추정의 성공 빈도와 정밀도 면에서 순차적합법이 SIM 방법보다 나은 것으로 나타났으며, 순차적합법 중 IPP
 방법이 성공률이 가장 높은 것으로 나타났다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
 <div class="figure"><span id="fig:time-comparison"></span>
-<img src="figures/18-fig-11.png" alt="순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) (Zhang, Beal, and Sheiner 2003a)" width="90%" />
+<img src="figures/18-fig-11.png" alt="순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) (Zhang, Beal, and Sheiner 2003a)" width="95%" />
 <p class="caption">
 그림 18.11: 순차적 방법과 SIM 방법 쓸 때의 절약되는 시간 비교 (N=200) <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
 </p>
@@ -869,7 +869,7 @@ Fix (as given by the PK model)
 
 <p>그림 <a href="pkpd-link.html#fig:absolute-signed">18.12</a>은 네 가지의 PK-PD 연결방법 사용시 얻은 PD 파라미터 추정치들(Emax, EC50 등)의 각각의 오차의 크기를 보여준다. 이를 통해 전체적으로 SIM 과 PPP&amp;D 방법으로 얻은 PD 파라미터 추정치들의 오차가 다른 방법에 비해 적은 것을 확인할 수 있다. <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span></p>
 <div class="figure"><span id="fig:absolute-signed"></span>
-<img src="figures/18-fig-12.png" alt="Average absolute (A) and signed error (B) of PD parameter estimates (Zhang, Beal, and Sheiner 2003a)" width="90%" />
+<img src="figures/18-fig-12.png" alt="Average absolute (A) and signed error (B) of PD parameter estimates (Zhang, Beal, and Sheiner 2003a)" width="95%" />
 <p class="caption">
 그림 18.12: Average absolute (A) and signed error (B) of PD parameter estimates <span class="citation">(Zhang, Beal, and Sheiner <a href="#ref-zhang1" role="doc-biblioref">2003</a><a href="#ref-zhang1" role="doc-biblioref">a</a>)</span>
 </p>

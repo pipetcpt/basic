@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.1" data-path="covariate-analysis.html"><a href="covariate-analysis.html#variable-eval"><i class="fa fa-check"></i><b>11.1.1</b> 항목 평가 (variable evaluation)</a></li>
 <li class="chapter" data-level="11.1.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#cov-screening"><i class="fa fa-check"></i><b>11.1.2</b> 공변량 스크리닝 (covariate screening)</a></li>
 <li class="chapter" data-level="11.1.3" data-path="covariate-analysis.html"><a href="covariate-analysis.html#colinearity"><i class="fa fa-check"></i><b>11.1.3</b> 공선성(co-linearity)에 대한 고려</a></li>
-<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection</a></li>
+<li class="chapter" data-level="11.1.4" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-전진선택forward-selection"><i class="fa fa-check"></i><b>11.1.4</b> 공변량 평가: 전진선택(forward-selection)</a></li>
 <li class="chapter" data-level="11.1.5" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-평가-후진제거backward-elimination"><i class="fa fa-check"></i><b>11.1.5</b> 공변량 평가: 후진제거(backward-elimination)</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="covariate-analysis.html"><a href="covariate-analysis.html#공변량-분석-관련-추가-고려-사항"><i class="fa fa-check"></i><b>11.2</b> 공변량 분석 관련 추가 고려 사항</a></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -381,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 <p>실행결과 파일의 내용을 구체적으로 살펴보면 아래와 같다.</p>
 <div class="figure"><span id="fig:image-01"></span>
-<img src="assets/media-10/image1.png" alt="실행결과 파일의 82-102행" width="90%" />
+<img src="assets/media-10/image1.png" alt="실행결과 파일의 82-102행" width="95%" />
 <p class="caption">
 그림 10.1: 실행결과 파일의 82-102행
 </p>
@@ -591,7 +591,7 @@ CMT
 </tbody>
 </table>
 <div class="figure"><span id="fig:image-05"></span>
-<img src="assets/media-10/image5.png" alt="실행결과 파일의 227행-238행" width="90%" />
+<img src="assets/media-10/image5.png" alt="실행결과 파일의 227행-238행" width="95%" />
 <p class="caption">
 그림 10.5: 실행결과 파일의 227행-238행
 </p>
@@ -646,7 +646,7 @@ CMT
 <span id="cb33-5"><a href="use-of-xpose4.html#cb33-5" aria-hidden="true"></a><span class="co"># Selection: 2 or 5</span></span></code></pre></div>
 
 <div class="figure"><span id="fig:basic-gof"></span>
-<img src="assets/media-10/image11.png" alt="Basic goodness-of-fit Plots" width="90%" />
+<img src="assets/media-10/image11.png" alt="Basic goodness-of-fit Plots" width="95%" />
 <p class="caption">
 그림 10.10: Basic goodness-of-fit Plots
 </p>
@@ -655,7 +655,7 @@ CMT
 <p>아래 두개의 그림은 잔차(residual)에 대한 진단 플롯으로, 좌측은 |IWRES| vs Individual predictions (IPRED), 우측은 Conditional weighted residuals (CWRES) vs Time 을 나타낸 그림이다. IWRES는 개인 가중잔차(Individual Weighted residuals)이고 |IWRES|는 개인 가중잔차에 절대값을 씌운 값이다. 잔차 모델이 적절하다면, CWRES 플롯의 모든 점들이 0을 기준으로 대칭 분포하게 되며, CWRES 값들의 흩어진 정도가 시간이나 개인 예측값에 따라 경향성이 없고, 그 범위가 -3과+3 사이에 분포할 것으로 기대된다.</p>
 <p>Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 예측값의 적합도를 확인할 수 있으며(그림 <a href="use-of-xpose4.html#fig:indi-plots">10.11</a>), 파라미터 간의 상관관계 및 공변량에 대한 탐색도 가능하다.</p>
 <div class="figure"><span id="fig:indi-plots"></span>
-<img src="assets/media-10/image12.png" alt="Individual Plots" width="90%" />
+<img src="assets/media-10/image12.png" alt="Individual Plots" width="95%" />
 <p class="caption">
 그림 10.11: Individual Plots
 </p>
