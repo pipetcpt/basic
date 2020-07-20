@@ -350,6 +350,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
 </ul></li>
 </ul></li>
+<li class="appendix"><span><b>별첨</b></span></li>
+<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -444,7 +446,7 @@ parameter
 <td style="text-align:left;width: 2cm; ">
 Simultaneous PK-PD analysis
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 SIM (Simultaneous)
 </td>
 <td style="text-align:left;width: 1cm; ">
@@ -453,7 +455,7 @@ O
 <td style="text-align:left;width: 2cm; ">
 Estimate
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Estimate
 </td>
 </tr>
@@ -461,7 +463,7 @@ Estimate
 <td style="text-align:left;width: 2cm; vertical-align: top !important;" rowspan="3">
 Sequential PK-PD analysis
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 PPP&amp;D (Population PK Parameter &amp; Data)
 </td>
 <td style="text-align:left;width: 1cm; ">
@@ -470,12 +472,12 @@ O
 <td style="text-align:left;width: 2cm; ">
 Fix
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Estimate (by PK data)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 PPP (Population PK Parameters)
 </td>
 <td style="text-align:left;width: 1cm; ">
@@ -484,12 +486,12 @@ X
 <td style="text-align:left;width: 2cm; ">
 Fix
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Estimate (by PD data)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 IPP (Individual PK Parameters)
 </td>
 <td style="text-align:left;width: 1cm; ">
@@ -498,7 +500,7 @@ X
 <td style="text-align:left;width: 2cm; ">
 (not considered)
 </td>
-<td style="text-align:left;width: 4cm; ">
+<td style="text-align:left;width: 3.5cm; ">
 Fix (as given by the PK model)
 </td>
 </tr>
@@ -534,61 +536,61 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:SIM-control" class="example"><strong>코드 18.1  </strong></span>SIM 방법의 제어구문의 예 <!--fig5-->
 </div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="pkpd-link.html#cb49-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
-<span id="cb49-2"><a href="pkpd-link.html#cb49-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
-<span id="cb49-3"><a href="pkpd-link.html#cb49-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
-<span id="cb49-4"><a href="pkpd-link.html#cb49-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb49-5"><a href="pkpd-link.html#cb49-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
-<span id="cb49-6"><a href="pkpd-link.html#cb49-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb49-7"><a href="pkpd-link.html#cb49-7" aria-hidden="true"></a></span>
-<span id="cb49-8"><a href="pkpd-link.html#cb49-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
-<span id="cb49-9"><a href="pkpd-link.html#cb49-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb49-10"><a href="pkpd-link.html#cb49-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb49-11"><a href="pkpd-link.html#cb49-11" aria-hidden="true"></a></span>
-<span id="cb49-12"><a href="pkpd-link.html#cb49-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
-<span id="cb49-13"><a href="pkpd-link.html#cb49-13" aria-hidden="true"></a>Y1 =<span class="st"> </span>CP </span>
-<span id="cb49-14"><a href="pkpd-link.html#cb49-14" aria-hidden="true"></a>Y2 =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
-<span id="cb49-15"><a href="pkpd-link.html#cb49-15" aria-hidden="true"></a><span class="kw">IF</span> (CMT.LE<span class="fl">.1</span>) Y =<span class="st"> </span>Y1 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>) </span>
-<span id="cb49-16"><a href="pkpd-link.html#cb49-16" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) Y =<span class="st"> </span>Y2 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">2</span>)</span>
-<span id="cb49-17"><a href="pkpd-link.html#cb49-17" aria-hidden="true"></a></span>
-<span id="cb49-18"><a href="pkpd-link.html#cb49-18" aria-hidden="true"></a><span class="op">$</span>THETA </span>
-<span id="cb49-19"><a href="pkpd-link.html#cb49-19" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">1</span>) </span>
-<span id="cb49-20"><a href="pkpd-link.html#cb49-20" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">10</span>) </span>
-<span id="cb49-21"><a href="pkpd-link.html#cb49-21" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
-<span id="cb49-22"><a href="pkpd-link.html#cb49-22" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb49-23"><a href="pkpd-link.html#cb49-23" aria-hidden="true"></a></span>
-<span id="cb49-24"><a href="pkpd-link.html#cb49-24" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
-<span id="cb49-25"><a href="pkpd-link.html#cb49-25" aria-hidden="true"></a><span class="fl">0.1</span> </span>
-<span id="cb49-26"><a href="pkpd-link.html#cb49-26" aria-hidden="true"></a><span class="fl">0.15</span> </span>
-<span id="cb49-27"><a href="pkpd-link.html#cb49-27" aria-hidden="true"></a><span class="fl">0.2</span> </span>
-<span id="cb49-28"><a href="pkpd-link.html#cb49-28" aria-hidden="true"></a><span class="fl">0.25</span></span>
-<span id="cb49-29"><a href="pkpd-link.html#cb49-29" aria-hidden="true"></a></span>
-<span id="cb49-30"><a href="pkpd-link.html#cb49-30" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
-<span id="cb49-31"><a href="pkpd-link.html#cb49-31" aria-hidden="true"></a><span class="fl">0.025</span> </span>
-<span id="cb49-32"><a href="pkpd-link.html#cb49-32" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="pkpd-link.html#cb47-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
+<span id="cb47-2"><a href="pkpd-link.html#cb47-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
+<span id="cb47-3"><a href="pkpd-link.html#cb47-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
+<span id="cb47-4"><a href="pkpd-link.html#cb47-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb47-5"><a href="pkpd-link.html#cb47-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
+<span id="cb47-6"><a href="pkpd-link.html#cb47-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb47-7"><a href="pkpd-link.html#cb47-7" aria-hidden="true"></a></span>
+<span id="cb47-8"><a href="pkpd-link.html#cb47-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
+<span id="cb47-9"><a href="pkpd-link.html#cb47-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb47-10"><a href="pkpd-link.html#cb47-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
+<span id="cb47-11"><a href="pkpd-link.html#cb47-11" aria-hidden="true"></a></span>
+<span id="cb47-12"><a href="pkpd-link.html#cb47-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
+<span id="cb47-13"><a href="pkpd-link.html#cb47-13" aria-hidden="true"></a>Y1 =<span class="st"> </span>CP </span>
+<span id="cb47-14"><a href="pkpd-link.html#cb47-14" aria-hidden="true"></a>Y2 =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
+<span id="cb47-15"><a href="pkpd-link.html#cb47-15" aria-hidden="true"></a><span class="kw">IF</span> (CMT.LE<span class="fl">.1</span>) Y =<span class="st"> </span>Y1 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>) </span>
+<span id="cb47-16"><a href="pkpd-link.html#cb47-16" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) Y =<span class="st"> </span>Y2 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">2</span>)</span>
+<span id="cb47-17"><a href="pkpd-link.html#cb47-17" aria-hidden="true"></a></span>
+<span id="cb47-18"><a href="pkpd-link.html#cb47-18" aria-hidden="true"></a><span class="op">$</span>THETA </span>
+<span id="cb47-19"><a href="pkpd-link.html#cb47-19" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">1</span>) </span>
+<span id="cb47-20"><a href="pkpd-link.html#cb47-20" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">10</span>) </span>
+<span id="cb47-21"><a href="pkpd-link.html#cb47-21" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
+<span id="cb47-22"><a href="pkpd-link.html#cb47-22" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb47-23"><a href="pkpd-link.html#cb47-23" aria-hidden="true"></a></span>
+<span id="cb47-24"><a href="pkpd-link.html#cb47-24" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
+<span id="cb47-25"><a href="pkpd-link.html#cb47-25" aria-hidden="true"></a><span class="fl">0.1</span> </span>
+<span id="cb47-26"><a href="pkpd-link.html#cb47-26" aria-hidden="true"></a><span class="fl">0.15</span> </span>
+<span id="cb47-27"><a href="pkpd-link.html#cb47-27" aria-hidden="true"></a><span class="fl">0.2</span> </span>
+<span id="cb47-28"><a href="pkpd-link.html#cb47-28" aria-hidden="true"></a><span class="fl">0.25</span></span>
+<span id="cb47-29"><a href="pkpd-link.html#cb47-29" aria-hidden="true"></a></span>
+<span id="cb47-30"><a href="pkpd-link.html#cb47-30" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
+<span id="cb47-31"><a href="pkpd-link.html#cb47-31" aria-hidden="true"></a><span class="fl">0.025</span> </span>
+<span id="cb47-32"><a href="pkpd-link.html#cb47-32" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
 <p>아래의 제어구문은 NONMEM을 기본적으로 수행시키기 위해 $PK 위에 들어가는 명령어라고 볼 수 있다.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="pkpd-link.html#cb50-1" aria-hidden="true"></a><span class="op">$</span>PROB <span class="dv">1</span> comp IV Emax model </span>
-<span id="cb50-2"><a href="pkpd-link.html#cb50-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID TIME AMT DV MDV CMT </span>
-<span id="cb50-3"><a href="pkpd-link.html#cb50-3" aria-hidden="true"></a><span class="op">$</span>DATA DATAFILENAME.csv IGNORE=<span class="er">@</span><span class="st"> </span></span>
-<span id="cb50-4"><a href="pkpd-link.html#cb50-4" aria-hidden="true"></a><span class="er">$</span>SUBROUTIN ADVAN6 TOL=<span class="dv">3</span> </span>
-<span id="cb50-5"><a href="pkpd-link.html#cb50-5" aria-hidden="true"></a><span class="op">$</span>MODEL </span>
-<span id="cb50-6"><a href="pkpd-link.html#cb50-6" aria-hidden="true"></a><span class="kw">COMP</span> (CENT, DEFDOSE, DEFOBS) </span>
-<span id="cb50-7"><a href="pkpd-link.html#cb50-7" aria-hidden="true"></a><span class="kw">COMP</span> (PD)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="pkpd-link.html#cb48-1" aria-hidden="true"></a><span class="op">$</span>PROB <span class="dv">1</span> comp IV Emax model </span>
+<span id="cb48-2"><a href="pkpd-link.html#cb48-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID TIME AMT DV MDV CMT </span>
+<span id="cb48-3"><a href="pkpd-link.html#cb48-3" aria-hidden="true"></a><span class="op">$</span>DATA DATAFILENAME.csv IGNORE=<span class="er">@</span><span class="st"> </span></span>
+<span id="cb48-4"><a href="pkpd-link.html#cb48-4" aria-hidden="true"></a><span class="er">$</span>SUBROUTIN ADVAN6 TOL=<span class="dv">3</span> </span>
+<span id="cb48-5"><a href="pkpd-link.html#cb48-5" aria-hidden="true"></a><span class="op">$</span>MODEL </span>
+<span id="cb48-6"><a href="pkpd-link.html#cb48-6" aria-hidden="true"></a><span class="kw">COMP</span> (CENT, DEFDOSE, DEFOBS) </span>
+<span id="cb48-7"><a href="pkpd-link.html#cb48-7" aria-hidden="true"></a><span class="kw">COMP</span> (PD)</span></code></pre></div>
 <p>추가적으로 R 소프트웨어의 xpose4 패키지를 사용하여 적합도 플롯(goodness of fit plot)을 그리고자 하는 경우, IWRES 값이 필요하며, 코드 <a href="pkpd-link.html#exm:SIM-control">18.1</a>에서 제시한 단순화된 오차모델 대신 아래와 같은 오차모델을 사용하여 PK-PD 모델링을 진행할 수 있다. 아래의 예시에는 PK 오차모델에는 가법오차와 비례오차를 모두 주었고, PD 오차모델에는 가법오차 만을 주었다.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="pkpd-link.html#cb51-1" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
-<span id="cb51-2"><a href="pkpd-link.html#cb51-2" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.1</span>) THEN </span>
-<span id="cb51-3"><a href="pkpd-link.html#cb51-3" aria-hidden="true"></a>  IPRED =<span class="st"> </span>CP </span>
-<span id="cb51-4"><a href="pkpd-link.html#cb51-4" aria-hidden="true"></a>  W =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">10</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">11</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>) </span>
-<span id="cb51-5"><a href="pkpd-link.html#cb51-5" aria-hidden="true"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
-<span id="cb51-6"><a href="pkpd-link.html#cb51-6" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
-<span id="cb51-7"><a href="pkpd-link.html#cb51-7" aria-hidden="true"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>) </span>
-<span id="cb51-8"><a href="pkpd-link.html#cb51-8" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN </span>
-<span id="cb51-9"><a href="pkpd-link.html#cb51-9" aria-hidden="true"></a>  IPRED =<span class="st"> </span>EMAX<span class="op">*</span>CP<span class="op">/</span>(EC50<span class="op">+</span>CP) </span>
-<span id="cb51-10"><a href="pkpd-link.html#cb51-10" aria-hidden="true"></a>  W =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">12</span>) </span>
-<span id="cb51-11"><a href="pkpd-link.html#cb51-11" aria-hidden="true"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
-<span id="cb51-12"><a href="pkpd-link.html#cb51-12" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
-<span id="cb51-13"><a href="pkpd-link.html#cb51-13" aria-hidden="true"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>) </span>
-<span id="cb51-14"><a href="pkpd-link.html#cb51-14" aria-hidden="true"></a>ENDIF</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="pkpd-link.html#cb49-1" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
+<span id="cb49-2"><a href="pkpd-link.html#cb49-2" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.1</span>) THEN </span>
+<span id="cb49-3"><a href="pkpd-link.html#cb49-3" aria-hidden="true"></a>  IPRED =<span class="st"> </span>CP </span>
+<span id="cb49-4"><a href="pkpd-link.html#cb49-4" aria-hidden="true"></a>  W =<span class="st"> </span><span class="kw">SQRT</span>(<span class="kw">THETA</span>(<span class="dv">10</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">THETA</span>(<span class="dv">11</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>IPRED<span class="op">**</span><span class="dv">2</span>) </span>
+<span id="cb49-5"><a href="pkpd-link.html#cb49-5" aria-hidden="true"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
+<span id="cb49-6"><a href="pkpd-link.html#cb49-6" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
+<span id="cb49-7"><a href="pkpd-link.html#cb49-7" aria-hidden="true"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">1</span>) </span>
+<span id="cb49-8"><a href="pkpd-link.html#cb49-8" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN </span>
+<span id="cb49-9"><a href="pkpd-link.html#cb49-9" aria-hidden="true"></a>  IPRED =<span class="st"> </span>EMAX<span class="op">*</span>CP<span class="op">/</span>(EC50<span class="op">+</span>CP) </span>
+<span id="cb49-10"><a href="pkpd-link.html#cb49-10" aria-hidden="true"></a>  W =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">12</span>) </span>
+<span id="cb49-11"><a href="pkpd-link.html#cb49-11" aria-hidden="true"></a>  IRES =<span class="st"> </span>DV <span class="op">-</span><span class="st"> </span>IPRED </span>
+<span id="cb49-12"><a href="pkpd-link.html#cb49-12" aria-hidden="true"></a>  IWRES =<span class="st"> </span>IRES <span class="op">/</span><span class="st"> </span>W </span>
+<span id="cb49-13"><a href="pkpd-link.html#cb49-13" aria-hidden="true"></a>  Y =<span class="st"> </span>IPRED <span class="op">+</span><span class="st"> </span>W <span class="op">*</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>) </span>
+<span id="cb49-14"><a href="pkpd-link.html#cb49-14" aria-hidden="true"></a>ENDIF</span></code></pre></div>
 </div>
 <div id="순차적합법-sequential-fitting" class="section level3" number="18.4.2">
 <h3><span class="header-section-number">18.4.2</span> 순차적합법 (Sequential fitting)</h3>
@@ -607,45 +609,45 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:pppd-code" class="example"><strong>코드 18.2  </strong></span>PPP&amp;D 방법의 제어구문의 예
 </div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="pkpd-link.html#cb52-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
-<span id="cb52-2"><a href="pkpd-link.html#cb52-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
-<span id="cb52-3"><a href="pkpd-link.html#cb52-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
-<span id="cb52-4"><a href="pkpd-link.html#cb52-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb52-5"><a href="pkpd-link.html#cb52-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
-<span id="cb52-6"><a href="pkpd-link.html#cb52-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb52-7"><a href="pkpd-link.html#cb52-7" aria-hidden="true"></a></span>
-<span id="cb52-8"><a href="pkpd-link.html#cb52-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
-<span id="cb52-9"><a href="pkpd-link.html#cb52-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb52-10"><a href="pkpd-link.html#cb52-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb52-11"><a href="pkpd-link.html#cb52-11" aria-hidden="true"></a></span>
-<span id="cb52-12"><a href="pkpd-link.html#cb52-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
-<span id="cb52-13"><a href="pkpd-link.html#cb52-13" aria-hidden="true"></a>Y1 =<span class="st"> </span>CP </span>
-<span id="cb52-14"><a href="pkpd-link.html#cb52-14" aria-hidden="true"></a>Y2 =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
-<span id="cb52-15"><a href="pkpd-link.html#cb52-15" aria-hidden="true"></a><span class="kw">IF</span> (CMT.LE<span class="fl">.1</span>) Y =<span class="st"> </span>Y1 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>) </span>
-<span id="cb52-16"><a href="pkpd-link.html#cb52-16" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) Y =<span class="st"> </span>Y2 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">2</span>)</span>
-<span id="cb52-17"><a href="pkpd-link.html#cb52-17" aria-hidden="true"></a></span>
-<span id="cb52-18"><a href="pkpd-link.html#cb52-18" aria-hidden="true"></a><span class="op">$</span>THETA </span>
-<span id="cb52-19"><a href="pkpd-link.html#cb52-19" aria-hidden="true"></a><span class="dv">1</span> FIX</span>
-<span id="cb52-20"><a href="pkpd-link.html#cb52-20" aria-hidden="true"></a><span class="dv">10</span> FIX</span>
-<span id="cb52-21"><a href="pkpd-link.html#cb52-21" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
-<span id="cb52-22"><a href="pkpd-link.html#cb52-22" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb52-23"><a href="pkpd-link.html#cb52-23" aria-hidden="true"></a></span>
-<span id="cb52-24"><a href="pkpd-link.html#cb52-24" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
-<span id="cb52-25"><a href="pkpd-link.html#cb52-25" aria-hidden="true"></a><span class="fl">0.1</span> FIX </span>
-<span id="cb52-26"><a href="pkpd-link.html#cb52-26" aria-hidden="true"></a><span class="fl">0.15</span> FIX</span>
-<span id="cb52-27"><a href="pkpd-link.html#cb52-27" aria-hidden="true"></a><span class="fl">0.2</span></span>
-<span id="cb52-28"><a href="pkpd-link.html#cb52-28" aria-hidden="true"></a><span class="fl">0.25</span></span>
-<span id="cb52-29"><a href="pkpd-link.html#cb52-29" aria-hidden="true"></a></span>
-<span id="cb52-30"><a href="pkpd-link.html#cb52-30" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
-<span id="cb52-31"><a href="pkpd-link.html#cb52-31" aria-hidden="true"></a><span class="fl">0.025</span> FIX</span>
-<span id="cb52-32"><a href="pkpd-link.html#cb52-32" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="pkpd-link.html#cb50-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
+<span id="cb50-2"><a href="pkpd-link.html#cb50-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
+<span id="cb50-3"><a href="pkpd-link.html#cb50-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
+<span id="cb50-4"><a href="pkpd-link.html#cb50-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb50-5"><a href="pkpd-link.html#cb50-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
+<span id="cb50-6"><a href="pkpd-link.html#cb50-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb50-7"><a href="pkpd-link.html#cb50-7" aria-hidden="true"></a></span>
+<span id="cb50-8"><a href="pkpd-link.html#cb50-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
+<span id="cb50-9"><a href="pkpd-link.html#cb50-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb50-10"><a href="pkpd-link.html#cb50-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
+<span id="cb50-11"><a href="pkpd-link.html#cb50-11" aria-hidden="true"></a></span>
+<span id="cb50-12"><a href="pkpd-link.html#cb50-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
+<span id="cb50-13"><a href="pkpd-link.html#cb50-13" aria-hidden="true"></a>Y1 =<span class="st"> </span>CP </span>
+<span id="cb50-14"><a href="pkpd-link.html#cb50-14" aria-hidden="true"></a>Y2 =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
+<span id="cb50-15"><a href="pkpd-link.html#cb50-15" aria-hidden="true"></a><span class="kw">IF</span> (CMT.LE<span class="fl">.1</span>) Y =<span class="st"> </span>Y1 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>) </span>
+<span id="cb50-16"><a href="pkpd-link.html#cb50-16" aria-hidden="true"></a><span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) Y =<span class="st"> </span>Y2 <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">2</span>)</span>
+<span id="cb50-17"><a href="pkpd-link.html#cb50-17" aria-hidden="true"></a></span>
+<span id="cb50-18"><a href="pkpd-link.html#cb50-18" aria-hidden="true"></a><span class="op">$</span>THETA </span>
+<span id="cb50-19"><a href="pkpd-link.html#cb50-19" aria-hidden="true"></a><span class="dv">1</span> FIX</span>
+<span id="cb50-20"><a href="pkpd-link.html#cb50-20" aria-hidden="true"></a><span class="dv">10</span> FIX</span>
+<span id="cb50-21"><a href="pkpd-link.html#cb50-21" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
+<span id="cb50-22"><a href="pkpd-link.html#cb50-22" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb50-23"><a href="pkpd-link.html#cb50-23" aria-hidden="true"></a></span>
+<span id="cb50-24"><a href="pkpd-link.html#cb50-24" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
+<span id="cb50-25"><a href="pkpd-link.html#cb50-25" aria-hidden="true"></a><span class="fl">0.1</span> FIX </span>
+<span id="cb50-26"><a href="pkpd-link.html#cb50-26" aria-hidden="true"></a><span class="fl">0.15</span> FIX</span>
+<span id="cb50-27"><a href="pkpd-link.html#cb50-27" aria-hidden="true"></a><span class="fl">0.2</span></span>
+<span id="cb50-28"><a href="pkpd-link.html#cb50-28" aria-hidden="true"></a><span class="fl">0.25</span></span>
+<span id="cb50-29"><a href="pkpd-link.html#cb50-29" aria-hidden="true"></a></span>
+<span id="cb50-30"><a href="pkpd-link.html#cb50-30" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
+<span id="cb50-31"><a href="pkpd-link.html#cb50-31" aria-hidden="true"></a><span class="fl">0.025</span> FIX</span>
+<span id="cb50-32"><a href="pkpd-link.html#cb50-32" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
 </div>
 <div id="ppp-population-pk-parameters" class="section level4" number="18.4.2.2">
 <h4><span class="header-section-number">18.4.2.2</span> PPP (Population PK Parameters)</h4>
 <p>PPP로 PK-PD 모델링 수행 시 PPP&amp;D 와 마찬가지로 PK 모델을 통해 얻어진 집단 PK 파라미터 추정치를 고정하여 진행한다. 이는 $THETA, $OMEGA 블록 내의 θ1<sub>CL</sub>, θ<sub>V1</sub>, ω<sub>CL2</sub>, ω<sub>V12</sub>에 해당한다.</p>
 <p>PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이전 방법에서 CMT 1에 표시된 PK 데이터는 포함되지 않는다(그림 <a href="pkpd-link.html#fig:PPP-dataset">18.6</a>). 이전 방법에서는 오차 모델이 PK 와 PD에 대하여 각각 들어갔으나, PPP 방법은 이와 다르게 PD 데이터만을 사용하여 PK-PD 모델을 연결하고 PD 모델링을 수행하기 때문에, PD에 대한 오차모델 하나만 사용한다(코드 <a href="pkpd-link.html#exm:control-ppp">18.3</a>).</p>
 <div class="figure"><span id="fig:PPP-dataset"></span>
-<img src="assets/media-18/image7.png" alt="Example of dataset for PPP" width="90%" />
+<img src="assets/media-18/image7.png" alt="Example of dataset for PPP" width="50%" />
 <p class="caption">
 그림 18.6: Example of dataset for PPP
 </p>
@@ -655,35 +657,35 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:control-ppp" class="example"><strong>코드 18.3  </strong></span>Example of control file for PPP
 </div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="pkpd-link.html#cb53-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
-<span id="cb53-2"><a href="pkpd-link.html#cb53-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
-<span id="cb53-3"><a href="pkpd-link.html#cb53-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
-<span id="cb53-4"><a href="pkpd-link.html#cb53-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb53-5"><a href="pkpd-link.html#cb53-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
-<span id="cb53-6"><a href="pkpd-link.html#cb53-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb53-7"><a href="pkpd-link.html#cb53-7" aria-hidden="true"></a></span>
-<span id="cb53-8"><a href="pkpd-link.html#cb53-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
-<span id="cb53-9"><a href="pkpd-link.html#cb53-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
-<span id="cb53-10"><a href="pkpd-link.html#cb53-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb53-11"><a href="pkpd-link.html#cb53-11" aria-hidden="true"></a></span>
-<span id="cb53-12"><a href="pkpd-link.html#cb53-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
-<span id="cb53-13"><a href="pkpd-link.html#cb53-13" aria-hidden="true"></a>EFF =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
-<span id="cb53-14"><a href="pkpd-link.html#cb53-14" aria-hidden="true"></a>Y =<span class="st"> </span>EFF <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>)</span>
-<span id="cb53-15"><a href="pkpd-link.html#cb53-15" aria-hidden="true"></a></span>
-<span id="cb53-16"><a href="pkpd-link.html#cb53-16" aria-hidden="true"></a><span class="op">$</span>THETA </span>
-<span id="cb53-17"><a href="pkpd-link.html#cb53-17" aria-hidden="true"></a><span class="dv">1</span> FIX </span>
-<span id="cb53-18"><a href="pkpd-link.html#cb53-18" aria-hidden="true"></a><span class="dv">10</span> FIX </span>
-<span id="cb53-19"><a href="pkpd-link.html#cb53-19" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
-<span id="cb53-20"><a href="pkpd-link.html#cb53-20" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb53-21"><a href="pkpd-link.html#cb53-21" aria-hidden="true"></a></span>
-<span id="cb53-22"><a href="pkpd-link.html#cb53-22" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
-<span id="cb53-23"><a href="pkpd-link.html#cb53-23" aria-hidden="true"></a><span class="fl">0.1</span> FIX </span>
-<span id="cb53-24"><a href="pkpd-link.html#cb53-24" aria-hidden="true"></a><span class="fl">0.15</span> FIX </span>
-<span id="cb53-25"><a href="pkpd-link.html#cb53-25" aria-hidden="true"></a><span class="fl">0.2</span> </span>
-<span id="cb53-26"><a href="pkpd-link.html#cb53-26" aria-hidden="true"></a><span class="fl">0.25</span></span>
-<span id="cb53-27"><a href="pkpd-link.html#cb53-27" aria-hidden="true"></a></span>
-<span id="cb53-28"><a href="pkpd-link.html#cb53-28" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
-<span id="cb53-29"><a href="pkpd-link.html#cb53-29" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="pkpd-link.html#cb51-1" aria-hidden="true"></a><span class="op">$</span>PK </span>
+<span id="cb51-2"><a href="pkpd-link.html#cb51-2" aria-hidden="true"></a>CL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
+<span id="cb51-3"><a href="pkpd-link.html#cb51-3" aria-hidden="true"></a>V1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
+<span id="cb51-4"><a href="pkpd-link.html#cb51-4" aria-hidden="true"></a>K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb51-5"><a href="pkpd-link.html#cb51-5" aria-hidden="true"></a>EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>)) </span>
+<span id="cb51-6"><a href="pkpd-link.html#cb51-6" aria-hidden="true"></a>EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb51-7"><a href="pkpd-link.html#cb51-7" aria-hidden="true"></a></span>
+<span id="cb51-8"><a href="pkpd-link.html#cb51-8" aria-hidden="true"></a><span class="op">$</span>DES </span>
+<span id="cb51-9"><a href="pkpd-link.html#cb51-9" aria-hidden="true"></a>CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1 </span>
+<span id="cb51-10"><a href="pkpd-link.html#cb51-10" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
+<span id="cb51-11"><a href="pkpd-link.html#cb51-11" aria-hidden="true"></a></span>
+<span id="cb51-12"><a href="pkpd-link.html#cb51-12" aria-hidden="true"></a><span class="op">$</span>ERROR </span>
+<span id="cb51-13"><a href="pkpd-link.html#cb51-13" aria-hidden="true"></a>EFF =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP) </span>
+<span id="cb51-14"><a href="pkpd-link.html#cb51-14" aria-hidden="true"></a>Y =<span class="st"> </span>EFF <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>)</span>
+<span id="cb51-15"><a href="pkpd-link.html#cb51-15" aria-hidden="true"></a></span>
+<span id="cb51-16"><a href="pkpd-link.html#cb51-16" aria-hidden="true"></a><span class="op">$</span>THETA </span>
+<span id="cb51-17"><a href="pkpd-link.html#cb51-17" aria-hidden="true"></a><span class="dv">1</span> FIX </span>
+<span id="cb51-18"><a href="pkpd-link.html#cb51-18" aria-hidden="true"></a><span class="dv">10</span> FIX </span>
+<span id="cb51-19"><a href="pkpd-link.html#cb51-19" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">15</span>) </span>
+<span id="cb51-20"><a href="pkpd-link.html#cb51-20" aria-hidden="true"></a>(<span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb51-21"><a href="pkpd-link.html#cb51-21" aria-hidden="true"></a></span>
+<span id="cb51-22"><a href="pkpd-link.html#cb51-22" aria-hidden="true"></a><span class="op">$</span>OMEGA </span>
+<span id="cb51-23"><a href="pkpd-link.html#cb51-23" aria-hidden="true"></a><span class="fl">0.1</span> FIX </span>
+<span id="cb51-24"><a href="pkpd-link.html#cb51-24" aria-hidden="true"></a><span class="fl">0.15</span> FIX </span>
+<span id="cb51-25"><a href="pkpd-link.html#cb51-25" aria-hidden="true"></a><span class="fl">0.2</span> </span>
+<span id="cb51-26"><a href="pkpd-link.html#cb51-26" aria-hidden="true"></a><span class="fl">0.25</span></span>
+<span id="cb51-27"><a href="pkpd-link.html#cb51-27" aria-hidden="true"></a></span>
+<span id="cb51-28"><a href="pkpd-link.html#cb51-28" aria-hidden="true"></a><span class="op">$</span>SIGMA </span>
+<span id="cb51-29"><a href="pkpd-link.html#cb51-29" aria-hidden="true"></a><span class="fl">0.04</span></span></code></pre></div>
 </div>
 </div>
 <div id="ipp-individual-pk-parameters" class="section level3" number="18.4.3">
@@ -701,31 +703,31 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:IPP-example" class="example"><strong>코드 18.4  </strong></span>IPP 방법의 제어구문의 예
 </div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="pkpd-link.html#cb54-1" aria-hidden="true"></a><span class="op">$</span>PK</span>
-<span id="cb54-2"><a href="pkpd-link.html#cb54-2" aria-hidden="true"></a>  CL =<span class="st"> </span>ICL</span>
-<span id="cb54-3"><a href="pkpd-link.html#cb54-3" aria-hidden="true"></a>  V1 =<span class="st"> </span>IV</span>
-<span id="cb54-4"><a href="pkpd-link.html#cb54-4" aria-hidden="true"></a>  K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1</span>
-<span id="cb54-5"><a href="pkpd-link.html#cb54-5" aria-hidden="true"></a>  EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb54-6"><a href="pkpd-link.html#cb54-6" aria-hidden="true"></a>  EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb54-7"><a href="pkpd-link.html#cb54-7" aria-hidden="true"></a></span>
-<span id="cb54-8"><a href="pkpd-link.html#cb54-8" aria-hidden="true"></a><span class="op">$</span>DES</span>
-<span id="cb54-9"><a href="pkpd-link.html#cb54-9" aria-hidden="true"></a>  CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1</span>
-<span id="cb54-10"><a href="pkpd-link.html#cb54-10" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb54-11"><a href="pkpd-link.html#cb54-11" aria-hidden="true"></a></span>
-<span id="cb54-12"><a href="pkpd-link.html#cb54-12" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
-<span id="cb54-13"><a href="pkpd-link.html#cb54-13" aria-hidden="true"></a>  EFF =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP)</span>
-<span id="cb54-14"><a href="pkpd-link.html#cb54-14" aria-hidden="true"></a>  Y =<span class="st"> </span>EFF <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>)</span>
-<span id="cb54-15"><a href="pkpd-link.html#cb54-15" aria-hidden="true"></a></span>
-<span id="cb54-16"><a href="pkpd-link.html#cb54-16" aria-hidden="true"></a><span class="op">$</span>THETA</span>
-<span id="cb54-17"><a href="pkpd-link.html#cb54-17" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">15</span>)</span>
-<span id="cb54-18"><a href="pkpd-link.html#cb54-18" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb54-19"><a href="pkpd-link.html#cb54-19" aria-hidden="true"></a></span>
-<span id="cb54-20"><a href="pkpd-link.html#cb54-20" aria-hidden="true"></a><span class="op">$</span>OMEGA</span>
-<span id="cb54-21"><a href="pkpd-link.html#cb54-21" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
-<span id="cb54-22"><a href="pkpd-link.html#cb54-22" aria-hidden="true"></a>  <span class="fl">0.25</span></span>
-<span id="cb54-23"><a href="pkpd-link.html#cb54-23" aria-hidden="true"></a></span>
-<span id="cb54-24"><a href="pkpd-link.html#cb54-24" aria-hidden="true"></a><span class="op">$</span>SIGMA</span>
-<span id="cb54-25"><a href="pkpd-link.html#cb54-25" aria-hidden="true"></a>  <span class="fl">0.04</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="pkpd-link.html#cb52-1" aria-hidden="true"></a><span class="op">$</span>PK</span>
+<span id="cb52-2"><a href="pkpd-link.html#cb52-2" aria-hidden="true"></a>  CL =<span class="st"> </span>ICL</span>
+<span id="cb52-3"><a href="pkpd-link.html#cb52-3" aria-hidden="true"></a>  V1 =<span class="st"> </span>IV</span>
+<span id="cb52-4"><a href="pkpd-link.html#cb52-4" aria-hidden="true"></a>  K =<span class="st"> </span>CL <span class="op">/</span><span class="st"> </span>V1</span>
+<span id="cb52-5"><a href="pkpd-link.html#cb52-5" aria-hidden="true"></a>  EMAX =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb52-6"><a href="pkpd-link.html#cb52-6" aria-hidden="true"></a>  EC50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb52-7"><a href="pkpd-link.html#cb52-7" aria-hidden="true"></a></span>
+<span id="cb52-8"><a href="pkpd-link.html#cb52-8" aria-hidden="true"></a><span class="op">$</span>DES</span>
+<span id="cb52-9"><a href="pkpd-link.html#cb52-9" aria-hidden="true"></a>  CP =<span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>) <span class="op">/</span><span class="st"> </span>V1</span>
+<span id="cb52-10"><a href="pkpd-link.html#cb52-10" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>) =<span class="st"> </span><span class="op">-</span>K <span class="op">*</span><span class="st"> </span><span class="kw">A</span>(<span class="dv">1</span>)</span>
+<span id="cb52-11"><a href="pkpd-link.html#cb52-11" aria-hidden="true"></a></span>
+<span id="cb52-12"><a href="pkpd-link.html#cb52-12" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
+<span id="cb52-13"><a href="pkpd-link.html#cb52-13" aria-hidden="true"></a>  EFF =<span class="st"> </span>EMAX<span class="op">*</span>CP <span class="op">/</span><span class="st"> </span>(EC50<span class="op">+</span>CP)</span>
+<span id="cb52-14"><a href="pkpd-link.html#cb52-14" aria-hidden="true"></a>  Y =<span class="st"> </span>EFF <span class="op">+</span><span class="st"> </span><span class="kw">ERR</span>(<span class="dv">1</span>)</span>
+<span id="cb52-15"><a href="pkpd-link.html#cb52-15" aria-hidden="true"></a></span>
+<span id="cb52-16"><a href="pkpd-link.html#cb52-16" aria-hidden="true"></a><span class="op">$</span>THETA</span>
+<span id="cb52-17"><a href="pkpd-link.html#cb52-17" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">15</span>)</span>
+<span id="cb52-18"><a href="pkpd-link.html#cb52-18" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">20</span>)</span>
+<span id="cb52-19"><a href="pkpd-link.html#cb52-19" aria-hidden="true"></a></span>
+<span id="cb52-20"><a href="pkpd-link.html#cb52-20" aria-hidden="true"></a><span class="op">$</span>OMEGA</span>
+<span id="cb52-21"><a href="pkpd-link.html#cb52-21" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
+<span id="cb52-22"><a href="pkpd-link.html#cb52-22" aria-hidden="true"></a>  <span class="fl">0.25</span></span>
+<span id="cb52-23"><a href="pkpd-link.html#cb52-23" aria-hidden="true"></a></span>
+<span id="cb52-24"><a href="pkpd-link.html#cb52-24" aria-hidden="true"></a><span class="op">$</span>SIGMA</span>
+<span id="cb52-25"><a href="pkpd-link.html#cb52-25" aria-hidden="true"></a>  <span class="fl">0.04</span></span></code></pre></div>
 </div>
 </div>
 <div id="indirect-pkpd" class="section level2" number="18.5">
@@ -747,38 +749,38 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:sim-pppd-similarity" class="example"><strong>코드 18.5  </strong></span>SIM 방법과 PPP&amp;D 방법 쓸 때 제어구문의 공통된 부분 <!--fig13-->
 </div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="pkpd-link.html#cb55-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_PO_2comp</span>
-<span id="cb55-2"><a href="pkpd-link.html#cb55-2" aria-hidden="true"></a><span class="op">$</span>DATA SIM_S.csv IGNORE=<span class="er">@</span></span>
-<span id="cb55-3"><a href="pkpd-link.html#cb55-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT</span>
-<span id="cb55-4"><a href="pkpd-link.html#cb55-4" aria-hidden="true"></a></span>
-<span id="cb55-5"><a href="pkpd-link.html#cb55-5" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
-<span id="cb55-6"><a href="pkpd-link.html#cb55-6" aria-hidden="true"></a></span>
-<span id="cb55-7"><a href="pkpd-link.html#cb55-7" aria-hidden="true"></a><span class="op">$</span>MODEL NCOMP=<span class="dv">4</span></span>
-<span id="cb55-8"><a href="pkpd-link.html#cb55-8" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
-<span id="cb55-9"><a href="pkpd-link.html#cb55-9" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENT)</span>
-<span id="cb55-10"><a href="pkpd-link.html#cb55-10" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERI)</span>
-<span id="cb55-11"><a href="pkpd-link.html#cb55-11" aria-hidden="true"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
-<span id="cb55-12"><a href="pkpd-link.html#cb55-12" aria-hidden="true"></a></span>
-<span id="cb55-13"><a href="pkpd-link.html#cb55-13" aria-hidden="true"></a><span class="op">$</span>PK</span>
-<span id="cb55-14"><a href="pkpd-link.html#cb55-14" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK FIXED EFFECT <span class="op">----</span></span>
-<span id="cb55-15"><a href="pkpd-link.html#cb55-15" aria-hidden="true"></a><span class="st">  </span>TVCL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
-<span id="cb55-16"><a href="pkpd-link.html#cb55-16" aria-hidden="true"></a>  TVV2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
-<span id="cb55-17"><a href="pkpd-link.html#cb55-17" aria-hidden="true"></a>  TVV3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
-<span id="cb55-18"><a href="pkpd-link.html#cb55-18" aria-hidden="true"></a>  TVQ  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
-<span id="cb55-19"><a href="pkpd-link.html#cb55-19" aria-hidden="true"></a>  TVKA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
-<span id="cb55-20"><a href="pkpd-link.html#cb55-20" aria-hidden="true"></a></span>
-<span id="cb55-21"><a href="pkpd-link.html#cb55-21" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK RANDOM EFFECT <span class="op">----</span></span>
-<span id="cb55-22"><a href="pkpd-link.html#cb55-22" aria-hidden="true"></a><span class="st">  </span>CL   =<span class="st"> </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb55-23"><a href="pkpd-link.html#cb55-23" aria-hidden="true"></a>  V2   =<span class="st"> </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb55-24"><a href="pkpd-link.html#cb55-24" aria-hidden="true"></a>  V3   =<span class="st"> </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb55-25"><a href="pkpd-link.html#cb55-25" aria-hidden="true"></a>  Q    =<span class="st"> </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb55-26"><a href="pkpd-link.html#cb55-26" aria-hidden="true"></a>  KA   =<span class="st"> </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb55-27"><a href="pkpd-link.html#cb55-27" aria-hidden="true"></a></span>
-<span id="cb55-28"><a href="pkpd-link.html#cb55-28" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK PARAMETER RELATIONSHIP <span class="op">----</span></span>
-<span id="cb55-29"><a href="pkpd-link.html#cb55-29" aria-hidden="true"></a><span class="st">  </span>S2   =<span class="st"> </span>V2</span>
-<span id="cb55-30"><a href="pkpd-link.html#cb55-30" aria-hidden="true"></a>  K23  =<span class="st"> </span>Q<span class="op">/</span>V2</span>
-<span id="cb55-31"><a href="pkpd-link.html#cb55-31" aria-hidden="true"></a>  K32  =<span class="st"> </span>Q<span class="op">/</span>V3</span>
-<span id="cb55-32"><a href="pkpd-link.html#cb55-32" aria-hidden="true"></a>  KE   =<span class="st"> </span>CL<span class="op">/</span>V2</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="pkpd-link.html#cb53-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_PO_2comp</span>
+<span id="cb53-2"><a href="pkpd-link.html#cb53-2" aria-hidden="true"></a><span class="op">$</span>DATA SIM_S.csv IGNORE=<span class="er">@</span></span>
+<span id="cb53-3"><a href="pkpd-link.html#cb53-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DMT DV MDV SEX AGE WT HT</span>
+<span id="cb53-4"><a href="pkpd-link.html#cb53-4" aria-hidden="true"></a></span>
+<span id="cb53-5"><a href="pkpd-link.html#cb53-5" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
+<span id="cb53-6"><a href="pkpd-link.html#cb53-6" aria-hidden="true"></a></span>
+<span id="cb53-7"><a href="pkpd-link.html#cb53-7" aria-hidden="true"></a><span class="op">$</span>MODEL NCOMP=<span class="dv">4</span></span>
+<span id="cb53-8"><a href="pkpd-link.html#cb53-8" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
+<span id="cb53-9"><a href="pkpd-link.html#cb53-9" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENT)</span>
+<span id="cb53-10"><a href="pkpd-link.html#cb53-10" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERI)</span>
+<span id="cb53-11"><a href="pkpd-link.html#cb53-11" aria-hidden="true"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
+<span id="cb53-12"><a href="pkpd-link.html#cb53-12" aria-hidden="true"></a></span>
+<span id="cb53-13"><a href="pkpd-link.html#cb53-13" aria-hidden="true"></a><span class="op">$</span>PK</span>
+<span id="cb53-14"><a href="pkpd-link.html#cb53-14" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK FIXED EFFECT <span class="op">----</span></span>
+<span id="cb53-15"><a href="pkpd-link.html#cb53-15" aria-hidden="true"></a><span class="st">  </span>TVCL =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)</span>
+<span id="cb53-16"><a href="pkpd-link.html#cb53-16" aria-hidden="true"></a>  TVV2 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)</span>
+<span id="cb53-17"><a href="pkpd-link.html#cb53-17" aria-hidden="true"></a>  TVV3 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)</span>
+<span id="cb53-18"><a href="pkpd-link.html#cb53-18" aria-hidden="true"></a>  TVQ  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)</span>
+<span id="cb53-19"><a href="pkpd-link.html#cb53-19" aria-hidden="true"></a>  TVKA =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)</span>
+<span id="cb53-20"><a href="pkpd-link.html#cb53-20" aria-hidden="true"></a></span>
+<span id="cb53-21"><a href="pkpd-link.html#cb53-21" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK RANDOM EFFECT <span class="op">----</span></span>
+<span id="cb53-22"><a href="pkpd-link.html#cb53-22" aria-hidden="true"></a><span class="st">  </span>CL   =<span class="st"> </span>TVCL <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb53-23"><a href="pkpd-link.html#cb53-23" aria-hidden="true"></a>  V2   =<span class="st"> </span>TVV2 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb53-24"><a href="pkpd-link.html#cb53-24" aria-hidden="true"></a>  V3   =<span class="st"> </span>TVV3 <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb53-25"><a href="pkpd-link.html#cb53-25" aria-hidden="true"></a>  Q    =<span class="st"> </span>TVQ  <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb53-26"><a href="pkpd-link.html#cb53-26" aria-hidden="true"></a>  KA   =<span class="st"> </span>TVKA <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
+<span id="cb53-27"><a href="pkpd-link.html#cb53-27" aria-hidden="true"></a></span>
+<span id="cb53-28"><a href="pkpd-link.html#cb53-28" aria-hidden="true"></a>;<span class="op">----</span><span class="st"> </span>PK PARAMETER RELATIONSHIP <span class="op">----</span></span>
+<span id="cb53-29"><a href="pkpd-link.html#cb53-29" aria-hidden="true"></a><span class="st">  </span>S2   =<span class="st"> </span>V2</span>
+<span id="cb53-30"><a href="pkpd-link.html#cb53-30" aria-hidden="true"></a>  K23  =<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb53-31"><a href="pkpd-link.html#cb53-31" aria-hidden="true"></a>  K32  =<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb53-32"><a href="pkpd-link.html#cb53-32" aria-hidden="true"></a>  KE   =<span class="st"> </span>CL<span class="op">/</span>V2</span></code></pre></div>
 
 </div>
 <div id="ppp의-데이터셋-및-제어구문" class="section level3" number="18.5.2">
@@ -798,7 +800,7 @@ Fix (as given by the PK model)
 <p>IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이터를 포함한다. 다만, PK 모델을 통해 얻은 개인의 파라미터 추정치(예를 들어, CL, V2, V3, KA)를 바로 데이터셋에 기입해 준다. IPP에 적합한 데이터셋 형태는 아래와 같다(그림 <a href="pkpd-link.html#fig:ipp-dataset">18.10</a>).</p>
 <p>이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어구문 파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 <a href="pkpd-link.html#exm:ipp-control-stream">18.6</a>). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.</p>
 <div class="figure"><span id="fig:ipp-dataset"></span>
-<img src="assets/media-18/image14.png" alt="IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="90%" />
+<img src="assets/media-18/image14.png" alt="IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조" width="100%" />
 <p class="caption">
 그림 18.10: IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조
 </p>
@@ -808,39 +810,39 @@ Fix (as given by the PK model)
 <div class="example">
 <span id="exm:ipp-control-stream" class="example"><strong>코드 18.6  </strong></span>IPP 방법의 제어구문의 예
 </div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="pkpd-link.html#cb56-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_PO_2comp</span>
-<span id="cb56-2"><a href="pkpd-link.html#cb56-2" aria-hidden="true"></a><span class="op">$</span>DATA IPP_S.csv IGNORE=<span class="er">@</span></span>
-<span id="cb56-3"><a href="pkpd-link.html#cb56-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA</span>
-<span id="cb56-4"><a href="pkpd-link.html#cb56-4" aria-hidden="true"></a></span>
-<span id="cb56-5"><a href="pkpd-link.html#cb56-5" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
-<span id="cb56-6"><a href="pkpd-link.html#cb56-6" aria-hidden="true"></a></span>
-<span id="cb56-7"><a href="pkpd-link.html#cb56-7" aria-hidden="true"></a><span class="op">$</span>MODEL NCOMP=<span class="dv">4</span></span>
-<span id="cb56-8"><a href="pkpd-link.html#cb56-8" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
-<span id="cb56-9"><a href="pkpd-link.html#cb56-9" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENT)</span>
-<span id="cb56-10"><a href="pkpd-link.html#cb56-10" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERI)</span>
-<span id="cb56-11"><a href="pkpd-link.html#cb56-11" aria-hidden="true"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
-<span id="cb56-12"><a href="pkpd-link.html#cb56-12" aria-hidden="true"></a> </span>
-<span id="cb56-13"><a href="pkpd-link.html#cb56-13" aria-hidden="true"></a><span class="op">$</span>PK</span>
-<span id="cb56-14"><a href="pkpd-link.html#cb56-14" aria-hidden="true"></a></span>
-<span id="cb56-15"><a href="pkpd-link.html#cb56-15" aria-hidden="true"></a>  CL    =<span class="st"> </span>ICL</span>
-<span id="cb56-16"><a href="pkpd-link.html#cb56-16" aria-hidden="true"></a>  V2    =<span class="st"> </span>IV2</span>
-<span id="cb56-17"><a href="pkpd-link.html#cb56-17" aria-hidden="true"></a>  V3    =<span class="st"> </span>IV3</span>
-<span id="cb56-18"><a href="pkpd-link.html#cb56-18" aria-hidden="true"></a>  Q     =<span class="st"> </span><span class="fl">4.97</span></span>
-<span id="cb56-19"><a href="pkpd-link.html#cb56-19" aria-hidden="true"></a>  KA    =<span class="st"> </span>IKA</span>
-<span id="cb56-20"><a href="pkpd-link.html#cb56-20" aria-hidden="true"></a>  </span>
-<span id="cb56-21"><a href="pkpd-link.html#cb56-21" aria-hidden="true"></a>  S2    =<span class="st"> </span>V2</span>
-<span id="cb56-22"><a href="pkpd-link.html#cb56-22" aria-hidden="true"></a>  </span>
-<span id="cb56-23"><a href="pkpd-link.html#cb56-23" aria-hidden="true"></a>  K23   =<span class="st"> </span>Q<span class="op">/</span>V2</span>
-<span id="cb56-24"><a href="pkpd-link.html#cb56-24" aria-hidden="true"></a>  K32   =<span class="st"> </span>Q<span class="op">/</span>V3</span>
-<span id="cb56-25"><a href="pkpd-link.html#cb56-25" aria-hidden="true"></a>  </span>
-<span id="cb56-26"><a href="pkpd-link.html#cb56-26" aria-hidden="true"></a>  KE    =<span class="st"> </span>CL<span class="op">/</span>V2</span>
-<span id="cb56-27"><a href="pkpd-link.html#cb56-27" aria-hidden="true"></a>  </span>
-<span id="cb56-28"><a href="pkpd-link.html#cb56-28" aria-hidden="true"></a>  EMAX  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb56-29"><a href="pkpd-link.html#cb56-29" aria-hidden="true"></a>  EC50  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb56-30"><a href="pkpd-link.html#cb56-30" aria-hidden="true"></a>  KIN   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb56-31"><a href="pkpd-link.html#cb56-31" aria-hidden="true"></a>  BASE  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb56-32"><a href="pkpd-link.html#cb56-32" aria-hidden="true"></a>  <span class="kw">A_0</span>(<span class="dv">4</span>)=<span class="st"> </span>BASE</span>
-<span id="cb56-33"><a href="pkpd-link.html#cb56-33" aria-hidden="true"></a>  KOUT  =<span class="st"> </span>KIN<span class="op">/</span>BASE</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="pkpd-link.html#cb54-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_PO_2comp</span>
+<span id="cb54-2"><a href="pkpd-link.html#cb54-2" aria-hidden="true"></a><span class="op">$</span>DATA IPP_S.csv IGNORE=<span class="er">@</span></span>
+<span id="cb54-3"><a href="pkpd-link.html#cb54-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT CMT DV MDV SEX AGE WT HT ICL IV2 IV3 IKA</span>
+<span id="cb54-4"><a href="pkpd-link.html#cb54-4" aria-hidden="true"></a></span>
+<span id="cb54-5"><a href="pkpd-link.html#cb54-5" aria-hidden="true"></a><span class="op">$</span>SUBROUTINE ADVAN6 TOL=<span class="dv">3</span></span>
+<span id="cb54-6"><a href="pkpd-link.html#cb54-6" aria-hidden="true"></a></span>
+<span id="cb54-7"><a href="pkpd-link.html#cb54-7" aria-hidden="true"></a><span class="op">$</span>MODEL NCOMP=<span class="dv">4</span></span>
+<span id="cb54-8"><a href="pkpd-link.html#cb54-8" aria-hidden="true"></a>  <span class="kw">COMP</span>(DEPOT, DEFDOSE)</span>
+<span id="cb54-9"><a href="pkpd-link.html#cb54-9" aria-hidden="true"></a>  <span class="kw">COMP</span>(CENT)</span>
+<span id="cb54-10"><a href="pkpd-link.html#cb54-10" aria-hidden="true"></a>  <span class="kw">COMP</span>(PERI)</span>
+<span id="cb54-11"><a href="pkpd-link.html#cb54-11" aria-hidden="true"></a>  <span class="kw">COMP</span>(EFFE, DEFOBS)</span>
+<span id="cb54-12"><a href="pkpd-link.html#cb54-12" aria-hidden="true"></a> </span>
+<span id="cb54-13"><a href="pkpd-link.html#cb54-13" aria-hidden="true"></a><span class="op">$</span>PK</span>
+<span id="cb54-14"><a href="pkpd-link.html#cb54-14" aria-hidden="true"></a></span>
+<span id="cb54-15"><a href="pkpd-link.html#cb54-15" aria-hidden="true"></a>  CL    =<span class="st"> </span>ICL</span>
+<span id="cb54-16"><a href="pkpd-link.html#cb54-16" aria-hidden="true"></a>  V2    =<span class="st"> </span>IV2</span>
+<span id="cb54-17"><a href="pkpd-link.html#cb54-17" aria-hidden="true"></a>  V3    =<span class="st"> </span>IV3</span>
+<span id="cb54-18"><a href="pkpd-link.html#cb54-18" aria-hidden="true"></a>  Q     =<span class="st"> </span><span class="fl">4.97</span></span>
+<span id="cb54-19"><a href="pkpd-link.html#cb54-19" aria-hidden="true"></a>  KA    =<span class="st"> </span>IKA</span>
+<span id="cb54-20"><a href="pkpd-link.html#cb54-20" aria-hidden="true"></a>  </span>
+<span id="cb54-21"><a href="pkpd-link.html#cb54-21" aria-hidden="true"></a>  S2    =<span class="st"> </span>V2</span>
+<span id="cb54-22"><a href="pkpd-link.html#cb54-22" aria-hidden="true"></a>  </span>
+<span id="cb54-23"><a href="pkpd-link.html#cb54-23" aria-hidden="true"></a>  K23   =<span class="st"> </span>Q<span class="op">/</span>V2</span>
+<span id="cb54-24"><a href="pkpd-link.html#cb54-24" aria-hidden="true"></a>  K32   =<span class="st"> </span>Q<span class="op">/</span>V3</span>
+<span id="cb54-25"><a href="pkpd-link.html#cb54-25" aria-hidden="true"></a>  </span>
+<span id="cb54-26"><a href="pkpd-link.html#cb54-26" aria-hidden="true"></a>  KE    =<span class="st"> </span>CL<span class="op">/</span>V2</span>
+<span id="cb54-27"><a href="pkpd-link.html#cb54-27" aria-hidden="true"></a>  </span>
+<span id="cb54-28"><a href="pkpd-link.html#cb54-28" aria-hidden="true"></a>  EMAX  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
+<span id="cb54-29"><a href="pkpd-link.html#cb54-29" aria-hidden="true"></a>  EC50  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
+<span id="cb54-30"><a href="pkpd-link.html#cb54-30" aria-hidden="true"></a>  KIN   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
+<span id="cb54-31"><a href="pkpd-link.html#cb54-31" aria-hidden="true"></a>  BASE  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
+<span id="cb54-32"><a href="pkpd-link.html#cb54-32" aria-hidden="true"></a>  <span class="kw">A_0</span>(<span class="dv">4</span>)=<span class="st"> </span>BASE</span>
+<span id="cb54-33"><a href="pkpd-link.html#cb54-33" aria-hidden="true"></a>  KOUT  =<span class="st"> </span>KIN<span class="op">/</span>BASE</span></code></pre></div>
 </div>
 </div>
 <div id="pk-pd-연결방법적합법-비교" class="section level2" number="18.6">

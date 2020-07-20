@@ -67,10 +67,10 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="47", range="A2:D31") %>%
   rename(`ADVAN TRANS` = 1) %>% 
   kable(booktabs = TRUE, align = "l", escape = FALSE,
         caption = "Standard Pharmacokinetic Models and Parameters") %>% 
-  #column_spec(1, width = "2cm") %>%
-  column_spec(2, width = "1.5cm") %>%
-  column_spec(3, width = "3cm") %>%
-  column_spec(4, width = "6cm") %>%
+  column_spec(1, width = "1.8cm") %>% # ADVAN TRANS
+  column_spec(2, width = "1.5cm") %>% # alternative parameters
+  column_spec(3, width = "4.2cm") %>% # Detail
+  column_spec(4, width = "5cm") %>% # Reparam lines
   collapse_rows(1, latex_hline="major", valign = "top")
 ```
 
@@ -144,11 +144,12 @@ IF (DOSE.EQ.200) F1 = THETA(8)
 
 ```{r basic-additional}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="50", range="B2:E36") %>% 
-  kable(booktabs=TRUE, escape=FALSE, caption = "(ref:basic-additional)") %>% 
-  column_spec(1, width = "2cm") %>%
-  column_spec(2, width = "2.5cm") %>%
-  column_spec(3, width = "1.5cm") %>%
-  column_spec(4, width = "7.0cm") %>%
-  collapse_rows(1:2, valign = "top")
+  kable(booktabs=TRUE, align = "l", escape=FALSE, 		
+		caption = "(ref:basic-additional)") %>% 
+  column_spec(1, width = "1.8cm") %>%
+  column_spec(2, width = "2.0cm") %>%
+  column_spec(3, width = "1.0cm") %>%
+  column_spec(4, width = "8.0cm") %>%
+  collapse_rows(1:2, valign = "top", latex_hline="major")
 ```
 

@@ -10,7 +10,9 @@
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="16-1", range="B2:D10") %>% 
   #kable(booktabs=TRUE, longtable=TRUE, caption = "목적과 표현방식에 따라 분류한 모델 평가 방법") %>% 
   kable(booktabs=TRUE, caption = "목적과 표현방식에 따라 분류한 모델 평가 방법") %>% 
-  column_spec(1:3, width = "3.5cm") %>%
+  column_spec(1, width = "3.5cm") %>%
+  column_spec(2, width = "5.0cm") %>%
+  column_spec(3, width = "3.5cm") %>%
   collapse_rows(c(1,3), valign = "top")
 ```
 

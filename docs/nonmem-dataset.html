@@ -350,6 +350,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.5.5" data-path="delayed-effect.html"><a href="delayed-effect.html#기저값"><i class="fa fa-check"></i><b>20.5.5</b> 기저값</a></li>
 </ul></li>
 </ul></li>
+<li class="appendix"><span><b>별첨</b></span></li>
+<li class="chapter" data-level="A" data-path="별첨-1.html"><a href="별첨-1.html"><i class="fa fa-check"></i><b>A</b> 별첨 1</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
@@ -400,8 +402,189 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_IV_1comp</span>
 <span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>HOdata_IV.csv IGNORE=<span class="er">@</span></span>
 <span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DV MDV SEX AGE WT HT</span></code></pre></div>
-<pre><code>## Error: `path` does not exist: &#39;assets/02-table-01.xlsx&#39;</code></pre>
-<pre><code>## Error in knitr::kable(tab, caption = &quot;제어구문에 적합한 데이터셋의 예&quot;, : object &#39;tab&#39; not found</code></pre>
+<table>
+<caption>
+<span id="tab:tab">표 2.1: </span>제어구문에 적합한 데이터셋의 예
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+TIME
+</th>
+<th style="text-align:left;">
+AMT
+</th>
+<th style="text-align:left;">
+DV
+</th>
+<th style="text-align:right;">
+MDV
+</th>
+<th style="text-align:right;">
+SEX
+</th>
+<th style="text-align:right;">
+AGE
+</th>
+<th style="text-align:right;">
+WT
+</th>
+<th style="text-align:right;">
+HT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+100000
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+184.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+184.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+891.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+184.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+1179.9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+184.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+682.75
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+184.5
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="predpp에-쓰는-데이터셋" class="section level2" number="2.2">
@@ -444,10 +627,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="지정된-데이터-항목-레이블-reserved-labels" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> 지정된 데이터 항목 레이블 Reserved Labels</h2>
-<p>NONMEM 에서는 이미 약속하여 쓰는 데이터 항목의 이름들이 있다. (표 <a href="nonmem-dataset.html#tab:reserveditems">2.1</a>) 대상자 인식 번호, 관측값, 관측값의 존재 유/무, 시간, 용량, 투여속도, 추가 투여 횟수, 투여 간격, 항정 상태 도달 유/무, 구획을 각각 ID, DV, MDV, TIME, AMT, RATE, ADDL, II, SS, CMT 로 명시하여 쓰게 된다.</p>
+<p>NONMEM 에서는 이미 약속하여 쓰는 데이터 항목의 이름들이 있다. (표 <a href="nonmem-dataset.html#tab:reserveditems">2.2</a>) 대상자 인식 번호, 관측값, 관측값의 존재 유/무, 시간, 용량, 투여속도, 추가 투여 횟수, 투여 간격, 항정 상태 도달 유/무, 구획을 각각 ID, DV, MDV, TIME, AMT, RATE, ADDL, II, SS, CMT 로 명시하여 쓰게 된다.</p>
 <table>
 <caption>
-<span id="tab:reserveditems">표 2.1: </span>List of reserved (pre-defined) data item labels
+<span id="tab:reserveditems">표 2.2: </span>List of reserved (pre-defined) data item labels
 </caption>
 <thead>
 <tr>
@@ -619,10 +802,10 @@ Compartment
 <div class="example">
 <span id="exm:date-dataset-chunk" class="example"><strong>코드 2.2  </strong></span>DATE label and its format
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="nonmem-dataset.html#cb4-1" aria-hidden="true"></a>DATE  month day year</span>
-<span id="cb4-2"><a href="nonmem-dataset.html#cb4-2" aria-hidden="true"></a>DAT1  day month year</span>
-<span id="cb4-3"><a href="nonmem-dataset.html#cb4-3" aria-hidden="true"></a>DAT2  year month day</span>
-<span id="cb4-4"><a href="nonmem-dataset.html#cb4-4" aria-hidden="true"></a>DAT3  year day month</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="nonmem-dataset.html#cb2-1" aria-hidden="true"></a>DATE  month day year</span>
+<span id="cb2-2"><a href="nonmem-dataset.html#cb2-2" aria-hidden="true"></a>DAT1  day month year</span>
+<span id="cb2-3"><a href="nonmem-dataset.html#cb2-3" aria-hidden="true"></a>DAT2  year month day</span>
+<span id="cb2-4"><a href="nonmem-dataset.html#cb2-4" aria-hidden="true"></a>DAT3  year day month</span></code></pre></div>
 <p></p>
 </div>
 <div id="amt" class="section level3" number="2.5.6">
@@ -663,10 +846,10 @@ Compartment
 <div id="ss" class="section level3" number="2.5.9">
 <h3><span class="header-section-number">2.5.9</span> SS</h3>
 <p></p>
-<p>SS(steady-state)는 시스템의 항정상태 도달 여부를 나타내며, 투약 레코드 기입에 쓰인다. SS는 0, 1, 또는 2의 값을 가질 수 있다. SS 가 0일 경우 항정상태가 아닌 경우의 투약을 나타내며, SS가 1 인 경우는 항정상태에서의 투약을 나타낸다. SS가 1인 경우 이전 투약기록을 모두 무시하고, 항정상태로 재설정하여 투약 정보를 전달한다. SS가 2인 경우는 항정상태를 나타내지만, 앞의 경우와는 다르게 이전 투약 레코드를 무시하지 않는다. 즉, 이 경우는 시스템을 재설정하지 않는다는 점이 다르다. 따라서 이전 투약 레코드와 현재 항정상태에서의 투약 레코드를 종합하여 시간에 따른 농도 값을 예측한다. 표 <a href="nonmem-dataset.html#tab:dosing-rec">2.2</a>에는 SS를 사용한 다양한 투약 레코드의 예시와 설명이 나와있다.</p>
+<p>SS(steady-state)는 시스템의 항정상태 도달 여부를 나타내며, 투약 레코드 기입에 쓰인다. SS는 0, 1, 또는 2의 값을 가질 수 있다. SS 가 0일 경우 항정상태가 아닌 경우의 투약을 나타내며, SS가 1 인 경우는 항정상태에서의 투약을 나타낸다. SS가 1인 경우 이전 투약기록을 모두 무시하고, 항정상태로 재설정하여 투약 정보를 전달한다. SS가 2인 경우는 항정상태를 나타내지만, 앞의 경우와는 다르게 이전 투약 레코드를 무시하지 않는다. 즉, 이 경우는 시스템을 재설정하지 않는다는 점이 다르다. 따라서 이전 투약 레코드와 현재 항정상태에서의 투약 레코드를 종합하여 시간에 따른 농도 값을 예측한다. 표 <a href="nonmem-dataset.html#tab:dosing-rec">2.3</a>에는 SS를 사용한 다양한 투약 레코드의 예시와 설명이 나와있다.</p>
 <table>
 <caption>
-<span id="tab:dosing-rec">표 2.2: </span>Example of various dosing records and its description
+<span id="tab:dosing-rec">표 2.3: </span>Example of various dosing records and its description
 </caption>
 <thead>
 <tr>
@@ -798,7 +981,7 @@ Steady state, 10mg infusion for 1hr at 64hr 3 additional dose every 8hr
 <h3><span class="header-section-number">2.5.11</span> Covariates</h3>
 <p>Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영향 인자라고 생각할 수 있다. NONMEM은 공변량에 대한 정보가 없으며, 이는 사용자가 공변량 분석(Covariate analysis) 과정을 통해 선정한다. 예를 들어 성별, 나이, 인종, 몸무게, BMI 또는 실험결과값 등을 공변량으로 선정할 수 있으며, 이 정보를 데이터셋에 포함시킬 수 있다. 데이터셋 내의 공변량 정보도 다른 데이터 레코드와 마찬가지로 숫자로 적어주어야 한다. 따라서, 예컨데 남자는 0, 여자는 1과 같이 기입한다.</p>
 <hr />
-<p>이 장은 다음 문헌을 참고하였다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<p>2장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
 
 </div>
 </div>

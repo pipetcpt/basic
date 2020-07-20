@@ -57,10 +57,10 @@ PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>% 
   kable(booktabs=TRUE, caption = "PK-PD 연결 방법들") %>% 
   column_spec(1, width = "2cm") %>%
-  column_spec(2, width = "4cm") %>%
+  column_spec(2, width = "3.5cm") %>%
   column_spec(3, width = "1cm") %>%
   column_spec(4, width = "2cm") %>%
-  column_spec(5, width = "4cm") %>%
+  column_spec(5, width = "3.5cm") %>%
   collapse_rows(1, valign = "top")
 ```
 
@@ -224,7 +224,7 @@ PPP로 PK-PD 모델링 수행 시 PPP\&D 와 마찬가지로 PK 모델을 통해
 
 PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이전 방법에서 CMT 1에 표시된 PK 데이터는 포함되지 않는다(그림 \@ref(fig:PPP-dataset)). 이전 방법에서는 오차 모델이 PK 와 PD에 대하여 각각 들어갔으나, PPP 방법은 이와 다르게 PD 데이터만을 사용하여 PK-PD 모델을 연결하고 PD 모델링을 수행하기 때문에, PD에 대한 오차모델 하나만 사용한다(코드 \@ref(exm:control-ppp)).\index{CMT}
 
-```{r PPP-dataset, fig.cap = "(ref:PPP-dataset)"}
+```{r PPP-dataset, fig.cap = "(ref:PPP-dataset)", out.width='50%'}
 include_graphics("./assets/media-18/image7.png") # fig 8
 ```
 
@@ -391,7 +391,7 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 
 이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어구문 파일에 $PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \@ref(exm:ipp-control-stream)). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 ‘I’를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.\index{\$PK}
 
-```{r ipp-dataset, fig.cap="(ref:ipp-dataset)"}
+```{r ipp-dataset, fig.cap="(ref:ipp-dataset)", out.width='100%'}
 include_graphics("./assets/media-18/image14.png")
 ```
 

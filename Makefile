@@ -42,3 +42,7 @@ del:
 
 check:
 	sh _shell/_check.sh
+
+serve:
+	Rscript -e "bookdown::serve_book()"
+

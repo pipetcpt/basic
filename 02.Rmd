@@ -36,7 +36,7 @@ $INPUT ID TIME AMT DV MDV SEX AGE WT HT
 ```
 
 ```{r tab}
-tab <- readxl::read_excel('assets/02-table-01.xlsx') %>% 
+tab <- readxl::read_excel('data-raw/02-table-01.xlsx') %>% 
   mutate(DV = round(as.numeric(DV), 4)) %>%
   mutate(DV = ifelse(is.na(DV), '.', DV))
 knitr::kable(tab, caption = "제어구문에 적합한 데이터셋의 예", booktabs=TRUE)
@@ -204,4 +204,4 @@ Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영�
 
 ---
 
-이 장은 다음 문헌을 참고하였다. [@kelly; @nonmem]
+2장은 다음 문헌을 전반적으로 참고하여 작성되었다. [@kelly; @nonmem]

@@ -134,7 +134,16 @@
 \usepackage{longtable}
 \usepackage[bf,singlelinecheck=off]{caption}
 
+%\setmainhanjafont{HCR Batang LVT}
 %\setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
+
+%\setmainhanjafont[
+%  BoldFont=*, BoldFeatures={FakeBold=2},
+%  ItalicFont=*, ItalicFeatures={FakeSlant=0.17},
+%  SlantedFont=*, SlantedFeatures={FakeSlant=0.17},
+%  BoldItalicFont=*, BoldItalicFeatures={FakeBold=2,FakeSlant=0.17},
+%  BoldSlantedFont=*, BoldSlantedFeatures={FakeBold=2,FakeSlant=0.17},
+%]{SimSun}
 
 \usepackage{framed,color}
 \definecolor{shadecolor}{RGB}{248,248,248}
@@ -277,7 +286,7 @@
 
 \title{계량약리학 워크샵 - 초급 과정}
 \author{가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)}
-\date{Ver. 20200714}
+\date{Ver. 20200720}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -331,7 +340,7 @@
 
 혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 서울성모병원 임상약리과와 가톨릭대학교 계량약리학연구소(PIPET, Pharmacometrics Institute for Practical Education and Training)는 혼합효과 모델링 기법을 가르치는 PK/PD 워크샵을 2009년도부터 매년 개최해 왔습니다. 시작할 때부터 지금까지 정부나 기업의 어떤 도움이나 간섭없이 사막에 씨앗을 뿌리는 심정으로 매년 그 내용을 양적, 질적으로 보완하면서 basic-1, basic-2, intermediate-1, intermediate-2의 서로 연결되는 각 1.5일의 교육 과정으로 발전시켜 왔습니다. 이제 십여 년간 축적되어온 교육의 경험을 바탕으로, 국내에서 입문자들이 보다 쉽게 이해하고 따라갈 수 있도록 워크샵의 basic-1과 2의 강의, 실습내용을 고스란히 옮겨 담은 교재를 책으로 펴내게 되었습니다. 그리고 이 책에 실린 내용들에 상응하는 워크샵 슬라이드와 실습용 파일들은 웹\footnote{\url{http://pipet.or.kr/board/resources_list.asp}}에서 내려 받으실 수 있습니다. 그 자료들과 이 책으로 함께 공부한다면 따로 워크샵을 듣지 않고도 basic-1과 2의 내용을 따라갈 수 있을 것입니다.
 
-PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실을 타개하기 위해 2016년도에 `비선형혼합효과 모델을 적용한 집단 PK/PD 분석입문'(Joel S Owen, Jill Fiedler-Kelly 공저)을 번역, 출간한 바 있습니다. 여기에 더하여 국내 연구자들의 손으로 직접 집필한 이 PK/PD 모델링 교재까지 나왔으므로, 스스로 공부할 수 있는 인프라가 완비되었다고 자부할 수 있게 되었습니다. 이 책을 사서 열심히 보실 분들 중에는 관련 분야의 대학원생들이 많을 것이므로 책 전체를 인터넷 상에 공개하여 내려 받을 수 있게 하였습니다.\footnote{\url{http://pipet.or.kr/books/basic}} 또한, 종이책이 필요할 경우에도 컬러 인쇄를 유지하며 책값을 낮추기 위해, 기존의 의약학 서적을 내는 이름이 알려진 출판사들을 피하여 인터넷 서점 등에서 print on demand로 주문할 수 있는 개인출판의 방식을 채택하였고 저자에게 돌아가는 저작권료를 전혀 받지 않기로 하였습니다. 각 장의 저자들은 모두 워크샵에서 강사로 활동해 주신 분들로서 자신이 맡은 시간에 해당하는 원고를 작성하였고, 워크샵에 포함된 부분은 아니지만 이론적인 일부분을 보완하기 위해 울산의대의 배균섭 교수님께서 한 장을 맡아 주셨습니다. 모아진 원고들에 대한 정리, 색인, 조판 과정에서 애써 주신 한성필, 한승훈 교수님께 감사드립니다. 지난 십여 년간 저희가 매년 개최해 온 워크샵들에 등록하여 열심히 익히고 질문을 해 주신 식약처와 제약/바이오 업계의 수많은 연구자분들, 전국의 대학원생들께 또한 감사드립니다. 참가자들의 귀중한 질문과 피드백이 없었다면 이 책은 완성될 수 없었을 것입니다.
+PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실을 타개하기 위해 2016년도에 `비선형혼합효과 모델을 적용한 집단 PK/PD 분석입문'(Joel S Owen, Jill Fiedler-Kelly 공저)을 번역, 출간한 바 있습니다. 여기에 더하여 국내 연구자들의 손으로 직접 집필한 이 PK/PD 모델링 교재까지 나왔으므로, 스스로 공부할 수 있는 인프라가 완비되었다고 자부할 수 있게 되었습니다. 이 책을 사서 열심히 보실 분들 중에는 관련 분야의 대학원생들이 많을 것이므로 책 전체를 인터넷 상에 공개하여 내려 받을 수 있게 하였습니다.\footnote{\url{http://pipet.or.kr/books/basic}} 또한, 동시에 출간하는 종이책의 경우에도 컬러 인쇄를 유지하며 책값을 복사비 수준으로 낮추기 위해, 기존의 알려진 출판사들을 피하여 인터넷 서점 등에서 print on demand로 주문할 수 있는 개인출판의 방식을 채택하였습니다. 각 장의 저자들은 모두 워크샵에서 강사로 활동해 주신 분들로서 자신이 맡은 시간에 해당하는 원고를 작성하였고, 워크샵에 포함된 부분은 아니지만 이론적인 일부분을 보완하기 위해 울산의대의 배균섭 교수님께서 한 장을 맡아 주셨습니다. 모아진 원고들에 대한 정리, 색인, 조판 과정에서 애써 주신 한성필, 한승훈 교수님께 감사드립니다. 지난 십여 년간 저희가 매년 개최해 온 워크샵들에 등록하여 열심히 익히고 질문을 해 주신 식약처와 제약/바이오 업계의 수많은 연구자분들, 전국의 대학원생들께 또한 감사드립니다. 참가자들의 귀중한 질문과 피드백이 없었다면 이 책은 완성될 수 없었을 것입니다.
 
 학계의 PK/PD 전문가들이 우리나라의 신약개발에 기여하는 방법 중의 하나는 신약개발의 최전선에서 일하고 있는 제약/바이오 업계의 풀뿌리 연구자들에 대한 지속적인 교육과 훈련 기회를 제공하는 것입니다. 그러한 사명감으로 맨땅에서 시작한 이 코스를 지난 십 수년간 오늘의 수준으로 끌어올릴 수 있게 해 준, PIPET을 거쳐간 귀한 젊은 연구자들의 공헌에 깊이 감사드립니다. 이름난 분들을 초빙해서 청중을 모으고 신문에 내는 행사를 수십 번을 한들, 젊은이들의 앞날을 염려하고, 이들을 제대로 가르치겠다는 의지가 없다면 그저 남들에게 보여주기 위한 이벤트에 지나지 않습니다. 그런 곳에 사람과 돈이 몰릴지는 몰라도, 한편에서는 세상의 각광과는 무관하게 소신대로 제 갈 길을 가는 소수가 있기 마련입니다. 매년 열던 워크샵을 책으로 엮어 내는 이 번거로운 작업도 그런 소신을 실천하는 것이며, 한국의 신약개발을 위해 작은 밑거름이라도 된다면 저자들은 큰 보람을 느낄 것입니다.
 
@@ -500,13 +509,22 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Error: `path` does not exist: 'assets/02-table-01.xlsx'
-\end{verbatim}
+\begin{table}
 
-\begin{verbatim}
-## Error in knitr::kable(tab, caption = "제어구문에 적합한 데이터셋의 예", : object 'tab' not found
-\end{verbatim}
+\caption{\label{tab:tab}제어구문에 적합한 데이터셋의 예}
+\centering
+\begin{tabular}[t]{rrllrrrrr}
+\toprule
+ID & TIME & AMT & DV & MDV & SEX & AGE & WT & HT\\
+\midrule
+1 & 0.00 & 100000 & . & 1 & 1 & 50 & 73.7 & 184.5\\
+1 & 0.00 & . & 0 & 0 & 1 & 50 & 73.7 & 184.5\\
+1 & 0.25 & . & 891.2 & 0 & 1 & 50 & 73.7 & 184.5\\
+1 & 0.50 & . & 1179.9 & 0 & 1 & 50 & 73.7 & 184.5\\
+1 & 0.75 & . & 682.75 & 0 & 1 & 50 & 73.7 & 184.5\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \hypertarget{predppuxc5d0-uxc4f0uxb294-uxb370uxc774uxd130uxc14b}{%
 \section{PREDPP에 쓰는 데이터셋}\label{predppuxc5d0-uxc4f0uxb294-uxb370uxc774uxd130uxc14b}}
@@ -727,7 +745,7 @@ Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-이 장은 다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
+2장은 다음 문헌을 전반적으로 참고하여 작성되었다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
 
 \hypertarget{control-stream}{%
 \chapter{NONMEM 모델 종류 별 제어구문 소개}\label{control-stream}}
@@ -1408,7 +1426,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-3장은 다음 문헌을 참고하였다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
+3장은 다음 문헌을 전반적으로 참고하여 작성되었다. (Owen \protect\hyperlink{ref-kelly}{2014}; Beal \protect\hyperlink{ref-nonmem}{2018})
 
 \hypertarget{specific-advan}{%
 \chapter{특수 ADVAN을 이용한 제어구문의 코딩}\label{specific-advan}}
@@ -1502,19 +1520,19 @@ ADVAN subroutine & TRANS subroutine & Required parameters\\
 
 \caption{\label{tab:standard-pk-models}Standard Pharmacokinetic Models and Parameters}
 \centering
-\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{6cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{5cm}}
 \toprule
 ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 \midrule
  & CL & Clearance & K=CL/V\\
 
-\multirow[t]{-2}{*}{\raggedright\arraybackslash ADVAN1 TRANS2} & V & Volume of distribution & \\
+\multirow[t]{-2}{1.8cm}{\raggedright\arraybackslash ADVAN1 TRANS2} & V & Volume of distribution & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
  & V & Volume of distribution & KA=KA\\
 
-\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN2 TRANS2} & KA & Absorption rate & \\
+\multirow[t]{-3}{1.8cm}{\raggedright\arraybackslash ADVAN2 TRANS2} & KA & Absorption rate & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
@@ -1522,7 +1540,7 @@ ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 
  & Q & Intercompartmental clearance & K21=Q/(VSS-V)\\
 
-\multirow[t]{-4}{*}{\raggedright\arraybackslash ADVAN3 TRANS3} & VSS & Volume of distrlbution at steady state & \\
+\multirow[t]{-4}{1.8cm}{\raggedright\arraybackslash ADVAN3 TRANS3} & VSS & Volume of distrlbution at steady state & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V1\\
 
@@ -1530,19 +1548,19 @@ ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 
  & Q & Intercompartmental clearance & K21=Q/V2\\
 
-\multirow[t]{-4}{*}{\raggedright\arraybackslash ADVAN3 TRANS4} & V2 & Peripheral volume & \\
+\multirow[t]{-4}{1.8cm}{\raggedright\arraybackslash ADVAN3 TRANS4} & V2 & Peripheral volume & \\
 \cmidrule{1-4}
- & AOB & A/B & K21=(AOB*BETA+ALPHA)/(AOB+1)\\
+ & AOB & A/B & K21=(AOB*BETA+ALPHA) / (AOB+1)\\
 
- & ALPHA & alpha & K=ALPHA*BETA/K21\\
+ & ALPHA & alpha & K=ALPHA*BETA /K21\\
 
-\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN3 TRANS5} & BETA & beta & K12=ALPHA+BETA-K21-K\\
+\multirow[t]{-3}{1.8cm}{\raggedright\arraybackslash ADVAN3 TRANS5} & BETA & beta & K12=ALPHA+BETA-K21-K\\
 \cmidrule{1-4}
- & ALPHA & alpha & K=ALPHA*BETA/K21\\
+ & ALPHA & alpha & K=ALPHA*BETA /K21\\
 
  & BETA & beta & K12=ALPHA+BETA-K21-K\\
 
-\multirow[t]{-3}{*}{\raggedright\arraybackslash ADVAN3 TRANS6} & K21 & Rate constant from periph. to central & K21=K21\\
+\multirow[t]{-3}{1.8cm}{\raggedright\arraybackslash ADVAN3 TRANS6} & K21 & Rate constant from periph. to central & K21=K21\\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V\\
 
@@ -1552,7 +1570,7 @@ ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 
  & VSS & Volume of distrlbution at steady state & KA=KA\\
 
-\multirow[t]{-5}{*}{\raggedright\arraybackslash ADVAN4 TRANS3} & KA & Absorption rate & \\
+\multirow[t]{-5}{1.8cm}{\raggedright\arraybackslash ADVAN4 TRANS3} & KA & Absorption rate & \\
 \cmidrule{1-4}
  & CL & Clearance & K=CL/V2\\
 
@@ -1562,7 +1580,7 @@ ADVAN TRANS & Alternative Parameters & Detail & Reparameterization Lines\\
 
  & V3 & Peripheral volume & KA=KA\\
 
-\multirow[t]{-5}{*}{\raggedright\arraybackslash ADVAN4 TRANS4} & KA & Absorption rate & \\
+\multirow[t]{-5}{1.8cm}{\raggedright\arraybackslash ADVAN4 TRANS4} & KA & Absorption rate & \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1650,77 +1668,77 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 
 \caption{\label{tab:basic-additional}Basic and additional pharmacokinetic parameters}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{7.0cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{8.0cm}}
 \toprule
 ADVAN & Compartments & Parameters & Description\\
 \midrule
  &  & K & Rate constant of elimination\\
-\cmidrule{3-4}
+
  &  & S1 & Scale for central compartment\\
-\cmidrule{3-4}
+
  &  & S2 & Scale for output compartment\\
-\cmidrule{3-4}
+
  &  & F1 & Bioavailability for central compartment\\
-\cmidrule{3-4}
-\multirow[t]{-5}{2cm}{\raggedright\arraybackslash ADVAN1} & \multirow[t]{-5}{2.5cm}{\raggedright\arraybackslash 1 = Central, 2 = Output} & F0 & Output Fraction\\
+
+\multirow[t]{-5}{1.8cm}{\raggedright\arraybackslash ADVAN1} & \multirow[t]{-5}{2.0cm}{\raggedright\arraybackslash 1 = Central, 2 = Output} & F0 & Output Fraction\\
 \cmidrule{1-4}
  &  & KA & Absorption rate constant\\
-\cmidrule{3-4}
+
  &  & K & Rate constant of elimination\\
-\cmidrule{3-4}
+
  &  & S1 & Scale for depot compartment\\
-\cmidrule{3-4}
+
  &  & S2 & Scale for central compartment\\
-\cmidrule{3-4}
+
  &  & S3 & Scale for output compartment\\
-\cmidrule{3-4}
+
  &  & F1 & Bioavailability for depot compartment\\
-\cmidrule{3-4}
+
  &  & F2 & Bioavailability for central compartment\\
-\cmidrule{3-4}
-\multirow[t]{-8}{2cm}{\raggedright\arraybackslash ADVAN2} & \multirow[t]{-8}{2.5cm}{\raggedright\arraybackslash 1 = Depot, 2 = Central, 3 = Output} & F0 & Output Fraction\\
+
+\multirow[t]{-8}{1.8cm}{\raggedright\arraybackslash ADVAN2} & \multirow[t]{-8}{2.0cm}{\raggedright\arraybackslash 1 = Depot, 2 = Central, 3 = Output} & F0 & Output Fraction\\
 \cmidrule{1-4}
  &  & K & Rate constant of elimination\\
-\cmidrule{3-4}
+
  &  & K12 & Rate constant from central to peripheral\\
-\cmidrule{3-4}
+
  &  & K21 & Rate constant from peripheral to central\\
-\cmidrule{3-4}
+
  &  & S1 & Scale for central compartment\\
-\cmidrule{3-4}
+
  &  & S2 & Scale for peripheral compartment\\
-\cmidrule{3-4}
+
  &  & S3 & Scale for output compartment\\
-\cmidrule{3-4}
+
  &  & F1 & Bioavailability for central compartment\\
-\cmidrule{3-4}
+
  &  & F2 & Bioavailability for peripheral compartment\\
-\cmidrule{3-4}
-\multirow[t]{-9}{2cm}{\raggedright\arraybackslash ADVAN3} & \multirow[t]{-9}{2.5cm}{\raggedright\arraybackslash 1 = Depot, 2 = Peripheral, 3 = Output} & F0 & Output Fraction\\
+
+\multirow[t]{-9}{1.8cm}{\raggedright\arraybackslash ADVAN3} & \multirow[t]{-9}{2.0cm}{\raggedright\arraybackslash 1 = Depot, 2 = Peripheral, 3 = Output} & F0 & Output Fraction\\
 \cmidrule{1-4}
  &  & KA & Absorption rate constant\\
-\cmidrule{3-4}
+
  &  & K & Rate constant of elimination\\
-\cmidrule{3-4}
+
  &  & K23 & Rate constant from central to Peripheral\\
-\cmidrule{3-4}
+
  &  & K32 & Rate constant from peripheral to central\\
-\cmidrule{3-4}
+
  &  & S1 & Scale for depot compartment\\
-\cmidrule{3-4}
+
  &  & S2 & Scale for central compartment\\
-\cmidrule{3-4}
+
  &  & S3 & Scale for Peripheral compartment\\
-\cmidrule{3-4}
+
  &  & S4 & Scale for output compartment\\
-\cmidrule{3-4}
+
  &  & F1 & Bioavailability for depot compartment\\
-\cmidrule{3-4}
+
  &  & F2 & Bioavailability for central compartment\\
-\cmidrule{3-4}
+
  &  & F3 & Bioavailability for Peripheral compartment\\
-\cmidrule{3-4}
-\multirow[t]{-12}{2cm}{\raggedright\arraybackslash ADVAN4} & \multirow[t]{-12}{2.5cm}{\raggedright\arraybackslash 1 = Depot, 2= Central, 3 = Peripheral, 4 = Output} & F0 & Output Fractlon\\
+
+\multirow[t]{-12}{1.8cm}{\raggedright\arraybackslash ADVAN4} & \multirow[t]{-12}{2.0cm}{\raggedright\arraybackslash 1 = Depot, 2= Central, 3 = Peripheral, 4 = Output} & F0 & Output Fractlon\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1770,7 +1788,7 @@ ADVAN13 (General Nonlinear Kinetics using LSODA)\\
 
 \caption{\label{tab:advan-lin-property}일반 선형 ADVAN 의 종류 및 특징 (Beal \protect\hyperlink{ref-nonmem}{2018})}
 \centering
-\begin{tabular}[t]{l>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{3cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}}
 \toprule
 Reason & ADVAN 5 & ADVAN 7\\
 \midrule
@@ -1788,7 +1806,7 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-02} \caption{일반 선형 ADVAN을 이용한 코드 예시}\label{fig:advan-example}
+\includegraphics[width=1\linewidth]{./figures/05-fig-02-redraw} \caption{일반 선형 ADVAN을 이용한 코드 예시}\label{fig:advan-example}
 \end{figure}
 
 일반 선형 ADVAN의 코드를 보면 \$SUBROUTINE 구문을 통해 어떤 ADVAN을 사용할 지 설정한 후, \$MODEL 구문에서 모델에서 사용할 구획의 수와 특성을 정의한다. 특수 ADVAN 과 달리 999개까지 사용자가 원하는 만큼 구획의 수를 설정할 수 있다. \$PK구문을 이용하여 각 구획 간 물질의 이동 관계를 설정하고 약동학 파라미터(ex CL, V)와의 관계도 정의할 수 있다.\index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}
@@ -1825,7 +1843,7 @@ Method & Runge-Kutta method & Gear method\\
 
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-04} \caption{일반 비선형 ADVAN을 이용한 코드 예시}\label{fig:nonlin-advan-code-example}
+\includegraphics[width=1\linewidth]{./figures/05-fig-04-redraw} \caption{일반 비선형 ADVAN을 이용한 코드 예시}\label{fig:nonlin-advan-code-example}
 \end{figure}
 
 일반 비선형 ADVAN의 코드를 보면 앞에서 살펴본 일반 선형 ADVAN과 유사한 구조를 보이나, \$PK에 이어 미분방정식을 표현하는 \$DES 구문이 추가된다.\index{\$DES}\index{\$PK}
@@ -1835,13 +1853,6 @@ Method & Runge-Kutta method & Gear method\\
 \$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 항목(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, ``DEPOT'' 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, ``DEPOT''을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 ``CENTRAL'' 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, ``CENTRAL'' 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다 (Beal \protect\hyperlink{ref-nonmem}{2018}). 데이터셋에 CMT 항목을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.\index{\$MODEL}\index{CMT}\index{DEFDOS}\index{DEFOBS}\index{FO}
 
 마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 \$DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 \texttt{DADT(1)=\ -KA\ *\ A(1)}으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. \$DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 \texttt{T} 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.\index{\$DES}\index{DADT(i)}\index{TIME}
-
-
-
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{./figures/05-fig-05} \caption{\$DES 구문 적용을 위한 코드 예시\index{\$DES}}\label{fig:des-example}
-\end{figure}
-
 \begin{equation}
 \begin{split}
 \frac{dA_1}{dt} & = -A(1) \cdot k_a \\
@@ -1850,6 +1861,12 @@ Method & Runge-Kutta method & Gear method\\
 \end{split}
 \label{eq:2comp-oral}
 \end{equation}
+
+
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{./figures/05-fig-05} \caption{\$DES 구문 적용을 위한 코드 예시\index{\$DES}}\label{fig:des-example}
+\end{figure}
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{figures/05-fig-06} \caption{2구획 경구모델}\label{fig:2comp-oral}
@@ -2355,15 +2372,23 @@ NONMEM을 실행시키면, 다양한 보고파일들이 도출되는데, 본 장
 
 실행결과 파일의 내용을 구체적으로 살펴보면 아래와 같다.\index{실행결과 파일 / output files}\index{output files / 실행결과 파일}
 
-\includegraphics{./assets/media-10/image1.png}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{assets/media-10/image1} \caption{실행결과 파일의 82-102행}\label{fig:image-01}
+\end{figure}
 
-\includegraphics{./assets/media-10/image2.png}
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{assets/media-10/image2} \caption{실행결과 파일의 103행-137행}\label{fig:image-02}
+\end{figure}
 
-\includegraphics{./assets/media-10/image3.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image3} \caption{실행결과 파일의 138행-164행}\label{fig:image-03}
+\end{figure}
 
 초반부 내용은 해당 부분에 쓰여진 설명을 참고하도록 하고, 154행부터 보면 APPEND, PRINT, HEADER 라고 쓰여진 부분이 있는데, 이는 \$TABLE 블록에서 표 파일을 만들 때 준 옵션에 대한 설명이다. APPEND는 표 파일에 DV, PRED, RES, WRES 부분을 추가하겠다는 옵션으로 NOAPPEND라고 쓰면 표 파일에 이부분이 추가되지 않는다. PRINT는 표 파일의 내용을 실행결과(OUTPUT) 파일 내에 출력하겠다는 의미로, NOPRINT를 사용하면 출력되지 않는다. HEADER는 열이름(ID, TIME, AMT 등)을 주는 경우에 사용하여, NOHEADER라고 쓰면 열이름이 표시되지 않고, ONEHEADER라고 쓰면 표 파일의 첫번째 행에 열이름이 표시된다. 각 표들을 엑셀 등으로 실제로 열어서 옵션이 어떻게 적용되고 있는지 살펴보면 이해가 쉽다.\index{dependent variable(DV) / 종속변수(DV)}\index{\$TABLE}\index{AMT}\index{ID}\index{NOAPPEND}\index{NOHEADER}\index{NOPRINT}\index{ONEHEADER}\index{PRED}\index{RES}\index{TIME}\index{WRES}
 
-\includegraphics{./assets/media-10/image4.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image4} \caption{실행결과 파일의 185행-212행}\label{fig:image-04}
+\end{figure}
 
 185행부터는 모델의 구조(ADVAN4)와 그 구조를 설명하기 위해 사용된 파라미터(TRANS4)에 대해 나와있으며, 195\textasciitilde200행에는 현재 모델 구조에서의 각 구획 별 설명이 나와있다. ADVAN4에서 `DOSE'에 대한 구획은 1구획, `OBSERVATION'은 2구획이 기본값으로 되어있으며, 1\textasciitilde3구획까지 모두 `DOSE'가 허용된다고 되어 있다(DOSE ALLOWED: YES). 이 때문에 정맥투여와 경구투여 데이터가 같이 있는 2구획 모델의 경우 ADVAN4를 사용하여 하나의 모델로 설명할 수 있는데, 이 때는 투여 경로를 명시해주어야 하므로 CMT를 데이터셋에 추가해야 한다. 표 \ref{tab:basic-data-format}와 같이, 경구투여인 경우 CMT를 1로, 정맥투여인 경우 CMT를 2로 주면 된다.\index{ADVAN4}\index{CMT}\index{TRANS}
 
@@ -2390,9 +2415,13 @@ ID & TIME & AMT & DV & MDV & CMT\\
 \end{tabular}
 \end{table}
 
-\includegraphics{./assets/media-10/image5.png}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{assets/media-10/image5} \caption{실행결과 파일의 227행-238행}\label{fig:image-05}
+\end{figure}
 
-\includegraphics{./assets/media-10/image6.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image6} \caption{실행결과 파일의 271행-290행}\label{fig:image-06}
+\end{figure}
 
 227행부터는 \$ESTIMATION 구문에 대해 설명해주는 부분으로, 사용자가 준 옵션에 대한 설명이 나와있다. 아래와 같이 옵션을 주면, 위의 결과가 나오게 된다.\index{\$ESTIMATION (\$EST)}
 
@@ -2406,15 +2435,21 @@ ID & TIME & AMT & DV & MDV & CMT\\
 
 MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추정과정이 무한대로 지속되는 것을 방지하기 위해 주는 옵션이다. 0으로 주면 파라미터의 추정을 진행하지 않는다. SIG는 SIGDIGITS (SIGDIG)의 약자로, NONMEM에서 최소화를 진행할 때 파라미터의 유효자리 숫자를 의미하며, 기본값은 3으로 되어있다. 원하는 유효자리의 결과를 얻지 못하여 최소화에 실패하는 경우, SIG=2 등으로 변경하면 성공하는 경우가 많다. PRINT 옵션은 추정과정의 내용을 되풀이 간격마다 찍도록 해주는 옵션으로 0번째와 마지막은 기본적으로 인쇄된다. \texttt{METHOD=0} 은 1차 추정법 (first-order method, FO)이고, \texttt{METHOD=1}은 1차 조건부 추정법(first-order conditional estimation, FOCE)이며, INTER는 INTERACTION의 약자로, ETA-EPS 간의 상호작용을 감안하도록 해주는 옵션이다.\index{되풀이 / iteration}\index{iteration / 되풀이}\index{조건부 추정법 / conditional estimation method}\index{conditional estimation method / 조건부 추정법}\index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{FOCE}\index{FO}\index{INTERACTION}\index{MAXEVAL}\index{SIGDIGITS (SIGDIG)}
 
-\includegraphics{./assets/media-10/image7.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image7} \caption{실행결과 파일의 292행-311행}\label{fig:image-07}
+\end{figure}
 
 293행을 살펴보면, \texttt{MINIMIZATION\ SUCCESSFUL}이 나와있는데, 이는 추정과정이 성공적으로 끝났다는 것으로 목적함수의 값이 성공적으로 최소화 된 것을 의미한다. 297행부터는 ETABAR에 대한 설명으로 ETABAR는 ETA 값들의 평균을 의미한다. NONMEM에서 ETA는 평균이 0이고 분산이 ω\textsubscript{2} 인 표준정규분포를 따른다고 가정하는데, 이 가정에 대한 통계적 유의성을 확인하는 부분이다. ``ETA의 평균은 0이다'' 라는 귀무가설이 주어져있고, 0과 가까운 매우 작은값의 ETABAR와, 이에대한 P-value가 제시되어 있다. 위의 예시에서는 P-value가 모두 0.05이상으로 귀무가설을 기각하지 않으므로(유의수준 0.05) 가정이 틀리지 않음을 알수 있다. 만약 P-value가 0.05보다 작은값이 나오면 가정이 틀렸다는 얘기로, 해당 ETA(의 분산)값은 모델에 반영될수 없으므로 0으로 고정해야 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{ETABAR}\index{SS}
 
 306행에는 ETA shrinkage(\%) 가 나오는데, 보통 이 수치가 30\% 이상이면 파라미터가 너무 많은상황(over-parametrization)이 되었다는 의미로, 모델을 단순화 시키는 작업이 필요하다. 즉 모델에서 추정해야할 파라미터의 수를 줄여야 한다는 것으로, 해당 ETA 값을 0으로 고정하는 것이 그중 하나의 방법이다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 
-\includegraphics{./assets/media-10/image8.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image7} \caption{실행결과 파일의 333행-361행}\label{fig:image-08}
+\end{figure}
 
-\includegraphics{./assets/media-10/image9.png}
+\begin{figure}
+\includegraphics[width=1\linewidth]{assets/media-10/image7} \caption{실행결과 파일의 365행-393행}\label{fig:image-09}
+\end{figure}
 
 345행부터는 목적함수(OFV)의 값과 THETA, ETA의 최종 파라미터 추정치를 확인할 수 있으며, TH1 (THETA 1)의 결과 1.02E+01 은 10.2 라고 생각하면 된다. ETA 부분에 주어지는 값들은 ω\textsubscript{2} 값으로, 행렬 형태로 제시된다. 예시에서 ETA1은 CL의 ETA의 ω\textsubscript{2}, ETA2는 V2의 ETA의 ω\textsubscript{2} 값이며, 그 사이의 값은 두 파라미터의 공분산 값이다. 현재 모델에서는 공분산을 추정하지 않았기 때문에 0으로 나온 것이며, 두 파라미터 사이에 상관관계가 있다고 판단되면, \$OMEGA 부분에 0.04 0.02 0.04 이런 식으로 초기값을 주어 추정하게 하면 된다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{\$OMEGA}
 
@@ -3992,7 +4027,7 @@ EPSILON shrinkage의 결과로 다음과 같은 현상들이 나타날 수 있�
 
 \caption{\label{tab:purpose-eval}목적과 표현방식에 따라 분류한 모델 평가 방법}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{5.0cm}>{\raggedright\arraybackslash}p{3.5cm}}
 \toprule
 Purpose & Numerical & Visual\\
 \midrule
@@ -4170,12 +4205,12 @@ PD 데이터는 혈장에서 측정되는 바이오마커 농도처럼 연속형
 
 \caption{\label{tab:pd-data-property}PD 데이터의 종류}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{4.5cm}}
 \toprule
 PD 데이터의 종류 & 특징 & 모델링할 때의 주의점\\
 \midrule
 Continuous response (interval or ratio) & 관찰값들의 크기가 비교 가능하고 일정한 간격 단위로 측정되므로 Mean, SD 등으로 요약 가능\newline 1)간격척도(Interval scale): 체온 등(절대적 0의 값 없음)\newline 2)비척도(Ratio scale): 체중, 혈압, 농도 등 (절대적 0의 값 있음) & IPRED나 PRED 가 DV 값 자체와 얼마나 비슷한지가 중요(가장 흔히 쓰는 방식)\\
-Binary / categorical response & 이진(binary): 증상의 유/무 등\newline 3가지 이상 범주(categorical): \newline -Simple categorical: 인종, 혈액형 등\newline -Ordered categorical: 병기(stage), VAS(visual analog scale)\newline 관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\newline Mean, SD 등으로 나타내기 부적절 (! ?) & 관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음.\\
+Binary / categorical response & 이진(binary): 증상의 유/무 등\newline 3가지 이상 범주(categorical): \newline -Simple categorical: 인종, 혈액형 등\newline -Ordered categorical: 병기(stage), VAS(visual analog scale)\newline 관찰값들 간의 간격의 크기를 알 수 없어 비교 불가\newline Mean, SD 등으로 나타내기 부적절 & 관찰된 DV 값 자체가 아닌 그 값이 관찰될 확률에 대해 평가하므로 \$ESTIMATION 블록에서 LIKELIHOOD 나 -2LL 옵션써서 해야 함. LAPLACIAN 방법을 흔히 씀. 그러므로 PRED 값은 해당 시점의 DV 값이 나올 확률을 의미하고, IPRED는 따로 구할 수 없음.\\
 Count data & 질병의 발현을 숫자로 셀 수 있을 때 (뇌전증의 발작 횟수 등) & \\
 Time to event data & 예) 수면유도제의 효과: 잠들 때까지의 시간 & \\
 \bottomrule
@@ -4185,7 +4220,7 @@ Time to event data & 예) 수면유도제의 효과: 잠들 때까지의 시간 
 PD 데이터만이 갖는 또 다른 특징은 약동학 데이터와는 달리 약을 주기 전에도 이미 측정할 수 있는 값이란 사실이다. 약을 주고 나서 그 값이 약효에 의해 변동되지만, 투약하지 않은 상태에서도 기저값(baseline)이 존재하고 그 기저값은 시간에 따라 일정한 주기를 가지고 변동되거나, 질병의 진행에 따라 증가 또는 감소할 수 있다. 그러므로 측정되는 약력학적 데이터는 약과 무관하게 환자의 내인적 요인으로 변동에 약에 의한 영향이 더해진 값이며, 온전히 약의 영향만을 평가하려면, 약을 쓰지 않은 상태의 환자(위약군)에서 측정된 약력학적 데이터와 비교하여야 한다.(그림 \ref{fig:pd-time-course})
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{figures/17-fig-02} \caption{PD의 시간에 따른 변화의 사례 (Primary Psychiatry \protect\hyperlink{ref-dementia}{2013})}\label{fig:pd-time-course}
+\includegraphics[width=1\linewidth]{figures/17-fig-02} \caption{PD의 시간에 따른 변화의 사례 (Primary Psychiatry \protect\hyperlink{ref-dementia}{2013})}\label{fig:pd-time-course}
 \end{figure}
 
 
@@ -4287,7 +4322,7 @@ PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적
 
 \caption{\label{tab:pk-pd-link-methods}PK-PD 연결 방법들}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{4cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}}
 \toprule
 분석 & PK-PD
 연결 방법 & PK data & Population PK
@@ -4478,7 +4513,7 @@ PPP로 PK-PD 모델링 수행 시 PPP\&D 와 마찬가지로 PK 모델을 통해
 PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이전 방법에서 CMT 1에 표시된 PK 데이터는 포함되지 않는다(그림 \ref{fig:PPP-dataset}). 이전 방법에서는 오차 모델이 PK 와 PD에 대하여 각각 들어갔으나, PPP 방법은 이와 다르게 PD 데이터만을 사용하여 PK-PD 모델을 연결하고 PD 모델링을 수행하기 때문에, PD에 대한 오차모델 하나만 사용한다(코드 \ref{exm:control-ppp}).\index{CMT}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-18/image7} \caption{Example of dataset for PPP}\label{fig:PPP-dataset}
+\includegraphics[width=0.5\linewidth]{./assets/media-18/image7} \caption{Example of dataset for PPP}\label{fig:PPP-dataset}
 \end{figure}
 
 
@@ -4652,7 +4687,7 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 이 방법으로 PK-PD 모델링을 수행시, PK 파라미터는 각 개인의 값으로 고정하며, 이를 제어구문 파일에 \$PK 내에 ICL, IV2, IV3, IKA 와 같이 나타낸다(코드 \ref{exm:ipp-control-stream}). 이와 같이 파라미터 이름을 명명한 이유는 NONMEM이 사용하는 기존 PK 파라미터 이름들과 구분지음으로써 계산 시 오류가 나타나지 않도록 하기 위함이다. 이 경우, 임의로 individual의 첫 자인 `I'를 파라미터 이름 앞에 붙여주었으며, 이외의 다른 이름으로도 표기가 가능하다 (예를 들어, ACL, AV2, AV3, AKA 등). 오차모델은 IPP에서는 PPP에서와 마찬가지로 PD 데이터만을 가지고 모델링을 수행하는 단계이기 때문에 PD에 대한 오차모델만 존재한다.\index{\$PK}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{./assets/media-18/image14} \caption{IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조}\label{fig:ipp-dataset}
+\includegraphics[width=1\linewidth]{./assets/media-18/image14} \caption{IPP 방법 쓸 때의 PK-PD 데이터셋의 기본 구조}\label{fig:ipp-dataset}
 \end{figure}
 
 
@@ -5284,6 +5319,281 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 이러한 기저값은 Kin, Kout과 달리 관찰이 가능한 경우가 많기 때문에 모델링 과정에서 초기값을 설정하는데 유용할 수 있다.
 
 \backmatter
+
+\hypertarget{appendix-uxbcc4uxcca8}{%
+\appendix \addcontentsline{toc}{chapter}{\appendixname}}
+
+
+\hypertarget{uxbcc4uxcca8-1}{%
+\chapter{별첨 1}\label{uxbcc4uxcca8-1}}
+
+14장 NONMEM 아웃풋 파일
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                            }\NormalTok{STANDARD ERROR OF ESTIMATE                          }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\NormalTok{THETA }\OperatorTok{{-}}\StringTok{ }\NormalTok{VECTOR OF FIXED EFFECTS PARAMETERS   }\OperatorTok{**}\ErrorTok{*******}\StringTok{                                                 }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{        }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}                                                                       
+                                                                                                       
+        \FloatTok{6.41E{-}01}  \FloatTok{1.68E+00}  \FloatTok{2.31E{-}02}                                                                   
+                                                                                                       
+                                                                                                       
+                                                                                                       
+\NormalTok{OMEGA }\OperatorTok{{-}}\StringTok{ }\NormalTok{COV MATRIX FOR RANDOM EFFECTS }\OperatorTok{{-}}\StringTok{ }\NormalTok{ETAS  }\OperatorTok{**}\ErrorTok{******}\StringTok{                                                 }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{        }\NormalTok{ETA1      ETA2      ETA3                                                                       }
+                                                                                                       
+\NormalTok{ETA1    }\FloatTok{4.21E{-}01}                                                                                       
+                                                                                                       
+\NormalTok{ETA2    }\FloatTok{8.22E{-}02}  \FloatTok{1.98E{-}02}                                                                             
+                                                                                                       
+\NormalTok{ETA3    }\FloatTok{3.40E{-}01}  \FloatTok{2.30E{-}02}  \FloatTok{2.89E{-}01}                                                                   
+                                                                                                       
+                                                                                                       
+                                                                                                       
+\NormalTok{SIGMA }\OperatorTok{{-}}\StringTok{ }\NormalTok{COV MATRIX FOR RANDOM EFFECTS }\OperatorTok{{-}}\StringTok{ }\NormalTok{EPSILONS  }\OperatorTok{**}\ErrorTok{**}\StringTok{                                                 }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{        }\NormalTok{EPS1      EPS2                                                                                 }
+                                                                                                       
+\NormalTok{EPS1    }\FloatTok{3.58E{-}03}                                                                                       
+                                                                                                       
+\NormalTok{EPS2   .........  }\FloatTok{3.21E{-}02}                                                                             
+                                                                                                       
+                                                                                                       
+                                                                                                       
+                                                                                                       
+\NormalTok{OMEGA }\OperatorTok{{-}}\StringTok{ }\NormalTok{CORR MATRIX FOR RANDOM EFFECTS }\OperatorTok{{-}}\StringTok{ }\NormalTok{ETAS  }\OperatorTok{**}\ErrorTok{*****}\StringTok{                                                 }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{        }\NormalTok{ETA1      ETA2      ETA3                                                                       }
+                                                                                                       
+\NormalTok{ETA1    }\FloatTok{1.92E{-}01}                                                                                       
+                                                                                                       
+\NormalTok{ETA2    }\FloatTok{1.78E{-}01}  \FloatTok{5.59E{-}02}                                                                             
+                                                                                                       
+\NormalTok{ETA3    }\FloatTok{2.10E{-}01}  \FloatTok{1.99E{-}01}  \FloatTok{2.89E{-}01}                                                                   
+                                                                                                       
+                                                                                                       
+                                                                                                       
+\NormalTok{SIGMA }\OperatorTok{{-}}\StringTok{ }\NormalTok{CORR MATRIX FOR RANDOM EFFECTS }\OperatorTok{{-}}\StringTok{ }\NormalTok{EPSILONS  }\OperatorTok{**}\ErrorTok{*}\StringTok{                                                 }
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{        }\NormalTok{EPS1      EPS2                                                                                 }
+                                                                                                       
+\NormalTok{EPS1    }\FloatTok{1.63E{-}02}                                                                                       
+                                                                                                       
+\NormalTok{EPS2   .........  }\FloatTok{6.88E{-}02}                                                                             
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                          }\NormalTok{COVARIANCE MATRIX OF ESTIMATE                         }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{           }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}\NormalTok{      OM11      OM12      OM13      OM22      OM23      OM33      SG}
+                                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{1}    \FloatTok{4.11E{-}01}                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{2}    \FloatTok{3.39E{-}01}  \FloatTok{2.84E+00}                                                                             
+                                                                                                       
+\NormalTok{TH }\DecValTok{3}    \FloatTok{5.75E{-}03}  \FloatTok{5.04E{-}03}  \FloatTok{5.32E{-}04}                                                                   
+                                                                                                       
+\NormalTok{OM11    }\FloatTok{2.06E{-}01}  \FloatTok{3.37E{-}01}  \FloatTok{1.63E{-}03}  \FloatTok{1.77E{-}01}                                                         
+                                                                                                       
+\NormalTok{OM12    }\FloatTok{2.01E{-}03}  \FloatTok{3.48E{-}02} \FloatTok{{-}1.04E{-}03}  \FloatTok{1.95E{-}02}  \FloatTok{6.75E{-}03}                                               
+                                                                                                       
+\NormalTok{OM13    }\FloatTok{1.22E{-}01}  \FloatTok{1.49E{-}01}  \FloatTok{7.11E{-}03}  \FloatTok{5.75E{-}02} \FloatTok{{-}1.01E{-}02}  \FloatTok{1.16E{-}01}                                     
+                                                                                                       
+\NormalTok{OM22   }\FloatTok{{-}2.19E{-}03}  \FloatTok{1.28E{-}02} \FloatTok{{-}2.50E{-}04}  \FloatTok{3.21E{-}03}  \FloatTok{1.50E{-}03} \FloatTok{{-}2.83E{-}03}  \FloatTok{3.92E{-}04}                           
+                                                                                                       
+\NormalTok{OM23    }\FloatTok{1.00E{-}03}  \FloatTok{2.38E{-}02}  \FloatTok{6.31E{-}05}  \FloatTok{4.21E{-}03}  \FloatTok{8.56E{-}04}  \FloatTok{3.12E{-}03}  \FloatTok{2.32E{-}04}  \FloatTok{5.31E{-}04}                 
+                                                                                                       
+\NormalTok{OM33    }\FloatTok{6.70E{-}02}  \FloatTok{5.74E{-}02}  \FloatTok{6.22E{-}03}  \FloatTok{1.80E{-}02} \FloatTok{{-}1.31E{-}02}  \FloatTok{9.40E{-}02} \FloatTok{{-}3.27E{-}03}  \FloatTok{1.87E{-}03}  \FloatTok{8.38E{-}02}       
+                                                                                                       
+\NormalTok{SG11    }\FloatTok{1.05E{-}03}  \FloatTok{1.81E{-}03}  \FloatTok{5.81E{-}05}  \FloatTok{5.14E{-}04} \FloatTok{{-}7.52E{-}05}  \FloatTok{9.77E{-}04} \FloatTok{{-}2.05E{-}05}  \FloatTok{2.79E{-}05}  \FloatTok{8.05E{-}04}  \FloatTok{1.28}\NormalTok{E}
+                                                                                                       
+\NormalTok{SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......}
+                                                                                                       
+\NormalTok{SG22   }\FloatTok{{-}4.97E{-}03} \FloatTok{{-}9.95E{-}03} \FloatTok{{-}4.79E{-}04} \FloatTok{{-}1.01E{-}03}  \FloatTok{9.53E{-}04} \FloatTok{{-}3.86E{-}03}  \FloatTok{1.81E{-}04}  \FloatTok{2.20E{-}04} \FloatTok{{-}3.40E{-}03} \FloatTok{{-}2.82}\NormalTok{E}
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                          }\NormalTok{CORRELATION MATRIX OF ESTIMATE                        }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{           }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}\NormalTok{      OM11      OM12      OM13      OM22      OM23      OM33      SG}
+                                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{1}    \FloatTok{6.41E{-}01}                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{2}    \FloatTok{3.14E{-}01}  \FloatTok{1.68E+00}                                                                             
+                                                                                                       
+\NormalTok{TH }\DecValTok{3}    \FloatTok{3.89E{-}01}  \FloatTok{1.30E{-}01}  \FloatTok{2.31E{-}02}                                                                   
+                                                                                                       
+\NormalTok{OM11    }\FloatTok{7.63E{-}01}  \FloatTok{4.76E{-}01}  \FloatTok{1.68E{-}01}  \FloatTok{4.21E{-}01}                                                         
+                                                                                                       
+\NormalTok{OM12    }\FloatTok{3.81E{-}02}  \FloatTok{2.52E{-}01} \FloatTok{{-}5.49E{-}01}  \FloatTok{5.64E{-}01}  \FloatTok{8.22E{-}02}                                               
+                                                                                                       
+\NormalTok{OM13    }\FloatTok{5.57E{-}01}  \FloatTok{2.60E{-}01}  \FloatTok{9.06E{-}01}  \FloatTok{4.02E{-}01} \FloatTok{{-}3.61E{-}01}  \FloatTok{3.40E{-}01}                                     
+                                                                                                       
+\NormalTok{OM22   }\FloatTok{{-}1.73E{-}01}  \FloatTok{3.83E{-}01} \FloatTok{{-}5.48E{-}01}  \FloatTok{3.85E{-}01}  \FloatTok{9.24E{-}01} \FloatTok{{-}4.19E{-}01}  \FloatTok{1.98E{-}02}                           
+                                                                                                       
+\NormalTok{OM23    }\FloatTok{6.79E{-}02}  \FloatTok{6.14E{-}01}  \FloatTok{1.19E{-}01}  \FloatTok{4.35E{-}01}  \FloatTok{4.52E{-}01}  \FloatTok{3.98E{-}01}  \FloatTok{5.09E{-}01}  \FloatTok{2.30E{-}02}                 
+                                                                                                       
+\NormalTok{OM33    }\FloatTok{3.61E{-}01}  \FloatTok{1.18E{-}01}  \FloatTok{9.32E{-}01}  \FloatTok{1.48E{-}01} \FloatTok{{-}5.50E{-}01}  \FloatTok{9.54E{-}01} \FloatTok{{-}5.70E{-}01}  \FloatTok{2.80E{-}01}  \FloatTok{2.89E{-}01}       
+                                                                                                       
+\NormalTok{SG11    }\FloatTok{4.58E{-}01}  \FloatTok{3.00E{-}01}  \FloatTok{7.04E{-}01}  \FloatTok{3.42E{-}01} \FloatTok{{-}2.56E{-}01}  \FloatTok{8.02E{-}01} \FloatTok{{-}2.90E{-}01}  \FloatTok{3.38E{-}01}  \FloatTok{7.78E{-}01}  \FloatTok{3.58}\NormalTok{E}
+                                                                                                       
+\NormalTok{SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......}
+                                                                                                       
+\NormalTok{SG22   }\FloatTok{{-}2.42E{-}01} \FloatTok{{-}1.84E{-}01} \FloatTok{{-}6.47E{-}01} \FloatTok{{-}7.52E{-}02}  \FloatTok{3.61E{-}01} \FloatTok{{-}3.54E{-}01}  \FloatTok{2.84E{-}01}  \FloatTok{2.97E{-}01} \FloatTok{{-}3.66E{-}01} \FloatTok{{-}2.46}\NormalTok{E}
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                      }\NormalTok{INVERSE COVARIANCE MATRIX OF ESTIMATE                     }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{           }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}\NormalTok{      OM11      OM12      OM13      OM22      OM23      OM33      SG}
+                                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{1}    \FloatTok{1.06E+02}                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{2}   \FloatTok{{-}6.86E+01}  \FloatTok{5.80E+01}                                                                             
+                                                                                                       
+\NormalTok{TH }\DecValTok{3}    \FloatTok{6.45E+03} \FloatTok{{-}4.88E+03}  \FloatTok{5.90E+05}                                                                   
+                                                                                                       
+\NormalTok{OM11    }\FloatTok{3.36E+02} \FloatTok{{-}3.02E+02}  \FloatTok{2.70E+04}  \FloatTok{1.68E+03}                                                         
+                                                                                                       
+\NormalTok{OM12   }\FloatTok{{-}2.55E+03}  \FloatTok{2.18E+03} \FloatTok{{-}1.89E+05} \FloatTok{{-}1.17E+04}  \FloatTok{8.48E+04}                                               
+                                                                                                       
+\NormalTok{OM13   }\FloatTok{{-}1.20E+03}  \FloatTok{9.40E+02} \FloatTok{{-}9.03E+04} \FloatTok{{-}5.09E+03}  \FloatTok{3.58E+04}  \FloatTok{1.67E+04}                                     
+                                                                                                       
+\NormalTok{OM22   }\FloatTok{{-}3.88E+02}  \FloatTok{5.71E+02} \FloatTok{{-}6.62E+04} \FloatTok{{-}3.41E+03}  \FloatTok{1.37E+04}  \FloatTok{1.09E+04}  \FloatTok{7.22E+04}                           
+                                                                                                       
+\NormalTok{OM23    }\FloatTok{1.08E+04} \FloatTok{{-}8.98E+03}  \FloatTok{7.96E+05}  \FloatTok{4.74E+04} \FloatTok{{-}3.37E+05} \FloatTok{{-}1.50E+05} \FloatTok{{-}1.17E+05}  \FloatTok{1.42E+06}                 
+                                                                                                       
+\NormalTok{OM33   }\FloatTok{{-}4.97E+01}  \FloatTok{8.80E+01} \FloatTok{{-}1.06E+04} \FloatTok{{-}4.44E+02}  \FloatTok{3.32E+03}  \FloatTok{9.71E+02}  \FloatTok{2.83E+03} \FloatTok{{-}1.41E+04}  \FloatTok{9.57E+02}       
+                                                                                                       
+\NormalTok{SG11    }\FloatTok{1.17E+04} \FloatTok{{-}1.01E+04}  \FloatTok{8.99E+05}  \FloatTok{5.33E+04} \FloatTok{{-}3.79E+05} \FloatTok{{-}1.67E+05} \FloatTok{{-}1.39E+05}  \FloatTok{1.59E+06} \FloatTok{{-}2.01E+04}  \FloatTok{2.03}\NormalTok{E}
+                                                                                                       
+\NormalTok{SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......}
+                                                                                                       
+\NormalTok{SG22   }\FloatTok{{-}1.04E+03}  \FloatTok{1.00E+03} \FloatTok{{-}4.72E+04} \FloatTok{{-}4.88E+03}  \FloatTok{3.51E+04}  \FloatTok{1.43E+04}  \FloatTok{1.57E+04} \FloatTok{{-}1.52E+05}  \FloatTok{9.39E+02} \FloatTok{{-}1.70}\NormalTok{E}
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                      }\NormalTok{EIGENVALUES OF COR MATRIX OF ESTIMATE                     }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{            }\DecValTok{1}         \DecValTok{2}         \DecValTok{3}         \DecValTok{4}         \DecValTok{5}         \DecValTok{6}         \DecValTok{7}         \DecValTok{8}         \DecValTok{9}        \DecValTok{10}
+                                                                                                       
+        \FloatTok{2.52E{-}04}  \FloatTok{9.67E{-}03}  \FloatTok{1.08E{-}02}  \FloatTok{2.33E{-}02}  \FloatTok{5.21E{-}02}  \FloatTok{2.98E{-}01}  \FloatTok{5.05E{-}01}  \FloatTok{9.11E{-}01}  \FloatTok{1.21E+00}  \FloatTok{3.21}\NormalTok{E}
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                     }\NormalTok{R MATRIX                                   }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{           }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}\NormalTok{      OM11      OM12      OM13      OM22      OM23      OM33      SG}
+                                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{1}    \FloatTok{1.79E+01}                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{2}   \FloatTok{{-}1.33E+00}  \FloatTok{5.51E{-}01}                                                                             
+                                                                                                       
+\NormalTok{TH }\DecValTok{3}   \FloatTok{{-}1.63E+02} \FloatTok{{-}7.67E+00}  \FloatTok{3.43E+04}                                                                   
+                                                                                                       
+\NormalTok{OM11   }\FloatTok{{-}4.13E+00}  \FloatTok{1.12E{-}01}  \FloatTok{8.60E+01}  \FloatTok{2.86E+01}                                                         
+                                                                                                       
+\NormalTok{OM12    }\FloatTok{2.16E+01} \FloatTok{{-}1.46E+00}  \FloatTok{4.34E+02} \FloatTok{{-}1.77E+02}  \FloatTok{1.93E+03}                                               
+                                                                                                       
+\NormalTok{OM13   }\FloatTok{{-}1.10E+01}  \FloatTok{2.99E+00} \FloatTok{{-}9.08E+01} \FloatTok{{-}5.29E+01}  \FloatTok{2.11E+02}  \FloatTok{2.13E+02}                                     
+                                                                                                       
+\NormalTok{OM22    }\FloatTok{1.02E+01} \FloatTok{{-}1.65E+01}  \FloatTok{1.35E+01}  \FloatTok{2.73E+02} \FloatTok{{-}4.27E+03} \FloatTok{{-}1.40E+02}  \FloatTok{1.66E+04}                           
+                                                                                                       
+\NormalTok{OM23    }\FloatTok{5.23E+01} \FloatTok{{-}1.83E+01}  \FloatTok{9.57E+02}  \FloatTok{1.64E+02} \FloatTok{{-}1.42E+03} \FloatTok{{-}5.56E+02}  \FloatTok{1.11E+03}  \FloatTok{4.05E+03}                 
+                                                                                                       
+\NormalTok{OM33    }\FloatTok{7.05E+00} \FloatTok{{-}2.23E+00} \FloatTok{{-}1.35E+03}  \FloatTok{2.45E+01} \FloatTok{{-}4.37E+01} \FloatTok{{-}1.51E+02}  \FloatTok{1.87E+01}  \FloatTok{1.31E+02}  \FloatTok{2.37E+02}       
+                                                                                                       
+\NormalTok{SG11    }\FloatTok{2.49E+02} \FloatTok{{-}1.21E+02} \FloatTok{{-}7.03E+03}  \FloatTok{5.03E+01} \FloatTok{{-}1.01E+03}  \FloatTok{9.63E+01}  \FloatTok{4.68E+03} \FloatTok{{-}5.57E+02} \FloatTok{{-}2.03E+01}  \FloatTok{1.93}\NormalTok{E}
+                                                                                                       
+\NormalTok{SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......}
+                                                                                                       
+\NormalTok{SG22   }\FloatTok{{-}1.75E+00} \FloatTok{{-}5.21E+00} \FloatTok{{-}1.99E+03}  \FloatTok{6.01E+00}  \FloatTok{1.24E+02} \FloatTok{{-}6.30E+01} \FloatTok{{-}4.59E+01} \FloatTok{{-}2.01E+02}  \FloatTok{9.27E+01}  \FloatTok{6.57}\NormalTok{E}
+                                                                                                       
+                                                                                                       
+\OperatorTok{**}\ErrorTok{*****************************************************************************************************}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{********************}\StringTok{                                   }\NormalTok{FIRST ORDER                                  }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                     }\NormalTok{S MATRIX                                   }\OperatorTok{**}\ErrorTok{*}
+\ErrorTok{********************}\StringTok{                                                                                }\ErrorTok{***}
+\ErrorTok{*******************************************************************************************************}
+\StringTok{                                                                                                       }
+\StringTok{                                                                                                       }
+\StringTok{           }\NormalTok{TH }\DecValTok{1}\NormalTok{      TH }\DecValTok{2}\NormalTok{      TH }\DecValTok{3}\NormalTok{      OM11      OM12      OM13      OM22      OM23      OM33      SG}
+                                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{1}    \FloatTok{7.83E+01}                                                                                       
+                                                                                                       
+\NormalTok{TH }\DecValTok{2}   \FloatTok{{-}4.65E+00}  \FloatTok{7.65E{-}01}                                                                             
+                                                                                                       
+\NormalTok{TH }\DecValTok{3}   \FloatTok{{-}1.30E+03}  \FloatTok{6.44E+01}  \FloatTok{1.84E+05}                                                                   
+                                                                                                       
+\NormalTok{OM11   }\FloatTok{{-}1.19E+01}  \FloatTok{2.62E+00} \FloatTok{{-}2.31E+02}  \FloatTok{1.84E+01}                                                         
+                                                                                                       
+\NormalTok{OM12    }\FloatTok{1.43E+02} \FloatTok{{-}2.86E+01}  \FloatTok{8.40E+02} \FloatTok{{-}1.72E+02}  \FloatTok{2.01E+03}                                               
+                                                                                                       
+\NormalTok{OM13   }\FloatTok{{-}2.67E+01}  \FloatTok{2.39E{-}01}  \FloatTok{3.80E+03} \FloatTok{{-}1.97E+01}  \FloatTok{5.17E+01}  \FloatTok{1.29E+02}                                     
+                                                                                                       
+\NormalTok{OM22   }\FloatTok{{-}1.46E+02}  \FloatTok{2.95E+01}  \FloatTok{9.00E+03}  \FloatTok{2.92E+02} \FloatTok{{-}3.81E+03}  \FloatTok{1.89E+02}  \FloatTok{1.20E+04}                           
+                                                                                                       
+\NormalTok{OM23    }\FloatTok{4.44E+01}  \FloatTok{1.08E+01} \FloatTok{{-}1.08E+04}  \FloatTok{8.49E+01} \FloatTok{{-}7.65E+02} \FloatTok{{-}2.93E+02}  \FloatTok{6.68E+02}  \FloatTok{1.12E+03}                 
+                                                                                                       
+\NormalTok{OM33    }\FloatTok{1.40E+01} \FloatTok{{-}4.41E+00} \FloatTok{{-}6.40E+03}  \FloatTok{3.47E+00}  \FloatTok{8.80E+01} \FloatTok{{-}1.56E+02} \FloatTok{{-}7.13E+02}  \FloatTok{2.95E+02}  \FloatTok{3.28E+02}       
+                                                                                                       
+\NormalTok{SG11    }\FloatTok{2.04E+03} \FloatTok{{-}3.98E+02} \FloatTok{{-}4.14E+03} \FloatTok{{-}1.17E+03}  \FloatTok{8.92E+03}  \FloatTok{1.80E+03} \FloatTok{{-}3.83E+03} \FloatTok{{-}1.06E+04}  \FloatTok{1.81E+03}  \FloatTok{4.20}\NormalTok{E}
+                                                                                                       
+\NormalTok{SG12   ......... ......... ......... ......... ......... ......... ......... ......... ......... ......}
+                                                                                                       
+\NormalTok{SG22    }\FloatTok{2.80E+02} \FloatTok{{-}4.73E+01} \FloatTok{{-}6.05E+04} \FloatTok{{-}2.27E+01}  \FloatTok{6.71E+02} \FloatTok{{-}1.11E+03} \FloatTok{{-}3.49E+03}  \FloatTok{2.78E+03}  \FloatTok{2.36E+03}  \FloatTok{1.81}\NormalTok{E}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
 
 \hypertarget{uxcc38uxace0uxbb38uxd5cc}{%
 \chapter*{참고문헌}\label{uxcc38uxace0uxbb38uxd5cc}}
