@@ -1,6 +1,8 @@
 # 초기추정값 {#IE}
 
+\Large\hfill
 한승훈
+\normalsize
 
 ---
 

@@ -1,6 +1,8 @@
 # 파라미터 추정 방법 및 세팅 {#estimation-methods}
 
+\Large\hfill
 김정렬
+\normalsize
 
 ## 추정 방법 및 관련 옵션
 

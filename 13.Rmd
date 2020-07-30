@@ -1,6 +1,8 @@
 # 모델 적합 상태에 대한 진단 {#fit}
 
-*전상일*
+\Large\hfill
+전상일
+\normalsize
 
 ---
 
@@ -73,10 +75,10 @@ $ERROR
 Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 \@ref(fig:run-test))\index{잔차 / residual error}\index{residual error / 잔차}
 
 ```{r run-test, fig.cap = "(ref:run-test)"}
-include_graphics("./figures/13-fig-04.png")
+include_graphics("./figures/13-fig-04.pdf")
 ```
 
-(ref:run-test) Example of Run test [@gabrielsson]
+(ref:run-test) Example of run test [@gabrielsson]
 
 Run count가 너무 크거나 (+/-가 너무 많이 교차되어도), 너무 작아도 (+/-의 교차가 너무 적게 일어나도) 잔차의\index{잔차 / residual error}\index{residual error / 잔차}
 분포가 무작위가 아님을 시사하지만, 이 결과만으로 결론내기보다는 잔차에 대한 진단 플롯들과 함께 고려하여 판단해야 한다.\index{잔차 / residual error}\index{residual error / 잔차}
@@ -105,11 +107,11 @@ include_graphics("./figures/13-fig-06.png") # fig 7
 
 우선, 첫째로 구조모델이 잘못된 경우이다. 그림 \@ref(fig:wrong-structure)을 보면 시간에 따른 잔차의 모양이 곡선형태를 이루고 있는데, 이는 모델에 지연시간을 반영하지 않은 경우이다. Run test를 통해 +/-를 확인해보면 앞쪽 시간에서는 마이너스, 중간시간대에서는 플러스가 됐다가 이후 다시 마이너스가 되는 현상이 나타나고, 이를 그림으로 보면 말발굽 모양이 된다. (그림 \@ref(fig:wrong-structure))\index{잔차 / residual error}\index{residual error / 잔차}
 
-```{r wrong-structure, fig.cap = "(ref:wrong-structure)"}
+```{r wrong-structure, fig.cap = "(ref:wrong-structure)", out.width = '80%'}
 include_graphics("./figures/13-fig-07.png") # fig 8
 ```
 
-(ref:wrong-structure) Example of Wrong structure model (lag time) [@gabrielsson]
+(ref:wrong-structure) Example of wrong structure model (lag time) [@gabrielsson]
 
 실제 goodness-of-fit 플롯의 CWRES 플롯에서도 이와 같은 형태를 발견할 수 있으며, 경구흡수의 지연시간을 추가했을 때 (그림 \@ref(fig:lag-gof)) 이런 현상이 해결되는 것을 확인할 수 있다.\index{conditional weighted residuals / 조건부 가중 잔차}\index{CWRES}\index{RES}\index{WRES}
 
@@ -120,17 +122,17 @@ include_graphics("./figures/13-fig-08.png") # fig 9
 
 구조 모델이 잘못된 두번째 예시를 살펴보면, U자 형태의 커브가 관찰되는데, 2구획 모델을 1구획 모델로 설명하려고 하는 경우에 이와 같은 잔차 플롯이 흔히 관찰된다. (그림 \@ref(fig:u-curve))\index{잔차 / residual error}\index{residual error / 잔차}
 
-```{r u-curve, fig.cap = "Example of Wrong structure model (2-compartment model)", out.width='100%'}
+```{r u-curve, fig.cap = "Example of wrong structure model (2-compartment model)", out.width='100%'}
 include_graphics("./figures/13-fig-09.png") # fig 10
 ```
 
 세 번째 예시는, 잔차의 모델이 잘못된 경우인데, 혼합오차모델(또는 비례오차모델)을 사용해야 하는 경우에 가법오차모델만 사용한 경우의 예시이다. 앞 시간대에서는 잔차가 크다가 뒤로 갈수록 잔차가 작아지는 형태인데, 약물 농도로 바꾸어 생각해보면, 약물 농도가 높아짐에(앞 시간대 약물 농도가 높으므로)따라 잔차가 커지는 경우이다. 잔차 모델을 가법오차모델에서 혼합오차모델 모델로 변경한 경우의 goodness-of-fit plots을 그림 \@ref(fig:addi-comb-gof)에서 확인할 수 있다.\index{가법오차 / additive error}\index{비례오차 / proportional error}\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}
 
-```{r addi-comb-gof, fig.cap = "Example of Wrong variance model (error model)", out.width='100%'}
-include_graphics("./figures/13-fig-10.png") # fig 11
+```{r addi-comb-gof, fig.cap = "Example of wrong variance model (incorrect error model with wrong weighting scheme)", out.width='100%'}
+include_graphics("./figures/13-fig-10.jpg") # fig 11
 ```
 
-추가로, 잔차 플롯들의 다양한 형태에 따른 개선 방안을 살펴보면(표 \@ref(tab:diag-response)) 크게 두 가지 경우로 요약할 수 있는데, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우와 잔차의 모양이 특정 경향성을 나타내는 경우이다. 첫째로, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우, 시간이나 농도에 따른 잔차 플롯이 깔때기 모양이 되며, 이 경우 잔차에 가중치를 줄 수 있는 모델을 써야 한다. 둘째로, 잔차값들이 흩어져 있는 정도는 일정하지만 그 모양이 상승 또는 하강하는 띠 모양이거나 휘어지는 띠 모양을 나타내는 경우에는 구조모델 자체를 다른 것으로 바꾸어 이 현상을 해결해야 한다. 자세한 내용은 아래 표를 참고하도록 하자.\index{잔차 / residual error}\index{residual error / 잔차}
+추가로, 잔차 플롯들의 다양한 형태에 따른 개선 방안을 살펴보면(표 \@ref(tab:diag-response)) 크게 두 가지 경우로 요약할 수 있는데, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우와 잔차의 모양이 특정 경향성을 나타내는 경우이다. 첫째로, 잔차값들이 흩어져 있는 정도가 어떤 경향성을 가진 경우, 시간이나 농도에 따른 잔차 플롯이 깔때기 모양이 되며, 이 경우 잔차에 가중치를 줄 수 있는 모델을 써야 한다. 둘째로, 잔차값들이 흩어져 있는 정도는 일정하지만 그 모양이 상승 또는 하강하는 띠 모양이거나 휘어지는 띠 모양을 나타내는 경우에는 구조모델 자체를 다른 것으로 바꾸어 이 현상을 해결해야 한다. 자세한 내용은 표 \@ref(tab:diag-response)를 참고하도록 하자.\index{잔차 / residual error}\index{residual error / 잔차}
 
 ```{r diag-response}
 read_csv('data-raw/media-13-tab-1.csv', col_types="cccc") %>% 

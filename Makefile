@@ -46,3 +46,6 @@ check:
 serve:
 	Rscript -e "bookdown::serve_book()"
 
+a5:
+	magick -density 300 -page A5 basic-crop.pdf basic-crop-A5.pdf
+	

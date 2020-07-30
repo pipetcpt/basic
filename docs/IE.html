@@ -375,7 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="IE" class="section level1" number="8">
 <h1><span class="header-section-number">Chapter 8</span> 초기추정값</h1>
-<p>한승훈</p>
+<p>한승훈
+</p>
 <hr />
 <p>IE(initial estimate, IE)은 NONMEM 제어구문의 필수 구성 요소이다. 단 한 번의 모델링 경험만으로도 IE을 결정하는 것이 단순한 작업이 아니라는 것과 IE에 따라 FPE(final parameter estimate, FPE)이나 NONMEM 실행 시간이 달라질 수 있다는 것을 알게 된다. 특히, 계량약리학 분야의 초보자들은 일반적으로 NONMEM의 작동 방식과 제어 구문 구성 요소에 대한 이해의 폭이 좁기 때문에, IE의 개념, 역할 및 가치에 관한 지식이 부족할 수 있다. 그러나 모델의 구조나 IE의 역할에 대한 충분한 이해 없이 IE을 선택하는 경우, 전혀 타당하지 않은 FPE을 얻을 수 있으므로 이 문제를 간과해서는 안 된다. 따라서, 모델 구축 작업과 관련하여 일반적으로 받아들여질 수 있는 적절성을 확보하기 위해서는 IE에 관한 정확한 정보와 지식을 갖는 것이 중요하다 하겠다.</p>
 <p>IE은 단순한 값들의 집합(파라미터의 개수에 대응하는)이 아니라 모델의 구조와 그러한 구조를 구성하는 요소인 파라미터의 값의 추정을 위해 반드시 요구되는 출발점이다. 그러기에 IE을 적절히 선택하기 위해서는 NONMEM의 추정 알고리즘에 대한 지식과 함께 모델을 해석할 수 있는 수준의 약동-약력학 지식이 필수적으로 요구된다. 실제로 초보자가 이러한 모든 지식을 온전히 이해하고 IE을 적용하는 것은 거의 불가능하지만, 본 문서에서 다루는 내용 정도에 준해 IE의 기본적인 사항을 이해한다면, IE을 무작위로 혹은 부적절하게 선택함으로 인해 발생하는 FPE의 오류를 어느 정도 피할 수 있을 것으로 생각되며, 이를 통해 불필요한 시간 낭비를 줄일 수 있을 것이다.</p>
@@ -397,8 +398,8 @@ x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 \tag{8.1}
 \end{equation}\]</span>
 또한, 이러한 일련의 과정을 그림 <a href="IE.html#fig:newton-minimization">8.1</a>을 통해 보다 쉽게 이해할 수 있다.</p>
-<div class="figure"><span id="fig:newton-minimization"></span>
-<img src="figures/08-fig-01.png" alt="Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:newton-minimization"></span>
+<img src="figures/08-fig-01.png" alt="Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도" width="100%" />
 <p class="caption">
 그림 8.1: Newton-Raphson 방법을 이용한 함수의 최소값 추정 알고리즘의 개념도
 </p>
@@ -412,8 +413,8 @@ x_{i+1} = x_i - (\frac{d^2Y}{dx_i^2})^{-1}(\frac{dY}{dx_1})
 Y = 5x^6 - 36x^5 + \frac{165}{2}x^4 - 60x^3 + 36
 \tag{8.2}
 \end{equation}\]</span></p>
-<div class="figure"><span id="fig:limitation-newton-rhapson"></span>
-<img src="figures/08-fig-02.png" alt="복잡한 함수에서 Newton-Raphson 방법의 한계" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:limitation-newton-rhapson"></span>
+<img src="figures/08-fig-02.png" alt="복잡한 함수에서 Newton-Raphson 방법의 한계" width="100%" />
 <p class="caption">
 그림 8.2: 복잡한 함수에서 Newton-Raphson 방법의 한계
 </p>
@@ -742,8 +743,8 @@ Value: 1.60
 <p>일반적으로 IE 정확성이 문제가 되는 것은 주로 고정효과 파라미터(<em>θ</em>)이다. 집단 약동-약력학 분석에서 1차적인 관심사는 집단의 대표적인 약동-약력학 파라미터 값을 추정하는 것이기 때문이다. 또한, 임의효과 파라미터에 대해 IE를 제시하는 것은 추정의 시작점을 제시한다기보다는 해당 파라미터의 추정을 허용한다는 의미가 더 큰 것이며(뒤에 추가로 설명함), 실제로는 고정효과 파라미터의 IE가 이러한 시작점 역할을 하기에 IE가 적절치 않을 때 위 <a href="IE.html#fixed-random-meaning">8.3</a>에서 제시한 문제를 유발하는 것도 고정효과 파라미터라고 보는 것이 옳다.</p>
 <p>고정효과의 IE는 FPE에 대한 대략적인 사용자의 추정값이라고 할 수 있다. 이러한 추정의 정확성을 높여 좋은 IE를 제시하기 위해 사용자는 각 파라미터가 가지는 생리학적인 의미를 파악할 수 있어야 하며, 이에 비추어 특정한 파라미터 값이 타당한 값인가를 판단할 수 있어야 한다. 이를 고려할 때, 많은 의약품에서 <em>CL</em>, <em>V<sub>d</sub></em>, 그리고 1차 속도론적 흡수속도상수(<em>ka</em>)는 1–100 L/h, 10–1000 L, and 0.1–10 h<sup>−1</sup> 정도의 범위에 있는 것이 타당하다. 또한, 혈관 내 투여에 대한 정보 없이 혈관 외 투여 후의 약동학 데이터를 다룰 때는 생체이용률(<em>F</em>, 0-1 범위에 있음)로 나누어진 <em>CL</em>, <em>V<sub>d</sub></em> 등의 값이 구해진다는 것 역시 염두에 두어야 한다. 이러한 이해를 기반으로 문헌 등에 제시된 유사 사례에서의 고정효과 파라미터 값을 참고할 수 있으며, 그 값이 타당한 경우 IE 값으로 사용할 수 있다. 문헌과 분석용 데이터 간의 인구집단 특성, 질병 관련 요인, 제형의 차이 등을 고려하여 그러한 변인들의 약동-약력학적 영향을 파악할 수 있다면, 보다 적절한 IE 값을 선택할 수 있을 것이다.</p>
 <p>보다 정교한 IE 값의 선택을 위해서는 탐색적 데이터 분석(exploratory data analysis) 과정을 철저히 수행하는 것을 추천한다. FPE는 제시된 구조 모형과 사용된 파라미터 등을 고려할 때, 주어진 데이터셋에 가장 적절한 파라미터 값이다. 다시 말해, 확보한 데이터가 FPE를 결정하는 것이며, 데이터셋을 보다 면밀히 파악함으로써 사용자는 더 좋은 IE 값을 제시할 수 있다. 간단히 y축을 로그 척도로 하여 시간에 따른 집단의 평균 농도를 그려 보는 것만으로도 매우 중요한 정보들을 얻을 수 있는데, 그림 <a href="IE.html#fig:eda-ie">8.3</a>을 통해 이를 설명하도록 하겠다.</p>
-<div class="figure"><span id="fig:eda-ie"></span>
-<img src="figures/08-fig-03.png" alt="탐색적 데이터 분석을 통한 IE 값 결정" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:eda-ie"></span>
+<img src="figures/08-fig-03.png" alt="탐색적 데이터 분석을 통한 IE 값 결정" width="100%" />
 <p class="caption">
 그림 8.3: 탐색적 데이터 분석을 통한 IE 값 결정
 </p>

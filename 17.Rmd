@@ -1,6 +1,8 @@
 # 약동-약력(PK-PD) 모델링의 이론적 기초 {#basic-pkpd}
 
+\Large\hfill
 임동석
+\normalsize
 
 ## 관련 개념
 

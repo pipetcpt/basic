@@ -2,7 +2,9 @@
 
 \index{특수 ADVAN / specific ADVANs}\index{specific ADVANs / 특수 ADVAN}\index{specific ADVANs / 특수 ADVAN}
 
+\Large\hfill
 전상일
+\normalsize
 
 ---
 
@@ -24,7 +26,7 @@ Table: (\#tab:specific-advan) 구획 모델별 특정 ADVAN의 종류
 knitr::include_graphics("figures/04-fig-01.png") #4
 ```
 
-```{r 2comp-ex, out.width="50%", fig.cap="(ref:2comp-ex)"}
+```{r 2comp-ex, out.width="70%", fig.cap="(ref:2comp-ex)"}
 #knitr::include_graphics("./assets/media-04/image2.png")
 knitr::include_graphics("figures/04-fig-02.png") #4
 ```
@@ -118,7 +120,7 @@ ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)�
 
 (ref:2comp-structure) Structure of 2-compartment extravascular model
 
-```{r 2comp-structure, fig.cap="(ref:2comp-structure)"}
+```{r 2comp-structure, fig.cap="(ref:2comp-structure)", out.width = '80%'}
 knitr::include_graphics("figures/04-fig-03.png") #4
 ```
 
@@ -140,16 +142,19 @@ IF (DOSE.EQ.200) F1 = THETA(8)
 ```
 척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 \@ref(tab:basic-additional)를 참고하도록 하자. [@nonmem]\index{척도 파라미터 / scaling parameter}\index{scaling parameter / 척도 파라미터}\index{scaling parameter / 척도 파라미터}\index{ADVAN1}\index{ADVAN2}\index{AMT}\index{S1}
 
-(ref:basic-additional) Basic and additional pharmacokinetic parameters
+\footnotesize
 
+(ref:basic-additional) Basic and additional pharmacokinetic parameters
 ```{r basic-additional}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet="50", range="B2:E36") %>% 
+  rename(CMT = 2, PARAM = 3) %>%
   kable(booktabs=TRUE, align = "l", escape=FALSE, 		
 		caption = "(ref:basic-additional)") %>% 
   column_spec(1, width = "1.8cm") %>%
-  column_spec(2, width = "2.0cm") %>%
-  column_spec(3, width = "1.0cm") %>%
-  column_spec(4, width = "8.0cm") %>%
-  collapse_rows(1:2, valign = "top", latex_hline="major")
+  column_spec(2, width = "2.2cm") %>%
+  column_spec(3, width = "1.5cm") %>%
+  column_spec(4, width = "7.5cm") %>%
+  collapse_rows(c(1, 2), valign = "top", latex_hline="major")
 ```
 
+\normalsize

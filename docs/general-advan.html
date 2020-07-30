@@ -375,7 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="general-advan" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> 일반 ADVAN을 이용한 제어구문의 코딩</h1>
-<p>홍태곤</p>
+<p>홍태곤
+</p>
 <hr />
 <p>일반 ADVAN은 사용자가 직접 모델을 정의하고, 서브루틴을 작성할 수 있다. $MODEL 구문을 사용하여 사용자가 원하는 만큼 999개까지 구획을 만들 수 있다. 일반 비선형 모델(ADVAN 6,8,9,13)에서는 $PK구문 다음에 $DES구문을 사용하여 모델에서 각 구획의 내부값(질량, 농도, 효과 등)의 즉각적인 변화율을 표현할 수 있다. 일반 선형 모델(ADVAN 5,7)은 구획 사이의 1차식(first-order kinetics)에 따른 이동을 가정하기 때문에 $DES구문이 필요하지 않다. 일반 ADVAN의 종류는 다음과 같으며, 이 장에서는 ADVAN 5~8에 대하여 다루기로 한다.</p>
 <table>
@@ -425,8 +426,8 @@ ADVAN13 (General Nonlinear Kinetics using LSODA)
 <div id="일반-선형-advan" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> 일반 선형 ADVAN</h2>
 
-<div class="figure"><span id="fig:advan-code"></span>
-<img src="figures/05-fig-01.png" alt="일반 선형 ADVAN을 이용한 코드의 구조" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:advan-code"></span>
+<img src="figures/05-fig-01.png" alt="일반 선형 ADVAN을 이용한 코드의 구조" width="100%" />
 <p class="caption">
 그림 5.1: 일반 선형 ADVAN을 이용한 코드의 구조
 </p>
@@ -490,7 +491,7 @@ Faster
 number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 적용하고, 더 단순한 구조를 가지며 고유값이
 실수(real number)인 일반적인 약동학 모델에서는 상대적으로 더 빠른 ADVAN 7을 적용할 수 있다.</p>
 
-<div class="figure"><span id="fig:advan-example"></span>
+<div class="figure" style="text-align: center"><span id="fig:advan-example"></span>
 <img src="figures/05-fig-02-redraw.png" alt="일반 선형 ADVAN을 이용한 코드 예시" width="100%" />
 <p class="caption">
 그림 5.2: 일반 선형 ADVAN을 이용한 코드 예시
@@ -501,8 +502,8 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 <div id="일반-비선형-advan" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> 일반 비선형 ADVAN</h2>
 
-<div class="figure"><span id="fig:nonlin-code"></span>
-<img src="figures/05-fig-03.png" alt="일반 비선형 ADVAN을 이용한 코드의 구조" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:nonlin-code"></span>
+<img src="figures/05-fig-03.png" alt="일반 비선형 ADVAN을 이용한 코드의 구조" width="100%" />
 <p class="caption">
 그림 5.3: 일반 비선형 ADVAN을 이용한 코드의 구조
 </p>
@@ -552,7 +553,7 @@ Gear method
 
 <p>일반 비선형 ADVAN에는 ADVAN 6, 8, 9, 13이 있으며, 이 장에서는 ADVAN 6와 8에 대하여 다룬다. 보통 안정적이고 경직되지 않은(nonstiff) 모델의 경우 ADVAN 6를 적용하고, 추정하는 속도상수 간 큰 차이를 보이는 불안정하고 경직된(stiff) 모델(ex. 결합은 빠르면서, 긴 반감기를 가진 단일클론항체)은 ADVAN 6를 이용할 경우, 파라미터 추정 시간이 오래 걸리거나 추정에 실패할 수 있어 대안으로 ADVAN 8을 적용할 수 있다. 경직된 모델이란 속도상수 추정을 위한 미분방정식 풀이에 있어, Runge-Kutta method와 같은 수치적인 방법(numerical method)를 적용하였을 때 수치적으로 불안정한(numerically unstable) 모델을 말하며, 이러한 경우 Gear method 를 이용한 ADNVA 8의 적용을 고려할 수 있다. (표 <a href="general-advan.html#tab:advan-6-8">5.3</a>)</p>
 
-<div class="figure"><span id="fig:nonlin-advan-code-example"></span>
+<div class="figure" style="text-align: center"><span id="fig:nonlin-advan-code-example"></span>
 <img src="figures/05-fig-04-redraw.png" alt="일반 비선형 ADVAN을 이용한 코드 예시" width="100%" />
 <p class="caption">
 그림 5.4: 일반 비선형 ADVAN을 이용한 코드 예시
@@ -571,14 +572,14 @@ Gear method
 \tag{5.1}
 \end{equation}\]</span></p>
 (ref:des-example) $DES 구문 적용을 위한 코드 예시
-<div class="figure"><span id="fig:des-example"></span>
-<img src="figures/05-fig-05.png" alt="(ref:des-example)" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:des-example"></span>
+<img src="figures/05-fig-05.png" alt="(ref:des-example)" width="100%" />
 <p class="caption">
 그림 5.5: (ref:des-example)
 </p>
 </div>
-<div class="figure"><span id="fig:2comp-oral"></span>
-<img src="figures/05-fig-06.png" alt="2구획 경구모델" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:2comp-oral"></span>
+<img src="figures/05-fig-06.png" alt="2구획 경구모델" width="80%" />
 <p class="caption">
 그림 5.6: 2구획 경구모델
 </p>

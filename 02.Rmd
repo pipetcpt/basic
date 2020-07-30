@@ -1,6 +1,8 @@
 # NONMEM 데이터셋 {#nonmem-dataset}
 
-*이소진*
+\Large\hfill
+이소진
+\normalsize
 
 ---
 

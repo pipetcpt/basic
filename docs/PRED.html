@@ -376,22 +376,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="PRED" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> $PRED: ADVAN을 쓰지 않는 코딩</h1>
 <p></p>
-<p>임동석</p>
+<p>임동석
+</p>
 <div id="pred와-predpp-library사용할-때의-차이" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> $PRED와 PREDPP library사용할 때의 차이</h2>
 <p></p>
 <p>PREDPP built in 모델들인 ADVAN들 중에서 하나를 골라서 쓰는 방식을 앞서 장들에서 보아왔지만 이번에는 미리 만들어 놓은 모델이나 파라미터를 쓰는 것이 아닌 연구자가 원하는 대로 모델의 구조를 만들어 볼 수 있는 $PRED를 소개한다. 이것은 PK관련된 식이든, 어떤 함수든 모든 식을 어떤 그 코드 안에 풀어 쓰는 것이므로 약속된 용어(reserved word)도 전혀 없다. 물론 데이터셋의 칼럼 이름들을 정의해주는 $INPUT 뒤에 적어주는 ID, TIME, DV, MDV는 공통으로 쓰지만 특정 ADVAN을 쓸 때 투여량을 나타내는 AMT, 분획을 의미하는 CMT 등의 용어들은 $PRED를 쓸 때는 미리 약속된 이런 의미를 가지는 용어가 아니라 그냥 칼럼의 제목에 지나지 않는다. 물론 $DES와 함께 쓰는 ADVAN6, 8, 9, 13의 경우에도 특정 모델에 얽매이지 않고 연구자가 상상하는 모델의 구조를 주고 테스트할 수 있지만 이들은 미분방정식의 형태로 넣어주는 것이므로 $PRED와는 다르다.</p>
 <p>제어구문 파일의 맨 앞에 $PROBLEM으로 프로젝트 이름을 쓰고 $DATA, $INPUT에서 데이터셋을 불러 들여오고, 그 다음에 $SUBROUTINE, $MODEL, $PK, $DES, $ERROR들을 적절히 골라 적었으나 $PRED를 쓸 때는 이들이 필요 없게 된다. 그림 <a href="PRED.html#fig:first-order-pred">7.1</a>의 예는 1분획 모델을 ADVAN2 대신 $PRED로 적은 것이다. 이후 나머지 초기값 주는 것, estimation 방법 등은 $PRED를 쓰건, 다른 ADVAN을 쓰건 동일하다. 데이터셋에서도 약속된 용어가 통하지 않으므로 그림 <a href="PRED.html#fig:pred-dataset">7.2</a>와 같이 차이가 난다.</p>
 
-<div class="figure"><span id="fig:first-order-pred"></span>
-<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, $PRED 제어구문 파일 비교" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:first-order-pred"></span>
+<img src="figures/07-fig-01.png" alt="1구획 모델의 ADVAN2, $PRED 제어구문 파일 비교" width="100%" />
 <p class="caption">
 그림 7.1: 1구획 모델의 ADVAN2, $PRED 제어구문 파일 비교
 </p>
 </div>
 
-<div class="figure"><span id="fig:pred-dataset"></span>
-<img src="figures/07-fig-02.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:pred-dataset"></span>
+<img src="figures/07-fig-02.png" alt="ADVAN과 $PRED의 데이터셋 차이" width="100%" />
 <p class="caption">
 그림 7.2: ADVAN과 $PRED의 데이터셋 차이
 </p>

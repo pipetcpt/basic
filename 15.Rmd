@@ -1,6 +1,8 @@
 # 모델 파라미터의 적절성 {#parameters}
 
+\Large\hfill
 전상일
+\normalsize
 
 ---
 

@@ -1,6 +1,9 @@
 # 지연효과 모델 {#delayed-effect}
 
+\Large\hfill
 김정렬, 임동석
+\normalsize
+
 
 ## 지연효과 개요
 
@@ -128,9 +131,9 @@ include_graphics("figures/20-fig-05.png")
 관찰된 반응이 증가되는 걸 약물이 억제하는 경우를 말하며, H2 수용체 길항제에 의한 위산분비 억제를 예로 들 수 있다. 생리적으로 H2 수용체 자극에 의해 위산 분비가 증가되는데 약물이 이러한 H2 수용체를 통한 상호작용을 차단함으로써 궁극적으로 위산 분비를 억제하게 된다. 이런 간접효과 모델은 반응 증가와 관련된 Kin에 억제 함수가 적용된 식으로 표현될 수 있고 아래와 같은 NONMEM 코드를 사용할 수 있다. (그림 \@ref(fig:model-i))
 \begin{equation}
 \begin{split}
-\frac{dR}{dt} = k_{in} - k_{out} \cdot R \\
-k_{in} \rightarrow k_{in} \cdot (1 - H(t)) \\
-H(t) = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
+\frac{dR}{dt} &= k_{in} - k_{out} \cdot R \\
+k_{in} &\rightarrow k_{in} \cdot (1 - H(t)) \\
+H(t) &= \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 \end{split}
 (\#eq:model-i)
 \end{equation}

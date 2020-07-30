@@ -375,7 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="newer-advan" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> 기타 ADVAN</h1>
-<p>임동석</p>
+<p>임동석
+</p>
 <div id="advan9---general-nonlinear-model-with-equilibrium-compartments" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</h2>
 <p></p>
@@ -392,8 +393,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ADVAN1~4의 경우와 같이 ADVAN11과 12는 3분획으로 분포하며 정맥주사와 1차 경구흡수되는 모델들이다 (그림 <a href="newer-advan.html#fig:advan1112">6.1</a>). ADVAN1~4만큼 자주 쓰이지 않으나 투여 간격이 매우 길다거나 마지막 용량 투여 후 오랜 시간 동안 지속적으로 농도를 측정한다든지 하여 3개의 기울기가 존재하는 것이 의심되는 상황 등에서 시도해 볼 수 있다.</p>
 <p>ADVAN11의 예를 들면 앞의 장들에서 소개된 것과 마찬가지로 TRANS 옵션을 선택해야 하는데 TRANS1을 쓰면 Vd를 제외한 약동학 파라미터들을 micro constant(K, K12, K21, K13, K31)들을 써서 표현하며, TRANS4를 쓰면 CL, Q2, Q3를 쓰되 이들과 micro constant들과의 관계식을 함께 써 주어야 한다. TRANS6를 쓸 경우 시간에 따른 농도변화를 지수함수 형태로 나타낼 수 있으며, 역시 지수함수의 파라미터들과 micro constant들과의 관계식을 써 주어야 한다. 이들 중 TRANS4를 사용하여 CL, Q로써 모델링하는 것이 가장 흔히 쓰이는 방법이고, TRANS1이 간혹 쓰이며, TRANS6를 사용하는 경우는 드물다.</p>
 
-<div class="figure"><span id="fig:advan1112"></span>
-<img src="figures/06-fig-01.png" alt="ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:advan1112"></span>
+<img src="figures/06-fig-01.png" alt="ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들" width="100%" />
 <p class="caption">
 그림 6.1: ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들
 </p>

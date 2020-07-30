@@ -16,13 +16,13 @@ documentclass: krantz
 classoption:
 - krantz2
 - a4paper
-linestretch: 1.5 # https://github.com/jgm/pandoc/issues/5179
+linestretch: 1.45 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
 #monofont: "Source Code Pro"
-monofont: "Latin Modern Mono"
-monofontoptions:
-  - Scale=MatchLowercase
-  - ScaleAgain=0.8 # https://tex.stackexchange.com/questions/453405/how-can-i-scale-mono-font-to-90-of-matchlowercase
+#monofont: "Latin Modern Mono"
+#monofontoptions:
+#  - Scale=MatchLowercase
+#  - ScaleAgain=0.8 # https://tex.stackexchange.com/questions/453405/how-can-i-scale-mono-font-to-90-of-matchlowercase
 #https://www.overleaf.com/gallery/tagged/book/page/5
 #https://pandoc.org/MANUAL.html#variables-for-latex
 #documentclass: extarticle
@@ -44,31 +44,32 @@ fontsize: 11pt
 #geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
 link-citations: yes
 colorlinks: yes
-lot: yes
-lof: yes
+#lot: yes
+#lof: yes
 site: bookdown::bookdown_site
 description: "이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다."
 url: 'https\://pipetcpt.github.io/basic'
 github-repo: pipetcpt/basic
 cover-image: images/cover.jpg
 header-includes:
-  - \usepackage{kotex}
+  - \usepackage{kotex} 
+  - \usepackage{chemarr}
 #  - \usepackage{xeCJK}
 #  - \usepackage{CJKutf8}
 #  - \usepackage{dhucs-trivcj}
-  - \usepackage{booktabs}
-  - \usepackage{longtable}
-  - \usepackage{array}
-  - \usepackage{multirow}
-  - \usepackage{wrapfig}
-  - \usepackage{float}
-  - \usepackage{colortbl}
-  - \usepackage{pdflscape}
-  - \usepackage{tabu}
-  - \usepackage{threeparttable}
-  - \usepackage{threeparttablex}
-  - \usepackage[normalem]{ulem}
-  - \usepackage{makecell}
+#  - \usepackage{booktabs}
+#  - \usepackage{longtable}
+#  - \usepackage{array}
+#  - \usepackage{multirow}
+#  - \usepackage{wrapfig}
+#  - \usepackage{float}
+#  - \usepackage{colortbl}
+#  - \usepackage{pdflscape}
+#  - \usepackage{tabu}
+#  - \usepackage{threeparttable}
+#  - \usepackage{threeparttablex}
+#  - \usepackage[normalem]{ulem}
+#  - \usepackage{makecell}
 ---
 
 ```{r setup, include=FALSE}
@@ -97,9 +98,10 @@ pacman::p_load(char = my_packages)
 opts_chunk$set(echo=FALSE, 
                message = FALSE, 
                warning = FALSE,
-               out.width="95%", 
-               dpi = NA,
                #fig.width = 7,
+			   fig.align = "center",
+               out.width="100%", 
+               dpi = NA,
                error = TRUE)
 
 options(knitr.kable.NA = '')
@@ -123,6 +125,8 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 
 `r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](images/cover.jpg) '`
 
+\large
+
 계량약리학은 신약개발 현장에서 제기되는 질문들에 대한 답을 정량적으로 찾아내기 위한 과정에서 정립되어온 학문입니다. 물론 계량약리학은 이미 허가된 약들의 적절한 용법을 찾는 데에도 쓸 수 있지만, 신약개발이라는 큰 목표를 빼고서는 이 어려운 방법론을 배워야 할 이유를 찾기는 힘듭니다. 우리나라의 신약개발은 짧은 역사 속에서 많은 시행착오를 통해 발전해가고 있습니다. 국내에서 계량약리학에 대한 수요가 이만큼이나마 늘어난 것은 2010년대 중반 이후 두드러지게 보이는 이 같은 분위기의 변화와 맞물려 있겠습니다. 
 
 혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 서울성모병원 임상약리과와 가톨릭대학교 계량약리학연구소(PIPET, Pharmacometrics Institute for Practical Education and Training)는 혼합효과 모델링 기법을 가르치는 PK/PD 워크샵을 2009년도부터 매년 개최해 왔습니다. 시작할 때부터 지금까지 정부나 기업의 어떤 도움이나 간섭없이 사막에 씨앗을 뿌리는 심정으로 매년 그 내용을 양적, 질적으로 보완하면서 basic-1, basic-2, intermediate-1, intermediate-2의 서로 연결되는 각 1.5일의 교육 과정으로 발전시켜 왔습니다. 이제 십여 년간 축적되어온 교육의 경험을 바탕으로, 국내에서 입문자들이 보다 쉽게 이해하고 따라갈 수 있도록 워크샵의 basic-1과 2의 강의, 실습내용을 고스란히 옮겨 담은 교재를 책으로 펴내게 되었습니다. 그리고 이 책에 실린 내용들에 상응하는 워크샵 슬라이드와 실습용 파일들은 웹^[http://pipet.or.kr/board/resources_list.asp]에서 내려 받으실 수 있습니다. 그 자료들과 이 책으로 함께 공부한다면 따로 워크샵을 듣지 않고도 basic-1과 2의 내용을 따라갈 수 있을 것입니다. 
@@ -131,9 +135,12 @@ PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실�
 
 학계의 PK/PD 전문가들이 우리나라의 신약개발에 기여하는 방법 중의 하나는 신약개발의 최전선에서 일하고 있는 제약/바이오 업계의 풀뿌리 연구자들에 대한 지속적인 교육과 훈련 기회를 제공하는 것입니다. 그러한 사명감으로 맨땅에서 시작한 이 코스를 지난 십 수년간 오늘의 수준으로 끌어올릴 수 있게 해 준, PIPET을 거쳐간 귀한 젊은 연구자들의 공헌에 깊이 감사드립니다. 이름난 분들을 초빙해서 청중을 모으고 신문에 내는 행사를 수십 번을 한들, 젊은이들의 앞날을 염려하고, 이들을 제대로 가르치겠다는 의지가 없다면 그저 남들에게 보여주기 위한 이벤트에 지나지 않습니다. 그런 곳에 사람과 돈이 몰릴지는 몰라도, 한편에서는 세상의 각광과는 무관하게 소신대로 제 갈 길을 가는 소수가 있기 마련입니다. 매년 열던 워크샵을 책으로 엮어 내는 이 번거로운 작업도 그런 소신을 실천하는 것이며, 한국의 신약개발을 위해 작은 밑거름이라도 된다면 저자들은 큰 보람을 느낄 것입니다. 
 
-\hfill 2020년 여름 성의교정 연구실에서  
+```{r}
+include_graphics('images/preface.pdf')
+```
+\normalsize
 
-\hfill 대표저자 임동석 拜
+`r if (knitr::is_html_output()) '2020년 여름 성의교정 연구실에서<br>대표저자 임동석 拜 '`
 
 \mainmatter
 

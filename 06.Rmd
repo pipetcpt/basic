@@ -6,7 +6,9 @@ output:
 
 # 기타 ADVAN {#newer-advan}
 
+\Large\hfill
 임동석
+\normalsize
 
 ## ADVAN9 - General Nonlinear Model with Equilibrium Compartments
 \index{ADVAN9}

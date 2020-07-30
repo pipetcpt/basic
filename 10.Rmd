@@ -1,6 +1,8 @@
 # NONMEM 실행결과 해석 및 Xpose4 사용법 {#use-of-xpose4}
 
+\Large\hfill
 전상일
+\normalsize
 
 ---
 
@@ -36,7 +38,7 @@ read_csv('data-raw/media-10-tab-1.csv', col_types="cccccc") %>%
   kable(booktabs=TRUE, caption = "투여경로에 따라 CMT가 기록된 데이터셋")
 ```
 
-```{r image-05, fig.cap= '실행결과 파일의 227행-238행'}
+```{r image-05, fig.cap= '실행결과 파일의 227행-238행', out.width ='80%'}
 knitr::include_graphics('assets/media-10/image5.png')
 ```
 
@@ -62,11 +64,11 @@ knitr::include_graphics('assets/media-10/image7.png')
 306행에는 ETA shrinkage(%) 가 나오는데, 보통 이 수치가 30% 이상이면 파라미터가 너무 많은상황(over-parametrization)이 되었다는 의미로, 모델을 단순화 시키는 작업이 필요하다. 즉 모델에서 추정해야할 파라미터의 수를 줄여야 한다는 것으로, 해당 ETA 값을 0으로 고정하는 것이 그중 하나의 방법이다.\index{shrinkage / 축소}\index{shrinkage / 축소}
 
 ```{r image-08, fig.cap= '실행결과 파일의 333행-361행', out.width='100%'}
-knitr::include_graphics('assets/media-10/image7.png')
+knitr::include_graphics('assets/media-10/image8.png')
 ```
 
 ```{r image-09, fig.cap= '실행결과 파일의 365행-393행', out.width='100%'}
-knitr::include_graphics('assets/media-10/image7.png')
+knitr::include_graphics('assets/media-10/image9.png')
 ```
 
 345행부터는 목적함수(OFV)의 값과 THETA, ETA의 최종 파라미터 추정치를 확인할 수 있으며, TH1 (THETA 1)의 결과 1.02E+01 은 10.2 라고 생각하면 된다. ETA 부분에 주어지는 값들은 ω~2~ 값으로, 행렬 형태로 제시된다. 예시에서 ETA1은 CL의 ETA의 ω~2~, ETA2는 V2의 ETA의 ω~2~ 값이며, 그 사이의 값은 두 파라미터의 공분산 값이다. 현재 모델에서는 공분산을 추정하지 않았기 때문에 0으로 나온 것이며, 두 파라미터 사이에 상관관계가 있다고 판단되면, $OMEGA 부분에 0.04 0.02 0.04 이런 식으로 초기값을 주어 추정하게 하면 된다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{covariance / 공분산}\index{objective function / 목적함수}\index{\$OMEGA}
@@ -79,13 +81,14 @@ knitr::include_graphics('assets/media-10/image7.png')
 $TABLE의 예\index{\$TABLE}
 ```
 
+\small
 ```r
 $TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3
 $TABLE ID ETA(1) ETA(2)                        ONEHEADER NOPRINT FILE=patab3
 $TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3
 $TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3
 ```
-
+\normalsize
 Sdtab은 Standard Table, patab은 Parameter Table, catab은 Categorical Covariates Table을 의미하며, cotab은 Continuous Covariates Table을 의미한다. 이 네 개의 테이블 이름은 xpose4 package에서 미리 약속된 이름으로 그대로 사용하여야 하며, 그 뒤에 숫자(Run Number라고 한다)만 바꾸어 사용하게 된다. \$TABLE의 옵션들은 앞에서 설명하였으니 생략하기로 하고, 추가적인 옵션들은 NONMEM 설치 폴더의 help 폴더 안에 있는 $table.ctl 파일을 참고하도록 하자.\index{\$TABLE}
 
 Xpose4 package 가 설치되어 있다면, R 실행 후 아래와 같이 입력하여 Basic goodness-of-fit plots(그림 \@ref(fig:basic-gof))과 individual plots(그림 \@ref(fig:indi-plots))을 그릴 수 있다.
@@ -93,7 +96,7 @@ Xpose4 package 가 설치되어 있다면, R 실행 후 아래와 같이 입력�
 ```r
 library(xpose4)
 xpose4()
-# Run number 입력 (위의 경우 3)
+# Run number (3, in this case)
 # Selection: 4
 # Selection: 2 or 5
 ```
@@ -114,7 +117,7 @@ Xpose4에서는 Basic goodness-of-fit Plots 외에도 각 개체별로 개인 �
 knitr::include_graphics("./assets/media-10/image12.png")
 ```
 
-(ref:indi-plots) Individual Plots
+(ref:indi-plots) Individual plots
 
 마지막으로, NONMEM을 실행시켰는데 성공적으로 최소화되지 않았다면 아래와 같은 시도를 해 볼 수 있다.
 

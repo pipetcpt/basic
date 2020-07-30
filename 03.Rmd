@@ -6,7 +6,9 @@ output:
 
 # NONMEM 모델 종류 별 제어구문 소개 {#control-stream}
 
+\Large\hfill
 배수현
+\normalsize
 
 ---
 
@@ -486,7 +488,7 @@ $ERROR
 
 코드 \@ref(exm:advan6)처럼 일반 비선형 모델은 미분방정식을 사용하여 각 구획의 이동을 시간에 따른 구획의 질량변화로 표현한다. 미분방정식을 계산하는 방법에 따라 다양한 ADVAN을 선택할 수 있다. 일반 비선형 모델을 이용한 약동학 분석 모델의 예를 모약물과 대사체의 약동학을 동시에 분석하는 모델을 통해 살펴보자. 개발 중인 약이 주대사체로 많이 대사되며, 그 대사체도 약효를 나타내는 경우에는 대사체와 모약물의 약동학을 동시에 분석하는 모델이 필요하다. 그림 \@ref(fig:model-parent-metabolite)과 같이 대사체의 생성은 비선형 모델(Michaelis–Menten 모델)을 따른다고 가정하였다.
 
-```{r model-parent-metabolite, fig.cap="(ref:model-parent-metabolite)"}
+```{r model-parent-metabolite, fig.cap="(ref:model-parent-metabolite)", out.width = '80%'}
 knitr::include_graphics("./figures/03-fig-02.png") # 3.8
 ```
 

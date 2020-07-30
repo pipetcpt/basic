@@ -375,7 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="estimation-methods" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> 파라미터 추정 방법 및 세팅</h1>
-<p>김정렬</p>
+<p>김정렬
+</p>
 <div id="추정-방법-및-관련-옵션" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> 추정 방법 및 관련 옵션</h2>
 <p></p>
@@ -485,8 +486,8 @@ Dense
 <div id="nonmem-추정" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> NONMEM 추정</h2>
 <p>NONMEM은 목적함수(objective function)를 최적화하는 방식으로 파라미터를 추정하게 되고, 이때 최적화된 목적함수 값(Objective Function Value, OFV)이 산출된다. 개발한 모델로부터 산출된 OFV는 가능도비 검정(Likelihood Ratio Test, LRT) 방법을 이용함으로써 보다 적절한 모델을 선정할 수도 있다. 여기 제시된 내용은 수학자가 아닌 이상 정확하게 이해하기는 쉽지 않지만, 개념적으로 간단히 도식화하면 그림 <a href="estimation-methods.html#fig:obj">9.1</a>과 같다.</p>
-<div class="figure"><span id="fig:obj"></span>
-<img src="figures/09-fig-01.png" alt="NONMEM 추정 도식화" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:obj"></span>
+<img src="figures/09-fig-01.png" alt="NONMEM 추정 도식화" width="100%" />
 <p class="caption">
 그림 9.1: NONMEM 추정 도식화
 </p>
@@ -497,8 +498,8 @@ Dense
 <p>OLS (ordinary least square) 방식은 단순 선형회귀(linear regression)를 하는 걸 말하며,
 흔하게 사용된다. 이는 SAS, SPSS 등 통계 프로그램에서 사용하는 선형회귀 방식과 동일하다. 예를 들어 용량에
 따른 약동학 파라미터 AUC의 상관관계를 파악하기 위해 그래프를 그리고 가상의 선을 설정하여 “용량에 따라 AUC는 증가한다”는 결론을 내리는 것이 전형적인 OLS 방식이다.(그림 <a href="estimation-methods.html#fig:OLS">9.2</a>)</p>
-<div class="figure"><span id="fig:OLS"></span>
-<img src="figures/09-fig-02.png" alt="ordinary least square" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:OLS"></span>
+<img src="figures/09-fig-02.png" alt="ordinary least square" width="100%" />
 <p class="caption">
 그림 9.2: ordinary least square
 </p>
@@ -534,8 +535,8 @@ OBJ_{OLS} \propto \sum_{}^{}{(Y_{obs} - Y_{pred})}^{2}
 <h2><span class="header-section-number">9.3</span> Likelihood</h2>
 <p>가능도(likelihood) 개념은 확률(probability)과 함께 이해하는 것이 좋다. 확률이라는 것은 파라미터 값이 주어졌을 때 아직 관찰되지 않은 결과를 예상할 때 사용한다. 즉, 앞면이 나올 가능성이 ½인 동전을 10번 던졌을 때 앞면이 몇 번 나올 것인지와 같은 물음에서 확률의 개념을 이해할 수 있다. 반면 가능도라는 것은 관찰된 결과를 알고 있는 상태에서 그런 결과가 예상되는 가능한 파라미터를 추정하는 것과 관련이 깊다. 앞서 예시를 응용하면, 동전을 10번 던져 앞면이 5번 나왔다는 사실에 근거할 때 동전의 앞면이 나올 확률은 ½일 가능성이 가장 높다고 말할 수 있다. 다시 말해 확률이 파라미터가 주어졌을 때 관찰값에 대한 함수라면, 가능도는 관찰값이 주어졌을 때 파라미터에 대한 함수로 볼 수 있다. 이런 이유로 가능도는 여러 추정 가능한 파라미터에 대한 분포 형태로 표현되며, 앞서 예시에서 실제 확률은 ½이 아닐 수도 있지만 ½일 가능성이 가장 높은, 즉 최대가능도(maximum likelihood) 값을 갖는 파라미터는 ½이라고 할 수 있다.</p>
 <p>우리가 모델을 통해 확인하고자 하는 파라미터는 NONMEM에서 θ 형태로 표현되며, 약동학에서 청소율, 분포용적 등이 이에 해당하고 앞서 예시의 경우 앞면이 나올 확률이다. 아래 그림 <a href="estimation-methods.html#fig:coin">9.3</a>은 동전을 던져 앞면이 일곱번 나왔을 때 동전 앞면이 나올 확률, 즉 추정하고자 하는 파라미터에 대한 가능도를 나타낸 것이다. 예상한 바와 같이 앞면이 나올 확률이 0.7인 경우 가능도가 가장 크며, 이는 앞면이 나올 확률이 0.7인 동전일 때 관찰 결과를 가장 잘 설명함을 의미한다.</p>
-<div class="figure"><span id="fig:coin"></span>
-<img src="figures/09-fig-03.png" alt="동전 앞면이 7회 나올 확률의 가능도" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:coin"></span>
+<img src="figures/09-fig-03.png" alt="동전 앞면이 7회 나올 확률의 가능도" width="100%" />
 <p class="caption">
 그림 9.3: 동전 앞면이 7회 나올 확률의 가능도
 </p>

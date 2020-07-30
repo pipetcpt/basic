@@ -375,12 +375,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="covariate-analysis" class="section level1" number="11">
 <h1><span class="header-section-number">Chapter 11</span> 공변량 분석</h1>
-<p>한승훈</p>
+<p>한승훈
+</p>
 <hr />
 <p>모델링-시뮬레이션은 관찰한 현상을 일관된 모델로서 정립하여 현상 안에 담긴 의미를 일반화하는 것이며, 이렇게 일반화된 지식을 토대로 특정한 상황에서 약동-약력학적 결과를 예측하여, 의사 결정 등에 활용하고자 하는 것이다. 특히, 임상시험 수행 혹은 시판 후 상황 등에서 환자 요인, 약물 요인, 질병 요인에 따라 달라지는 약물의 치료 효과 등을 예측하는 것은 임상 개발 전략 또는 임상시험 설계 등을 결정하는 데에 핵심적인 정보가 된다. 예를 들어, 성인을 대상으로 수집한 약동-약력학 데이터로부터, 연령이 증가할수록 관심 대상 약물의 청소율이 감소하는 현상을 모델로서 구축할 수 있으며, 이러한 모델을 이용해 50세 이상 환자군과 50세 미만 환자군을 나누어 시뮬레이션함으로써, 특정 용량-용법 투여 시 약물 효과를 두 군에서 비교 예측해 볼 수 있다. 이 때, ‘연령’과 같이 약동-약력학 모델의 구조 또는 파라미터에 유의미한 영향을 끼치는 다양한 요인을 공변량(covariate)라 한다. 즉, 모델링-시뮬레이션의 작업 흐름(workflow) 속에서 공변량은 모델의 핵심적인 구성 요소 중 하나라 하겠다.</p>
 <p>공변량이라 함은 단순히 데이터 수집 단계에서 모아진 정보의 항목들을 의미하는 것이 아니라, 그러한 항목들 중 통계학적인 분석을 통해 모델에 반영하는 것이 적절하다고 입증된 것만을 의미한다. 수집된 데이터 중 약동-약력학 분석에 종속변수로서 사용되는 약물의 농도 또는 작용에 대한 측정값(바이오마커로서 측정되는 경우가 많음)을 제외한 데이터 항목들(인구학적 정보, 질환 특성 등)은 실제 모델에 반영된 공변량과 구분하여, 잠재적 공변량(potential covariate)이라 지칭한다. 즉, 공변량 분석(covariate analysis)이란 잠재적 공변량에 대한 적절한 통계분석을 통해 모델링의 대상이 되는 약물의 약동-약력학 모델에 유의미한 영향을 미치는 공변량을 찾아내는 과정이라 할 수 있으며, 여기에는 데이터 항목 평가(variable evaluation), 스크리닝(covariate screening), 전진선택(forward selection), 후진제거(backward elimination), 검증(validation)의 과정이 포함된다.</p>
-<div class="figure"><span id="fig:workflow-covariate"></span>
-<img src="figures/11-fig-01.png" alt="공변량 분석의 workflow" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:workflow-covariate"></span>
+<img src="figures/11-fig-01.png" alt="공변량 분석의 workflow" width="100%" />
 <p class="caption">
 그림 11.1: 공변량 분석의 workflow
 </p>
@@ -402,8 +403,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="기술통계분석과-부적절한-항목-또는-수준의-제거" class="section level4" number="11.1.1.1">
 <h4><span class="header-section-number">11.1.1.1</span> 기술통계분석과 부적절한 항목 또는 수준의 제거</h4>
 <p>이 단계의 핵심적 절차는 각 항목이 어떠한 척도로 조사되었는가를 확인하고, 해당 척도에 적합한 방법으로 기술 통계 분석을 실시하는 것이다. 즉, 비척도로 조사된 항목은 평균, 표준편차, 분위 수 등의 값을 산출하여야 하고, 서열척도나 명목척도로 조사된 항목은 각 수준(level) 별로 빈도를 파악한다. 등간척도의 경우에는 상황에 따라 적절한 기술통계 방법을 선택한다. 실제 모델링 수행 시에는 완성된 기반 모델 (base model)의 제어구문 맨 뒤에 $TABLE로서 잠재적 공변량의 상세 사항을 출력한 후, R package인 xpose4 (ver. 4.5.X 기준) <span class="citation">(Hooker et al. <a href="#ref-R-xpose4" role="doc-biblioref">2020</a>)</span>를 사용하면, 6: Covariate model &gt; 2. Numerically summarize the covariates 기능을 이용하여 이 과정을 간단히 수행할 수 있다. (구체적인 방법은 xpose4 매뉴얼<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> 참조) 이러한 분석의 결과로는 다음과 같은 표를 얻을 수 있다.</p>
-<div class="figure"><span id="fig:covariate-summary"></span>
-<img src="figures/11-fig-02.png" alt="항목 평가에 필요한 잠재적 공변량 요약표" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:covariate-summary"></span>
+<img src="figures/11-fig-02.png" alt="항목 평가에 필요한 잠재적 공변량 요약표" width="80%" />
 <p class="caption">
 그림 11.2: 항목 평가에 필요한 잠재적 공변량 요약표
 </p>
@@ -423,8 +424,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h5><span class="header-section-number">11.1.1.1.2</span> 부적절한 분포를 보이는 항목</h5>
 <p>공변량 분석은 물론, 모든 약동-약력학 모델링에서 비례적 관계를 다루는 경우에, 각 연구자는 그러한 비례적 관계가 독립변수의 어느 범위에서 유효한가를 먼저 고민해야 한다. 그러한 범위 이외에서 같은 관계를 외삽하는 경우, 실제 값과 다른 예측 결과를 보일 수 있기 때문이다. 공변량이라는 측면에서 이러한 문제를 보이는 대표적인 사례는 Cockcroft-Gault equation이다. 이 식은 토리여과율(GFR, glomerular filtration rate)을 다른 신체적 변수 간의 관계를 통해 추정하는데, 해당 관계식에 포함된 체중 또는 연령의 값이 인구 평균에서 멀어질수록 예측 값과 실제 토리여과율 간의 차이가 확대되는 양상을 보인다.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> (그림 <a href="covariate-analysis.html#fig:gfr">11.3</a>) </p>
 
-<div class="figure"><span id="fig:gfr"></span>
-<img src="figures/11-fig-03.png" alt="독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:gfr"></span>
+<img src="figures/11-fig-03.png" alt="독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시" width="100%" />
 <p class="caption">
 그림 11.3: 독립 변수의 변화에 따른 토리여과율 예측값과 실제값의 차이: 연령의 예시
 </p>
@@ -436,8 +437,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>분포의 범위가 매우 좁거나, 편향됨</li>
 </ol>
 <p>1.의 경우, 잠재적 공변량이 연속형 변수라면, 양극단에 있는 소수의 정보가 약동-약력학 파라미터와 잠재적 공변량 간의 비례 형태에 대한 잘못된 추론을 가능케 할 수 있으므로 이후 공변량 분석에서 이를 주의하여 수행하여야 한다. (그림 <a href="covariate-analysis.html#fig:improper-distribution">11.4</a> 좌) 범주형 변수라면, 어느 한 수준의 측정값이 다른 수준에 비해 절대적으로 부족하게 되며(그림 <a href="covariate-analysis.html#fig:improper-distribution">11.4</a> 우), 이 경우에는 그러한 수준을 가장 가까운 수준과 병합하거나 그 수준을 제외하고 이후 공변량 분석을 수행하여야 한다. 만약 수준을 단 2개만 가진 항목(예&gt; 성별, 환자 여부 등)이라면 아예 항목 자체를 제외하여야 할 수 있다. 그러나 특정 수준의 데이터 비율이 상대적으로 적은 경우라 할 지라도, 그 데이터 양이 충분(N &gt; 30)하다고 판단된다면 이를 포함할 지 여부를 신중하게 고려하여 결정할 수 있다.</p>
-<div class="figure"><span id="fig:improper-distribution"></span>
-<img src="figures/11-fig-04.png" alt="부적절한 데이터 분포" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:improper-distribution"></span>
+<img src="figures/11-fig-04.png" alt="부적절한 데이터 분포" width="100%" />
 <p class="caption">
 그림 11.4: 부적절한 데이터 분포
 </p>
@@ -449,8 +450,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="potential-cov" class="section level4" number="11.1.1.2">
 <h4><span class="header-section-number">11.1.1.2</span> 잠재적 공변량 간의 상관 관계 분석</h4>
 <p>본 과정은 다음 <a href="covariate-analysis.html#colinearity">11.2.3</a>에서 소개할 공선성 분석을 위한 준비 단계로서, 각 대상자 별로 확보된 잠재적 공변량의 값들 간에 나타나는 비례관계 유무를 파악하는 것이다. 우선적으로는 시각적 방법이 활용되며, 통계적 방법을 통해 이를 보강할 수 있다. 이 과정의 핵심적 절차는 각 대상자에서 관찰된 잠재적 공변량 항목들의 값을 그림 <a href="covariate-analysis.html#fig:cov-scatter">11.5</a>와 같이 scatterplot matrix로 나타내는 것이다. <a href="covariate-analysis.html#variable-eval">11.2.1.1</a>에서 언급한 바와 마찬가지로, xpose4 (ver. 4.5.X 기준)의 6: Covariate model &gt; 3. Scatterplot matrix of covariates 기능을 통해 간단히 수행할 수 있다. 그 수행 결과는 아래 그림 <a href="covariate-analysis.html#fig:cov-scatter">11.5</a>에 나타난 바와 같다.</p>
-<div class="figure"><span id="fig:cov-scatter"></span>
-<img src="figures/11-fig-05.png" alt="공변량 간의 상관 관계 탐색을 위한 scatterplot matrix" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:cov-scatter"></span>
+<img src="figures/11-fig-05.png" alt="공변량 간의 상관 관계 탐색을 위한 scatterplot matrix" width="100%" />
 <p class="caption">
 그림 11.5: 공변량 간의 상관 관계 탐색을 위한 scatterplot matrix
 </p>
@@ -467,16 +468,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">11.1.2.1</span> 시각적 스크리닝 (visual screening)</h4>
 <p></p>
 <p>시각적 스크리닝의 핵심적 절차는 대상자 별로 확보된 잠재적 공변량의 값과 각 파라미터의 ETA 값을 각 조합 별로 하나의 그림에 나타내어 양의 혹은 음의 상관 관계가 보이는가를 시각적으로 판단해 보는 것이다. 이 때, 보통 공변량을 원인 변수로, 파라미터의 ETA 값을 종속 변수로 보기 때문에(약동-약력학적 파라미터는 각 개인의 특성 또는 특정 상황에 따라 발생한 결과값이라 생각함), 잠재적 공변량 값을 x축에, ETA 값을 y축으로 하여 나타내게 된다. 잠재적 공변량이 연속형 변수라면 이를 scatterplot으로 나타내고, 범주형 변수라면 각 수준 별 boxplot으로 나타낸다. 이 절차는 xpose4(ver. 4.5.X 기준) 의 6: Covariate model &gt; 4. Parameters vs covariates 기능을 이용하여 간단히 수행할 수 있다. 그림 <a href="covariate-analysis.html#fig:visual-screening">11.6</a>은 그 예시로써, 패널(a), (b)는 scatterplot이며, (c), (d)는 boxplot이다.</p>
-<div class="figure"><span id="fig:visual-screening"></span>
-<img src="figures/11-fig-06.png" alt="시각적 스크리닝을 위한 plot 예시" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:visual-screening"></span>
+<img src="figures/11-fig-06.png" alt="시각적 스크리닝을 위한 plot 예시" width="100%" />
 <p class="caption">
 그림 11.6: 시각적 스크리닝을 위한 plot 예시
 </p>
 </div>
 
 <p>패널 (b)와 (c)에서는 명확한 상관관계를 확인할 수 있으며, (d)는 상관관계가 없는 것으로 보인다. 따라서, 이 경우, 청소율에 대해 CLCR을, 분포용적에 대해 SEX를 실제 모델링을 위한 잠재적 공변량으로 선정하고, ACE는 제외한다. 패널(a)의 추세선은 선형적 상관관계가 없는 것처럼 보이지만, 해당 패널을 좀 더 자세히 보면 불과 1-2개의 관측값이 추세선의 형태를 변형시키고 있다는 것을 알 수 있다. 이는 <a href="covariate-analysis.html#improper">11.2.1.1.2 부적절한 분포를 보이는 항목</a>에서 언급한 “특정 독립변수 범위(주로 분포 범위의 양극단)에 대한 정보가 충분치 않음”에 해당하는 것이다. 관측값이 조밀한 영역에서는 분명한 음의 상관관계를 보이고 있음을 알 수 있으므로, AGE 역시 청소율에 대한 유효한 잠재적 공변량으로서 다음 단계의 평가에 포함하는 것이 바람직하며, 이를 제외하는 오류를 범해서는 안 된다. 이러한 오류는 시각적 스크리닝 과정에서 가장 빈번히 일어나는 것이기도 하다. 일부 경우에는 다음과 같이 반드시 선형적 상관관계를 가진다고 단정 짓지 못하는 사례도 있을 수 있다.</p>
-<div class="figure"><span id="fig:nonlinear-rel"></span>
-<img src="figures/11-fig-07.png" alt="비선형적 상관관계를 가질 가능성이 있는 경우 (Owen 2014)" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:nonlinear-rel"></span>
+<img src="figures/11-fig-07.png" alt="비선형적 상관관계를 가질 가능성이 있는 경우 (Owen 2014)" width="100%" />
 <p class="caption">
 그림 11.7: 비선형적 상관관계를 가질 가능성이 있는 경우 <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>)</span>
 </p>
@@ -496,8 +497,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>2.에서 얻은 값 중, 가장 낮은 AIC 값을 보인 잠재적 공변량을 선택하고, 그 AIC 값이 1)에서 얻은 값보다 낮으면, 해당하는 잠재적 공변량을 유효한 것으로 판단한다.</li>
 </ol>
 <p>이러한 3가지의 절차를 1개의 ‘step’이라 한다. 하나의 step이 수행된 결과는 아래와 같이 표시되며, 이 사례에서는 CLCR이 최선의 결과로 선택되었다.</p>
-<div class="figure"><span id="fig:gam-step"></span>
-<img src="figures/11-fig-08.png" alt="GAM에서 1개의 step을 실행한 결과" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:gam-step"></span>
+<img src="figures/11-fig-08.png" alt="GAM에서 1개의 step을 실행한 결과" width="100%" />
 <p class="caption">
 그림 11.8: GAM에서 1개의 step을 실행한 결과
 </p>
@@ -505,8 +506,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>만일, 3)의 조건을 만족하는 잠재적 공변량이 없다면, GAM은 step 1에서 종료되고, 유의한 잠재적 공변량이 없다고 보고한다. 그러나 3)의 조건을 만족하는 공변량이 하나라도 있다면, GAM은 다른 step을 개시하며, 같은 작업을 반복한다. 다만, 다음 step에서는 1)의 기준 AIC가 이전 step에서 선택한 최적 모델의 AIC가 되며, 2)에서는 이전 step에서 선택된 잠재적 공변량을 모델에 유지한 채, 또 하나의 잠재적 공변량을 선형적 구조로서 가법적으로 이어 붙여 해당 모델의 AIC를 평가하게 된다.(예를 들어 CLCR이 이전에 step에서 포함된 상황이라면, <code>ETA1 ~ CLCR + SEX</code>와 같은 구조가 된다.) 이는 통계학적으로 다변량 선형회귀분석에서 사용하는 모델과 동일하다. 이 평가 과정 역시 모든 잠재적 공변량에 대해 이루어지며, 3)의 조건을 만족하는 잠재적 공변량이 없을 때까지 step이 반복된다. 중요한 것은 이미 모델에 포함되어 있는 잠재적 공변량일지라도, 각 step에서 한 번 더 평가가 이루어진다는 것이다.(e.g. <code>ETA1 ~ CLCR + CLCR</code>) 만일, 동일한 공변량이 두 번 이상 선택된다면, 이는 유의한 상관관계가 있지만, 잠재적 공변량과 파라미터 간의 상관 구조가 선형적이 아닐 수 있다는 것을 시사하는 것이므로, 앞서 그림 <a href="covariate-analysis.html#fig:nonlinear-rel">11.7</a>에서 언급한 경우와 같이 기록해 두고 다음 과정을 진행하여야 한다.</p>
 <p>이제 GAM이라는 의미를 다시 살펴보면, ‘모든 잠재적 공변량에 대해(generalized), 가법적으로(additive), 모델을 수행(modeling)하여, 각 결과를 비교하는 것이다.’라는 것을 알 수 있다. 파라미터 별 GAM 수행 결과는 그림 <a href="covariate-analysis.html#fig:gam-step">11.8</a><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>의 결과를 반복적으로 보여 주는 형태로 확인하기도 하지만, 다음의 그림과 같이 모델 구조에 따른 AIC의 변화를 도식적으로 나타내어 선택된 잠재적 공변량들을 한 눈에 확인하는 경우가 많다.</p>
-<div class="figure"><span id="fig:gam-summary"></span>
-<img src="figures/11-fig-09.png" alt="GAM 실행 summary" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:gam-summary"></span>
+<img src="figures/11-fig-09.png" alt="GAM 실행 summary" width="100%" />
 <p class="caption">
 그림 11.9: GAM 실행 summary
 </p>
@@ -632,8 +633,8 @@ p = 0.001
 </table>
 <p></p>
 <p>2.는 매우 중요한 개념으로, ω<sub>i2</sub>의 감소로 판단한다. 이는 임의효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.</p>
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
-<img src="figures/11-fig-10.png" alt="임의효과로 남겨져 있는 설명 불가능한 개인차" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="figures/11-fig-10.png" alt="임의효과로 남겨져 있는 설명 불가능한 개인차" width="100%" />
 <p class="caption">
 그림 11.10: 임의효과로 남겨져 있는 설명 불가능한 개인차
 </p>
@@ -652,11 +653,11 @@ p = 0.001
 <li>Linear
 <ul>
 <li><span class="math inline">\(CL = CL_{pop} + slope * WT\)</span></li>
-<li><span class="math inline">\(CL = CL_{pop} + slope * (WT-WT_{pop}) \text{(Centered)}\)</span></li>
+<li><span class="math inline">\(CL = CL_{pop} + slope * (WT-WT_{pop})\)</span> (Centered)</li>
 </ul></li>
 <li>Scaling
 <ul>
-<li><span class="math inline">\(V = WT * V_{kg} \text{(Only permitted to WT)}\)</span></li>
+<li><span class="math inline">\(V = WT * V_{kg}\)</span> (Only permitted to WT)</li>
 </ul></li>
 <li>Piecewise linear
 <ul>
@@ -664,8 +665,8 @@ p = 0.001
 </ul></li>
 <li>Power
 <ul>
-<li><span class="math inline">\(CL_i = CL_{pop} * WT_i^{exponent} \text{(Allometric model: exponent=0.75)}\)</span></li>
-<li><span class="math inline">\(CL_i = CL_{pop} * (WT_i/WT_{pop})^{exponent} \text{(Normalized by population mean)}\)</span></li>
+<li><span class="math inline">\(CL_i = CL_{pop} * WT_i^{exponent}\)</span> (Allometric model: exponent=0.75)</li>
+<li><span class="math inline">\(CL_i = CL_{pop} * (WT_i/WT_{pop})^{exponent}\)</span> (Normalized by population mean)</li>
 </ul></li>
 <li>Exponential
 <ul>

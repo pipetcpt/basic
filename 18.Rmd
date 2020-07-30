@@ -1,6 +1,9 @@
 # PK-PD 연결 방법과 적합법 {#pkpd-link}
 
+\Large\hfill
 이소진
+\normalsize
+
 
 ---
 
@@ -375,7 +378,7 @@ $PK
 
 ### PPP의 데이터셋 및 제어구문
 
-PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ppp-pkpd-dataset)). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 \@ref:sim-pppd-dataset)을 활용하고자 한다면, 제어구문 파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘ignore’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 IGNORE=(CMT.EQ.2)를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.\index{\$DATA}\index{CMT}\index{IGNORE}
+PPP 방법을 사용할 때의 데이터셋 형태는 아래와 같다(그림 \@ref(fig:ppp-pkpd-dataset)). 데이터셋은 PK 데이터를 제외한 용량 정보와 PD 데이터만을 포함하며, 이와 같은 경우 PD 데이터를 CMT 4에 기입한다. 기존 SIM 및 PPP\&D 방법을 사용하여 PK-PD 모델링을 수행한 바 있고 이 때의 데이터셋(그림 \@ref(fig:sim-pppd-dataset))을 활용하고자 한다면, 제어구문 파일에서 간단한 제어구문을 통해 PPP에 적합한 데이터셋으로 변형하여 사용할 수 있다. 이는 \$DATA 제어구문내의 ‘IGNORE’이라는 명령어를 사용하여 CMT 2에 해당하는 PK 데이터를 받아들이지 않고, 그 외의 정보(용량 정보 및 PD 데이터)만을 받아들이게 할 수 있다(\$DATA 내의 `IGNORE=(CMT.EQ.2)`를 추가함). 이 명령어를 사용하지 않는다면, 물론 엑셀 상에서 데이터셋 자체를 PPP 방법에 적합하도록 수정하여 사용할 수 있다.\index{\$DATA}\index{CMT}\index{IGNORE}
 
 PPP의 제어구문은 위의 코드 \@ref(exm:sim-pppd-similarity)과 동일한 형태로 사용될 수 있으며, 다만 다른 점은 $ERROR에서 PK(CMT 2)에 대한 오차모델이 삭제되고, PD (CMT 4)에 대한 오차모델만 남아있다고 생각하면 된다.\index{\$ERROR}\index{CMT}
 

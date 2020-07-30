@@ -1,7 +1,9 @@
 # NONMEM의 \$COVARIANCE {#cov}
 \index{\$COVARIANCE (\$COV, \$COVAR)}
 
+\Large\hfill
 배균섭
+\normalsize
 
 ---
 
@@ -244,7 +246,7 @@ plot(Theoph)
 NONMEM 제어구문 파일의 내용은 \@ref(actual-example)절에서 표시한 것과 같다.
 
 R에서는 다음과 같은 준비 작업이 필요하다.
-
+\small
 ```r
 DataAll = Theoph
 colnames(DataAll) = c("ID", "BWT", "DOSE", "TIME", "DV")
@@ -276,8 +278,8 @@ H = deriv(~F + F*EPS1 + EPS2, c("EPS1", "EPS2"),
 
 PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
 {
-  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], DOSE=320, 
-                DATAi[,"TIME"])
+  FGDres = FGD1(THETA[1], THETA[2], THETA[3], ETA[1], ETA[2], ETA[3], 
+                DOSE=320, DATAi[,"TIME"])
   Gres = attr(FGDres, "gradient")
   Hres = attr(H(FGDres, 0, 0), "gradient")
   Res = cbind(FGDres, Gres, Hres)
@@ -285,13 +287,14 @@ PRED1 = function(THETA, ETA, DATAi)  # for FO and FOCE
   return(Res)
 }
 ```
+\normalsize
 
 \index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{1차추정법 / first-order method(FO)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order method(FO) / 1차추정법}\index{FOCE}\index{FO}
 
 위 PRED 함수의 return 값 중에 F는 model prediction value이고, G들은 model predictiion function(structural model)을 각 η에 대하여 편미분한 값들이다. H들은 잔차에 대한 통계모형(model prediction에 noise가 섞여 관찰값을 이루는 모형)을 각 ε으로 편미분한 값들이다. F, G, H는 목적함수값을 구할 때 필요하다. NONMEM에서는 **nmtran**이 G와 H를 구하는 수식을 기호미분(symbolic differentiation)으로 구하나, R에서는 자동으로 해주는 것이 없으므로, 위와 같이 사용자가 직접 구성해 주어야 한다.\index{목적함수 / objective function}\index{objective function / 목적함수}\index{잔차 / residual error}\index{residual error / 잔차}\index{PRED}
 
 이후에 다음과 같은 R script를 실행하면 NONMEM output과 형태는 다르지만 내용은 동일한 결과를 얻을 수 있다.\index{NONMEM 보고 파일 / NONMEM report file}\index{NONMEM report file / NONMEM 보고 파일}\index{NONMEM report file / NONMEM 보고 파일}
-
+\small
 ```r
 library(nmw)
 # First Order Approximation Method
@@ -329,10 +332,10 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 ##  [6]  0.03134899  0.37015671  0.04340042  0.25068582  0.01207782
 ## [11]  0.05427434
 ```
-
+\normalsize
 `InitStep()`과 `EstStep()`을 마친 후 `CovStep()`을 실행하면 아래와 같은 표준오차와 분산 행렬을 계산할 수 있다. 
 
-
+\small
 ```r
 (CovRes1 = CovStep())
 ## $Time
@@ -526,6 +529,7 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 ## [10,]  18067.42672
 ## [11,]  24042.66052
 ```
+\normalsize
 
 `PostHocEta()`, `TabStep()`의 실행화면은 아래와 같다.
 

@@ -376,7 +376,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="specific-advan" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> 특수 ADVAN을 이용한 제어구문의 코딩</h1>
 <p></p>
-<p>전상일</p>
+<p>전상일
+</p>
 <hr />
 <p>본 장에서는 PREDPP에 마련된 특정 서브루틴을 사용하여 PK 모델을 명시하는 방법에 대해 다루고자 하며, 이전 장에서 나왔던 제어구문 파일의 구조 중 $SUBROUTINES 와 $PK 부분에 대해 주로 설명하고자 한다. 전형적인 $SUBROUTINES는 숫자로 분류된 특수 ADVAN과 TRANS 서브루틴으로 구성되는데, 이 중 ADVAN은 모델의 구조를 알려주는 서브루틴이다. 예를 들면, ADVAN1은 정맥투여 1구획 모델을, ADVAN2는 정맥 외 투여 1구획 모델을 의미하며, ADVAN3은 정맥투여 2구획 모델을, ADVAN4는 정맥 외 투여 2구획 모델을 의미한다(표 <a href="specific-advan.html#tab:specific-advan">4.1</a>). 그림 <a href="specific-advan.html#fig:1comp-ex">4.1</a>, <a href="specific-advan.html#fig:2comp-ex">4.2</a>를 살펴보면 모두 정맥 투여 후 시간에 따른 로그-약물농도를 나타낸 그림이지만, 그림 <a href="specific-advan.html#fig:1comp-ex">4.1</a>은 약물농도가 하나의 직선으로, 그림 <a href="specific-advan.html#fig:2comp-ex">4.2</a>는 약물농도가 두개의 직선으로 나타나 있다. 그림 <a href="specific-advan.html#fig:1comp-ex">4.1</a>과 같이 시간에 따른 로그-약물농도가 하나의 직선으로 설명되는 경우는 1구획 모델인 ADVAN1을, 그림 <a href="specific-advan.html#fig:2comp-ex">4.2</a>와 같이 두개의 직선으로 설명되는 경우는 ADVAN3을 사용하면 된다.</p>
 <table>
@@ -407,14 +408,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 
-<div class="figure"><span id="fig:1comp-ex"></span>
+<div class="figure" style="text-align: center"><span id="fig:1comp-ex"></span>
 <img src="figures/04-fig-01.png" alt="Example of IV 1-compartment model" width="50%" />
 <p class="caption">
 그림 4.1: Example of IV 1-compartment model
 </p>
 </div>
-<div class="figure"><span id="fig:2comp-ex"></span>
-<img src="figures/04-fig-02.png" alt="Example of IV 2-compartment model" width="50%" />
+<div class="figure" style="text-align: center"><span id="fig:2comp-ex"></span>
+<img src="figures/04-fig-02.png" alt="Example of IV 2-compartment model" width="70%" />
 <p class="caption">
 그림 4.2: Example of IV 2-compartment model
 </p>
@@ -1014,8 +1015,8 @@ Absorption lag parameter for compartment n
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은
 3구획이다.</p>
 
-<div class="figure"><span id="fig:2comp-structure"></span>
-<img src="figures/04-fig-03.png" alt="Structure of 2-compartment extravascular model" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:2comp-structure"></span>
+<img src="figures/04-fig-03.png" alt="Structure of 2-compartment extravascular model" width="80%" />
 <p class="caption">
 그림 4.3: Structure of 2-compartment extravascular model
 </p>
@@ -1033,10 +1034,10 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 <span id="cb26-2"><a href="specific-advan.html#cb26-2" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.100</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">7</span>)</span>
 <span id="cb26-3"><a href="specific-advan.html#cb26-3" aria-hidden="true"></a><span class="kw">IF</span> (DOSE.EQ<span class="fl">.200</span>) F1 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">8</span>)</span></code></pre></div>
 <p>척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 <a href="specific-advan.html#tab:basic-additional">4.5</a>를 참고하도록 하자. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
-
+(ref:basic-additional) Basic and additional pharmacokinetic parameters
 <table>
 <caption>
-<span id="tab:basic-additional">표 4.5: </span>Basic and additional pharmacokinetic parameters
+<span id="tab:basic-additional">표 4.5: </span>(ref:basic-additional)
 </caption>
 <thead>
 <tr>
@@ -1044,10 +1045,10 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 ADVAN
 </th>
 <th style="text-align:left;">
-Compartments
+CMT
 </th>
 <th style="text-align:left;">
-Parameters
+PARAM
 </th>
 <th style="text-align:left;">
 Description
@@ -1059,45 +1060,45 @@ Description
 <td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="5">
 ADVAN1
 </td>
-<td style="text-align:left;width: 2.0cm; vertical-align: top !important;" rowspan="5">
+<td style="text-align:left;width: 2.2cm; vertical-align: top !important;" rowspan="5">
 1 = Central, 2 = Output
 </td>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant of elimination
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for output compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F0
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Output Fraction
 </td>
 </tr>
@@ -1105,69 +1106,69 @@ Output Fraction
 <td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="8">
 ADVAN2
 </td>
-<td style="text-align:left;width: 2.0cm; vertical-align: top !important;" rowspan="8">
+<td style="text-align:left;width: 2.2cm; vertical-align: top !important;" rowspan="8">
 1 = Depot, 2 = Central, 3 = Output
 </td>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 KA
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Absorption rate constant
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant of elimination
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for depot compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S3
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for output compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for depot compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F0
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Output Fraction
 </td>
 </tr>
@@ -1175,77 +1176,77 @@ Output Fraction
 <td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="9">
 ADVAN3
 </td>
-<td style="text-align:left;width: 2.0cm; vertical-align: top !important;" rowspan="9">
+<td style="text-align:left;width: 2.2cm; vertical-align: top !important;" rowspan="9">
 1 = Depot, 2 = Peripheral, 3 = Output
 </td>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant of elimination
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K12
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant from central to peripheral
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K21
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant from peripheral to central
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for peripheral compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S3
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for output compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for peripheral compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F0
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Output Fraction
 </td>
 </tr>
@@ -1253,101 +1254,101 @@ Output Fraction
 <td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="12">
 ADVAN4
 </td>
-<td style="text-align:left;width: 2.0cm; vertical-align: top !important;" rowspan="12">
+<td style="text-align:left;width: 2.2cm; vertical-align: top !important;" rowspan="12">
 1 = Depot, 2= Central, 3 = Peripheral, 4 = Output
 </td>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 KA
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Absorption rate constant
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant of elimination
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K23
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant from central to Peripheral
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 K32
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Rate constant from peripheral to central
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for depot compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S3
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for Peripheral compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 S4
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Scale for output compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F1
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for depot compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F2
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for central compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F3
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Bioavailability for Peripheral compartment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.0cm; ">
+<td style="text-align:left;width: 1.5cm; ">
 F0
 </td>
-<td style="text-align:left;width: 8.0cm; ">
+<td style="text-align:left;width: 7.5cm; ">
 Output Fractlon
 </td>
 </tr>

@@ -1,7 +1,9 @@
 # \$PRED: ADVAN을 쓰지 않는 코딩 {#PRED}
 \index{\$PRED}\index{PRED}
 
+\Large\hfill
 임동석
+\normalsize
 
 ## \$PRED와 PREDPP library사용할 때의 차이
 \index{\$PRED}\index{PRED}\index{PREDPP}

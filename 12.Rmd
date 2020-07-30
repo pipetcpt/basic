@@ -2,7 +2,9 @@
 
 # 모델 진단/평가 개론 {#diag-eval}
 
+\Large\hfill
 한승훈
+\normalsize
 
 ---
 

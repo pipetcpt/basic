@@ -375,7 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="effect-model" class="section level1" number="19">
 <h1><span class="header-section-number">Chapter 19</span> 다양한 약물효과 모델링</h1>
-<p>배수현</p>
+<p>배수현
+</p>
 <hr />
 <p>약을 투여한 후 그 결과는 효과와 부작용으로 나타날 수 있으며, 다양한 형태로 표현될 수 있기 때문에 약물농도와 효과와의 관계를 설명하는 PD 모델은 PK 모델에 비해 복잡하며, PK/PD 모델링을 위해 PD 데이터 특성뿐만 아니라 PK와의 관계, 질병의 진행 등을 고려하여야 하므로 보다 높은 수준의 모델링 기술이 요구된다. 이 장에서는 약물 효과와 혈중농도와의 관계를 설명하는 PD 모델을 소개한다.</p>
 <div id="pd-model" class="section level2" number="19.1">
@@ -389,7 +390,7 @@ E = E_0 + S \cdot C
 \tag{19.1}
 \end{equation}\]</span></p>
 <p>여기서 E는 약효, E<sub>0</sub>는 기저치(baseline), C는 약물농도를 나타내며, S는 기울기이다. 약효를 나타내는 반응에 있어 반응의 최대치(R<sub>max</sub>)가 존재하지 않으므로, 효소나 리간드의 결합과 같이 생리학적으로 반응의 최대치가 존재하여 포화과정이 일어나는 PD 데이터를 설명하기에는 적합하지 않은 모델이다. 약물의 작용기전을 고려할 때, 고농도에서 반응이 포화된다고 하더라도 가지고 있는 데이터가 선형성을 나타낸다면, 제한적으로 사용할 수 있으나, 구축된 선형모델을 이용하여 더 높은 농도에서의 약효 예측(extrapolation)에는 사용할 수 없다. 또한, 기저치가 존재한다면, E<sub>0</sub> 값을 고정 또는 추정할 수 있다.</p>
-<div class="figure"><span id="fig:linear-pd"></span>
+<div class="figure" style="text-align: center"><span id="fig:linear-pd"></span>
 <img src="figures/19-fig-01.png" alt="선형 PD 모델 (dots: 관찰값, line: 예측값)" width="70%" />
 <p class="caption">
 그림 19.1: 선형 PD 모델 (dots: 관찰값, line: 예측값)
@@ -405,8 +406,8 @@ E = m \cdot ln(C+A_0)
 \tag{19.2}
 \end{equation}\]</span></p>
 <p>여기서 기저치는 <span class="math inline">\(E_0 = m \cdot ln(A_0)\)</span>로 쓸 수 있다. 로그-선형모델에서 약효는 지수적으로 증가하며 반응의 최대치(R<sub>max</sub>)는 존재하지 않는다. 약물의 기전상 약효가 R<sub>max</sub>에 도달하더라도, 관찰값에서 R<sub>max</sub>를 확인할 수 없으면 선형-로그모델을 사용할 수 있다. 이론상으로 E<sub>max</sub> 모델(19.2.3 참고)을 따르는 경우라도, R<sub>max</sub>의 80% 범위 이내의 약효 데이터를 이용하여 PD 모델링을 한다면 반응과 농도와의 관계를 선형-로그모델로 설명할 수 있다.</p>
-<div class="figure"><span id="fig:log-linear-model"></span>
-<img src="assets/media-19/image2.png" alt="로그-선형 모델 (dots: 관찰값, line: 선형로그모델의 예측값, dotted line: Emax모델의 예측값)" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:log-linear-model"></span>
+<img src="assets/media-19/image2.png" alt="로그-선형 모델 (dots: 관찰값, line: 선형로그모델의 예측값, dotted line: Emax모델의 예측값)" width="100%" />
 <p class="caption">
 그림 19.2: 로그-선형 모델 (dots: 관찰값, line: 선형로그모델의 예측값, dotted line: Emax모델의 예측값)
 </p>
@@ -478,8 +479,8 @@ E = \frac{E_{max} \cdot [C]}{EC_{50} + [C]}
 E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}
 \tag{19.10}
 \end{equation}\]</span></p>
-<div class="figure"><span id="fig:emax-model"></span>
-<img src="assets/media-19/image5.png" alt="Emax model (좌)선형농도, (우)로그농도" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:emax-model"></span>
+<img src="assets/media-19/image5.png" alt="Emax model (좌)선형농도, (우)로그농도" width="100%" />
 <p class="caption">
 그림 19.3: Emax model (좌)선형농도, (우)로그농도
 </p>
@@ -491,16 +492,16 @@ E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50}
 \tag{19.11}
 \end{equation}\]</span></p>
 <p>R<sub>max</sub> = E<sub>0</sub>+100일때, 모델의 최대약물효과는 E<sub>0</sub>·E<sub>max</sub>가 된다 (그림 <a href="effect-model.html#fig:emax-comparison">19.4</a> (우)).</p>
-<div class="figure"><span id="fig:emax-comparison"></span>
-<img src="figures/19-fig-04.png" alt="Emax 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:emax-comparison"></span>
+<img src="figures/19-fig-04.png" alt="Emax 모델의 비교 (좌) \(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\) (우) \(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)" width="100%" />
 <p class="caption">
 그림 19.4: E<sub>max</sub> 모델의 비교 (좌) <span class="math inline">\(E \approx E_{0} + \frac{\ E_{\max}\lbrack C\rbrack}{EC_{50} + \lbrack C\rbrack}\)</span> (우) <span class="math inline">\(E \approx E_{0} \cdot (1 + \frac{\ E_{\max}\left\lbrack C \right\rbrack}{EC_{50} + \left\lbrack C \right\rbrack})\)</span>
 </p>
 </div>
 
 
-<div class="figure"><span id="fig:anta-emax"></span>
-<img src="assets/media-19/image7.png" alt="길항제의 Emax 모델" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:anta-emax"></span>
+<img src="assets/media-19/image7.png" alt="길항제의 Emax 모델" width="100%" />
 <p class="caption">
 그림 19.5: 길항제의 E<sub>max</sub> 모델
 </p>
@@ -519,8 +520,8 @@ E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}
 \tag{19.13}
 \end{equation}\]</span></p>
 <p>여기서 n은 수용체와 결합하는 약물분자의 수를 의미하며, Hill 계수(Hill coefficient, H)라고도 한다.</p>
-<div class="figure"><span id="fig:sigmoid-emax"></span>
-<img src="figures/19-fig-06.png" alt="Sigmoid Emax model. H에 따른 Emax model의 형태 변화" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:sigmoid-emax"></span>
+<img src="figures/19-fig-06.png" alt="Sigmoid Emax model. H에 따른 Emax model의 형태 변화" width="100%" />
 <p class="caption">
 그림 19.6: Sigmoid E<sub>max</sub> model. H에 따른 E<sub>max</sub> model의 형태 변화
 </p>
@@ -528,7 +529,7 @@ E = \frac{\ E_{\max}{\lbrack C\rbrack}^{n}}{EC_{50}^{n} + {\lbrack C\rbrack}^{n}
 
 <p>Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도로 치환한 그림 <a href="effect-model.html#fig:sigmoid-emax">19.6</a> 우에서, E<sub>max</sub>의 20~80% 범위에서 약효는 직선성을 가진다. Hill 계수가 1이면, 일반적인 효과(E)는 E<sub>max</sub> model을 따르며, n&gt;1이면, 곡선의 선형부분의 기울기가 가파르며, n&lt;1이면, 곡선의 선형부분의 기울기가 완만하다. 로그농도-효과 그래프에서 n은 직선범위의 기울기(m=n·E<sub>max</sub>/4)를 이용하여 구할 수 있다. (* Sigmoid E<sub>max</sub> model에서 n 구하기 참고) Hill 계수의 값에 관계없이 EC<sub>50</sub>은 동일하다.</p>
 
-<div class="figure"><span id="fig:sigmoid-emax-block2"></span>
+<div class="figure" style="text-align: center"><span id="fig:sigmoid-emax-block2"></span>
 <img src="figures/19-fig-sigmoid-emax.png" alt="Sigmoid Emax model: 로그농도-반응 그래프" width="50%" />
 <p class="caption">
 그림 19.7: Sigmoid E<sub>max</sub> model: 로그농도-반응 그래프
@@ -563,8 +564,8 @@ E &amp;= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}}
 <div id="일반적인-imax-model-vs.-sigmoid-imax-model" class="section level3" number="19.2.1">
 <h3><span class="header-section-number">19.2.1</span> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</h3>
 <p>그림 <a href="effect-model.html#fig:sigmoid-imax">19.8</a>은 혈중 약물농도의 변화에 따른 저해반응을 그래프로 나타내었다. 동일한 관찰값을 이용하여 각각 I<sub>max</sub> model과 sigmoid I<sub>max</sub> model을 사용하여 각 파라미터를 추정하고, 예측값을 그려보면, 그림에서 알 수 있듯이, sigmoid I<sub>max</sub> model은 좀 더 유연성을 지니며, 데이터의 곡률을 더 잘 포착한다. 데이터의 특성(약물농도와 반응 관계가 약물의 기전상 1:1의 관계인지 아닌지) 등을 잘 파악하여, 모델 구축의 목적에 맞게 모델을 선정해야 할 것이다.</p>
-<div class="figure"><span id="fig:sigmoid-imax"></span>
-<img src="figures/19-fig-07.png" alt="일반적인 Imax model(빨강)과 sigmoid Imax model(파랑)의 비교" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:sigmoid-imax"></span>
+<img src="figures/19-fig-07.png" alt="일반적인 Imax model(빨강)과 sigmoid Imax model(파랑)의 비교" width="100%" />
 <p class="caption">
 그림 19.8: 일반적인 I<sub>max</sub> model(빨강)과 sigmoid I<sub>max</sub> model(파랑)의 비교
 </p>
@@ -575,21 +576,25 @@ E &amp;= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}}
 <h3><span class="header-section-number">19.2.2</span> 다중 약물결합 모델(multiple binding site model)</h3>
 <p>약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.
 <span class="math display" id="eq:multiplebinding">\[\begin{equation}
-[C] + [R] \xrightarrow[k_{-1}]{k_1} [CR] + [C] \xrightarrow[k_{-2}]{k_2} [C2R]
+  [C] + [R] 
+  \xrightleftharpoons[k_{-1}]{k_1}
+  [CR] + [C] 
+  \xrightleftharpoons[k_{-2}]{k_2}
+  [C2R]
 \tag{19.16}
 \end{equation}\]</span></p>
 <p><span class="math display" id="eq:multiplebinding2">\[\begin{equation}
 \begin{split}
 Effect &amp;= \frac{R_T \cdot Conc}{k_D + Conc + K_2 \cdot Conc^2} \\
-R_T &amp;= total receptor content \\
-k_D &amp;= k_{-1} / k_1 \\ 
-K_2 &amp;= k_2 / k_{-2}
+R_T &amp;= \text{total receptor content} \\
+k_D &amp;= \frac{k_{-1}}{k_1} \\ 
+K_2 &amp;= \frac{k_2}{k_{-2}}
 \end{split}
 \tag{19.17}
 \end{equation}\]</span></p>
 <p>여기서 R<sub>T</sub>는 총 수용체 수, K<sub>d</sub>는 약물-1차 수용체 복합체 해리상수(k<sub>-1</sub>/k<sub>1</sub>), K<sub>2</sub>는 약물-2차 수용체 복합체 결합상수(k<sub>2</sub>/k<sub>-2</sub>)를 의미한다. K<sub>2</sub>=0이면, 위의 식은 E<sub>max</sub> model과 동일하며, K<sub>2</sub>의 값이 커질수록 2차 결합이 빨라지므로, E<sub>peak</sub>값이 작아지며, 농도가 증가할수록 효과(E)의 크기도 더 많이 감소한다 (그림 <a href="effect-model.html#fig:K2">19.9</a>).</p>
-<div class="figure"><span id="fig:K2"></span>
-<img src="figures/19-fig-08.png" alt="K2의 변화에 따른 약물농도-약효와의 관계" width="95%" />
+<div class="figure" style="text-align: center"><span id="fig:K2"></span>
+<img src="figures/19-fig-08.png" alt="K2의 변화에 따른 약물농도-약효와의 관계" width="100%" />
 <p class="caption">
 그림 19.9: K<sub>2</sub>의 변화에 따른 약물농도-약효와의 관계
 </p>
