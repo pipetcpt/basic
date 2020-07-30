@@ -43,8 +43,8 @@ include_graphics("./figures/12-fig-01.png")
 ```{r diag-eval-property}
 txt <- "Model diagnosis, Model evaluation 
 Defects in the model are pointed out, Quality is established to the model 
-can be implemented as brief procedures, A medium to long-term process (e.g. simulations); cannot be implemented quickly 
-focus on outputs - work-in-progress and individual models (NOT the final model), focus on process - how models are developed or established 
+Can be implemented as brief procedures, A medium to long-term process (e.g. simulations); cannot be implemented quickly 
+Focus on outputs - work-in-progress and individual models (NOT the final model), Focus on process - how models are developed or established 
 Achieved by partial inspection on modeling outcome, Achieved by full validation on the final model 
 Targeted at modeling procedures, Targeted at model quality 
 Emphasis on the standards, Emphasis on the purpose"

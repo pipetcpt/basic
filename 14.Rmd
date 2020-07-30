@@ -17,7 +17,7 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 ```{example, theoph-control-stream, echo=TRUE}
 Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 ```
-
+\vspace{-1cm} 
 ```r
 $PROB THEOPHYLLINE ORAL
 $INPUT ID AMT=DROP TIME DV BWT
@@ -152,9 +152,9 @@ I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\thet
 
 \begin{equation}
 \begin{split}
-O = \sum_{i}^{}O_{i} \\
-S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
-R = \frac{\partial^{2}O}{\partial\theta^{2}}
+O &= \sum_{i}^{}O_{i} \\
+S &= \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
+R &= \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{split}
 (\#eq:o-s-r)
 \end{equation}

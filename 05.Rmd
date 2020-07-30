@@ -116,6 +116,7 @@ knitr::include_graphics("figures/05-fig-06.png")
 ```{example, advan5-example, echo = TRUE}
 2구획 경구모델을 ADVAN5로 구현한 코드 예시\index{ADVAN5}
 ```
+\vspace{-1cm} 
 ```r
 $SUBROUTINE ADVAN5
 $MODEL
@@ -143,6 +144,7 @@ $ERROR
 ```{example, advan6-example, echo = TRUE}
 2구획 경구모델을 ADVAN6로 구현한 코드 예시\index{ADVAN6}
 ```
+\vspace{-1cm}
 ```r
 $SUBROUTINE ADVAN6 TOL=4
 $MODEL

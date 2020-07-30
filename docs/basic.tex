@@ -5,8 +5,7 @@
 %
 \documentclass[
   11pt,
-  krantz2,
-  a4paper]{krantz}
+  krantz2, a4paper, twoside]{krantz}
 \usepackage{lmodern}
 \usepackage{setspace}
 \usepackage{amssymb,amsmath}
@@ -277,9 +276,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
@@ -289,7 +285,7 @@
 
 \title{계량약리학 워크샵 - 초급 과정}
 \author{가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)}
-\date{Ver. 20200730}
+\date{Ver. 20200731}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -337,12 +333,12 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\setstretch{1.45}
+\setstretch{1.40}
 \hypertarget{uxba38uxb9acuxb9d0}{%
 \chapter*{머리말}\label{uxba38uxb9acuxb9d0}}
 
 
-\large
+\normalsize
 
 계량약리학은 신약개발 현장에서 제기되는 질문들에 대한 답을 정량적으로 찾아내기 위한 과정에서 정립되어온 학문입니다. 물론 계량약리학은 이미 허가된 약들의 적절한 용법을 찾는 데에도 쓸 수 있지만, 신약개발이라는 큰 목표를 빼고서는 이 어려운 방법론을 배워야 할 이유를 찾기는 힘듭니다. 우리나라의 신약개발은 짧은 역사 속에서 많은 시행착오를 통해 발전해가고 있습니다. 국내에서 계량약리학에 대한 수요가 이만큼이나마 늘어난 것은 2010년대 중반 이후 두드러지게 보이는 이 같은 분위기의 변화와 맞물려 있겠습니다.
 
@@ -532,26 +528,6 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 
 \$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 \texttt{../} 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, \texttt{../} 가 없이 바로 파일 이름을 기입할 경우, 이는 제어구문 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 항목 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 \texttt{IGNORE=@} 또는 \texttt{IGNORE=\#}을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, \texttt{IGNORE=(GEN.EQ.1,AGE.GE.60)} 구문을 사용하여 가능하다).\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
-\hypertarget{input-uxb808uxcf54uxb4dc-uxc791uxc131}{%
-\subsection{\$INPUT 레코드 작성}\label{input-uxb808uxcf54uxb4dc-uxc791uxc131}}
-
-\index{\$INPUT}
-
-\$INPUT 레코드에는 데이터셋에 기재된 데이터 항목의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 항목이 있을 경우, 변수 뒤에 \texttt{=DROP} 이라는 한정어를 써주어 해당 항목을 제거할 수 있다. \$DATA 레코드에서 ``IGNORE'' 또는 ``ACCEPT'' 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 \$INPUT 에서 \texttt{=DROP}을 사용하여 불필요한 항목을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 항목 레이블 이외의 다른 이름을 사용할 경우, ``내장된 변수명=새 이름'' (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.\index{\$DATA}\index{\$INPUT}\index{ACCEPT}\index{AMT}\index{DROP}\index{IGNORE}
-
-\index{\$INPUT}\index{AMT}\index{ID}\index{MDV}\index{TIME}\index{\$DATA}\index{IGNORE}
-\begin{example}
-\protect\hypertarget{exm:input}{}{\label{exm:input} }\$PROB, \$DATA, \$INPUT 제어구문 작성의 예\index{\$DATA}\index{\$INPUT}
-\end{example}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB HO\_IV\_1comp}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{HOdata\_IV.csv IGNORE=}\ErrorTok{@}
-\ErrorTok{$}\NormalTok{INPUT ID TIME AMT DV MDV SEX AGE WT HT}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
 
 \caption{\label{tab:tab}제어구문에 적합한 데이터셋의 예}
@@ -568,6 +544,27 @@ ID & TIME & AMT & DV & MDV & SEX & AGE & WT & HT\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\hypertarget{input-uxb808uxcf54uxb4dc-uxc791uxc131}{%
+\subsection{\$INPUT 레코드 작성}\label{input-uxb808uxcf54uxb4dc-uxc791uxc131}}
+
+\index{\$INPUT}
+
+\$INPUT 레코드에는 데이터셋에 기재된 데이터 항목의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 항목이 있을 경우, 변수 뒤에 \texttt{=DROP} 이라는 한정어를 써주어 해당 항목을 제거할 수 있다. \$DATA 레코드에서 ``IGNORE'' 또는 ``ACCEPT'' 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 \$INPUT 에서 \texttt{=DROP}을 사용하여 불필요한 항목을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 항목 레이블 이외의 다른 이름을 사용할 경우, ``내장된 변수명=새 이름'' (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.\index{\$DATA}\index{\$INPUT}\index{ACCEPT}\index{AMT}\index{DROP}\index{IGNORE}
+
+\index{\$INPUT}\index{AMT}\index{ID}\index{MDV}\index{TIME}\index{\$DATA}\index{IGNORE}
+\begin{example}
+\protect\hypertarget{exm:input}{}{\label{exm:input} }\$PROB, \$DATA, \$INPUT 제어구문 작성의 예\index{\$DATA}\index{\$INPUT}
+\end{example}
+\vspace{-1cm}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{$}\NormalTok{PROB HO\_IV\_1comp}
+\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{HOdata\_IV.csv IGNORE=}\ErrorTok{@}
+\ErrorTok{$}\NormalTok{INPUT ID TIME AMT DV MDV SEX AGE WT HT}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{predppuxc5d0-uxc4f0uxb294-uxb370uxc774uxd130uxc14b}{%
 \section{PREDPP에 쓰는 데이터셋}\label{predppuxc5d0-uxc4f0uxb294-uxb370uxc774uxd130uxc14b}}
@@ -636,7 +633,7 @@ NONMEM 에서는 이미 약속하여 쓰는 데이터 항목의 이름들이 있
 
 \caption{\label{tab:reserveditems}List of reserved (pre-defined) data item labels}
 \centering
-\begin{tabular}[t]{lll}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{8cm}}
 \toprule
 Variable Name & Situation & Meaning\\
 \midrule
@@ -719,6 +716,7 @@ TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 �
 \begin{example}
 \protect\hypertarget{exm:date-dataset-chunk}{}{\label{exm:date-dataset-chunk} }DATE label and its format\index{DATE}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -872,6 +870,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 \begin{example}
 \protect\hypertarget{exm:one-comp}{}{\label{exm:one-comp} }1구획 약동학 모델의 제어구문
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -924,7 +923,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE =}\StringTok{ }\ErrorTok{@}
+\OperatorTok{$}\NormalTok{DATA test.csv IGNORE=}\ErrorTok{@}
 \end{Highlighting}
 \end{Shaded}
 
@@ -932,35 +931,29 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{test.csv IGNORE =}\StringTok{ }\ErrorTok{@}
+\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{test.csv IGNORE=}\ErrorTok{@}
 \end{Highlighting}
 \end{Shaded}
 
 위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은 제어구문이 있는 폴더에 생성된다.
 
-\$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, \texttt{IGNORE\ =\ \#}를 사용하면 제어구문은 첫 번째 열에 \#이 포함된 행을 읽어들이지 않고, \texttt{IGNORE\ =\ @}을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:\index{\$DATA}\index{ACCEPT}\index{IGNORE}
+\$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, \texttt{IGNORE=\#}를 사용하면 제어구문은 첫 번째 열에 \#이 포함된 행을 읽어들이지 않고, \texttt{IGNORE=@}을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE =}\StringTok{ }\CommentTok{\# IGNORE=(SEX.EQ.1)}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+$DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)
+\end{verbatim}
 
 또는
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE =}\StringTok{ }\CommentTok{\# IGNORE=(WEIGHT.LE.40)}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)
+\end{verbatim}
 
 또는
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE =}\StringTok{ }\CommentTok{\# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)
+\end{verbatim}
 
 하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, \texttt{.AND.} 또는 \texttt{.OR.}을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, \texttt{IGNORE=\#} 또는 \texttt{IGNORE=@}를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.\index{ACCEPT}\index{IGNORE}
 
@@ -986,17 +979,17 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \caption{\label{tab:advan-trans}특수 ADVAN과 그에 따른 TRANS 서브루틴}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{5.0cm}>{\raggedright\arraybackslash}p{4.5cm}}
 \toprule
 ADVAN subroutine & TRANS subroutine & Required parameters & Select additional parameters\\
 \midrule
  & TRANS1 & K & \\
 
-\multirow[t]{-2}{1.5cm}{\raggedright\arraybackslash ADVAN1} & TRANS2 & CL, V & \multirow[t]{-2}{5cm}{\raggedright\arraybackslash S1, S2, F1, R1, D1, ALAG1}\\
+\multirow[t]{-2}{1.8cm}{\raggedright\arraybackslash ADVAN1} & TRANS2 & CL, V & \multirow[t]{-2}{4.5cm}{\raggedright\arraybackslash S1, S2, F1, R1, D1, ALAG1}\\
 \cmidrule{1-4}
  & TRANS1 & K, KA & \\
 
-\multirow[t]{-2}{1.5cm}{\raggedright\arraybackslash ADVAN2} & TRANS2 & CL, V, KA & \\
+\multirow[t]{-2}{1.8cm}{\raggedright\arraybackslash ADVAN2} & TRANS2 & CL, V, KA & \\
 
  & TRANS1 & K, K12, K21 & \\
 
@@ -1006,7 +999,7 @@ ADVAN subroutine & TRANS subroutine & Required parameters & Select additional pa
 
  & TRANS5 & AOB, ALPHA, BETA & \\
 
-\multirow[t]{-5}{1.5cm}{\raggedright\arraybackslash ADVAN3} & TRANS6 & ALPHA, BETA, K21 & \multirow[t]{-7}{5cm}{\raggedright\arraybackslash S1, S2, S3, F1, F2, R1, R2, D1, D2, ALAG1, ALAG2}\\
+\multirow[t]{-5}{1.8cm}{\raggedright\arraybackslash ADVAN3} & TRANS6 & ALPHA, BETA, K21 & \multirow[t]{-7}{4.5cm}{\raggedright\arraybackslash S1, S2, S3, F1, F2, R1, R2, D1, D2, ALAG1, ALAG2}\\
 \cmidrule{1-4}
  & TRANS1 & K, K23, K, KA & \\
 
@@ -1016,7 +1009,7 @@ ADVAN subroutine & TRANS subroutine & Required parameters & Select additional pa
 
  & TRANS5 & AOB, ALPHA, BETA, KA & \\
 
-\multirow[t]{-5}{1.5cm}{\raggedright\arraybackslash ADVAN4} & TRANS6 & ALPHA, BETA, K31, KA & \multirow[t]{-5}{5cm}{\raggedright\arraybackslash S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1,D2, D3, ALAG1, ALAG2, ALAG3}\\
+\multirow[t]{-5}{1.8cm}{\raggedright\arraybackslash ADVAN4} & TRANS6 & ALPHA, BETA, K31, KA & \multirow[t]{-5}{4.5cm}{\raggedright\arraybackslash S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1,D2, D3, ALAG1, ALAG2, ALAG3}\\
 \cmidrule{1-4}
 ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \cmidrule{1-4}
@@ -1024,13 +1017,13 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 
  & TRANS4 & CL, V1, Q2, V2, Q3, V3 & \\
 
-\multirow[t]{-3}{1.5cm}{\raggedright\arraybackslash ADVAN11} & TRANS6 & ALPHA, BETA, GAMMA, K21, K31 & \multirow[t]{-3}{5cm}{\raggedright\arraybackslash S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1, D2, D3, ALAG1, ALAG2, ALAG3}\\
+\multirow[t]{-3}{1.8cm}{\raggedright\arraybackslash ADVAN11} & TRANS6 & ALPHA, BETA, GAMMA, K21, K31 & \multirow[t]{-3}{4.5cm}{\raggedright\arraybackslash S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1, D2, D3, ALAG1, ALAG2, ALAG3}\\
 \cmidrule{1-4}
  & TRANS1 & K, K23, K32, K24, K42, KA & \\
 
  & TRANS4 & CL, V2, Q3, V3, Q4, V4, KA & \\
 
-\multirow[t]{-3}{1.5cm}{\raggedright\arraybackslash ADVAN12} & TRANS6 & ALPHA, BETA, GAMMA, K32, K42, KA & \multirow[t]{-3}{5cm}{\raggedright\arraybackslash S1, S2, S3, S4, S5, F1, F2, F3, F4, R1, R2, R3, R4, D1, D2, D3, D4, ALAG1, ALAG2, ALAG3, ALAG4}\\
+\multirow[t]{-3}{1.8cm}{\raggedright\arraybackslash ADVAN12} & TRANS6 & ALPHA, BETA, GAMMA, K32, K42, KA & \multirow[t]{-3}{4.5cm}{\raggedright\arraybackslash S1, S2, S3, S4, S5, F1, F2, F3, F4, R1, R2, R3, R4, D1, D2, D3, D4, ALAG1, ALAG2, ALAG3, ALAG4}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1042,6 +1035,7 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \begin{example}
 \protect\hypertarget{exm:two-comp-pk}{}{\label{exm:two-comp-pk} }2구획 경구 약동학 모델의 \$PK 레코드
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1124,7 +1118,10 @@ D1 & Duration for the first compartment\\
 
 순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 `(하한값, 초기 추정값, 상한값)'을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10\textsuperscript{6}이 기본 상한값이다.
 
-\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 \texttt{CL=TVCL\textbackslash{}*EXP(ETA(1))}로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω\textsubscript{CL}\textsuperscript{2}을 따르는 분포 η\textsubscript{1}를 포함한 개인의 CL값이다. 각 개인마다 하나의 η\textsubscript{1}을 가지므로 CL는 개인마다 다르다. 특히, CL\textsubscript{i} = TVCL*\(e^{\eta_{i}}\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{임의효과 / random-effect}\index{random-effect / 임의효과}\index{OMEGA 행렬 / omega matrix}\index{omega matrix / OMEGA 행렬}\index{omega matrix / OMEGA 행렬}\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}
+\$OMEGA와 \$SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, \$OMEGA는 개인간 변이를, \$SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 \$PK에서 CL=TVCL*EXP(ETA(1))로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω\textsubscript{CL}\textsuperscript{2}을 따르는 분포 η\textsubscript{1}를 포함한 개인의 CL값이다. 각 개인마다 하나의 η\textsubscript{1}을 가지므로 CL는 개인마다 다르다.
+
+\index{개인간 변이 / between-subject variability, initerindividual variability(IIV)}\index{between-subject variability, initerindividual variability(IIV) / 개인간 변이}\index{임의효과 / random-effect}\index{random-effect / 임의효과}\index{OMEGA 행렬 / omega matrix}\index{omega matrix / OMEGA 행렬}\index{omega matrix / OMEGA 행렬}\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}
+특히, \(CL_i = TVCL \cdot (e^{\eta_i})\) 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 \$PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다.
 \begin{equation}
 \begin{pmatrix} 
    \omega_{1,1}^2 & 0 & 0 \\
@@ -1239,14 +1236,16 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 
 \$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 \ref{exm:table-record}처럼 \$TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (Hooker et al. (\protect\hyperlink{ref-R-xpose4}{2020})) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.\index{dependent variable(DV) / 종속변수(DV)}\index{\$TABLE}\index{NOAPPEND}\index{NOHEADER}\index{NOPRINT}\index{ONEHEADER}\index{PRED}\index{RES}\index{WRES}
 
-\begin{example}
-\protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
-\end{example}
 \index{\$TABLE}\index{AMT}\index{CWRES}\index{ID}\index{IPRED}\index{IWRES}\index{MDV}\index{PRED}\index{RES}\index{TIME}\index{WRES}
 \index{\$TABLE}\index{ID}
 \index{\$ESTIMATION (\$EST)}\index{MAXEVAL}\index{NOABORT}\index{NOPRINT}\index{ONEHEADER}
 \index{SIGDIGITS (SIGDIG)}
 \index{conditional weighted residuals / 조건부 가중 잔차}\index{\$THETA}\index{\$OMEGA}\index{\$SIGMA}
+
+\begin{example}
+\protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
+\end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1294,6 +1293,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan4}{}{\label{exm:advan4} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1346,6 +1346,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan5}{}{\label{exm:advan5} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1384,6 +1385,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1453,6 +1455,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:parent-metabolite}{}{\label{exm:parent-metabolite} }모약물과 대사체의 약동학 동시 분석 모델의 제어구문
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1490,11 +1493,12 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 
 \index{PRED}
 
-\$PRED를 사용한 모델을 살펴보자. 코드 \ref{exm:linear-model}는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.\index{\$ERROR}\index{\$PRED}\index{PRED}
+\$PRED를 사용한 모델을 살펴보자. 코드 \ref{exm:linear-model}는 C\textsubscript{max}와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, \$PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. \$PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 \$ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 \$PRED를 사용하는 것이 효율적이다.\index{\$ERROR}\index{\$PRED}\index{PRED}
 
 \begin{example}
 \protect\hypertarget{exm:linear-model}{}{\label{exm:linear-model} }\$PRED를 이용한 간단한 선형 모델
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1716,6 +1720,7 @@ ALAGn & Absorption lag parameter for compartment n\\
 \begin{example}
 \protect\hypertarget{exm:code-example-advan4}{}{\label{exm:code-example-advan4} }공변량 수식 작성에 수월한 제어구문
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1762,6 +1767,7 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 \begin{example}
 \protect\hypertarget{exm:code-if}{}{\label{exm:code-if} }상대생체이용률을 위한 제어구문
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2023,6 +2029,7 @@ Method & Runge-Kutta method & Gear method\\
 \begin{example}
 \protect\hypertarget{exm:advan5-example}{}{\label{exm:advan5-example} }2구획 경구모델을 ADVAN5로 구현한 코드 예시\index{ADVAN5}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2053,6 +2060,7 @@ Method & Runge-Kutta method & Gear method\\
 \begin{example}
 \protect\hypertarget{exm:advan6-example}{}{\label{exm:advan6-example} }2구획 경구모델을 ADVAN6로 구현한 코드 예시\index{ADVAN6}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2185,6 +2193,7 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \begin{example}
 \protect\hypertarget{exm:formula}{}{\label{exm:formula} }약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.\index{\$PRED}\index{PRED}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2713,7 +2722,7 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 \begin{example}
 \protect\hypertarget{exm:table-example}{}{\label{exm:table-example} }\$TABLE의 예\index{\$TABLE}
 \end{example}
-
+\vspace{-1cm}
 \small
 
 \begin{Shaded}
@@ -3314,8 +3323,8 @@ $\Delta$number of parameters & p = 0.05 & p = 0.01 & p = 0.001\\
 Model diagnosis & Model evaluation\\
 \midrule
 Defects in the model are pointed out & Quality is established to the model\\
-can be implemented as brief procedures & A medium to long-term process (e.g. simulations); cannot be implemented quickly\\
-focus on outputs - work-in-progress and individual models (NOT the final model) & focus on process - how models are developed or established\\
+Can be implemented as brief procedures & A medium to long-term process (e.g. simulations); cannot be implemented quickly\\
+Focus on outputs - work-in-progress and individual models (NOT the final model) & Focus on process - how models are developed or established\\
 Achieved by partial inspection on modeling outcome & Achieved by full validation on the final model\\
 Targeted at modeling procedures & Targeted at model quality\\
 \addlinespace
@@ -3502,6 +3511,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \begin{example}
 \protect\hypertarget{exm:combined-upper}{}{\label{exm:combined-upper} }\$ERROR structure in NONMEM control stream: 기본형태\index{\$ERROR}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3515,6 +3525,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \protect\hypertarget{exm:combined-lower}{}{\label{exm:combined-lower} }\$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\$ERROR}
 이고, 비례오차모델의 표준편차를 반영
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3673,6 +3684,7 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 \begin{example}
 \protect\hypertarget{exm:theoph-control-stream}{}{\label{exm:theoph-control-stream} }Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3812,9 +3824,9 @@ I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\thet
 
 \begin{equation}
 \begin{split}
-O = \sum_{i}^{}O_{i} \\
-S = \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
-R = \frac{\partial^{2}O}{\partial\theta^{2}}
+O &= \sum_{i}^{}O_{i} \\
+S &= \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
+R &= \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{split}
 \label{eq:o-s-r}
 \end{equation}
@@ -4577,7 +4589,7 @@ Purpose & Numerical & Visual\\
 
 }
 
-\caption{사후 예측 점검의 예. 시뮬레이션된 Cmax의 분포에서 관찰값(검정색 실선)의 위치를 파악할 수 있음\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ppc}
+\caption{사후 예측 점검의 예. 시뮬레이션된 C\textsubscript{max}의 분포에서 관찰값(검정색 실선)의 위치를 파악할 수 있음\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}}\label{fig:ppc}
 \end{figure}
 
 
@@ -4916,6 +4928,7 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \begin{example}
 \protect\hypertarget{exm:SIM-control}{}{\label{exm:SIM-control} }SIM 방법의 제어구문의 예
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5013,6 +5026,7 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 \begin{example}
 \protect\hypertarget{exm:pppd-code}{}{\label{exm:pppd-code} }PPP\&D 방법의 제어구문의 예
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5072,6 +5086,7 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \begin{example}
 \protect\hypertarget{exm:control-ppp}{}{\label{exm:control-ppp} }Example of control file for PPP
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5128,6 +5143,7 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \begin{example}
 \protect\hypertarget{exm:IPP-example}{}{\label{exm:IPP-example} }IPP 방법의 제어구문의 예
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5187,6 +5203,7 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 \begin{example}
 \protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5266,6 +5283,7 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 \begin{example}
 \protect\hypertarget{exm:ipp-control-stream}{}{\label{exm:ipp-control-stream} }IPP 방법의 제어구문의 예
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5767,6 +5785,7 @@ K_2 &= \frac{k_2}{k_{-2}}
 \begin{example}
 \protect\hypertarget{exm:effect-model-code}{}{\label{exm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})\index{ADVAN3}\index{PRED}\index{PREDPP}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5793,6 +5812,7 @@ K_2 &= \frac{k_2}{k_{-2}}
 \begin{example}
 \protect\hypertarget{exm:effect-comp-advan6}{}{\label{exm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})\index{ADVAN6}
 \end{example}
+\vspace{-1cm}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6008,7 +6028,7 @@ R_{0} = \frac{k_{in}^0}{k_{out}}
 \hypertarget{nonmem-uxc544uxc6c3uxd48b-uxd30cuxc77c}{%
 \chapter{NONMEM 아웃풋 파일}\label{nonmem-uxc544uxc6c3uxd48b-uxd30cuxc77c}}
 
-\protect\hyperlink{cov}{14장} ``NONMEM의 \$COVARIANCE''의 지면관계상 별첨으로 첨부하였다.
+\protect\hyperlink{cov}{14장} ``NONMEM의 \$COVARIANCE''에서 언급된 NONMEM 아웃풋 파일을 별첨으로 수록하였다. 지면 관계상 작은 글자 크기로 수록되었으나 웹\footnote{\url{http://pipet.or.kr/books/basic}}에서 동일한 내용을 확인할 수 있다.
 
 \tiny
 

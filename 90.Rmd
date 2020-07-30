@@ -4,7 +4,7 @@
 
 # NONMEM 아웃풋 파일
 
-[14장](#cov) "NONMEM의 $COVARIANCE"의 지면관계상 별첨으로 첨부하였다.
+[14장](#cov) "NONMEM의 $COVARIANCE"에서 언급된 NONMEM 아웃풋 파일을 별첨으로 수록하였다. 지면 관계상 작은 글자 크기로 수록되었으나 웹^[http://pipet.or.kr/books/basic]에서 동일한 내용을 확인할 수 있다. 
 
 <!--
 Command             10pt    11pt    12pt

@@ -444,16 +444,16 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <p></p>
 <p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 $PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.</p>
 <p>$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="control-stream.html#cb4-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE =<span class="st"> </span><span class="er">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="control-stream.html#cb4-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE=<span class="er">@</span></span></code></pre></div>
 <p>또는</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="control-stream.html#cb5-1" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>test.csv IGNORE =<span class="st"> </span><span class="er">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="control-stream.html#cb5-1" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>test.csv IGNORE=<span class="er">@</span></span></code></pre></div>
 <p>위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은 제어구문이 있는 폴더에 생성된다.</p>
-<p>$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, <code>IGNORE = #</code>를 사용하면 제어구문은 첫 번째 열에 #이 포함된 행을 읽어들이지 않고, <code>IGNORE = @</code>을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="control-stream.html#cb6-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE =<span class="st"> </span><span class="co"># IGNORE=(SEX.EQ.1)</span></span></code></pre></div>
+<p>$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, <code>IGNORE=#</code>를 사용하면 제어구문은 첫 번째 열에 #이 포함된 행을 읽어들이지 않고, <code>IGNORE=@</code>을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:</p>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)</code></pre>
 <p>또는</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="control-stream.html#cb7-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE =<span class="st"> </span><span class="co"># IGNORE=(WEIGHT.LE.40)</span></span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)</code></pre>
 <p>또는</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="control-stream.html#cb8-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE =<span class="st"> </span><span class="co"># IGNORE=(WEIGHT.LE.40, SEX.EQ.1)</span></span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)</code></pre>
 <p>하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, <code>.AND.</code> 또는 <code>.OR.</code>을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, <code>IGNORE=#</code> 또는 <code>IGNORE=@</code>를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.</p>
 <p>$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV, ADDL, II, RATE, CMT, SS 등이 있다. <code>=DROP</code>구문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 <code>CON=DV</code> 또는 DV로
 작성하여야 한다.</p>
@@ -489,16 +489,16 @@ Select additional parameters
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="2">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="2">
 ADVAN1
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K
 </td>
-<td style="text-align:left;width: 5cm; vertical-align: top !important;" rowspan="2">
+<td style="text-align:left;width: 4.5cm; vertical-align: top !important;" rowspan="2">
 S1, S2, F1, R1, D1, ALAG1
 </td>
 </tr>
@@ -506,21 +506,21 @@ S1, S2, F1, R1, D1, ALAG1
 <td style="text-align:left;width: 1.5cm; ">
 TRANS2
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="2">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="2">
 ADVAN2
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K, KA
 </td>
-<td style="text-align:left;width: 5cm; vertical-align: top !important;" rowspan="7">
+<td style="text-align:left;width: 4.5cm; vertical-align: top !important;" rowspan="7">
 S1, S2, S3, F1, F2, R1, R2, D1, D2, ALAG1, ALAG2
 </td>
 </tr>
@@ -528,18 +528,18 @@ S1, S2, S3, F1, F2, R1, R2, D1, D2, ALAG1, ALAG2
 <td style="text-align:left;width: 1.5cm; ">
 TRANS2
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V, KA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="5">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="5">
 ADVAN3
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K, K12, K21
 </td>
 </tr>
@@ -547,7 +547,7 @@ K, K12, K21
 <td style="text-align:left;width: 1.5cm; ">
 TRANS3
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V, Q, VSS
 </td>
 </tr>
@@ -555,7 +555,7 @@ CL, V, Q, VSS
 <td style="text-align:left;width: 1.5cm; ">
 TRANS4
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V1, Q, V2
 </td>
 </tr>
@@ -563,7 +563,7 @@ CL, V1, Q, V2
 <td style="text-align:left;width: 1.5cm; ">
 TRANS5
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 AOB, ALPHA, BETA
 </td>
 </tr>
@@ -571,21 +571,21 @@ AOB, ALPHA, BETA
 <td style="text-align:left;width: 1.5cm; ">
 TRANS6
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 ALPHA, BETA, K21
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="5">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="5">
 ADVAN4
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K, K23, K, KA
 </td>
-<td style="text-align:left;width: 5cm; vertical-align: top !important;" rowspan="5">
+<td style="text-align:left;width: 4.5cm; vertical-align: top !important;" rowspan="5">
 S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1,D2, D3, ALAG1, ALAG2, ALAG3
 </td>
 </tr>
@@ -593,7 +593,7 @@ S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1,D2, D3, ALAG1, ALAG2, ALAG3
 <td style="text-align:left;width: 1.5cm; ">
 TRANS3
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V, Q, VSS, KA
 </td>
 </tr>
@@ -601,7 +601,7 @@ CL, V, Q, VSS, KA
 <td style="text-align:left;width: 1.5cm; ">
 TRANS4
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V2, Q, V3, KA
 </td>
 </tr>
@@ -609,7 +609,7 @@ CL, V2, Q, V3, KA
 <td style="text-align:left;width: 1.5cm; ">
 TRANS5
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 AOB, ALPHA, BETA, KA
 </td>
 </tr>
@@ -617,35 +617,35 @@ AOB, ALPHA, BETA, KA
 <td style="text-align:left;width: 1.5cm; ">
 TRANS6
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 ALPHA, BETA, K31, KA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; ">
+<td style="text-align:left;width: 1.8cm; ">
 ADVAN10
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 VM, KM
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 4.5cm; ">
 S1, S2, F1, R1, D1, ALAG1
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="3">
 ADVAN11
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K, K12, K21, K13, K31
 </td>
-<td style="text-align:left;width: 5cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 4.5cm; vertical-align: top !important;" rowspan="3">
 S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1, D2, D3, ALAG1, ALAG2, ALAG3
 </td>
 </tr>
@@ -653,7 +653,7 @@ S1, S2, S3, S4, F1, F2, F3, R1, R2, R3, D1, D2, D3, ALAG1, ALAG2, ALAG3
 <td style="text-align:left;width: 1.5cm; ">
 TRANS4
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V1, Q2, V2, Q3, V3
 </td>
 </tr>
@@ -661,21 +661,21 @@ CL, V1, Q2, V2, Q3, V3
 <td style="text-align:left;width: 1.5cm; ">
 TRANS6
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 ALPHA, BETA, GAMMA, K21, K31
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 1.5cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 1.8cm; vertical-align: top !important;" rowspan="3">
 ADVAN12
 </td>
 <td style="text-align:left;width: 1.5cm; ">
 TRANS1
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 K, K23, K32, K24, K42, KA
 </td>
-<td style="text-align:left;width: 5cm; vertical-align: top !important;" rowspan="3">
+<td style="text-align:left;width: 4.5cm; vertical-align: top !important;" rowspan="3">
 S1, S2, S3, S4, S5, F1, F2, F3, F4, R1, R2, R3, R4, D1, D2, D3, D4, ALAG1, ALAG2, ALAG3, ALAG4
 </td>
 </tr>
@@ -683,7 +683,7 @@ S1, S2, S3, S4, S5, F1, F2, F3, F4, R1, R2, R3, R4, D1, D2, D3, D4, ALAG1, ALAG2
 <td style="text-align:left;width: 1.5cm; ">
 TRANS4
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 CL, V2, Q3, V3, Q4, V4, KA
 </td>
 </tr>
@@ -691,7 +691,7 @@ CL, V2, Q3, V3, Q4, V4, KA
 <td style="text-align:left;width: 1.5cm; ">
 TRANS6
 </td>
-<td style="text-align:left;width: 5cm; ">
+<td style="text-align:left;width: 5.0cm; ">
 ALPHA, BETA, GAMMA, K32, K42, KA
 </td>
 </tr>
@@ -808,7 +808,9 @@ Absorption lag parameter
 <p>예를 들어 $PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="control-stream.html#cb11-1" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>)</span></code></pre></div>
 <p>순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 `(하한값, 초기 추정값, 상한값)’을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10<sup>6</sup>이 기본 상한값이다.</p>
-<p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 <code>CL=TVCL\*EXP(ETA(1))</code>로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL</sub><sup>2</sup>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다. 특히, CL<sub>i</sub> = TVCL*<span class="math inline">\(e^{\eta_{i}}\)</span> 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다:
+<p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 CL=TVCL*EXP(ETA(1))로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL</sub><sup>2</sup>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다.</p>
+<p>
+특히, <span class="math inline">\(CL_i = TVCL \cdot (e^{\eta_i})\)</span> 이며, 지수모델은 로그 정규분포를 따르는 파라미터를 설명하는데 사용되며, 음수 추정치를 가지지 않기 때문에 약동학 파라미터 추정에 선호되는 변이 모델이다. 또한, 위의 $PK 모델의 ETA(1), ETA(2), ETA(3)를 OMEGA 행렬로 표현하면 다음과 같다.
 <span class="math display" id="eq:iivomega">\[\begin{equation}
 \begin{pmatrix} 
    \omega_{1,1}^2 &amp; 0 &amp; 0 \\
@@ -870,15 +872,15 @@ Absorption lag parameter
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="control-stream.html#cb18-1" aria-hidden="true"></a><span class="op">$</span>COVARIANCE PRINT=E UNCONTIONAL MATRIX=S</span></code></pre></div>
 <p>PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sub>-1</sub>SR<sub>-1</sub> 행렬이 기본계산에 사용되는데, <code>MATRIX=S</code> 또는 <code>MATRIX=R</code> 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. <code>UNCONDITIONAL</code> 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.</p>
 <p>$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 <a href="control-stream.html#exm:table-record">3.3</a>처럼 $TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (<span class="citation">Hooker et al. (<a href="#ref-R-xpose4" role="doc-biblioref">2020</a>)</span>) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.</p>
-
-<div class="example">
-<span id="exm:table-record" class="example"><strong>코드 3.3  </strong></span>$TABLE 레코드의 예
-</div>
 <p>
 
 
 
 </p>
+
+<div class="example">
+<span id="exm:table-record" class="example"><strong>코드 3.3  </strong></span>$TABLE 레코드의 예
+</div>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="control-stream.html#cb19-1" aria-hidden="true"></a><span class="op">$</span>THETA</span>
 <span id="cb19-2"><a href="control-stream.html#cb19-2" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
 <span id="cb19-3"><a href="control-stream.html#cb19-3" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>)</span>
@@ -1083,7 +1085,7 @@ Absorption lag parameter
 <div id="pred-모델" class="section level3" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> PRED 모델</h3>
 <p></p>
-<p>$PRED를 사용한 모델을 살펴보자. 코드 <a href="control-stream.html#exm:linear-model">3.8</a>는 Cmax와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, $PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. $PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 $ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 $PRED를 사용하는 것이 효율적이다.</p>
+<p>$PRED를 사용한 모델을 살펴보자. 코드 <a href="control-stream.html#exm:linear-model">3.8</a>는 C<sub>max</sub>와 약효(부작용)와의 관계를 y=ax+b라는 일차식으로 정의한 모델의 제어구문이다. 제어구문을 살펴보면, $PRED 레코드를 사용하여 각 파라미터와 추정식과 변이모델을 정의하였다. $PRED에는 사전에 약속된 구문이나 옵션이 없기 때문에 추정하고자 하는 파라미터와 관련 추정식, 그리고 변이 모델을 정의하여야 할 경우에는 사용자가 자유롭게 정의해야 하며, 따로 $ERROR 레코드를 사용하지 않는다. 이와 같이, 상대적으로 간단한 모델을 구축하는데는 $PRED를 사용하는 것이 효율적이다.</p>
 
 <div class="example">
 <span id="exm:linear-model" class="example"><strong>코드 3.8  </strong></span>$PRED를 이용한 간단한 선형 모델

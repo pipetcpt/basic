@@ -390,19 +390,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.2</span> $DATA 레코드 작성</h3>
 <p></p>
 <p>$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 <code>../</code> 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, <code>../</code> 가 없이 바로 파일 이름을 기입할 경우, 이는 제어구문 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 항목 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 <code>IGNORE=@</code> 또는 <code>IGNORE=#</code>을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, <code>IGNORE=(GEN.EQ.1,AGE.GE.60)</code> 구문을 사용하여 가능하다).</p>
-</div>
-<div id="input-레코드-작성" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> $INPUT 레코드 작성</h3>
-<p></p>
-<p>$INPUT 레코드에는 데이터셋에 기재된 데이터 항목의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 항목이 있을 경우, 변수 뒤에 <code>=DROP</code> 이라는 한정어를 써주어 해당 항목을 제거할 수 있다. $DATA 레코드에서 “IGNORE” 또는 “ACCEPT” 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 $INPUT 에서 <code>=DROP</code>을 사용하여 불필요한 항목을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 항목 레이블 이외의 다른 이름을 사용할 경우, “내장된 변수명=새 이름” (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.</p>
-
-
-<div class="example">
-<span id="exm:input" class="example"><strong>코드 2.1  </strong></span>$PROB, $DATA, $INPUT 제어구문 작성의 예
-</div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_IV_1comp</span>
-<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>HOdata_IV.csv IGNORE=<span class="er">@</span></span>
-<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DV MDV SEX AGE WT HT</span></code></pre></div>
 <table>
 <caption>
 <span id="tab:tab">표 2.1: </span>제어구문에 적합한 데이터셋의 예
@@ -587,6 +574,19 @@ HT
 </tbody>
 </table>
 </div>
+<div id="input-레코드-작성" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> $INPUT 레코드 작성</h3>
+<p></p>
+<p>$INPUT 레코드에는 데이터셋에 기재된 데이터 항목의 종류와 순서를 명시한다. 이를 우리가 작성한 데이터셋을 NONMEM 이 올바르게 읽도록 도와준다. 데이터셋에 모델링에 필요하지 않은 데이터 항목이 있을 경우, 변수 뒤에 <code>=DROP</code> 이라는 한정어를 써주어 해당 항목을 제거할 수 있다. $DATA 레코드에서 “IGNORE” 또는 “ACCEPT” 구문을 사용하여 데이터를 제거 또는 선택하는 과정은 $INPUT 에서 <code>=DROP</code>을 사용하여 불필요한 항목을 제거하는 과정보다 먼저 실행된다. 데이터셋 작성 시 기존 NONMEM에 내장된 데이터 항목 레이블 이외의 다른 이름을 사용할 경우, “내장된 변수명=새 이름” (예를 들어, AMT=DOSE) 구문을 사용하여 내장된 레이블 명(예를 들어, AMT)을 사용자가 지정한 이름(예를 들어, DOSE)으로 대체할 수 있다.</p>
+
+
+<div class="example">
+<span id="exm:input" class="example"><strong>코드 2.1  </strong></span>$PROB, $DATA, $INPUT 제어구문 작성의 예
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_IV_1comp</span>
+<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>HOdata_IV.csv IGNORE=<span class="er">@</span></span>
+<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DV MDV SEX AGE WT HT</span></code></pre></div>
+</div>
 </div>
 <div id="predpp에-쓰는-데이터셋" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> PREDPP에 쓰는 데이터셋</h2>
@@ -648,112 +648,112 @@ Meaning
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 ID
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 At all time
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 NM-TRAN infers that the data are population
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 DV
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 At all time
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Dependent Variable (Observation to be fitted)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 MDV
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 At all time
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Missing data variable (MDV = 1)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 TIME
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Time
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 AMT
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Dosing amount
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 RATE
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Dosing rate (infusion) - amount dosed during unit time
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 ADDL
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Number of additional doses just like initial dose
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 II
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Interdose interval (Used with ADDL)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 SS
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Steady-state dose (55=1)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 CMT
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 2cm; ">
 PREDPP
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;width: 8cm; ">
 Compartment
 </td>
 </tr>

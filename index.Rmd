@@ -13,10 +13,8 @@ biblio-style: apalike
 #biblio-style: authoryear
 #biblatexoptions: [refsegment=chapter]
 documentclass: krantz
-classoption:
-- krantz2
-- a4paper
-linestretch: 1.45 # https://github.com/jgm/pandoc/issues/5179
+classoption: krantz2, a4paper, twoside
+linestretch: 1.40 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
 #monofont: "Source Code Pro"
 #monofont: "Latin Modern Mono"
@@ -125,7 +123,7 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 
 `r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](images/cover.jpg) '`
 
-\large
+\normalsize
 
 계량약리학은 신약개발 현장에서 제기되는 질문들에 대한 답을 정량적으로 찾아내기 위한 과정에서 정립되어온 학문입니다. 물론 계량약리학은 이미 허가된 약들의 적절한 용법을 찾는 데에도 쓸 수 있지만, 신약개발이라는 큰 목표를 빼고서는 이 어려운 방법론을 배워야 할 이유를 찾기는 힘듭니다. 우리나라의 신약개발은 짧은 역사 속에서 많은 시행착오를 통해 발전해가고 있습니다. 국내에서 계량약리학에 대한 수요가 이만큼이나마 늘어난 것은 2010년대 중반 이후 두드러지게 보이는 이 같은 분위기의 변화와 맞물려 있겠습니다. 
 

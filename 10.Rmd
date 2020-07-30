@@ -80,7 +80,7 @@ knitr::include_graphics('assets/media-10/image9.png')
 ```{example, table-example, echo = TRUE}
 $TABLE의 예\index{\$TABLE}
 ```
-
+\vspace{-1cm} 
 \small
 ```r
 $TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3

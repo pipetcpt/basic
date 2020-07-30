@@ -50,7 +50,7 @@ include_graphics("figures/20-fig-03.png")
 ```{example, effect-model-code, echo=TRUE}
 (ref:effect-model-code)
 ```
-
+\vspace{-1cm} 
 ```r
 $SUBROUTINES ADVAN3
 $PK
@@ -74,7 +74,7 @@ $ERROR
 ```{example, effect-comp-advan6, echo=TRUE}
 효과구획 모델 코드: Using General Nonlinear model (ADVAN6) [@nonmem]\index{ADVAN6}
 ```
-
+\vspace{-1cm} 
 ```r
 $SUBROUTINES ADVAN6 TOL=5
 $MODEL

@@ -21,6 +21,13 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 
 \$DATA는 NONMEM이 분석에 사용해야 할 데이터셋이 어디에 있는지, 파일 이름이 무엇인지, 어떤 형식의 파일인지 나타낸다. 데이터 파일 이름을 적고, 파일 경로 또는 하부 경로 구분 표시를 필요에 따라 표기한다(예를 들어 파일 이름 앞에 `../` 를 표기할 경우, 이는 제어 데이터셋 하위 폴더에 있음을 의미하며, `../` 가 없이 바로 파일 이름을 기입할 경우, 이는 제어구문 파일과 데이터셋이 동일한 폴더 안에 있음을 나타낸다). 데이터셋의 첫번째 행은 데이터 항목 레이블을 기재하는 줄이며 이는 문자로 구성된다. 데이터셋에서 문자로 구성된 부분을 제거하는 것이 필요하며, 이를 위하여 대게 `IGNORE=@` 또는 `IGNORE=#`을 파일 이름 뒤에 기재하여 문자가 포함된 행을 제거한다. 또한, 부가적인 옵션인 IGNORE 또는 ACCEPT를 사용하여 데이터를 부분집합화(Subsetting) 시켜, 데이터셋의 원하는 부분을 선택적으로 불러들여올 수 있다 (예를 들어 성별이 1 이거나 나이가 60 세 이상인 대상자의 데이터를 제거하고자 할 경우, `IGNORE=(GEN.EQ.1,AGE.GE.60)` 구문을 사용하여 가능하다).\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
+```{r tab}
+tab <- readxl::read_excel('data-raw/02-table-01.xlsx') %>% 
+  mutate(DV = round(as.numeric(DV), 4)) %>%
+  mutate(DV = ifelse(is.na(DV), '.', DV))
+knitr::kable(tab, caption = "제어구문에 적합한 데이터셋의 예", booktabs=TRUE)
+```
+
 ### \$INPUT 레코드 작성
 \index{\$INPUT}
 
@@ -30,18 +37,11 @@ NONMEM을 사용할 때 필수적으로 갖추어야 하는 파일이 몇 가지
 ```{example, input, echo=TRUE}
 \$PROB, \$DATA, \$INPUT 제어구문 작성의 예\index{\$DATA}\index{\$INPUT}
 ```
-
+\vspace{-1cm}
 ```r
 $PROB HO_IV_1comp
 $DATA ../HOdata_IV.csv IGNORE=@
 $INPUT ID TIME AMT DV MDV SEX AGE WT HT
-```
-
-```{r tab}
-tab <- readxl::read_excel('data-raw/02-table-01.xlsx') %>% 
-  mutate(DV = round(as.numeric(DV), 4)) %>%
-  mutate(DV = ifelse(is.na(DV), '.', DV))
-knitr::kable(tab, caption = "제어구문에 적합한 데이터셋의 예", booktabs=TRUE)
 ```
 
 ## PREDPP에 쓰는 데이터셋
@@ -89,7 +89,10 @@ NONMEM 에서는 이미 약속하여 쓰는 데이터 항목의 이름들이 있
 ```{r reserveditems}
 readxl::read_excel("data-raw/fig-tab.xlsx", sheet='16', range="B2:D12") %>% 
   knitr::kable(caption="List of reserved (pre-defined) data item labels",
-               booktabs=TRUE)
+               booktabs=TRUE) %>%
+  column_spec(1, width = "2cm") %>% 
+  column_spec(2, width = "2cm") %>% 
+  column_spec(3, width = "8cm")
 ```
 
 ### ID
@@ -135,7 +138,7 @@ knitr::include_graphics("figures/02-fig-07.png")
 ```{example, date-dataset-chunk, echo=TRUE}
 DATE label and its format\index{DATE}
 ```
-
+\vspace{-1cm}
 ```r
 DATE  month day year
 DAT1  day month year
