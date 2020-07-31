@@ -111,7 +111,7 @@ NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, �
 
 MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information Matrix의 역행렬을 이용하여 추정값들의 분산-공분산 행렬과 표준오차를 구할 수 있다. 표준오차는 분산-공분산 행렬의 대각원소를 1/2승 한 것이다.\index{공분산 / covariance}\index{목적함수 / objective function}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{likelihood / 가능도}\index{objective function / 목적함수}\index{variance-covariance matrix / 분산-공분산 행렬}
 
-MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1계 편미분한 것의 제곱과 2계 편미분한 것이 부호만 반대인 같은 기대값을 가진다.\index{likelihood / 가능도}
+MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서 1계 편미분한 것의 제곱과 2계 편미분한 것이 부호만 반대인 같은 기대값을 가진다.\index{likelihood / 가능도}
 \begin{equation}
 \begin{split}
   \int & f(x;\theta)dx = 1 \\
@@ -132,13 +132,20 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 한 번 더 미분하면
 \begin{equation}
 \begin{split}
-\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx &= 0 \\
-E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &= 0 \\
-I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} & = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
-&= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} i \right\} exp(lnf(x;\theta))dx &= 0 \\
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &= 0
 \end{split}
 (\#eq:diff-diff)
 \end{equation}
+
+\begin{equation}
+\begin{split}
+I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} & = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
+&= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
+\end{split}
+(\#eq:diff-diff-2)
+\end{equation}
+
 
 좀 더 복잡한 과정을 거치면 \(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)는 점근적으로 \(N(0,\lbrack I(\theta)\rbrack^{- 1})\) 를 따름을 증명할 수 있다. [@kim]
 
