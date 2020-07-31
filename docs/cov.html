@@ -461,7 +461,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 <p>NONMEM의 수행은 대체로 초기화단계, 추정단계, 공분산단계, 표단계로 나눌 수 있다. 이중 공분산단계에 대하여 설명하고자 한다. 추정단계가 끝나면 최종 파라미터 추정값이 구해진다. NONMEM에서는 Y의 분포가 정규이든 아니든 상관없이 정규분포의 가능도 함수(엄밀히는 이것을 약간 변형한 것)를 목적함수로 한다. 즉, maximum likelihood estimation (MLE) 방법을 사용한다.</p>
 <p>MLE에서는 loglikelihood가 목적함수인 경우에 Fisher’s Information Matrix의 역행렬을 이용하여 추정값들의 분산-공분산 행렬과 표준오차를 구할 수 있다. 표준오차는 분산-공분산 행렬의 대각원소를 1/2승 한 것이다.</p>
-<p>MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서의 1계 편미분한 것의 제곱과 2계 편미분한 것이 부호만 반대인 같은 기대값을 가진다.
+<p>MLE 이론에 따르면 log likelihood (l)를 파라미터 추정값에서 1계 편미분한 것의 제곱과 2계 편미분한 것이 부호만 반대인 같은 기대값을 가진다.
 <span class="math display" id="eq:mle-theory">\[\begin{equation}
 \begin{split}
   \int &amp; f(x;\theta)dx = 1 \\
@@ -480,12 +480,17 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 <p>한 번 더 미분하면
 <span class="math display" id="eq:diff-diff">\[\begin{equation}
 \begin{split}
-\int{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} } exp(lnf(x;\theta))dx &amp;= 0 \\
-E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &amp;= 0 \\
+\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} i \right\} exp(lnf(x;\theta))dx &amp;= 0 \\
+E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &amp;= 0
+\end{split}
+\tag{14.3}
+\end{equation}\]</span></p>
+<p><span class="math display" id="eq:diff-diff-2">\[\begin{equation}
+\begin{split}
 I(\theta) = E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) \right\} &amp; = E_{\theta}\left\{ - \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} \\
 &amp;= Var_{\theta}\left\{ \frac{\partial}{\partial\theta}lnf(X;\theta) \right\} 
 \end{split}
-\tag{14.3}
+\tag{14.4}
 \end{equation}\]</span></p>
 <p>좀 더 복잡한 과정을 거치면 <span class="math inline">\(\sqrt{n}({\widehat{\theta}}^{\text{MLE}} - \theta)\)</span>는 점근적으로 <span class="math inline">\(N(0,\lbrack I(\theta)\rbrack^{- 1})\)</span> 를 따름을 증명할 수 있다. <span class="citation">(김우철 <a href="#ref-kim" role="doc-biblioref">2012</a>)</span></p>
 <p>아주 이상적이지만(그러나 극히 드문) 상황에서는 목적함수의 1계 미분의 제곱과 2계 미분이 같겠지만, 실제 관찰값으로 계산하면
@@ -500,7 +505,7 @@ O &amp;= \sum_{i}^{}O_{i} \\
 S &amp;= \sum_{i}^{}{\nabla_{O_{i}}{\nabla_{O_{i}}}^{T}} = \sum_{i}^{}\frac{\partial O_{i}}{\partial\theta}\frac{\partial O_{i}}{\partial\theta}^{T} \\
 R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{split}
-\tag{14.4}
+\tag{14.5}
 \end{equation}\]</span></p>
 </div>
 <div id="r에서의-구현" class="section level2" number="14.4">
@@ -573,7 +578,7 @@ R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
   K &amp; = \theta_{3}e^{\eta_{3}} \\
   C(t) &amp; = \frac{\text{DOSE}}{V}\frac{K_{a}}{K_{a} - K}(e^{- Kt} - e^{- K_{a}t})
 \end{split}
-\tag{14.5}
+\tag{14.6}
 \end{equation}\]</span></p>
 <p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
 <p>R에서는 다음과 같은 준비 작업이 필요하다.
@@ -872,13 +877,13 @@ R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
 <p>어떤 행렬 A를 스칼라 <span class="math inline">\(\lambda\)</span>와 벡터u를 이용하여 다음과 같이 표시할 수 있을 때,</p>
 <p><span class="math display" id="eq:au-lu">\[\begin{equation}
 Au = \lambda u
-\tag{14.6}
+\tag{14.7}
 \end{equation}\]</span></p>
 <p><span class="math inline">\(\lambda\)</span>를 A의 고유값이라 하고 그 고유값에 해당하는 벡터 u를 고유벡터(eigenvector)라고 한다.</p>
 <p><span class="math inline">\(\lambda\)</span>는</p>
 <p><span class="math display" id="eq:a-li-zero">\[\begin{equation}
 \left| A - \lambda I \right| = 0
-\tag{14.7}
+\tag{14.8}
 \end{equation}\]</span></p>
 <p>이라는 특성 방정식의 근들로 구할 수 있다.</p>
 <p>Minimization에서 고유값을 출력하는 이유는 minimization 과정이 얼마나 어려웠는가를 표시하기 위해서이다. 조건수(condition number)란 고유값의 최대치/최소치에다 1/2승한 것인데, 이것이 크다면 그만큼 수치계산의 어려움을 겪었다는 것이다. 조건수가 크다고 모형이 잘못되었다는 것을 의미하는 것은 아니다. 혹시 minimization(fitting)에 실패하였다면 그 원인 중의 하나가 조건수가 크기 때문일 수 있다.</p>

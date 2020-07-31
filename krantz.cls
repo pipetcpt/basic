@@ -221,8 +221,8 @@
 %
 % SIDE MARGINS:
 %
-\oddsidemargin  6pc %5pc
-\evensidemargin 5.7pc %5pc
+\oddsidemargin  9pc %5pc
+\evensidemargin 9pc %5pc
 \marginparwidth 4pc
 \marginparsep   1pc
 \topmargin  12pt %0pt
@@ -267,8 +267,8 @@
 %  \advance\textheight by \topskip
   \textwidth 33pc
   \topmargin0in
-  \oddsidemargin.5in
-  \evensidemargin.5in
+  \oddsidemargin.5in  % .5in
+  \evensidemargin.5in % .5in
   \htrim.75in
   \vtrimtop.8607in
   \vtrimbot1.027in

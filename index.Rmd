@@ -14,7 +14,7 @@ biblio-style: apalike
 #biblatexoptions: [refsegment=chapter]
 documentclass: krantz
 classoption: krantz2, a4paper, twoside
-linestretch: 1.40 # https://github.com/jgm/pandoc/issues/5179
+linestretch: 1.30 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
 #monofont: "Source Code Pro"
 #monofont: "Latin Modern Mono"
@@ -37,7 +37,7 @@ fontsize: 11pt
 #geometry: "a4paper,left=1.5in,right=1.5in,top=1in,bottom=1in"
 #geometry: "a4paper, nohead, nomarginpar,left=1.5in,right=1.5in,top=5in,bottom=3in,foot=1in"
 #geometry: "b5paper, nohead, nomarginpar" # 위 margin을 
-#geometry: "a4paper, nohead, nomarginpar"
+#geometry: "a5paper, nohead, nomarginpar"
 #geometry: "total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot"
 #geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
 link-citations: yes

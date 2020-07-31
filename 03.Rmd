@@ -41,6 +41,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 1구획 약동학 모델의 제어구문
 ```
 \vspace{-1cm} 
+
 ```r
 $PROB 1-compartment model
 $INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR
@@ -76,6 +77,7 @@ $TABLE ID RF SEX
 $TABLE ID WT AGE SEX HT ALB CLCR 
        ONEHEADER NOPRINT FILE=cotab1001
 ```
+
 \index{conditional weighted residuals / 조건부 가중 잔차}
 
 ### \$PROBLEM, \$DATA, \$INPUT
@@ -149,6 +151,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet='28', range="B2:E23") %>%
 2구획 경구 약동학 모델의 \$PK 레코드
 ```
 \vspace{-1cm}
+
 ```r
 $SUBROUTINE ADVAN4 TRANS4
 
