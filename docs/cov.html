@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="nonmem-output-file.html"><a href="nonmem-output-file.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-output.html"><a href="nonmem-output.html"><i class="fa fa-check"></i><b>A</b> NONMEM 실행결과</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
 <li><a href="https://pipetcpt.github.io/basic/basic.pdf">PDF 보기</a></li>
@@ -413,8 +413,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb36-22"><a href="cov.html#cb36-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER</span>
 <span id="cb36-23"><a href="cov.html#cb36-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)</span>
 <span id="cb36-24"><a href="cov.html#cb36-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</span></code></pre></div>
-<p>위의 $COV STEP에 의해 생성된 부분은 <a href="nonmem-output-file.html#nonmem-output-file">별첨 1</a>과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
-<p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.</p>
+<p>위의 $COV STEP에 의해 생성된 부분은 <a href="#nonmem-output-file">별첨 1</a>과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
+<p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산 결과들이다.</p>
 <p>$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
 <p>$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다. 다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.</p>
 <p>$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.</p>

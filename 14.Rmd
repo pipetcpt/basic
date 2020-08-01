@@ -46,7 +46,7 @@ $TAB ID ETA(1) ETA(2) ETA(3)
 
 위의 \$COV STEP에 의해 생성된 부분은 [별첨 1](#nonmem-output-file)과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.\index{\$COVARIANCE (\$COV, \$COVAR)}
 
-\$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.\index{\$COVARIANCE (\$COV, \$COVAR)}
+\$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산 결과들이다.\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 \$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 \(R^{- 1}SR^{- 1}\)를 계산한 것이다.\index{공분산 / covariance}\index{covariance / 공분산}\index{variance-covariance matrix / 분산-공분산 행렬}\index{추정값의 표준오차 / standard errors of the estimates}\index{standard errors of the estimates / 추정값의 표준오차}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{standard errors of the estimates / 추정값의 표준오차}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
