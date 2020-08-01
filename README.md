@@ -1,6 +1,6 @@
 # 계량약리학 워크샵 - 초급 과정
 
-`r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](http://www.bookk.co.kr/book/view/84646) '`
+[<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)
 
 본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), 알라딘(aladin.co.kr), YES24(yes24.com)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6)
 
@@ -8,6 +8,30 @@
 
 혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다.
 
+## 목차
+
+- I. 모델 구축의 기초
+    - Chapter 01 계량약리학과 관련 개념들 - 임동석
+    - Chapter 02 NONMEM 데이터셋 - 이소진
+    - Chapter 03 모델 유형 별 NONMEM 제어구문 소개 - 배수현
+    - Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 - 전상일
+    - Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 - 홍태곤
+    - Chapter 06 기타 ADVAN - 임동석
+    - Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 - 임동석
+    - Chapter 08 초기추정값 - 한승훈
+    - Chapter 09 파라미터 추정 방법 및 세팅 - 김정렬
+    - Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 - 전상일
+    - Chapter 11 공변량 분석 - 한승훈
+- II. 모델 진단 및 약동학-약력학 연계 모델
+    - Chapter 12 모델 진단평가 개론 - 한승훈
+    - Chapter 13 모델 적합 상태에 대한 진단 - 전상일
+    - Chapter 14 NONMEM의 $COVARIANCE - 배균섭
+    - Chapter 15 모델 파라미터의 적절성 - 전상일
+    - Chapter 16 모델의 예측성능 평가 - 한성필
+    - Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 - 임동석
+    - Chapter 18 약동,약력학 연결 방법 - 이소진
+    - Chapter 19 다양한 약물효과 모델 - 배수현
+    - Chapter 20 지연효과 모델 - 김정렬, 임동석
 
 ## 저자 소개
 
@@ -37,31 +61,6 @@ Q-fitter
 
 한성필, MD, PhD   
 가톨릭의대 약리학교실
-
-## 목차
-
-- I. 모델 구축의 기초
-    - Chapter 01 계량약리학과 관련 개념들 - 임동석
-    - Chapter 02 NONMEM 데이터셋 - 이소진
-    - Chapter 03 모델 유형 별 NONMEM 제어구문 소개 - 배수현
-    - Chapter 04 특수 ADVAN을 이용한 control stream의 코딩 - 전상일
-    - Chapter 05 일반 ADVAN을 이용한 control stream의 코딩 - 홍태곤
-    - Chapter 06 기타 ADVAN - 임동석
-    - Chapter 07 $PRED: ADVAN을 쓰지 않는 코딩 - 임동석
-    - Chapter 08 초기추정값 - 한승훈
-    - Chapter 09 파라미터 추정 방법 및 세팅 - 김정렬
-    - Chapter 10 NONMEM 실행결과 해석 및 Xpose4 사용법 - 전상일
-    - Chapter 11 공변량 분석 - 한승훈
-- II. 모델 진단 및 약동학-약력학 연계 모델
-    - Chapter 12 모델 진단평가 개론 - 한승훈
-    - Chapter 13 모델 적합 상태에 대한 진단 - 전상일
-    - Chapter 14 NONMEM의 $COVARIANCE - 배균섭
-    - Chapter 15 모델 파라미터의 적절성 - 전상일
-    - Chapter 16 모델의 예측성능 평가 - 한성필
-    - Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 - 임동석
-    - Chapter 18 약동,약력학 연결 방법 - 이소진
-    - Chapter 19 다양한 약물효과 모델 - 배수현
-    - Chapter 20 지연효과 모델 - 김정렬, 임동석
 
 ## PIPET
 
