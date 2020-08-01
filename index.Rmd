@@ -2,10 +2,8 @@
 title: "계량약리학 워크샵 - 초급 과정"
 #PIPET / Q-fitter Pharmacometrics Course: Basic
 author: "가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)"
-#author: "대표저자 임동석"
-#"임동석, 이소진, 배수현, 전상일, 홍태곤, 한승훈, 김정렬, 배균섭, 한성필"
-date: "Ver. `r gsub('-', '', Sys.Date())`"
-#date: "`r Sys.Date()`"
+#date: "Ver. `r gsub('-', '', Sys.Date())`"
+date: "Ver. 20200731"
 knit: "bookdown::render_book"
 bibliography: ["references/references.bib", "references/packages.bib"]
 biblio-style: apalike
@@ -121,7 +119,7 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 
 # 머리말 {-}
 
-`r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](images/cover.jpg) '`
+`r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](http://www.bookk.co.kr/book/view/84646) '`
 
 \normalsize
 
@@ -133,12 +131,13 @@ PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실�
 
 학계의 PK/PD 전문가들이 우리나라의 신약개발에 기여하는 방법 중의 하나는 신약개발의 최전선에서 일하고 있는 제약/바이오 업계의 풀뿌리 연구자들에 대한 지속적인 교육과 훈련 기회를 제공하는 것입니다. 그러한 사명감으로 맨땅에서 시작한 이 코스를 지난 십 수년간 오늘의 수준으로 끌어올릴 수 있게 해 준, PIPET을 거쳐간 귀한 젊은 연구자들의 공헌에 깊이 감사드립니다. 이름난 분들을 초빙해서 청중을 모으고 신문에 내는 행사를 수십 번을 한들, 젊은이들의 앞날을 염려하고, 이들을 제대로 가르치겠다는 의지가 없다면 그저 남들에게 보여주기 위한 이벤트에 지나지 않습니다. 그런 곳에 사람과 돈이 몰릴지는 몰라도, 한편에서는 세상의 각광과는 무관하게 소신대로 제 갈 길을 가는 소수가 있기 마련입니다. 매년 열던 워크샵을 책으로 엮어 내는 이 번거로운 작업도 그런 소신을 실천하는 것이며, 한국의 신약개발을 위해 작은 밑거름이라도 된다면 저자들은 큰 보람을 느낄 것입니다. 
 
-```{r}
-include_graphics('images/preface.pdf')
-```
+`r if (is_html_output()) '2020년 여름 성의교정 연구실에서<br>대표저자 임동석 拜' else 'include_graphics("images/preface.pdf")'`
+
 \normalsize
 
+<!--
 `r if (knitr::is_html_output()) '2020년 여름 성의교정 연구실에서<br>대표저자 임동석 拜 '`
+-->
 
 \mainmatter
 

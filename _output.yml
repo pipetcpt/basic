@@ -12,7 +12,7 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
     download: [pdf] #download: [pdf, epub, mobi]
-    edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
+    #edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
     sharing:
       github: yes
       facebook: no
