@@ -8,13 +8,15 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Pharmacometrics Basic</a></li>
+        <li><a href="./">계량약리학 워크샵 - 초급 과정</a></li>
+        <li><a href="http://www.bookk.co.kr/book/view/84646" target="_blank">도서 구입</a></li>
       after: |
-        <li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+        <li><a href="https://pipetcpt.github.io/basic/basic.pdf">PDF 보기</a></li>
+        <li><a href="http://pipet.or.kr/books/" target="_blank">Published by PIPET</a></li>
     download: [pdf] #download: [pdf, epub, mobi]
     #edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
     sharing:
-      github: yes
+      github: no
       facebook: no
   keep_rmd: yes
 bookdown::html_chapters:

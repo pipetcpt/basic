@@ -35,7 +35,7 @@ indexen:
 soclean: clean del
 
 clean:
-	rm -rf docs _bookdown_files basic.* basic-*.pdf
+	rm -rf docs _bookdown_files basic.* 
 
 del:
 	rm pdf-*.pdf tmp-*.pdf

@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 NONMEM의 $COVARIANCE | 계량약리학 워크샵 - 초급 과정</title>
-  <meta name="description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 NONMEM의 $COVARIANCE | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://pipetcpt.github.io/basic" />
   <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
-  <meta property="og:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta property="og:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="github-repo" content="pipetcpt/basic" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 14 NONMEM의 $COVARIANCE | 계량약리학 워크샵 - 초급 과정" />
   
-  <meta name="twitter:description" content="이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다." />
+  <meta name="twitter:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
 
 <meta name="author" content="가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)" />
@@ -130,7 +130,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Pharmacometrics Basic</a></li>
+<li><a href="./">계량약리학 워크샵 - 초급 과정</a></li>
+<li><a href="http://www.bookk.co.kr/book/view/84646" target="_blank">도서 구입</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>머리말</a></li>
@@ -264,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>13</b> 모델 적합 상태에 대한 진단</a></li>
 <li class="chapter" data-level="14" data-path="cov.html"><a href="cov.html"><i class="fa fa-check"></i><b>14</b> NONMEM의 $COVARIANCE</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#actual-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
+<li class="chapter" data-level="14.1" data-path="cov.html"><a href="cov.html#cov-example"><i class="fa fa-check"></i><b>14.1</b> 실제 사례</a></li>
 <li class="chapter" data-level="14.2" data-path="cov.html"><a href="cov.html#nonmem-document"><i class="fa fa-check"></i><b>14.2</b> NONMEM document</a></li>
 <li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
 <li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
@@ -351,10 +352,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>별첨</b></span></li>
-<li class="chapter" data-level="A" data-path="nonmem-아웃풋-파일.html"><a href="nonmem-아웃풋-파일.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
+<li class="chapter" data-level="A" data-path="nonmem-output-file.html"><a href="nonmem-output-file.html"><i class="fa fa-check"></i><b>A</b> NONMEM 아웃풋 파일</a></li>
 <li class="chapter" data-level="" data-path="참고문헌.html"><a href="참고문헌.html"><i class="fa fa-check"></i>참고문헌</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/pipetcpt" target="_blank">Published by PIPET</a></li>
+<li><a href="https://pipetcpt.github.io/basic/basic.pdf">PDF 보기</a></li>
+<li><a href="http://pipet.or.kr/books/" target="_blank">Published by PIPET</a></li>
 
 </ul>
 
@@ -380,7 +382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <hr />
 <p>NONMEM의 실행과정은 대체로 initialization step, estimation step(추정단계), covariance step(공분산단계), table step(표단계)으로 나눌 수 있다. 공분산단계의 목적은 추정단계에서 추정된 파라미터(θ, Ω, Σ)들의 점 추정치(point estimate)에 대한 standard error(표준오차)를 구하는 것이다. 따라서, $COV 절을 제어구문 파일에 포함시키지 않으면 표준오차 결과를 볼 수 없다. 공분산단계는 원칙적으로 추정단계가 성공했을 때만 의미가 있으므로 성공한 후에 실행되는데, 만약 추정 실패 시에도 종료시점에서의 값을 알고 싶으면 $COV에 UNCOND 옵션을 추가해주면 된다. 공분산단계가 추정단계와 별도로 분리된 이유는 NONMEM이 사용자가 준 original scale에서 목적함수를 최소화하는 것이 아니라, unconstrained parameter (UCP)를 사용하기 때문이다. UCP는 과거에 scaled and transformed parameter (STP)라고도 불리었다.</p>
-<div id="actual-example" class="section level2" number="14.1">
+<div id="cov-example" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> 실제 사례</h2>
 <p>다음은 공분산단계의 결과물을 이해하기 위한 예제 제어구문 파일의 내용이다. (코드 <a href="cov.html#exm:theoph-control-stream">14.1</a>) Theophylline 데이터셋은 12명의 사람에게 320mg의 theophylline을 1회 경구 투여한 자료이며 NONMEM 설치시에 <code>THEO</code> 라는 파일 이름으로 포함되어 있다. 그림은 <a href="cov.html#Theoph">14.5</a>절을 참고한다.</p>
 
@@ -411,7 +413,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb36-22"><a href="cov.html#cb36-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER</span>
 <span id="cb36-23"><a href="cov.html#cb36-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)</span>
 <span id="cb36-24"><a href="cov.html#cb36-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</span></code></pre></div>
-<p>위의 $COV STEP에 의해 생성된 부분은 별첨 1과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
+<p>위의 $COV STEP에 의해 생성된 부분은 <a href="nonmem-output-file.html#nonmem-output-file">별첨 1</a>과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
 <p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산결과들이다.</p>
 <p>$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
 <p>$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다. 다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.</p>
@@ -510,7 +512,7 @@ R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
 </div>
 <div id="r에서의-구현" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> R에서의 구현</h2>
-<p><a href="cov.html#actual-example">14.1</a>의 예제를 R로 풀이하면 다음과 같다. 우선 CRAN에 올라와 있는 nmw package를 설치한다. <span class="citation">(Bae <a href="#ref-R-nmw" role="doc-biblioref">2018</a>)</span></p>
+<p><a href="cov.html#cov-example">14.1</a>의 예제를 R로 풀이하면 다음과 같다. 우선 CRAN에 올라와 있는 nmw package를 설치한다. <span class="citation">(Bae <a href="#ref-R-nmw" role="doc-biblioref">2018</a>)</span></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cov.html#cb38-1" aria-hidden="true"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(nmw)) <span class="kw">install.packages</span>(<span class="st">&quot;nmw&quot;</span>)</span></code></pre></div>
 <p><code>nmw::CovStep()</code> 함수를 보면 covariance step의 전반적인 개요를 알 수 있다.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cov.html#cb39-1" aria-hidden="true"></a><span class="co"># nmw::CovStep</span></span>
@@ -580,7 +582,7 @@ R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
 \end{split}
 \tag{14.6}
 \end{equation}\]</span></p>
-<p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#actual-example">14.1</a>절에서 표시한 것과 같다.</p>
+<p>NONMEM 제어구문 파일의 내용은 <a href="cov.html#cov-example">14.1</a>에서 표시한 것과 같다.</p>
 <p>R에서는 다음과 같은 준비 작업이 필요하다.
 </p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cov.html#cb41-1" aria-hidden="true"></a>DataAll =<span class="st"> </span>Theoph</span>
@@ -948,7 +950,7 @@ Au = \lambda u
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": true,
+"github": false,
 "facebook": false,
 "twitter": true,
 "linkedin": false,

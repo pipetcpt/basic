@@ -1527,9 +1527,9 @@
 \newcommand\bibname{참고문헌}
 \newcommand\figurename{그림}
 \newcommand\tablename{표}
-\newcommand\partname{Part}
+\newcommand\partname{} % Part
 \newcommand\chaptername{Chapter}
-\newcommand\appendixname{Appendix}
+\newcommand\appendixname{별첨} % Appendix
 \def\today{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi
