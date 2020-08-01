@@ -1,6 +1,4 @@
-# 계량약리학 워크샵 - 초급 과정
-
-[<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)
+# 계량약리학 워크샵 - 초급 과정 <img src="images/cover.jpg"  align="right" height="150" />
 
 본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), 알라딘(aladin.co.kr), YES24(yes24.com)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6)
 
