@@ -87,13 +87,13 @@ $TABLE ID WT AGE HT ALB CLCR
 
 \$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:\index{\$DATA}
 
-```fortran
+```
 $DATA test.csv IGNORE=@
 ```
 
 또는
 
-```fortran
+```
 $DATA ../test.csv IGNORE=@
 ```
 
@@ -101,19 +101,19 @@ $DATA ../test.csv IGNORE=@
 
 $DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, `IGNORE=#`를 사용하면 제어구문은 첫 번째 열에 \#이 포함된 행을 읽어들이지 않고, `IGNORE=@`을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
-```fortran
+```
 $DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)
 ```
 
 또는
 
-```fortran
+```
 $DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)
 ```
 
 또는
 
-```fortran
+```
 $DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)
 ```
 

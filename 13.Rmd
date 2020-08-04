@@ -24,7 +24,7 @@ knitr::include_graphics("./figures/13-fig-01.png")
 knitr::include_graphics("./figures/13-fig-02.png")
 ```
 
-잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ~2~인 정규분표를 따른다고 가정한다(ε\~N(0, σ~2~). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}\index{등분산 / homoscedastic}\index{homoscedastic / 등분산}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
+잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ~2~인 정규분표를 따른다고 가정한다(ε\~N(0, σ~2~)). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}\index{등분산 / homoscedastic}\index{homoscedastic / 등분산}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
 
 잔차의 분포는 다음과 같이 크게 네 가지 함수 형식을 사용하여 모델링 할 수 있는데, 가법오차모델(Additive error model), 고정변동계수(Constant coefficient of variation, CCV)를 사용한 모델, 가법과 CCV를 더한 모델, 그리고 로그오차모델(Log-error model)이다. \index{가법오차 / additive error}\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{additive error / 가법오차}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{잔차 / residual error}\index{residual error / 잔차}
 
