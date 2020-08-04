@@ -41,7 +41,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={계량약리학 워크샵 - 초급 과정},
-  pdfauthor={Ver. 20200802},
+  pdfauthor={Ver. 20200804},
   colorlinks=true,
   linkcolor=Maroon,
   filecolor=Maroon,
@@ -276,6 +276,9 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
@@ -284,8 +287,8 @@
   {\par}
 
 \title{계량약리학 워크샵 - 초급 과정}
-\author{Ver. 20200802}
-\date{Ver. 20200802}
+\author{Ver. 20200804}
+\date{Ver. 20200804}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -370,7 +373,7 @@ PIPET의 구성원들은 우리말로 된 입문용 교재가 전무한 현실�
 \hypertarget{uxc18cuxac1c}{%
 \section{소개}\label{uxc18cuxac1c}}
 
-이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위해 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다. NONMEM을 배워 쓰고자 하는 이유는 자신이 가진 약동학(pharmacokinetic, PK)이나 약력학(pharmacodynamics, PD) 데이터를 모델링하기 위해서이다. 이 분야에 익숙지 않은 독자라면 PK/PD 모델링, 계량약리학(pharmacometrics), 생리학에 근거한 약동학(physiologically-based pharmacokinetics, PBPK), 시스템 약리학 등 유사한는 용어들의 개념부터 정리해 볼 필요가 있다.
+이 교재는 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위해 알아야 하는 기본개념들과 그 사용법을 소개하기 위하여 만들어졌다. NONMEM을 배워 쓰고자 하는 이유는 자신이 가진 약동학(pharmacokinetic, PK)이나 약력학(pharmacodynamics, PD) 데이터를 모델링하기 위해서이다. 이 분야에 익숙지 않은 독자라면 PK/PD 모델링, 계량약리학(pharmacometrics), 생리학에 근거한 약동학(physiologically-based pharmacokinetics, PBPK), 시스템 약리학 등 유사한 용어들의 개념부터 정리해 볼 필요가 있다.
 
 \textbf{PK-PD 모델링은 무엇인가?}
 
@@ -897,7 +900,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
   \FloatTok{0.0001}\NormalTok{ FIX}
   \FloatTok{0.5}
 \OperatorTok{$}\NormalTok{OMEGA}
-  \FloatTok{0.02} \FloatTok{0.01}
+  \FloatTok{0.02}
   \FloatTok{0.02}
 \OperatorTok{$}\NormalTok{SIGMA}
   \DecValTok{1}\NormalTok{ FIX}
@@ -908,7 +911,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 \NormalTok{       ONEHEADER NOPRINT FILE=patab1001}
 \OperatorTok{$}\NormalTok{TABLE ID RF SEX }
 \NormalTok{       ONEHEADER NOPRINT FILE=catab1001}
-\OperatorTok{$}\NormalTok{TABLE ID WT AGE SEX HT ALB CLCR }
+\OperatorTok{$}\NormalTok{TABLE ID WT AGE HT ALB CLCR }
 \NormalTok{       ONEHEADER NOPRINT FILE=cotab1001}
 \end{Highlighting}
 \end{Shaded}
@@ -926,7 +929,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE=}\ErrorTok{@}
+\NormalTok{$DATA test.csv IGNORE}\KeywordTok{=}\NormalTok{@}
 \end{Highlighting}
 \end{Shaded}
 
@@ -934,7 +937,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{test.csv IGNORE=}\ErrorTok{@}
+\NormalTok{$DATA ..}\KeywordTok{/}\NormalTok{test.csv IGNORE}\KeywordTok{=}\NormalTok{@}
 \end{Highlighting}
 \end{Shaded}
 
@@ -942,21 +945,27 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 
 \$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, \texttt{IGNORE=\#}를 사용하면 제어구문은 첫 번째 열에 \#이 포함된 행을 읽어들이지 않고, \texttt{IGNORE=@}을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
-\begin{verbatim}
-$DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$DATA test.csv IGNORE}\KeywordTok{=}\NormalTok{\# IGNORE}\KeywordTok{=}\NormalTok{(SEX}\OperatorTok{.EQ.}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 또는
 
-\begin{verbatim}
-$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$DATA test.csv IGNORE}\KeywordTok{=}\NormalTok{\# IGNORE}\KeywordTok{=}\NormalTok{(WEIGHT}\OperatorTok{.LE.}\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 또는
 
-\begin{verbatim}
-$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$DATA test.csv IGNORE}\KeywordTok{=}\NormalTok{\# IGNORE}\KeywordTok{=}\NormalTok{(WEIGHT}\OperatorTok{.LE.}\DecValTok{40}\NormalTok{, SEX}\OperatorTok{.EQ.}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, \texttt{.AND.} 또는 \texttt{.OR.}을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, \texttt{IGNORE=\#} 또는 \texttt{IGNORE=@}를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.\index{ACCEPT}\index{IGNORE}
 
@@ -1065,7 +1074,7 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \label{eq:scalingparam}
 \end{equation}
 
-위의 식 @red(eq:scalingparam)에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. \texttt{S2=V2/1000}이며, 이를 \$PK에 코드 \ref{exm:two-comp-pk}처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.\index{특수 ADVAN / specific ADVANs}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{\$PK}
+위의 식 \eqref{eq:scalingparam}에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. \texttt{S2=V2/1000}이며, 이를 \$PK에 코드 \ref{exm:two-comp-pk}처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.\index{특수 ADVAN / specific ADVANs}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{\$PK}
 
 \begin{table}[!h]
 
@@ -1515,12 +1524,12 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \NormalTok{  SLP =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)       ; Slope}
 \NormalTok{  EFF =}\StringTok{ }\NormalTok{SLP}\OperatorTok{*}\NormalTok{CMAX }\OperatorTok{+}\StringTok{ }\NormalTok{INT ; Drug effect model}\OperatorTok{{-}}\StringTok{ }\NormalTok{linear}
 \NormalTok{  Y   =}\StringTok{ }\NormalTok{EFF }\OperatorTok{+}\StringTok{ }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)   ; Residual error model }\OperatorTok{{-}}\StringTok{ }\NormalTok{additive}
-\OperatorTok{$}\NormalTok{EST PRINT=}\DecValTok{5}\NormalTok{ MAX=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}
 \OperatorTok{$}\NormalTok{THETA}
   \FloatTok{0.1}\NormalTok{ ; Intercept}
   \FloatTok{0.5}\NormalTok{ ; Slope}
 \OperatorTok{$}\NormalTok{OMEGA}
   \FloatTok{0.04}\NormalTok{ ; Magnitude of additive error}
+\OperatorTok{$}\NormalTok{EST PRINT=}\DecValTok{5}\NormalTok{ MAX=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 

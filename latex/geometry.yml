@@ -1,0 +1,12 @@
+---
+#geometry: "height=10in,b5paper"
+#geometry: "b5paper"
+#geometry: "margin=4in"
+#geometry: "a4paper,left=1.5in,right=1.5in,top=1in,bottom=1in"
+#geometry: "a4paper, nohead, nomarginpar,left=1.5in,right=1.5in,top=5in,bottom=3in,foot=1in"
+#geometry: "b5paper, nohead, nomarginpar" # 위 margin을 
+#geometry: "a5paper, nohead, nomarginpar"
+#geometry: "total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot"
+#geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
+---
+

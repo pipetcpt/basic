@@ -1,10 +1,13 @@
 --- 
 title: "계량약리학 워크샵 - 초급 과정"
-#PIPET / Q-fitter Pharmacometrics Course: Basic
 author: "`r if (knitr::is_html_output()) '가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)' else paste('Ver. ', gsub('-', '', Sys.Date()))` "
 date: "Ver. `r gsub('-', '', Sys.Date())`"
-#date: "Ver. 20200801"
 knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+description: "혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다."
+url: 'https\://pipetcpt.github.io/basic'
+github-repo: pipetcpt/basic
+cover-image: images/cover.jpg
 bibliography: ["references/references.bib", "references/packages.bib"]
 biblio-style: apalike
 #https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
@@ -28,44 +31,13 @@ mainfont: NanumMyeongjo
 #- linktoc=all
 #mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
 fontsize: 11pt
-#http://ftp.harukasan.org/CTAN/macros/latex/contrib/geometry/geometry.pdf
-#geometry: "height=10in,b5paper"
-#geometry: "b5paper"
-#geometry: "margin=4in"
-#geometry: "a4paper,left=1.5in,right=1.5in,top=1in,bottom=1in"
-#geometry: "a4paper, nohead, nomarginpar,left=1.5in,right=1.5in,top=5in,bottom=3in,foot=1in"
-#geometry: "b5paper, nohead, nomarginpar" # 위 margin을 
-#geometry: "a5paper, nohead, nomarginpar"
-#geometry: "total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot"
-#geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
 link-citations: yes
 colorlinks: yes
-#lot: yes
-#lof: yes
-site: bookdown::bookdown_site
-description: "혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다."
-url: 'https\://pipetcpt.github.io/basic'
-github-repo: pipetcpt/basic
-cover-image: images/cover.jpg
 header-includes:
   - \usepackage{kotex} 
   - \usepackage{chemarr}
-#  - \usepackage{xeCJK}
-#  - \usepackage{CJKutf8}
-#  - \usepackage{dhucs-trivcj}
-#  - \usepackage{booktabs}
-#  - \usepackage{longtable}
-#  - \usepackage{array}
-#  - \usepackage{multirow}
-#  - \usepackage{wrapfig}
-#  - \usepackage{float}
-#  - \usepackage{colortbl}
-#  - \usepackage{pdflscape}
-#  - \usepackage{tabu}
-#  - \usepackage{threeparttable}
-#  - \usepackage{threeparttablex}
-#  - \usepackage[normalem]{ulem}
-#  - \usepackage{makecell}
+#lot: yes
+#lof: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -76,8 +48,10 @@ local({
   options(repos = r)
 })
 
-library(tidyverse)
-library(knitr)
+if (!require("pacman")) install.packages("pacman")
+my_packages <- c('kableExtra', 'readxl', 'readr', 'knitr', 'tidyverse', 'nlme', 'nmw', 'xpose4')
+pacman::p_load(char = my_packages)
+#knitr::write_bib(my_packages, 'references/packages.bib')
 
 options(
   htmltools.dir.version = FALSE, 
@@ -87,34 +61,17 @@ options(
   warnPartialMatchDollar = FALSE
 )
 
-my_packages <- c('kableExtra', 'readxl', 'readr', 'knitr', 'tidyverse', 'nlme', 'nmw', 'xpose4')
-pacman::p_load(char = my_packages)
-#knitr::write_bib(my_packages, 'references/packages.bib')
 
 opts_chunk$set(echo=FALSE, 
+               fig.align = "center",
                message = FALSE, 
                warning = FALSE,
                #fig.width = 7,
-			   fig.align = "center",
                out.width="100%", 
                dpi = NA,
                error = TRUE)
-
 options(knitr.kable.NA = '')
-
 Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
-
-#options(knitr.graphics.auto_pdf = FALSE)
-
-#def.chunk.hook  <- knitr::knit_hooks$get("chunk")
-#knitr::knit_hooks$set(chunk = function(x, options) {
-#  x <- def.chunk.hook(x, options)
-#  #ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
-#  ifelse(options$size != "large", paste0("\n \\", options$size,"\n\n", x, "\n\n \\large"), x)
-#}) #https://stackoverflow.com/questions/25646333/code-chunk-font-size-in-rmarkdown-with-knitr-and-latex
-
-#available options for size in descending order are:
-#Huge > huge > LARGE > Large > large > normalsize > small > footnotesize > scriptsize > tiny
 ```
 
 # 머리말 {-}

@@ -63,7 +63,7 @@ $THETA
   0.0001 FIX
   0.5
 $OMEGA
-  0.02 0.01
+  0.02
   0.02
 $SIGMA
   1 FIX
@@ -74,7 +74,7 @@ $TABLE ID TIME AMT DV CL V ETA1 ETA2
        ONEHEADER NOPRINT FILE=patab1001
 $TABLE ID RF SEX 
        ONEHEADER NOPRINT FILE=catab1001
-$TABLE ID WT AGE SEX HT ALB CLCR 
+$TABLE ID WT AGE HT ALB CLCR 
        ONEHEADER NOPRINT FILE=cotab1001
 ```
 
@@ -87,13 +87,13 @@ $TABLE ID WT AGE SEX HT ALB CLCR
 
 \$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:\index{\$DATA}
 
-```r
+```fortran
 $DATA test.csv IGNORE=@
 ```
 
 또는
 
-```r
+```fortran
 $DATA ../test.csv IGNORE=@
 ```
 
@@ -101,19 +101,19 @@ $DATA ../test.csv IGNORE=@
 
 $DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, `IGNORE=#`를 사용하면 제어구문은 첫 번째 열에 \#이 포함된 행을 읽어들이지 않고, `IGNORE=@`을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:\index{\$DATA}\index{ACCEPT}\index{IGNORE}
 
-```
+```fortran
 $DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)
 ```
 
 또는
 
-```
+```fortran
 $DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)
 ```
 
 또는
 
-```
+```fortran
 $DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)
 ```
 
@@ -175,7 +175,7 @@ $PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 �
 (\#eq:scalingparam)
 \end{equation}
 
-위의 식 \@red(eq:scalingparam)에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. `S2=V2/1000`이며, 이를 \$PK에 코드 \@ref(exm:two-comp-pk)처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.\index{특수 ADVAN / specific ADVANs}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{\$PK}
+위의 식 \@ref(eq:scalingparam)에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. `S2=V2/1000`이며, 이를 \$PK에 코드 \@ref(exm:two-comp-pk)처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.\index{특수 ADVAN / specific ADVANs}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{scaling parameter / 척도 파라미터}\index{specific ADVANs / 특수 ADVAN}\index{\$PK}
 
 ```{r advan-param}
 txt <- "Parameters*, Descriptions
@@ -578,12 +578,12 @@ $PRED
   SLP = THETA(2)       ; Slope
   EFF = SLP*CMAX + INT ; Drug effect model- linear
   Y   = EFF + ETA(1)   ; Residual error model - additive
-$EST PRINT=5 MAX=9999 SIG=3
 $THETA
   0.1 ; Intercept
   0.5 ; Slope
 $OMEGA
   0.04 ; Magnitude of additive error
+$EST PRINT=5 MAX=9999 SIG=3
 ```
 
 ---

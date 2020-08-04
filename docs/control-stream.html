@@ -427,7 +427,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <span id="cb3-18"><a href="control-stream.html#cb3-18" aria-hidden="true"></a>  <span class="fl">0.0001</span> FIX</span>
 <span id="cb3-19"><a href="control-stream.html#cb3-19" aria-hidden="true"></a>  <span class="fl">0.5</span></span>
 <span id="cb3-20"><a href="control-stream.html#cb3-20" aria-hidden="true"></a><span class="op">$</span>OMEGA</span>
-<span id="cb3-21"><a href="control-stream.html#cb3-21" aria-hidden="true"></a>  <span class="fl">0.02</span> <span class="fl">0.01</span></span>
+<span id="cb3-21"><a href="control-stream.html#cb3-21" aria-hidden="true"></a>  <span class="fl">0.02</span></span>
 <span id="cb3-22"><a href="control-stream.html#cb3-22" aria-hidden="true"></a>  <span class="fl">0.02</span></span>
 <span id="cb3-23"><a href="control-stream.html#cb3-23" aria-hidden="true"></a><span class="op">$</span>SIGMA</span>
 <span id="cb3-24"><a href="control-stream.html#cb3-24" aria-hidden="true"></a>  <span class="dv">1</span> FIX</span>
@@ -438,7 +438,7 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <span id="cb3-29"><a href="control-stream.html#cb3-29" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=patab1001</span>
 <span id="cb3-30"><a href="control-stream.html#cb3-30" aria-hidden="true"></a><span class="op">$</span>TABLE ID RF SEX </span>
 <span id="cb3-31"><a href="control-stream.html#cb3-31" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=catab1001</span>
-<span id="cb3-32"><a href="control-stream.html#cb3-32" aria-hidden="true"></a><span class="op">$</span>TABLE ID WT AGE SEX HT ALB CLCR </span>
+<span id="cb3-32"><a href="control-stream.html#cb3-32" aria-hidden="true"></a><span class="op">$</span>TABLE ID WT AGE HT ALB CLCR </span>
 <span id="cb3-33"><a href="control-stream.html#cb3-33" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=cotab1001</span></code></pre></div>
 <p></p>
 <div id="problem-data-input" class="section level3" number="3.3.1">
@@ -446,16 +446,16 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <p></p>
 <p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 $PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.</p>
 <p>$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="control-stream.html#cb4-1" aria-hidden="true"></a><span class="op">$</span>DATA test.csv IGNORE=<span class="er">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb4-1"><a href="control-stream.html#cb4-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span>@</span></code></pre></div>
 <p>또는</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="control-stream.html#cb5-1" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>test.csv IGNORE=<span class="er">@</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb5-1"><a href="control-stream.html#cb5-1" aria-hidden="true"></a>$DATA ..<span class="kw">/</span>test.csv IGNORE<span class="kw">=</span>@</span></code></pre></div>
 <p>위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은 제어구문이 있는 폴더에 생성된다.</p>
 <p>$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, <code>IGNORE=#</code>를 사용하면 제어구문은 첫 번째 열에 #이 포함된 행을 읽어들이지 않고, <code>IGNORE=@</code>을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:</p>
-<pre><code>$DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb6-1"><a href="control-stream.html#cb6-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
 <p>또는</p>
-<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb7-1"><a href="control-stream.html#cb7-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>)</span></code></pre></div>
 <p>또는</p>
-<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb8-1"><a href="control-stream.html#cb8-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>, SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
 <p>하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, <code>.AND.</code> 또는 <code>.OR.</code>을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, <code>IGNORE=#</code> 또는 <code>IGNORE=@</code>를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.</p>
 <p>$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV, ADDL, II, RATE, CMT, SS 등이 있다. <code>=DROP</code>구문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 <code>CON=DV</code> 또는 DV로
 작성하여야 한다.</p>
@@ -724,7 +724,7 @@ ALPHA, BETA, GAMMA, K32, K42, KA
 \frac{Amount\ (mg)}{Vd\ (L)} \neq \ DV\ (μg/L)
 \tag{3.1}
 \end{equation}\]</span></p>
-<p>위의 식 @red(eq:scalingparam)에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. <code>S2=V2/1000</code>이며, 이를 $PK에 코드 <a href="control-stream.html#exm:two-comp-pk">3.2</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
+<p>위의 식 <a href="control-stream.html#eq:scalingparam">(3.1)</a>에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. <code>S2=V2/1000</code>이며, 이를 $PK에 코드 <a href="control-stream.html#exm:two-comp-pk">3.2</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:advan-param">표 3.2: </span>특수 ADVAN의 부가 파라미터
@@ -1102,12 +1102,12 @@ Absorption lag parameter
 <span id="cb24-8"><a href="control-stream.html#cb24-8" aria-hidden="true"></a>  SLP =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)       ; Slope</span>
 <span id="cb24-9"><a href="control-stream.html#cb24-9" aria-hidden="true"></a>  EFF =<span class="st"> </span>SLP<span class="op">*</span>CMAX <span class="op">+</span><span class="st"> </span>INT ; Drug effect model<span class="op">-</span><span class="st"> </span>linear</span>
 <span id="cb24-10"><a href="control-stream.html#cb24-10" aria-hidden="true"></a>  Y   =<span class="st"> </span>EFF <span class="op">+</span><span class="st"> </span><span class="kw">ETA</span>(<span class="dv">1</span>)   ; Residual error model <span class="op">-</span><span class="st"> </span>additive</span>
-<span id="cb24-11"><a href="control-stream.html#cb24-11" aria-hidden="true"></a><span class="op">$</span>EST PRINT=<span class="dv">5</span> MAX=<span class="dv">9999</span> SIG=<span class="dv">3</span></span>
-<span id="cb24-12"><a href="control-stream.html#cb24-12" aria-hidden="true"></a><span class="op">$</span>THETA</span>
-<span id="cb24-13"><a href="control-stream.html#cb24-13" aria-hidden="true"></a>  <span class="fl">0.1</span> ; Intercept</span>
-<span id="cb24-14"><a href="control-stream.html#cb24-14" aria-hidden="true"></a>  <span class="fl">0.5</span> ; Slope</span>
-<span id="cb24-15"><a href="control-stream.html#cb24-15" aria-hidden="true"></a><span class="op">$</span>OMEGA</span>
-<span id="cb24-16"><a href="control-stream.html#cb24-16" aria-hidden="true"></a>  <span class="fl">0.04</span> ; Magnitude of additive error</span></code></pre></div>
+<span id="cb24-11"><a href="control-stream.html#cb24-11" aria-hidden="true"></a><span class="op">$</span>THETA</span>
+<span id="cb24-12"><a href="control-stream.html#cb24-12" aria-hidden="true"></a>  <span class="fl">0.1</span> ; Intercept</span>
+<span id="cb24-13"><a href="control-stream.html#cb24-13" aria-hidden="true"></a>  <span class="fl">0.5</span> ; Slope</span>
+<span id="cb24-14"><a href="control-stream.html#cb24-14" aria-hidden="true"></a><span class="op">$</span>OMEGA</span>
+<span id="cb24-15"><a href="control-stream.html#cb24-15" aria-hidden="true"></a>  <span class="fl">0.04</span> ; Magnitude of additive error</span>
+<span id="cb24-16"><a href="control-stream.html#cb24-16" aria-hidden="true"></a><span class="op">$</span>EST PRINT=<span class="dv">5</span> MAX=<span class="dv">9999</span> SIG=<span class="dv">3</span></span></code></pre></div>
 <hr />
 <p>3장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
 
