@@ -10,8 +10,8 @@
 
   <meta property="og:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
-  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:url" content="http://pipet.or.kr/books/basic" />
+  <meta property="og:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
   <meta property="og:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="github-repo" content="pipetcpt/basic" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | 계량약리학 워크샵 - 초급 과정" />
   
   <meta name="twitter:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta name="twitter:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
 
 <meta name="author" content="가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)" />
 
@@ -446,16 +446,16 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <p></p>
 <p>$PROBLEM은 제어구문의 첫 레코드이다. 제어구문에 대한 전반적인 특징을 간략하게 서술할 수 있으며, 일반적으로 프로젝트명 또는 분석하고자 하는 약물의 이름, 분석에 사용한 모델 등을 자유롭게 기술한다. 새로운 모델을 만들 때, 그 목적에 부합하는 $PROBLEM을 사용자가 정한 규칙에 따라 체계적으로 기술하면, 추후 하나의 프로젝트에서 다양한 모델을 포함하고 있는 제어구문들을 체계적이고 질서있게 정리할 수 있다.</p>
 <p>$DATA는 제어구문에서 분석하고자 하는 데이터 파일의 경로를 표시하는데 쓰인다. 컴퓨터 내에서 데이터 파일과 제어구문이 위치하고 있는 폴더를 표시하며, 다음과 같이 쓸 수 있다:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb4-1"><a href="control-stream.html#cb4-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span>@</span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=@</code></pre>
 <p>또는</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb5-1"><a href="control-stream.html#cb5-1" aria-hidden="true"></a>$DATA ..<span class="kw">/</span>test.csv IGNORE<span class="kw">=</span>@</span></code></pre></div>
+<pre><code>$DATA ../test.csv IGNORE=@</code></pre>
 <p>위의 첫번째 경우는 데이터 파일 제어구문이 같은 폴더에 위치하고 있으며, NONMEM 실행 후 생성되는 다양한 결과파일들이 같은 폴더에 저장된다. 아래의 경우는 제어구문이 데이터파일이 위치하고 있는 폴더의 하위폴더에 위치하게 되며, 이때의 결과파일들은 제어구문이 있는 폴더에 생성된다.</p>
 <p>$DATA에서 IGNORE와 ACCEPT 등의 옵션을 이용하여 데이터셋의 변수를 임의적으로 추가 또는 제외하거나 부분집합화를 할 수 있다. 특히, <code>IGNORE=#</code>를 사용하면 제어구문은 첫 번째 열에 #이 포함된 행을 읽어들이지 않고, <code>IGNORE=@</code>을 사용하면 숫자가 아닌 모든 문자가 포함되어 있는 열을 읽어들이지 않는다. 즉, 모델 추정을 위한 데이터로 사용하지 않는다. IGNORE 옵션은 특정 레코드를 배제하기 위한 목적으로 사용되며, 아래의 예와 같이 다양한 방법으로 데이터셋을 부분집합화 할 수 있다:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb6-1"><a href="control-stream.html#cb6-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(SEX.EQ.1)</code></pre>
 <p>또는</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb7-1"><a href="control-stream.html#cb7-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>)</span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40)</code></pre>
 <p>또는</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortran"><span id="cb8-1"><a href="control-stream.html#cb8-1" aria-hidden="true"></a>$DATA test.csv IGNORE<span class="kw">=</span># IGNORE<span class="kw">=</span>(WEIGHT<span class="op">.LE.</span><span class="dv">40</span>, SEX<span class="op">.EQ.</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>$DATA test.csv IGNORE=# IGNORE=(WEIGHT.LE.40, SEX.EQ.1)</code></pre>
 <p>하나의 IGNORE 옵션에 100개 이상의 다른 조건 구문을 추가할 수 있으며, 새 조건 구문을 추가할 때에는 콤마(,)를 사용하여야 한다. 또한, <code>.AND.</code> 또는 <code>.OR.</code>을 사용하여 추가 구문의 조건을 결정할 수 있다. ACCEPT 옵션도 IGNORE와 동일한 방법으로 사용 가능하다. 다만, <code>IGNORE=#</code> 또는 <code>IGNORE=@</code>를 제외하고 IGNORE과 ACCEPT 옵션은 함께 사용할 수 없다.</p>
 <p>$INPUT은 데이터셋의 변수를 순서대로 명시하여 데이터 파일을 읽어들이도록 한다. 변수 목록은 50개를 넘을 수 없으며, 특정 변수는 NONMEM에서 지정한 변수명을 사용하여야 한다. 대표적인 변수명들은 ID, TIME, AMT, DV, MDV, ADDL, II, RATE, CMT, SS 등이 있다. <code>=DROP</code>구문을 사용하여 NONMEM 분석에 사용되지 않을 변수를 제외시킬 수 있으며, 지정된 변수명으로 작성되어 있지 않은 변수는 지정변수명=사용변수명으로 사용할 수 있다. 예를 들어, 혈중약물농도값을 데이터셋에서 CON으로 변수명을 지정하였다면, $INPUT에서 변수명을 <code>CON=DV</code> 또는 DV로
 작성하여야 한다.</p>
@@ -1148,7 +1148,7 @@ Absorption lag parameter
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": false,
 "twitter": true,
 "linkedin": false,
@@ -1163,8 +1163,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/pipetcpt/basic/edit/master/inst/examples/03.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -1176,8 +1176,14 @@ gitbook.start({
 },
 "download": ["basic.pdf"],
 "toc": {
-"collapse": "section"
-}
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "static"
+},
+"search": false,
+"info": false
 });
 });
 </script>

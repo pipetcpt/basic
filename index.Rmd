@@ -2,21 +2,27 @@
 title: "계량약리학 워크샵 - 초급 과정"
 author: "`r if (knitr::is_html_output()) '가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)' else paste('Ver. ', gsub('-', '', Sys.Date()))` "
 date: "Ver. `r gsub('-', '', Sys.Date())`"
-knit: "bookdown::render_book"
-site: bookdown::bookdown_site
-description: "혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다."
-url: 'https\://pipetcpt.github.io/basic'
-github-repo: pipetcpt/basic
-cover-image: images/cover.jpg
-bibliography: ["references/references.bib", "references/packages.bib"]
-biblio-style: apalike
-#https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
-#biblio-style: authoryear
-#biblatexoptions: [refsegment=chapter]
 documentclass: krantz
 classoption: krantz2, a4paper, twoside
 linestretch: 1.30 # https://github.com/jgm/pandoc/issues/5179
 mainfont: NanumMyeongjo
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+description: "혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다."
+url: 'http\://pipet.or.kr/books/basic'
+github-repo: pipetcpt/basic
+cover-image: images/cover.jpg
+bibliography: ["references/references.bib", "references/packages.bib"]
+biblio-style: apalike
+fontsize: 11pt
+link-citations: yes
+colorlinks: yes
+header-includes:
+  - \usepackage{kotex} 
+  - \usepackage{chemarr}
+#https://stackoverflow.com/questions/45028623/is-there-a-way-to-add-chapter-bibliographies-using-bookdown
+#biblio-style: authoryear
+#biblatexoptions: [refsegment=chapter]
 #monofont: "Source Code Pro"
 #monofont: "Latin Modern Mono"
 #monofontoptions:
@@ -30,12 +36,6 @@ mainfont: NanumMyeongjo
 #hyperrefoptions:
 #- linktoc=all
 #mainfont: NanumGothic # https://sujinlee.me/pandoc-thesis/
-fontsize: 11pt
-link-citations: yes
-colorlinks: yes
-header-includes:
-  - \usepackage{kotex} 
-  - \usepackage{chemarr}
 #lot: yes
 #lof: yes
 ---
@@ -76,7 +76,7 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 
 # 머리말 {-}
 
-`r if (knitr::is_html_output()) ' [<img src="images/cover.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)'`
+`r if (knitr::is_html_output()) ' [<img src="images/cover-pdf.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)'`
 
 \normalsize
 

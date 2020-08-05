@@ -1,23 +1,27 @@
 bookdown::gitbook:
-  #mathjax: local
-  self_contained: false
-  dev: svglite
-  css: css/style.css
-  split_by: chapter
   config:
     toc:
       collapse: section
+      scroll_highlight: yes
       before: |
         <li><a href="./">계량약리학 워크샵 - 초급 과정</a></li>
         <li><a href="http://www.bookk.co.kr/book/view/84646" target="_blank">도서 구입</a></li>
       after: |
         <li><a href="https://pipetcpt.github.io/basic/basic.pdf">PDF 보기</a></li>
         <li><a href="http://pipet.or.kr/books/" target="_blank">Published by PIPET</a></li>
+    toolbar:
+      position: static
+    edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
     download: [pdf] #download: [pdf, epub, mobi]
-    #edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
+    search: no
     sharing:
-      github: no
+      github: yes
       facebook: no
+    info: no  
+  self_contained: false
+  dev: svglite
+  css: css/style.css
+  split_by: chapter
   keep_rmd: yes
 bookdown::html_chapters:
   css: [css/style.css, css/toc.css]

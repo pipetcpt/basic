@@ -10,8 +10,8 @@
 
   <meta property="og:title" content="Chapter 5 일반 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://pipetcpt.github.io/basic" />
-  <meta property="og:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta property="og:url" content="http://pipet.or.kr/books/basic" />
+  <meta property="og:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
   <meta property="og:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="github-repo" content="pipetcpt/basic" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 5 일반 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정" />
   
   <meta name="twitter:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="twitter:image" content="https://pipetcpt.github.io/basicimages/cover.jpg" />
+  <meta name="twitter:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
 
 <meta name="author" content="가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)" />
 
@@ -685,7 +685,7 @@ Gear method
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": false,
 "twitter": true,
 "linkedin": false,
@@ -700,8 +700,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/pipetcpt/basic/edit/master/inst/examples/05.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -713,8 +713,14 @@ gitbook.start({
 },
 "download": ["basic.pdf"],
 "toc": {
-"collapse": "section"
-}
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "static"
+},
+"search": false,
+"info": false
 });
 });
 </script>
