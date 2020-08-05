@@ -606,7 +606,7 @@ CMT
 </p>
 </div>
 <p>227행부터는 $ESTIMATION 구문에 대해 설명해주는 부분으로, 사용자가 준 옵션에 대한 설명이 나와있다. 아래와 같이 옵션을 주면, 위의 결과가 나오게 된다.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="use-of-xpose4.html#cb31-1" aria-hidden="true"></a><span class="op">$</span>ESTIMATION MAXEVAL=<span class="dv">9999</span> SIG=<span class="dv">3</span> PRINT=<span class="dv">10</span> METHOD=<span class="dv">1</span> INTER</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb31-1"><a href="use-of-xpose4.html#cb31-1" aria-hidden="true"></a><span class="dt">$ESTIMATION</span> MAXEVAL=<span class="dv">9999</span> SIG=<span class="dv">3</span> PRINT=<span class="dv">10</span> METHOD=<span class="dv">1</span> INTER</span></code></pre></div>
 <p></p>
 <p>MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추정과정이 무한대로 지속되는 것을 방지하기 위해 주는 옵션이다. 0으로 주면 파라미터의 추정을 진행하지 않는다. SIG는 SIGDIGITS (SIGDIG)의 약자로, NONMEM에서 최소화를 진행할 때 파라미터의 유효자리 숫자를 의미하며, 기본값은 3으로 되어있다. 원하는 유효자리의 결과를 얻지 못하여 최소화에 실패하는 경우, SIG=2 등으로 변경하면 성공하는 경우가 많다. PRINT 옵션은 추정과정의 내용을 되풀이 간격마다 찍도록 해주는 옵션으로 0번째와 마지막은 기본적으로 인쇄된다. <code>METHOD=0</code> 은 1차 추정법 (first-order method, FO)이고, <code>METHOD=1</code>은 1차 조건부 추정법(first-order conditional estimation, FOCE)이며, INTER는 INTERACTION의 약자로, ETA-EPS 간의 상호작용을 감안하도록 해주는 옵션이다.</p>
 <div class="figure" style="text-align: center"><span id="fig:image-07"></span>
@@ -636,10 +636,10 @@ CMT
 <div class="example">
 <span id="exm:table-example" class="example"><strong>코드 10.1  </strong></span>$TABLE의 예
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="use-of-xpose4.html#cb32-1" aria-hidden="true"></a><span class="op">$</span>TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3</span>
-<span id="cb32-2"><a href="use-of-xpose4.html#cb32-2" aria-hidden="true"></a><span class="op">$</span>TABLE ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>)                        ONEHEADER NOPRINT FILE=patab3</span>
-<span id="cb32-3"><a href="use-of-xpose4.html#cb32-3" aria-hidden="true"></a><span class="op">$</span>TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3</span>
-<span id="cb32-4"><a href="use-of-xpose4.html#cb32-4" aria-hidden="true"></a><span class="op">$</span>TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb32-1"><a href="use-of-xpose4.html#cb32-1" aria-hidden="true"></a><span class="dt">$TABLE</span> ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3</span>
+<span id="cb32-2"><a href="use-of-xpose4.html#cb32-2" aria-hidden="true"></a><span class="dt">$TABLE</span> ID ETA(<span class="dv">1</span>) ETA(<span class="dv">2</span>)                        ONEHEADER NOPRINT FILE=patab3</span>
+<span id="cb32-3"><a href="use-of-xpose4.html#cb32-3" aria-hidden="true"></a><span class="dt">$TABLE</span> ID SEX                                  ONEHEADER NOPRINT FILE=catab3</span>
+<span id="cb32-4"><a href="use-of-xpose4.html#cb32-4" aria-hidden="true"></a><span class="dt">$TABLE</span> ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3</span></code></pre></div>
 <p>Sdtab은 Standard Table, patab은 Parameter Table, catab은 Categorical Covariates Table을 의미하며, cotab은 Continuous Covariates Table을 의미한다. 이 네 개의 테이블 이름은 xpose4 package에서 미리 약속된 이름으로 그대로 사용하여야 하며, 그 뒤에 숫자(Run Number라고 한다)만 바꾸어 사용하게 된다. $TABLE의 옵션들은 앞에서 설명하였으니 생략하기로 하고, 추가적인 옵션들은 NONMEM 설치 폴더의 help 폴더 안에 있는 $table.ctl 파일을 참고하도록 하자.</p>
 <p>Xpose4 package 가 설치되어 있다면, R 실행 후 아래와 같이 입력하여 Basic goodness-of-fit plots(그림 <a href="use-of-xpose4.html#fig:basic-gof">10.10</a>)과 individual plots(그림 <a href="use-of-xpose4.html#fig:indi-plots">10.11</a>)을 그릴 수 있다.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="use-of-xpose4.html#cb33-1" aria-hidden="true"></a><span class="kw">library</span>(xpose4)</span>
@@ -737,7 +737,7 @@ gitbook.start({
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
+"position": "fixed"
 },
 "search": false,
 "info": false

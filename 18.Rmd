@@ -61,7 +61,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="187", range="B2:F6") %>%
   kable(booktabs=TRUE, caption = "PK-PD 연결 방법들") %>% 
   column_spec(1, width = "2cm") %>%
   column_spec(2, width = "3.5cm") %>%
-  column_spec(3, width = "1cm") %>%
+  column_spec(3, width = "1.0cm") %>%
   column_spec(4, width = "2cm") %>%
   column_spec(5, width = "3.5cm") %>%
   collapse_rows(1, valign = "top")
@@ -100,7 +100,7 @@ include_graphics("./assets/media-18/image5.png") # fig4
 ```{example, SIM-control, echo = TRUE}
 SIM 방법의 제어구문의 예 <!--fig5-->
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PK 
 CL = THETA(1) * EXP(ETA(1)) 
@@ -184,7 +184,7 @@ knitr::include_graphics("./assets/media-18/image6.png") # fig 6
 ```{example, pppd-code, echo=TRUE}
 PPP\&D 방법의 제어구문의 예
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PK 
 CL = THETA(1) * EXP(ETA(1)) 
@@ -238,7 +238,7 @@ include_graphics("./assets/media-18/image7.png") # fig 8
 ```{example, control-ppp, echo=TRUE}
 Example of control file for PPP
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PK 
 CL = THETA(1) * EXP(ETA(1)) 
@@ -286,7 +286,7 @@ include_graphics("./assets/media-18/image8.png")
 ```{example, IPP-example, echo = TRUE}
 IPP 방법의 제어구문의 예
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PK
   CL = ICL
@@ -338,7 +338,7 @@ include_graphics("./assets/media-18/image9.png") # fig 12
 ```{example, sim-pppd-similarity, echo = TRUE}
 (ref:sim-pppd-similarity)
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PROB HO_PO_2comp
 $DATA SIM_S.csv IGNORE=@
@@ -403,7 +403,7 @@ include_graphics("./assets/media-18/image14.png")
 ```{example, ipp-control-stream, echo = TRUE}
 IPP 방법의 제어구문의 예
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 ```r
 $PROB HO_PO_2comp
 $DATA IPP_S.csv IGNORE=@

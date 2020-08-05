@@ -48,7 +48,7 @@ knitr::include_graphics('assets/media-10/image6.png')
 
 227행부터는 \$ESTIMATION 구문에 대해 설명해주는 부분으로, 사용자가 준 옵션에 대한 설명이 나와있다. 아래와 같이 옵션을 주면, 위의 결과가 나오게 된다.\index{\$ESTIMATION (\$EST)}
 
-```r
+```perl
 $ESTIMATION MAXEVAL=9999 SIG=3 PRINT=10 METHOD=1 INTER
 ```
 \index{\$ESTIMATION (\$EST)}\index{MAXEVAL}
@@ -80,9 +80,9 @@ knitr::include_graphics('assets/media-10/image9.png')
 ```{example, table-example, echo = TRUE}
 $TABLE의 예\index{\$TABLE}
 ```
-\vspace{-1cm} 
+\vspace{-5ex} 
 \small
-```r
+```perl
 $TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3
 $TABLE ID ETA(1) ETA(2)                        ONEHEADER NOPRINT FILE=patab3
 $TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3

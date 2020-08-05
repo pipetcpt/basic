@@ -96,8 +96,8 @@ read_csv(txt) %>%
 ```{example, code-example-advan4, echo = TRUE}
 공변량 수식 작성에 수월한 제어구문
 ```
-\vspace{-1cm}
-```r
+\vspace{-5ex}
+```perl
 $SUBROUTINES ADVAN4 TRANS4
 $PK 
   TVCL = THETA(1)
@@ -134,8 +134,8 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 ```{example, code-if, echo=TRUE}
 상대생체이용률을 위한 제어구문
 ```
-\vspace{-1cm}
-```r
+\vspace{-5ex}
+```perl
 IF (DOSE.EQ.50) F1 = 1
 IF (DOSE.EQ.100) F1 = THETA(7)
 IF (DOSE.EQ.200) F1 = THETA(8)

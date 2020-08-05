@@ -389,29 +389,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <span id="exm:theoph-control-stream" class="example"><strong>코드 14.1  </strong></span>Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cov.html#cb36-1" aria-hidden="true"></a><span class="op">$</span>PROB THEOPHYLLINE ORAL</span>
-<span id="cb36-2"><a href="cov.html#cb36-2" aria-hidden="true"></a><span class="op">$</span>INPUT ID AMT=DROP TIME DV BWT</span>
-<span id="cb36-3"><a href="cov.html#cb36-3" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>THEO</span>
-<span id="cb36-4"><a href="cov.html#cb36-4" aria-hidden="true"></a><span class="op">$</span>PRED</span>
-<span id="cb36-5"><a href="cov.html#cb36-5" aria-hidden="true"></a>  DOSE =<span class="st"> </span><span class="dv">320</span></span>
-<span id="cb36-6"><a href="cov.html#cb36-6" aria-hidden="true"></a>  KA   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))</span>
-<span id="cb36-7"><a href="cov.html#cb36-7" aria-hidden="true"></a>  V    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))</span>
-<span id="cb36-8"><a href="cov.html#cb36-8" aria-hidden="true"></a>  K    =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb36-9"><a href="cov.html#cb36-9" aria-hidden="true"></a>  F    =<span class="st"> </span>DOSE<span class="op">/</span>V<span class="op">*</span>KA<span class="op">/</span>(KA <span class="op">-</span><span class="st"> </span>K)<span class="op">*</span>(<span class="kw">EXP</span>(<span class="op">-</span>K<span class="op">*</span>TIME) <span class="op">-</span><span class="st"> </span><span class="kw">EXP</span>(<span class="op">-</span>KA<span class="op">*</span>TIME))</span>
-<span id="cb36-10"><a href="cov.html#cb36-10" aria-hidden="true"></a>  IPRE =<span class="st"> </span>F</span>
-<span id="cb36-11"><a href="cov.html#cb36-11" aria-hidden="true"></a>  Y    =<span class="st"> </span>F <span class="op">+</span><span class="st"> </span>F<span class="op">*</span><span class="kw">EPS</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">EPS</span>(<span class="dv">2</span>)</span>
+<div class="sourceCode" id="cb36"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb36-1"><a href="cov.html#cb36-1" aria-hidden="true"></a><span class="dt">$PROB</span> THEOPHYLLINE ORAL</span>
+<span id="cb36-2"><a href="cov.html#cb36-2" aria-hidden="true"></a><span class="dt">$INPUT</span> ID AMT=DROP TIME DV BWT</span>
+<span id="cb36-3"><a href="cov.html#cb36-3" aria-hidden="true"></a><span class="dt">$DATA</span> ..<span class="kw">/</span><span class="ot">THEO</span></span>
+<span id="cb36-4"><a href="cov.html#cb36-4" aria-hidden="true"></a><span class="dt">$PRED</span></span>
+<span id="cb36-5"><a href="cov.html#cb36-5" aria-hidden="true"></a>  DOSE = <span class="dv">320</span></span>
+<span id="cb36-6"><a href="cov.html#cb36-6" aria-hidden="true"></a>  KA   = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb36-7"><a href="cov.html#cb36-7" aria-hidden="true"></a>  V    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb36-8"><a href="cov.html#cb36-8" aria-hidden="true"></a>  K    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb36-9"><a href="cov.html#cb36-9" aria-hidden="true"></a>  F    = DOSE/V<span class="dt">*KA</span>/(KA - K)*(EXP(-K<span class="dt">*TIME</span>) - EXP(-KA<span class="dt">*TIME</span>))</span>
+<span id="cb36-10"><a href="cov.html#cb36-10" aria-hidden="true"></a>  IPRE = F</span>
+<span id="cb36-11"><a href="cov.html#cb36-11" aria-hidden="true"></a>  Y    = F + F<span class="dt">*EPS</span>(<span class="dv">1</span>) + EPS(<span class="dv">2</span>)</span>
 <span id="cb36-12"><a href="cov.html#cb36-12" aria-hidden="true"></a></span>
-<span id="cb36-13"><a href="cov.html#cb36-13" aria-hidden="true"></a><span class="op">$</span><span class="kw">THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)</span>
-<span id="cb36-14"><a href="cov.html#cb36-14" aria-hidden="true"></a><span class="op">$</span>OMEGA <span class="kw">BLOCK</span>(<span class="dv">3</span>)</span>
+<span id="cb36-13"><a href="cov.html#cb36-13" aria-hidden="true"></a><span class="dt">$THETA</span> (<span class="dv">0</span>, <span class="dv">2</span>) (<span class="dv">0</span>, <span class="dv">50</span>) (<span class="dv">0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb36-14"><a href="cov.html#cb36-14" aria-hidden="true"></a><span class="dt">$OMEGA</span> BLOCK(<span class="dv">3</span>)</span>
 <span id="cb36-15"><a href="cov.html#cb36-15" aria-hidden="true"></a>  <span class="fl">0.2</span></span>
 <span id="cb36-16"><a href="cov.html#cb36-16" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
 <span id="cb36-17"><a href="cov.html#cb36-17" aria-hidden="true"></a>  <span class="fl">0.1</span>  <span class="fl">0.1</span>  <span class="fl">0.2</span></span>
-<span id="cb36-18"><a href="cov.html#cb36-18" aria-hidden="true"></a><span class="op">$</span>SIGMA <span class="fl">0.1</span>  <span class="fl">0.1</span></span>
-<span id="cb36-19"><a href="cov.html#cb36-19" aria-hidden="true"></a><span class="op">$</span>EST MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC</span>
-<span id="cb36-20"><a href="cov.html#cb36-20" aria-hidden="true"></a><span class="op">$</span>COV PRINT=ERS</span>
-<span id="cb36-21"><a href="cov.html#cb36-21" aria-hidden="true"></a><span class="op">$</span>TAB ID TIME IPRE CWRES</span>
+<span id="cb36-18"><a href="cov.html#cb36-18" aria-hidden="true"></a><span class="dt">$SIGMA</span> <span class="fl">0.1</span>  <span class="fl">0.1</span></span>
+<span id="cb36-19"><a href="cov.html#cb36-19" aria-hidden="true"></a><span class="dt">$EST</span> MAX=<span class="dv">9999</span> METHOD=ZERO POSTHOC</span>
+<span id="cb36-20"><a href="cov.html#cb36-20" aria-hidden="true"></a><span class="dt">$COV</span> PRINT=ERS</span>
+<span id="cb36-21"><a href="cov.html#cb36-21" aria-hidden="true"></a><span class="dt">$TAB</span> ID TIME IPRE CWRES</span>
 <span id="cb36-22"><a href="cov.html#cb36-22" aria-hidden="true"></a>     FILE=sdtab NOPRINT ONEHEADER</span>
-<span id="cb36-23"><a href="cov.html#cb36-23" aria-hidden="true"></a><span class="op">$</span>TAB ID <span class="kw">ETA</span>(<span class="dv">1</span>) <span class="kw">ETA</span>(<span class="dv">2</span>) <span class="kw">ETA</span>(<span class="dv">3</span>)</span>
+<span id="cb36-23"><a href="cov.html#cb36-23" aria-hidden="true"></a><span class="dt">$TAB</span> ID ETA(<span class="dv">1</span>) ETA(<span class="dv">2</span>) ETA(<span class="dv">3</span>)</span>
 <span id="cb36-24"><a href="cov.html#cb36-24" aria-hidden="true"></a>     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY</span></code></pre></div>
 <p>위의 $COV STEP에 의해 생성된 부분은 <a href="#nonmem-output-file">별첨 1</a>과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.</p>
 <p>$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산 결과들이다.</p>
@@ -982,7 +982,7 @@ gitbook.start({
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
+"position": "fixed"
 },
 "search": false,
 "info": false

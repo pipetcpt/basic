@@ -50,8 +50,8 @@ include_graphics("figures/20-fig-03.png")
 ```{example, effect-model-code, echo=TRUE}
 (ref:effect-model-code)
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $SUBROUTINES ADVAN3
 $PK
   K   = THETA(1)*EXP(ETA(1))        ; TRIVIAL LOSS TO EFFECT CMPT
@@ -74,8 +74,8 @@ $ERROR
 ```{example, effect-comp-advan6, echo=TRUE}
 효과구획 모델 코드: Using General Nonlinear model (ADVAN6) [@nonmem]\index{ADVAN6}
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $SUBROUTINES ADVAN6 TOL=5
 $MODEL
   COMP=(CENTRAL,DEFDOSE,DEFOBS)
@@ -138,7 +138,7 @@ H(t) &= \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 (\#eq:model-i)
 \end{equation}
 
-```r
+```perl
 C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN*(1-IMAX*C1/(IC50+C1))-KOUT*A(2)
@@ -162,7 +162,7 @@ H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 (\#eq:model-ii)
 \end{equation}
 
-```r
+```perl
 C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1-IMAX*C1/(IC50+C1))*A(2)
@@ -186,7 +186,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 (\#eq:model-iii)
 \end{equation}
 
-```r
+```perl
 C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN*(1+SMAX*C1/(SC50+C1))-KOUT*A(2)
@@ -210,7 +210,7 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 (\#eq:model-iv)
 \end{equation}
 
-```r
+```perl
 C1=A(1)/S1
 DADT(1)=-K*A(1)
 DADT(2)=KIN-KOUT*(1+SMAX*C1/(SC50+C1))*A(2)

@@ -10,7 +10,7 @@ bookdown::gitbook:
         <li><a href="https://pipetcpt.github.io/basic/basic.pdf">PDF 보기</a></li>
         <li><a href="http://pipet.or.kr/books/" target="_blank">Published by PIPET</a></li>
     toolbar:
-      position: static
+      position: fixed
     edit: https://github.com/pipetcpt/basic/edit/master/inst/examples/%s
     download: [pdf] #download: [pdf, epub, mobi]
     search: no

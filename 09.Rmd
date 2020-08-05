@@ -7,7 +7,7 @@
 ## 추정 방법 및 관련 옵션
 
 \index{\$ESTIMATION (\$EST)}\index{MAXEVAL}\index{NOABORT}\index{SIGDIGITS (SIGDIG)}
-```r
+```perl
 $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
 ```
 

@@ -37,8 +37,8 @@ knitr::kable(tab, caption = "제어구문에 적합한 데이터셋의 예", boo
 ```{example, input, echo=TRUE}
 \$PROB, \$DATA, \$INPUT 제어구문 작성의 예\index{\$DATA}\index{\$INPUT}
 ```
-\vspace{-1cm}
-```r
+\vspace{-5ex}
+```perl
 $PROB HO_IV_1comp
 $DATA ../HOdata_IV.csv IGNORE=@
 $INPUT ID TIME AMT DV MDV SEX AGE WT HT
@@ -138,7 +138,7 @@ knitr::include_graphics("figures/02-fig-07.png")
 ```{example, date-dataset-chunk, echo=TRUE}
 DATE label and its format\index{DATE}
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 ```r
 DATE  month day year
 DAT1  day month year

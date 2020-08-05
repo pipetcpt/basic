@@ -16,8 +16,8 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 ```{example, theoph-control-stream, echo=TRUE}
 Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $PROB THEOPHYLLINE ORAL
 $INPUT ID AMT=DROP TIME DV BWT
 $DATA ../THEO

@@ -36,8 +36,8 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 ```{example, label="formula", echo = TRUE}
 약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.\index{\$PRED}\index{PRED}
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $PROB Sigmoidal PD Model
 $DATA ../sigmoidal_effect.csv IGNORE=@
 $INPUT ID CP RESP=DV

@@ -585,9 +585,9 @@ HT
 <div class="example">
 <span id="exm:input" class="example"><strong>코드 2.1  </strong></span>$PROB, $DATA, $INPUT 제어구문 작성의 예
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="op">$</span>PROB HO_IV_1comp</span>
-<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="op">$</span>DATA ..<span class="op">/</span>HOdata_IV.csv IGNORE=<span class="er">@</span></span>
-<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="er">$</span>INPUT ID TIME AMT DV MDV SEX AGE WT HT</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="dt">$PROB</span> HO_IV_1comp</span>
+<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="dt">$DATA</span> ..<span class="kw">/</span><span class="ot">HOdata_IV.csv IGNORE=@</span></span>
+<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="dt">$INPUT</span><span class="ot"> ID TIME AMT DV MDV SEX AGE WT HT</span></span></code></pre></div>
 </div>
 </div>
 <div id="predpp에-쓰는-데이터셋" class="section level2" number="2.2">
@@ -1052,7 +1052,7 @@ gitbook.start({
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
+"position": "fixed"
 },
 "search": false,
 "info": false

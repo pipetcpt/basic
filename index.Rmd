@@ -76,7 +76,7 @@ Sys.setenv(RSTUDIO_PDFLATEX = "latexmk")
 
 # 머리말 {-}
 
-`r if (knitr::is_html_output()) ' [<img src="images/cover-pdf.jpg" style="max-width:30%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)'`
+`r if (knitr::is_html_output()) ' [<img src="images/cover-pdf.jpg" style="max-width:40%;min-width:80px;float:right;margin: 10px 10px 5px 5px" alt="표지" />](https://pipetcpt.github.io/basic/basic.pdf)'`
 
 \normalsize
 

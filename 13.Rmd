@@ -50,8 +50,8 @@ include_graphics("./figures/13-fig-03.png") # fig 3
 ```{example, combined-upper, echo=TRUE}
 $ERROR structure in NONMEM control stream: 기본형태\index{\$ERROR}
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $ERROR
   IPRED = F
   Y     = IPRED * (1+EPS(1)) + EPS(2)
@@ -62,8 +62,8 @@ $ERROR
 $ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\$ERROR}
 이고, 비례오차모델의 표준편차를 반영
 ```
-\vspace{-1cm} 
-```r
+\vspace{-5ex} 
+```perl
 $ERROR
   IPRED = F
   W     = SQRT(THETA(5)**2 + THETA(6) **2 * IPRED**2)

@@ -40,9 +40,9 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 ```{example, one-comp, echo = TRUE}
 1구획 약동학 모델의 제어구문
 ```
-\vspace{-1cm} 
+\vspace{-5ex}
 
-```r
+```perl
 $PROB 1-compartment model
 $INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR
 $DATA test.csv IGNORE=@
@@ -150,9 +150,9 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet='28', range="B2:E23") %>%
 ```{example, two-comp-pk, echo=TRUE}
 2구획 경구 약동학 모델의 \$PK 레코드
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $SUBROUTINE ADVAN4 TRANS4
 
 $PK
@@ -203,7 +203,7 @@ readr::read_csv(txt) %>%
 
 \$THETA, \$OMEGA, \$SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는 블록들이다. \$THETA는 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. \$PK에서 정의된 번호 순서대로 초기값을 제시하면 된다.\index{\$OMEGA}\index{\$PK}\index{\$SIGMA}\index{\$THETA}
 
-```r
+```perl
 $PK 
 TVCL = THETA(1) 
 CL = TVCL * EXP(ETA(1)) 
@@ -215,7 +215,7 @@ KA = TVKA * EXP(ETA(3))
 
 예를 들어 \$PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:\index{\$PK}\index{\$THETA}
 
-```r
+```perl
 $THETA (0, 100) (0, 30) (0, 0.7)
 ```
 
@@ -236,13 +236,13 @@ $THETA (0, 100) (0, 30) (0, 0.7)
 
 OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다.\index{대각행렬 / diagonal matrix}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{diagonal matrix / 대각행렬}\index{variance-covariance matrix / 분산-공분산 행렬}\index{OMEGA 행렬 / omega matrix}\index{omega matrix / OMEGA 행렬}\index{omega matrix / OMEGA 행렬}\index{\$OMEGA}
 
-```r
+```perl
 $OMEGA 0.16 0.25 0.16
 ```
 
 여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다.\index{공분산 / covariance}\index{covariance / 공분산}\index{\$OMEGA}\index{\$OMEGA BLOCK}
 
-```r
+```perl
 $OMEGA BLOCK(2)
 0.16
 0.01 0.25
@@ -251,7 +251,7 @@ $OMEGA 0.16
 
 \$SIGMA는 관찰갑과 예측값의 차이, 즉, 잔차의 분포를 나타내는 ε (residual varilability, RV)를 추정하는 블록이다. \$SIGMA는 ε 를 가법변동(additive variation) 또는 고정변동계수(constant coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을 추정하는 것이며, 행렬로 표현할 수 있다. \$ERROR를 사용하여 EPS(1)과 EPS(2)를 정의하고, 이를 SIGMA 행렬로 표현하면 아래와 같다.\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{잔차 / residual error}\index{residual error / 잔차}\index{SIGMA 행렬 / sigma matrix}\index{sigma matrix / SIGMA 행렬}\index{sigma matrix / SIGMA 행렬}\index{\$ERROR}\index{\$SIGMA}
 
-```r
+```perl
 $ERROR 
 IPRED = F 
 IRES = DV-IPRED 
@@ -269,7 +269,7 @@ Y = F*(1+EPS(1)) +EPS(2)
 
 여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수(CCV), 가법변동, 가법과 ccv 더한 모델이 있다. 잔차변이(EPS)를 \$THETA 레코드에서 추정하도록 \$ERROR의 코드를 변경해서 사용하기도 한다:\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{가법과 CCV 더한 / additive plus CCV}\index{additive plus CCV / 가법과 CCV 더한}\index{잔차 / residual error}\index{residual error / 잔차}\index{\$ERROR}\index{\$THETA}
 
-```r
+```perl
 $ERROR 
 IPRED = F 
 W = SQRT(THETA(4)**2 + THETA(5)**2 *IPRED**2) 
@@ -292,7 +292,7 @@ $ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정
 \index{1차 조건부 추정방법(FOCE) / first-order conditional estimation method(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{first-order conditional estimation method(FOCE) / 1차 조건부 추정방법(FOCE)}\index{FOCE}\index{FO}
 \index{조건부 추정법 / conditional estimation method}\index{conditional estimation method / 조건부 추정법}\index{1차추정법 / first-order method(FO)}\index{first-order method(FO) / 1차추정법}\index{first-order method(FO) / 1차추정법}\index{FO}
 
-```r
+```perl
 $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
 ```
 
@@ -302,7 +302,7 @@ $ESTIMATION NOABORT MAXEVAL=9999 METHOD=1 INTER PRINT=10 SIGDIGITS=3
 
 $SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적 예측점검(visual predictive check) 과정에 사용할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{visual predictive check(VPC) / 시각적 예측 점검(VPC)}\index{\$SIMULATION (\$SIM)}
 
-```r
+```perl
 $SIMULATION (seed) ONLYSIM NSUB=1000
 ```
 
@@ -313,7 +313,7 @@ $SIMULATION (seed) ONLYSIM NSUB=1000
 
 $COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{variance-covariance matrix / 분산-공분산 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
-```r
+```perl
 $COVARIANCE PRINT=E UNCONTIONAL MATRIX=S
 ```
 
@@ -330,9 +330,9 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 ```{example, table-record, echo = TRUE}
 $TABLE 레코드의 예
 ```
-\vspace{-1cm} 
+\vspace{-5ex}
 
-```r
+```perl
 $THETA
   (0, 10, 30)
   (0, 30, 100)
@@ -373,9 +373,9 @@ $TABLE ID ETA(1) ETA(2)
 ```{example, advan4, echo=TRUE}
 2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $SUBROUTINE ADVAN4 TRANS4
 
 $PK
@@ -424,9 +424,9 @@ $SIGMA
 ```{example, advan5, echo=TRUE}
 2구획 경구 약동학 모델의 제어구문의 예. ADVAN5 
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $SUBROUTINE ADVAN5
 
 $MODEL
@@ -461,9 +461,9 @@ $ERROR
 ```{example, advan6, echo=TRUE}
 2구획 경구 약동학 모델의 제어구문의 예. ADVAN6 
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $SUBROUTINE ADVAN6 TOL=4
 
 $MODEL
@@ -524,9 +524,9 @@ knitr::include_graphics("./figures/03-fig-02.png") # 3.8
 ```{example, parent-metabolite, echo=TRUE}
 모약물과 대사체의 약동학 동시 분석 모델의 제어구문
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $PROBLEM Model of Parent and Metabolite Concentrations
 $INPUT ID TIME DV AMT EVID MDV CMT
 $DATA filename
@@ -565,9 +565,9 @@ Y = F*EPS(1) * (1-TYPE)
 ```{example, linear-model, echo=TRUE}
 \$PRED를 이용한 간단한 선형 모델
 ```
-\vspace{-1cm}
+\vspace{-5ex}
 
-```r
+```perl
 $PROB QTc, PRED
 $INPUT ID=DROP DQTC=DV CMAX
 $DATA data.csv IGNORE=C 

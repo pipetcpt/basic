@@ -41,7 +41,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={계량약리학 워크샵 - 초급 과정},
-  pdfauthor={Ver. 20200804},
+  pdfauthor={Ver. 20200806},
   colorlinks=true,
   linkcolor=Maroon,
   filecolor=Maroon,
@@ -287,8 +287,8 @@
   {\par}
 
 \title{계량약리학 워크샵 - 초급 과정}
-\author{Ver. 20200804}
-\date{Ver. 20200804}
+\author{Ver. 20200806}
+\date{Ver. 20200806}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -562,13 +562,13 @@ ID & TIME & AMT & DV & MDV & SEX & AGE & WT & HT\\
 \begin{example}
 \protect\hypertarget{exm:input}{}{\label{exm:input} }\$PROB, \$DATA, \$INPUT 제어구문 작성의 예\index{\$DATA}\index{\$INPUT}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB HO\_IV\_1comp}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{HOdata\_IV.csv IGNORE=}\ErrorTok{@}
-\ErrorTok{$}\NormalTok{INPUT ID TIME AMT DV MDV SEX AGE WT HT}
+\DataTypeTok{$PROB}\NormalTok{ HO\_IV\_1comp}
+\DataTypeTok{$DATA}\NormalTok{ ..}\KeywordTok{/}\OtherTok{HOdata\_IV.csv IGNORE=@}
+\DataTypeTok{$INPUT}\OtherTok{ ID TIME AMT DV MDV SEX AGE WT HT}
 \end{Highlighting}
 \end{Shaded}
 
@@ -722,7 +722,7 @@ TIME 외에 DATE라는 날짜를 기입하는 데이터 항목을 추가하여 �
 \begin{example}
 \protect\hypertarget{exm:date-dataset-chunk}{}{\label{exm:date-dataset-chunk} }DATE label and its format\index{DATE}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -876,42 +876,42 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 \begin{example}
 \protect\hypertarget{exm:one-comp}{}{\label{exm:one-comp} }1구획 약동학 모델의 제어구문
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB }\DecValTok{1}\OperatorTok{{-}}\NormalTok{compartment model}
-\OperatorTok{$}\NormalTok{INPUT ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR}
-\OperatorTok{$}\NormalTok{DATA test.csv IGNORE=}\ErrorTok{@}
-\ErrorTok{$}\NormalTok{SUBR ADVAN1 TRANS2}
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  V  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  S1 =}\StringTok{ }\NormalTok{V}
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\OperatorTok{$}\NormalTok{THETA}
+\DataTypeTok{$PROB} \DecValTok{1}\NormalTok{{-}compartment model}
+\DataTypeTok{$INPUT}\NormalTok{ ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR}
+\DataTypeTok{$DATA}\NormalTok{ test.csv IGNORE=@}
+\DataTypeTok{$SUBR}\NormalTok{ ADVAN1 TRANS2}
+\DataTypeTok{$PK}
+\NormalTok{  V  = THETA(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  CL = THETA(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  S1 = V}
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  W     = SQRT(THETA(}\DecValTok{3}\NormalTok{)**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{4}\NormalTok{)**}\DecValTok{2} \KeywordTok{*}\NormalTok{ IPRED**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  = DV {-} IPRED}
+\NormalTok{  IWRES = IRES / W}
+\NormalTok{  Y     = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{)}
+\DataTypeTok{$THETA}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{400}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{)}
   \FloatTok{0.0001}\NormalTok{ FIX}
   \FloatTok{0.5}
-\OperatorTok{$}\NormalTok{OMEGA}
+\DataTypeTok{$OMEGA}
   \FloatTok{0.02}
   \FloatTok{0.02}
-\OperatorTok{$}\NormalTok{SIGMA}
+\DataTypeTok{$SIGMA}
   \DecValTok{1}\NormalTok{ FIX}
-\OperatorTok{$}\NormalTok{ESTIMATION NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{5}
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT RATE MDV DV IPRED IRES CWRES }
+\DataTypeTok{$ESTIMATION}\NormalTok{ NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{5}
+\DataTypeTok{$TABLE}\NormalTok{ ID TIME AMT RATE MDV DV IPRED IRES CWRES }
 \NormalTok{       ONEHEADER NOPRINT FILE=sdtab1001}
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV CL V ETA1 ETA2 }
+\DataTypeTok{$TABLE}\NormalTok{ ID TIME AMT DV CL V ETA1 ETA2 }
 \NormalTok{       ONEHEADER NOPRINT FILE=patab1001}
-\OperatorTok{$}\NormalTok{TABLE ID RF SEX }
+\DataTypeTok{$TABLE}\NormalTok{ ID RF SEX }
 \NormalTok{       ONEHEADER NOPRINT FILE=catab1001}
-\OperatorTok{$}\NormalTok{TABLE ID WT AGE HT ALB CLCR }
+\DataTypeTok{$TABLE}\NormalTok{ ID WT AGE HT ALB CLCR }
 \NormalTok{       ONEHEADER NOPRINT FILE=cotab1001}
 \end{Highlighting}
 \end{Shaded}
@@ -1037,24 +1037,24 @@ ADVAN10 & TRANS1 & VM, KM & S1, S2, F1, R1, D1, ALAG1\\
 \begin{example}
 \protect\hypertarget{exm:two-comp-pk}{}{\label{exm:two-comp-pk} }2구획 경구 약동학 모델의 \$PK 레코드
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN4 TRANS4}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN4 TRANS4}
 
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  CL  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q   =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$PK}
+\NormalTok{  CL  = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2  = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3  = THETA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q   = THETA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA  = THETA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
   
-\NormalTok{  S2  =}\StringTok{ }\NormalTok{V2}\OperatorTok{/}\DecValTok{1000}
+\NormalTok{  S2  = V2/}\DecValTok{1000}
   
-\NormalTok{  KE  =}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K12 =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K21 =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
+\NormalTok{  KE  = CL/V2}
+\NormalTok{  K12 = Q/V2}
+\NormalTok{  K21 = Q/V3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1100,13 +1100,13 @@ D1 & Duration for the first compartment\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PK }
-\NormalTok{TVCL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }
-\NormalTok{CL =}\StringTok{ }\NormalTok{TVCL }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
-\NormalTok{TVV  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }
-\NormalTok{V =}\StringTok{ }\NormalTok{TVV }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
-\NormalTok{TVKA =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }
-\NormalTok{KA =}\StringTok{ }\NormalTok{TVKA }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
+\DataTypeTok{$PK} 
+\NormalTok{TVCL = THETA(}\DecValTok{1}\NormalTok{) }
+\NormalTok{CL = TVCL }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{)) }
+\NormalTok{TVV  = THETA(}\DecValTok{2}\NormalTok{) }
+\NormalTok{V = TVV }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{)) }
+\NormalTok{TVKA = THETA(}\DecValTok{3}\NormalTok{) }
+\NormalTok{KA = TVKA }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1114,7 +1114,7 @@ D1 & Duration for the first compartment\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\KeywordTok{THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.7}\NormalTok{)}
+\DataTypeTok{$THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.7}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1137,7 +1137,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{OMEGA }\FloatTok{0.16} \FloatTok{0.25} \FloatTok{0.16}
+\DataTypeTok{$OMEGA} \FloatTok{0.16} \FloatTok{0.25} \FloatTok{0.16}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1145,10 +1145,10 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{OMEGA }\KeywordTok{BLOCK}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\DataTypeTok{$OMEGA}\NormalTok{ BLOCK(}\DecValTok{2}\NormalTok{)}
 \FloatTok{0.16}
 \FloatTok{0.01} \FloatTok{0.25}
-\OperatorTok{$}\NormalTok{OMEGA }\FloatTok{0.16}
+\DataTypeTok{$OMEGA} \FloatTok{0.16}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1156,11 +1156,11 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR }
-\NormalTok{IPRED =}\StringTok{ }\NormalTok{F }
-\NormalTok{IRES =}\StringTok{ }\NormalTok{DV}\OperatorTok{{-}}\NormalTok{IPRED }
-\NormalTok{IWRES =}\StringTok{ }\NormalTok{IRES}\OperatorTok{/}\NormalTok{IPRED }
-\NormalTok{Y =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\DataTypeTok{$ERROR} 
+\NormalTok{IPRED = F }
+\NormalTok{IRES = DV{-}IPRED }
+\NormalTok{IWRES = IRES/IPRED }
+\NormalTok{Y = F*(}\DecValTok{1}\NormalTok{+EPS(}\DecValTok{1}\NormalTok{)) +EPS(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1176,16 +1176,16 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR }
-\NormalTok{IPRED =}\StringTok{ }\NormalTok{F }
-\NormalTok{W =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{) }
-\NormalTok{IRES =}\StringTok{ }\NormalTok{DV}\OperatorTok{{-}}\NormalTok{IPRED }
-\NormalTok{IWRES =}\StringTok{ }\NormalTok{IRES}\OperatorTok{/}\NormalTok{W }
-\NormalTok{Y =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\DataTypeTok{$ERROR} 
+\NormalTok{IPRED = F }
+\NormalTok{W = SQRT(THETA(}\DecValTok{4}\NormalTok{)**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{5}\NormalTok{)**}\DecValTok{2} \DataTypeTok{*IPRED}\NormalTok{**}\DecValTok{2}\NormalTok{) }
+\NormalTok{IRES = DV{-}IPRED }
+\NormalTok{IWRES = IRES/W }
+\NormalTok{Y = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{)}
 \NormalTok{...}
-\OperatorTok{$}\KeywordTok{THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.7}\NormalTok{) }\DecValTok{10} \FloatTok{0.2}
+\DataTypeTok{$THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.7}\NormalTok{) }\DecValTok{10} \FloatTok{0.2}
 \NormalTok{...}
-\OperatorTok{$}\NormalTok{SIGMA }\DecValTok{1}\NormalTok{ FIX}
+\DataTypeTok{$SIGMA} \DecValTok{1}\NormalTok{ FIX}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1203,7 +1203,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ESTIMATION NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{10}\NormalTok{ SIGDIGITS=}\DecValTok{3}
+\DataTypeTok{$ESTIMATION}\NormalTok{ NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{10}\NormalTok{ SIGDIGITS=}\DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1215,7 +1215,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\KeywordTok{SIMULATION}\NormalTok{ (seed) ONLYSIM NSUB=}\DecValTok{1000}
+\DataTypeTok{$SIMULATION}\NormalTok{ (seed) ONLYSIM NSUB=}\DecValTok{1000}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1230,7 +1230,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{COVARIANCE PRINT=E UNCONTIONAL MATRIX=S}
+\DataTypeTok{$COVARIANCE}\NormalTok{ PRINT=E UNCONTIONAL MATRIX=S}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1247,11 +1247,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:table-record}{}{\label{exm:table-record} }\$TABLE 레코드의 예
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{THETA}
+\DataTypeTok{$THETA}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{30}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{100}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{300}\NormalTok{)}
@@ -1261,22 +1261,22 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
   \FloatTok{0.001}\NormalTok{ FIX}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA}
+\DataTypeTok{$OMEGA}
   \FloatTok{0.04}
   \FloatTok{0.04}
   \DecValTok{0}\NormalTok{ FIX}
   \DecValTok{0}\NormalTok{ FIX}
   \DecValTok{0}\NormalTok{ FIX}
 
-\OperatorTok{$}\NormalTok{SIGMA}
+\DataTypeTok{$SIGMA}
   \DecValTok{1}\NormalTok{ FIX}
 
-\OperatorTok{$}\NormalTok{ESTIMATION NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER }
+\DataTypeTok{$ESTIMATION}\NormalTok{ NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER }
 \NormalTok{            PRINT=}\DecValTok{10}\NormalTok{ SIGDIGITS=}\DecValTok{3}
 
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV IPRED CWRES IWRES}
-\NormalTok{       ONEHEADER NOPRINT FILE =}\StringTok{ }\NormalTok{sdtab1}
-\OperatorTok{$}\NormalTok{TABLE ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\DataTypeTok{$TABLE}\NormalTok{ ID TIME AMT DV MDV IPRED CWRES IWRES}
+\NormalTok{       ONEHEADER NOPRINT FILE = sdtab1}
+\DataTypeTok{$TABLE}\NormalTok{ ID ETA(}\DecValTok{1}\NormalTok{) ETA(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1295,33 +1295,33 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan4}{}{\label{exm:advan4} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN4 TRANS4}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN4 TRANS4}
 
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  CL    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$PK}
+\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
-\NormalTok{  S2    =}\StringTok{ }\NormalTok{V2}\OperatorTok{/}\DecValTok{1000}
+\NormalTok{  S2    = V2/}\DecValTok{1000}
 
-\NormalTok{  KE    =}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K12   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K21   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
+\NormalTok{  KE    = CL/V2}
+\NormalTok{  K12   = Q/V2}
+\NormalTok{  K21   = Q/V3}
 
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{7}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\ErrorTok{)}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  W     = SQRT(THETA(}\DecValTok{6}\NormalTok{))**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{7}\NormalTok{)**}\DecValTok{2} \KeywordTok{*}\NormalTok{ IPRED**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  = DV {-} IPRED}
+\NormalTok{  IWRES = IRES / W}
+\NormalTok{  Y     = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{) }
 
-\OperatorTok{$}\NormalTok{THETA}
+\DataTypeTok{$THETA}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{30}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{100}\NormalTok{)}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{300}\NormalTok{)}
@@ -1331,14 +1331,14 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
   \FloatTok{0.001}\NormalTok{ FIX}
 \NormalTok{  (}\DecValTok{0}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{OMEGA}
+\DataTypeTok{$OMEGA}
   \FloatTok{0.04}
   \FloatTok{0.04}
   \DecValTok{0}\NormalTok{ FIX}
   \DecValTok{0}\NormalTok{ FIX}
   \DecValTok{0}\NormalTok{ FIX}
 
-\OperatorTok{$}\NormalTok{SIGMA}
+\DataTypeTok{$SIGMA}
   \DecValTok{1}\NormalTok{ FIX}
 \end{Highlighting}
 \end{Shaded}
@@ -1348,37 +1348,37 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan5}{}{\label{exm:advan5} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN5}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN5}
 
-\OperatorTok{$}\NormalTok{MODEL}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
-  \KeywordTok{COMP}\NormalTok{(CENT, DEFOBS)}
-  \KeywordTok{COMP}\NormalTok{(PERI)}
+\DataTypeTok{$MODEL}
+\NormalTok{  COMP(DEPOT, DEFDOSE)}
+\NormalTok{  COMP(CENT, DEFOBS)}
+\NormalTok{  COMP(PERI)}
 
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  CL    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$PK}
+\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
-\NormalTok{  S2    =}\StringTok{ }\NormalTok{V2}\OperatorTok{/}\DecValTok{1000}
+\NormalTok{  S2    = V2/}\DecValTok{1000}
 
-\NormalTok{  K12   =}\StringTok{ }\NormalTok{KA}
-\NormalTok{  K20   =}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K23   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K32   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
+\NormalTok{  K12   = KA}
+\NormalTok{  K20   = CL/V2}
+\NormalTok{  K23   = Q/V2}
+\NormalTok{  K32   = Q/V3}
 
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{7}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\ErrorTok{)}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  W     = SQRT(THETA(}\DecValTok{6}\NormalTok{))**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{7}\NormalTok{)**}\DecValTok{2} \KeywordTok{*}\NormalTok{ IPRED**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  = DV {-} IPRED}
+\NormalTok{  IWRES = IRES / W}
+\NormalTok{  Y     = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1387,41 +1387,41 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{4}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN6 TOL=}\DecValTok{4}
 
-\OperatorTok{$}\NormalTok{MODEL}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
-  \KeywordTok{COMP}\NormalTok{(CENTRAL, DEFOBS)}
-  \KeywordTok{COMP}\NormalTok{(PERIPH)}
+\DataTypeTok{$MODEL}
+\NormalTok{  COMP(DEPOT, DEFDOSE)}
+\NormalTok{  COMP(CENTRAL, DEFOBS)}
+\NormalTok{  COMP(PERIPH)}
 
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  CL    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{4}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    =}\StringTok{ }\KeywordTok{THATA}\NormalTok{(}\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$PK}
+\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
-\NormalTok{  S2    =}\StringTok{ }\NormalTok{V2}\OperatorTok{/}\DecValTok{1000}
+\NormalTok{  S2    = V2/}\DecValTok{1000}
 
-\NormalTok{  KE    =}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K12   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K21   =}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
+\NormalTok{  KE    = CL/V2}
+\NormalTok{  K12   = Q/V2}
+\NormalTok{  K21   = Q/V3}
 
-\OperatorTok{$}\NormalTok{DES}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{KA}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{) =}\StringTok{ }\NormalTok{KA}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\StringTok{ }\NormalTok{KE}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{{-}}\StringTok{ }\NormalTok{K12}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{K21}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{3}\NormalTok{) =}\StringTok{ }\NormalTok{K12}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{{-}}\StringTok{ }\NormalTok{K21}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\DataTypeTok{$DES}
+\NormalTok{  DADT(}\DecValTok{1}\NormalTok{) = {-}KA}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  DADT(}\DecValTok{2}\NormalTok{) = KA}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{) {-} KE}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{) {-} K12}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{) + K21}\DataTypeTok{*A}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{  DADT(}\DecValTok{3}\NormalTok{) = K12}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{) {-} K21}\DataTypeTok{*A}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{7}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\ErrorTok{)}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  W     = SQRT(THETA(}\DecValTok{6}\NormalTok{))**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{7}\NormalTok{)**}\DecValTok{2} \KeywordTok{*}\NormalTok{ IPRED**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  = DV {-} IPRED}
+\NormalTok{  IWRES = IRES / W}
+\NormalTok{  Y     = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1457,36 +1457,36 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:parent-metabolite}{}{\label{exm:parent-metabolite} }모약물과 대사체의 약동학 동시 분석 모델의 제어구문
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROBLEM Model of Parent and Metabolite Concentrations}
-\OperatorTok{$}\NormalTok{INPUT ID TIME DV AMT EVID MDV CMT}
-\OperatorTok{$}\NormalTok{DATA filename}
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{4}
-\OperatorTok{$}\NormalTok{MODEL}
-  \KeywordTok{COMP}\NormalTok{ (DEPOT, DEFDOS)}
-  \KeywordTok{COMP}\NormalTok{ (CENTPRNT, DEFOBS)}
-  \KeywordTok{COMP}\NormalTok{ (CENTMETB)}
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  K20 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  KA  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\NormalTok{  VMAX=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}
-\NormalTok{  KM  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}
-\NormalTok{  K30 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{)}
-\NormalTok{  V3  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{7}\NormalTok{)}
-\NormalTok{  S2  =}\StringTok{ }\NormalTok{V2}\OperatorTok{/}\DecValTok{1000}
-\NormalTok{  S3  =}\StringTok{ }\NormalTok{V3}\OperatorTok{/}\DecValTok{1000}
-\OperatorTok{$}\NormalTok{DES}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{KA}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{) =}\StringTok{ }\NormalTok{KA}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}}\StringTok{ }\NormalTok{K20}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{{-}}\StringTok{ }\NormalTok{(VMAX}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))}\OperatorTok{/}\NormalTok{(KM}\OperatorTok{+}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{3}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\NormalTok{K30}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{((VMAX}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)))}\OperatorTok{/}\NormalTok{(KM}\OperatorTok{+}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))}\OperatorTok{*}\NormalTok{MPR}
-\OperatorTok{$}\NormalTok{ERROR}
-  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) TYPE=}\DecValTok{0}\NormalTok{ ;Parent concentration}
-  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.3}\NormalTok{) TYPE=}\DecValTok{1}\NormalTok{ ;Metabolite concentration}
-\NormalTok{Y =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{TYPE)}
+\DataTypeTok{$PROBLEM}\NormalTok{ Model of Parent }\KeywordTok{and}\NormalTok{ Metabolite Concentrations}
+\DataTypeTok{$INPUT}\NormalTok{ ID TIME DV AMT EVID MDV CMT}
+\DataTypeTok{$DATA}\NormalTok{ filename}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN6 TOL=}\DecValTok{4}
+\DataTypeTok{$MODEL}
+\NormalTok{  COMP (DEPOT, DEFDOS)}
+\NormalTok{  COMP (CENTPRNT, DEFOBS)}
+\NormalTok{  COMP (CENTMETB)}
+\DataTypeTok{$PK}
+\NormalTok{  K20 = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2  = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  KA  = THETA(}\DecValTok{3}\NormalTok{)}
+\NormalTok{  VMAX= THETA(}\DecValTok{4}\NormalTok{)}
+\NormalTok{  KM  = THETA(}\DecValTok{5}\NormalTok{)}
+\NormalTok{  K30 = THETA(}\DecValTok{6}\NormalTok{)}
+\NormalTok{  V3  = THETA(}\DecValTok{7}\NormalTok{)}
+\NormalTok{  S2  = V2/}\DecValTok{1000}
+\NormalTok{  S3  = V3/}\DecValTok{1000}
+\DataTypeTok{$DES}
+\NormalTok{  DADT(}\DecValTok{1}\NormalTok{) = {-}KA}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  DADT(}\DecValTok{2}\NormalTok{) = KA}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{) {-} K20}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{) {-} (VMAX}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{))/(KM+A(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  DADT(}\DecValTok{3}\NormalTok{) = {-}K30}\DataTypeTok{*A}\NormalTok{(}\DecValTok{3}\NormalTok{) + ((VMAX}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{)))/(KM+A(}\DecValTok{2}\NormalTok{))}\DataTypeTok{*MPR}
+\DataTypeTok{$ERROR}
+\NormalTok{  IF (CMT.EQ.}\DecValTok{2}\NormalTok{) TYPE=}\DecValTok{0}\NormalTok{ ;Parent concentration}
+\NormalTok{  IF (CMT.EQ.}\DecValTok{3}\NormalTok{) TYPE=}\DecValTok{1}\NormalTok{ ;Metabolite concentration}
+\NormalTok{Y = F}\DataTypeTok{*EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ (}\DecValTok{1}\NormalTok{{-}TYPE)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1500,26 +1500,26 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \begin{example}
 \protect\hypertarget{exm:linear-model}{}{\label{exm:linear-model} }\$PRED를 이용한 간단한 선형 모델
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB QTc, PRED}
-\OperatorTok{$}\NormalTok{INPUT ID=DROP DQTC=DV CMAX}
-\OperatorTok{$}\NormalTok{DATA data.csv IGNORE=C }
+\DataTypeTok{$PROB}\NormalTok{ QTc, PRED}
+\DataTypeTok{$INPUT}\NormalTok{ ID=DROP DQTC=DV CMAX}
+\DataTypeTok{$DATA}\NormalTok{ data.csv IGNORE=C }
 \NormalTok{; Since the header row starts with a C,}
 \NormalTok{; that row is dropped}
-\OperatorTok{$}\NormalTok{PRED}
-\NormalTok{  INT =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)       ; Intercept}
-\NormalTok{  SLP =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)       ; Slope}
-\NormalTok{  EFF =}\StringTok{ }\NormalTok{SLP}\OperatorTok{*}\NormalTok{CMAX }\OperatorTok{+}\StringTok{ }\NormalTok{INT ; Drug effect model}\OperatorTok{{-}}\StringTok{ }\NormalTok{linear}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{EFF }\OperatorTok{+}\StringTok{ }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)   ; Residual error model }\OperatorTok{{-}}\StringTok{ }\NormalTok{additive}
-\OperatorTok{$}\NormalTok{THETA}
+\DataTypeTok{$PRED}
+\NormalTok{  INT = THETA(}\DecValTok{1}\NormalTok{)       ; Intercept}
+\NormalTok{  SLP = THETA(}\DecValTok{2}\NormalTok{)       ; Slope}
+\NormalTok{  EFF = SLP}\DataTypeTok{*CMAX}\NormalTok{ + INT ; Drug effect model{-} linear}
+\NormalTok{  Y   = EFF + ETA(}\DecValTok{1}\NormalTok{)   ; Residual error model {-} additive}
+\DataTypeTok{$THETA}
   \FloatTok{0.1}\NormalTok{ ; Intercept}
   \FloatTok{0.5}\NormalTok{ ; Slope}
-\OperatorTok{$}\NormalTok{OMEGA}
+\DataTypeTok{$OMEGA}
   \FloatTok{0.04}\NormalTok{ ; Magnitude of additive error}
-\OperatorTok{$}\NormalTok{EST PRINT=}\DecValTok{5}\NormalTok{ MAX=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}
+\DataTypeTok{$EST}\NormalTok{ PRINT=}\DecValTok{5}\NormalTok{ MAX=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1722,25 +1722,25 @@ ALAGn & Absorption lag parameter for compartment n\\
 \begin{example}
 \protect\hypertarget{exm:code-example-advan4}{}{\label{exm:code-example-advan4} }공변량 수식 작성에 수월한 제어구문
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN4 TRANS4}
-\OperatorTok{$}\NormalTok{PK }
-\NormalTok{  TVCL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\NormalTok{  TVV2 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}
-\NormalTok{  TVV3 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\NormalTok{  TVQ  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}
-\NormalTok{  TVKA =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}
-\NormalTok{  CL   =}\StringTok{  }\NormalTok{TVCL }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2   =}\StringTok{  }\NormalTok{TVV2 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3   =}\StringTok{  }\NormalTok{TVV3 }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q    =}\StringTok{  }\NormalTok{TVQ  }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA   =}\StringTok{  }\NormalTok{TVKA }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$SUBROUTINES}\NormalTok{ ADVAN4 TRANS4}
+\DataTypeTok{$PK} 
+\NormalTok{  TVCL = THETA(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  TVV2 = THETA(}\DecValTok{2}\NormalTok{)}
+\NormalTok{  TVV3 = THETA(}\DecValTok{3}\NormalTok{)}
+\NormalTok{  TVQ  = THETA(}\DecValTok{4}\NormalTok{)}
+\NormalTok{  TVKA = THETA(}\DecValTok{5}\NormalTok{)}
+\NormalTok{  CL   =  TVCL }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2   =  TVV2 }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3   =  TVV3 }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q    =  TVQ  }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA   =  TVKA }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
       
-\NormalTok{  ALAG1=}\StringTok{  }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{6}\NormalTok{))}
-\NormalTok{  S2   =}\StringTok{  }\NormalTok{V2 }\OperatorTok{/}\StringTok{ }\DecValTok{1000}
+\NormalTok{  ALAG1=  THETA(}\DecValTok{6}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{6}\NormalTok{))}
+\NormalTok{  S2   =  V2 / }\DecValTok{1000}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1769,13 +1769,13 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 \begin{example}
 \protect\hypertarget{exm:code-if}{}{\label{exm:code-if} }상대생체이용률을 위한 제어구문
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{IF}\NormalTok{ (DOSE.EQ}\FloatTok{.50}\NormalTok{) F1 =}\StringTok{ }\DecValTok{1}
-\KeywordTok{IF}\NormalTok{ (DOSE.EQ}\FloatTok{.100}\NormalTok{) F1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{7}\NormalTok{)}
-\KeywordTok{IF}\NormalTok{ (DOSE.EQ}\FloatTok{.200}\NormalTok{) F1 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{8}\NormalTok{)}
+\NormalTok{IF (DOSE.EQ.}\DecValTok{50}\NormalTok{) F1 = }\DecValTok{1}
+\NormalTok{IF (DOSE.EQ.}\DecValTok{100}\NormalTok{) F1 = THETA(}\DecValTok{7}\NormalTok{)}
+\NormalTok{IF (DOSE.EQ.}\DecValTok{200}\NormalTok{) F1 = THETA(}\DecValTok{8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2031,29 +2031,29 @@ Method & Runge-Kutta method & Gear method\\
 \begin{example}
 \protect\hypertarget{exm:advan5-example}{}{\label{exm:advan5-example} }2구획 경구모델을 ADVAN5로 구현한 코드 예시\index{ADVAN5}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN5}
-\OperatorTok{$}\NormalTok{MODEL}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
-  \KeywordTok{COMP}\NormalTok{(CENTRAL, DEFOBS)}
-  \KeywordTok{COMP}\NormalTok{(PERIPH)}
-\OperatorTok{$}\NormalTok{PK ; Define basic PK relationships}
-\NormalTok{  CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN5}
+\DataTypeTok{$MODEL}
+\NormalTok{  COMP(DEPOT, DEFDOSE)}
+\NormalTok{  COMP(CENTRAL, DEFOBS)}
+\NormalTok{  COMP(PERIPH)}
+\DataTypeTok{$PK}\NormalTok{ ; Define basic PK relationships}
+\NormalTok{  CL = THETA(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2 = THETA(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3 = THETA(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q  = THETA(}\DecValTok{4}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA = THETA(}\DecValTok{5}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{5}\NormalTok{))}
   
-\NormalTok{  S2 =}\StringTok{ }\NormalTok{V2}
-\NormalTok{  K12=}\StringTok{ }\NormalTok{KA}
-\NormalTok{  K20=}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K23=}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K32=}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  Y  =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
+\NormalTok{  S2 = V2}
+\NormalTok{  K12= KA}
+\NormalTok{  K20= CL/V2}
+\NormalTok{  K23= Q/V2}
+\NormalTok{  K32= Q/V3}
+\DataTypeTok{$ERROR}
+\NormalTok{  Y  = F*(}\DecValTok{1}\NormalTok{+EPS(}\DecValTok{1}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2062,32 +2062,32 @@ Method & Runge-Kutta method & Gear method\\
 \begin{example}
 \protect\hypertarget{exm:advan6-example}{}{\label{exm:advan6-example} }2구획 경구모델을 ADVAN6로 구현한 코드 예시\index{ADVAN6}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINE ADVAN6 TOL=}\DecValTok{4}
-\OperatorTok{$}\NormalTok{MODEL}
-  \KeywordTok{COMP}\NormalTok{(DEPOT, DEFDOSE)}
-  \KeywordTok{COMP}\NormalTok{(CENTRAL, DEFOBS)}
-  \KeywordTok{COMP}\NormalTok{(PERIPH)}
-\OperatorTok{$}\NormalTok{PK ; Define basic PK relationships}
-\NormalTok{  CL =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN6 TOL=}\DecValTok{4}
+\DataTypeTok{$MODEL}
+\NormalTok{  COMP(DEPOT, DEFDOSE)}
+\NormalTok{  COMP(CENTRAL, DEFOBS)}
+\NormalTok{  COMP(PERIPH)}
+\DataTypeTok{$PK}\NormalTok{ ; Define basic PK relationships}
+\NormalTok{  CL = THETA(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2 = THETA(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3 = THETA(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q  = THETA(}\DecValTok{4}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA = THETA(}\DecValTok{5}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{5}\NormalTok{))}
   
-\NormalTok{  S2 =}\StringTok{ }\NormalTok{V2}
-\NormalTok{  K20=}\StringTok{ }\NormalTok{CL}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K23=}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V2}
-\NormalTok{  K32=}\StringTok{ }\NormalTok{Q}\OperatorTok{/}\NormalTok{V3}
-\OperatorTok{$}\NormalTok{DES ; Define differential equations}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{) =}\StringTok{ }\OperatorTok{{-}}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{KA}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{) =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{KA }\OperatorTok{{-}}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\NormalTok{(K23}\OperatorTok{+}\NormalTok{K20) }\OperatorTok{+}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{K32}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{3}\NormalTok{) =}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\NormalTok{K23 }\OperatorTok{{-}}\StringTok{ }\KeywordTok{A}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{K32}
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  Y  =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
+\NormalTok{  S2 = V2}
+\NormalTok{  K20= CL/V2}
+\NormalTok{  K23= Q/V2}
+\NormalTok{  K32= Q/V3}
+\DataTypeTok{$DES}\NormalTok{ ; Define differential equations}
+\NormalTok{  DADT(}\DecValTok{1}\NormalTok{) = }\KeywordTok{{-}A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*KA}
+\NormalTok{  DADT(}\DecValTok{2}\NormalTok{) = A(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*KA}\NormalTok{ {-} A(}\DecValTok{2}\NormalTok{)*(K23+K20) + A(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*K32}
+\NormalTok{  DADT(}\DecValTok{3}\NormalTok{) = A(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*K23}\NormalTok{ {-} A(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*K32}
+\DataTypeTok{$ERROR}
+\NormalTok{  Y  = F*(}\DecValTok{1}\NormalTok{+EPS(}\DecValTok{1}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2195,23 +2195,23 @@ AMT와 같은 용어는 PREDPP library를 사용할 경우(\$SUBROUTINE 쓸 때)
 \begin{example}
 \protect\hypertarget{exm:formula}{}{\label{exm:formula} }약력학 모델과 같이 다양한 수식들을 써야 하는 경우 ADVAN 보다는 \$PRED 블록 안에서 수식을 직접 적어주는 것이 편리하다.\index{\$PRED}\index{PRED}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB Sigmoidal PD Model}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{sigmoidal\_effect.csv IGNORE=}\ErrorTok{@}
-\ErrorTok{$}\NormalTok{INPUT ID CP RESP=DV}
-\OperatorTok{$}\NormalTok{PRED}
-\NormalTok{  E0=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) ; Baseline}
-\NormalTok{  EMAX=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) ; Max Effect}
-\NormalTok{  C50=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) ; C50}
+\DataTypeTok{$PROB}\NormalTok{ Sigmoidal PD Model}
+\DataTypeTok{$DATA}\NormalTok{ ..}\KeywordTok{/}\OtherTok{sigmoidal\_effect.csv IGNORE=@}
+\DataTypeTok{$INPUT}\OtherTok{ ID CP RESP=DV}
+\DataTypeTok{$PRED}
+\NormalTok{  E0=THETA(}\DecValTok{1}\NormalTok{) ; Baseline}
+\NormalTok{  EMAX=THETA(}\DecValTok{2}\NormalTok{) ; Max Effect}
+\NormalTok{  C50=THETA(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{)) ; C50}
 \NormalTok{  ; only parameter with interindividual variability}
-\NormalTok{  GAM=}\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{) ; Gamma}
-\NormalTok{  ; do not add an ETA to this }\OperatorTok{{-}}\StringTok{ }\NormalTok{very hard to fit}
-\NormalTok{  IPRD=E0}\OperatorTok{+}\NormalTok{(EMAX}\OperatorTok{{-}}\NormalTok{E0)}\OperatorTok{*}\NormalTok{CP}\OperatorTok{**}\NormalTok{GAM}\OperatorTok{/}\NormalTok{(CP}\OperatorTok{**}\NormalTok{GAM}\OperatorTok{+}\NormalTok{C50}\OperatorTok{**}\NormalTok{GAM)}
-\NormalTok{  Y=IPRD}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\OperatorTok{$}\NormalTok{THETA}
+\NormalTok{  GAM=THETA(}\DecValTok{4}\NormalTok{) ; Gamma}
+\NormalTok{  ; }\KeywordTok{do} \KeywordTok{not}\NormalTok{ add an ETA to this {-} very hard to fit}
+\NormalTok{  IPRD=E0+(EMAX{-}E0)}\DataTypeTok{*CP}\NormalTok{*}\DataTypeTok{*GAM}\NormalTok{/(CP*}\DataTypeTok{*GAM}\NormalTok{+C50*}\DataTypeTok{*GAM}\NormalTok{)}
+\NormalTok{  Y=IPRD+EPS(}\DecValTok{1}\NormalTok{)}
+\DataTypeTok{$THETA}
 \NormalTok{...}
 \end{Highlighting}
 \end{Shaded}
@@ -2403,7 +2403,7 @@ CL & = V_c \cdot k_{10}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ESTIMATION NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{10}\NormalTok{ SIGDIGITS=}\DecValTok{3}
+\DataTypeTok{$ESTIMATION}\NormalTok{ NOABORT MAXEVAL=}\DecValTok{9999}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER PRINT=}\DecValTok{10}\NormalTok{ SIGDIGITS=}\DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2676,7 +2676,7 @@ ID & TIME & AMT & DV & MDV & CMT\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ESTIMATION MAXEVAL=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}\NormalTok{ PRINT=}\DecValTok{10}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER}
+\DataTypeTok{$ESTIMATION}\NormalTok{ MAXEVAL=}\DecValTok{9999}\NormalTok{ SIG=}\DecValTok{3}\NormalTok{ PRINT=}\DecValTok{10}\NormalTok{ METHOD=}\DecValTok{1}\NormalTok{ INTER}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2724,15 +2724,15 @@ MAXEVAL은 추정동안 함수평가의 최대수를 의미하는 것으로, 추
 \begin{example}
 \protect\hypertarget{exm:table-example}{}{\label{exm:table-example} }\$TABLE의 예\index{\$TABLE}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 \small
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{TABLE ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3}
-\OperatorTok{$}\NormalTok{TABLE ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)                        ONEHEADER NOPRINT FILE=patab3}
-\OperatorTok{$}\NormalTok{TABLE ID SEX                                  ONEHEADER NOPRINT FILE=catab3}
-\OperatorTok{$}\NormalTok{TABLE ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3}
+\DataTypeTok{$TABLE}\NormalTok{ ID TIME AMT DV MDV DV IPRED CWRES IWRES ONEHEADER NOPRINT FILE=sdtab3}
+\DataTypeTok{$TABLE}\NormalTok{ ID ETA(}\DecValTok{1}\NormalTok{) ETA(}\DecValTok{2}\NormalTok{)                        ONEHEADER NOPRINT FILE=patab3}
+\DataTypeTok{$TABLE}\NormalTok{ ID SEX                                  ONEHEADER NOPRINT FILE=catab3}
+\DataTypeTok{$TABLE}\NormalTok{ ID AGE WT HT                            ONEHEADER NOPRINT FILE=cotab3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3483,7 +3483,7 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \caption{Definition of residual (Gabrielsson \protect\hyperlink{ref-gabrielsson}{2006})}\label{fig:def-residual}
 \end{figure}
 
-잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ\textsubscript{2}인 정규분표를 따른다고 가정한다(ε\textasciitilde N(0, σ\textsubscript{2}). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}\index{등분산 / homoscedastic}\index{homoscedastic / 등분산}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
+잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ\textsubscript{2}인 정규분표를 따른다고 가정한다(ε\textasciitilde N(0, σ\textsubscript{2})). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. \index{homoscedasticity}\index{등분산 / homoscedastic}\index{homoscedastic / 등분산}\index{outlier / 이상치}\index{잔차 / residual error}\index{residual error / 잔차}
 
 잔차의 분포는 다음과 같이 크게 네 가지 함수 형식을 사용하여 모델링 할 수 있는데, 가법오차모델(Additive error model), 고정변동계수(Constant coefficient of variation, CCV)를 사용한 모델, 가법과 CCV를 더한 모델, 그리고 로그오차모델(Log-error model)이다. \index{가법오차 / additive error}\index{고정변동계수(CCV) / constant coefficient of variation(CCV)}\index{additive error / 가법오차}\index{constant coefficient of variation(CCV) / 고정변동계수(CCV)}\index{잔차 / residual error}\index{residual error / 잔차}
 
@@ -3513,13 +3513,13 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \begin{example}
 \protect\hypertarget{exm:combined-upper}{}{\label{exm:combined-upper} }\$ERROR structure in NONMEM control stream: 기본형태\index{\$ERROR}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{+}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  Y     = IPRED }\KeywordTok{*}\NormalTok{ (}\DecValTok{1}\NormalTok{+EPS(}\DecValTok{1}\NormalTok{)) + EPS(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3527,16 +3527,16 @@ OFV값 최소화 시 고려되는 파라미터들(THETA, OMEGA, SIGMA)은 그 �
 \protect\hypertarget{exm:combined-lower}{}{\label{exm:combined-lower} }\$ERROR structure in NONMEM control stream: 가법오차모델의 표준편차\index{\$ERROR}
 이고, 비례오차모델의 표준편차를 반영
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{ERROR}
-\NormalTok{  IPRED =}\StringTok{ }\NormalTok{F}
-\NormalTok{  W     =}\StringTok{ }\KeywordTok{SQRT}\NormalTok{(}\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{6}\NormalTok{) }\OperatorTok{**}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{IPRED}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
-\NormalTok{  IRES  =}\StringTok{ }\NormalTok{DV }\OperatorTok{{-}}\StringTok{ }\NormalTok{IPRED}
-\NormalTok{  IWRES =}\StringTok{ }\NormalTok{IRES }\OperatorTok{/}\StringTok{ }\NormalTok{W}
-\NormalTok{  Y     =}\StringTok{ }\NormalTok{IPRED }\OperatorTok{+}\StringTok{ }\NormalTok{W }\OperatorTok{*}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\DataTypeTok{$ERROR}
+\NormalTok{  IPRED = F}
+\NormalTok{  W     = SQRT(THETA(}\DecValTok{5}\NormalTok{)**}\DecValTok{2}\NormalTok{ + THETA(}\DecValTok{6}\NormalTok{) **}\DecValTok{2} \KeywordTok{*}\NormalTok{ IPRED**}\DecValTok{2}\NormalTok{)}
+\NormalTok{  IRES  = DV {-} IPRED}
+\NormalTok{  IWRES = IRES / W}
+\NormalTok{  Y     = IPRED + W }\KeywordTok{*}\NormalTok{ EPS(}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3686,33 +3686,33 @@ NONMEM의 실행과정은 대체로 initialization step, estimation step(추정�
 \begin{example}
 \protect\hypertarget{exm:theoph-control-stream}{}{\label{exm:theoph-control-stream} }Theophylline의 경구 투여 약동학 자료 모델링을 위한 제어구문 파일
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{PROB THEOPHYLLINE ORAL}
-\OperatorTok{$}\NormalTok{INPUT ID AMT=DROP TIME DV BWT}
-\OperatorTok{$}\NormalTok{DATA ..}\OperatorTok{/}\NormalTok{THEO}
-\OperatorTok{$}\NormalTok{PRED}
-\NormalTok{  DOSE =}\StringTok{ }\DecValTok{320}
-\NormalTok{  KA   =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V    =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  K    =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  F    =}\StringTok{ }\NormalTok{DOSE}\OperatorTok{/}\NormalTok{V}\OperatorTok{*}\NormalTok{KA}\OperatorTok{/}\NormalTok{(KA }\OperatorTok{{-}}\StringTok{ }\NormalTok{K)}\OperatorTok{*}\NormalTok{(}\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\NormalTok{TIME) }\OperatorTok{{-}}\StringTok{ }\KeywordTok{EXP}\NormalTok{(}\OperatorTok{{-}}\NormalTok{KA}\OperatorTok{*}\NormalTok{TIME))}
-\NormalTok{  IPRE =}\StringTok{ }\NormalTok{F}
-\NormalTok{  Y    =}\StringTok{ }\NormalTok{F }\OperatorTok{+}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{EPS}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\DataTypeTok{$PROB}\NormalTok{ THEOPHYLLINE ORAL}
+\DataTypeTok{$INPUT}\NormalTok{ ID AMT=DROP TIME DV BWT}
+\DataTypeTok{$DATA}\NormalTok{ ..}\KeywordTok{/}\OtherTok{THEO}
+\DataTypeTok{$PRED}
+\NormalTok{  DOSE = }\DecValTok{320}
+\NormalTok{  KA   = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V    = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  K    = THETA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  F    = DOSE/V}\DataTypeTok{*KA}\NormalTok{/(KA {-} K)*(EXP({-}K}\DataTypeTok{*TIME}\NormalTok{) {-} EXP({-}KA}\DataTypeTok{*TIME}\NormalTok{))}
+\NormalTok{  IPRE = F}
+\NormalTok{  Y    = F + F}\DataTypeTok{*EPS}\NormalTok{(}\DecValTok{1}\NormalTok{) + EPS(}\DecValTok{2}\NormalTok{)}
 
-\OperatorTok{$}\KeywordTok{THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
-\OperatorTok{$}\NormalTok{OMEGA }\KeywordTok{BLOCK}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\DataTypeTok{$THETA}\NormalTok{ (}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{) (}\DecValTok{0}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\DataTypeTok{$OMEGA}\NormalTok{ BLOCK(}\DecValTok{3}\NormalTok{)}
   \FloatTok{0.2}
   \FloatTok{0.1}  \FloatTok{0.2}
   \FloatTok{0.1}  \FloatTok{0.1}  \FloatTok{0.2}
-\OperatorTok{$}\NormalTok{SIGMA }\FloatTok{0.1}  \FloatTok{0.1}
-\OperatorTok{$}\NormalTok{EST MAX=}\DecValTok{9999}\NormalTok{ METHOD=ZERO POSTHOC}
-\OperatorTok{$}\NormalTok{COV PRINT=ERS}
-\OperatorTok{$}\NormalTok{TAB ID TIME IPRE CWRES}
+\DataTypeTok{$SIGMA} \FloatTok{0.1}  \FloatTok{0.1}
+\DataTypeTok{$EST}\NormalTok{ MAX=}\DecValTok{9999}\NormalTok{ METHOD=ZERO POSTHOC}
+\DataTypeTok{$COV}\NormalTok{ PRINT=ERS}
+\DataTypeTok{$TAB}\NormalTok{ ID TIME IPRE CWRES}
 \NormalTok{     FILE=sdtab NOPRINT ONEHEADER}
-\OperatorTok{$}\NormalTok{TAB ID }\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{) }\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\DataTypeTok{$TAB}\NormalTok{ ID ETA(}\DecValTok{1}\NormalTok{) ETA(}\DecValTok{2}\NormalTok{) ETA(}\DecValTok{3}\NormalTok{)}
 \NormalTok{     FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY}
 \end{Highlighting}
 \end{Shaded}
@@ -4873,7 +4873,7 @@ PK-PD 연결 방법(적합법)은 크게 두 가지로 구분될 수 있다. 적
 
 \caption{\label{tab:pk-pd-link-methods}PK-PD 연결 방법들}
 \centering
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{2cm}>{\raggedright\arraybackslash}p{3.5cm}}
 \toprule
 분석 & PK-PD
 연결 방법 & PK data & Population PK
@@ -4936,7 +4936,7 @@ SIM 방법으로 PK-PD 모델링 수행시 데이터셋에는 PK 데이터와 PD
 \begin{example}
 \protect\hypertarget{exm:SIM-control}{}{\label{exm:SIM-control} }SIM 방법의 제어구문의 예
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5034,7 +5034,7 @@ PPP\&D는 SIM 방법과 마찬가지로 PK 데이터 및 PD 데이터가 모두 
 \begin{example}
 \protect\hypertarget{exm:pppd-code}{}{\label{exm:pppd-code} }PPP\&D 방법의 제어구문의 예
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5094,7 +5094,7 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \begin{example}
 \protect\hypertarget{exm:control-ppp}{}{\label{exm:control-ppp} }Example of control file for PPP
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5151,7 +5151,7 @@ PPP는 PD 데이터만을 데이터셋에 포함하며(CMT 2에 표시됨) 이�
 \begin{example}
 \protect\hypertarget{exm:IPP-example}{}{\label{exm:IPP-example} }IPP 방법의 제어구문의 예
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5211,7 +5211,7 @@ SIM과 PPP\&D방법에서 사용하는 데이터셋 형태는 동일하며 아�
 \begin{example}
 \protect\hypertarget{exm:sim-pppd-similarity}{}{\label{exm:sim-pppd-similarity} }SIM 방법과 PPP\&D 방법 쓸 때 제어구문의 공통된 부분
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5291,7 +5291,7 @@ IPP 방법의 데이터셋은 PPP와 마찬가지로 용량정보와 PD 데이�
 \begin{example}
 \protect\hypertarget{exm:ipp-control-stream}{}{\label{exm:ipp-control-stream} }IPP 방법의 제어구문의 예
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5793,24 +5793,24 @@ K_2 &= \frac{k_2}{k_{-2}}
 \begin{example}
 \protect\hypertarget{exm:effect-model-code}{}{\label{exm:effect-model-code} }효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) (Beal \protect\hyperlink{ref-nonmem}{2018})\index{ADVAN3}\index{PRED}\index{PREDPP}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN3}
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  K   =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{))        ; TRIVIAL LOSS TO EFFECT CMPT}
-\NormalTok{  K12 =}\StringTok{ }\FloatTok{.001}\OperatorTok{*}\NormalTok{K                      ; KEO}
-\NormalTok{  K21 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{))        ; V1 FOR DRUG}
-\NormalTok{  S1  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  EMAX=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  C50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
-\NormalTok{  S2  =}\StringTok{ }\NormalTok{S1}\OperatorTok{*}\NormalTok{K12}\OperatorTok{/}\NormalTok{K21                  ; SO THAT CESS =}\StringTok{ }\NormalTok{CPSS}
-\OperatorTok{$}\NormalTok{ERROR}
-  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{F}\OperatorTok{/}\NormalTok{(C50}\OperatorTok{+}\NormalTok{F)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{))  ; DV =}\StringTok{ }\NormalTok{EFFECT IF CMT=}\DecValTok{2}
+\DataTypeTok{$SUBROUTINES}\NormalTok{ ADVAN3}
+\DataTypeTok{$PK}
+\NormalTok{  K   = THETA(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{))        ; TRIVIAL LOSS TO EFFECT CMPT}
+\NormalTok{  K12 = .}\DecValTok{001}\DataTypeTok{*K}\NormalTok{                      ; KEO}
+\NormalTok{  K21 = THETA(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{2}\NormalTok{))        ; V1 FOR DRUG}
+\NormalTok{  S1  = THETA(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  EMAX= THETA(}\DecValTok{4}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  C50 = THETA(}\DecValTok{5}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{5}\NormalTok{))}
+\NormalTok{  S2  = S1}\DataTypeTok{*K12}\NormalTok{/K21                  ; SO THAT CESS = CPSS}
+\DataTypeTok{$ERROR}
+\NormalTok{  IF (CMT.EQ.}\DecValTok{2}\NormalTok{) THEN}
+\NormalTok{  Y   = EMAX}\DataTypeTok{*F}\NormalTok{/(C50+F)}\DataTypeTok{*EXP}\NormalTok{(ERR(}\DecValTok{2}\NormalTok{))  ; DV = EFFECT IF CMT=}\DecValTok{2}
 \NormalTok{  ELSE}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{))               ; DV =}\StringTok{ }\NormalTok{CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
+\NormalTok{  Y   = F}\DataTypeTok{*EXP}\NormalTok{(ERR(}\DecValTok{1}\NormalTok{))               ; DV = CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
 \NormalTok{  ENDIF}
 \end{Highlighting}
 \end{Shaded}
@@ -5820,29 +5820,29 @@ K_2 &= \frac{k_2}{k_{-2}}
 \begin{example}
 \protect\hypertarget{exm:effect-comp-advan6}{}{\label{exm:effect-comp-advan6} }효과구획 모델 코드: Using General Nonlinear model (ADVAN6) (Beal \protect\hyperlink{ref-nonmem}{2018})\index{ADVAN6}
 \end{example}
-\vspace{-1cm}
+\vspace{-5ex}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{$}\NormalTok{SUBROUTINES ADVAN6 TOL=}\DecValTok{5}
-\OperatorTok{$}\NormalTok{MODEL}
+\DataTypeTok{$SUBROUTINES}\NormalTok{ ADVAN6 TOL=}\DecValTok{5}
+\DataTypeTok{$MODEL}
 \NormalTok{  COMP=(CENTRAL,DEFDOSE,DEFOBS)}
 \NormalTok{  COMP=EFFECT}
-\OperatorTok{$}\NormalTok{PK}
-\NormalTok{  K10 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{1}\NormalTok{)) }
-\NormalTok{  V1  =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{2}\NormalTok{)) }
-\NormalTok{  S1  =}\StringTok{ }\NormalTok{V1 }
-\NormalTok{  K20 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  C50 =}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  EMAX=}\StringTok{ }\KeywordTok{THETA}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ETA}\NormalTok{(}\DecValTok{5}\NormalTok{))}
-\OperatorTok{$}\NormalTok{DES}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K10}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)                 ; NOTE NO LOSS TO }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
-  \KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=}\StringTok{ }\NormalTok{K20}\OperatorTok{*}\NormalTok{(}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{V1}\OperatorTok{{-}}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{))       ; }\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{) IS CE}
-\OperatorTok{$}\NormalTok{ERROR}
-  \KeywordTok{IF}\NormalTok{ (CMT.EQ}\FloatTok{.2}\NormalTok{) THEN}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{EMAX}\OperatorTok{*}\NormalTok{F}\OperatorTok{/}\NormalTok{(C50}\OperatorTok{+}\NormalTok{F)}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{2}\NormalTok{))  ; DV =}\StringTok{ }\NormalTok{EFFECT IF CMT=}\DecValTok{2}
+\DataTypeTok{$PK}
+\NormalTok{  K10 = THETA(}\DecValTok{1}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{1}\NormalTok{)) }
+\NormalTok{  V1  = THETA(}\DecValTok{2}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{2}\NormalTok{)) }
+\NormalTok{  S1  = V1 }
+\NormalTok{  K20 = THETA(}\DecValTok{3}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  C50 = THETA(}\DecValTok{4}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  EMAX= THETA(}\DecValTok{5}\NormalTok{)}\DataTypeTok{*EXP}\NormalTok{(ETA(}\DecValTok{5}\NormalTok{))}
+\DataTypeTok{$DES}
+\NormalTok{  DADT(}\DecValTok{1}\NormalTok{)={-}K10}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)                 ; NOTE NO LOSS TO A(}\DecValTok{2}\NormalTok{)}
+\NormalTok{  DADT(}\DecValTok{2}\NormalTok{)= K20*(A(}\DecValTok{1}\NormalTok{)/V1}\KeywordTok{{-}A}\NormalTok{(}\DecValTok{2}\NormalTok{))       ; A(}\DecValTok{2}\NormalTok{) IS CE}
+\DataTypeTok{$ERROR}
+\NormalTok{  IF (CMT.EQ.}\DecValTok{2}\NormalTok{) THEN}
+\NormalTok{  Y   = EMAX}\DataTypeTok{*F}\NormalTok{/(C50+F)}\DataTypeTok{*EXP}\NormalTok{(ERR(}\DecValTok{2}\NormalTok{))  ; DV = EFFECT IF CMT=}\DecValTok{2}
 \NormalTok{  ELSE}
-\NormalTok{  Y   =}\StringTok{ }\NormalTok{F}\OperatorTok{*}\KeywordTok{EXP}\NormalTok{(}\KeywordTok{ERR}\NormalTok{(}\DecValTok{1}\NormalTok{))               ; DV =}\StringTok{ }\NormalTok{CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
+\NormalTok{  Y   = F}\DataTypeTok{*EXP}\NormalTok{(ERR(}\DecValTok{1}\NormalTok{))               ; DV = CP IF CMT=}\DecValTok{1}\NormalTok{ (OR }\DecValTok{0}\NormalTok{)}
 \NormalTok{  ENDIF}
 \end{Highlighting}
 \end{Shaded}
@@ -5902,9 +5902,9 @@ H(t) &= \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{IMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(IC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{C1=A(}\DecValTok{1}\NormalTok{)/S1}
+\NormalTok{DADT(}\DecValTok{1}\NormalTok{)={-}K}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{DADT(}\DecValTok{2}\NormalTok{)=KIN*(}\DecValTok{1}\NormalTok{{-}IMAX}\DataTypeTok{*C1}\NormalTok{/(IC50+C1)){-}KOUT}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5934,9 +5934,9 @@ H(t) & = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 < I_{max} \leq 1)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{IMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(IC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{C1=A(}\DecValTok{1}\NormalTok{)/S1}
+\NormalTok{DADT(}\DecValTok{1}\NormalTok{)={-}K}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{DADT(}\DecValTok{2}\NormalTok{)=KIN{-}KOUT*(}\DecValTok{1}\NormalTok{{-}IMAX}\DataTypeTok{*C1}\NormalTok{/(IC50+C1))}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5966,9 +5966,9 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{SMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(SC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{C1=A(}\DecValTok{1}\NormalTok{)/S1}
+\NormalTok{DADT(}\DecValTok{1}\NormalTok{)={-}K}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{DADT(}\DecValTok{2}\NormalTok{)=KIN*(}\DecValTok{1}\NormalTok{+SMAX}\DataTypeTok{*C1}\NormalTok{/(SC50+C1)){-}KOUT}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5998,9 +5998,9 @@ H(t) & = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 < S_{max})
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{C1=}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{/}\NormalTok{S1}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{1}\NormalTok{)=}\OperatorTok{{-}}\NormalTok{K}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-\KeywordTok{DADT}\NormalTok{(}\DecValTok{2}\NormalTok{)=KIN}\OperatorTok{{-}}\NormalTok{KOUT}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{SMAX}\OperatorTok{*}\NormalTok{C1}\OperatorTok{/}\NormalTok{(SC50}\OperatorTok{+}\NormalTok{C1))}\OperatorTok{*}\KeywordTok{A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{C1=A(}\DecValTok{1}\NormalTok{)/S1}
+\NormalTok{DADT(}\DecValTok{1}\NormalTok{)={-}K}\DataTypeTok{*A}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{DADT(}\DecValTok{2}\NormalTok{)=KIN{-}KOUT*(}\DecValTok{1}\NormalTok{+SMAX}\DataTypeTok{*C1}\NormalTok{/(SC50+C1))}\DataTypeTok{*A}\NormalTok{(}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

@@ -421,45 +421,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <span id="exm:effect-model-code" class="example"><strong>코드 20.1  </strong></span>효과구획 모델 코드: PREDPP Linear Model (ADVAN3, Two compartment) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
 </div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="delayed-effect.html#cb55-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINES ADVAN3</span>
-<span id="cb55-2"><a href="delayed-effect.html#cb55-2" aria-hidden="true"></a><span class="op">$</span>PK</span>
-<span id="cb55-3"><a href="delayed-effect.html#cb55-3" aria-hidden="true"></a>  K   =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>))        ; TRIVIAL LOSS TO EFFECT CMPT</span>
-<span id="cb55-4"><a href="delayed-effect.html#cb55-4" aria-hidden="true"></a>  K12 =<span class="st"> </span><span class="fl">.001</span><span class="op">*</span>K                      ; KEO</span>
-<span id="cb55-5"><a href="delayed-effect.html#cb55-5" aria-hidden="true"></a>  K21 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>))        ; V1 FOR DRUG</span>
-<span id="cb55-6"><a href="delayed-effect.html#cb55-6" aria-hidden="true"></a>  S1  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb55-7"><a href="delayed-effect.html#cb55-7" aria-hidden="true"></a>  EMAX=<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb55-8"><a href="delayed-effect.html#cb55-8" aria-hidden="true"></a>  C50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb55-9"><a href="delayed-effect.html#cb55-9" aria-hidden="true"></a>  S2  =<span class="st"> </span>S1<span class="op">*</span>K12<span class="op">/</span>K21                  ; SO THAT CESS =<span class="st"> </span>CPSS</span>
-<span id="cb55-10"><a href="delayed-effect.html#cb55-10" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
-<span id="cb55-11"><a href="delayed-effect.html#cb55-11" aria-hidden="true"></a>  <span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN</span>
-<span id="cb55-12"><a href="delayed-effect.html#cb55-12" aria-hidden="true"></a>  Y   =<span class="st"> </span>EMAX<span class="op">*</span>F<span class="op">/</span>(C50<span class="op">+</span>F)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">2</span>))  ; DV =<span class="st"> </span>EFFECT IF CMT=<span class="dv">2</span></span>
+<div class="sourceCode" id="cb55"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb55-1"><a href="delayed-effect.html#cb55-1" aria-hidden="true"></a><span class="dt">$SUBROUTINES</span> ADVAN3</span>
+<span id="cb55-2"><a href="delayed-effect.html#cb55-2" aria-hidden="true"></a><span class="dt">$PK</span></span>
+<span id="cb55-3"><a href="delayed-effect.html#cb55-3" aria-hidden="true"></a>  K   = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))        ; TRIVIAL LOSS TO EFFECT CMPT</span>
+<span id="cb55-4"><a href="delayed-effect.html#cb55-4" aria-hidden="true"></a>  K12 = .<span class="dv">001</span><span class="dt">*K</span>                      ; KEO</span>
+<span id="cb55-5"><a href="delayed-effect.html#cb55-5" aria-hidden="true"></a>  K21 = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))        ; V1 FOR DRUG</span>
+<span id="cb55-6"><a href="delayed-effect.html#cb55-6" aria-hidden="true"></a>  S1  = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
+<span id="cb55-7"><a href="delayed-effect.html#cb55-7" aria-hidden="true"></a>  EMAX= THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
+<span id="cb55-8"><a href="delayed-effect.html#cb55-8" aria-hidden="true"></a>  C50 = THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
+<span id="cb55-9"><a href="delayed-effect.html#cb55-9" aria-hidden="true"></a>  S2  = S1<span class="dt">*K12</span>/K21                  ; SO THAT CESS = CPSS</span>
+<span id="cb55-10"><a href="delayed-effect.html#cb55-10" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
+<span id="cb55-11"><a href="delayed-effect.html#cb55-11" aria-hidden="true"></a>  IF (CMT.EQ.<span class="dv">2</span>) THEN</span>
+<span id="cb55-12"><a href="delayed-effect.html#cb55-12" aria-hidden="true"></a>  Y   = EMAX<span class="dt">*F</span>/(C50+F)<span class="dt">*EXP</span>(ERR(<span class="dv">2</span>))  ; DV = EFFECT IF CMT=<span class="dv">2</span></span>
 <span id="cb55-13"><a href="delayed-effect.html#cb55-13" aria-hidden="true"></a>  ELSE</span>
-<span id="cb55-14"><a href="delayed-effect.html#cb55-14" aria-hidden="true"></a>  Y   =<span class="st"> </span>F<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">1</span>))               ; DV =<span class="st"> </span>CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
+<span id="cb55-14"><a href="delayed-effect.html#cb55-14" aria-hidden="true"></a>  Y   = F<span class="dt">*EXP</span>(ERR(<span class="dv">1</span>))               ; DV = CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
 <span id="cb55-15"><a href="delayed-effect.html#cb55-15" aria-hidden="true"></a>  ENDIF</span></code></pre></div>
 <p>또다른 방식으로는 아래 코드 <a href="delayed-effect.html#exm:effect-comp-advan6">20.2</a>와 같이 중심구획에서 약물이 제거되는 속도는 K10으로 표현되지만, 중심구획의 약물의 양이나 농도가 효과구획으로 약물이 분포하는 것으로 인해 영향을 받는 현상이 아예 일어나지 않도록 해 놓고(DADT(1)의 수식에 D10이외에 다른 속도상수가 나타나지 않고 있음)대신 효과구획의 약물농도는 K20이라는 속도상수에 의해 중심구획으로부터 들어와서 올라가고, 같은 속도상수로 제거된다고 가정한다． 위에 예시된 코드와의 또다른 차이는 효과구획에서 약이 중심구획으로 되돌아가지 않고 아예 사라져 버린다고 가정하는 것인데,이는 결국 중심구획의 약물농도에 어떤 영향도 끼치지 않는다는 가정에 충실하기 위한 것이다． 아래 코드의 A(2)는 효과구획의 약물의 양이 아니라 농도임을 유의해야 한다． </p>
 
 <div class="example">
 <span id="exm:effect-comp-advan6" class="example"><strong>코드 20.2  </strong></span>효과구획 모델 코드: Using General Nonlinear model (ADVAN6) <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
 </div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="delayed-effect.html#cb56-1" aria-hidden="true"></a><span class="op">$</span>SUBROUTINES ADVAN6 TOL=<span class="dv">5</span></span>
-<span id="cb56-2"><a href="delayed-effect.html#cb56-2" aria-hidden="true"></a><span class="op">$</span>MODEL</span>
+<div class="sourceCode" id="cb56"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb56-1"><a href="delayed-effect.html#cb56-1" aria-hidden="true"></a><span class="dt">$SUBROUTINES</span> ADVAN6 TOL=<span class="dv">5</span></span>
+<span id="cb56-2"><a href="delayed-effect.html#cb56-2" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
 <span id="cb56-3"><a href="delayed-effect.html#cb56-3" aria-hidden="true"></a>  COMP=(CENTRAL,DEFDOSE,DEFOBS)</span>
 <span id="cb56-4"><a href="delayed-effect.html#cb56-4" aria-hidden="true"></a>  COMP=EFFECT</span>
-<span id="cb56-5"><a href="delayed-effect.html#cb56-5" aria-hidden="true"></a><span class="op">$</span>PK</span>
-<span id="cb56-6"><a href="delayed-effect.html#cb56-6" aria-hidden="true"></a>  K10 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">1</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">1</span>)) </span>
-<span id="cb56-7"><a href="delayed-effect.html#cb56-7" aria-hidden="true"></a>  V1  =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">2</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">2</span>)) </span>
-<span id="cb56-8"><a href="delayed-effect.html#cb56-8" aria-hidden="true"></a>  S1  =<span class="st"> </span>V1 </span>
-<span id="cb56-9"><a href="delayed-effect.html#cb56-9" aria-hidden="true"></a>  K20 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">3</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">3</span>))</span>
-<span id="cb56-10"><a href="delayed-effect.html#cb56-10" aria-hidden="true"></a>  C50 =<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">4</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">4</span>))</span>
-<span id="cb56-11"><a href="delayed-effect.html#cb56-11" aria-hidden="true"></a>  EMAX=<span class="st"> </span><span class="kw">THETA</span>(<span class="dv">5</span>)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ETA</span>(<span class="dv">5</span>))</span>
-<span id="cb56-12"><a href="delayed-effect.html#cb56-12" aria-hidden="true"></a><span class="op">$</span>DES</span>
-<span id="cb56-13"><a href="delayed-effect.html#cb56-13" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K10<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)                 ; NOTE NO LOSS TO <span class="kw">A</span>(<span class="dv">2</span>)</span>
-<span id="cb56-14"><a href="delayed-effect.html#cb56-14" aria-hidden="true"></a>  <span class="kw">DADT</span>(<span class="dv">2</span>)=<span class="st"> </span>K20<span class="op">*</span>(<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>V1<span class="op">-</span><span class="kw">A</span>(<span class="dv">2</span>))       ; <span class="kw">A</span>(<span class="dv">2</span>) IS CE</span>
-<span id="cb56-15"><a href="delayed-effect.html#cb56-15" aria-hidden="true"></a><span class="op">$</span>ERROR</span>
-<span id="cb56-16"><a href="delayed-effect.html#cb56-16" aria-hidden="true"></a>  <span class="kw">IF</span> (CMT.EQ<span class="fl">.2</span>) THEN</span>
-<span id="cb56-17"><a href="delayed-effect.html#cb56-17" aria-hidden="true"></a>  Y   =<span class="st"> </span>EMAX<span class="op">*</span>F<span class="op">/</span>(C50<span class="op">+</span>F)<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">2</span>))  ; DV =<span class="st"> </span>EFFECT IF CMT=<span class="dv">2</span></span>
+<span id="cb56-5"><a href="delayed-effect.html#cb56-5" aria-hidden="true"></a><span class="dt">$PK</span></span>
+<span id="cb56-6"><a href="delayed-effect.html#cb56-6" aria-hidden="true"></a>  K10 = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>)) </span>
+<span id="cb56-7"><a href="delayed-effect.html#cb56-7" aria-hidden="true"></a>  V1  = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>)) </span>
+<span id="cb56-8"><a href="delayed-effect.html#cb56-8" aria-hidden="true"></a>  S1  = V1 </span>
+<span id="cb56-9"><a href="delayed-effect.html#cb56-9" aria-hidden="true"></a>  K20 = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
+<span id="cb56-10"><a href="delayed-effect.html#cb56-10" aria-hidden="true"></a>  C50 = THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
+<span id="cb56-11"><a href="delayed-effect.html#cb56-11" aria-hidden="true"></a>  EMAX= THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
+<span id="cb56-12"><a href="delayed-effect.html#cb56-12" aria-hidden="true"></a><span class="dt">$DES</span></span>
+<span id="cb56-13"><a href="delayed-effect.html#cb56-13" aria-hidden="true"></a>  DADT(<span class="dv">1</span>)=-K10<span class="dt">*A</span>(<span class="dv">1</span>)                 ; NOTE NO LOSS TO A(<span class="dv">2</span>)</span>
+<span id="cb56-14"><a href="delayed-effect.html#cb56-14" aria-hidden="true"></a>  DADT(<span class="dv">2</span>)= K20*(A(<span class="dv">1</span>)/V1<span class="kw">-A</span>(<span class="dv">2</span>))       ; A(<span class="dv">2</span>) IS CE</span>
+<span id="cb56-15"><a href="delayed-effect.html#cb56-15" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
+<span id="cb56-16"><a href="delayed-effect.html#cb56-16" aria-hidden="true"></a>  IF (CMT.EQ.<span class="dv">2</span>) THEN</span>
+<span id="cb56-17"><a href="delayed-effect.html#cb56-17" aria-hidden="true"></a>  Y   = EMAX<span class="dt">*F</span>/(C50+F)<span class="dt">*EXP</span>(ERR(<span class="dv">2</span>))  ; DV = EFFECT IF CMT=<span class="dv">2</span></span>
 <span id="cb56-18"><a href="delayed-effect.html#cb56-18" aria-hidden="true"></a>  ELSE</span>
-<span id="cb56-19"><a href="delayed-effect.html#cb56-19" aria-hidden="true"></a>  Y   =<span class="st"> </span>F<span class="op">*</span><span class="kw">EXP</span>(<span class="kw">ERR</span>(<span class="dv">1</span>))               ; DV =<span class="st"> </span>CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
+<span id="cb56-19"><a href="delayed-effect.html#cb56-19" aria-hidden="true"></a>  Y   = F<span class="dt">*EXP</span>(ERR(<span class="dv">1</span>))               ; DV = CP IF CMT=<span class="dv">1</span> (OR <span class="dv">0</span>)</span>
 <span id="cb56-20"><a href="delayed-effect.html#cb56-20" aria-hidden="true"></a>  ENDIF</span></code></pre></div>
 </div>
 <div id="직접효과-vs.-간접효과" class="section level2" number="20.4">
@@ -500,9 +500,9 @@ H(t) &amp;= \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 &lt; I_{max} \leq 1)
 \end{split}
 \tag{20.2}
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="delayed-effect.html#cb57-1" aria-hidden="true"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
-<span id="cb57-2"><a href="delayed-effect.html#cb57-2" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb57-3"><a href="delayed-effect.html#cb57-3" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>IMAX<span class="op">*</span>C1<span class="op">/</span>(IC50<span class="op">+</span>C1))<span class="op">-</span>KOUT<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb57-1"><a href="delayed-effect.html#cb57-1" aria-hidden="true"></a>C1=A(<span class="dv">1</span>)/S1</span>
+<span id="cb57-2"><a href="delayed-effect.html#cb57-2" aria-hidden="true"></a>DADT(<span class="dv">1</span>)=-K<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb57-3"><a href="delayed-effect.html#cb57-3" aria-hidden="true"></a>DADT(<span class="dv">2</span>)=KIN*(<span class="dv">1</span>-IMAX<span class="dt">*C1</span>/(IC50+C1))-KOUT<span class="dt">*A</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:model-i"></span>
 <img src="figures/20-fig-06.png" alt="Inhibition on production (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
@@ -522,9 +522,9 @@ H(t) &amp; = \frac{I_{max}\cdot C_p}{IC_{50} + C_p} \ \ \ (0 &lt; I_{max} \leq 1
 \end{split}
 \tag{20.3}
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="delayed-effect.html#cb58-1" aria-hidden="true"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
-<span id="cb58-2"><a href="delayed-effect.html#cb58-2" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb58-3"><a href="delayed-effect.html#cb58-3" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">-</span>KOUT<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>IMAX<span class="op">*</span>C1<span class="op">/</span>(IC50<span class="op">+</span>C1))<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb58-1"><a href="delayed-effect.html#cb58-1" aria-hidden="true"></a>C1=A(<span class="dv">1</span>)/S1</span>
+<span id="cb58-2"><a href="delayed-effect.html#cb58-2" aria-hidden="true"></a>DADT(<span class="dv">1</span>)=-K<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb58-3"><a href="delayed-effect.html#cb58-3" aria-hidden="true"></a>DADT(<span class="dv">2</span>)=KIN-KOUT*(<span class="dv">1</span>-IMAX<span class="dt">*C1</span>/(IC50+C1))<span class="dt">*A</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:model-ii"></span>
 <img src="figures/20-fig-07.png" alt="Inhibition on loss (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
@@ -544,9 +544,9 @@ H(t) &amp; = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 &lt; S_{max})
 \end{split}
 \tag{20.4}
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="delayed-effect.html#cb59-1" aria-hidden="true"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
-<span id="cb59-2"><a href="delayed-effect.html#cb59-2" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb59-3"><a href="delayed-effect.html#cb59-3" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>SMAX<span class="op">*</span>C1<span class="op">/</span>(SC50<span class="op">+</span>C1))<span class="op">-</span>KOUT<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb59-1"><a href="delayed-effect.html#cb59-1" aria-hidden="true"></a>C1=A(<span class="dv">1</span>)/S1</span>
+<span id="cb59-2"><a href="delayed-effect.html#cb59-2" aria-hidden="true"></a>DADT(<span class="dv">1</span>)=-K<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb59-3"><a href="delayed-effect.html#cb59-3" aria-hidden="true"></a>DADT(<span class="dv">2</span>)=KIN*(<span class="dv">1</span>+SMAX<span class="dt">*C1</span>/(SC50+C1))-KOUT<span class="dt">*A</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:model-iii"></span>
 <img src="figures/20-fig-08.png" alt="Stimulation on production (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
@@ -566,9 +566,9 @@ H(t) &amp; = \frac{S_{max}\cdot C_p}{SC_{50} + C_p} \ \ \ (0 &lt; S_{max})
 \end{split}
 \tag{20.5}
 \end{equation}\]</span></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="delayed-effect.html#cb60-1" aria-hidden="true"></a>C1=<span class="kw">A</span>(<span class="dv">1</span>)<span class="op">/</span>S1</span>
-<span id="cb60-2"><a href="delayed-effect.html#cb60-2" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">1</span>)=<span class="op">-</span>K<span class="op">*</span><span class="kw">A</span>(<span class="dv">1</span>)</span>
-<span id="cb60-3"><a href="delayed-effect.html#cb60-3" aria-hidden="true"></a><span class="kw">DADT</span>(<span class="dv">2</span>)=KIN<span class="op">-</span>KOUT<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>SMAX<span class="op">*</span>C1<span class="op">/</span>(SC50<span class="op">+</span>C1))<span class="op">*</span><span class="kw">A</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb60-1"><a href="delayed-effect.html#cb60-1" aria-hidden="true"></a>C1=A(<span class="dv">1</span>)/S1</span>
+<span id="cb60-2"><a href="delayed-effect.html#cb60-2" aria-hidden="true"></a>DADT(<span class="dv">1</span>)=-K<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb60-3"><a href="delayed-effect.html#cb60-3" aria-hidden="true"></a>DADT(<span class="dv">2</span>)=KIN-KOUT*(<span class="dv">1</span>+SMAX<span class="dt">*C1</span>/(SC50+C1))<span class="dt">*A</span>(<span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:model-iv"></span>
 <img src="figures/20-fig-09.png" alt="Stimulation on loss (Sharma and Jusko 1998)" width="50%" />
 <p class="caption">
@@ -658,7 +658,7 @@ gitbook.start({
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
+"position": "fixed"
 },
 "search": false,
 "info": false
