@@ -207,7 +207,7 @@ E &= \frac{E_{max} \cdot e^{n \cdot ln(C)}}{EC_{50}^{n} + e^{n \cdot ln(C)}} \\
 
 ## PD 모델의 적용
 
-[19.2](#pd-model)에서 PD 모델의 종류에 대하여 알아보았다. 몇 가지 예를 통하여 데이터의 종류와 상황에 따라 PD 모델을 어떻게 적용할지
+\@ref(pd-model)에서 PD 모델의 종류에 대하여 알아보았다. 몇 가지 예를 통하여 데이터의 종류와 상황에 따라 PD 모델을 어떻게 적용할지
 살펴보자.
 
 ### 일반적인 I~max~ model vs. Sigmoid I~max~ model

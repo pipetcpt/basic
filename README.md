@@ -1,6 +1,6 @@
 # 계량약리학 워크샵 - 초급 과정 <img src="images/cover.jpg"  align="right" height="150" />
 
-본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), 알라딘(aladin.co.kr), YES24(yes24.com)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6)
+본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), [알라딘(aladin.co.kr)](http://aladin.kr/p/UNBXB), [YES24(yes24.com)](http://www.yes24.com/Product/Goods/91747331)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6)
 
 ## 도서 정보
 

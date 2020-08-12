@@ -54,7 +54,7 @@ $TAB ID ETA(1) ETA(2) ETA(3)
 
 \$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.\index{공분산 / covariance}\index{covariance / 공분산}\index{R matrix / R 행렬}\index{R matrix / R 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
-\$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다.  만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 [14.5](#Theoph)를 참고한다.\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
+\$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다.  만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 \@ref(eigenvalue)를 참고한다.\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 $COV 출력의 여섯 번째 부분은 R matrix이다. 이는 log likelihood를 parameter들로 이계미분한 것(hessian matrix)으로 Fisher’s Information Matrix(FIM)이라고도 한다. 일반적인 최대가능도추정법(maximum likelihood estimation, MLE)에서는 이것의 역행렬을 분산-공분산 행렬로 삼지만 NONMEM에서는 다음에 나오는 S matrix와 함께 sandwich estimator를 사용한다.\index{가능도 / likelihood}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{likelihood / 가능도}\index{variance-covariance matrix / 분산-공분산 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
@@ -131,7 +131,7 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 한 번 더 미분하면
 \begin{equation}
 \begin{split}
-\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} i \right\} exp(lnf(x;\theta))dx &= 0 \\
+\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} \right\} exp(lnf(x;\theta))dx &= 0 \\
 E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &= 0
 \end{split}
 (\#eq:diff-diff)
@@ -558,7 +558,7 @@ InitStep(DataAll, THETAinit=THETAinit, OMinit=OMinit, SGinit=SGinit,
 # (Tab1 = TabStep())
 ```
 
-## 고유값(Eigenvalue)
+## 고유값(Eigenvalue) {#eigenvalue}
 \index{고유값 / eigenvalues}\index{eigenvalues / 고유값}
 
 공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{eigenvalues / 고유값}

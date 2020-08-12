@@ -90,7 +90,7 @@ read_csv(txt) %>%
         caption = "Additional PK parameters")
 ```
 
-앞서 언급된 ADVAN & TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 `CL = THETA(1) * EXP(ETA(1))` 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 추후 [공변량 분석](#covariate-analysis)에서 다뤄질 예정이다.\index{\$PK}\index{\$SUBROUTINE}\index{TRANS}
+앞서 언급된 ADVAN & TRANS 서브루틴 및 필수/부가 파라미터를 실제 제어구문의 예를 들어 간략히 설명하고자 한다. $SUBROUTINES 문법은 아래 예시와 같이 쓸 수 있는데 이는 정맥 외 투여 1차 흡수, 2구획 모델이며 CL, V2, V3, Q, Ka의 파라미터를 사용하여 설명하겠다는 의미이다. $PK block에는 $SUBROUTINES에서 사용하고자 하는 약동학 파라미터들을 정의하는 곳으로 `CL = THETA(1) * EXP(ETA(1))` 와 같은 형식으로 표기할 수도 있고, 아래 예시와 같이 표기할 수도 있다. 아래 예시처럼 표기하게 되면 추후 공변량에 대한 수식을 만들게 될 때, 보다 수월하게 작성할 수 있는데, 공변량은 THETA에 수식을 붙이는 형태이기 때문이다. 이는 [11장 공변량 분석](#covariate-analysis)에서 다뤄진다.\index{\$PK}\index{\$SUBROUTINE}\index{TRANS}
 
 
 ```{example, code-example-advan4, echo = TRUE}

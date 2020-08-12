@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="cov.html"><a href="cov.html#이론적-배경---mle"><i class="fa fa-check"></i><b>14.3</b> 이론적 배경 - MLE</a></li>
 <li class="chapter" data-level="14.4" data-path="cov.html"><a href="cov.html#r에서의-구현"><i class="fa fa-check"></i><b>14.4</b> R에서의 구현</a></li>
 <li class="chapter" data-level="14.5" data-path="cov.html"><a href="cov.html#Theoph"><i class="fa fa-check"></i><b>14.5</b> Theophylline 예제 데이터셋</a></li>
-<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#고유값eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
+<li class="chapter" data-level="14.6" data-path="cov.html"><a href="cov.html#eigenvalue"><i class="fa fa-check"></i><b>14.6</b> 고유값(Eigenvalue)</a></li>
 <li class="chapter" data-level="14.7" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>14.7</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="parameters.html"><a href="parameters.html"><i class="fa fa-check"></i><b>15</b> 모델 파라미터의 적절성</a></li>
@@ -418,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>$COV 출력의 두 번째 부분은 추정값(estimate)의 분산-공분산행렬(variance-covariance matrix)이다. 이 행렬의 대각원소에다 제곱근을 취한 것이 추정값의 표준오차이다. 이는 뒤에 나오는 R matrix와 S matrix를 사용하여 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span>를 계산한 것이다.</p>
 <p>$COV 출력의 세 번째 부분은 직전 부분인 분산-공분산행렬을 상관행렬(correlation matrix)로 변환한 것이다. 다만, 대각원소는 제곱근을 취하여 standard deviation(여기서는 standard error가 됨)을 표시하고 있다.</p>
 <p>$COV 출력의 네 번째 부분은 분산-공분산행렬의 역행렬이다. 내부적으로는 이 행렬을 먼저 구한 뒤, 이것의 역행렬을 분산-공분산행렬로 삼는다. 이것의 의미는 Fisher’s Information Matrix (NONMEM에서의 R matrix)와 유사하지만, 계산법은 더 보수적이어서 다르다.</p>
-<p>$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다. 만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 <a href="cov.html#Theoph">14.5</a>를 참고한다.</p>
+<p>$COV output의 다섯 번째 부분은 상관행렬로부터 구한 고유치(eigenvalue)들을 작은 것부터 순서대로 나열한 것이다. 만약 상관행렬이 positive definite(양정치)라면 이것은 모두 양의 실수로 나와야 한다. 여기에 대한 추가 설명은 <a href="cov.html#eigenvalue">14.6</a>를 참고한다.</p>
 <p>$COV 출력의 여섯 번째 부분은 R matrix이다. 이는 log likelihood를 parameter들로 이계미분한 것(hessian matrix)으로 Fisher’s Information Matrix(FIM)이라고도 한다. 일반적인 최대가능도추정법(maximum likelihood estimation, MLE)에서는 이것의 역행렬을 분산-공분산 행렬로 삼지만 NONMEM에서는 다음에 나오는 S matrix와 함께 sandwich estimator를 사용한다.</p>
 <p>$COV 출력의 마지막 부분은 S matrix이다. 이는 개별 대상자의 log likelihood를 파라미터들로 일계미분값(gradient vector)에 대한 cross product(n by 1 열벡터를 그것의 transpose(1 by n vector)와 곱한 것으로 n by n matrix가 된다)들을 모두 합한 것이다. MLE 이론에 따르면 이상적인 상황에서 S matrix와 R matrix의 기대값은 같다. 하지만, 실제로는 상당히 다를 수 있고, 정규분포 가정도 어긋날 수 있으므로 NONMEM은 <span class="math inline">\(R^{- 1}SR^{- 1}\)</span> 를 분산-공분산행렬로 삼는다.</p>
 <p>만약 어떤 원인(예를 들어, R이 singular)에 의해 분산-공분산행렬을 구할 수 없고, 따라서, 표준오차를 구할 수 없다면 $COV에서 <code>MATRIX=R</code> 또는 <code>MATRIX=S</code> 옵션으로 단순화하여 표준오차를 구할 수 있다. 이 경우에는 대개 표준오차가 더 작게 나온다. 어떤 행렬이 singular(비정칙)이어서 역행렬을 구할 수 없다면 NONMEM은 pseudo-inverse matrix를 구하게 되는데, 이는 유일한(unique) 해는 아니므로 해석에 유의해야 한다.</p>
@@ -482,7 +482,7 @@ E_{\theta}\left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrac
 <p>한 번 더 미분하면
 <span class="math display" id="eq:diff-diff">\[\begin{equation}
 \begin{split}
-\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} i \right\} exp(lnf(x;\theta))dx &amp;= 0 \\
+\int \left\{\frac{\partial^{2}}{\partial\theta^{2}}lnf(x;\theta) + \lbrack \frac{\partial}{\partial\theta}lnf(x;\theta) \rbrack^{2} \right\} exp(lnf(x;\theta))dx &amp;= 0 \\
 E_{\theta}\left\{ \frac{\partial^{2}}{\partial\theta^{2}}lnf(X;\theta) + \left\lbrack \frac{\partial}{\partial\theta}lnf(X;\theta) \right\rbrack^{2} \right\} &amp;= 0
 \end{split}
 \tag{14.3}
@@ -872,7 +872,7 @@ R &amp;= \frac{\partial^{2}O}{\partial\theta^{2}}
 <span id="cb44-14"><a href="cov.html#cb44-14" aria-hidden="true"></a><span class="co">## [12,] 12 -1.2863346 -0.388864841 -0.10134440</span></span>
 <span id="cb44-15"><a href="cov.html#cb44-15" aria-hidden="true"></a><span class="co"># (Tab1 = TabStep())</span></span></code></pre></div>
 </div>
-<div id="고유값eigenvalue" class="section level2" number="14.6">
+<div id="eigenvalue" class="section level2" number="14.6">
 <h2><span class="header-section-number">14.6</span> 고유값(Eigenvalue)</h2>
 <p></p>
 <p>공분산단계에서는 상관행렬(correlation matrix)의 고유값(eigenvalue)도 출력된다.</p>
