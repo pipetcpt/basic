@@ -871,7 +871,7 @@ Absorption lag parameter
 <h3><span class="header-section-number">3.3.5</span> $COVARIANCE, $TABLE</h3>
 <p></p>
 <p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb18-1"><a href="control-stream.html#cb18-1" aria-hidden="true"></a><span class="dt">$COVARIANCE</span> PRINT=E UNCONTIONAL MATRIX=S</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb18-1"><a href="control-stream.html#cb18-1" aria-hidden="true"></a><span class="dt">$COVARIANCE</span> PRINT=E UNCONDITIONAL MATRIX=S</span></code></pre></div>
 <p>PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sub>-1</sub>SR<sub>-1</sub> 행렬이 기본계산에 사용되는데, <code>MATRIX=S</code> 또는 <code>MATRIX=R</code> 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. <code>UNCONDITIONAL</code> 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.</p>
 <p>$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 <a href="control-stream.html#exm:table-record">3.3</a>처럼 $TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (<span class="citation">Hooker et al. (<a href="#ref-R-xpose4" role="doc-biblioref">2020</a>)</span>) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.</p>
 <p>
@@ -925,11 +925,11 @@ Absorption lag parameter
 <div class="sourceCode" id="cb20"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb20-1"><a href="control-stream.html#cb20-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN4 TRANS4</span>
 <span id="cb20-2"><a href="control-stream.html#cb20-2" aria-hidden="true"></a></span>
 <span id="cb20-3"><a href="control-stream.html#cb20-3" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb20-4"><a href="control-stream.html#cb20-4" aria-hidden="true"></a>  CL    = THATA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb20-5"><a href="control-stream.html#cb20-5" aria-hidden="true"></a>  V2    = THATA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb20-6"><a href="control-stream.html#cb20-6" aria-hidden="true"></a>  V3    = THATA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb20-7"><a href="control-stream.html#cb20-7" aria-hidden="true"></a>  Q     = THATA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb20-8"><a href="control-stream.html#cb20-8" aria-hidden="true"></a>  KA    = THATA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb20-4"><a href="control-stream.html#cb20-4" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb20-5"><a href="control-stream.html#cb20-5" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb20-6"><a href="control-stream.html#cb20-6" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb20-7"><a href="control-stream.html#cb20-7" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb20-8"><a href="control-stream.html#cb20-8" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
 <span id="cb20-9"><a href="control-stream.html#cb20-9" aria-hidden="true"></a></span>
 <span id="cb20-10"><a href="control-stream.html#cb20-10" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
 <span id="cb20-11"><a href="control-stream.html#cb20-11" aria-hidden="true"></a></span>
@@ -976,11 +976,11 @@ Absorption lag parameter
 <span id="cb21-6"><a href="control-stream.html#cb21-6" aria-hidden="true"></a>  COMP(PERI)</span>
 <span id="cb21-7"><a href="control-stream.html#cb21-7" aria-hidden="true"></a></span>
 <span id="cb21-8"><a href="control-stream.html#cb21-8" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb21-9"><a href="control-stream.html#cb21-9" aria-hidden="true"></a>  CL    = THATA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb21-10"><a href="control-stream.html#cb21-10" aria-hidden="true"></a>  V2    = THATA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb21-11"><a href="control-stream.html#cb21-11" aria-hidden="true"></a>  V3    = THATA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb21-12"><a href="control-stream.html#cb21-12" aria-hidden="true"></a>  Q     = THATA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb21-13"><a href="control-stream.html#cb21-13" aria-hidden="true"></a>  KA    = THATA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb21-9"><a href="control-stream.html#cb21-9" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb21-10"><a href="control-stream.html#cb21-10" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb21-11"><a href="control-stream.html#cb21-11" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb21-12"><a href="control-stream.html#cb21-12" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb21-13"><a href="control-stream.html#cb21-13" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
 <span id="cb21-14"><a href="control-stream.html#cb21-14" aria-hidden="true"></a></span>
 <span id="cb21-15"><a href="control-stream.html#cb21-15" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
 <span id="cb21-16"><a href="control-stream.html#cb21-16" aria-hidden="true"></a></span>
@@ -995,7 +995,7 @@ Absorption lag parameter
 <span id="cb21-25"><a href="control-stream.html#cb21-25" aria-hidden="true"></a>  IRES  = DV - IPRED</span>
 <span id="cb21-26"><a href="control-stream.html#cb21-26" aria-hidden="true"></a>  IWRES = IRES / W</span>
 <span id="cb21-27"><a href="control-stream.html#cb21-27" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>) </span></code></pre></div>
-<p>2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 <a href="control-stream.html#exm:advan6">3.6</a>처럼, $MODEL을 이용하여 구획을 정의하고, $PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, $SUBROUTINE에서 <code>TOL=</code>을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.</p>
+<p>2구획 경구 악동학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 <a href="control-stream.html#exm:advan6">3.6</a>처럼, $MODEL을 이용하여 구획을 정의하고, $PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, $SUBROUTINE에서 <code>TOL=</code>을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.</p>
 
 <div class="example">
 <span id="exm:advan6" class="example"><strong>코드 3.6  </strong></span>2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
@@ -1008,11 +1008,11 @@ Absorption lag parameter
 <span id="cb22-6"><a href="control-stream.html#cb22-6" aria-hidden="true"></a>  COMP(PERIPH)</span>
 <span id="cb22-7"><a href="control-stream.html#cb22-7" aria-hidden="true"></a></span>
 <span id="cb22-8"><a href="control-stream.html#cb22-8" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb22-9"><a href="control-stream.html#cb22-9" aria-hidden="true"></a>  CL    = THATA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb22-10"><a href="control-stream.html#cb22-10" aria-hidden="true"></a>  V2    = THATA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb22-11"><a href="control-stream.html#cb22-11" aria-hidden="true"></a>  V3    = THATA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb22-12"><a href="control-stream.html#cb22-12" aria-hidden="true"></a>  Q     = THATA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb22-13"><a href="control-stream.html#cb22-13" aria-hidden="true"></a>  KA    = THATA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb22-9"><a href="control-stream.html#cb22-9" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb22-10"><a href="control-stream.html#cb22-10" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb22-11"><a href="control-stream.html#cb22-11" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb22-12"><a href="control-stream.html#cb22-12" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb22-13"><a href="control-stream.html#cb22-13" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
 <span id="cb22-14"><a href="control-stream.html#cb22-14" aria-hidden="true"></a></span>
 <span id="cb22-15"><a href="control-stream.html#cb22-15" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
 <span id="cb22-16"><a href="control-stream.html#cb22-16" aria-hidden="true"></a></span>

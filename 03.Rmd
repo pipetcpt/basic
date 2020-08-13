@@ -314,7 +314,7 @@ $SIMULATION (seed) ONLYSIM NSUB=1000
 $COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{상관행렬 / correlation matrix}\index{correlation matrix / 상관행렬}\index{covariance / 공분산}\index{variance-covariance matrix / 분산-공분산 행렬}\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 ```perl
-$COVARIANCE PRINT=E UNCONTIONAL MATRIX=S
+$COVARIANCE PRINT=E UNCONDITIONAL MATRIX=S
 ```
 
 PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R~-1~SR~-1~ 행렬이 기본계산에 사용되는데, `MATRIX=S` 또는 `MATRIX=R` 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. `UNCONDITIONAL` 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.\index{고유값 / eigenvalues}\index{공분산 / covariance}\index{분산-공분산 행렬 / variance-covariance matrix}\index{covariance / 공분산}\index{eigenvalues / 고유값}\index{variance-covariance matrix / 분산-공분산 행렬}\index{조건수 / condition number}\index{condition number / 조건수}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{R matrix / R 행렬}\index{S matrix / S 행렬}\index{PRINT=E}
@@ -379,11 +379,11 @@ $TABLE ID ETA(1) ETA(2)
 $SUBROUTINE ADVAN4 TRANS4
 
 $PK
-  CL    = THATA(1) * EXP(ETA(1))
-  V2    = THATA(2) * EXP(ETA(2))
-  V3    = THATA(3) * EXP(ETA(3))
-  Q     = THATA(4) * EXP(ETA(4))
-  KA    = THATA(5) * EXP(ETA(5))
+  CL    = THETA(1) * EXP(ETA(1))
+  V2    = THETA(2) * EXP(ETA(2))
+  V3    = THETA(3) * EXP(ETA(3))
+  Q     = THETA(4) * EXP(ETA(4))
+  KA    = THETA(5) * EXP(ETA(5))
 
   S2    = V2/1000
 
@@ -435,11 +435,11 @@ $MODEL
   COMP(PERI)
 
 $PK
-  CL    = THATA(1) * EXP(ETA(1))
-  V2    = THATA(2) * EXP(ETA(2))
-  V3    = THATA(3) * EXP(ETA(3))
-  Q     = THATA(4) * EXP(ETA(4))
-  KA    = THATA(5) * EXP(ETA(5))
+  CL    = THETA(1) * EXP(ETA(1))
+  V2    = THETA(2) * EXP(ETA(2))
+  V3    = THETA(3) * EXP(ETA(3))
+  Q     = THETA(4) * EXP(ETA(4))
+  KA    = THETA(5) * EXP(ETA(5))
 
   S2    = V2/1000
 
@@ -456,7 +456,7 @@ $ERROR
   Y     = IPRED + W * EPS(1) 
 ```
 
-2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \@ref(exm:advan6)처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 `TOL=`을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
+2구획 경구 악동학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \@ref(exm:advan6)처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 `TOL=`을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
 
 ```{example, advan6, echo=TRUE}
 2구획 경구 약동학 모델의 제어구문의 예. ADVAN6 
@@ -472,11 +472,11 @@ $MODEL
   COMP(PERIPH)
 
 $PK
-  CL    = THATA(1) * EXP(ETA(1))
-  V2    = THATA(2) * EXP(ETA(2))
-  V3    = THATA(3) * EXP(ETA(3))
-  Q     = THATA(4) * EXP(ETA(4))
-  KA    = THATA(5) * EXP(ETA(5))
+  CL    = THETA(1) * EXP(ETA(1))
+  V2    = THETA(2) * EXP(ETA(2))
+  V3    = THETA(3) * EXP(ETA(3))
+  Q     = THETA(4) * EXP(ETA(4))
+  KA    = THETA(5) * EXP(ETA(5))
 
   S2    = V2/1000
 
