@@ -41,7 +41,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={계량약리학 워크샵 - 초급 과정},
-  pdfauthor={Ver. 20200812},
+  pdfauthor={Ver. 20200813},
   colorlinks=true,
   linkcolor=Maroon,
   filecolor=Maroon,
@@ -287,8 +287,8 @@
   {\par}
 
 \title{계량약리학 워크샵 - 초급 과정}
-\author{Ver. 20200812}
-\date{Ver. 20200812}
+\author{Ver. 20200813}
+\date{Ver. 20200813}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -503,7 +503,7 @@ PBPK는 동물에서 얻어진 약동학 자료와 in vitro 연구자료를 바�
 \caption{혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal \protect\hyperlink{ref-nonmem}{2018})의 그림에 수식을 추가한 것}\label{fig:nonmem-figure}
 \end{figure}
 
-1차식을 따라 주로 신장으로 배설되는 약물의 경우, 사람에서 측정된 혈장 약물농도를 혼합효과 모델로 분석하는 개념이 아래 그림 \ref{fig:nonmem-figure}에 잘 나타나 있다. 앞서 저울의 예는 따로 파라미터라고 할 것이 없지만 어떤 시점에서의 약물 농도를 결정하는 것은 약의 용량, 투여 후 경과시간, 그리고 사람의 몸이 약을 다루는 두 개의 파라미터들인 분포용적(Vd)과 청소율(CL)이다. 그림 \ref{fig:measured-weight}의 사례에서 쓰인 약물은 CL의 경우 GFR과 같은 공변량의 함수로(그림 \ref{fig:nonmem-figure}에서는 선형적으로 비례) 예측할 수 있으나, 실제 어떤 환자 i에서의 CL은 그의 GFR로 예측한 값보다 더 컸고 이는 그 환자에서의 CL의 개인간차(η\textsubscript{CLi})가 양의 값을 가진 것으로 설명한다(그림 \ref{fig:nonmem-figure}의 왼쪽부분). Vd 역시 그의 체중이라는 공변량으로 예측하지만 그의 실제 Vd와는 η\textsubscript{Vdi} 만큼의 차이가 있다. 그림의 오른쪽 아래를 보면 환자 i와 똑 같은 GFR과 체중을 가지는 모든 환자들에서 혈장약물농도 곡선이 위쪽 곡선과 같다고 예측될 것이다. 그런데 실제 환자 i의 CL과 Vd는 그러한 예측과는 조금씩 달랐으므로 개인간차를 반영한 그의 CL과 Vd(CLi과 Vdi)로 예측한 농도가 아래쪽 곡선이다. 그것으로 모든 것이 끝날 것 같지만, 환자 i에서 tij라는 특정 시간에 측정된 실제 농도(흰 네모)는 개인별 파라미터로 예측한 농도 (검은 동그라미)와 또 차이가 난다. 그 차이의 원인은 가정한 1차식(선형약동학)을 따라 제거된다는 PK모델 자체가 실제 이 약의 농도변화를 정확히 반영하지 못해서(model error)일 수도 있고, 농도측정 방법의 정확도/정밀도의 문제일 수도 있으며, PK를 관찰한 기간 동안에 개일리듬에 의해 환자의 파라미터가 바뀌어서일 수도 있는 등 다양하다. 원인을 한가지로 특정할 수 없지만, 까만 원과 흰 네모 사이의 거리는 파라미터의 개인간차로 설명이 안되는 부분이라서 잔차(ε)라고 하며, 실제 모든 사람에서 각 측정치마다 따라다니는 값이므로 각기 다른 사람임을 나타내는 i와 측정횟수를 의미하는 j를 아래첨자로 함께 붙여서 εij로 표기하게 된다. 마찬가지로 Vd 나 CL의 개인간차는 한 사람에서 하나만 존재하므로 \(\eta_{Vdi}\), \(\eta_{CLi}\)와 같이 표기한다.\index{잔차 / residual error}\index{residual error / 잔차}
+1차식을 따라 주로 신장으로 배설되는 약물의 경우, 사람에서 측정된 혈장 약물농도를 혼합효과 모델로 분석하는 개념이 아래 그림 \ref{fig:nonmem-figure}에 잘 나타나 있다. 앞서 저울의 예는 따로 파라미터라고 할 것이 없지만 어떤 시점에서의 약물 농도를 결정하는 것은 약의 용량, 투여 후 경과시간, 그리고 사람의 몸이 약을 다루는 두 개의 파라미터들인 분포용적(Vd)과 청소율(CL)이다. 그림 \ref{fig:measured-weight}의 사례에서 쓰인 약물은 CL의 경우 GFR과 같은 공변량의 함수로(그림 \ref{fig:nonmem-figure}에서는 선형적으로 비례) 예측할 수 있으나, 실제 어떤 환자 i에서의 CL은 그의 GFR로 예측한 값보다 더 컸고 이는 그 환자에서의 CL의 개인간차(η\textsubscript{CLi})가 양의 값을 가진 것으로 설명한다(그림 \ref{fig:nonmem-figure}의 왼쪽부분). Vd 역시 그의 체중이라는 공변량으로 예측하지만 그의 실제 Vd와는 η\textsubscript{Vdi} 만큼의 차이가 있다. 그림의 오른쪽 아래를 보면 환자 i와 똑 같은 GFR과 체중을 가지는 모든 환자들에서 혈장약물농도 곡선이 위쪽 곡선과 같다고 예측될 것이다. 그런데 실제 환자 i의 CL과 Vd는 그러한 예측과는 조금씩 달랐으므로 개인간차를 반영한 그의 CL과 Vd(CL\textsubscript{i}과 Vd\textsubscript{i})로 예측한 농도가 아래쪽 곡선이다. 그것으로 모든 것이 끝날 것 같지만, 환자 i에서 t\textsubscript{ij}라는 특정 시간에 측정된 실제 농도(흰 네모)는 개인별 파라미터로 예측한 농도 (검은 동그라미)와 또 차이가 난다. 그 차이의 원인은 가정한 1차식(선형약동학)을 따라 제거된다는 PK모델 자체가 실제 이 약의 농도변화를 정확히 반영하지 못해서(model error)일 수도 있고, 농도측정 방법의 정확도/정밀도의 문제일 수도 있으며, PK를 관찰한 기간 동안에 개일리듬에 의해 환자의 파라미터가 바뀌어서일 수도 있는 등 다양하다. 원인을 한가지로 특정할 수 없지만, 까만 원과 흰 네모 사이의 거리는 파라미터의 개인간차로 설명이 안되는 부분이라서 잔차(ε)라고 하며, 실제 모든 사람에서 각 측정치마다 따라다니는 값이므로 각기 다른 사람임을 나타내는 i와 측정횟수를 의미하는 j를 아래첨자로 함께 붙여서 εij로 표기하게 된다. 마찬가지로 Vd 나 CL의 개인간차는 한 사람에서 하나만 존재하므로 \(\eta_{Vdi}\), \(\eta_{CLi}\)와 같이 표기한다.\index{잔차 / residual error}\index{residual error / 잔차}
 
 \hypertarget{nonmem-dataset}{%
 \chapter{NONMEM 데이터셋}\label{nonmem-dataset}}
@@ -1230,7 +1230,7 @@ OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 \$OMEG
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DataTypeTok{$COVARIANCE}\NormalTok{ PRINT=E UNCONTIONAL MATRIX=S}
+\DataTypeTok{$COVARIANCE}\NormalTok{ PRINT=E UNCONDITIONAL MATRIX=S}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1302,11 +1302,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \DataTypeTok{$SUBROUTINE}\NormalTok{ ADVAN4 TRANS4}
 
 \DataTypeTok{$PK}
-\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
+\NormalTok{  CL    = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THETA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THETA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THETA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
 \NormalTok{  S2    = V2/}\DecValTok{1000}
 
@@ -1360,11 +1360,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \NormalTok{  COMP(PERI)}
 
 \DataTypeTok{$PK}
-\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
+\NormalTok{  CL    = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THETA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THETA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THETA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
 \NormalTok{  S2    = V2/}\DecValTok{1000}
 
@@ -1382,7 +1382,7 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \end{Highlighting}
 \end{Shaded}
 
-2구획 경구 악둉학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \ref{exm:advan6}처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, \$DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 \texttt{TOL=}을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
+2구획 경구 악동학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 \ref{exm:advan6}처럼, \$MODEL을 이용하여 구획을 정의하고, \$PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, \$DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, \$SUBROUTINE에서 \texttt{TOL=}을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.\index{\$DES}\index{\$MODEL}\index{\$PK}\index{\$SUBROUTINE}\index{ADVAN6}\index{TOL}
 
 \begin{example}
 \protect\hypertarget{exm:advan6}{}{\label{exm:advan6} }2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
@@ -1399,11 +1399,11 @@ PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)�
 \NormalTok{  COMP(PERIPH)}
 
 \DataTypeTok{$PK}
-\NormalTok{  CL    = THATA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
-\NormalTok{  V2    = THATA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
-\NormalTok{  V3    = THATA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
-\NormalTok{  Q     = THATA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
-\NormalTok{  KA    = THATA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
+\NormalTok{  CL    = THETA(}\DecValTok{1}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{1}\NormalTok{))}
+\NormalTok{  V2    = THETA(}\DecValTok{2}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{2}\NormalTok{))}
+\NormalTok{  V3    = THETA(}\DecValTok{3}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{3}\NormalTok{))}
+\NormalTok{  Q     = THETA(}\DecValTok{4}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{4}\NormalTok{))}
+\NormalTok{  KA    = THETA(}\DecValTok{5}\NormalTok{) }\KeywordTok{*}\NormalTok{ EXP(ETA(}\DecValTok{5}\NormalTok{))}
 
 \NormalTok{  S2    = V2/}\DecValTok{1000}
 
