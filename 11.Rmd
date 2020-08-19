@@ -197,7 +197,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="112", range="B2:E6") %>%
 
 \index{-2LL}
 
-2.는 매우 중요한 개념으로, ω~i2~의 감소로 판단한다. 이는 임의효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{임의효과 / random-effect}\index{random-effect / 임의효과}
+2.는 매우 중요한 개념으로, ω~i~^2^의 감소로 판단한다. 이는 임의효과(random effect)로 남겨져 있던 해당 파라미터의 개인 간 차가 고정 효과(fixed effect)로 적절히 설명되어, 시뮬레이션 과정 등에 활용이 가능한가를 평가하는 기준이다. 다음의 그림을 통해 그 의미를 파악할 수 있다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}\index{임의효과 / random-effect}\index{random-effect / 임의효과}
 
 ```{r fig.cap = "임의효과로 남겨져 있는 설명 불가능한 개인차"}
 include_graphics("./figures/11-fig-10.png")

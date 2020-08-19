@@ -70,7 +70,7 @@ include_graphics("figures/16-fig-03.png") # 3
 
 VPC로 생성된 그림은 관찰값과 시뮬레이션에 의한 예측구간을 겹쳐서 그림 형태로 제시한다.(그림 \@ref(fig:scatter-vpc)) 시각적으로 표현된 자료는 빠르고 직관적으로 모델의 예측성능을 평가할 수 있다는 큰 장점을 갖기에 현재 가장 널리 쓰이고 있는 방법이다.\index{시뮬레이션 / simulation}\index{simulation / 시뮬레이션}
 
-모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, \$PK 또는 \$PRED는 손대지 않고 \$THETA, \$OMEGA, \$SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 \$MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. \$EST, \$COV는 삭제하고 \$SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. \index{모델 규격파일(MSF) / model specification file}\index{시드값 / seed value}\index{시뮬레이션 / simulation}\index{model specification file / 모델 규격파일(MSF)}\index{seed value / 시드값}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$MSFI}\index{\$OMEGA}\index{\$PK}\index{\$PRED}\index{\$SIGMA}\index{\$SIMULATION (\$SIM)}\index{\$THETA}\index{MSF}\index{PRED}
+모델의 VPC를 수행하기 위해 가장 먼저 할 일은 많은 데이터셋을 시뮬레이션하는 것으로, \$PK 또는 \$PRED는 손대지 않고 \$THETA, \$OMEGA, \$SIGMA 값들에 FPE(final parameter estimates)를 직접 고정하여 입력하거나 \$MSFI 구문을 이용해 모델 규격파일을 입력하여 최종 추정값을 사용하여 시뮬레이션이 수행된다. \$EST, \$COV는 삭제하고 \$SIMULATION을 입력해야 하는데 일반적으로 다음과 같은 구문을 사용한다. 이때 20190831은 임의의 시드값(seed)을 의미하며 1000은 반복 데이터셋의 개수를 의미한다. \index{모델 규격파일(MSF) / model specification file}\index{시드값 / seed value}\index{시뮬레이션 / simulation}\index{model specification file / 모델 규격파일(MSF)}\index{seed value / 시드값}\index{simulation / 시뮬레이션}\index{\$COVARIANCE (\$COV, \$COVAR)}\index{\$ESTIMATION (\$EST)}\index{\$MSFI}\index{\$OMEGA}\index{\$PK}\index{\$PRED}\index{\$SIGMA}\index{\$SIMULATION (\$SIM)}\index{\$THETA}\index{PRED}
 
 ```
 $SIMULATION ONLYSIM 20190831 SUBPROBLEMS=1000
