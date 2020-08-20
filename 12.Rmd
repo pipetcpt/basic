@@ -111,7 +111,7 @@ AIC = -2LL + 2k \ \ \text{(k = number of parameters)}
 
 \index{-2LL}
 
-여기서 -2LL은 일반적으로 NONMEM에서 사용하는 OFV 값에 해당하므로, 서로 포함관계가 없는 모델에서 파라미터 수가 더 많은 경우 그만큼 더 불리한 값(더 큰 값)을 만들어 주는 척도라 이해할 수 있다. 중요한 점은 잔차모델(error model) 역시도 이런 포함관계에 고려하여야 한다는 것이다. 일반적은 가법잔차(additive error) 모델과 비례잔차(proportional error) 모델은 서로 포함관계에 있지 않다. 가법잔차와 비례잔차 간에 변환을 하기 위해서는 기존의 가법 요소 또는 비례 요소를 지우고 새로운 잔차구조를 정의해야 하기 때문이다. 따라서, 같은 구조모델을 가지고 있다하더라도 가법잔차와 비례잔차를 가진 두 모델을 OFV 값으로 비교하는 것은 옳지 않다.\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}\index{-2LL}
+여기서 -2LL은 일반적으로 NONMEM에서 사용하는 OFV 값에 해당하므로, 서로 포함관계가 없는 모델에서 파라미터 수가 더 많은 경우 그만큼 더 불리한 값(더 큰 값)을 만들어 주는 척도라 이해할 수 있다. 중요한 점은 잔차모델(error model) 역시도 이런 포함관계에 고려하여야 한다는 것이다. 일반적으로 가법잔차(additive error) 모델과 비례잔차(proportional error) 모델은 서로 포함관계에 있지 않다. 가법잔차와 비례잔차 간에 변환을 하기 위해서는 기존의 가법 요소 또는 비례 요소를 지우고 새로운 잔차구조를 정의해야 하기 때문이다. 따라서, 같은 구조모델을 가지고 있다하더라도 가법잔차와 비례잔차를 가진 두 모델을 OFV 값으로 비교하는 것은 옳지 않다.\index{additive error / 가법오차}\index{proportional error / 비례오차}\index{잔차 / residual error}\index{residual error / 잔차}\index{-2LL}
 
 세 번째 전제조건은 데이터셋의 관찰 레코드(observation record) 값이 같아야 한다는 것이다. OFV는 개별 관찰값을 적합하면서 나타난 예측값과 관찰값 간의 차이를 반영하는 값이다. 따라서, 관찰값의 개수가 많아지면 자연히 OFV값 역시 증가하는 경향을 가진다. 그러므로 동일한 데이터셋을 대상으로 서로 다른 모델의 적합도를 비교하는 경우에만 OFV를 사용해야 한다.\index{적합도 / goodness of fit}\index{goodness of fit / 적합도}
 

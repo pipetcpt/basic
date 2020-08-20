@@ -397,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 그림 13.2: Definition of residual <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
 </div>
-<p>잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ<sub>2</sub>인 정규분표를 따른다고 가정한다(ε~N(0, σ<sub>2</sub>)). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. </p>
+<p>잔차는 정규성(normality)과, 등분산성(homoscedasticity) 그리고 독립성(independency)이 있다고 가정을 한다. 정규성 가정에서는 잔차의 분포는 평균이 0이고 분산이 σ<sup>2</sup>인 정규분표를 따른다고 가정한다(ε~N(0, σ<sup>2</sup>)). 이 때문에 잔차분석은, outlier를 찾아내는데 활용될 수 있고, 모델의 가정이 잘못되었는지 판단하거나 다른 구조 모델을 써야할 지를 결정하는데 도움을 줄 수 있다. </p>
 <p>잔차의 분포는 다음과 같이 크게 네 가지 함수 형식을 사용하여 모델링 할 수 있는데, 가법오차모델(Additive error model), 고정변동계수(Constant coefficient of variation, CCV)를 사용한 모델, 가법과 CCV를 더한 모델, 그리고 로그오차모델(Log-error model)이다. </p>
 <p>가법오차모델은 <code>Y = IPRED + EPS(1)</code> 과 같은 형태로 표현할 수 있으며 농도 범위가 상대적으로 좁은 (10배 미만) 데이터를 설명하는데 적합하다.</p>
 <p>고정변동계수모델은 비례오차모델(Proportional error model)이라고도 하며, <code>Y = IPRED * (IPRED + EPS(1))</code>과 같이 쓸 수 있다. 농도 범위가 10배 이상으로 넓게 존재하는 데이터의 오차를 설명하는데 주로 쓰인다.</p>
@@ -432,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-6"><a href="fit.html#cb35-6" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>)</span></code></pre></div>
 <p>Run test에서 run이란 같은 부호를 가진 잔차들의 일련의 묶음을 의미한다. 다시 말하면 같은 부호의 잔차가 연속으로 나올 때 이를 하나의 묶음으로 세는 것을 의미한다. 이러한 run을 세어봄으로써 잔차가 얼마나 무작위로 배치되어 있는가를 확인할 수 있다. 아래 예시를 보면 조금 더 쉽게 이해할 수 있다. (그림 <a href="fit.html#fig:run-test">13.4</a>)</p>
 <div class="figure" style="text-align: center"><span id="fig:run-test"></span>
-<img src="figures/13-fig-04.pdf" alt="Example of run test (Gabrielsson 2006)" width="100%" />
+<img src="figures/13-fig-04.png" alt="Example of run test (Gabrielsson 2006)" width="100%" />
 <p class="caption">
 그림 13.4: Example of run test <span class="citation">(Gabrielsson <a href="#ref-gabrielsson" role="doc-biblioref">2006</a>)</span>
 </p>
