@@ -38,7 +38,7 @@ readxl::read_excel("data-raw/fig-tab.xlsx", sheet="16-1", range="B2:D10") %>%
 
 
 ```{r boot95, fig.cap = "(ref:bootstrap-process)"}
-include_graphics("figures/16-fig-01.png") #fig1
+include_graphics("figures/16-fig-01.jpg") #fig1
 ```
 
 (ref:bootstrap-process) 붓스트랩을 사용하여 여러 파라미터의 중앙값과 95% 신뢰구간을 계산하는 방법에 대한 모식도\index{붓스트랩 / bootstrapping}\index{bootstrapping / 붓스트랩}

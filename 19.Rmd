@@ -173,7 +173,7 @@ knitr::include_graphics("figures/19-fig-06.png")
 
 (ref:sigmoid-emax) Sigmoid E~max~ model. H에 따른 E~max~ model의 형태 변화
 
-Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도로 치환한 그림 \@ref(fig:sigmoid-emax) 우에서, E~max~의 20\~80% 범위에서 약효는 직선성을 가진다. Hill 계수가 1이면, 일반적인 효과(E)는 E~max~ model을 따르며, n\>1이면, 곡선의 선형부분의 기울기가 가파르며, n\<1이면, 곡선의 선형부분의 기울기가 완만하다. 로그농도-효과 그래프에서 n은 직선범위의 기울기(m=n·E~max~/4)를 이용하여 구할 수 있다. (\* Sigmoid E~max~ model에서 n 구하기 참고) Hill 계수의 값에 관계없이 EC~50~은 동일하다.\index{기울기 / gradient}\index{gradient / 기울기}
+Hill 계수는 농도와 효과의 비를 결정한다. 농도를 로그농도로 치환한 그림 \@ref(fig:sigmoid-emax) (우)에서, E~max~의 20\~80% 범위에서 약효는 직선성을 가진다. Hill 계수가 1이면, 일반적인 효과(E)는 E~max~ model을 따르며, n\>1이면, 곡선의 선형부분의 기울기가 가파르며, n\<1이면, 곡선의 선형부분의 기울기가 완만하다. 로그농도-효과 그래프에서 n은 직선범위의 기울기(m=n·E~max~/4)를 이용하여 구할 수 있다. (\* Sigmoid E~max~ model에서 n 구하기 참고) Hill 계수의 값에 관계없이 EC~50~은 동일하다.\index{기울기 / gradient}\index{gradient / 기울기}
 
 (ref:sigmoid-emax-block2) Sigmoid E~max~ model: 로그농도-반응 그래프
 
