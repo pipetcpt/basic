@@ -223,14 +223,18 @@ knitr::include_graphics("figures/19-fig-07.png")
 ### 다중 약물결합 모델(multiple binding site model)
 
 약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.
+
+$$
+\require{mhchem}
 \begin{equation}
   [C] + [R] 
   \xrightleftharpoons[k_{-1}]{k_1}
   [CR] + [C] 
   \xrightleftharpoons[k_{-2}]{k_2}
   [C2R]
-(\#eq:multiplebinding)
+(\#eq:multiplebinding3)
 \end{equation}
+$$
 
 \begin{equation}
 \begin{split}
