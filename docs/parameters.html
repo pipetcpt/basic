@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 모델 파라미터의 적절성 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 모델 파라미터의 적절성 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -384,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:ebe-cov"></span>
 <img src="figures/15-fig-01.png" alt="Example of EBE vs Covariates (Bonate 2011)" width="100%" />
 <p class="caption">
-그림 15.1: Example of EBE vs Covariates <span class="citation">(Bonate <a href="#ref-bonate" role="doc-biblioref">2011</a>)</span>
+그림 15.1: Example of EBE vs Covariates <span class="citation">(<a href="참고문헌.html#ref-bonate" role="doc-biblioref">Bonate 2011</a>)</span>
 </p>
 </div>
 
@@ -392,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:eta-shrinkage"></span>
 <img src="figures/15-fig-02.png" alt="Concept of η shrinkage (Savic 2007)" width="50%" />
 <p class="caption">
-그림 15.2: Concept of η shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.2: Concept of η shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 <p></p>
@@ -408,7 +411,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:eta-shrinkage-plot"></span>
 <img src="figures/15-fig-03.png" alt="Example 1 - Consequences of η shrinkage (Savic 2007)" width="50%" />
 <p class="caption">
-그림 15.3: Example 1 - Consequences of η shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.3: Example 1 - Consequences of η shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 <p></p>
@@ -417,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:ex2-cons"></span>
 <img src="figures/15-fig-04.png" alt="Example 2 - Consequences of η shrinkage (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.4: Example 2 - Consequences of η shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.4: Example 2 - Consequences of η shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -425,14 +428,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:ex3-cons"></span>
 <img src="figures/15-fig-05.png" alt="Example 3 - Consequences of η shrinkage (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.5: Example 3 - Consequences of η shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.5: Example 3 - Consequences of η shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
 <div class="figure" style="text-align: center"><span id="fig:induced-corr"></span>
 <img src="assets/media-15/image8.png" alt="Induced or hidden correlation according to average shrinkage (%) (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.6: Induced or hidden correlation according to average shrinkage (%) <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.6: Induced or hidden correlation according to average shrinkage (%) <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -440,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:ex4-cons"></span>
 <img src="figures/15-fig-06.png" alt="Example 4 - Consequences of η shrinkage (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.7: Example 4 - Consequences of η shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.7: Example 4 - Consequences of η shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -458,7 +461,7 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 <div class="figure" style="text-align: center"><span id="fig:concept-eps-shrinkage"></span>
 <img src="figures/15-fig-07.png" alt="Concept of ε shrinkage (Savic 2007)" width="50%" />
 <p class="caption">
-그림 15.8: Concept of ε shrinkage <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.8: Concept of ε shrinkage <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 <p></p>
@@ -468,7 +471,7 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 <div class="figure" style="text-align: center"><span id="fig:perfect-fit"></span>
 <img src="figures/15-fig-08.png" alt="Perfect fit phenomenon (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.9: Perfect fit phenomenon <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.9: Perfect fit phenomenon <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -476,14 +479,14 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 <div class="figure" style="text-align: center"><span id="fig:1comp-2comp"></span>
 <img src="figures/15-fig-09.png" alt="1-compartment model fitted to data simulated with a 2-compartment model (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.10: 1-compartment model fitted to data simulated with a 2-compartment model <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.10: 1-compartment model fitted to data simulated with a 2-compartment model <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
 <div class="figure" style="text-align: center"><span id="fig:linear-sigmoidal"></span>
 <img src="figures/15-fig-10.png" alt="Linear Emax model fitted to data simulated with a sigmoidal Emax model (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.11: Linear Emax model fitted to data simulated with a sigmoidal Emax model <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.11: Linear Emax model fitted to data simulated with a sigmoidal Emax model <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -491,7 +494,7 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 <div class="figure" style="text-align: center"><span id="fig:low-IWRES"></span>
 <img src="figures/15-fig-11.png" alt="Low power of IWRES to diagnose Residual error misspecification (Savic 2007)" width="100%" />
 <p class="caption">
-그림 15.12: Low power of IWRES to diagnose Residual error misspecification <span class="citation">(Savic <a href="#ref-uppsala" role="doc-biblioref">2007</a>)</span>
+그림 15.12: Low power of IWRES to diagnose Residual error misspecification <span class="citation">(<a href="참고문헌.html#ref-uppsala" role="doc-biblioref">Savic 2007</a>)</span>
 </p>
 </div>
 
@@ -500,15 +503,6 @@ IWRES_{ij} = \frac{DV_{ij}- IPRED_{ij}}{SD(\epsilon)} \ \text{(If IPRED} \righta
 <!--     > Simulation 2~nd~ edition, 2011 [@bonate] -->
 <!-- 2.  > Uppsala University, Empirical Bayes Estimate(EBE)-Based Diagnostics, 2007 [@uppsala] -->
 
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-bonate">
-<p>Bonate, Peter. 2011. <em>Pharmacokinetic-Pharmacodynamic Modeling and Simulation</em>. New York: Springer. <a href="https://www.springer.com/gp/book/9781441994844">https://www.springer.com/gp/book/9781441994844</a>.</p>
-</div>
-<div id="ref-uppsala">
-<p>Savic, Karlsson, R. M. 2007. <em>Shrinkage in Empirical Bayes Estimates for Diagnostics and Estimation: Problems and Solutions</em>. Uppsala, Sweden: Uppsala University; Uppsala University. <a href="https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf">https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf</a>.</p>
-</div>
 </div>
             </section>
 

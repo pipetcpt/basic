@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 특수 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 특수 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -423,7 +426,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 
-<p>TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1~4에서 사용하는 TRANS 서브루틴을 표 <a href="specific-advan.html#tab:required-param-subroutine">4.2</a>에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1~4 까지의 내용을 표 <a href="specific-advan.html#tab:standard-pk-models">4.3</a>에서 확인할 수 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<p>TRANS는 각 모델에 상응하는 특정 파라미터를 알려주는 서브루틴인데, ADVAN1 TRANS1은 정맥투여 1구획 모델의 구조를 설명하기 위해, 파라미터 K를 사용하겠다는 의미이고, ADVAN1 TRANS2는 같은 모델 구조에 K대신 CL, V의 파라미터를 사용하여 설명하겠다는 의미이다. 1구획 모델(ADVAN 1, 2)에서는 TRANS2를, 2구획 모델(ADVAN 3, 4)에서는 TRANS4를 주로 사용하며, ADVAN 1~4에서 사용하는 TRANS 서브루틴을 표 <a href="specific-advan.html#tab:required-param-subroutine">4.2</a>에서 확인할 수 있다. 추가로, 각 ADVAN에서 필수적인 파라미터들과 TRANS와의 관계는 NONMEM User Guide - Part V의 Appendix 1, 2에 잘 설명되어 있고, 그중 ADVAN 1~4 까지의 내용을 표 <a href="specific-advan.html#tab:standard-pk-models">4.3</a>에서 확인할 수 있다. <span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span></p>
 <p>
 
 
@@ -934,7 +937,7 @@ Absorption rate
 </tr>
 </tbody>
 </table>
-ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 <a href="specific-advan.html#tab:additional-param">4.4</a>에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+ADVAN과 TRANS 서브루틴 조합에서 상기에 설명한 필수 파라미터 외에 다양한 부가적인 파라미터를 정의할 수 있는데, 여기에는 흡수지연시간, 생체이용률, 0차흡수의 속도, 기간 등이 있다. 모든 부가 파라미터에는 파라미터 이름 뒤에 숫자가 나오며, 이는 그 파라미터가 적용되는 구획을 표시한다. 해당 내용은 표 <a href="specific-advan.html#tab:additional-param">4.4</a>에 간략히 설명하였으며 NONMEM User Guide - Part V의 Appendix 1 및 Part VI - Chapter VII에 자세히 설명되어 있다. <span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span>
 
 <table>
 <caption>
@@ -998,21 +1001,21 @@ Absorption lag parameter for compartment n
 <div class="example">
 <span id="exm:code-example-advan4" class="example"><strong>코드 4.1  </strong></span>공변량 수식 작성에 수월한 제어구문
 </div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb25-1"><a href="specific-advan.html#cb25-1" aria-hidden="true"></a><span class="dt">$SUBROUTINES</span> ADVAN4 TRANS4</span>
-<span id="cb25-2"><a href="specific-advan.html#cb25-2" aria-hidden="true"></a><span class="dt">$PK</span> </span>
-<span id="cb25-3"><a href="specific-advan.html#cb25-3" aria-hidden="true"></a>  TVCL = THETA(<span class="dv">1</span>)</span>
-<span id="cb25-4"><a href="specific-advan.html#cb25-4" aria-hidden="true"></a>  TVV2 = THETA(<span class="dv">2</span>)</span>
-<span id="cb25-5"><a href="specific-advan.html#cb25-5" aria-hidden="true"></a>  TVV3 = THETA(<span class="dv">3</span>)</span>
-<span id="cb25-6"><a href="specific-advan.html#cb25-6" aria-hidden="true"></a>  TVQ  = THETA(<span class="dv">4</span>)</span>
-<span id="cb25-7"><a href="specific-advan.html#cb25-7" aria-hidden="true"></a>  TVKA = THETA(<span class="dv">5</span>)</span>
-<span id="cb25-8"><a href="specific-advan.html#cb25-8" aria-hidden="true"></a>  CL   =  TVCL <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb25-9"><a href="specific-advan.html#cb25-9" aria-hidden="true"></a>  V2   =  TVV2 <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb25-10"><a href="specific-advan.html#cb25-10" aria-hidden="true"></a>  V3   =  TVV3 <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb25-11"><a href="specific-advan.html#cb25-11" aria-hidden="true"></a>  Q    =  TVQ  <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb25-12"><a href="specific-advan.html#cb25-12" aria-hidden="true"></a>  KA   =  TVKA <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
-<span id="cb25-13"><a href="specific-advan.html#cb25-13" aria-hidden="true"></a>      </span>
-<span id="cb25-14"><a href="specific-advan.html#cb25-14" aria-hidden="true"></a>  ALAG1=  THETA(<span class="dv">6</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">6</span>))</span>
-<span id="cb25-15"><a href="specific-advan.html#cb25-15" aria-hidden="true"></a>  S2   =  V2 / <span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb25-1"><a href="specific-advan.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINES</span> ADVAN4 TRANS4</span>
+<span id="cb25-2"><a href="specific-advan.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span> </span>
+<span id="cb25-3"><a href="specific-advan.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  TVCL = THETA(<span class="dv">1</span>)</span>
+<span id="cb25-4"><a href="specific-advan.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  TVV2 = THETA(<span class="dv">2</span>)</span>
+<span id="cb25-5"><a href="specific-advan.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  TVV3 = THETA(<span class="dv">3</span>)</span>
+<span id="cb25-6"><a href="specific-advan.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  TVQ  = THETA(<span class="dv">4</span>)</span>
+<span id="cb25-7"><a href="specific-advan.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  TVKA = THETA(<span class="dv">5</span>)</span>
+<span id="cb25-8"><a href="specific-advan.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  CL   =  TVCL <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb25-9"><a href="specific-advan.html#cb25-9" aria-hidden="true" tabindex="-1"></a>  V2   =  TVV2 <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb25-10"><a href="specific-advan.html#cb25-10" aria-hidden="true" tabindex="-1"></a>  V3   =  TVV3 <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb25-11"><a href="specific-advan.html#cb25-11" aria-hidden="true" tabindex="-1"></a>  Q    =  TVQ  <span class="ot">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb25-12"><a href="specific-advan.html#cb25-12" aria-hidden="true" tabindex="-1"></a>  KA   =  TVKA <span class="ot">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb25-13"><a href="specific-advan.html#cb25-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb25-14"><a href="specific-advan.html#cb25-14" aria-hidden="true" tabindex="-1"></a>  ALAG1=  THETA(<span class="dv">6</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">6</span>))</span>
+<span id="cb25-15"><a href="specific-advan.html#cb25-15" aria-hidden="true" tabindex="-1"></a>  S2   =  V2 / <span class="dv">1000</span></span></code></pre></div>
 <p>ADVAN4 TRANS4에 대한 구획모형을 아래와 같이 도식화 할 수 있는데, 여기서 괄호 안의 숫자는 해당 구획을 의미한다.
 ADVAN4 서브루틴에서 Depot(저장구획)는 1구획, Central(중심구획)은 2구획, Peripheral(말초구획)은
 3구획이다.</p>
@@ -1032,10 +1035,10 @@ EXP(ETA(7)) 이와 같이 표기하면 된다. F 뒤에는 보통 저장구획�
 <div class="example">
 <span id="exm:code-if" class="example"><strong>코드 4.2  </strong></span>상대생체이용률을 위한 제어구문
 </div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb26-1"><a href="specific-advan.html#cb26-1" aria-hidden="true"></a>IF (DOSE.EQ.<span class="dv">50</span>) F1 = <span class="dv">1</span></span>
-<span id="cb26-2"><a href="specific-advan.html#cb26-2" aria-hidden="true"></a>IF (DOSE.EQ.<span class="dv">100</span>) F1 = THETA(<span class="dv">7</span>)</span>
-<span id="cb26-3"><a href="specific-advan.html#cb26-3" aria-hidden="true"></a>IF (DOSE.EQ.<span class="dv">200</span>) F1 = THETA(<span class="dv">8</span>)</span></code></pre></div>
-<p>척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 <a href="specific-advan.html#tab:basic-additional">4.5</a>를 참고하도록 하자. <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb26-1"><a href="specific-advan.html#cb26-1" aria-hidden="true" tabindex="-1"></a>IF (DOSE.EQ.<span class="dv">50</span>) F1 = <span class="dv">1</span></span>
+<span id="cb26-2"><a href="specific-advan.html#cb26-2" aria-hidden="true" tabindex="-1"></a>IF (DOSE.EQ.<span class="dv">100</span>) F1 = THETA(<span class="dv">7</span>)</span>
+<span id="cb26-3"><a href="specific-advan.html#cb26-3" aria-hidden="true" tabindex="-1"></a>IF (DOSE.EQ.<span class="dv">200</span>) F1 = THETA(<span class="dv">8</span>)</span></code></pre></div>
+<p>척도 파라미터(S)는, 쉽게 얘기하면 투여한 용량과 약물농도 사이의 단위를 통일시켜주는 파라미터로, 일반적으로 S 뒤에 약물농도가 관찰되는 구획(일반적으로는 중심구획)의 번호를 써주게 되며, ADVAN1, 3에서는 S1을 ADVAN2, 4에서는 S2를 사용하면 된다. 기본적으로 NONMEM에서 분포용적의 단위는 L, 투여 용량의 단위는 mg인데, 투여 용량의 단위가 mg이고 관찰된 농도의 단위가 mg/L인 경우 S2 = V2 라고 표기하면 된다. 하지만, 농도의 단위가 μg/L (= ng/mL)인 경우 투여 용량의 단위(mg)와 농도에서 용량의 단위(μg)가 불일치하게 된다. Concentration (μg/L) = Amount (mg) / Volume(L) 의 식에서 생각해 볼 때, 양의 단위를 μg으로 변환하면 단위가 일치하게 되는데, 이렇게 하기 위해서는 데이터셋의 AMT 에 1,000을 곱해주면 된다. 같은 맥락으로 분포용적(여기서는 V2)을 1,000으로 나누면 동일한 상황이 되는데, 이를 적용하려면, 제어구문에서 위의 예시와 같이 S2 = V2 / 1000을 써주면 된다. ADVAN별 부가 파라미터에 대한 구체적인 설명은 NONMEM User Guide - Part VI 및 표 <a href="specific-advan.html#tab:basic-additional">4.5</a>를 참고하도록 하자. <span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span></p>
 (ref:basic-additional) Basic and additional pharmacokinetic parameters
 <table>
 <caption>
@@ -1357,12 +1360,6 @@ Output Fractlon
 </tbody>
 </table>
 
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-nonmem">
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
-</div>
 </div>
             </section>
 

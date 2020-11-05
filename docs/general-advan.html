@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 일반 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 일반 ADVAN을 이용한 제어구문의 코딩 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -438,7 +441,7 @@ ADVAN13 (General Nonlinear Kinetics using LSODA)
 
 <table>
 <caption>
-<span id="tab:advan-lin-property">표 5.2: </span>일반 선형 ADVAN 의 종류 및 특징 <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>
+<span id="tab:advan-lin-property">표 5.2: </span>일반 선형 ADVAN 의 종류 및 특징 <span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span>
 </caption>
 <thead>
 <tr>
@@ -513,7 +516,7 @@ number)이며 복잡한 구조의 모델(ex. PBPK 모델)의 경우 ADVAN 5를 �
 <p>일반 비선형 ADVAN에서는 구획 간 물질 이동에 있어 선형 관계(1차 이동)뿐만 아니라, 비선형 관계를 허용하기 때문에 이러한 특성을 설명하기 위하여, 반드시 $DES 구문을 이용한 미분 방정식을 작성하여야 한다.</p>
 <table>
 <caption>
-<span id="tab:advan-6-8">표 5.3: </span>일반 비선형 ADVAN 의 종류 및 특징 <span class="citation">(Bonate <a href="#ref-bonate" role="doc-biblioref">2011</a>)</span>
+<span id="tab:advan-6-8">표 5.3: </span>일반 비선형 ADVAN 의 종류 및 특징 <span class="citation">(<a href="참고문헌.html#ref-bonate" role="doc-biblioref">Bonate 2011</a>)</span>
 </caption>
 <thead>
 <tr>
@@ -563,7 +566,7 @@ Gear method
 </div>
 <p>일반 비선형 ADVAN의 코드를 보면 앞에서 살펴본 일반 선형 ADVAN과 유사한 구조를 보이나, $PK에 이어 미분방정식을 표현하는 $DES 구문이 추가된다.</p>
 <p>비선형 ADVAN을 사용할 경우, $SUBROUTINE 구문에 적용할 ADVAN(ex. ADVAN 6 or 8)을 지정한 후, <code>TOL</code> 이라는 명령어를 추가해야 한다. <code>TOL</code> 은 tolerance 의 약자로, 각 구획의 내부값(질량, 농도, 효과) 계산에 필요한 숫자의 정확한 자릿수(NRD, number of required digits)를 의미하며, 일반적으로 $ESTIMATION 구문에 설정하는 SIG 값보다 1 또는 2 큰 숫자로 설정한다.</p>
-<p>$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 항목(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, “DEPOT” 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, “DEPOT”을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 “CENTRAL” 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, “CENTRAL” 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다 <span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>. 데이터셋에 CMT 항목을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.</p>
+<p>$MODEL 구문에서는 일반 선형 ADVAN 과 동일하게 모델에서 사용할 구획의 수와 특성을 정의한다. DEPOT, CENTRAL, PERI 는 사용자가 임의로 써주는 명칭인 반면, default name 이라고 불리는 DEFDOSE, DEFOBS 는 NONMEM 에 정의되어 있는 특정한 의미를 지닌 용어이다. DEFDOSE 와 DEFOBS 는 각각 용량과 관찰값을 배정한 기본구획으로 정의한다. 구획을 정의하는 데이터 항목(CMT)이 데이터셋에 포함되어 있지 않을 때 이러한 기본구획들을 정의할 필요가 있으며, 데이터셋의 CMT 를 사용할 경우에는 생략할 수 있다. DEFDOSE 를 입력하지 않을 경우, “DEPOT” 으로 지정된 첫째 구획에 용량이 투여된 것으로 NONMEM 이 인식하며, “DEPOT”을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 용량이 투여된 것으로 인식한다. 마찬가지로 DEFOBS 를 입력하지 않을 경우 “CENTRAL” 로 지정된 첫째 구획에 관찰값이 배정된 것으로 NONMEM 이 인식을 하며, “CENTRAL” 을 지정하지 않는 다면, 여러 구획 중 첫째 구획에 관찰값이 배정된 것으로 인식한다 <span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span>. 데이터셋에 CMT 항목을 만들고, DEFDOSE 와 DEFOBS 를 데이터셋과 반대로 설정하더라도, NONMEM 은 데이터셋에 지정된 대로, 용량과 관찰값을 인식한다. 따라서 데이터셋에 정확히 용량과 관찰값의 구획을 지정해주는 것이 중요하다.</p>
 <p>마지막으로, 사용자가 의도한 각 구획 간의 물질 이동 상태에 맞게 $DES에 미분 방정식을 작성하면 된다. 미분 방정식의 각 식은 DADT(i)로 나타내며, 여기서 i는 해당 구획의 번호이다. 예를 들어 1번 구획에서 약이 1차 속도로 제거되는 것은 <code>DADT(1)= -KA * A(1)</code>으로 나타낼 수 있다. 여기에서 A(1)은 구획 1에서의 시간에 따라 변한다고 가정한 내부값(약의 양)을 의미한다. $DES 구문 안에서 시간 의존적인 파라미터를 추정할 경우, 시간 변수는 <code>T</code> 로 표현하여야 하며 이는 데이터셋에 주어진 이산형의 시간(TIME)과 다른 연속변수를 의미한다.
 <span class="math display" id="eq:2comp-oral">\[\begin{equation}
 \begin{split}
@@ -590,52 +593,52 @@ Gear method
 <div class="example">
 <span id="exm:advan5-example" class="example"><strong>코드 5.1  </strong></span>2구획 경구모델을 ADVAN5로 구현한 코드 예시
 </div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb27-1"><a href="general-advan.html#cb27-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN5</span>
-<span id="cb27-2"><a href="general-advan.html#cb27-2" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
-<span id="cb27-3"><a href="general-advan.html#cb27-3" aria-hidden="true"></a>  COMP(DEPOT, DEFDOSE)</span>
-<span id="cb27-4"><a href="general-advan.html#cb27-4" aria-hidden="true"></a>  COMP(CENTRAL, DEFOBS)</span>
-<span id="cb27-5"><a href="general-advan.html#cb27-5" aria-hidden="true"></a>  COMP(PERIPH)</span>
-<span id="cb27-6"><a href="general-advan.html#cb27-6" aria-hidden="true"></a><span class="dt">$PK</span> ; Define basic PK relationships</span>
-<span id="cb27-7"><a href="general-advan.html#cb27-7" aria-hidden="true"></a>  CL = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
-<span id="cb27-8"><a href="general-advan.html#cb27-8" aria-hidden="true"></a>  V2 = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
-<span id="cb27-9"><a href="general-advan.html#cb27-9" aria-hidden="true"></a>  V3 = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
-<span id="cb27-10"><a href="general-advan.html#cb27-10" aria-hidden="true"></a>  Q  = THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
-<span id="cb27-11"><a href="general-advan.html#cb27-11" aria-hidden="true"></a>  KA = THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
-<span id="cb27-12"><a href="general-advan.html#cb27-12" aria-hidden="true"></a>  </span>
-<span id="cb27-13"><a href="general-advan.html#cb27-13" aria-hidden="true"></a>  S2 = V2</span>
-<span id="cb27-14"><a href="general-advan.html#cb27-14" aria-hidden="true"></a>  K12= KA</span>
-<span id="cb27-15"><a href="general-advan.html#cb27-15" aria-hidden="true"></a>  K20= CL/V2</span>
-<span id="cb27-16"><a href="general-advan.html#cb27-16" aria-hidden="true"></a>  K23= Q/V2</span>
-<span id="cb27-17"><a href="general-advan.html#cb27-17" aria-hidden="true"></a>  K32= Q/V3</span>
-<span id="cb27-18"><a href="general-advan.html#cb27-18" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb27-19"><a href="general-advan.html#cb27-19" aria-hidden="true"></a>  Y  = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb27-1"><a href="general-advan.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN5</span>
+<span id="cb27-2"><a href="general-advan.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$MODEL</span></span>
+<span id="cb27-3"><a href="general-advan.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  COMP(DEPOT, DEFDOSE)</span>
+<span id="cb27-4"><a href="general-advan.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  COMP(CENTRAL, DEFOBS)</span>
+<span id="cb27-5"><a href="general-advan.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  COMP(PERIPH)</span>
+<span id="cb27-6"><a href="general-advan.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span> ; Define basic PK relationships</span>
+<span id="cb27-7"><a href="general-advan.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  CL = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
+<span id="cb27-8"><a href="general-advan.html#cb27-8" aria-hidden="true" tabindex="-1"></a>  V2 = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
+<span id="cb27-9"><a href="general-advan.html#cb27-9" aria-hidden="true" tabindex="-1"></a>  V3 = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
+<span id="cb27-10"><a href="general-advan.html#cb27-10" aria-hidden="true" tabindex="-1"></a>  Q  = THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
+<span id="cb27-11"><a href="general-advan.html#cb27-11" aria-hidden="true" tabindex="-1"></a>  KA = THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
+<span id="cb27-12"><a href="general-advan.html#cb27-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-13"><a href="general-advan.html#cb27-13" aria-hidden="true" tabindex="-1"></a>  S2 = V2</span>
+<span id="cb27-14"><a href="general-advan.html#cb27-14" aria-hidden="true" tabindex="-1"></a>  K12= KA</span>
+<span id="cb27-15"><a href="general-advan.html#cb27-15" aria-hidden="true" tabindex="-1"></a>  K20= CL/V2</span>
+<span id="cb27-16"><a href="general-advan.html#cb27-16" aria-hidden="true" tabindex="-1"></a>  K23= Q/V2</span>
+<span id="cb27-17"><a href="general-advan.html#cb27-17" aria-hidden="true" tabindex="-1"></a>  K32= Q/V3</span>
+<span id="cb27-18"><a href="general-advan.html#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb27-19"><a href="general-advan.html#cb27-19" aria-hidden="true" tabindex="-1"></a>  Y  = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) </span></code></pre></div>
 <p>동일한 2구획 경구모델(그림 <a href="general-advan.html#fig:2comp-oral">5.6</a>)을 일반 선형(ADVAN5, 코드 <a href="general-advan.html#exm:advan5-example">5.1</a>) 및 비선형(ADVAN6, 코드 <a href="general-advan.html#exm:advan6-example">5.2</a>) ADVAN 코드를 이용하여 추정할 수 있다. 일반 선형 ADVAN은 비선형 ADVAN에 비하여 더 간단하게 코드를 작성할 수 있으며, 비선형 ADVAN은 좀 더 다양한 형태의 약물 동태에 적용할 수 있는 장점이 있으나, $SUBROUTINE 구문에 TOL 명령어를 작성하고 $DES에 각 구획의 물질 이동을 설명하는 미분방정식을 작성하여야 한다.</p>
 
 <div class="example">
 <span id="exm:advan6-example" class="example"><strong>코드 5.2  </strong></span>2구획 경구모델을 ADVAN6로 구현한 코드 예시
 </div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb28-1"><a href="general-advan.html#cb28-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
-<span id="cb28-2"><a href="general-advan.html#cb28-2" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
-<span id="cb28-3"><a href="general-advan.html#cb28-3" aria-hidden="true"></a>  COMP(DEPOT, DEFDOSE)</span>
-<span id="cb28-4"><a href="general-advan.html#cb28-4" aria-hidden="true"></a>  COMP(CENTRAL, DEFOBS)</span>
-<span id="cb28-5"><a href="general-advan.html#cb28-5" aria-hidden="true"></a>  COMP(PERIPH)</span>
-<span id="cb28-6"><a href="general-advan.html#cb28-6" aria-hidden="true"></a><span class="dt">$PK</span> ; Define basic PK relationships</span>
-<span id="cb28-7"><a href="general-advan.html#cb28-7" aria-hidden="true"></a>  CL = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
-<span id="cb28-8"><a href="general-advan.html#cb28-8" aria-hidden="true"></a>  V2 = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
-<span id="cb28-9"><a href="general-advan.html#cb28-9" aria-hidden="true"></a>  V3 = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
-<span id="cb28-10"><a href="general-advan.html#cb28-10" aria-hidden="true"></a>  Q  = THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
-<span id="cb28-11"><a href="general-advan.html#cb28-11" aria-hidden="true"></a>  KA = THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
-<span id="cb28-12"><a href="general-advan.html#cb28-12" aria-hidden="true"></a>  </span>
-<span id="cb28-13"><a href="general-advan.html#cb28-13" aria-hidden="true"></a>  S2 = V2</span>
-<span id="cb28-14"><a href="general-advan.html#cb28-14" aria-hidden="true"></a>  K20= CL/V2</span>
-<span id="cb28-15"><a href="general-advan.html#cb28-15" aria-hidden="true"></a>  K23= Q/V2</span>
-<span id="cb28-16"><a href="general-advan.html#cb28-16" aria-hidden="true"></a>  K32= Q/V3</span>
-<span id="cb28-17"><a href="general-advan.html#cb28-17" aria-hidden="true"></a><span class="dt">$DES</span> ; Define differential equations</span>
-<span id="cb28-18"><a href="general-advan.html#cb28-18" aria-hidden="true"></a>  DADT(<span class="dv">1</span>) = <span class="kw">-A</span>(<span class="dv">1</span>)<span class="dt">*KA</span></span>
-<span id="cb28-19"><a href="general-advan.html#cb28-19" aria-hidden="true"></a>  DADT(<span class="dv">2</span>) = A(<span class="dv">1</span>)<span class="dt">*KA</span> - A(<span class="dv">2</span>)*(K23+K20) + A(<span class="dv">3</span>)<span class="dt">*K32</span></span>
-<span id="cb28-20"><a href="general-advan.html#cb28-20" aria-hidden="true"></a>  DADT(<span class="dv">3</span>) = A(<span class="dv">2</span>)<span class="dt">*K23</span> - A(<span class="dv">3</span>)<span class="dt">*K32</span></span>
-<span id="cb28-21"><a href="general-advan.html#cb28-21" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb28-22"><a href="general-advan.html#cb28-22" aria-hidden="true"></a>  Y  = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb28-1"><a href="general-advan.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
+<span id="cb28-2"><a href="general-advan.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$MODEL</span></span>
+<span id="cb28-3"><a href="general-advan.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  COMP(DEPOT, DEFDOSE)</span>
+<span id="cb28-4"><a href="general-advan.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  COMP(CENTRAL, DEFOBS)</span>
+<span id="cb28-5"><a href="general-advan.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  COMP(PERIPH)</span>
+<span id="cb28-6"><a href="general-advan.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span> ; Define basic PK relationships</span>
+<span id="cb28-7"><a href="general-advan.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  CL = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
+<span id="cb28-8"><a href="general-advan.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  V2 = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
+<span id="cb28-9"><a href="general-advan.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  V3 = THETA(<span class="dv">3</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">3</span>))</span>
+<span id="cb28-10"><a href="general-advan.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  Q  = THETA(<span class="dv">4</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">4</span>))</span>
+<span id="cb28-11"><a href="general-advan.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  KA = THETA(<span class="dv">5</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">5</span>))</span>
+<span id="cb28-12"><a href="general-advan.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-13"><a href="general-advan.html#cb28-13" aria-hidden="true" tabindex="-1"></a>  S2 = V2</span>
+<span id="cb28-14"><a href="general-advan.html#cb28-14" aria-hidden="true" tabindex="-1"></a>  K20= CL/V2</span>
+<span id="cb28-15"><a href="general-advan.html#cb28-15" aria-hidden="true" tabindex="-1"></a>  K23= Q/V2</span>
+<span id="cb28-16"><a href="general-advan.html#cb28-16" aria-hidden="true" tabindex="-1"></a>  K32= Q/V3</span>
+<span id="cb28-17"><a href="general-advan.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="dt">$DES</span> ; Define differential equations</span>
+<span id="cb28-18"><a href="general-advan.html#cb28-18" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">1</span>) = <span class="ot">-A</span>(<span class="dv">1</span>)<span class="dt">*KA</span></span>
+<span id="cb28-19"><a href="general-advan.html#cb28-19" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">2</span>) = A(<span class="dv">1</span>)<span class="dt">*KA</span> - A(<span class="dv">2</span>)*(K23+K20) + A(<span class="dv">3</span>)<span class="dt">*K32</span></span>
+<span id="cb28-20"><a href="general-advan.html#cb28-20" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">3</span>) = A(<span class="dv">2</span>)<span class="dt">*K23</span> - A(<span class="dv">3</span>)<span class="dt">*K32</span></span>
+<span id="cb28-21"><a href="general-advan.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb28-22"><a href="general-advan.html#cb28-22" aria-hidden="true" tabindex="-1"></a>  Y  = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) </span></code></pre></div>
 <!--
 참고문헌
 
@@ -652,15 +655,6 @@ Gear method
     Solutions, Hanover. P106.
 -->
 
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-nonmem">
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
-</div>
-<div id="ref-bonate">
-<p>Bonate, Peter. 2011. <em>Pharmacokinetic-Pharmacodynamic Modeling and Simulation</em>. New York: Springer. <a href="https://www.springer.com/gp/book/9781441994844">https://www.springer.com/gp/book/9781441994844</a>.</p>
 </div>
 </div>
             </section>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 NONMEM 데이터셋 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 NONMEM 데이터셋 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -585,9 +588,9 @@ HT
 <div class="example">
 <span id="exm:input" class="example"><strong>코드 2.1  </strong></span>$PROB, $DATA, $INPUT 제어구문 작성의 예
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true"></a><span class="dt">$PROB</span> HO_IV_1comp</span>
-<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true"></a><span class="dt">$DATA</span> ..<span class="kw">/</span><span class="ot">HOdata_IV.csv IGNORE=@</span></span>
-<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true"></a><span class="dt">$INPUT</span><span class="ot"> ID TIME AMT DV MDV SEX AGE WT HT</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb1-1"><a href="nonmem-dataset.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$PROB</span> HO_IV_1comp</span>
+<span id="cb1-2"><a href="nonmem-dataset.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$DATA</span> ..<span class="ot">/HOdata_IV.csv IGNORE=@</span></span>
+<span id="cb1-3"><a href="nonmem-dataset.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$INPUT</span><span class="ot"> ID TIME AMT DV MDV SEX AGE WT HT</span></span></code></pre></div>
 </div>
 </div>
 <div id="predpp에-쓰는-데이터셋" class="section level2" number="2.2">
@@ -805,10 +808,10 @@ Compartment
 <div class="example">
 <span id="exm:date-dataset-chunk" class="example"><strong>코드 2.2  </strong></span>DATE label and its format
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="nonmem-dataset.html#cb2-1" aria-hidden="true"></a>DATE  month day year</span>
-<span id="cb2-2"><a href="nonmem-dataset.html#cb2-2" aria-hidden="true"></a>DAT1  day month year</span>
-<span id="cb2-3"><a href="nonmem-dataset.html#cb2-3" aria-hidden="true"></a>DAT2  year month day</span>
-<span id="cb2-4"><a href="nonmem-dataset.html#cb2-4" aria-hidden="true"></a>DAT3  year day month</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="nonmem-dataset.html#cb2-1" aria-hidden="true" tabindex="-1"></a>DATE  month day year</span>
+<span id="cb2-2"><a href="nonmem-dataset.html#cb2-2" aria-hidden="true" tabindex="-1"></a>DAT1  day month year</span>
+<span id="cb2-3"><a href="nonmem-dataset.html#cb2-3" aria-hidden="true" tabindex="-1"></a>DAT2  year month day</span>
+<span id="cb2-4"><a href="nonmem-dataset.html#cb2-4" aria-hidden="true" tabindex="-1"></a>DAT3  year day month</span></code></pre></div>
 <p></p>
 </div>
 <div id="amt" class="section level3" number="2.5.6">
@@ -894,7 +897,7 @@ Description
 3
 </td>
 <td style="text-align:right;">
-3
+0
 </td>
 <td style="text-align:right;">
 8
@@ -917,7 +920,7 @@ Non steady state, 10mg bolus at 8hr, 3 additional dose every 8hr
 3
 </td>
 <td style="text-align:right;">
-3
+0
 </td>
 <td style="text-align:right;">
 8
@@ -940,7 +943,7 @@ Non steady state, 10mg infusion for 1hr at 8hr, 3 additional dose every 8hr
 3
 </td>
 <td style="text-align:right;">
-3
+1
 </td>
 <td style="text-align:right;">
 8
@@ -963,7 +966,7 @@ Steady state, 10mg bolus at 64hr, 3 additional dose every 8hr
 3
 </td>
 <td style="text-align:right;">
-3
+1
 </td>
 <td style="text-align:right;">
 8
@@ -984,18 +987,9 @@ Steady state, 10mg infusion for 1hr at 64hr 3 additional dose every 8hr
 <h3><span class="header-section-number">2.5.11</span> Covariates</h3>
 <p>Covariates는 공변량이며 PK 또는 PD 파라미터에 영향을 주는 영향 인자라고 생각할 수 있다. NONMEM은 공변량에 대한 정보가 없으며, 이는 사용자가 공변량 분석(Covariate analysis) 과정을 통해 선정한다. 예를 들어 성별, 나이, 인종, 몸무게, BMI 또는 실험결과값 등을 공변량으로 선정할 수 있으며, 이 정보를 데이터셋에 포함시킬 수 있다. 데이터셋 내의 공변량 정보도 다른 데이터 레코드와 마찬가지로 숫자로 적어주어야 한다. 따라서, 예컨데 남자는 0, 여자는 1과 같이 기입한다.</p>
 <hr />
-<p>2장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<p>2장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(<a href="참고문헌.html#ref-kelly" role="doc-biblioref">Owen 2014</a>; <a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span></p>
 
 </div>
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-nonmem">
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
-</div>
-<div id="ref-kelly">
-<p>Owen, Fiedler-Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860">https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860</a>.</p>
 </div>
 </div>
             </section>

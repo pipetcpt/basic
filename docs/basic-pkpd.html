@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 17 약동-약력(PK-PD) 모델링의 이론적 기초 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -465,11 +468,11 @@ Time to event data
 <div class="figure" style="text-align: center"><span id="fig:pd-time-course"></span>
 <img src="figures/17-fig-02.jpg" alt="PD의 시간에 따른 변화의 사례 (Primary Psychiatry 2013)" width="100%" />
 <p class="caption">
-그림 17.2: PD의 시간에 따른 변화의 사례 <span class="citation">(Primary Psychiatry <a href="#ref-dementia" role="doc-biblioref">2013</a>)</span>
+그림 17.2: PD의 시간에 따른 변화의 사례 <span class="citation">(<a href="참고문헌.html#ref-dementia" role="doc-biblioref">Primary Psychiatry 2013</a>)</span>
 </p>
 </div>
 
-<p><em>왼쪽: 혈압강하제의 약효와 혈압 자체의 일중변동을 모두 반영한 모델 <span class="citation">(Lee et al. <a href="#ref-lee2013pharmacokinetic" role="doc-biblioref">2013</a>)</span>, 오른쪽: 알츠하이머병의 평생에 걸친 따른 질병악화와 치료제의 기전에 따른 변화. 시간에 따른 질병의 진행을 모델에 반영하여야 약효를 정확히 기술할 수 있다.</em></p>
+<p><em>왼쪽: 혈압강하제의 약효와 혈압 자체의 일중변동을 모두 반영한 모델 <span class="citation">(<a href="참고문헌.html#ref-lee2013pharmacokinetic" role="doc-biblioref">Jongtae Lee et al. 2013</a>)</span>, 오른쪽: 알츠하이머병의 평생에 걸친 따른 질병악화와 치료제의 기전에 따른 변화. 시간에 따른 질병의 진행을 모델에 반영하여야 약효를 정확히 기술할 수 있다.</em></p>
 </div>
 <div id="pk-pd-데이터" class="section level3" number="17.2.2">
 <h3><span class="header-section-number">17.2.2</span> PK-PD 데이터</h3>
@@ -490,21 +493,12 @@ Time to event data
 <div class="figure" style="text-align: center"><span id="fig:conc-hysteresis"></span>
 <img src="figures/17-fig-03.png" alt="혈장약물농도와 약효의 시간적 관계 (Primary Psychiatry 2013)" width="100%" />
 <p class="caption">
-그림 17.3: 혈장약물농도와 약효의 시간적 관계 <span class="citation">(Primary Psychiatry <a href="#ref-dementia" role="doc-biblioref">2013</a>)</span>
+그림 17.3: 혈장약물농도와 약효의 시간적 관계 <span class="citation">(<a href="참고문헌.html#ref-dementia" role="doc-biblioref">Primary Psychiatry 2013</a>)</span>
 </p>
 </div>
 
 <p>약효의 변화가 약물농도의 변화보다 늦게 나타날 경우 오른쪽 아래 그림과 같은 반시계방향 히스테레시스 현상이 나타나게 된다.</p>
 
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-lee2013pharmacokinetic">
-<p>Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. “Pharmacokinetic–Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.” <em>European Journal of Clinical Pharmacology</em> 69 (1): 11–20.</p>
-</div>
-<div id="ref-dementia">
-<p>Primary Psychiatry. 2013. <em>From Symptom Palliation to Disease Modification: Implications for Dementia Care</em>. <a href="http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/">http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/</a>.</p>
 </div>
 </div>
             </section>

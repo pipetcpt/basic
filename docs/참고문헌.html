@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>참고문헌 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="참고문헌 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -378,84 +381,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="참고문헌" class="section level1 unnumbered">
 <h1>참고문헌</h1>
 
-<div id="refs" class="references hanging-indent">
-<div>
-<p>Bae, Kyun-Seop. 2018. <em>Nmw: Understanding Nonlinear Mixed Effects Modeling for Population Pharmacokinetics</em>. <a href="https://CRAN.R-project.org/package=nmw">https://CRAN.R-project.org/package=nmw</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-nmw" class="csl-entry">
+Bae, Kyun-Seop. 2018. <em>Nmw: Understanding Nonlinear Mixed Effects Modeling for Population Pharmacokinetics</em>. <a href="https://CRAN.R-project.org/package=nmw">https://CRAN.R-project.org/package=nmw</a>.
 </div>
-<div>
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
+<div id="ref-nonmem" class="csl-entry">
+Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.
 </div>
-<div>
-<p>Bonate, Peter. 2011. <em>Pharmacokinetic-Pharmacodynamic Modeling and Simulation</em>. New York: Springer. <a href="https://www.springer.com/gp/book/9781441994844">https://www.springer.com/gp/book/9781441994844</a>.</p>
+<div id="ref-bonate" class="csl-entry">
+Bonate, Peter. 2011. <em>Pharmacokinetic-Pharmacodynamic Modeling and Simulation</em>. New York: Springer. <a href="https://www.springer.com/gp/book/9781441994844">https://www.springer.com/gp/book/9781441994844</a>.
 </div>
-<div>
-<p>Brendel, K., C. Dartois, E. Comets, A. Lemenuel-Diot, C. Laveille, B. Tranchand, P. Girard, C. M. Laffont, and F. Mentre. 2007. “Are population pharmacokinetic and/or pharmacodynamic models adequately evaluated? A survey of the literature from 2002 to 2004.” <em>Clin Pharmacokinet</em> 46 (3): 221–34.</p>
+<div id="ref-pmid17328581" class="csl-entry">
+Brendel, K., C. Dartois, E. Comets, A. Lemenuel-Diot, C. Laveille, B. Tranchand, P. Girard, C. M. Laffont, and F. Mentre. 2007. <span>“<span class="nocase"><span>A</span>re population pharmacokinetic and/or pharmacodynamic models adequately evaluated? <span>A</span> survey of the literature from 2002 to 2004</span>.”</span> <em>Clin Pharmacokinet</em> 46 (3): 221–34.
 </div>
-<div>
-<p>Derendorf, H, and B Meibohm. 1999. “Modeling of Pharmacokinetic/Pharmacodynamic (PK/PD) Relationships: Concepts and Perspectives.” <em>Pharmaceutical Research</em> 16 (2): 176–85. <a href="https://doi.org/10.1023/a:1011907920641">https://doi.org/10.1023/a:1011907920641</a>.</p>
+<div id="ref-derendorf1999modeling" class="csl-entry">
+Derendorf, H, and B Meibohm. 1999. <span>“Modeling of Pharmacokinetic/Pharmacodynamic (<span>PK/PD</span>) Relationships: Concepts and Perspectives.”</span> <em>Pharmaceutical Research</em> 16 (2): 176–85. <a href="https://doi.org/10.1023/a:1011907920641">https://doi.org/10.1023/a:1011907920641</a>.
 </div>
-<div>
-<p>Draper, Norman. 1998. <em>Applied Regression Analysis</em>. New York: Wiley.</p>
+<div id="ref-draper1998applied" class="csl-entry">
+Draper, Norman. 1998. <em>Applied Regression Analysis</em>. New York: Wiley.
 </div>
-<div>
-<p>Ette, Ene. 2007. <em>Pharmacometrics : The Science of Quantitative Pharmacology</em>. Hoboken, N.J: John Wiley &amp; Sons. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470087978">https://onlinelibrary.wiley.com/doi/book/10.1002/0470087978</a>.</p>
+<div id="ref-ette" class="csl-entry">
+Ette, Ene. 2007. <em>Pharmacometrics : The Science of Quantitative Pharmacology</em>. Hoboken, N.J: John Wiley &amp; Sons. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470087978">https://onlinelibrary.wiley.com/doi/book/10.1002/0470087978</a>.
 </div>
-<div>
-<p>Gabrielsson, Johan. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. Stockholm: Apotekarsocieteten.</p>
+<div id="ref-gabrielsson" class="csl-entry">
+Gabrielsson, Johan. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. Stockholm: Apotekarsocieteten.
 </div>
-<div>
-<p>Han, Seunghoon, Sangil Jeon, and Dong-Seok Yim. 2016. “Tips for the Choice of Initial Estimates in Nonmem.” <em>Translational and Clinical Pharmacology</em> 24 (3): 119–23.</p>
+<div id="ref-han2016tips" class="csl-entry">
+Han, Seunghoon, Sangil Jeon, and Dong-Seok Yim. 2016. <span>“Tips for the Choice of Initial Estimates in NONMEM.”</span> <em>Translational and Clinical Pharmacology</em> 24 (3): 119–23.
 </div>
-<div>
-<p>Harling, Uekcert, K. 2018. <em>VPC and Npc User Guide</em>. ICON plc. <a href="https://github.com/UUPharmacometrics/PsN/releases/download/4.9.0/vpc_npc_userguide.pdf">https://github.com/UUPharmacometrics/PsN/releases/download/4.9.0/vpc_npc_userguide.pdf</a>.</p>
+<div id="ref-vpcnpc" class="csl-entry">
+Harling, Uekcert, K. 2018. <em>VPC and NPC User Guide</em>. ICON plc. <a href="https://github.com/UUPharmacometrics/PsN/releases/download/4.9.0/vpc_npc_userguide.pdf">https://github.com/UUPharmacometrics/PsN/releases/download/4.9.0/vpc_npc_userguide.pdf</a>.
 </div>
-<div>
-<p>Helmlinger, Gabriel, Nidal Al-Huniti, Sergey Aksenov, Kirill Peskov, Karen M Hallow, Lulu Chu, David Boulton, et al. 2017. “Drug-Disease Modeling in the Pharmaceutical Industry - Where Mechanistic Systems Pharmacology and Statistical Pharmacometrics Meet.” <em>European Journal of Pharmaceutical Sciences : Official Journal of the European Federation for Pharmaceutical Sciences</em> 109S (November): S39–S46. <a href="https://doi.org/10.1016/j.ejps.2017.05.028">https://doi.org/10.1016/j.ejps.2017.05.028</a>.</p>
+<div id="ref-helmlinger2017drug" class="csl-entry">
+Helmlinger, Gabriel, Nidal Al-Huniti, Sergey Aksenov, Kirill Peskov, Karen M Hallow, Lulu Chu, David Boulton, et al. 2017. <span>“Drug-Disease Modeling in the Pharmaceutical Industry - Where Mechanistic Systems Pharmacology and Statistical Pharmacometrics Meet.”</span> <em>European Journal of Pharmaceutical Sciences : Official Journal of the European Federation for Pharmaceutical Sciences</em> 109S (November): S39–46. <a href="https://doi.org/10.1016/j.ejps.2017.05.028">https://doi.org/10.1016/j.ejps.2017.05.028</a>.
 </div>
-<div>
-<p>Holford, N. 2010. <em>Differential Equation Models Using Nm-Tran</em>. Auckland, New Zealand: University of Auckland; University of Auckland. <a href="http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf">http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf</a>.</p>
+<div id="ref-nickholford" class="csl-entry">
+Holford, N. 2010. <em>Differential Equation Models Using NM-TRAN</em>. Auckland, New Zealand: University of Auckland; University of Auckland. <a href="http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf">http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf</a>.
 </div>
-<div>
-<p>Hooker, Andrew C., Mats O. Karlsson, Justin J. Wilkins, and E. Niclas Jonsson. 2020. <em>Xpose4: Diagnostics for Nonlinear Mixed-Effect Models</em>. <a href="https://CRAN.R-project.org/package=xpose4">https://CRAN.R-project.org/package=xpose4</a>.</p>
+<div id="ref-R-xpose4" class="csl-entry">
+Hooker, Andrew C., Mats O. Karlsson, Justin J. Wilkins, and E. Niclas Jonsson. 2020. <em>Xpose4: Diagnostics for Nonlinear Mixed-Effect Models</em>. <a href="https://CRAN.R-project.org/package=xpose4">https://CRAN.R-project.org/package=xpose4</a>.
 </div>
-<div>
-<p>Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. “Pharmacokinetic–Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.” <em>European Journal of Clinical Pharmacology</em> 69 (1): 11–20.</p>
+<div id="ref-lee2013pharmacokinetic" class="csl-entry">
+Lee, Jongtae, Seunghoon Han, Sangil Jeon, Taegon Hong, and Dong-Seok Yim. 2013. <span>“Pharmacokinetic–Pharmacodynamic Model of Fimasartan Applied to Predict the Influence of a High Fat Diet on Its Blood Pressure-Lowering Effect in Healthy Subjects.”</span> <em>European Journal of Clinical Pharmacology</em> 69 (1): 11–20.
 </div>
-<div>
-<p>Lee, Joomi, Yangha Hwang, Wonku Kang, Sook Jin Seong, Mi-sun Lim, Hae Won Lee, Dong-Seok Yim, Dong Ryul Sohn, Seunghoon Han, and Young-Ran Yoon. 2012. “Population Pharmacokinetic/Pharmacodynamic Modeling of Clopidogrel in Korean Healthy Volunteers and Stroke Patients.” <em>The Journal of Clinical Pharmacology</em> 52 (7): 985–95.</p>
+<div id="ref-lee2012population" class="csl-entry">
+Lee, Joomi, Yangha Hwang, Wonku Kang, Sook Jin Seong, Mi-sun Lim, Hae Won Lee, Dong-Seok Yim, Dong Ryul Sohn, Seunghoon Han, and Young-Ran Yoon. 2012. <span>“Population Pharmacokinetic/Pharmacodynamic Modeling of Clopidogrel in Korean Healthy Volunteers and Stroke Patients.”</span> <em>The Journal of Clinical Pharmacology</em> 52 (7): 985–95.
 </div>
-<div>
-<p>Owen, Fiedler-Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860">https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860</a>.</p>
+<div id="ref-kelly" class="csl-entry">
+Owen, Fiedler-Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860">https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860</a>.
 </div>
-<div>
-<p>Pinheiro, Jose, Douglas Bates, and R-core. 2020. <em>Nlme: Linear and Nonlinear Mixed Effects Models</em>. <a href="https://CRAN.R-project.org/package=nlme">https://CRAN.R-project.org/package=nlme</a>.</p>
+<div id="ref-R-nlme" class="csl-entry">
+Pinheiro, Jose, Douglas Bates, and R-core. 2020. <em>Nlme: Linear and Nonlinear Mixed Effects Models</em>. <a href="https://CRAN.R-project.org/package=nlme">https://CRAN.R-project.org/package=nlme</a>.
 </div>
-<div>
-<p>Post, Teun M, Jan I Freijer, Bart A Ploeger, and Meindert Danhof. 2008. “Extensions to the Visual Predictive Check to Facilitate Model Performance Evaluation.” <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 35 (2): 185.</p>
+<div id="ref-post2008extensions" class="csl-entry">
+Post, Teun M, Jan I Freijer, Bart A Ploeger, and Meindert Danhof. 2008. <span>“Extensions to the Visual Predictive Check to Facilitate Model Performance Evaluation.”</span> <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 35 (2): 185.
 </div>
-<div>
-<p>Primary Psychiatry. 2013. <em>From Symptom Palliation to Disease Modification: Implications for Dementia Care</em>. <a href="http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/">http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/</a>.</p>
+<div id="ref-dementia" class="csl-entry">
+Primary Psychiatry. 2013. <em>From Symptom Palliation to Disease Modification: Implications for Dementia Care</em>. <a href="http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/">http://primarypsychiatry.com/from-symptom-palliation-to-disease-modification-implications-for-dementia-care/</a>.
 </div>
-<div>
-<p>Savic, Karlsson, R. M. 2007. <em>Shrinkage in Empirical Bayes Estimates for Diagnostics and Estimation: Problems and Solutions</em>. Uppsala, Sweden: Uppsala University; Uppsala University. <a href="https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf">https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf</a>.</p>
+<div id="ref-uppsala" class="csl-entry">
+Savic, Karlsson, R. M. 2007. <em>Shrinkage in Empirical Bayes Estimates for Diagnostics and Estimation: Problems and Solutions</em>. Uppsala, Sweden: Uppsala University; Uppsala University. <a href="https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf">https://www.page-meeting.org/pdf_assets/9436-EBE_PAGE07_1_web.pdf</a>.
 </div>
-<div>
-<p>Sharma, A, and W J Jusko. 1998. “Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.” <em>British Journal of Clinical Pharmacology</em> 45 (3): 229–39. <a href="https://doi.org/10.1046/j.1365-2125.1998.00676.x">https://doi.org/10.1046/j.1365-2125.1998.00676.x</a>.</p>
+<div id="ref-sharma1998characteristics" class="csl-entry">
+Sharma, A, and W J Jusko. 1998. <span>“Characteristics of Indirect Pharmacodynamic Models and Applications to Clinical Drug Responses.”</span> <em>British Journal of Clinical Pharmacology</em> 45 (3): 229–39. <a href="https://doi.org/10.1046/j.1365-2125.1998.00676.x">https://doi.org/10.1046/j.1365-2125.1998.00676.x</a>.
 </div>
-<div>
-<p>Yano, Yoshitaka, Stuart L Beal, and Lewis B Sheiner. 2001. “Evaluating Pharmacokinetic/Pharmacodynamic Models Using the Posterior Predictive Check.” <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 28 (2): 171–92.</p>
+<div id="ref-yano2001evaluating" class="csl-entry">
+Yano, Yoshitaka, Stuart L Beal, and Lewis B Sheiner. 2001. <span>“Evaluating Pharmacokinetic/Pharmacodynamic Models Using the Posterior Predictive Check.”</span> <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 28 (2): 171–92.
 </div>
-<div>
-<p>Zhang, Liping, Stuart L Beal, and Lewis B Sheiner. 2003a. “Simultaneous vs. Sequential Analysis for Population PK/PD Data I: Best-Case Performance.” <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 30 (6): 387–404.</p>
+<div id="ref-zhang1" class="csl-entry">
+Zhang, Liping, Stuart L Beal, and Lewis B Sheiner. 2003a. <span>“Simultaneous <span class="nocase">vs.</span> Sequential Analysis for Population <span>PK/PD</span> Data <span>I</span>: Best-Case Performance.”</span> <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 30 (6): 387–404.
 </div>
-<div>
-<p>———. 2003b. “Simultaneous vs. Sequential Analysis for Population PK/PD Data II: Robustness of Methods.” <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 30 (6): 405–16.</p>
+<div id="ref-zhang2" class="csl-entry">
+———. 2003b. <span>“Simultaneous <span class="nocase">vs.</span> Sequential Analysis for Population <span>PK/PD</span> Data <span>II</span>: Robustness of Methods.”</span> <em>Journal of Pharmacokinetics and Pharmacodynamics</em> 30 (6): 405–16.
 </div>
-<div>
-<p>김우철. 2012. <em>수리통계학</em>. 민영사. <a href="https://books.google.co.kr/books?id=yBOWtwAACAAJ">https://books.google.co.kr/books?id=yBOWtwAACAAJ</a>.</p>
+<div id="ref-kim" class="csl-entry">
+김우철. 2012. <em>수리통계학</em>. 민영사. <a href="https://books.google.co.kr/books?id=yBOWtwAACAAJ">https://books.google.co.kr/books?id=yBOWtwAACAAJ</a>.
 </div>
-<div>
-<p>식품의약품안전평가원 의약품심사부 종양약품과. 2015. <em>의약품 개발 시 집단 약동학 활용을 위한 가이드라인</em>. <a href="http://www.nifds.go.kr/nifds/08_part/part03_c_b.jsp?mode=view&amp;article_no=7038">http://www.nifds.go.kr/nifds/08_part/part03_c_b.jsp?mode=view&amp;article_no=7038</a>.</p>
+<div id="ref-poppk" class="csl-entry">
+식품의약품안전평가원 의약품심사부 종양약품과. 2015. <em>의약품 개발 시 집단 약동학 활용을 위한 가이드라인</em>. <a href="http://www.nifds.go.kr/nifds/08_part/part03_c_b.jsp?mode=view&amp;article_no=7038">http://www.nifds.go.kr/nifds/08_part/part03_c_b.jsp?mode=view&amp;article_no=7038</a>.
 </div>
 </div>
 </div>

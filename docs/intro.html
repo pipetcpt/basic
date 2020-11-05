@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 계량약리학과 관련 개념들 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 계량약리학과 관련 개념들 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -387,7 +390,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:pkpd-modeling-concept"></span>
 <img src="figures/01-fig-01.png" alt="PK-PD 모델링의 개념 (Derendorf and Meibohm 1999)" width="100%" />
 <p class="caption">
-그림 1.1: PK-PD 모델링의 개념 <span class="citation">(Derendorf and Meibohm <a href="#ref-derendorf1999modeling" role="doc-biblioref">1999</a>)</span>
+그림 1.1: PK-PD 모델링의 개념 <span class="citation">(<a href="참고문헌.html#ref-derendorf1999modeling" role="doc-biblioref">Derendorf and Meibohm 1999</a>)</span>
 </p>
 </div>
 <p>그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>은 PK-PD 모델링의 개념을 가장 잘 보여주는 그림이다. 약을 개발하는 초기단계부터 개발자가 알고 싶어하는 것은 신약 몇 mg을 얼마의 간격으로 주면 가장 적절한 효과를 얻을 수 있을까, 얼마까지 안전할까 하는 질문들일 것이다. 이에 답하기 위해서는 환자에서 임상시험을 통해 그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>의 맨 아래 패널과 같은 곡선을 구하면 되겠지만, 환자에서 약효를 투약간격 동안 이렇게 여러 번 실시간으로 측정하는 것은 거의 불가능하다. 대신 쉽게 얻을 수 있는, 시간에 따른 사람에서의 PK 변화(위 왼쪽)와 시험관내 연구 등을 통해 얻어진 약물농도와 PD(약효 대신 추정할 수 있는 각종 생체표지자들)의 관계를 정량적 모델로 파악하면 환자에서 직접 관찰하지 못할지라도 아래쪽 패널과 같이 용량용법(dosage regimen)에 따른 약효나 부작용의 추이의 곡선을 예측할 수 있고, 이를 비임상, 임상시험의 설계나 시판용량 결정 등에 적용할 수 있게 된다. 그리고 그림 <a href="intro.html#fig:pkpd-modeling-concept">1.1</a>의 위 두 패널의 곡선들끼리의 관계를 수학적 모델로 만들어 아래쪽 패널의 곡선을 예측하기 위한 일체의 연구를 하는 연구활동을 포괄적으로 PK/PD 모델링이라고 부른다.</p>
@@ -405,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:diverse-concepts"></span>
 <img src="figures/01-fig-03.png" alt="PK-PD 모델링의 각종 개념들의 연관성 (Helmlinger et al. 2017)" width="100%" />
 <p class="caption">
-그림 1.3: PK-PD 모델링의 각종 개념들의 연관성 <span class="citation">(Helmlinger et al. <a href="#ref-helmlinger2017drug" role="doc-biblioref">2017</a>)</span>
+그림 1.3: PK-PD 모델링의 각종 개념들의 연관성 <span class="citation">(<a href="참고문헌.html#ref-helmlinger2017drug" role="doc-biblioref">Helmlinger et al. 2017</a>)</span>
 </p>
 </div>
 </div>
@@ -466,25 +469,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span id="fig:nonmem-figure"></span>
 <img src="figures/01-fig-06.png" alt="혼합효과 모델링의 개념도. NONMEM 매뉴얼(Beal 2018)의 그림에 수식을 추가한 것" width="100%" />
 <p class="caption">
-그림 1.6: 혼합효과 모델링의 개념도. NONMEM 매뉴얼<span class="citation">(Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span>의 그림에 수식을 추가한 것
+그림 1.6: 혼합효과 모델링의 개념도. NONMEM 매뉴얼<span class="citation">(<a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span>의 그림에 수식을 추가한 것
 </p>
 </div>
 <p>1차식을 따라 주로 신장으로 배설되는 약물의 경우, 사람에서 측정된 혈장 약물농도를 혼합효과 모델로 분석하는 개념이 아래 그림 <a href="intro.html#fig:nonmem-figure">1.6</a>에 잘 나타나 있다. 앞서 저울의 예는 따로 파라미터라고 할 것이 없지만 어떤 시점에서의 약물 농도를 결정하는 것은 약의 용량, 투여 후 경과시간, 그리고 사람의 몸이 약을 다루는 두 개의 파라미터들인 분포용적(Vd)과 청소율(CL)이다. 그림 <a href="intro.html#fig:measured-weight">1.5</a>의 사례에서 쓰인 약물은 CL의 경우 GFR과 같은 공변량의 함수로(그림 <a href="intro.html#fig:nonmem-figure">1.6</a>에서는 선형적으로 비례) 예측할 수 있으나, 실제 어떤 환자 i에서의 CL은 그의 GFR로 예측한 값보다 더 컸고 이는 그 환자에서의 CL의 개인간차(η<sub>CLi</sub>)가 양의 값을 가진 것으로 설명한다(그림 <a href="intro.html#fig:nonmem-figure">1.6</a>의 왼쪽부분). Vd 역시 그의 체중이라는 공변량으로 예측하지만 그의 실제 Vd와는 η<sub>Vdi</sub> 만큼의 차이가 있다. 그림의 오른쪽 아래를 보면 환자 i와 똑 같은 GFR과 체중을 가지는 모든 환자들에서 혈장약물농도 곡선이 위쪽 곡선과 같다고 예측될 것이다. 그런데 실제 환자 i의 CL과 Vd는 그러한 예측과는 조금씩 달랐으므로 개인간차를 반영한 그의 CL과 Vd(CL<sub>i</sub>과 Vd<sub>i</sub>)로 예측한 농도가 아래쪽 곡선이다. 그것으로 모든 것이 끝날 것 같지만, 환자 i에서 t<sub>ij</sub>라는 특정 시간에 측정된 실제 농도(흰 네모)는 개인별 파라미터로 예측한 농도 (검은 동그라미)와 또 차이가 난다. 그 차이의 원인은 가정한 1차식(선형약동학)을 따라 제거된다는 PK모델 자체가 실제 이 약의 농도변화를 정확히 반영하지 못해서(model error)일 수도 있고, 농도측정 방법의 정확도/정밀도의 문제일 수도 있으며, PK를 관찰한 기간 동안에 개일리듬에 의해 환자의 파라미터가 바뀌어서일 수도 있는 등 다양하다. 원인을 한가지로 특정할 수 없지만, 까만 원과 흰 네모 사이의 거리는 파라미터의 개인간차로 설명이 안되는 부분이라서 잔차(ε)라고 하며, 실제 모든 사람에서 각 측정치마다 따라다니는 값이므로 각기 다른 사람임을 나타내는 i와 측정횟수를 의미하는 j를 아래첨자로 함께 붙여서 εij로 표기하게 된다. 마찬가지로 Vd 나 CL의 개인간차는 한 사람에서 하나만 존재하므로 <span class="math inline">\(\eta_{Vdi}\)</span>, <span class="math inline">\(\eta_{CLi}\)</span>와 같이 표기한다.</p>
 
 </div>
 </div>
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-nonmem">
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
-</div>
-<div id="ref-derendorf1999modeling">
-<p>Derendorf, H, and B Meibohm. 1999. “Modeling of Pharmacokinetic/Pharmacodynamic (PK/PD) Relationships: Concepts and Perspectives.” <em>Pharmaceutical Research</em> 16 (2): 176–85. <a href="https://doi.org/10.1023/a:1011907920641">https://doi.org/10.1023/a:1011907920641</a>.</p>
-</div>
-<div id="ref-helmlinger2017drug">
-<p>Helmlinger, Gabriel, Nidal Al-Huniti, Sergey Aksenov, Kirill Peskov, Karen M Hallow, Lulu Chu, David Boulton, et al. 2017. “Drug-Disease Modeling in the Pharmaceutical Industry - Where Mechanistic Systems Pharmacology and Statistical Pharmacometrics Meet.” <em>European Journal of Pharmaceutical Sciences : Official Journal of the European Federation for Pharmaceutical Sciences</em> 109S (November): S39–S46. <a href="https://doi.org/10.1016/j.ejps.2017.05.028">https://doi.org/10.1016/j.ejps.2017.05.028</a>.</p>
 </div>
 </div>
             </section>

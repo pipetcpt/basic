@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 NONMEM 모델 종류 별 제어구문 소개 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,10 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -334,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.2.1" data-path="effect-model.html"><a href="effect-model.html#일반적인-imax-model-vs.-sigmoid-imax-model"><i class="fa fa-check"></i><b>19.2.1</b> 일반적인 I<sub>max</sub> model vs. Sigmoid I<sub>max</sub> model</a></li>
 <li class="chapter" data-level="19.2.2" data-path="effect-model.html"><a href="effect-model.html#다중-약물결합-모델multiple-binding-site-model"><i class="fa fa-check"></i><b>19.2.2</b> 다중 약물결합 모델(multiple binding site model)</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="cov.html"><a href="cov.html#결론"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
+<li class="chapter" data-level="19.3" data-path="effect-model.html"><a href="effect-model.html#결론-1"><i class="fa fa-check"></i><b>19.3</b> 결론</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="delayed-effect.html"><a href="delayed-effect.html"><i class="fa fa-check"></i><b>20</b> 지연효과 모델</a>
 <ul>
@@ -407,39 +410,39 @@ PREDPP는 PRED for population pharmacokinetics의 줄임말로 집단 약동학 
 <div class="example">
 <span id="exm:one-comp" class="example"><strong>코드 3.1  </strong></span>1구획 약동학 모델의 제어구문
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb3-1"><a href="control-stream.html#cb3-1" aria-hidden="true"></a><span class="dt">$PROB</span> <span class="dv">1</span>-compartment model</span>
-<span id="cb3-2"><a href="control-stream.html#cb3-2" aria-hidden="true"></a><span class="dt">$INPUT</span> ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR</span>
-<span id="cb3-3"><a href="control-stream.html#cb3-3" aria-hidden="true"></a><span class="dt">$DATA</span> test.csv IGNORE=@</span>
-<span id="cb3-4"><a href="control-stream.html#cb3-4" aria-hidden="true"></a><span class="dt">$SUBR</span> ADVAN1 TRANS2</span>
-<span id="cb3-5"><a href="control-stream.html#cb3-5" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb3-6"><a href="control-stream.html#cb3-6" aria-hidden="true"></a>  V  = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
-<span id="cb3-7"><a href="control-stream.html#cb3-7" aria-hidden="true"></a>  CL = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
-<span id="cb3-8"><a href="control-stream.html#cb3-8" aria-hidden="true"></a>  S1 = V</span>
-<span id="cb3-9"><a href="control-stream.html#cb3-9" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb3-10"><a href="control-stream.html#cb3-10" aria-hidden="true"></a>  IPRED = F</span>
-<span id="cb3-11"><a href="control-stream.html#cb3-11" aria-hidden="true"></a>  W     = SQRT(THETA(<span class="dv">3</span>)**<span class="dv">2</span> + THETA(<span class="dv">4</span>)**<span class="dv">2</span> <span class="kw">*</span> IPRED**<span class="dv">2</span>)</span>
-<span id="cb3-12"><a href="control-stream.html#cb3-12" aria-hidden="true"></a>  IRES  = DV - IPRED</span>
-<span id="cb3-13"><a href="control-stream.html#cb3-13" aria-hidden="true"></a>  IWRES = IRES / W</span>
-<span id="cb3-14"><a href="control-stream.html#cb3-14" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>)</span>
-<span id="cb3-15"><a href="control-stream.html#cb3-15" aria-hidden="true"></a><span class="dt">$THETA</span></span>
-<span id="cb3-16"><a href="control-stream.html#cb3-16" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">400</span>)</span>
-<span id="cb3-17"><a href="control-stream.html#cb3-17" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">100</span>)</span>
-<span id="cb3-18"><a href="control-stream.html#cb3-18" aria-hidden="true"></a>  <span class="fl">0.0001</span> FIX</span>
-<span id="cb3-19"><a href="control-stream.html#cb3-19" aria-hidden="true"></a>  <span class="fl">0.5</span></span>
-<span id="cb3-20"><a href="control-stream.html#cb3-20" aria-hidden="true"></a><span class="dt">$OMEGA</span></span>
-<span id="cb3-21"><a href="control-stream.html#cb3-21" aria-hidden="true"></a>  <span class="fl">0.02</span></span>
-<span id="cb3-22"><a href="control-stream.html#cb3-22" aria-hidden="true"></a>  <span class="fl">0.02</span></span>
-<span id="cb3-23"><a href="control-stream.html#cb3-23" aria-hidden="true"></a><span class="dt">$SIGMA</span></span>
-<span id="cb3-24"><a href="control-stream.html#cb3-24" aria-hidden="true"></a>  <span class="dv">1</span> FIX</span>
-<span id="cb3-25"><a href="control-stream.html#cb3-25" aria-hidden="true"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER PRINT=<span class="dv">5</span></span>
-<span id="cb3-26"><a href="control-stream.html#cb3-26" aria-hidden="true"></a><span class="dt">$TABLE</span> ID TIME AMT RATE MDV DV IPRED IRES CWRES </span>
-<span id="cb3-27"><a href="control-stream.html#cb3-27" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=sdtab1001</span>
-<span id="cb3-28"><a href="control-stream.html#cb3-28" aria-hidden="true"></a><span class="dt">$TABLE</span> ID TIME AMT DV CL V ETA1 ETA2 </span>
-<span id="cb3-29"><a href="control-stream.html#cb3-29" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=patab1001</span>
-<span id="cb3-30"><a href="control-stream.html#cb3-30" aria-hidden="true"></a><span class="dt">$TABLE</span> ID RF SEX </span>
-<span id="cb3-31"><a href="control-stream.html#cb3-31" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=catab1001</span>
-<span id="cb3-32"><a href="control-stream.html#cb3-32" aria-hidden="true"></a><span class="dt">$TABLE</span> ID WT AGE HT ALB CLCR </span>
-<span id="cb3-33"><a href="control-stream.html#cb3-33" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE=cotab1001</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb3-1"><a href="control-stream.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$PROB</span> <span class="dv">1</span><span class="ot">-c</span>ompartment model</span>
+<span id="cb3-2"><a href="control-stream.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$INPUT</span> ID TIME AMT RATE DUR DV MDV WT AGE SEX HT RF ALB CLCR</span>
+<span id="cb3-3"><a href="control-stream.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$DATA</span> test.csv IGNORE=@</span>
+<span id="cb3-4"><a href="control-stream.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBR</span> ADVAN1 TRANS2</span>
+<span id="cb3-5"><a href="control-stream.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb3-6"><a href="control-stream.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  V  = THETA(<span class="dv">1</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">1</span>))</span>
+<span id="cb3-7"><a href="control-stream.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  CL = THETA(<span class="dv">2</span>)<span class="dt">*EXP</span>(ETA(<span class="dv">2</span>))</span>
+<span id="cb3-8"><a href="control-stream.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  S1 = V</span>
+<span id="cb3-9"><a href="control-stream.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb3-10"><a href="control-stream.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  IPRED = F</span>
+<span id="cb3-11"><a href="control-stream.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  W     = SQRT(THETA(<span class="dv">3</span>)**<span class="dv">2</span> + THETA(<span class="dv">4</span>)**<span class="dv">2</span> <span class="ot">*</span> IPRED**<span class="dv">2</span>)</span>
+<span id="cb3-12"><a href="control-stream.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  IRES  = DV - IPRED</span>
+<span id="cb3-13"><a href="control-stream.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  IWRES = IRES / W</span>
+<span id="cb3-14"><a href="control-stream.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  Y     = IPRED + W <span class="ot">*</span> EPS(<span class="dv">1</span>)</span>
+<span id="cb3-15"><a href="control-stream.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span></span>
+<span id="cb3-16"><a href="control-stream.html#cb3-16" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">400</span>)</span>
+<span id="cb3-17"><a href="control-stream.html#cb3-17" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb3-18"><a href="control-stream.html#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0001</span> FIX</span>
+<span id="cb3-19"><a href="control-stream.html#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.5</span></span>
+<span id="cb3-20"><a href="control-stream.html#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span></span>
+<span id="cb3-21"><a href="control-stream.html#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.02</span></span>
+<span id="cb3-22"><a href="control-stream.html#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.02</span></span>
+<span id="cb3-23"><a href="control-stream.html#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="dt">$SIGMA</span></span>
+<span id="cb3-24"><a href="control-stream.html#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> FIX</span>
+<span id="cb3-25"><a href="control-stream.html#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER PRINT=<span class="dv">5</span></span>
+<span id="cb3-26"><a href="control-stream.html#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID TIME AMT RATE MDV DV IPRED IRES CWRES </span>
+<span id="cb3-27"><a href="control-stream.html#cb3-27" aria-hidden="true" tabindex="-1"></a>       ONEHEADER NOPRINT FILE=sdtab1001</span>
+<span id="cb3-28"><a href="control-stream.html#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID TIME AMT DV CL V ETA1 ETA2 </span>
+<span id="cb3-29"><a href="control-stream.html#cb3-29" aria-hidden="true" tabindex="-1"></a>       ONEHEADER NOPRINT FILE=patab1001</span>
+<span id="cb3-30"><a href="control-stream.html#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID RF SEX </span>
+<span id="cb3-31"><a href="control-stream.html#cb3-31" aria-hidden="true" tabindex="-1"></a>       ONEHEADER NOPRINT FILE=catab1001</span>
+<span id="cb3-32"><a href="control-stream.html#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID WT AGE HT ALB CLCR </span>
+<span id="cb3-33"><a href="control-stream.html#cb3-33" aria-hidden="true" tabindex="-1"></a>       ONEHEADER NOPRINT FILE=cotab1001</span></code></pre></div>
 <p></p>
 <div id="problem-data-input" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> $PROBLEM, $DATA, $INPUT</h3>
@@ -705,27 +708,27 @@ ALPHA, BETA, GAMMA, K32, K42, KA
 <div class="example">
 <span id="exm:two-comp-pk" class="example"><strong>코드 3.2  </strong></span>2구획 경구 약동학 모델의 $PK 레코드
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb9-1"><a href="control-stream.html#cb9-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN4 TRANS4</span>
-<span id="cb9-2"><a href="control-stream.html#cb9-2" aria-hidden="true"></a></span>
-<span id="cb9-3"><a href="control-stream.html#cb9-3" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb9-4"><a href="control-stream.html#cb9-4" aria-hidden="true"></a>  CL  = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb9-5"><a href="control-stream.html#cb9-5" aria-hidden="true"></a>  V2  = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb9-6"><a href="control-stream.html#cb9-6" aria-hidden="true"></a>  V3  = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb9-7"><a href="control-stream.html#cb9-7" aria-hidden="true"></a>  Q   = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb9-8"><a href="control-stream.html#cb9-8" aria-hidden="true"></a>  KA  = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
-<span id="cb9-9"><a href="control-stream.html#cb9-9" aria-hidden="true"></a>  </span>
-<span id="cb9-10"><a href="control-stream.html#cb9-10" aria-hidden="true"></a>  S2  = V2/<span class="dv">1000</span></span>
-<span id="cb9-11"><a href="control-stream.html#cb9-11" aria-hidden="true"></a>  </span>
-<span id="cb9-12"><a href="control-stream.html#cb9-12" aria-hidden="true"></a>  KE  = CL/V2</span>
-<span id="cb9-13"><a href="control-stream.html#cb9-13" aria-hidden="true"></a>  K12 = Q/V2</span>
-<span id="cb9-14"><a href="control-stream.html#cb9-14" aria-hidden="true"></a>  K21 = Q/V3</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb9-1"><a href="control-stream.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN4 TRANS4</span>
+<span id="cb9-2"><a href="control-stream.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="control-stream.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb9-4"><a href="control-stream.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  CL  = THETA(<span class="dv">1</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb9-5"><a href="control-stream.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  V2  = THETA(<span class="dv">2</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb9-6"><a href="control-stream.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  V3  = THETA(<span class="dv">3</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb9-7"><a href="control-stream.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  Q   = THETA(<span class="dv">4</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb9-8"><a href="control-stream.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  KA  = THETA(<span class="dv">5</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb9-9"><a href="control-stream.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-10"><a href="control-stream.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  S2  = V2/<span class="dv">1000</span></span>
+<span id="cb9-11"><a href="control-stream.html#cb9-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-12"><a href="control-stream.html#cb9-12" aria-hidden="true" tabindex="-1"></a>  KE  = CL/V2</span>
+<span id="cb9-13"><a href="control-stream.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  K12 = Q/V2</span>
+<span id="cb9-14"><a href="control-stream.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  K21 = Q/V3</span></code></pre></div>
 <p>$PK에서 각 구획의 이동을 나타내는 이동속도상수를 정의할 수 있으며, 투여량과 관찰값(종속변수, DV)의 단위와 예측하고자 하는 약동학 파라미터의 단위에 따라 척도 파라미터를 정의하여야 한다. 예를 들어, 투여량의 단위가 mg 이고, 관찰값인 농도 단위는 ng/mL (=μg/L), 관찰시간 h, 분포용적 (V2, V3) L, 청소율 (CL) L/h 일 때, 아래와 같이 단위가 통일되지 않기 때문에 척도 파라미터 (S<sub>n</sub>)로 단위를 통일시켜야 한다.
 <span class="math display" id="eq:scalingparam">\[\begin{equation}
 \frac{Amount\ (mg)}{Vd\ (L)} \neq \ DV\ (μg/L)
 \tag{3.1}
 \end{equation}\]</span></p>
 <p>위의 식 <a href="control-stream.html#eq:scalingparam">(3.1)</a>에서 좌변에 1000을 곱하면 단위가 DV와 통일된다. <code>S2=V2/1000</code>이며, 이를 $PK에 코드 <a href="control-stream.html#exm:two-comp-pk">3.2</a>처럼 기술한다. 동일한 모델을 분석할 경우, 사용자가 정의한 일반 ADVAN을 사용한 모델보다 특수 ADVAN 모델의 실행시간이 더 짧다.</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption>
 <span id="tab:advan-param">표 3.2: </span>특수 ADVAN의 부가 파라미터
 </caption>
@@ -783,7 +786,7 @@ Absorption lag parameter
 </tbody>
 <tfoot>
 <tr>
-<td style="padding: 0; border: 0;" colspan="100%">
+<td style="padding: 0; " colspan="100%">
 <sup>*</sup> 각 파라미터 뒤의 숫자는 컴파트먼트 번호를 뜻한다.
 </td>
 </tr>
@@ -800,15 +803,15 @@ Absorption lag parameter
 <h3><span class="header-section-number">3.3.3</span> $THETA, $OMEGA, $SIGMA</h3>
 <p></p>
 <p>$THETA, $OMEGA, $SIGMA는 모델 파라미터 추정을 위해 각 파라미터의 초기값을 제시하는 블록들이다. $THETA는 고정효과 파라미터(fixed-effect parameters), 즉 각 파라미터의 대표값 추정을 위한 블록이다. $PK에서 정의된 번호 순서대로 초기값을 제시하면 된다.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb10-1"><a href="control-stream.html#cb10-1" aria-hidden="true"></a><span class="dt">$PK</span> </span>
-<span id="cb10-2"><a href="control-stream.html#cb10-2" aria-hidden="true"></a>TVCL = THETA(<span class="dv">1</span>) </span>
-<span id="cb10-3"><a href="control-stream.html#cb10-3" aria-hidden="true"></a>CL = TVCL <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>)) </span>
-<span id="cb10-4"><a href="control-stream.html#cb10-4" aria-hidden="true"></a>TVV  = THETA(<span class="dv">2</span>) </span>
-<span id="cb10-5"><a href="control-stream.html#cb10-5" aria-hidden="true"></a>V = TVV <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>)) </span>
-<span id="cb10-6"><a href="control-stream.html#cb10-6" aria-hidden="true"></a>TVKA = THETA(<span class="dv">3</span>) </span>
-<span id="cb10-7"><a href="control-stream.html#cb10-7" aria-hidden="true"></a>KA = TVKA <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb10-1"><a href="control-stream.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span> </span>
+<span id="cb10-2"><a href="control-stream.html#cb10-2" aria-hidden="true" tabindex="-1"></a>TVCL = THETA(<span class="dv">1</span>) </span>
+<span id="cb10-3"><a href="control-stream.html#cb10-3" aria-hidden="true" tabindex="-1"></a>CL = TVCL <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>)) </span>
+<span id="cb10-4"><a href="control-stream.html#cb10-4" aria-hidden="true" tabindex="-1"></a>TVV  = THETA(<span class="dv">2</span>) </span>
+<span id="cb10-5"><a href="control-stream.html#cb10-5" aria-hidden="true" tabindex="-1"></a>V = TVV <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>)) </span>
+<span id="cb10-6"><a href="control-stream.html#cb10-6" aria-hidden="true" tabindex="-1"></a>TVKA = THETA(<span class="dv">3</span>) </span>
+<span id="cb10-7"><a href="control-stream.html#cb10-7" aria-hidden="true" tabindex="-1"></a>KA = TVKA <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span></code></pre></div>
 <p>예를 들어 $PK 레코드가 위와 같을 때, $THETA는 아래와 같이 쓸 수 있다:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb11-1"><a href="control-stream.html#cb11-1" aria-hidden="true"></a><span class="dt">$THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb11-1"><a href="control-stream.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>)</span></code></pre></div>
 <p>순서대로 THETA(1), THETA(2), THETA(3)의 초기값을 100, 30, 0.7로 제시하였다. 괄호 안의 값은 `(하한값, 초기 추정값, 상한값)’을 의미하며, 일반적으로 PK 파라미터는 음수인 경우가 없기 때문에, 하한값을 0으로 정의한다. 상한값을 제시하지 않으면, 10<sup>6</sup>이 기본 상한값이다.</p>
 <p>$OMEGA와 $SIGMA는 임의효과 파라미터(random-effect parameters)를 추정하기 위함이며, $OMEGA는 개인간 변이를, $SIGMA는 각 관찰값의 변이를 추정하는 위한 레코드이다. 위의 $PK에서 CL=TVCL*EXP(ETA(1))로 정의하였는데, 이를 풀어서 기술하면, CL는 TVCL이라는 집단의 대표값을 가지며, 평균은 0이고 분산은 ω<sub>CL</sub><sup>2</sup>을 따르는 분포 η<sub>1</sub>를 포함한 개인의 CL값이다. 각 개인마다 하나의 η<sub>1</sub>을 가지므로 CL는 개인마다 다르다.</p>
 <p>
@@ -822,18 +825,18 @@ Absorption lag parameter
 \end{pmatrix}
 \end{equation}\]</span></p>
 <p>OMEGA 행렬은 대각행렬이며, 분산-공분산 행렬이다. 이를 $OMEGA를 사용하여 추정하면 아래와 같이 나타낼 수 있다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb12-1"><a href="control-stream.html#cb12-1" aria-hidden="true"></a><span class="dt">$OMEGA</span> <span class="fl">0.16</span> <span class="fl">0.25</span> <span class="fl">0.16</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb12-1"><a href="control-stream.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span> <span class="fl">0.16</span> <span class="fl">0.25</span> <span class="fl">0.16</span></span></code></pre></div>
 <p>여기서 초기 추정값은 각 파라미터의 분산값을 나타낸다. 만약 CL와 V 간의 상관관계가 존재하여 공분산을 추정할 경우 $OMEGA BLOCK을 써서 다음과 같이 나타낼 수 있다.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb13-1"><a href="control-stream.html#cb13-1" aria-hidden="true"></a><span class="dt">$OMEGA</span> BLOCK(<span class="dv">2</span>)</span>
-<span id="cb13-2"><a href="control-stream.html#cb13-2" aria-hidden="true"></a><span class="fl">0.16</span></span>
-<span id="cb13-3"><a href="control-stream.html#cb13-3" aria-hidden="true"></a><span class="fl">0.01</span> <span class="fl">0.25</span></span>
-<span id="cb13-4"><a href="control-stream.html#cb13-4" aria-hidden="true"></a><span class="dt">$OMEGA</span> <span class="fl">0.16</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb13-1"><a href="control-stream.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span> BLOCK(<span class="dv">2</span>)</span>
+<span id="cb13-2"><a href="control-stream.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fl">0.16</span></span>
+<span id="cb13-3"><a href="control-stream.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.01</span> <span class="fl">0.25</span></span>
+<span id="cb13-4"><a href="control-stream.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span> <span class="fl">0.16</span></span></code></pre></div>
 <p>$SIGMA는 관찰갑과 예측값의 차이, 즉, 잔차의 분포를 나타내는 ε (residual varilability, RV)를 추정하는 블록이다. $SIGMA는 ε 를 가법변동(additive variation) 또는 고정변동계수(constant coefficient of variation, CCV)를 이용하여 정의하고 그 값의 분산을 추정하는 것이며, 행렬로 표현할 수 있다. $ERROR를 사용하여 EPS(1)과 EPS(2)를 정의하고, 이를 SIGMA 행렬로 표현하면 아래와 같다.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb14-1"><a href="control-stream.html#cb14-1" aria-hidden="true"></a><span class="dt">$ERROR</span> </span>
-<span id="cb14-2"><a href="control-stream.html#cb14-2" aria-hidden="true"></a>IPRED = F </span>
-<span id="cb14-3"><a href="control-stream.html#cb14-3" aria-hidden="true"></a>IRES = DV-IPRED </span>
-<span id="cb14-4"><a href="control-stream.html#cb14-4" aria-hidden="true"></a>IWRES = IRES/IPRED </span>
-<span id="cb14-5"><a href="control-stream.html#cb14-5" aria-hidden="true"></a>Y = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) +EPS(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb14-1"><a href="control-stream.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span> </span>
+<span id="cb14-2"><a href="control-stream.html#cb14-2" aria-hidden="true" tabindex="-1"></a>IPRED = F </span>
+<span id="cb14-3"><a href="control-stream.html#cb14-3" aria-hidden="true" tabindex="-1"></a>IRES = DV-IPRED </span>
+<span id="cb14-4"><a href="control-stream.html#cb14-4" aria-hidden="true" tabindex="-1"></a>IWRES = IRES/IPRED </span>
+<span id="cb14-5"><a href="control-stream.html#cb14-5" aria-hidden="true" tabindex="-1"></a>Y = F*(<span class="dv">1</span>+EPS(<span class="dv">1</span>)) +EPS(<span class="dv">2</span>)</span></code></pre></div>
 <p><span class="math display" id="eq:ccv-equation">\[\begin{equation}
 \begin{pmatrix} 
    \sigma_{1,1}^2 &amp; 0 \\
@@ -842,16 +845,16 @@ Absorption lag parameter
 \tag{3.3}
 \end{equation}\]</span></p>
 <p>여기서 EPS(1)은 고정변동계수의 분산값이며, EPS(2)는 가법변동을 통해 얻은 잔차의 분산값이다. 데이터의 성격이나 분포범위에 따라서 고정변동계수(CCV), 가법변동, 가법과 ccv 더한 모델이 있다. 잔차변이(EPS)를 $THETA 레코드에서 추정하도록 $ERROR의 코드를 변경해서 사용하기도 한다:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb15-1"><a href="control-stream.html#cb15-1" aria-hidden="true"></a><span class="dt">$ERROR</span> </span>
-<span id="cb15-2"><a href="control-stream.html#cb15-2" aria-hidden="true"></a>IPRED = F </span>
-<span id="cb15-3"><a href="control-stream.html#cb15-3" aria-hidden="true"></a>W = SQRT(THETA(<span class="dv">4</span>)**<span class="dv">2</span> + THETA(<span class="dv">5</span>)**<span class="dv">2</span> <span class="dt">*IPRED</span>**<span class="dv">2</span>) </span>
-<span id="cb15-4"><a href="control-stream.html#cb15-4" aria-hidden="true"></a>IRES = DV-IPRED </span>
-<span id="cb15-5"><a href="control-stream.html#cb15-5" aria-hidden="true"></a>IWRES = IRES/W </span>
-<span id="cb15-6"><a href="control-stream.html#cb15-6" aria-hidden="true"></a>Y = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>)</span>
-<span id="cb15-7"><a href="control-stream.html#cb15-7" aria-hidden="true"></a>...</span>
-<span id="cb15-8"><a href="control-stream.html#cb15-8" aria-hidden="true"></a><span class="dt">$THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>) <span class="dv">10</span> <span class="fl">0.2</span></span>
-<span id="cb15-9"><a href="control-stream.html#cb15-9" aria-hidden="true"></a>...</span>
-<span id="cb15-10"><a href="control-stream.html#cb15-10" aria-hidden="true"></a><span class="dt">$SIGMA</span> <span class="dv">1</span> FIX</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb15-1"><a href="control-stream.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span> </span>
+<span id="cb15-2"><a href="control-stream.html#cb15-2" aria-hidden="true" tabindex="-1"></a>IPRED = F </span>
+<span id="cb15-3"><a href="control-stream.html#cb15-3" aria-hidden="true" tabindex="-1"></a>W = SQRT(THETA(<span class="dv">4</span>)**<span class="dv">2</span> + THETA(<span class="dv">5</span>)**<span class="dv">2</span> <span class="dt">*IPRED</span>**<span class="dv">2</span>) </span>
+<span id="cb15-4"><a href="control-stream.html#cb15-4" aria-hidden="true" tabindex="-1"></a>IRES = DV-IPRED </span>
+<span id="cb15-5"><a href="control-stream.html#cb15-5" aria-hidden="true" tabindex="-1"></a>IWRES = IRES/W </span>
+<span id="cb15-6"><a href="control-stream.html#cb15-6" aria-hidden="true" tabindex="-1"></a>Y = IPRED + W <span class="ot">*</span> EPS(<span class="dv">1</span>)</span>
+<span id="cb15-7"><a href="control-stream.html#cb15-7" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb15-8"><a href="control-stream.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span> (<span class="dv">0</span>, <span class="dv">100</span>) (<span class="dv">0</span>, <span class="dv">30</span>) (<span class="dv">0</span>, <span class="fl">0.7</span>) <span class="dv">10</span> <span class="fl">0.2</span></span>
+<span id="cb15-9"><a href="control-stream.html#cb15-9" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb15-10"><a href="control-stream.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="dt">$SIGMA</span> <span class="dv">1</span> FIX</span></code></pre></div>
 <p>여기서 THETA(4)는 가법변동값을, THETA(5)는 고정변동계수값을 의미한다. 위의 $ERROR 레코드에서 사용한 EPS(1)은 $SIGMA 에서 1로 FIX하여 W식을 통해 잔차의 분포를 추정할 수 있도록 하여야 하며, 주의할 점은 $THETA를 통해 추정된 잔차변이는 분산값이 아니라 표준편차(σ) 값이다.</p>
 </div>
 <div id="estimation-simulation" class="section level3" number="3.3.4">
@@ -860,20 +863,20 @@ Absorption lag parameter
 <p>$ESTIMATION은 파라미터 추정을 위한 추정방법을 선택하고 추정결과를 어떻게 출력할 것인지를 명시하는 레코드이다. 추정방법에는 1차추정법(first order, FO), 1차 조건부 추정법 (first-order conditional estimation, FOCE), 라플라시안 추정법 등을 비롯하여 다양한 방법들이 있다. 추정방법에 대한 이론적인 설명은 <a href="estimation-methods.html#estimation-methods">9장 파라미터 추정 방법 및 세팅</a>에서 자세히 다루기로 하고 여기서는 제어구문에 사용하는 기본적인 코드와 용어에 대해서 설명한다.</p>
 <p>
 </p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb16-1"><a href="control-stream.html#cb16-1" aria-hidden="true"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER PRINT=<span class="dv">10</span> SIGDIGITS=<span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb16-1"><a href="control-stream.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER PRINT=<span class="dv">10</span> SIGDIGITS=<span class="dv">3</span></span></code></pre></div>
 <p></p>
 <p>위의 $ESTIMATION에서 사용하는 옵션을 살펴보자. 우선, 추정방법은 <code>METHOD=</code> 을 사용한다. FO 방법은 <code>METHOD=0</code>, FOCE는 <code>METHOD=1</code>이며, INTERACTION 옵션을 사용할 수 있다. NOABORT 옵션을 사용하여 데이터 내 개인의 Hessian 행렬이 양(+)의 값을 가지지 않아서 파라미터 추정을 위한 최소화 과정이 중단되는 것을 방지할 수 있다. 즉, 추정 과정에서 모델이 중단되는 것을 어느정도 피할 수 있다. MAXEVAL 옵션은 목적함수를 이용한 추정 계산 횟수를 정하는데 사용된다. 0 에서 99,999,999까지의 값을 줄수 있지만, 일반적으로 함수계산 횟수의 제한 때문에 파라미터 추정이 중단되지 않기 위해 충분히 큰 값을 준다(위의 예에서는 <code>MAXEVAL=9999</code>). <code>PRINT=n</code>은 추정과정 중 자세한 정보를 n번 째 마다 제공하도록 하는 옵션이며, SIGDIGITS (SIGDIG)은 최종 파라미터 추정값의 유효숫자를 결정하는 옵션이다. 이를 사용하지 않으면 NONMEM은 최종 파라미터의 유효숫자를 3으로 지정한다.</p>
 <p>$SIMULATION은 추정된 최종 파라미터를 FIX하여 다양한 상황을 시뮬레이션 하거나 모델 검증을 위한 시각적 예측점검(visual predictive check) 과정에 사용할 수 있다.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb17-1"><a href="control-stream.html#cb17-1" aria-hidden="true"></a><span class="dt">$SIMULATION</span> (seed) ONLYSIM NSUB=<span class="dv">1000</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb17-1"><a href="control-stream.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SIMULATION</span> (seed) ONLYSIM NSUB=<span class="dv">1000</span></span></code></pre></div>
 <p>`NSUB=’으로 시뮬레이션 하고자 하는 대상자 수(시뮬레이션 횟수)를 정하고, 이를 통해 얻은 결과를 정리하여 예측구간을 설정하여 관찰값과 비교할 수 있다. (seed)는 임의 수를 발생하기 위한 시작점이며, 임의의 숫자를 입력하면 된다. $SIMULATION을 사용 시 $ESTIMATION과 $COVARIANCE는 함께 사용할 수 없다.</p>
 </div>
 <div id="covariance-table" class="section level3" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> $COVARIANCE, $TABLE</h3>
 <p></p>
 <p>$COVARIANCE는 NONMEM의 추정과정이 끝난 후, 표준오차, 추정값들의 분산-공분산 행렬, 상관행렬, 분산-공분산 역행렬 출력을 위해 사용된다.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb18-1"><a href="control-stream.html#cb18-1" aria-hidden="true"></a><span class="dt">$COVARIANCE</span> PRINT=E UNCONDITIONAL MATRIX=S</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb18-1"><a href="control-stream.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$COVARIANCE</span> PRINT=E UNCONDITIONAL MATRIX=S</span></code></pre></div>
 <p>PRINT=E 옵션을 사용하면 분산-공분산 행렬의 고유값(eigenvalue)를 결과파일에 출력해준다. 이를 이용하여 조건수(condition number)를 계산할 수 있는데, 고유값 중 가장 큰 값을 가장 작은 값으로 나누어 얻는다. 조건수의 값을 통해 모델의 안정성(stability)을 판단할 수 있으며, 경우에 따라 모델러는 모델을 단순화 시키거나, 추정해야 할 파라미터의 수를 줄여 모델을 안정화 시킬 수 있다. 공분산 계산 시 R<sub>-1</sub>SR<sub>-1</sub> 행렬이 기본계산에 사용되는데, <code>MATRIX=S</code> 또는 <code>MATRIX=R</code> 옵션을 사용하여 공분산 계산 과정에서 S 행렬이나 R 행렬을 사용할 수 있다. <code>UNCONDITIONAL</code> 옵션은 추정 단계의 성공여부와 관계없이 늘 공분산 단계를 출력해 준다.</p>
-<p>$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 <a href="control-stream.html#exm:table-record">3.3</a>처럼 $TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (<span class="citation">Hooker et al. (<a href="#ref-R-xpose4" role="doc-biblioref">2020</a>)</span>) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.</p>
+<p>$TABLE은 추정결과의 출력을 제어하는데 사용되는 레코드이다. 출력할 변수명을 코드 <a href="control-stream.html#exm:table-record">3.3</a>처럼 $TABLE에 순서대로 나열할 수 있으며, ONEHEADER는 결과표에 변수 제목행을 출력하라는 옵션(출력하지 않으려면 NOHEADER)이고, NOPRINT와 FILE = sdtab1 은 결과를 NONMEM 보고파일 내에 출력하지 말고 sdtab1이라는 별도의 파일명으로 출력해 달라는 옵션이다. NOAPPEND 옵션을 쓰지 않으면, 결과 파일에 DV, PRED, RES, WRES 변수 결과값들이 자동으로 함께 출력된다. 또한, FILE 명의 sdtab, patab, catab, cotab은 각각 xpose4에서 standard table, parameter table, categorical covariate table, continuous covariate table을 의미하는 용어이므로 특성에 맞게 각 변수들을 배치하면, R의 xpose4를 통해 결과를 확인하는데 편리하다. (<span class="citation"><a href="참고문헌.html#ref-R-xpose4" role="doc-biblioref">Hooker et al.</a> (<a href="참고문헌.html#ref-R-xpose4" role="doc-biblioref">2020</a>)</span>) 다만, 뒤의 숫자(예에서는 1)는 동일하게 지정해주어야 정확한 결과 분석이 가능하다.</p>
 <p>
 
 
@@ -883,32 +886,32 @@ Absorption lag parameter
 <div class="example">
 <span id="exm:table-record" class="example"><strong>코드 3.3  </strong></span>$TABLE 레코드의 예
 </div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb19-1"><a href="control-stream.html#cb19-1" aria-hidden="true"></a><span class="dt">$THETA</span></span>
-<span id="cb19-2"><a href="control-stream.html#cb19-2" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
-<span id="cb19-3"><a href="control-stream.html#cb19-3" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>)</span>
-<span id="cb19-4"><a href="control-stream.html#cb19-4" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">300</span>)</span>
-<span id="cb19-5"><a href="control-stream.html#cb19-5" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
-<span id="cb19-6"><a href="control-stream.html#cb19-6" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dv">5</span>)</span>
-<span id="cb19-7"><a href="control-stream.html#cb19-7" aria-hidden="true"></a>  </span>
-<span id="cb19-8"><a href="control-stream.html#cb19-8" aria-hidden="true"></a>  <span class="fl">0.001</span> FIX</span>
-<span id="cb19-9"><a href="control-stream.html#cb19-9" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">1</span>)</span>
-<span id="cb19-10"><a href="control-stream.html#cb19-10" aria-hidden="true"></a></span>
-<span id="cb19-11"><a href="control-stream.html#cb19-11" aria-hidden="true"></a><span class="dt">$OMEGA</span></span>
-<span id="cb19-12"><a href="control-stream.html#cb19-12" aria-hidden="true"></a>  <span class="fl">0.04</span></span>
-<span id="cb19-13"><a href="control-stream.html#cb19-13" aria-hidden="true"></a>  <span class="fl">0.04</span></span>
-<span id="cb19-14"><a href="control-stream.html#cb19-14" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb19-15"><a href="control-stream.html#cb19-15" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb19-16"><a href="control-stream.html#cb19-16" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb19-17"><a href="control-stream.html#cb19-17" aria-hidden="true"></a></span>
-<span id="cb19-18"><a href="control-stream.html#cb19-18" aria-hidden="true"></a><span class="dt">$SIGMA</span></span>
-<span id="cb19-19"><a href="control-stream.html#cb19-19" aria-hidden="true"></a>  <span class="dv">1</span> FIX</span>
-<span id="cb19-20"><a href="control-stream.html#cb19-20" aria-hidden="true"></a></span>
-<span id="cb19-21"><a href="control-stream.html#cb19-21" aria-hidden="true"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER </span>
-<span id="cb19-22"><a href="control-stream.html#cb19-22" aria-hidden="true"></a>            PRINT=<span class="dv">10</span> SIGDIGITS=<span class="dv">3</span></span>
-<span id="cb19-23"><a href="control-stream.html#cb19-23" aria-hidden="true"></a></span>
-<span id="cb19-24"><a href="control-stream.html#cb19-24" aria-hidden="true"></a><span class="dt">$TABLE</span> ID TIME AMT DV MDV IPRED CWRES IWRES</span>
-<span id="cb19-25"><a href="control-stream.html#cb19-25" aria-hidden="true"></a>       ONEHEADER NOPRINT FILE = sdtab1</span>
-<span id="cb19-26"><a href="control-stream.html#cb19-26" aria-hidden="true"></a><span class="dt">$TABLE</span> ID ETA(<span class="dv">1</span>) ETA(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb19-1"><a href="control-stream.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span></span>
+<span id="cb19-2"><a href="control-stream.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
+<span id="cb19-3"><a href="control-stream.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>)</span>
+<span id="cb19-4"><a href="control-stream.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">300</span>)</span>
+<span id="cb19-5"><a href="control-stream.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
+<span id="cb19-6"><a href="control-stream.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dv">5</span>)</span>
+<span id="cb19-7"><a href="control-stream.html#cb19-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-8"><a href="control-stream.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.001</span> FIX</span>
+<span id="cb19-9"><a href="control-stream.html#cb19-9" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">1</span>)</span>
+<span id="cb19-10"><a href="control-stream.html#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="control-stream.html#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span></span>
+<span id="cb19-12"><a href="control-stream.html#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.04</span></span>
+<span id="cb19-13"><a href="control-stream.html#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.04</span></span>
+<span id="cb19-14"><a href="control-stream.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb19-15"><a href="control-stream.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb19-16"><a href="control-stream.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb19-17"><a href="control-stream.html#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="control-stream.html#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="dt">$SIGMA</span></span>
+<span id="cb19-19"><a href="control-stream.html#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> FIX</span>
+<span id="cb19-20"><a href="control-stream.html#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="control-stream.html#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="dt">$ESTIMATION</span> NOABORT MAXEVAL=<span class="dv">9999</span> METHOD=<span class="dv">1</span> INTER </span>
+<span id="cb19-22"><a href="control-stream.html#cb19-22" aria-hidden="true" tabindex="-1"></a>            PRINT=<span class="dv">10</span> SIGDIGITS=<span class="dv">3</span></span>
+<span id="cb19-23"><a href="control-stream.html#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="control-stream.html#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID TIME AMT DV MDV IPRED CWRES IWRES</span>
+<span id="cb19-25"><a href="control-stream.html#cb19-25" aria-hidden="true" tabindex="-1"></a>       ONEHEADER NOPRINT FILE = sdtab1</span>
+<span id="cb19-26"><a href="control-stream.html#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="dt">$TABLE</span> ID ETA(<span class="dv">1</span>) ETA(<span class="dv">2</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="모델-종류별-제어구문" class="section level2" number="3.4">
@@ -922,115 +925,115 @@ Absorption lag parameter
 <div class="example">
 <span id="exm:advan4" class="example"><strong>코드 3.4  </strong></span>2구획 경구 약동학 모델의 제어구문의 예. ADVAN4
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb20-1"><a href="control-stream.html#cb20-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN4 TRANS4</span>
-<span id="cb20-2"><a href="control-stream.html#cb20-2" aria-hidden="true"></a></span>
-<span id="cb20-3"><a href="control-stream.html#cb20-3" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb20-4"><a href="control-stream.html#cb20-4" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb20-5"><a href="control-stream.html#cb20-5" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb20-6"><a href="control-stream.html#cb20-6" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb20-7"><a href="control-stream.html#cb20-7" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb20-8"><a href="control-stream.html#cb20-8" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
-<span id="cb20-9"><a href="control-stream.html#cb20-9" aria-hidden="true"></a></span>
-<span id="cb20-10"><a href="control-stream.html#cb20-10" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
-<span id="cb20-11"><a href="control-stream.html#cb20-11" aria-hidden="true"></a></span>
-<span id="cb20-12"><a href="control-stream.html#cb20-12" aria-hidden="true"></a>  KE    = CL/V2</span>
-<span id="cb20-13"><a href="control-stream.html#cb20-13" aria-hidden="true"></a>  K12   = Q/V2</span>
-<span id="cb20-14"><a href="control-stream.html#cb20-14" aria-hidden="true"></a>  K21   = Q/V3</span>
-<span id="cb20-15"><a href="control-stream.html#cb20-15" aria-hidden="true"></a></span>
-<span id="cb20-16"><a href="control-stream.html#cb20-16" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb20-17"><a href="control-stream.html#cb20-17" aria-hidden="true"></a>  IPRED = F</span>
-<span id="cb20-18"><a href="control-stream.html#cb20-18" aria-hidden="true"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="kw">*</span> IPRED**<span class="dv">2</span>)</span>
-<span id="cb20-19"><a href="control-stream.html#cb20-19" aria-hidden="true"></a>  IRES  = DV - IPRED</span>
-<span id="cb20-20"><a href="control-stream.html#cb20-20" aria-hidden="true"></a>  IWRES = IRES / W</span>
-<span id="cb20-21"><a href="control-stream.html#cb20-21" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>) </span>
-<span id="cb20-22"><a href="control-stream.html#cb20-22" aria-hidden="true"></a></span>
-<span id="cb20-23"><a href="control-stream.html#cb20-23" aria-hidden="true"></a><span class="dt">$THETA</span></span>
-<span id="cb20-24"><a href="control-stream.html#cb20-24" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
-<span id="cb20-25"><a href="control-stream.html#cb20-25" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>)</span>
-<span id="cb20-26"><a href="control-stream.html#cb20-26" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">300</span>)</span>
-<span id="cb20-27"><a href="control-stream.html#cb20-27" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
-<span id="cb20-28"><a href="control-stream.html#cb20-28" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dv">5</span>)</span>
-<span id="cb20-29"><a href="control-stream.html#cb20-29" aria-hidden="true"></a>  </span>
-<span id="cb20-30"><a href="control-stream.html#cb20-30" aria-hidden="true"></a>  <span class="fl">0.001</span> FIX</span>
-<span id="cb20-31"><a href="control-stream.html#cb20-31" aria-hidden="true"></a>  (<span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">1</span>)</span>
-<span id="cb20-32"><a href="control-stream.html#cb20-32" aria-hidden="true"></a></span>
-<span id="cb20-33"><a href="control-stream.html#cb20-33" aria-hidden="true"></a><span class="dt">$OMEGA</span></span>
-<span id="cb20-34"><a href="control-stream.html#cb20-34" aria-hidden="true"></a>  <span class="fl">0.04</span></span>
-<span id="cb20-35"><a href="control-stream.html#cb20-35" aria-hidden="true"></a>  <span class="fl">0.04</span></span>
-<span id="cb20-36"><a href="control-stream.html#cb20-36" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb20-37"><a href="control-stream.html#cb20-37" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb20-38"><a href="control-stream.html#cb20-38" aria-hidden="true"></a>  <span class="dv">0</span> FIX</span>
-<span id="cb20-39"><a href="control-stream.html#cb20-39" aria-hidden="true"></a></span>
-<span id="cb20-40"><a href="control-stream.html#cb20-40" aria-hidden="true"></a><span class="dt">$SIGMA</span></span>
-<span id="cb20-41"><a href="control-stream.html#cb20-41" aria-hidden="true"></a>  <span class="dv">1</span> FIX</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb20-1"><a href="control-stream.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN4 TRANS4</span>
+<span id="cb20-2"><a href="control-stream.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="control-stream.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb20-4"><a href="control-stream.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  CL    = THETA(<span class="dv">1</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb20-5"><a href="control-stream.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  V2    = THETA(<span class="dv">2</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb20-6"><a href="control-stream.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  V3    = THETA(<span class="dv">3</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb20-7"><a href="control-stream.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  Q     = THETA(<span class="dv">4</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb20-8"><a href="control-stream.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  KA    = THETA(<span class="dv">5</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb20-9"><a href="control-stream.html#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="control-stream.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  S2    = V2/<span class="dv">1000</span></span>
+<span id="cb20-11"><a href="control-stream.html#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="control-stream.html#cb20-12" aria-hidden="true" tabindex="-1"></a>  KE    = CL/V2</span>
+<span id="cb20-13"><a href="control-stream.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  K12   = Q/V2</span>
+<span id="cb20-14"><a href="control-stream.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  K21   = Q/V3</span>
+<span id="cb20-15"><a href="control-stream.html#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="control-stream.html#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb20-17"><a href="control-stream.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  IPRED = F</span>
+<span id="cb20-18"><a href="control-stream.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="ot">*</span> IPRED**<span class="dv">2</span>)</span>
+<span id="cb20-19"><a href="control-stream.html#cb20-19" aria-hidden="true" tabindex="-1"></a>  IRES  = DV - IPRED</span>
+<span id="cb20-20"><a href="control-stream.html#cb20-20" aria-hidden="true" tabindex="-1"></a>  IWRES = IRES / W</span>
+<span id="cb20-21"><a href="control-stream.html#cb20-21" aria-hidden="true" tabindex="-1"></a>  Y     = IPRED + W <span class="ot">*</span> EPS(<span class="dv">1</span>) </span>
+<span id="cb20-22"><a href="control-stream.html#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="control-stream.html#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span></span>
+<span id="cb20-24"><a href="control-stream.html#cb20-24" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
+<span id="cb20-25"><a href="control-stream.html#cb20-25" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">100</span>)</span>
+<span id="cb20-26"><a href="control-stream.html#cb20-26" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">300</span>)</span>
+<span id="cb20-27"><a href="control-stream.html#cb20-27" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
+<span id="cb20-28"><a href="control-stream.html#cb20-28" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="dv">5</span>)</span>
+<span id="cb20-29"><a href="control-stream.html#cb20-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-30"><a href="control-stream.html#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.001</span> FIX</span>
+<span id="cb20-31"><a href="control-stream.html#cb20-31" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">0</span>, <span class="fl">0.3</span>, <span class="dv">1</span>)</span>
+<span id="cb20-32"><a href="control-stream.html#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="control-stream.html#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span></span>
+<span id="cb20-34"><a href="control-stream.html#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.04</span></span>
+<span id="cb20-35"><a href="control-stream.html#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.04</span></span>
+<span id="cb20-36"><a href="control-stream.html#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb20-37"><a href="control-stream.html#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb20-38"><a href="control-stream.html#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> FIX</span>
+<span id="cb20-39"><a href="control-stream.html#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-40"><a href="control-stream.html#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="dt">$SIGMA</span></span>
+<span id="cb20-41"><a href="control-stream.html#cb20-41" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> FIX</span></code></pre></div>
 <p>동일한 데이터를 일반 ADVAN을 사용하여 분석할 경우, 일반 선형 ADVAN 또는 비선형 ADVAN을 선택할 수 있다. 선형 ADVAN인 ADVAN5를 사용할 경우, $MODEL 레코드에서 모델 분석에 사용할 구획의 수와 각 구획의 역할에 대하여 결정하여야 한다. (코드 <a href="control-stream.html#exm:advan5">3.5</a>) DEFDOSE와 DEFOBS는 NONMEM에 내장되어 있는 옵션으로 각각 용량 구획과 관찰값 구획을 지정할 때 사용한다. 각 구획의 물질 이동은 1차 이동속도를 따르는 선형 ADVAN이므로, $DES를 사용하지 않아도 된다.</p>
 
 <div class="example">
 <span id="exm:advan5" class="example"><strong>코드 3.5  </strong></span>2구획 경구 약동학 모델의 제어구문의 예. ADVAN5
 </div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb21-1"><a href="control-stream.html#cb21-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN5</span>
-<span id="cb21-2"><a href="control-stream.html#cb21-2" aria-hidden="true"></a></span>
-<span id="cb21-3"><a href="control-stream.html#cb21-3" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
-<span id="cb21-4"><a href="control-stream.html#cb21-4" aria-hidden="true"></a>  COMP(DEPOT, DEFDOSE)</span>
-<span id="cb21-5"><a href="control-stream.html#cb21-5" aria-hidden="true"></a>  COMP(CENT, DEFOBS)</span>
-<span id="cb21-6"><a href="control-stream.html#cb21-6" aria-hidden="true"></a>  COMP(PERI)</span>
-<span id="cb21-7"><a href="control-stream.html#cb21-7" aria-hidden="true"></a></span>
-<span id="cb21-8"><a href="control-stream.html#cb21-8" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb21-9"><a href="control-stream.html#cb21-9" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb21-10"><a href="control-stream.html#cb21-10" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb21-11"><a href="control-stream.html#cb21-11" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb21-12"><a href="control-stream.html#cb21-12" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb21-13"><a href="control-stream.html#cb21-13" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
-<span id="cb21-14"><a href="control-stream.html#cb21-14" aria-hidden="true"></a></span>
-<span id="cb21-15"><a href="control-stream.html#cb21-15" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
-<span id="cb21-16"><a href="control-stream.html#cb21-16" aria-hidden="true"></a></span>
-<span id="cb21-17"><a href="control-stream.html#cb21-17" aria-hidden="true"></a>  K12   = KA</span>
-<span id="cb21-18"><a href="control-stream.html#cb21-18" aria-hidden="true"></a>  K20   = CL/V2</span>
-<span id="cb21-19"><a href="control-stream.html#cb21-19" aria-hidden="true"></a>  K23   = Q/V2</span>
-<span id="cb21-20"><a href="control-stream.html#cb21-20" aria-hidden="true"></a>  K32   = Q/V3</span>
-<span id="cb21-21"><a href="control-stream.html#cb21-21" aria-hidden="true"></a></span>
-<span id="cb21-22"><a href="control-stream.html#cb21-22" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb21-23"><a href="control-stream.html#cb21-23" aria-hidden="true"></a>  IPRED = F</span>
-<span id="cb21-24"><a href="control-stream.html#cb21-24" aria-hidden="true"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="kw">*</span> IPRED**<span class="dv">2</span>)</span>
-<span id="cb21-25"><a href="control-stream.html#cb21-25" aria-hidden="true"></a>  IRES  = DV - IPRED</span>
-<span id="cb21-26"><a href="control-stream.html#cb21-26" aria-hidden="true"></a>  IWRES = IRES / W</span>
-<span id="cb21-27"><a href="control-stream.html#cb21-27" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb21-1"><a href="control-stream.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN5</span>
+<span id="cb21-2"><a href="control-stream.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="control-stream.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$MODEL</span></span>
+<span id="cb21-4"><a href="control-stream.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  COMP(DEPOT, DEFDOSE)</span>
+<span id="cb21-5"><a href="control-stream.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  COMP(CENT, DEFOBS)</span>
+<span id="cb21-6"><a href="control-stream.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  COMP(PERI)</span>
+<span id="cb21-7"><a href="control-stream.html#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="control-stream.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb21-9"><a href="control-stream.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  CL    = THETA(<span class="dv">1</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb21-10"><a href="control-stream.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  V2    = THETA(<span class="dv">2</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb21-11"><a href="control-stream.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  V3    = THETA(<span class="dv">3</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb21-12"><a href="control-stream.html#cb21-12" aria-hidden="true" tabindex="-1"></a>  Q     = THETA(<span class="dv">4</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb21-13"><a href="control-stream.html#cb21-13" aria-hidden="true" tabindex="-1"></a>  KA    = THETA(<span class="dv">5</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb21-14"><a href="control-stream.html#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="control-stream.html#cb21-15" aria-hidden="true" tabindex="-1"></a>  S2    = V2/<span class="dv">1000</span></span>
+<span id="cb21-16"><a href="control-stream.html#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="control-stream.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  K12   = KA</span>
+<span id="cb21-18"><a href="control-stream.html#cb21-18" aria-hidden="true" tabindex="-1"></a>  K20   = CL/V2</span>
+<span id="cb21-19"><a href="control-stream.html#cb21-19" aria-hidden="true" tabindex="-1"></a>  K23   = Q/V2</span>
+<span id="cb21-20"><a href="control-stream.html#cb21-20" aria-hidden="true" tabindex="-1"></a>  K32   = Q/V3</span>
+<span id="cb21-21"><a href="control-stream.html#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="control-stream.html#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb21-23"><a href="control-stream.html#cb21-23" aria-hidden="true" tabindex="-1"></a>  IPRED = F</span>
+<span id="cb21-24"><a href="control-stream.html#cb21-24" aria-hidden="true" tabindex="-1"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="ot">*</span> IPRED**<span class="dv">2</span>)</span>
+<span id="cb21-25"><a href="control-stream.html#cb21-25" aria-hidden="true" tabindex="-1"></a>  IRES  = DV - IPRED</span>
+<span id="cb21-26"><a href="control-stream.html#cb21-26" aria-hidden="true" tabindex="-1"></a>  IWRES = IRES / W</span>
+<span id="cb21-27"><a href="control-stream.html#cb21-27" aria-hidden="true" tabindex="-1"></a>  Y     = IPRED + W <span class="ot">*</span> EPS(<span class="dv">1</span>) </span></code></pre></div>
 <p>2구획 경구 악동학 데이터를 일반 비선형 ADVAN인 ADVAN6를 이용하여 분석해보자. 선형 모델에서부터 다양한 흡수모델 또는 비선형 제거모델까지 최종 모델 선정을 위해 다양한 모델 분석을 시행하는 단계에서 모델의 유연성과 모델 수정의 편리성 때문에 비선형 ADVAN을 이용하는 경우가 많다. 코드 <a href="control-stream.html#exm:advan6">3.6</a>처럼, $MODEL을 이용하여 구획을 정의하고, $PK에서 각 파라미터를 정의하는 것은 선형 ADVAN을 사용하는 경우와 같다. 하지만, 각 구획 간의 이동속도가 비선형을 따를수 있으므로, $DES를 이용하여 각 구획 간의 이동속도상수를 정의해야 한다. 또한, $SUBROUTINE에서 <code>TOL=</code>을 정의하지 않으면, 모델 실행이 되지 않음을 주의해야 한다.</p>
 
 <div class="example">
 <span id="exm:advan6" class="example"><strong>코드 3.6  </strong></span>2구획 경구 약동학 모델의 제어구문의 예. ADVAN6
 </div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb22-1"><a href="control-stream.html#cb22-1" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
-<span id="cb22-2"><a href="control-stream.html#cb22-2" aria-hidden="true"></a></span>
-<span id="cb22-3"><a href="control-stream.html#cb22-3" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
-<span id="cb22-4"><a href="control-stream.html#cb22-4" aria-hidden="true"></a>  COMP(DEPOT, DEFDOSE)</span>
-<span id="cb22-5"><a href="control-stream.html#cb22-5" aria-hidden="true"></a>  COMP(CENTRAL, DEFOBS)</span>
-<span id="cb22-6"><a href="control-stream.html#cb22-6" aria-hidden="true"></a>  COMP(PERIPH)</span>
-<span id="cb22-7"><a href="control-stream.html#cb22-7" aria-hidden="true"></a></span>
-<span id="cb22-8"><a href="control-stream.html#cb22-8" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb22-9"><a href="control-stream.html#cb22-9" aria-hidden="true"></a>  CL    = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb22-10"><a href="control-stream.html#cb22-10" aria-hidden="true"></a>  V2    = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb22-11"><a href="control-stream.html#cb22-11" aria-hidden="true"></a>  V3    = THETA(<span class="dv">3</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">3</span>))</span>
-<span id="cb22-12"><a href="control-stream.html#cb22-12" aria-hidden="true"></a>  Q     = THETA(<span class="dv">4</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">4</span>))</span>
-<span id="cb22-13"><a href="control-stream.html#cb22-13" aria-hidden="true"></a>  KA    = THETA(<span class="dv">5</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">5</span>))</span>
-<span id="cb22-14"><a href="control-stream.html#cb22-14" aria-hidden="true"></a></span>
-<span id="cb22-15"><a href="control-stream.html#cb22-15" aria-hidden="true"></a>  S2    = V2/<span class="dv">1000</span></span>
-<span id="cb22-16"><a href="control-stream.html#cb22-16" aria-hidden="true"></a></span>
-<span id="cb22-17"><a href="control-stream.html#cb22-17" aria-hidden="true"></a>  KE    = CL/V2</span>
-<span id="cb22-18"><a href="control-stream.html#cb22-18" aria-hidden="true"></a>  K12   = Q/V2</span>
-<span id="cb22-19"><a href="control-stream.html#cb22-19" aria-hidden="true"></a>  K21   = Q/V3</span>
-<span id="cb22-20"><a href="control-stream.html#cb22-20" aria-hidden="true"></a></span>
-<span id="cb22-21"><a href="control-stream.html#cb22-21" aria-hidden="true"></a><span class="dt">$DES</span></span>
-<span id="cb22-22"><a href="control-stream.html#cb22-22" aria-hidden="true"></a>  DADT(<span class="dv">1</span>) = -KA<span class="dt">*A</span>(<span class="dv">1</span>)</span>
-<span id="cb22-23"><a href="control-stream.html#cb22-23" aria-hidden="true"></a>  DADT(<span class="dv">2</span>) = KA<span class="dt">*A</span>(<span class="dv">1</span>) - KE<span class="dt">*A</span>(<span class="dv">2</span>) - K12<span class="dt">*A</span>(<span class="dv">2</span>) + K21<span class="dt">*A</span>(<span class="dv">3</span>)</span>
-<span id="cb22-24"><a href="control-stream.html#cb22-24" aria-hidden="true"></a>  DADT(<span class="dv">3</span>) = K12<span class="dt">*A</span>(<span class="dv">2</span>) - K21<span class="dt">*A</span>(<span class="dv">3</span>)</span>
-<span id="cb22-25"><a href="control-stream.html#cb22-25" aria-hidden="true"></a></span>
-<span id="cb22-26"><a href="control-stream.html#cb22-26" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb22-27"><a href="control-stream.html#cb22-27" aria-hidden="true"></a>  IPRED = F</span>
-<span id="cb22-28"><a href="control-stream.html#cb22-28" aria-hidden="true"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="kw">*</span> IPRED**<span class="dv">2</span>)</span>
-<span id="cb22-29"><a href="control-stream.html#cb22-29" aria-hidden="true"></a>  IRES  = DV - IPRED</span>
-<span id="cb22-30"><a href="control-stream.html#cb22-30" aria-hidden="true"></a>  IWRES = IRES / W</span>
-<span id="cb22-31"><a href="control-stream.html#cb22-31" aria-hidden="true"></a>  Y     = IPRED + W <span class="kw">*</span> EPS(<span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb22-1"><a href="control-stream.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
+<span id="cb22-2"><a href="control-stream.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="control-stream.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$MODEL</span></span>
+<span id="cb22-4"><a href="control-stream.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  COMP(DEPOT, DEFDOSE)</span>
+<span id="cb22-5"><a href="control-stream.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  COMP(CENTRAL, DEFOBS)</span>
+<span id="cb22-6"><a href="control-stream.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  COMP(PERIPH)</span>
+<span id="cb22-7"><a href="control-stream.html#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="control-stream.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb22-9"><a href="control-stream.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  CL    = THETA(<span class="dv">1</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb22-10"><a href="control-stream.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  V2    = THETA(<span class="dv">2</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb22-11"><a href="control-stream.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  V3    = THETA(<span class="dv">3</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">3</span>))</span>
+<span id="cb22-12"><a href="control-stream.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  Q     = THETA(<span class="dv">4</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">4</span>))</span>
+<span id="cb22-13"><a href="control-stream.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  KA    = THETA(<span class="dv">5</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">5</span>))</span>
+<span id="cb22-14"><a href="control-stream.html#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="control-stream.html#cb22-15" aria-hidden="true" tabindex="-1"></a>  S2    = V2/<span class="dv">1000</span></span>
+<span id="cb22-16"><a href="control-stream.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="control-stream.html#cb22-17" aria-hidden="true" tabindex="-1"></a>  KE    = CL/V2</span>
+<span id="cb22-18"><a href="control-stream.html#cb22-18" aria-hidden="true" tabindex="-1"></a>  K12   = Q/V2</span>
+<span id="cb22-19"><a href="control-stream.html#cb22-19" aria-hidden="true" tabindex="-1"></a>  K21   = Q/V3</span>
+<span id="cb22-20"><a href="control-stream.html#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="control-stream.html#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="dt">$DES</span></span>
+<span id="cb22-22"><a href="control-stream.html#cb22-22" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">1</span>) = -KA<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb22-23"><a href="control-stream.html#cb22-23" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">2</span>) = KA<span class="dt">*A</span>(<span class="dv">1</span>) - KE<span class="dt">*A</span>(<span class="dv">2</span>) - K12<span class="dt">*A</span>(<span class="dv">2</span>) + K21<span class="dt">*A</span>(<span class="dv">3</span>)</span>
+<span id="cb22-24"><a href="control-stream.html#cb22-24" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">3</span>) = K12<span class="dt">*A</span>(<span class="dv">2</span>) - K21<span class="dt">*A</span>(<span class="dv">3</span>)</span>
+<span id="cb22-25"><a href="control-stream.html#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="control-stream.html#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb22-27"><a href="control-stream.html#cb22-27" aria-hidden="true" tabindex="-1"></a>  IPRED = F</span>
+<span id="cb22-28"><a href="control-stream.html#cb22-28" aria-hidden="true" tabindex="-1"></a>  W     = SQRT(THETA(<span class="dv">6</span>))**<span class="dv">2</span> + THETA(<span class="dv">7</span>)**<span class="dv">2</span> <span class="ot">*</span> IPRED**<span class="dv">2</span>)</span>
+<span id="cb22-29"><a href="control-stream.html#cb22-29" aria-hidden="true" tabindex="-1"></a>  IRES  = DV - IPRED</span>
+<span id="cb22-30"><a href="control-stream.html#cb22-30" aria-hidden="true" tabindex="-1"></a>  IWRES = IRES / W</span>
+<span id="cb22-31"><a href="control-stream.html#cb22-31" aria-hidden="true" tabindex="-1"></a>  Y     = IPRED + W <span class="ot">*</span> EPS(<span class="dv">1</span>) </span></code></pre></div>
 </div>
 <div id="일반-비선형-모델" class="section level3" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> 일반 비선형 모델</h3>
@@ -1056,32 +1059,32 @@ Absorption lag parameter
 <div class="example">
 <span id="exm:parent-metabolite" class="example"><strong>코드 3.7  </strong></span>모약물과 대사체의 약동학 동시 분석 모델의 제어구문
 </div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb23-1"><a href="control-stream.html#cb23-1" aria-hidden="true"></a><span class="dt">$PROBLEM</span> Model of Parent <span class="kw">and</span> Metabolite Concentrations</span>
-<span id="cb23-2"><a href="control-stream.html#cb23-2" aria-hidden="true"></a><span class="dt">$INPUT</span> ID TIME DV AMT EVID MDV CMT</span>
-<span id="cb23-3"><a href="control-stream.html#cb23-3" aria-hidden="true"></a><span class="dt">$DATA</span> filename</span>
-<span id="cb23-4"><a href="control-stream.html#cb23-4" aria-hidden="true"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
-<span id="cb23-5"><a href="control-stream.html#cb23-5" aria-hidden="true"></a><span class="dt">$MODEL</span></span>
-<span id="cb23-6"><a href="control-stream.html#cb23-6" aria-hidden="true"></a>  COMP (DEPOT, DEFDOS)</span>
-<span id="cb23-7"><a href="control-stream.html#cb23-7" aria-hidden="true"></a>  COMP (CENTPRNT, DEFOBS)</span>
-<span id="cb23-8"><a href="control-stream.html#cb23-8" aria-hidden="true"></a>  COMP (CENTMETB)</span>
-<span id="cb23-9"><a href="control-stream.html#cb23-9" aria-hidden="true"></a><span class="dt">$PK</span></span>
-<span id="cb23-10"><a href="control-stream.html#cb23-10" aria-hidden="true"></a>  K20 = THETA(<span class="dv">1</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">1</span>))</span>
-<span id="cb23-11"><a href="control-stream.html#cb23-11" aria-hidden="true"></a>  V2  = THETA(<span class="dv">2</span>) <span class="kw">*</span> EXP(ETA(<span class="dv">2</span>))</span>
-<span id="cb23-12"><a href="control-stream.html#cb23-12" aria-hidden="true"></a>  KA  = THETA(<span class="dv">3</span>)</span>
-<span id="cb23-13"><a href="control-stream.html#cb23-13" aria-hidden="true"></a>  VMAX= THETA(<span class="dv">4</span>)</span>
-<span id="cb23-14"><a href="control-stream.html#cb23-14" aria-hidden="true"></a>  KM  = THETA(<span class="dv">5</span>)</span>
-<span id="cb23-15"><a href="control-stream.html#cb23-15" aria-hidden="true"></a>  K30 = THETA(<span class="dv">6</span>)</span>
-<span id="cb23-16"><a href="control-stream.html#cb23-16" aria-hidden="true"></a>  V3  = THETA(<span class="dv">7</span>)</span>
-<span id="cb23-17"><a href="control-stream.html#cb23-17" aria-hidden="true"></a>  S2  = V2/<span class="dv">1000</span></span>
-<span id="cb23-18"><a href="control-stream.html#cb23-18" aria-hidden="true"></a>  S3  = V3/<span class="dv">1000</span></span>
-<span id="cb23-19"><a href="control-stream.html#cb23-19" aria-hidden="true"></a><span class="dt">$DES</span></span>
-<span id="cb23-20"><a href="control-stream.html#cb23-20" aria-hidden="true"></a>  DADT(<span class="dv">1</span>) = -KA<span class="dt">*A</span>(<span class="dv">1</span>)</span>
-<span id="cb23-21"><a href="control-stream.html#cb23-21" aria-hidden="true"></a>  DADT(<span class="dv">2</span>) = KA<span class="dt">*A</span>(<span class="dv">1</span>) - K20<span class="dt">*A</span>(<span class="dv">2</span>) - (VMAX<span class="dt">*A</span>(<span class="dv">2</span>))/(KM+A(<span class="dv">2</span>))</span>
-<span id="cb23-22"><a href="control-stream.html#cb23-22" aria-hidden="true"></a>  DADT(<span class="dv">3</span>) = -K30<span class="dt">*A</span>(<span class="dv">3</span>) + ((VMAX<span class="dt">*A</span>(<span class="dv">2</span>)))/(KM+A(<span class="dv">2</span>))<span class="dt">*MPR</span></span>
-<span id="cb23-23"><a href="control-stream.html#cb23-23" aria-hidden="true"></a><span class="dt">$ERROR</span></span>
-<span id="cb23-24"><a href="control-stream.html#cb23-24" aria-hidden="true"></a>  IF (CMT.EQ.<span class="dv">2</span>) TYPE=<span class="dv">0</span> ;Parent concentration</span>
-<span id="cb23-25"><a href="control-stream.html#cb23-25" aria-hidden="true"></a>  IF (CMT.EQ.<span class="dv">3</span>) TYPE=<span class="dv">1</span> ;Metabolite concentration</span>
-<span id="cb23-26"><a href="control-stream.html#cb23-26" aria-hidden="true"></a>Y = F<span class="dt">*EPS</span>(<span class="dv">1</span>) <span class="kw">*</span> (<span class="dv">1</span>-TYPE)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb23-1"><a href="control-stream.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$PROBLEM</span> Model of Parent <span class="ot">and</span> Metabolite Concentrations</span>
+<span id="cb23-2"><a href="control-stream.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$INPUT</span> ID TIME DV AMT EVID MDV CMT</span>
+<span id="cb23-3"><a href="control-stream.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$DATA</span> filename</span>
+<span id="cb23-4"><a href="control-stream.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="dt">$SUBROUTINE</span> ADVAN6 TOL=<span class="dv">4</span></span>
+<span id="cb23-5"><a href="control-stream.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="dt">$MODEL</span></span>
+<span id="cb23-6"><a href="control-stream.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  COMP (DEPOT, DEFDOS)</span>
+<span id="cb23-7"><a href="control-stream.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  COMP (CENTPRNT, DEFOBS)</span>
+<span id="cb23-8"><a href="control-stream.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  COMP (CENTMETB)</span>
+<span id="cb23-9"><a href="control-stream.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="dt">$PK</span></span>
+<span id="cb23-10"><a href="control-stream.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  K20 = THETA(<span class="dv">1</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">1</span>))</span>
+<span id="cb23-11"><a href="control-stream.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  V2  = THETA(<span class="dv">2</span>) <span class="ot">*</span> EXP(ETA(<span class="dv">2</span>))</span>
+<span id="cb23-12"><a href="control-stream.html#cb23-12" aria-hidden="true" tabindex="-1"></a>  KA  = THETA(<span class="dv">3</span>)</span>
+<span id="cb23-13"><a href="control-stream.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  VMAX= THETA(<span class="dv">4</span>)</span>
+<span id="cb23-14"><a href="control-stream.html#cb23-14" aria-hidden="true" tabindex="-1"></a>  KM  = THETA(<span class="dv">5</span>)</span>
+<span id="cb23-15"><a href="control-stream.html#cb23-15" aria-hidden="true" tabindex="-1"></a>  K30 = THETA(<span class="dv">6</span>)</span>
+<span id="cb23-16"><a href="control-stream.html#cb23-16" aria-hidden="true" tabindex="-1"></a>  V3  = THETA(<span class="dv">7</span>)</span>
+<span id="cb23-17"><a href="control-stream.html#cb23-17" aria-hidden="true" tabindex="-1"></a>  S2  = V2/<span class="dv">1000</span></span>
+<span id="cb23-18"><a href="control-stream.html#cb23-18" aria-hidden="true" tabindex="-1"></a>  S3  = V3/<span class="dv">1000</span></span>
+<span id="cb23-19"><a href="control-stream.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="dt">$DES</span></span>
+<span id="cb23-20"><a href="control-stream.html#cb23-20" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">1</span>) = -KA<span class="dt">*A</span>(<span class="dv">1</span>)</span>
+<span id="cb23-21"><a href="control-stream.html#cb23-21" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">2</span>) = KA<span class="dt">*A</span>(<span class="dv">1</span>) - K20<span class="dt">*A</span>(<span class="dv">2</span>) - (VMAX<span class="dt">*A</span>(<span class="dv">2</span>))/(KM+A(<span class="dv">2</span>))</span>
+<span id="cb23-22"><a href="control-stream.html#cb23-22" aria-hidden="true" tabindex="-1"></a>  DADT(<span class="dv">3</span>) = -K30<span class="dt">*A</span>(<span class="dv">3</span>) + ((VMAX<span class="dt">*A</span>(<span class="dv">2</span>)))/(KM+A(<span class="dv">2</span>))<span class="dt">*MPR</span></span>
+<span id="cb23-23"><a href="control-stream.html#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="dt">$ERROR</span></span>
+<span id="cb23-24"><a href="control-stream.html#cb23-24" aria-hidden="true" tabindex="-1"></a>  IF (CMT.EQ.<span class="dv">2</span>) TYPE=<span class="dv">0</span> ;Parent concentration</span>
+<span id="cb23-25"><a href="control-stream.html#cb23-25" aria-hidden="true" tabindex="-1"></a>  IF (CMT.EQ.<span class="dv">3</span>) TYPE=<span class="dv">1</span> ;Metabolite concentration</span>
+<span id="cb23-26"><a href="control-stream.html#cb23-26" aria-hidden="true" tabindex="-1"></a>Y = F<span class="dt">*EPS</span>(<span class="dv">1</span>) <span class="ot">*</span> (<span class="dv">1</span><span class="ot">-T</span>YPE)</span></code></pre></div>
 <!-- (ref:parent-metabolite) 모약물과 대사체의 약동학 동시 분석 모델의 제어구문 -->
 </div>
 <div id="pred-모델" class="section level3" number="3.4.3">
@@ -1092,38 +1095,26 @@ Absorption lag parameter
 <div class="example">
 <span id="exm:linear-model" class="example"><strong>코드 3.8  </strong></span>$PRED를 이용한 간단한 선형 모델
 </div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb24-1"><a href="control-stream.html#cb24-1" aria-hidden="true"></a><span class="dt">$PROB</span> QTc, PRED</span>
-<span id="cb24-2"><a href="control-stream.html#cb24-2" aria-hidden="true"></a><span class="dt">$INPUT</span> ID=DROP DQTC=DV CMAX</span>
-<span id="cb24-3"><a href="control-stream.html#cb24-3" aria-hidden="true"></a><span class="dt">$DATA</span> data.csv IGNORE=C </span>
-<span id="cb24-4"><a href="control-stream.html#cb24-4" aria-hidden="true"></a>; Since the header row starts with a C,</span>
-<span id="cb24-5"><a href="control-stream.html#cb24-5" aria-hidden="true"></a>; that row is dropped</span>
-<span id="cb24-6"><a href="control-stream.html#cb24-6" aria-hidden="true"></a><span class="dt">$PRED</span></span>
-<span id="cb24-7"><a href="control-stream.html#cb24-7" aria-hidden="true"></a>  INT = THETA(<span class="dv">1</span>)       ; Intercept</span>
-<span id="cb24-8"><a href="control-stream.html#cb24-8" aria-hidden="true"></a>  SLP = THETA(<span class="dv">2</span>)       ; Slope</span>
-<span id="cb24-9"><a href="control-stream.html#cb24-9" aria-hidden="true"></a>  EFF = SLP<span class="dt">*CMAX</span> + INT ; Drug effect model- linear</span>
-<span id="cb24-10"><a href="control-stream.html#cb24-10" aria-hidden="true"></a>  Y   = EFF + ETA(<span class="dv">1</span>)   ; Residual error model - additive</span>
-<span id="cb24-11"><a href="control-stream.html#cb24-11" aria-hidden="true"></a><span class="dt">$THETA</span></span>
-<span id="cb24-12"><a href="control-stream.html#cb24-12" aria-hidden="true"></a>  <span class="fl">0.1</span> ; Intercept</span>
-<span id="cb24-13"><a href="control-stream.html#cb24-13" aria-hidden="true"></a>  <span class="fl">0.5</span> ; Slope</span>
-<span id="cb24-14"><a href="control-stream.html#cb24-14" aria-hidden="true"></a><span class="dt">$OMEGA</span></span>
-<span id="cb24-15"><a href="control-stream.html#cb24-15" aria-hidden="true"></a>  <span class="fl">0.04</span> ; Magnitude of additive error</span>
-<span id="cb24-16"><a href="control-stream.html#cb24-16" aria-hidden="true"></a><span class="dt">$EST</span> PRINT=<span class="dv">5</span> MAX=<span class="dv">9999</span> SIG=<span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode perl"><code class="sourceCode perl"><span id="cb24-1"><a href="control-stream.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">$PROB</span> QTc, PRED</span>
+<span id="cb24-2"><a href="control-stream.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dt">$INPUT</span> ID=DROP DQTC=DV CMAX</span>
+<span id="cb24-3"><a href="control-stream.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dt">$DATA</span> data.csv IGNORE=C </span>
+<span id="cb24-4"><a href="control-stream.html#cb24-4" aria-hidden="true" tabindex="-1"></a>; Since the header row starts with a C,</span>
+<span id="cb24-5"><a href="control-stream.html#cb24-5" aria-hidden="true" tabindex="-1"></a>; that row is dropped</span>
+<span id="cb24-6"><a href="control-stream.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="dt">$PRED</span></span>
+<span id="cb24-7"><a href="control-stream.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  INT = THETA(<span class="dv">1</span>)       ; Intercept</span>
+<span id="cb24-8"><a href="control-stream.html#cb24-8" aria-hidden="true" tabindex="-1"></a>  SLP = THETA(<span class="dv">2</span>)       ; Slope</span>
+<span id="cb24-9"><a href="control-stream.html#cb24-9" aria-hidden="true" tabindex="-1"></a>  EFF = SLP<span class="dt">*CMAX</span> + INT ; Drug effect model- linear</span>
+<span id="cb24-10"><a href="control-stream.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  Y   = EFF + ETA(<span class="dv">1</span>)   ; Residual error model - additive</span>
+<span id="cb24-11"><a href="control-stream.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="dt">$THETA</span></span>
+<span id="cb24-12"><a href="control-stream.html#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.1</span> ; Intercept</span>
+<span id="cb24-13"><a href="control-stream.html#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.5</span> ; Slope</span>
+<span id="cb24-14"><a href="control-stream.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="dt">$OMEGA</span></span>
+<span id="cb24-15"><a href="control-stream.html#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.04</span> ; Magnitude of additive error</span>
+<span id="cb24-16"><a href="control-stream.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="dt">$EST</span> PRINT=<span class="dv">5</span> MAX=<span class="dv">9999</span> SIG=<span class="dv">3</span></span></code></pre></div>
 <hr />
-<p>3장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(Owen <a href="#ref-kelly" role="doc-biblioref">2014</a>; Beal <a href="#ref-nonmem" role="doc-biblioref">2018</a>)</span></p>
+<p>3장은 다음 문헌을 전반적으로 참고하여 작성되었다. <span class="citation">(<a href="참고문헌.html#ref-kelly" role="doc-biblioref">Owen 2014</a>; <a href="참고문헌.html#ref-nonmem" role="doc-biblioref">Beal 2018</a>)</span></p>
 
 </div>
-</div>
-</div>
-<h3>참고문헌</h3>
-<div id="refs" class="references">
-<div id="ref-nonmem">
-<p>Beal, Sheiner, S. L. 2018. <em>NONMEM 7.4 Users Guides</em>. Gaithersburg, Maryland: ICON plc. <a href="https://nonmem.iconplc.com/nonmem743/guides">https://nonmem.iconplc.com/nonmem743/guides</a>.</p>
-</div>
-<div id="ref-R-xpose4">
-<p>Hooker, Andrew C., Mats O. Karlsson, Justin J. Wilkins, and E. Niclas Jonsson. 2020. <em>Xpose4: Diagnostics for Nonlinear Mixed-Effect Models</em>. <a href="https://CRAN.R-project.org/package=xpose4">https://CRAN.R-project.org/package=xpose4</a>.</p>
-</div>
-<div id="ref-kelly">
-<p>Owen, Fiedler-Kelly, J. 2014. <em>Introduction to Population Pharmacokinetic/Pharmacodynamic Analysis with Nonlinear Mixed Effects Models</em>. Hoboken, New Jersey: Wiley. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860">https://onlinelibrary.wiley.com/doi/book/10.1002/9781118784860</a>.</p>
 </div>
 </div>
             </section>
