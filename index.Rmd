@@ -96,7 +96,7 @@ include_graphics("images/preface.pdf")
 
 `r if (is_html_output()) '---'`
 
-`r if (is_html_output()) '인용한 그림은 모두 새로 그렸고, 출처를 명시하였습니다.  <br>본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), [알라딘(aladin.co.kr)](http://aladin.kr/p/UNBXB), [YES24(yes24.com)](http://www.yes24.com/Product/Goods/91747331)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6) <br>정오표는 https://github.com/pipetcpt/basic/issues 에서 확인할 수 있으며 오탈자 보고도 같은 위치에 해 주십시오. (웹북은 즉시 교정하고, 종이책은 매달 업데이트 예정입니다.)'`
+`r if (is_html_output()) '인용한 그림은 모두 새로 그렸고, 출처를 명시하였습니다.  <br>본 도서는 [부크크(bookk.co.kr)](http://www.bookk.co.kr/book/view/84646), [알라딘(aladin.co.kr)](http://aladin.kr/p/UNBXB), [YES24(yes24.com)](http://www.yes24.com/Product/Goods/91747331)에서 "계량약리학 워크샵"으로 검색하여 구입할 수 있습니다. (ISBN 979-11-372-1390-6) <br>정오표는 https://github.com/pipetcpt/basic/issues 에서 확인할 수 있으며 오탈자 보고도 같은 위치에 해 주십시오. (웹북은 즉시 교정하고, 종이책은 매달 업데이트 예정입니다.) 내용에 대한 질문과 토론은 https://github.com/pipetcpt/basic/discussions 에서 가능합니다. 구글 클래스룸에서 동영상 강의도 제공하고 있으니 관심있으신 분은 위 링크로 요청해주십시오.'`
 
 \normalsize
 
