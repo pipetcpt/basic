@@ -44,7 +44,7 @@ $TAB ID ETA(1) ETA(2) ETA(3)
      FILE=IndiEta.txt NOAPPEND ONEHEADER FIRSTONLY
 ```
 
-위의 \$COV STEP에 의해 생성된 부분은 [별첨 1](#nonmem-output-file)과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.\index{\$COVARIANCE (\$COV, \$COVAR)}
+위의 \$COV STEP에 의해 생성된 부분은 [별첨 A](#nonmem-output-file)과 같으며, 원래 output은 126열까지까지 있으나, 지면의 제약으로 인해 104열이후는 생략하였다.\index{\$COVARIANCE (\$COV, \$COVAR)}
 
 \$COV에 의해 생성되는 첫 번째 부분(section)은 추정치의 표준오차 부분으로 출력의 직전 section인 FINAL PARAMETER ESTIMATE과 배치 모양이 똑같다. 이후의 출력들은 대개 이를 구하기 위해 필요한 중간계산 결과들이다.\index{\$COVARIANCE (\$COV, \$COVAR)}
 
