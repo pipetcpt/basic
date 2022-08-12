@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A NONMEM 실행결과 | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A NONMEM 실행결과 | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://pipet.or.kr/books/basic" />
-  <meta property="og:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
+  <meta property="og:image" content="http://pipet.or.kr/books/basic/images/cover.jpg" />
   <meta property="og:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="github-repo" content="pipetcpt/basic" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="A NONMEM 실행결과 | 계량약리학 워크샵 - 초급 과정" />
   
   <meta name="twitter:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="twitter:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
+  <meta name="twitter:image" content="http://pipet.or.kr/books/basic/images/cover.jpg" />
 
 <meta name="author" content="가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)" />
 
@@ -32,8 +31,7 @@
   
 <link rel="prev" href="delayed-effect.html"/>
 <link rel="next" href="참고문헌.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,8 +47,8 @@
 
 
 
-
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -60,6 +58,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -378,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="nonmem-output" class="section level1" number="21">
-<h1><span class="header-section-number">A</span> NONMEM 실행결과</h1>
+<div id="nonmem-output" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">A</span> NONMEM 실행결과<a href="nonmem-output.html#nonmem-output" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><a href="cov.html#cov">14장 NONMEM의 $COVARIANCE</a>의 <a href="cov.html#cov-example">14.1</a>에서 언급된 NONMEM 실행결과를 별첨으로 수록하였다. 지면 관계상 작은 글자 크기로 수록되었으나 웹<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>에서 동일한 내용을 확인할 수 있다.</p>
 <!--
 Command             10pt    11pt    12pt
@@ -670,7 +692,6 @@ https://tex.stackexchange.com/questions/24599/what-point-pt-font-size-are-large-
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -689,6 +710,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -709,6 +731,7 @@ gitbook.start({
 "text": null
 },
 "download": ["basic.pdf"],
+"search": false,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -716,7 +739,6 @@ gitbook.start({
 "toolbar": {
 "position": "fixed"
 },
-"search": false,
 "info": false
 });
 });
@@ -728,7 +750,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

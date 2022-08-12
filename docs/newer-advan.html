@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 기타 ADVAN | 계량약리학 워크샵 - 초급 과정</title>
   <meta name="description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 기타 ADVAN | 계량약리학 워크샵 - 초급 과정" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://pipet.or.kr/books/basic" />
-  <meta property="og:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
+  <meta property="og:image" content="http://pipet.or.kr/books/basic/images/cover.jpg" />
   <meta property="og:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
   <meta name="github-repo" content="pipetcpt/basic" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 6 기타 ADVAN | 계량약리학 워크샵 - 초급 과정" />
   
   <meta name="twitter:description" content="혼합효과 모델링(mixed-effects modeling)은 신약개발과 임상시험, 시판허가 등의 주요 의사결정에 필수적으로 쓰이고 있는 계량약리학적 접근법의 핵심적인 기법으로서 그 기본개념을 익히는 것이 결코 쉽지 않습니다. 2009년부터 매년 개최해 온 PK/PD 워크샵의 내용 중에서 basic-1과 2의 교재를 입문자들이 스스로 학습할 수 있도록 한권의 책으로 펴냈습니다. 약동-약력학 모델링을 위해 가장 널리 사용하는 NONMEM 소프트웨어를 활용하기 위에 알아야 하는 기본개념들과 그 사용법을 소개합니다." />
-  <meta name="twitter:image" content="http://pipet.or.kr/books/basicimages/cover.jpg" />
+  <meta name="twitter:image" content="http://pipet.or.kr/books/basic/images/cover.jpg" />
 
 <meta name="author" content="가톨릭대학교 계량약리학연구소(PIPET) 펴냄 (대표저자 임동석)" />
 
@@ -32,8 +31,7 @@
   
 <link rel="prev" href="general-advan.html"/>
 <link rel="next" href="PRED.html"/>
-<script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,8 +47,8 @@
 
 
 
-
 <link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet" />
@@ -60,6 +58,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +117,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -378,38 +400,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="newer-advan" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> 기타 ADVAN</h1>
+<div id="newer-advan" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 기타 ADVAN<a href="newer-advan.html#newer-advan" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>임동석
 </p>
-<div id="advan9---general-nonlinear-model-with-equilibrium-compartments" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> ADVAN9 - General Nonlinear Model with Equilibrium Compartments</h2>
+<div id="advan9---general-nonlinear-model-with-equilibrium-compartments" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> ADVAN9 - General Nonlinear Model with Equilibrium Compartments<a href="newer-advan.html#advan9---general-nonlinear-model-with-equilibrium-compartments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
-<p>ADVAN9는 ADVAN6와 같은 상황에서 쓸 수 있는 또 다른 ADVAN으로 ADVAN6보다 좀 더 robust 한 방법으로 주장되고 있으나 이는 상황 별로 달라서 어떤 것이 낫다고 할 수는 없다. Holford가 제안한 하나의 방법은 $EST 에서 MAXEVAL=0로 한 후 ADVAN6와 9을 각기 돌려보고 둘 중 소요시간이 짧은 것을 선택하여 쓰는 것이다. <span class="citation">(<a href="참고문헌.html#ref-nickholford" role="doc-biblioref">Holford 2010</a>)</span></p>
+<p>ADVAN9는 ADVAN6와 같은 상황에서 쓸 수 있는 또 다른 ADVAN으로 ADVAN6보다 좀 더 robust 한 방법으로 주장되고 있으나 이는 상황 별로 달라서 어떤 것이 낫다고 할 수는 없다. Holford가 제안한 하나의 방법은 $EST 에서 MAXEVAL=0로 한 후 ADVAN6와 9을 각기 돌려보고 둘 중 소요시간이 짧은 것을 선택하여 쓰는 것이다. <span class="citation">(<a href="#ref-nickholford" role="doc-biblioref">Holford 2010</a>)</span></p>
 </div>
-<div id="advan10---one-compartment-model-with-michaelis-menten-elimination" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination</h2>
+<div id="advan10---one-compartment-model-with-michaelis-menten-elimination" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> ADVAN10 - One Compartment Model with Michaelis-Menten Elimination<a href="newer-advan.html#advan10---one-compartment-model-with-michaelis-menten-elimination" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
 <p>1분획 모델로서 정맥주입하는 약물의 Michaelis-Menten 제거 모델을 사용할 경우 ADVAN10을 쓰면 되는데, 실제 모델링에서 쓰이는 사례는 매우 드물다. Michaelis-Menten 과 같은 제거 모델이 필요할 경우 ADVAN6에서 수식으로 구현하는 것이 다른 제거모델과의 비교나 분포분획의 숫자,흡수 모델 등에 있어서 훨씬 유연한 방법이기 때문이다.</p>
 </div>
-<div id="advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)</h2>
+<div id="advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> ADVAN11과 12 - Three Compartment Linear Model (IV and First Order Absorption)<a href="newer-advan.html#advan11과-12---three-compartment-linear-model-iv-and-first-order-absorption" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
 <p>ADVAN1~4의 경우와 같이 ADVAN11과 12는 3분획으로 분포하며 정맥주사와 1차 경구흡수되는 모델들이다 (그림 <a href="newer-advan.html#fig:advan1112">6.1</a>). ADVAN1~4만큼 자주 쓰이지 않으나 투여 간격이 매우 길다거나 마지막 용량 투여 후 오랜 시간 동안 지속적으로 농도를 측정한다든지 하여 3개의 기울기가 존재하는 것이 의심되는 상황 등에서 시도해 볼 수 있다.</p>
 <p>ADVAN11의 예를 들면 앞의 장들에서 소개된 것과 마찬가지로 TRANS 옵션을 선택해야 하는데 TRANS1을 쓰면 Vd를 제외한 약동학 파라미터들을 micro constant(K, K12, K21, K13, K31)들을 써서 표현하며, TRANS4를 쓰면 CL, Q2, Q3를 쓰되 이들과 micro constant들과의 관계식을 함께 써 주어야 한다. TRANS6를 쓸 경우 시간에 따른 농도변화를 지수함수 형태로 나타낼 수 있으며, 역시 지수함수의 파라미터들과 micro constant들과의 관계식을 써 주어야 한다. 이들 중 TRANS4를 사용하여 CL, Q로써 모델링하는 것이 가장 흔히 쓰이는 방법이고, TRANS1이 간혹 쓰이며, TRANS6를 사용하는 경우는 드물다.</p>
 
-<div class="figure" style="text-align: center"><span id="fig:advan1112"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:advan1112"></span>
 <img src="figures/06-fig-01.png" alt="ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들" width="100%" />
 <p class="caption">
 그림 6.1: ADVAN11(위)과 ADVAN12(아래)의 모델 구조와 micro constants의 이름들
 </p>
 </div>
 </div>
-<div id="advan13---general-nonlinear-model-using-lsoda" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> ADVAN13 - General Nonlinear Model using LSODA</h2>
+<div id="advan13---general-nonlinear-model-using-lsoda" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> ADVAN13 - General Nonlinear Model using LSODA<a href="newer-advan.html#advan13---general-nonlinear-model-using-lsoda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
 <p>NONMEM 7.12 버전에 추가된 SUBROUTINE으로서 LSODA라는 기법을 사용하여 stiff, nonstiff 미분방정식을 풀어준다. 보통의 ESTIMATION 방식에서는 별 이점이 없으나 좀 더 많은 계산을 필요로 하는 방식들(MCMC, BAYESIAN, IMP MAP)을 쓸 때 속도가 빨라진다고 알려져 있다.</p>
 
+</div>
+</div>
+<h3>참고문헌<a href="참고문헌.html#참고문헌" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-nickholford" class="csl-entry">
+Holford, N. 2010. <em>Differential Equation Models Using NM-TRAN</em>. Auckland, New Zealand: University of Auckland; University of Auckland. <a href="http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf">http://holford.fmhs.auckland.ac.nz/docs/differential-equations.pdf</a>.
 </div>
 </div>
             </section>
@@ -422,7 +450,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -441,6 +468,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -461,6 +489,7 @@ gitbook.start({
 "text": null
 },
 "download": ["basic.pdf"],
+"search": false,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -468,7 +497,6 @@ gitbook.start({
 "toolbar": {
 "position": "fixed"
 },
-"search": false,
 "info": false
 });
 });
@@ -480,7 +508,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
