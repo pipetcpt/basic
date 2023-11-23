@@ -9,7 +9,23 @@
 %  %axes,cross,pdftex,center
 %]{crop}
 
-%sungpil defined above
+\usepackage{graphicx}
+%\usepackage{polyglossia}
+%\usepackage{ctex}
+%\usepackage{fontspec}
+%\usepackage{xetexko}
+\setmainfont{NanumMyeongjo}
+%\setmainfont{Noto Serif CJK KR}
+%\setmainhangulfont{Noto Serif CJK KR} 
+%\setmainhangulfont{NanumMyeongjo}
+%\setmainhanjafont{Noto Serif CJK KR}[Language=Chinese Simplified]
+%\setmainhanjafont{Noto Serif CJK KR}
+\usepackage{kotex}
+%\setmonohangulfont{NanumGothicCoding}
+\usepackage[version=4]{mhchem}
+%\usepackage{mhchem}
+
+%sungpil defined above --------------------------
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -48,6 +64,7 @@
 \renewcommand{\floatpagefraction}{0.75}
 
 \renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\usepackage{hyperref}
 \let\oldhref\href
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 

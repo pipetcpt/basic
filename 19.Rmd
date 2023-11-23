@@ -224,6 +224,8 @@ knitr::include_graphics("figures/19-fig-07.png")
 
 약물이 결합하는 결합부위가 여러 개인 경우에 약효(E)는 다음과 같이 나타낼 수 있다.
 
+<!---
+https://stackoverflow.com/questions/63516359/is-there-a-way-to-use-latex-expression-of-chemarr-for-gitbook-format-of-bookdo
 $$
 \require{mhchem}
 \begin{equation}
@@ -235,6 +237,16 @@ $$
 (\#eq:multiplebinding3)
 \end{equation}
 $$
+-->
+
+\begin{equation}
+  [C] + [R] 
+  \xrightleftharpoons[k_{-1}]{k_1}
+  [CR] + [C] 
+  \xrightleftharpoons[k_{-2}]{k_2}
+  [C2R]
+(\#eq:multiplebinding3)
+\end{equation}
 
 \begin{equation}
 \begin{split}
